@@ -1,0 +1,9 @@
+# Set up a Gateway Response Using the API Gateway REST API<a name="set-up-gateway-response-using-the-api"></a>
+
+ Before customizing a gateway response using the API Gateway REST API, you must have already created an API and have obtained its identifier\. To retrieve the API identifier, you can follow [restapi:gateway\-responses](http://docs.aws.amazon.com/apigateway/api-reference/link-relation/restapi-gateway-responses/) link relation and examine the result\. 
+
+**To customize a gateway response using the API Gateway REST API**
+
+1. To overwrite an entire [GatewayResponse](http://docs.aws.amazon.com/apigateway/api-reference/resource/gateway-response/) instance, call the [gatewayresponse:put](http://docs.aws.amazon.com/apigateway/api-reference/link-relation/gatewayresponse-put/) action, specifying a desired [responseType](http://docs.aws.amazon.com/apigateway/api-reference/resource/gateway-response/#responseType) in the URL path parameter and supplying in the request payload the [statusCode](http://docs.aws.amazon.com/apigateway/api-reference/resource/gateway-response/#statusCode), [responseParameters](http://docs.aws.amazon.com/apigateway/api-reference/resource/gateway-response/#responseParameters) and [responseTemplates](http://docs.aws.amazon.com/apigateway/api-reference/resource/gateway-response/#responseTemplates) mappings\.
+
+1. To update part of a `GatewayResponse` instance, call the [gatewayresponse:update](http://docs.aws.amazon.com/apigateway/api-reference/link-relation/gatewayresponse-update/) action, specifying a desired `responseType` in the URL path parameter and supplying in the request payload desired individual `GatewayResponse` properties, for example, the `responseParameters` or the `responseTemplates` mapping\.

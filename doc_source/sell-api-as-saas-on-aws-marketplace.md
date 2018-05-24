@@ -1,0 +1,152 @@
+# Sell Your API Gateway API through AWS Marketplace<a name="sell-api-as-saas-on-aws-marketplace"></a>
+
+After you build, test, and deploy your API, you can package it in an API Gateway [usage plan](http://docs.aws.amazon.com/apigateway/api-reference/resource/usage-plan/) and sell the plan as a Software as a Service \(SaaS\) product through AWS Marketplace\. API buyers subscribing to your product offering are billed by AWS Marketplace based on the number of requests made to the [usage plan](api-gateway-api-usage-plans.md)\. 
+
+To sell your API on AWS Marketplace, you must set up the sales channel to integrate AWS Marketplace with API Gateway\. Generally speaking, this involves listing your product on AWS Marketplace, setting up an IAM role with appropriate policies to allow API Gateway to send usage metrics to AWS Marketplace, associating an AWS Marketplace product with an API Gateway usage plan, and associating an AWS Marketplace buyer with an API Gateway API key\. Details are discussed in the following sections\.
+
+To enable your customers to buy your product on AWS Marketplace, you must register your developer portal \(an external application\) with AWS Marketplace\. The developer portal must handle the subscription requests that are redirected from the AWS Marketplace console\. 
+
+For more information about selling your API as a SaaS product on AWS Marketplace, see [AWS Marketplace SaaS Subscriptions \- Seller Integration Guide](https://s3.amazonaws.com/awsmp-loadforms/SaaS+Seller+Integration+Guide.pdf)\.
+
+**Topics**
++ [Initialize AWS Marketplace Integration with API Gateway](#sell-api-as-saas-on-aws-marketplace-inital-setup)
++ [Handle Customer Subscription to Usage Plans](#sell-api-as-saas-on-aws-marketplace-subscripton-unsubscription)
+
+## Initialize AWS Marketplace Integration with API Gateway<a name="sell-api-as-saas-on-aws-marketplace-inital-setup"></a>
+
+The following tasks are for one\-time initialization of AWS Marketplace integration with API Gateway, which enables you to sell your API as a SaaS product\.
+
+### List a Product on AWS Marketplace<a name="sell-api-as-saas-on-aws-marketplace-inital-setup-list-product"></a>
+
+To list your usage plan as a SaaS product, submit a product load form through [AWS Marketplace](https://aws.amazon.com/marketplace/management/tour/)\. The product must contain a dimension named `apigateway` of the `requests` type\. This dimension defines the price\-per\-request and is used by API Gateway to meter requests to your API\. 
+
+### Create the Metering Role<a name="sell-api-as-saas-on-aws-marketplace-inital-setup-create-metering-role"></a>
+
+Create an IAM role named `ApiGatewayMarketplaceMeteringRole` with the following execution policy and trust policy\. This role allows API Gateway to send usage metrics to AWS Marketplace on your behalf\. 
+
+#### Execution Policy of the Metering Role<a name="sell-api-as-saas-on-aws-marketplace-inital-setup-create-metering-role-execution-policy"></a>
+
+```
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Action": [
+        "aws-marketplace:BatchMeterUsage",
+        "aws-marketplace:ResolveCustomer"
+      ],
+      "Resource": "*",
+      "Effect": "Allow"
+    }
+  ]
+}
+```
+
+#### Trusted Relationship Policy of the Metering Role<a name="sell-api-as-saas-on-aws-marketplace-inital-setup-create-metering-role-trusted-policy"></a>
+
+```
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Effect": "Allow",
+      "Principal": {
+        "Service": "apigateway.amazonaws.com"
+      },
+      "Action": "sts:AssumeRole"
+    }
+  ]
+}
+```
+
+### Associate Usage Plan with AWS Marketplace Product<a name="sell-api-as-saas-on-aws-marketplace-associate-usage-plan-with-saas-product"></a>
+
+When you list a product on AWS Marketplace, you receive an AWS Marketplace product code\. To integrate API Gateway with AWS Marketplace, associate your usage plan with the AWS Marketplace product code\. You enable the association by setting the API Gateway `UsagePlan`'s [productCode](http://docs.aws.amazon.com/apigateway/api-reference/resource/usage-plan/#productCode) field to your AWS Marketplace product code, using the API Gateway console , the API Gateway REST API, the AWS CLI for API Gateway, or AWS SDK for API Gateway\. The following code example uses the API Gateway REST API:
+
+```
+PATCH /usageplans/USAGE_PLAN_ID
+Host: apigateway.region.amazonaws.com
+Authorization: ...
+
+{
+    "patchOperations" : [{
+        "path" : "/productCode",
+        "value" : "MARKETPLACE_PRODUCT_CODE",
+        "op" : "replace"
+    }]
+}
+```
+
+## Handle Customer Subscription to Usage Plans<a name="sell-api-as-saas-on-aws-marketplace-subscripton-unsubscription"></a>
+
+The following tasks are handled by your developer portal application\.
+
+ When a customer subscribes to your product through AWS Marketplace, AWS Marketplace forwards a `POST` request to the SaaS subscriptions URL  that you registered when listing your product on AWS Marketplace\. The `POST` request comes with an `x-amzn-marketplace-token` header parameter containing buyer information\. Follow the instructions in the Register Application section of the [SaaS Seller Integration Guide](https://s3.amazonaws.com/awsmp-loadforms/SaaS+Seller+Integration+Guide.pdf) to handle this redirect in your developer portal application\. 
+
+Responding to a customer's subscribing request, AWS Marketplace sends a `subscribe-success` notification to an Amazon SNS topic that you can subscribe to \(See Step 6\.4 of the [SaaS Seller Integration Guide](https://s3.amazonaws.com/awsmp-loadforms/SaaS+Seller+Integration+Guide.pdf)\)\. To accept the customer subscription request, you handle the `subscribe-success` notification by creating or retrieving an API Gateway API key for the customer, associating the customer's AWS Marketplace\-provisioned `customerId` with the API keys, and then adding the API key to your usage plan\. 
+
+When the customer's subscription request completes, the developer portal application should present the customer with the associated API key and inform the customer that the API key must be included in the `x-api-key` header in requests to the API\. 
+
+When a customer cancels a subscription to a usage plan, AWS Marketplace sends an `unsubscribe-success` notification to the SNS topic\. To complete the process of unsubscribing the customer, you handle the `unsubscribe-success` notification by removing the customer's API keys from the usage plan\. 
+
+### Authorize a Customer to Access a Usage Plan<a name="sell-api-as-saas-on-aws-marketplace-subscripton-unsubscription-authorize-access-to-usage-plan"></a>
+
+ To authorize access to your usage plan for a given customer, use the API Gateway API to fetch or create an API key for the customer and add the API key to the usage plan\. 
+
+The following example shows how to call the API Gateway REST API to create a new API key with a specific AWS Marketplace `customerId` value \(*MARKETPLACE\_CUSTOMER\_ID*\)\.
+
+```
+POST apikeys HTTP/1.1
+Host: apigateway.region.amazonaws.com
+Authorization: ...
+
+{
+  "name" : "my_api_key",
+  "description" : "My API key",
+  "enabled" : "false",
+  "stageKeys" : [ {
+    "restApiId" : "uycll6xg9a",
+    "stageName" : "prod"
+  } ],
+  "customerId" : "MARKETPLACE_CUSTOMER_ID"
+}
+```
+
+The following example shows how to get an API key with a specific AWS Marketplace `customerId` value \(*MARKETPLACE\_CUSTOMER\_ID*\)\.
+
+```
+GET apikeys?customerId=MARKETPLACE_CUSTOMER_ID HTTP/1.1
+Host: apigateway.region.amazonaws.com
+Authorization: ...
+```
+
+To add an API key to a usage plan, create a [UsagePlanKey](http://docs.aws.amazon.com/apigateway/api-reference/resource/usage-plan-key/) with the API key for the relevant usage plan\. The following example shows how to accomplish this using the API Gateway REST API, where `n371pt` is the usage plan ID and `q5ugs7qjjh` is an example API `keyId` returned from the preceding examples\.
+
+```
+POST /usageplans/n371pt/keys HTTP/1.1
+Host: apigateway.region.amazonaws.com
+Authorization: ...
+
+{
+    "keyId": "q5ugs7qjjh",
+    "keyType": "API_KEY"
+}
+```
+
+### Associate a Customer with an API Key<a name="sell-api-as-saas-on-aws-marketplace-subscripton-unsubscription-associate-marketplace"></a>
+
+ You must update the [ApiKey](http://docs.aws.amazon.com/apigateway/api-reference/resource/api-key/)'s `customerId` field to the AWS Marketplace customer ID of the customer\. This associates the API key with the AWS Marketplace customer, which enables metering and billing for the buyer\. The following code example calls the API Gateway REST API to do that\.
+
+```
+PATCH /apikeys/q5ugs7qjjh
+Host: apigateway.region.amazonaws.com
+Authorization: ...
+        
+{
+    "patchOperations" : [{
+        "path" : "/customerId",
+        "value" : "MARKETPLACE_CUSTOMER_ID",
+        "op" : "replace"
+    }]
+}
+```
