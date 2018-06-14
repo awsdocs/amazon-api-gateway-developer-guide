@@ -33,7 +33,7 @@ To use the AWS CLI to create a new API and enable compression, call the [http://
 ```
 aws apigateway create-rest-api \
     --name "My test API" \
-    --minimumCompressionSize 0
+    --minimum-compression-size 0
 ```
 
 To use the AWS CLI to enable compression on an existing API, call the [http://docs.aws.amazon.com/cli/latest/reference/apigateway/update-rest-api.html](http://docs.aws.amazon.com/cli/latest/reference/apigateway/update-rest-api.html) command as follows: 
