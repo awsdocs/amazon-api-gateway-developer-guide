@@ -18,7 +18,7 @@ To create and configure an Amazon Cognito user pool for your API, you perform th
 As the API developer, you must provide your client developers with the user pool ID, a client ID, and possibly the associated client secrets that are defined as part of the user pool\. 
 
 **Note**  
-To let a user sign in using Amazon Cognito credentials and also obtain temporary credentials to use with the permissions of an IAM role, use [Amazon Cognito Federated Identities](http://docs.aws.amazon.com/cognito/latest/developerguide/cognito-identity.html)\. Set the authorization type of your API to `AWS_IAM`\. 
+To let a user sign in using Amazon Cognito credentials and also obtain temporary credentials to use with the permissions of an IAM role, use [Amazon Cognito Federated Identities](http://docs.aws.amazon.com/cognito/latest/developerguide/cognito-identity.html)\. For each api resource endpoint http method, set the authorization type, category `Method Execution`, to `AWS_IAM`\. 
 
 In this section, we describe how to create a user pool, how to integrate an API Gateway API with the user pool, and how to invoke an API that's integrated with the user pool\. 
 
