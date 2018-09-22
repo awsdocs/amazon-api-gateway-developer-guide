@@ -37,7 +37,7 @@ When planning the migration, remember that for an edge\-optimized API's custom d
 
 ## Update Custom Domain Names Using the AWS CLI<a name="apigateway-api-custom-domain-names-migrate-with-awscli"></a>
 
-To use the AWS CLI to update a custom domain name from an edge\-optimized endpoint to a regional endpoint or vice versa, call the [http://docs.aws.amazon.com/cli/latest/reference/apigateway/update-domain-name.html](http://docs.aws.amazon.com/cli/latest/reference/apigateway/update-domain-name.html) command to add the new endpoint type and, optionally, call the [http://docs.aws.amazon.com/cli/latest/reference/apigateway/update-domain-name.html](http://docs.aws.amazon.com/cli/latest/reference/apigateway/update-domain-name.html) command to remove the old endpoint type\.
+To use the AWS CLI to update a custom domain name from an edge\-optimized endpoint to a regional endpoint or vice versa, call the [https://docs.aws.amazon.com/cli/latest/reference/apigateway/update-domain-name.html](https://docs.aws.amazon.com/cli/latest/reference/apigateway/update-domain-name.html) command to add the new endpoint type and, optionally, call the [https://docs.aws.amazon.com/cli/latest/reference/apigateway/update-domain-name.html](https://docs.aws.amazon.com/cli/latest/reference/apigateway/update-domain-name.html) command to remove the old endpoint type\.
 
 **Topics**
 + [Update an Edge\-Optimized Custom Domain Name to Regional](#update-edge-optimized-domain-name-to-regional-cli)
@@ -80,7 +80,7 @@ The success response has a `200 OK` status code and a body similar to the follow
 
 For the updated regional custom domain name, the resulting `regionalDomainName` property returns the regional API host name\. You must set up a DNS record to point the regional custom domain name to this regional host name\. This enables the traffic that is bound to the custom domain name to be routed to the regional host\. 
 
-After the DNS record is set, you can remove the edge\-optimized custom domain name by calling the `[update\-domain\-name](http://docs.aws.amazon.com/cli/latest/reference/apigateway/update-domain-name.html)` command of AWS CLI:
+After the DNS record is set, you can remove the edge\-optimized custom domain name by calling the `[update\-domain\-name](https://docs.aws.amazon.com/cli/latest/reference/apigateway/update-domain-name.html)` command of AWS CLI:
 
 ```
 aws apigateway update-domain-name \
@@ -158,7 +158,7 @@ The result of this command is similar to the following output, with only edge\-o
 
 ## Update Custom Domain Names Using the API Gateway REST API<a name="apigateway-api-custom-domain-names-migrate-with-rest-api"></a>
 
-To use the API Gateway REST API to update an edge\-optimized custom domain name to a regional one, or from a regional custom domain name to an edge\-optimized one, use the [domainname:update](http://docs.aws.amazon.com/apigateway/api-reference/link-relation/domainname-update) link\-relation and, optionally, the [domainname:delete](http://docs.aws.amazon.com/apigateway/api-reference/link-relation/domainname-delete) link\-relation\. 
+To use the API Gateway REST API to update an edge\-optimized custom domain name to a regional one, or from a regional custom domain name to an edge\-optimized one, use the [domainname:update](https://docs.aws.amazon.com/apigateway/api-reference/link-relation/domainname-update) link\-relation and, optionally, the [domainname:delete](https://docs.aws.amazon.com/apigateway/api-reference/link-relation/domainname-delete) link\-relation\. 
 
 **Topics**
 + [Update an Edge\-Optimized Custom Domain Name to Regional](#update-edge-domain-name-to-regional)
@@ -166,7 +166,7 @@ To use the API Gateway REST API to update an edge\-optimized custom domain name 
 
 ### Update an Edge\-Optimized Custom Domain Name to Regional<a name="update-edge-domain-name-to-regional"></a>
 
-To update an edge\-optimized custom domain name \(`api.example.com`\) to a regional custom domain name, call [http://docs.aws.amazon.com/apigateway/api-reference/link-relation/domainname-update/](http://docs.aws.amazon.com/apigateway/api-reference/link-relation/domainname-update/) of the API Gateway REST API:
+To update an edge\-optimized custom domain name \(`api.example.com`\) to a regional custom domain name, call [https://docs.aws.amazon.com/apigateway/api-reference/link-relation/domainname-update/](https://docs.aws.amazon.com/apigateway/api-reference/link-relation/domainname-update/) of the API Gateway REST API:
 
 ```
 PATCH /domainnames/api.example.com HTTP/1.1

@@ -20,7 +20,7 @@ The following example sets the type of a Lambda authorizer using OAuth 2\.
     }
 ```
 
-The following security definition example specifies authorization using [AWS Signature Version 4](http://docs.aws.amazon.com/general/latest/gr/signature-version-4.html):
+The following security definition example specifies authorization using [AWS Signature Version 4](https://docs.aws.amazon.com/general/latest/gr/signature-version-4.html):
 
 ```
   "sigv4" : {
@@ -33,4 +33,4 @@ The following security definition example specifies authorization using [AWS Sig
 
 ## See Also<a name="api-gateway-swagger-extensions-authtype-see-also"></a>
 
-[authorizer\.authType](http://docs.aws.amazon.com/apigateway/api-reference/resource/authorizer/#authType)
+[authorizer\.authType](https://docs.aws.amazon.com/apigateway/api-reference/resource/authorizer/#authType)

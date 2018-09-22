@@ -2,6 +2,9 @@
 
 After creating an Amazon Cognito user pool, in API Gateway, you must then create a `COGNITO_USER_POOLS` authorizer that uses the user pool\. The following procedure walks you through the steps to do this using the API Gateway console\.
 
+**Important**  
+After performing any of the procedures below, you'll need to deploy or redeploy your API to propagate the changes\. For more information about deploying your API, see [Deploying an API in Amazon API Gateway](how-to-deploy-api.md)\.
+
 **To create a `COGNITO_USER_POOLS` authorizer by using the API Gateway console**
 
 1. Create a new API, or select an existing API in API Gateway\.
@@ -26,7 +29,7 @@ After creating an Amazon Cognito user pool, in API Gateway, you must then create
 
    1. To finish integrating the user pool with the API, choose **Create**\. 
 
-1. After creating the `COGNITO_USER_POOLS` authorizer, you can optionally test invoke it by supplying an identity token that's provisioned from the user pool\. You can obtain this identity token by calling the [Amazon Cognito Identity SDK](http://docs.aws.amazon.com/cognito/latest/developerguide/setting-up-the-javascript-sdk.html) to perform user sign\-in\. Make sure to use the returned identity token, not the access token\. 
+1. After creating the `COGNITO_USER_POOLS` authorizer, you can optionally test invoke it by supplying an identity token that's provisioned from the user pool\. You can obtain this identity token by calling the [Amazon Cognito Identity SDK](https://docs.aws.amazon.com/cognito/latest/developerguide/setting-up-the-javascript-sdk.html) to perform user sign\-in\. Make sure to use the returned identity token, not the access token\. 
 
 The preceding procedure creates a `COGNITO_USER_POOLS` authorizer that uses the newly created Amazon Cognito user pool\. Depending on how you enable the authorizer on an API method, you can use either an identity token or an access token that's provisioned from the integrated user pool\. The next procedure walks you through the steps to configure the authorizer on an API method\.
 

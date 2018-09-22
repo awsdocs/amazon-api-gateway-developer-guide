@@ -3,7 +3,7 @@
  This section describes how to create and configure an API Gateway API with an integration of the `AWS` type to access Kinesis\. 
 
 **Note**  
- To integrate your API Gateway API with Kinesis, you must choose a region where both the API Gateway and Kinesis services are available\. For region availability, see [Regions and Endpoints](http://docs.aws.amazon.com/general/latest/gr/rande.html#apigateway_region)\. 
+ To integrate your API Gateway API with Kinesis, you must choose a region where both the API Gateway and Kinesis services are available\. For region availability, see [Regions and Endpoints](https://docs.aws.amazon.com/general/latest/gr/rande.html#apigateway_region)\. 
 
  For the purpose of illustration, we create an example API to enable a client to do the following: 
 
@@ -22,18 +22,18 @@
 1. The `GetRecords` or `PutRecords` \(including `PutRecord`\) action in Kinesis
 
  Specifically, we build the API as follows: 
-+  Expose an HTTP GET method on the API's `/streams` resource and integrate the method with the [ListStreams](http://docs.aws.amazon.com/kinesis/latest/APIReference/API_ListStreams.html) action in Kinesis to list the streams in the caller's account\. 
-+  Expose an HTTP POST method on the API's `/streams/{stream-name}` resource and integrate the method with the [CreateStream](http://docs.aws.amazon.com/kinesis/latest/APIReference/API_CreateStream.html) action in Kinesis to create a named stream in the caller's account\. 
-+  Expose an HTTP GET method on the API's `/streams/{stream-name}` resource and integrate the method with the [DescribeStream](http://docs.aws.amazon.com/kinesis/latest/APIReference/API_DescribeStream.html) action in Kinesis to describe a named stream in the caller's account\. 
-+  Expose an HTTP DELETE method on the API's `/streams/{stream-name}` resource and integrate the method with the [DeleteStream](http://docs.aws.amazon.com/kinesis/latest/APIReference/API_DeleteStream.html) action in Kinesis to delete a stream in the caller's account\. 
-+  Expose an HTTP PUT method on the API's `/streams/{stream-name}/record` resource and integrate the method with the [PutRecord](http://docs.aws.amazon.com/kinesis/latest/APIReference/API_PutRecord.html) action in Kinesis\. This enables the client to add a single data record to the named stream\. 
-+  Expose an HTTP PUT method on the API's `/streams/{stream-name}/records` resource and integrate the method with the [PutRecords](http://docs.aws.amazon.com/kinesis/latest/APIReference/API_PutRecords.html) action in Kinesis\. This enables the client to add a list of data records to the named stream\. 
-+  Expose an HTTP GET method on the API's `/streams/{stream-name}/records` resource and integrate the method with the [GetRecords](http://docs.aws.amazon.com/kinesis/latest/APIReference/API_GetRecords.html) action in Kinesis\. This enables the client to list data records in the named stream, with a specified shard iterator\. A shard iterator specifies the shard position from which to start reading data records sequentially\.
-+  Expose an HTTP GET method on the API's `/streams/{stream-name}/sharditerator` resource and integrate the method with the [GetShardIterator](http://docs.aws.amazon.com/kinesis/latest/APIReference/API_GetShardIterator.html) action in Kinesis\. This helper method must be supplied to the `ListStreams` action in Kinesis\. 
++  Expose an HTTP GET method on the API's `/streams` resource and integrate the method with the [ListStreams](https://docs.aws.amazon.com/kinesis/latest/APIReference/API_ListStreams.html) action in Kinesis to list the streams in the caller's account\. 
++  Expose an HTTP POST method on the API's `/streams/{stream-name}` resource and integrate the method with the [CreateStream](https://docs.aws.amazon.com/kinesis/latest/APIReference/API_CreateStream.html) action in Kinesis to create a named stream in the caller's account\. 
++  Expose an HTTP GET method on the API's `/streams/{stream-name}` resource and integrate the method with the [DescribeStream](https://docs.aws.amazon.com/kinesis/latest/APIReference/API_DescribeStream.html) action in Kinesis to describe a named stream in the caller's account\. 
++  Expose an HTTP DELETE method on the API's `/streams/{stream-name}` resource and integrate the method with the [DeleteStream](https://docs.aws.amazon.com/kinesis/latest/APIReference/API_DeleteStream.html) action in Kinesis to delete a stream in the caller's account\. 
++  Expose an HTTP PUT method on the API's `/streams/{stream-name}/record` resource and integrate the method with the [PutRecord](https://docs.aws.amazon.com/kinesis/latest/APIReference/API_PutRecord.html) action in Kinesis\. This enables the client to add a single data record to the named stream\. 
++  Expose an HTTP PUT method on the API's `/streams/{stream-name}/records` resource and integrate the method with the [PutRecords](https://docs.aws.amazon.com/kinesis/latest/APIReference/API_PutRecords.html) action in Kinesis\. This enables the client to add a list of data records to the named stream\. 
++  Expose an HTTP GET method on the API's `/streams/{stream-name}/records` resource and integrate the method with the [GetRecords](https://docs.aws.amazon.com/kinesis/latest/APIReference/API_GetRecords.html) action in Kinesis\. This enables the client to list data records in the named stream, with a specified shard iterator\. A shard iterator specifies the shard position from which to start reading data records sequentially\.
++  Expose an HTTP GET method on the API's `/streams/{stream-name}/sharditerator` resource and integrate the method with the [GetShardIterator](https://docs.aws.amazon.com/kinesis/latest/APIReference/API_GetShardIterator.html) action in Kinesis\. This helper method must be supplied to the `ListStreams` action in Kinesis\. 
 
- You can apply the instructions presented here to other Kinesis actions\. For the complete list of the Kinesis actions, see [Amazon Kinesis API Reference](http://docs.aws.amazon.com/kinesis/latest/APIReference/Welcome.html)\. 
+ You can apply the instructions presented here to other Kinesis actions\. For the complete list of the Kinesis actions, see [Amazon Kinesis API Reference](https://docs.aws.amazon.com/kinesis/latest/APIReference/Welcome.html)\. 
 
- Instead of using the API Gateway console to create the sample API, you can import the sample API into API Gateway, using either the API Gateway [Import API](http://docs.aws.amazon.com/apigateway/api-reference/link-relation/restapi-import/) or the [API Gateway Swagger Importer](https://github.com/awslabs/aws-apigateway-importer)\. For information on how to use the Import API, see [Import an API into API Gateway](api-gateway-import-api.md)\. For information on how to use the API Gateway Swagger Importer, see [Getting Started with the API Gateway Swagger Importer](http://swagger.io/getting-started-with-the-amazon-swagger-importer/)\. 
+ Instead of using the API Gateway console to create the sample API, you can import the sample API into API Gateway, using either the API Gateway [Import API](https://docs.aws.amazon.com/apigateway/api-reference/link-relation/restapi-import/) or the [API Gateway Swagger Importer](https://github.com/awslabs/aws-apigateway-importer)\. For information on how to use the Import API, see [Import an API into API Gateway](api-gateway-import-api.md)\. For information on how to use the API Gateway Swagger Importer, see [Getting Started with the API Gateway Swagger Importer](http://swagger.io/getting-started-with-the-amazon-swagger-importer/)\. 
 
 If you do not have an AWS account, use the following procedure to create one\.
 
@@ -222,7 +222,7 @@ We chose `POST` here because Kinesis requires that the `ListStreams` action be i
 
    1. Choose the **Save** button to save the mapping template\.
 
-    The [ListStreams](http://docs.aws.amazon.com/kinesis/latest/APIReference/API_ListStreams.html#API_ListStreams_RequestSyntax) request takes a payload of the following JSON format: 
+    The [ListStreams](https://docs.aws.amazon.com/kinesis/latest/APIReference/API_ListStreams.html#API_ListStreams_RequestSyntax) request takes a payload of the following JSON format: 
 
    ```
    {
@@ -458,7 +458,7 @@ Content-Length: PayloadSizeBytes
 
 ## Get Records from and Add Records to a Stream in Kinesis<a name="api-gateway-get-and-add-records-to-stream"></a>
 
- After you create a stream in Kinesis, you can add data records to the stream and read the data from the stream\. Adding data records involves calling the [PutRecords](http://docs.aws.amazon.com/kinesis/latest/APIReference/API_PutRecords.html#API_PutRecords_Examples) or [PutRecord](http://docs.aws.amazon.com/kinesis/latest/APIReference/API_PutRecord.html#API_PutRecord_Examples) action in Kinesis\. The former adds multiple records whereas the latter adds a single record to the stream\. 
+ After you create a stream in Kinesis, you can add data records to the stream and read the data from the stream\. Adding data records involves calling the [PutRecords](https://docs.aws.amazon.com/kinesis/latest/APIReference/API_PutRecords.html#API_PutRecords_Examples) or [PutRecord](https://docs.aws.amazon.com/kinesis/latest/APIReference/API_PutRecord.html#API_PutRecord_Examples) action in Kinesis\. The former adds multiple records whereas the latter adds a single record to the stream\. 
 
 ```
 POST /?Action=PutRecords HTTP/1.1
@@ -501,7 +501,7 @@ Content-Length: PayloadSizeBytes
 
  Here, `StreamName` identifies the target stream to add records\. `StreamName`, `Data`, and `PartitionKey` are required input data\. In our example, we use the default values for all of the optional input data and will not explicitly specify values for them in the input to the method request\. 
 
- Reading data in Kinesis amounts to calling the [GetRecords](http://docs.aws.amazon.com/kinesis/latest/APIReference/API_GetRecords.html#API_GetRecords_Examples) action: 
+ Reading data in Kinesis amounts to calling the [GetRecords](https://docs.aws.amazon.com/kinesis/latest/APIReference/API_GetRecords.html#API_GetRecords_Examples) action: 
 
 ```
 POST /?Action=GetRecords HTTP/1.1

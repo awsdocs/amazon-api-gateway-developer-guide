@@ -14,7 +14,7 @@
 
 1. If you chose **Lambda Function**, do the following:
 
-   1. For **Lambda Region**, choose the region identifier that corresponds to the region where you created the Lambda function\. For example, if you created the Lambda function in the US East \(N\. Virginia\) Region, choose **us\-east\-1**\. For a list of region names and identifiers, see [AWS Lambda](http://docs.aws.amazon.com/general/latest/gr/rande.html#lambda_region) in the *Amazon Web Services General Reference*\.
+   1. For **Lambda Region**, choose the region identifier that corresponds to the region where you created the Lambda function\. For example, if you created the Lambda function in the US East \(N\. Virginia\) Region, choose **us\-east\-1**\. For a list of region names and identifiers, see [AWS Lambda](https://docs.aws.amazon.com/general/latest/gr/rande.html#lambda_region) in the *Amazon Web Services General Reference*\.
 
    1. For **Lambda Function**, type the name of the Lambda function, and then choose the function's corresponding ARN\.
 

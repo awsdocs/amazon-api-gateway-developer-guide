@@ -16,7 +16,7 @@
 
  In addition, you can set the `Accept` header to `application/json` or `application/yaml` to receive the API definition output in JSON or YAML format, respectively\. 
 
- For more information about submitting GET requests using the API Gateway Export API, see [Making HTTP Requests](http://docs.aws.amazon.com/apigateway/api-reference/making-http-requests)\. 
+ For more information about submitting GET requests using the API Gateway Export API, see [Making HTTP Requests](https://docs.aws.amazon.com/apigateway/api-reference/making-http-requests)\. 
 
 **Note**  
  If you define models in your API, they must be for the content type of "application/json" for API Gateway to export the model\. Otherwise, API Gateway throws an exception with the "Only found non\-JSON body models for \.\.\." error message\. 
@@ -31,7 +31,7 @@ Host: apigateway.<region>.amazonaws.com
 Accept: application/json
 ```
 
- Here, `<region>` could be, for example, `us-east-1`\. For all the regions where API Gateway is available, see [Regions and Endpoints](http://docs.aws.amazon.com/general/latest/gr/rande.html#apigateway_region) 
+ Here, `<region>` could be, for example, `us-east-1`\. For all the regions where API Gateway is available, see [Regions and Endpoints](https://docs.aws.amazon.com/general/latest/gr/rande.html#apigateway_region) 
 
 ## Download API Swagger Definition in YAML<a name="api-gateway-export-api-download-swagger-yaml"></a>
 

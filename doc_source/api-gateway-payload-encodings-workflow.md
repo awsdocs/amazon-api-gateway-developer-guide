@@ -1,6 +1,6 @@
 # Content Type Conversions in API Gateway<a name="api-gateway-payload-encodings-workflow"></a>
 
-The following table shows how API Gateway converts the request payload for specific configurations of a request's `Content-Type` header, the `binaryMediaTypes` list of a [RestApi](http://docs.aws.amazon.com/apigateway/api-reference/resource/rest-api/) resource, and the `contentHandling` property value of the [Integration](http://docs.aws.amazon.com/apigateway/api-reference/resource/integration/) resource\.
+The following table shows how API Gateway converts the request payload for specific configurations of a request's `Content-Type` header, the `binaryMediaTypes` list of a [RestApi](https://docs.aws.amazon.com/apigateway/api-reference/resource/rest-api/) resource, and the `contentHandling` property value of the [Integration](https://docs.aws.amazon.com/apigateway/api-reference/resource/integration/) resource\.
 
 
 **API Request Content Type Conversions in API Gateway**  
@@ -17,7 +17,7 @@ The following table shows how API Gateway converts the request payload for speci
 | Binary data | A binary data type | Set with matching media types | CONVERT\_TO\_BINARY | Binary data | 
 | Binary data | A binary data type | Set with matching media types | CONVERT\_TO\_TEXT | Base64\-encoded string | 
 
-The following table shows how API Gateway converts the response payload for specific configurations of a request's `Accept` header, the `binaryMediaTypes` list of a [RestApi](http://docs.aws.amazon.com/apigateway/api-reference/resource/rest-api/) resource, and the `contentHandling` property value of the [IntegrationResponse](http://docs.aws.amazon.com/apigateway/api-reference/resource/integration-response/) resource\.
+The following table shows how API Gateway converts the response payload for specific configurations of a request's `Accept` header, the `binaryMediaTypes` list of a [RestApi](https://docs.aws.amazon.com/apigateway/api-reference/resource/rest-api/) resource, and the `contentHandling` property value of the [IntegrationResponse](https://docs.aws.amazon.com/apigateway/api-reference/resource/integration-response/) resource\.
 
 
 **API Gateway Response Content Type Conversions**  

@@ -54,7 +54,7 @@ After the network load balancer is created, note its ARN\. You need it to create
 
    Note the `id` value of the newly created `VpcLink` \(`gim7c3` in the preceding output\)\. You need it to set up the private integration\.
 
-1.  Set up an API by creating an API Gateway [http://docs.aws.amazon.com/apigateway/api-reference/resource/rest-api/](http://docs.aws.amazon.com/apigateway/api-reference/resource/rest-api/) resource:
+1.  Set up an API by creating an API Gateway [https://docs.aws.amazon.com/apigateway/api-reference/resource/rest-api/](https://docs.aws.amazon.com/apigateway/api-reference/resource/rest-api/) resource:
 
    ```
    aws apigateway create-rest-api --name 'My VPC Link Test'

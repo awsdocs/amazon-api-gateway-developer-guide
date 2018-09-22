@@ -7,9 +7,9 @@ To call a method with a user pool authorizer configured, the client must do the 
 + Include the identity token in the `Authorization` header \(or another header you specified when you created the authorizer\)\.
 
 You can use one of the [AWS SDKs](https://aws.amazon.com/tools#SDK) to perform these tasks\. For example: 
-+ To use the Android SDK, see [Setting up the AWS Mobile SDK for Android to Work with User Pools](http://docs.aws.amazon.com/cognito/latest/developerguide/setting-up-android-sdk.html)\.
-+ To use the iOS SDK, see [Setting Up the AWS Mobile SDK for iOS to Work with User Pools](http://docs.aws.amazon.com/cognito/latest/developerguide/walkthrough-using-the-ios-sdk.html)\.
-+ To use JavaScript, see [Setting up the AWS SDK for JavaScript in the Browser to Work with User Pools](http://docs.aws.amazon.com/cognito/latest/developerguide/setting-up-the-javascript-sdk.html)\.
++ To use the Android SDK, see [Setting up the AWS Mobile SDK for Android to Work with User Pools](https://docs.aws.amazon.com/cognito/latest/developerguide/setting-up-android-sdk.html)\.
++ To use the iOS SDK, see [Setting Up the AWS Mobile SDK for iOS to Work with User Pools](https://docs.aws.amazon.com/cognito/latest/developerguide/walkthrough-using-the-ios-sdk.html)\.
++ To use JavaScript, see [Setting up the AWS SDK for JavaScript in the Browser to Work with User Pools](https://docs.aws.amazon.com/cognito/latest/developerguide/setting-up-the-javascript-sdk.html)\.
 
 The following procedure outlines the steps to perform these tasks\. For more information, see the blog posts on [Using Android SDK with Amazon Cognito User Pools](http://mobile.awsblog.com/post/TxNYVQQ3A2LT6Y/Using-Android-SDK-with-Amazon-Cognito-Your-User-Pools) and [Using Amazon Cognito User Pool for iOS](http://mobile.awsblog.com/post/TxGNH1AUKDRZDH/Announcing-Your-User-Pools-in-Amazon-Cognito)\.
 

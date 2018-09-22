@@ -21,7 +21,7 @@ Before creating and editing the documentation of an API, first create the API\. 
 
 ## Document the `API` Entity<a name="api-gateway-documenting-api-quick-start-with-restapi-add-content-to-api"></a>
 
-To add documentation for an [API](http://docs.aws.amazon.com/apigateway/api-reference/resource/rest-api/), add a [DocumentationPart](http://docs.aws.amazon.com/apigateway/api-reference/resource/documentation-part/) resource for the API entity:
+To add documentation for an [API](https://docs.aws.amazon.com/apigateway/api-reference/resource/rest-api/), add a [DocumentationPart](https://docs.aws.amazon.com/apigateway/api-reference/resource/documentation-part/) resource for the API entity:
 
 ```
 POST /restapis/restapi_id/documentation/parts HTTP/1.1
@@ -55,7 +55,7 @@ If successful, the operation returns a `201 Created` response containing the new
 }
 ```
 
-If the documentation part has already been added, a `409 Conflict` response returns, containing the error message of `Documentation part already exists for the specified location: type 'API'."` In this case, you must call the [documentationpart:update](http://docs.aws.amazon.com/apigateway/api-reference/link-relation/documentationpart-update/) operation\.
+If the documentation part has already been added, a `409 Conflict` response returns, containing the error message of `Documentation part already exists for the specified location: type 'API'."` In this case, you must call the [documentationpart:update](https://docs.aws.amazon.com/apigateway/api-reference/link-relation/documentationpart-update/) operation\.
 
 ```
 PATCH /restapis/4wk1k4onj3/documentation/parts/part_id HTTP/1.1
@@ -77,7 +77,7 @@ The successful response returns a `200 OK` status code with the payload containi
 
 ## Document a `RESOURCE` Entity<a name="api-gateway-documenting-api-quick-start-with-restapi-add-content-to-resource"></a>
 
-To add documentation for the root resource of an API, add a [DocumentationPart](http://docs.aws.amazon.com/apigateway/api-reference/resource/documentation-part/) resource targeted for the corresponding [Resource](http://docs.aws.amazon.com/apigateway/api-reference/resource/resource/) resource:
+To add documentation for the root resource of an API, add a [DocumentationPart](https://docs.aws.amazon.com/apigateway/api-reference/resource/documentation-part/) resource targeted for the corresponding [Resource](https://docs.aws.amazon.com/apigateway/api-reference/resource/resource/) resource:
 
 ```
 POST /restapis/restapi_id/documentation/parts HTTP/1.1
@@ -128,7 +128,7 @@ If successful, the operation returns a `201 Created` response containing the new
 
 When the resource path is not specified, the resource is assumed to be the root resource\. You can add `"path": "/"` to `properties` to make the specification explicit\.
 
-To create documentation for a child resource of an API, add a [DocumentationPart](http://docs.aws.amazon.com/apigateway/api-reference/resource/documentation-part/) resource targeted for the corresponding [Resource](http://docs.aws.amazon.com/apigateway/api-reference/resource/resource/) resource:
+To create documentation for a child resource of an API, add a [DocumentationPart](https://docs.aws.amazon.com/apigateway/api-reference/resource/documentation-part/) resource targeted for the corresponding [Resource](https://docs.aws.amazon.com/apigateway/api-reference/resource/resource/) resource:
 
 ```
 POST /restapis/restapi_id/documentation/parts HTTP/1.1
@@ -178,7 +178,7 @@ If successful, the operation returns a `201 Created` response containing the new
 }
 ```
 
-To add documentation for a child resource specified by a path parameter, add a [DocumentationPart](http://docs.aws.amazon.com/apigateway/api-reference/resource/documentation-part/) resource targeted for the [Resource](http://docs.aws.amazon.com/apigateway/api-reference/resource/resource/) resource:
+To add documentation for a child resource specified by a path parameter, add a [DocumentationPart](https://docs.aws.amazon.com/apigateway/api-reference/resource/documentation-part/) resource targeted for the [Resource](https://docs.aws.amazon.com/apigateway/api-reference/resource/resource/) resource:
 
 ```
 POST /restapis/restapi_id/documentation/parts HTTP/1.1
@@ -229,11 +229,11 @@ If successful, the operation returns a `201 Created` response containing the new
 ```
 
 **Note**  
-The [DocumentationPart](http://docs.aws.amazon.com/apigateway/api-reference/resource/documentation-part/) instance of a `RESOURCE` entity cannot be inherited by any of its child resources\.
+The [DocumentationPart](https://docs.aws.amazon.com/apigateway/api-reference/resource/documentation-part/) instance of a `RESOURCE` entity cannot be inherited by any of its child resources\.
 
 ## Document a `METHOD` Entity<a name="api-gateway-documenting-api-quick-start-with-restapi-add-content-to-method"></a>
 
-To add documentation for a method of an API, add a [DocumentationPart](http://docs.aws.amazon.com/apigateway/api-reference/resource/documentation-part/) resource targeted for the corresponding [Method](http://docs.aws.amazon.com/apigateway/api-reference/resource/method/) resource:
+To add documentation for a method of an API, add a [DocumentationPart](https://docs.aws.amazon.com/apigateway/api-reference/resource/documentation-part/) resource targeted for the corresponding [Method](https://docs.aws.amazon.com/apigateway/api-reference/resource/method/) resource:
 
 ```
 POST /restapis/restapi_id/documentation/parts HTTP/1.1
@@ -318,7 +318,7 @@ If successful, the operation returns a `201 Created` response containing the new
 
 If the `location.method` field is not specified in the preceding request, it is assumed to be `ANY` method that is represented by a wild card `*` character\.
 
-To update the documentation content of a `METHOD` entity, call the [documentationpart:update](http://docs.aws.amazon.com/apigateway/api-reference/link-relation/documentationpart-update/) operation, supplying a new `properties` map:
+To update the documentation content of a `METHOD` entity, call the [documentationpart:update](https://docs.aws.amazon.com/apigateway/api-reference/link-relation/documentationpart-update/) operation, supplying a new `properties` map:
 
 ```
 PATCH /restapis/4wk1k4onj3/documentation/parts/part_id HTTP/1.1
@@ -370,7 +370,7 @@ The successful response returns a `200 OK` status code with the payload containi
 
 ## Document a `QUERY_PARAMETER` Entity<a name="api-gateway-documenting-api-quick-start-with-restapi-add-content-to-query-parameter"></a>
 
-To add documentation for a request query parameter, add a [DocumentationPart](http://docs.aws.amazon.com/apigateway/api-reference/resource/documentation-part/) resource targeted for the `QUERY_PARAMETER` type, with the valid fields of `path` and `name`\.
+To add documentation for a request query parameter, add a [DocumentationPart](https://docs.aws.amazon.com/apigateway/api-reference/resource/documentation-part/) resource targeted for the `QUERY_PARAMETER` type, with the valid fields of `path` and `name`\.
 
 ```
 POST /restapis/restapi_id/documentation/parts HTTP/1.1
@@ -426,7 +426,7 @@ The documentation part's `properties` map of a `QUERY_PARAMETER` entity can be i
 
 ## Document a `PATH_PARAMETER` Entity<a name="api-gateway-documenting-api-quick-start-with-restapi-add-content-to-path-parameter"></a>
 
-To add documentation for a path parameter, add a [DocumentationPart](http://docs.aws.amazon.com/apigateway/api-reference/resource/documentation-part/) resource for the `PATH_PARAMETER` entity\.
+To add documentation for a path parameter, add a [DocumentationPart](https://docs.aws.amazon.com/apigateway/api-reference/resource/documentation-part/) resource for the `PATH_PARAMETER` entity\.
 
 ```
 POST /restapis/restapi_id/documentation/parts HTTP/1.1
@@ -480,7 +480,7 @@ If successful, the operation returns a `201 Created` response containing the new
 
 ## Document a `REQUEST_BODY` Entity<a name="api-gateway-documenting-api-quick-start-with-restapi-add-content-to-request-body"></a>
 
-To add documentation for a request body, add a [DocumentationPart](http://docs.aws.amazon.com/apigateway/api-reference/resource/documentation-part/) resource for the request body\.
+To add documentation for a request body, add a [DocumentationPart](https://docs.aws.amazon.com/apigateway/api-reference/resource/documentation-part/) resource for the request body\.
 
 ```
 POST /restapis/restapi_id/documentation/parts HTTP/1.1
@@ -533,7 +533,7 @@ If successful, the operation returns a `201 Created` response containing the new
 
 ## Document a `REQUEST_HEADER` Entity<a name="api-gateway-documenting-api-quick-start-with-restapi-add-content-to-request-header"></a>
 
-To add documentation for a request header, add a [DocumentationPart](http://docs.aws.amazon.com/apigateway/api-reference/resource/documentation-part/) resource for the request header\.
+To add documentation for a request header, add a [DocumentationPart](https://docs.aws.amazon.com/apigateway/api-reference/resource/documentation-part/) resource for the request header\.
 
 ```
 POST /restapis/restapi_id/documentation/parts HTTP/1.1
@@ -587,7 +587,7 @@ If successful, the operation returns a `201 Created` response containing the new
 
 ## Document a `RESPONSE` Entity<a name="api-gateway-documenting-api-quick-start-with-restapi-add-content-to-response"></a>
 
-To add documentation for a response of a status code, add a [DocumentationPart](http://docs.aws.amazon.com/apigateway/api-reference/resource/documentation-part/) resource targeted for the corresponding [MethodResponse](http://docs.aws.amazon.com/apigateway/api-reference/resource/method-response/) resource\.
+To add documentation for a response of a status code, add a [DocumentationPart](https://docs.aws.amazon.com/apigateway/api-reference/resource/documentation-part/) resource targeted for the corresponding [MethodResponse](https://docs.aws.amazon.com/apigateway/api-reference/resource/method-response/) resource\.
 
 ```
 POST /restapis/restapi_id/documentation/parts HTTP/1.1
@@ -637,7 +637,7 @@ If successful, the operation returns a `201 Created` response containing the new
 
 ## Document a `RESPONSE_HEADER` Entity<a name="api-gateway-documenting-api-quick-start-with-restapi-add-content-to-response-header"></a>
 
-To add documentation for a response header, add a [DocumentationPart](http://docs.aws.amazon.com/apigateway/api-reference/resource/documentation-part/) resource for the response header\.
+To add documentation for a response header, add a [DocumentationPart](https://docs.aws.amazon.com/apigateway/api-reference/resource/documentation-part/) resource for the response header\.
 
 ```
 POST /restapis/restapi_id/documentation/parts HTTP/1.1
@@ -692,7 +692,7 @@ The documentation of this `Content-Type` response header is the default document
 
 ## Document an `AUTHORIZER` Entity<a name="api-gateway-documenting-api-quick-start-with-restapi-add-content-to-authorizer"></a>
 
-To add documentation for an API authorizer, add a [DocumentationPart](http://docs.aws.amazon.com/apigateway/api-reference/resource/documentation-part/) resource targeted for the specified authorizer\.
+To add documentation for an API authorizer, add a [DocumentationPart](https://docs.aws.amazon.com/apigateway/api-reference/resource/documentation-part/) resource targeted for the specified authorizer\.
 
 ```
 POST /restapis/restapi_id/documentation/parts HTTP/1.1
@@ -743,7 +743,7 @@ If successful, the operation returns a `201 Created` response containing the new
 ```
 
 **Note**  
-The [DocumentationPart](http://docs.aws.amazon.com/apigateway/api-reference/resource/documentation-part/) instance of an `AUTHORIZER` entity cannot be inherited by any of its child resources\.
+The [DocumentationPart](https://docs.aws.amazon.com/apigateway/api-reference/resource/documentation-part/) instance of an `AUTHORIZER` entity cannot be inherited by any of its child resources\.
 
 ## Document a `MODEL` Entity<a name="api-gateway-documenting-api-quick-start-with-restapi-add-content-to-model"></a>
 
@@ -791,7 +791,7 @@ and
 
 When the API is exported, the `DocumentationPart`'s properties will override the values in the original schema\. 
 
- To add documentation for an API model, add a [DocumentationPart](http://docs.aws.amazon.com/apigateway/api-reference/resource/documentation-part/) resource targeted for the specified model\. 
+ To add documentation for an API model, add a [DocumentationPart](https://docs.aws.amazon.com/apigateway/api-reference/resource/documentation-part/) resource targeted for the specified model\. 
 
 ```
 POST /restapis/restapi_id/documentation/parts HTTP/1.1
@@ -844,11 +844,11 @@ If successful, the operation returns a `201 Created` response containing the new
 Repeat the same step to create a DocumentationPart instance for any of the model's properties\.
 
 **Note**  
-The [DocumentationPart](http://docs.aws.amazon.com/apigateway/api-reference/resource/documentation-part/) instance of a `MODEL` entity cannot be inherited by any of its child resources\.
+The [DocumentationPart](https://docs.aws.amazon.com/apigateway/api-reference/resource/documentation-part/) instance of a `MODEL` entity cannot be inherited by any of its child resources\.
 
 ## Update Documentation Parts<a name="api-gateway-documenting-api-quick-start-with-restapi-update-content"></a>
 
- To update the documentation parts of any type of API entities, submit a PATCH request on a [DocumentationPart](http://docs.aws.amazon.com/apigateway/api-reference/resource/documentation-part/) instance of a specified part identifier to replace the existing `properties` map with a new one\. 
+ To update the documentation parts of any type of API entities, submit a PATCH request on a [DocumentationPart](https://docs.aws.amazon.com/apigateway/api-reference/resource/documentation-part/) instance of a specified part identifier to replace the existing `properties` map with a new one\. 
 
 ```
 PATCH /restapis/4wk1k4onj3/documentation/parts/part_id HTTP/1.1
@@ -872,7 +872,7 @@ You can update multiple documentation parts in a single `PATCH` request\.
 
 ## List Documentation Parts<a name="api-gateway-documenting-api-quick-start-with-restapi-list-parts"></a>
 
- To list the documentation parts of any type of API entities, submit a GET request on a [DocumentationParts](http://docs.aws.amazon.com/apigateway/api-reference/resource/documentation-parts/) collection\. 
+ To list the documentation parts of any type of API entities, submit a GET request on a [DocumentationParts](https://docs.aws.amazon.com/apigateway/api-reference/resource/documentation-parts/) collection\. 
 
 ```
 GET /restapis/restapi_id/documentation/parts HTTP/1.1

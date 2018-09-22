@@ -6,7 +6,7 @@ You have an option to merge the newly specified documentation parts into existin
 
 ## Importing Documentation Parts Using the API Gateway REST API<a name="api-gateway-importing-api-with-swagger-file-using-rest-api"></a>
 
-To import API documentation using the API Gateway REST API, call the [documentationpart:import](http://docs.aws.amazon.com/apigateway/api-reference/link-relation/documentationpart-import/) operation\. The following example shows how to overwrite existing documentation parts of an API with a single `GET / ` method, returning a `200 OK` response when successful\.
+To import API documentation using the API Gateway REST API, call the [documentationpart:import](https://docs.aws.amazon.com/apigateway/api-reference/link-relation/documentationpart-import/) operation\. The following example shows how to overwrite existing documentation parts of an API with a single `GET / ` method, returning a `200 OK` response when successful\.
 
 ```
 PUT /restapis/<restapi_id>/documentation/parts&mode=overwrite&failonwarnings=true
@@ -112,7 +112,7 @@ When successful, this request returns a 200 OK response containing the imported 
 }
 ```
 
-In addition, you can also call [restapi:import](http://docs.aws.amazon.com/apigateway/api-reference/link-relation/restapi-import/) or [restapi:put](http://docs.aws.amazon.com/apigateway/api-reference/link-relation/restapi-put/), supplying the documentation parts in the `x-amazon-apigateway-documentation` object as part of the input Swagger file of the API definition\. To exclude the documentation parts from the API import, set `ignore=documentation` in the request query parameters\.
+In addition, you can also call [restapi:import](https://docs.aws.amazon.com/apigateway/api-reference/link-relation/restapi-import/) or [restapi:put](https://docs.aws.amazon.com/apigateway/api-reference/link-relation/restapi-put/), supplying the documentation parts in the `x-amazon-apigateway-documentation` object as part of the input Swagger file of the API definition\. To exclude the documentation parts from the API import, set `ignore=documentation` in the request query parameters\.
 
 ## Importing Documentation Parts Using the API Gateway Console<a name="api-gateway-importing-api-with-swagger-file-using-console"></a>
 

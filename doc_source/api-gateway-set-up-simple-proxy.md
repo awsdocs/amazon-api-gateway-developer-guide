@@ -13,7 +13,7 @@ API Gateway enacts certain restrictions and limitations when handling methods wi
 **Note**  
  When using proxy integration with a passthrough, API Gateway returns the default `Content-Type:application/json` header if the content type of a payload is unspecified\. 
 
-A proxy resource is most powerful when it is integrated with a backend using either the HTTP proxy integration or Lambda proxy [integration](http://docs.aws.amazon.com/apigateway/api-reference/resource/integration)\.
+A proxy resource is most powerful when it is integrated with a backend using either the HTTP proxy integration or Lambda proxy [integration](https://docs.aws.amazon.com/apigateway/api-reference/resource/integration)\.
 
 ## HTTP Proxy Integration with a Proxy Resource<a name="api-gateway-proxy-integration-types"></a>
 

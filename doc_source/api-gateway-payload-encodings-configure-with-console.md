@@ -12,7 +12,7 @@ The section explains how to enable binary support using the API Gateway console\
 
    1. In the **Settings** pane, choose **Add Binary Media Type** in the **Binary Media Types** section\.
 
-   1. Type a required media type, for example, `image/png`, in the input text field\.  If needed, repeat this step to add more media types\. 
+   1. Type a required media type, for example, `image/png`, in the input text field\. If needed, repeat this step to add more media types\. 
 
    1. Choose **Save Changes**\.  
 ![\[Add binary support in the API Gateway console.\]](http://docs.aws.amazon.com/apigateway/latest/developerguide/images/binary-support-set-binary-media-types-on-api.png)

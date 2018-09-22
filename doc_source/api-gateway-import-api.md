@@ -2,7 +2,7 @@
 
  You can use the API Gateway Import API feature to import an API from an external definition file into API Gateway\. Currently, the Import API feature supports [Swagger v2\.0](https://github.com/OAI/OpenAPI-Specification/blob/master/versions/2.0.md) definition files\. 
 
- With the Import API, you can either create a new API by submitting a [POST request](http://docs.aws.amazon.com/apigateway/api-reference/link-relation/restapi-import/) that includes a Swagger definition in the payload and endpoint configuration, or you can update an existing API by using a [PUT request](http://docs.aws.amazon.com/apigateway/api-reference/link-relation/restapi-put/) that contains a Swagger definition in the payload\. You can update an API by overwriting it with a new definition, or merge a definition with an existing API\. You specify the options using a `mode` query parameter in the request URL \. 
+ With the Import API, you can either create a new API by submitting a [`POST` request](https://docs.aws.amazon.com/apigateway/api-reference/link-relation/restapi-import/) that includes a Swagger definition in the payload and endpoint configuration, or you can update an existing API by using a [PUT request](https://docs.aws.amazon.com/apigateway/api-reference/link-relation/restapi-put/) that contains a Swagger definition in the payload\. You can update an API by overwriting it with a new definition, or merge a definition with an existing API\. You specify the options using a `mode` query parameter in the request URL\. 
 
 **Note**  
  For RAML API definitions, you can continue to use [API Gateway Importer](https://github.com/awslabs/aws-apigateway-importer)\. 

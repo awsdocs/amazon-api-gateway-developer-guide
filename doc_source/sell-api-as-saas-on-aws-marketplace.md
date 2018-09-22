@@ -1,6 +1,6 @@
 # Sell Your API Gateway API through AWS Marketplace<a name="sell-api-as-saas-on-aws-marketplace"></a>
 
-After you build, test, and deploy your API, you can package it in an API Gateway [usage plan](http://docs.aws.amazon.com/apigateway/api-reference/resource/usage-plan/) and sell the plan as a Software as a Service \(SaaS\) product through AWS Marketplace\. API buyers subscribing to your product offering are billed by AWS Marketplace based on the number of requests made to the [usage plan](api-gateway-api-usage-plans.md)\. 
+After you build, test, and deploy your API, you can package it in an API Gateway [usage plan](https://docs.aws.amazon.com/apigateway/api-reference/resource/usage-plan/) and sell the plan as a Software as a Service \(SaaS\) product through AWS Marketplace\. API buyers subscribing to your product offering are billed by AWS Marketplace based on the number of requests made to the [usage plan](api-gateway-api-usage-plans.md)\. 
 
 To sell your API on AWS Marketplace, you must set up the sales channel to integrate AWS Marketplace with API Gateway\. Generally speaking, this involves listing your product on AWS Marketplace, setting up an IAM role with appropriate policies to allow API Gateway to send usage metrics to AWS Marketplace, associating an AWS Marketplace product with an API Gateway usage plan, and associating an AWS Marketplace buyer with an API Gateway API key\. Details are discussed in the following sections\.
 
@@ -61,7 +61,7 @@ Create an IAM role named `ApiGatewayMarketplaceMeteringRole` with the following 
 
 ### Associate Usage Plan with AWS Marketplace Product<a name="sell-api-as-saas-on-aws-marketplace-associate-usage-plan-with-saas-product"></a>
 
-When you list a product on AWS Marketplace, you receive an AWS Marketplace product code\. To integrate API Gateway with AWS Marketplace, associate your usage plan with the AWS Marketplace product code\. You enable the association by setting the API Gateway `UsagePlan`'s [productCode](http://docs.aws.amazon.com/apigateway/api-reference/resource/usage-plan/#productCode) field to your AWS Marketplace product code, using the API Gateway console , the API Gateway REST API, the AWS CLI for API Gateway, or AWS SDK for API Gateway\. The following code example uses the API Gateway REST API:
+When you list a product on AWS Marketplace, you receive an AWS Marketplace product code\. To integrate API Gateway with AWS Marketplace, associate your usage plan with the AWS Marketplace product code\. You enable the association by setting the API Gateway `UsagePlan`'s [productCode](https://docs.aws.amazon.com/apigateway/api-reference/resource/usage-plan/#productCode) field to your AWS Marketplace product code, using the API Gateway console , the API Gateway REST API, the AWS CLI for API Gateway, or AWS SDK for API Gateway\. The following code example uses the API Gateway REST API:
 
 ```
 PATCH /usageplans/USAGE_PLAN_ID
@@ -120,7 +120,7 @@ Host: apigateway.region.amazonaws.com
 Authorization: ...
 ```
 
-To add an API key to a usage plan, create a [UsagePlanKey](http://docs.aws.amazon.com/apigateway/api-reference/resource/usage-plan-key/) with the API key for the relevant usage plan\. The following example shows how to accomplish this using the API Gateway REST API, where `n371pt` is the usage plan ID and `q5ugs7qjjh` is an example API `keyId` returned from the preceding examples\.
+To add an API key to a usage plan, create a [UsagePlanKey](https://docs.aws.amazon.com/apigateway/api-reference/resource/usage-plan-key/) with the API key for the relevant usage plan\. The following example shows how to accomplish this using the API Gateway REST API, where `n371pt` is the usage plan ID and `q5ugs7qjjh` is an example API `keyId` returned from the preceding examples\.
 
 ```
 POST /usageplans/n371pt/keys HTTP/1.1
@@ -135,7 +135,7 @@ Authorization: ...
 
 ### Associate a Customer with an API Key<a name="sell-api-as-saas-on-aws-marketplace-subscripton-unsubscription-associate-marketplace"></a>
 
- You must update the [ApiKey](http://docs.aws.amazon.com/apigateway/api-reference/resource/api-key/)'s `customerId` field to the AWS Marketplace customer ID of the customer\. This associates the API key with the AWS Marketplace customer, which enables metering and billing for the buyer\. The following code example calls the API Gateway REST API to do that\.
+ You must update the [ApiKey](https://docs.aws.amazon.com/apigateway/api-reference/resource/api-key/)'s `customerId` field to the AWS Marketplace customer ID of the customer\. This associates the API key with the AWS Marketplace customer, which enables metering and billing for the buyer\. The following code example calls the API Gateway REST API to do that\.
 
 ```
 PATCH /apikeys/q5ugs7qjjh

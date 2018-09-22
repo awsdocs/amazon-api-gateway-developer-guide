@@ -120,15 +120,15 @@ The function then returns a greeting to the named user in the `message` property
 
 ### Python Function for an API with Lambda Proxy Integration<a name="api-gateway-proxy-integration-lambda-function-python"></a>
 
- Follow the discussion in [Authoring Lambda Functions in Python](http://docs.aws.amazon.com/lambda/latest/dg/python-programming-model.html) to create the Python Lambda function handler, while extending the programming flow shown in the preceding Node\.js Lambda function\. 
+ Follow the discussion in [Authoring Lambda Functions in Python](https://docs.aws.amazon.com/lambda/latest/dg/python-programming-model.html) to create the Python Lambda function handler, while extending the programming flow shown in the preceding Node\.js Lambda function\. 
 
 ### C\# Function for an API with Lambda Proxy Integration<a name="api-gateway-proxy-integration-lambda-function-csharp"></a>
 
- Follow the discussion in [Authoring Lambda Functions in C\#](http://docs.aws.amazon.com/lambda/latest/dg/dotnet-programming-model.html) to create the C\# Lambda function handler, while extending the programming flow shown in the following Java Lambda function\. 
+ Follow the discussion in [Authoring Lambda Functions in C\#](https://docs.aws.amazon.com/lambda/latest/dg/dotnet-programming-model.html) to create the C\# Lambda function handler, while extending the programming flow shown in the following Java Lambda function\. 
 
 ### Java Function for an API with Lambda Proxy Integration<a name="api-gateway-proxy-integration-lambda-function-java"></a>
 
-The following Lambda function in Java is a "Hello, World\!" application, similar to its Node\.js [counterpart](#api-gateway-proxy-integration-lambda-function-nodejs)\. The function shows how to parse the input event that is passed through as an [InputStream](http://docs.aws.amazon.com/lambda/latest/dg/java-programming-model-req-resp.html) object and that contains a request made by a client to an API Gateway proxy resource\. This resource is integrated with the function using the Lambda proxy integration\. It also shows how to parse the `context` object to get the `LambdaLogger`\. The example also demonstrates how to format the output of the Lambda function for API Gateway in Java to return the results in an [OutputStream](http://docs.aws.amazon.com/lambda/latest/dg/java-programming-model-req-resp.html) object as an HTTP response\. For more information about the Lambda proxy integration input and output formats, see [Input Format of a Lambda Function for Proxy Integration ](set-up-lambda-proxy-integrations.md#api-gateway-simple-proxy-for-lambda-input-format) and [Output Format of a Lambda Function for Proxy Integration](set-up-lambda-proxy-integrations.md#api-gateway-simple-proxy-for-lambda-output-format)\. 
+The following Lambda function in Java is a "Hello, World\!" application, similar to its Node\.js [counterpart](#api-gateway-proxy-integration-lambda-function-nodejs)\. The function shows how to parse the input event that is passed through as an [InputStream](https://docs.aws.amazon.com/lambda/latest/dg/java-programming-model-req-resp.html) object and that contains a request made by a client to an API Gateway proxy resource\. This resource is integrated with the function using the Lambda proxy integration\. It also shows how to parse the `context` object to get the `LambdaLogger`\. The example also demonstrates how to format the output of the Lambda function for API Gateway in Java to return the results in an [OutputStream](https://docs.aws.amazon.com/lambda/latest/dg/java-programming-model-req-resp.html) object as an HTTP response\. For more information about the Lambda proxy integration input and output formats, see [Input Format of a Lambda Function for Proxy Integration ](set-up-lambda-proxy-integrations.md#api-gateway-simple-proxy-for-lambda-input-format) and [Output Format of a Lambda Function for Proxy Integration](set-up-lambda-proxy-integrations.md#api-gateway-simple-proxy-for-lambda-output-format)\. 
 
 ```
 package examples;
@@ -238,7 +238,7 @@ The function then returns a greeting to the named user in the `message` property
 
  Finally, upon exiting, the function returns a JSON string, containing the required `statusCode` and any applicable `headers` and `body`, for API Gateway to return it as an HTTP response to the client\. 
 
- To create this function in the Lambda console, you must create a deployment package before uploading the package into Lambda\. For more information, see [creating a deployment package in the *AWS Lambda Developer Guide*](http://docs.aws.amazon.com/lambda/latest/dg/lambda-java-how-to-create-deployment-package.html)\. 
+ To create this function in the Lambda console, you must create a deployment package before uploading the package into Lambda\. For more information, see [creating a deployment package in the *AWS Lambda Developer Guide*](https://docs.aws.amazon.com/lambda/latest/dg/lambda-java-how-to-create-deployment-package.html)\. 
 
 ## Create a Backend for an API with Lambda Proxy Integration<a name="api-gateway-create-api-as-simple-proxy-for-lambda-create-function"></a>
 

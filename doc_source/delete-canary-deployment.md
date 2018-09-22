@@ -1,6 +1,6 @@
 # Disable a Canary Release<a name="delete-canary-deployment"></a>
 
-To disable a canary release deployment is to set the [http://docs.aws.amazon.com/apigateway/api-reference/resource/stage/#canarySettings](http://docs.aws.amazon.com/apigateway/api-reference/resource/stage/#canarySettings) to null to remove it from the stage\. 
+To disable a canary release deployment is to set the [https://docs.aws.amazon.com/apigateway/api-reference/resource/stage/#canarySettings](https://docs.aws.amazon.com/apigateway/api-reference/resource/stage/#canarySettings) to null to remove it from the stage\. 
 
 You can disable a canary release deployment using the API Gateway console, AWS CLI, an AWS SDK, or the API Gateway REST API\.
 
@@ -23,7 +23,7 @@ To use the API Gateway console to disable a canary release deployment, use the f
 
 1.  Confirm you want to delete the canary by choosing **Delete**\.
 
-As a result, the [http://docs.aws.amazon.com/apigateway/api-reference/resource/stage/#canarySettings](http://docs.aws.amazon.com/apigateway/api-reference/resource/stage/#canarySettings) property becomes `null` and is removed from the deployment [stage](http://docs.aws.amazon.com/apigateway/api-reference/resource/stage/)\. You can verify this using the AWS CLI or the API Gateway REST API\. For example, see [Disable a Canary Release Using the AWS CLI](#delete-canary-release-cli) or [Disable a Canary Release Using the API Gateway REST API](#delete-canary-release-api)\.
+As a result, the [https://docs.aws.amazon.com/apigateway/api-reference/resource/stage/#canarySettings](https://docs.aws.amazon.com/apigateway/api-reference/resource/stage/#canarySettings) property becomes `null` and is removed from the deployment [stage](https://docs.aws.amazon.com/apigateway/api-reference/resource/stage/)\. You can verify this using the AWS CLI or the API Gateway REST API\. For example, see [Disable a Canary Release Using the AWS CLI](#delete-canary-release-cli) or [Disable a Canary Release Using the API Gateway REST API](#delete-canary-release-api)\.
 
 ## Disable a Canary Release Using the AWS CLI<a name="delete-canary-release-cli"></a>
 
@@ -55,7 +55,7 @@ The successful response returns an output similar to this:
 }
 ```
 
- As shown in the output, the [http://docs.aws.amazon.com/apigateway/api-reference/resource/stage/#canarySettings](http://docs.aws.amazon.com/apigateway/api-reference/resource/stage/#canarySettings) property is no longer present in the [stage](http://docs.aws.amazon.com/apigateway/api-reference/resource/stage/) of a canary\-disabled deployment\.
+ As shown in the output, the [https://docs.aws.amazon.com/apigateway/api-reference/resource/stage/#canarySettings](https://docs.aws.amazon.com/apigateway/api-reference/resource/stage/#canarySettings) property is no longer present in the [stage](https://docs.aws.amazon.com/apigateway/api-reference/resource/stage/) of a canary\-disabled deployment\.
 
 ## Disable a Canary Release Using the API Gateway REST API<a name="delete-canary-release-api"></a>
 
@@ -97,4 +97,4 @@ The successful response returns an output similar to this:
 }
 ```
 
- As shown in the output, the [http://docs.aws.amazon.com/apigateway/api-reference/resource/stage/#canarySettings](http://docs.aws.amazon.com/apigateway/api-reference/resource/stage/#canarySettings) property is no longer present in the [stage](http://docs.aws.amazon.com/apigateway/api-reference/resource/stage/) of a canary\-disabled deployment\.
+ As shown in the output, the [https://docs.aws.amazon.com/apigateway/api-reference/resource/stage/#canarySettings](https://docs.aws.amazon.com/apigateway/api-reference/resource/stage/#canarySettings) property is no longer present in the [stage](https://docs.aws.amazon.com/apigateway/api-reference/resource/stage/) of a canary\-disabled deployment\.

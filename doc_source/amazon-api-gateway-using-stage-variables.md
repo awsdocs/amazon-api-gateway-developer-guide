@@ -22,10 +22,10 @@ The **Invoke URL** link points to the root resource of the API in its **beta** s
 
 This procedure describes how to use a stage variable value in a query parameter expression to pass stage\-specific metadata into an HTTP back end\. We will use the `version` stage variable declared in [Set Stage Variables Using the Amazon API Gateway Console](how-to-set-stage-variables-aws-console.md)\. 
 
-1. In the **Resource** navigation pane, choose the **GET** method\. To add a query string parameter to the method's URL, in **Method Execution**, choose **Method Request** \. Type **version** for the parameter name\.   
+1. In the **Resource** navigation pane, choose the **GET** method\. To add a query string parameter to the method's URL, in **Method Execution**, choose **Method Request**\. Type **version** for the parameter name\.   
 ![\[Add a version query string parameter to an HTTP GET method.\]](http://docs.aws.amazon.com/apigateway/latest/developerguide/images/stageVariables-add-query-string-parameter-to-method-request.png)
 
-1.  In **Method Execution** choose **Integration Request**\. Edit the **Endpoint URL** value to append `?version=${stageVariables.version}` to the previously defined URL value, which, in this case, is also expressed with the `url` stage variable\. Choose **Deploy API** to deploy these changes\.   
+1.  In **Method Execution** choose **Integration Request**\. Edit the **Endpoint URL** value to append **`?version=${stageVariables.version}`** to the previously defined URL value, which, in this case, is also expressed with the `url` stage variable\. Choose **Deploy API** to deploy these changes\.   
 ![\[Append a query string expression with the version stage variable to an HTTP endpoint URL\]](http://docs.aws.amazon.com/apigateway/latest/developerguide/images/stageVariables-add-query-string-parameter-expression-with-version-variable.png)
 
 1. In the **Stages** navigation pane, choose the **beta** stage\. From **beta Stage Editor**, verify that the current stage is in the most recent deployment, and then choose the **Invoke URL** link\. 
@@ -39,7 +39,7 @@ This procedure describes how to use a stage variable value in a query parameter 
 
 This procedure describes how to use a stage variable to call a Lambda function as a back end of your API\. We will use the `function` stage variable declared earlier\. For more information, see [Set Stage Variables Using the Amazon API Gateway Console](how-to-set-stage-variables-aws-console.md)\.
 
-1. In the **Resources** pane, create a **/lambdasv1** child resource under the root directory, and then create a `GET` method on the child resource\. Set the **Integration type** to **Lambda Function**, and in **Lambda Function**, type `${stageVariables.function}` \. Choose **Save**\.   
+1. In the **Resources** pane, create a **/lambdasv1** child resource under the root directory, and then create a `GET` method on the child resource\. Set the **Integration type** to **Lambda Function**, and in **Lambda Function**, type `${stageVariables.function}`\. Choose **Save**\.   
 ![\[Create a GET method integrated with a Lambda function as specified by the function stage variable.\]](http://docs.aws.amazon.com/apigateway/latest/developerguide/images/stageVariables-create-lambda-get-method.png)
 **Tip**  
 When prompted with **Add Permision to Lambda Function**, make a note of the AWS CLI command before choosing **OK**\. You must run the command on each Lambda function that is or will be assigned to the `function` stage variable for each of the newly created API methods\. For example, if the `$stageVariables.function` value is `HelloWorld` and you have not added permission to this function yet, you must run the following AWS CLI command:   
@@ -53,7 +53,7 @@ When prompted with **Add Permision to Lambda Function**, make a note of the AWS 
 
 1.  Deploy the API to available stages\. 
 
-1. In the **Stages** navigation pane, choose the **beta** stage\. Verify that your most recent deployment is in **beta Stage Editor**\. Copy the **Invoke URL** link, paste it into the address bar of your browser, and append `/lambdasv1` to that URL\. This calls the underlying Lambda function through the `GET` method on the **LambdaSv1** child resource of the API\. 
+1. In the **Stages** navigation pane, choose the **beta** stage\. Verify that your most recent deployment is in **beta Stage Editor**\. Copy the **Invoke URL** link, paste it into the address bar of your browser, and append **`/lambdasv1`** to that URL\. This calls the underlying Lambda function through the `GET` method on the **LambdaSv1** child resource of the API\. 
 **Note**  
 Your `HelloWorld` Lambda function implements the following code\.   
 
@@ -75,7 +75,7 @@ This implementation results in the following response\.
 
 This procedure describes how to use a stage variable to pass stage\-specific configuration metadata into a Lambda function\. We will use a `POST` method and an input mapping template to generate payload using the `version` stage variable declared earlier\.
 
-1. In the **Resources** pane, choose the **/lambdasv1** child resource\. Create a `POST ` method on the child resource, set the **Integration type** to **Lambda Function**, and type `${stageVariables.function}` in **Lambda Function**\. Choose **Save**\. 
+1. In the **Resources** pane, choose the **/lambdasv1** child resource\. Create a `POST ` method on the child resource, set the **Integration type** to **Lambda Function**, and type **`${stageVariables.function}`** in **Lambda Function**\. Choose **Save**\. 
 **Tip**  
 ``This step is similar to the step we used to create the `GET` method\. For more information, see [Call Lambda function through API with a stage variable](#call-api-lambda-backend-with-stage-variable)\. 
 
@@ -86,12 +86,10 @@ This procedure describes how to use a stage variable to pass stage\-specific con
 
 1.  Deploy the API to available stages\. 
 
-1. In the **Stages** navigation pane, choose **beta**\. In **beta Stage Editor** , verify that the current stage has the most recent deployment\. Copy the **Invoke URL** link, paste it into the URL input field of a REST API client, append `/lambdasv1` to that URL, and then submit a `POST` request to the underlying Lambda function\. 
+1. In the **Stages** navigation pane, choose **beta**\. In **beta Stage Editor** , verify that the current stage has the most recent deployment\. Copy the **Invoke URL** link, paste it into the URL input field of a REST API client, append **`/lambdasv1`** to that URL, and then submit a `POST` request to the underlying Lambda function\. 
 **Note**  
 You will get the following response\.  
 
    ```
    "Hello, world! (v-beta)"
    ```
-
- To summarize, we have demonstrated how to use API Gateway stage variables to target different HTTP and Lambda back ends for different stages of API deployment\. In addition, we also showed how to use the stage variables to pass stage\-specific configuration data into HTTP and Lambda back ends\. Together, these procedures demonstrate the versatility of the API Gateway stage variables in managing API development\. 

@@ -2,6 +2,8 @@
 
 Amazon API Gateway defines a set of variables and functions for working with models and mapping templates\. This document describes those functions and provides examples for working with input payloads\.
 
+ As mentioned in [Create Models and Mapping Templates for Request and Response Mappings](models-mappings.md), *mapping template* is a script expressed in [Velocity Template Language \(VTL\)](http://velocity.apache.org/engine/devel/vtl-reference-guide.html) and applied to the payload using [JSONPath expressions](http://goessner.net/articles/JsonPath/)\. The payload can have a data model according to the [JSON schema draft 4](https://tools.ietf.org/html/draft-zyp-json-schema-04)\. You must define the model in order to have API Gateway to generate a SDK or to enable basic request validation for your API\. You do not have to define any model to create a mapping template\. However, a model can help you create a template because API Gateway will generate a template blueprint based on a provided model\. 
+
 **Topics**
 + [Accessing the $context Variable](#context-variable-reference)
 + [Accessing the $input Variable](#input-variable-reference)
@@ -22,15 +24,16 @@ The `$context` variable holds all the contextual information of your API call\.
 | $context\.authorizer\.principalId |  The principal user identification associated with the token sent by the client and returned from an API Gateway Lambda authorizer \(formerly known as a custom authorizer\) Lambda function\.  | 
 | $context\.authorizer\.property |  The stringified value of the specified key\-value pair of the `context` map returned from an API Gateway Lambda authorizer Lambda function\. For example, if the authorizer returns the following `context` map:  <pre>"context" : {<br />  "key": "value",<br />  "numKey": 1,<br />  "boolKey": true<br />}</pre> calling `$context.authorizer.key` returns the `"value"` string, calling `$context.authorizer.numKey` returns the `"1"` string, and calling `$context.authorizer.boolKey` returns the `"true"` string\.  | 
 | $context\.httpMethod |  The HTTP method used\. Valid values include: `DELETE`, `GET`, `HEAD`, `OPTIONS`, `PATCH`, `POST`, and `PUT`\.  | 
-| $context\.error\.message |  A string of an API Gateway error message\. This variable can only be used for simple variable substitution in a [GatewayResponse](http://docs.aws.amazon.com/apigateway/api-reference/resource/gateway-response/) body\-mapping template, which is not processed by the Velocity Template Language engine\.  | 
+| $context\.error\.message |  A string containing an API Gateway error message\. This variable can only be used for simple variable substitution in a [GatewayResponse](https://docs.aws.amazon.com/apigateway/api-reference/resource/gateway-response/) body\-mapping template, which is not processed by the Velocity Template Language engine\.  | 
 | $context\.error\.messageString | The quoted value of $context\.error\.message, namely "$context\.error\.message"\. | 
-| $context\.error\.responseType |  A [type](http://docs.aws.amazon.com/apigateway/api-reference/resource/gateway-response/#responseType) of [GatewayResponse](http://docs.aws.amazon.com/apigateway/api-reference/resource/gateway-response/)\. This variable can only be used for simple variable substitution in a [GatewayResponse](http://docs.aws.amazon.com/apigateway/api-reference/resource/gateway-response/) body\-mapping template, which is not processed by the Velocity Template Language engine\.   | 
+| $context\.error\.responseType |  A [type](https://docs.aws.amazon.com/apigateway/api-reference/resource/gateway-response/#responseType) of [GatewayResponse](https://docs.aws.amazon.com/apigateway/api-reference/resource/gateway-response/)\. This variable can only be used for simple variable substitution in a [GatewayResponse](https://docs.aws.amazon.com/apigateway/api-reference/resource/gateway-response/) body\-mapping template, which is not processed by the Velocity Template Language engine\.   | 
+| $context\.error\.validationErrorString |  A string containing a detailed validation error message\.  | 
 | $context\.extendedRequestId | An automatically generated ID for the API call, which contains more useful information for debugging/troubleshooting\. | 
 | $context\.identity\.accountId |  The AWS account ID associated with the request\.  | 
 | $context\.identity\.apiKey |  The API owner key associated with key\-enabled API request\.  | 
 | $context\.identity\.apiKeyId | The API key ID associated with the key\-enabled API request | 
 | $context\.identity\.caller |  The principal identifier of the caller making the request\.  | 
-| $context\.identity\.cognitoAuthenticationProvider |  The Amazon Cognito authentication provider used by the caller making the request\. Available only if the request was signed with Amazon Cognito credentials\. For information related to this and the other Amazon Cognito `$context` variables, see [Using Federated Identities](http://docs.aws.amazon.com/cognito/latest/developerguide/cognito-identity.html) in the *Amazon Cognito Developer Guide*\.  | 
+| $context\.identity\.cognitoAuthenticationProvider |  The Amazon Cognito authentication provider used by the caller making the request\. Available only if the request was signed with Amazon Cognito credentials\. For information related to this and the other Amazon Cognito `$context` variables, see [Using Federated Identities](https://docs.aws.amazon.com/cognito/latest/developerguide/cognito-identity.html) in the *Amazon Cognito Developer Guide*\.  | 
 | $context\.identity\.cognitoAuthenticationType |  The Amazon Cognito authentication type of the caller making the request\. Available only if the request was signed with Amazon Cognito credentials\.  | 
 | $context\.identity\.cognitoIdentityId |  The Amazon Cognito identity ID of the caller making the request\. Available only if the request was signed with Amazon Cognito credentials\.  | 
 | $context\.identity\.cognitoIdentityPoolId |  The Amazon Cognito identity pool ID of the caller making the request\. Available only if the request was signed with Amazon Cognito credentials\.  | 
@@ -42,6 +45,11 @@ The `$context` variable holds all the contextual information of your API call\.
 | $context\.path | The request path\. For example, for the non\-proxy request URI of https://\{rest\-api\-id\.execute\-api\.\{region\}\.amazonaws\.com/\{stage\}/root/child, The $context\.path value is /\{stage\}/root/child\.  | 
 | $context\.protocol | The request protocol, for example, HTTP/1\.1\. | 
 | $context\.requestId |  An automatically generated ID for the API call\.  | 
+| $context\.requestOverride\.header\.header\_name |  The request header override\. If this parameter is defined, it contains the headers to be used instead of the **HTTP Headers** that are defined in the **Integration Request** pane\. For more information, see [Use a Mapping Template to Override an API's Request and Response Parameters and Status Codes](apigateway-override-request-response-parameters.md)\.  | 
+| $context\.requestOverride\.path\.path\_name |  The request path override\. If this parameter is defined, it contains the request path to be used instead of the **URL Path Parameters** that are defined in the **Integration Request** pane\. For more information, see [Use a Mapping Template to Override an API's Request and Response Parameters and Status Codes](apigateway-override-request-response-parameters.md)\.  | 
+| $context\.requestOverride\.querystring\.querystring\_name |  The request query string override\. If this parameter is defined, it contains the request query strings to be used instead of the **URL Query String Parameters** that are defined in the **Integration Request** pane\. For more information, see [Use a Mapping Template to Override an API's Request and Response Parameters and Status Codes](apigateway-override-request-response-parameters.md)\.  | 
+| $context\.responseOverride\.header\.header\_name | The response header override\. If this parameter is defined, it contains the header to be returned instead of the Response header that is defined as the Default mapping in the Integration Response pane\. For more information, see [Use a Mapping Template to Override an API's Request and Response Parameters and Status Codes](apigateway-override-request-response-parameters.md)\. | 
+| $context\.responseOverride\.status | The response status code override\. If this parameter is defined, it contains the status code to be returned instead of the Method response status that is defined as the Default mapping in the Integration Response pane\. For more information, see [Use a Mapping Template to Override an API's Request and Response Parameters and Status Codes](apigateway-override-request-response-parameters.md)\. | 
 | $context\.requestTime | The [CLF](https://httpd.apache.org/docs/1.3/logs.html#common)\-formatted request time \(dd/MMM/yyyy:HH:mm:ss \+\-hhmm\)\. | 
 | $context\.requestTimeEpoch | The [Epoch](https://en.wikipedia.org/wiki/Unix_time)\-formatted request time\. | 
 | $context\.resourceId |  The identifier API Gateway assigns to your resource\.  | 
@@ -251,7 +259,7 @@ POST /things/abc
 }
 ```
 
- For more mapping examples, see [Create Models and Mapping Templates for Request and Response Mappings](models-mappings.md) 
+ For more mapping examples, see [Create Models and Mapping Templates for Request and Response Mappings](models-mappings.md)\. 
 
 ## Accessing the $stageVariables Variable<a name="stagevariables-template-reference"></a>
 
@@ -278,7 +286,7 @@ The `$util` variable contains utility functions for use in mapping templates\.
 
 | Function | Description | 
 | --- | --- | 
-| $util\.escapeJavaScript\(\) |  Escapes the characters in a string using JavaScript string rules\. This function will turn any regular single quotes \(`'`\) into escaped ones \(`\'`\)\. However, the escaped single quotes are not valid in JSON\. Thus, when the output from this function is used in a JSON property, you must turn any escaped single quotes \(`\'`\) back to regular single quotes \(`'`\)\. This is shown in the following example: <pre> $util.escapeJavaScript(data).replaceAll("\\'","'")</pre> | 
+| $util\.escapeJavaScript\(\) |  Escapes the characters in a string using JavaScript string rules\.  This function will turn any regular single quotes \(`'`\) into escaped ones \(`\'`\)\. However, the escaped single quotes are not valid in JSON\. Thus, when the output from this function is used in a JSON property, you must turn any escaped single quotes \(`\'`\) back to regular single quotes \(`'`\)\. This is shown in the following example:  <pre> $util.escapeJavaScript(data).replaceAll("\\'","'")</pre>  | 
 | $util\.parseJson\(\) |   Takes "stringified" JSON and returns an object representation of the result\. You can use the result from this function to access and manipulate elements of the payload natively in Apache Velocity Template Language \(VTL\)\. For example, if you have the following payload:  <pre>{"errorMessage":"{\"key1\":\"var1\",\"key2\":{\"arr\":[1,2,3]}}"}</pre>  and use the following mapping template  <pre>#set ($errorMessageObj = $util.parseJson($input.path('$.errorMessage')))<br />{<br />   "errorMessageObjKey2ArrVal" : $errorMessageObj.key2.arr[0]<br />}<br /></pre> You will get the following output: <pre>{<br />   "errorMessageObjKey2ArrVal" : 1<br />}<br /></pre>  | 
 | $util\.urlEncode\(\) | Converts a string into "application/x\-www\-form\-urlencoded" format\. | 
 | $util\.urlDecode\(\) | Decodes an "application/x\-www\-form\-urlencoded" string\. | 

@@ -1,8 +1,8 @@
 # Create a Canary Release Deployment<a name="create-canary-deployment"></a>
 
-You create a canary release deployment when deploying the API with [canary settings](http://docs.aws.amazon.com/apigateway/api-reference/link-relation/deployment-create/#canarySettings) as an additional input to the [deployment creation](http://docs.aws.amazon.com/apigateway/api-reference/link-relation/deployment-create/) operation\. 
+You create a canary release deployment when deploying the API with [canary settings](https://docs.aws.amazon.com/apigateway/api-reference/link-relation/deployment-create/#canarySettings) as an additional input to the [deployment creation](https://docs.aws.amazon.com/apigateway/api-reference/link-relation/deployment-create/) operation\. 
 
-You can also create a canary release deployment from an existing non\-canary deployment by making a [http://docs.aws.amazon.com/apigateway/api-reference/link-relation/stage-update/](http://docs.aws.amazon.com/apigateway/api-reference/link-relation/stage-update/) request to add the canary settings on the stage\.
+You can also create a canary release deployment from an existing non\-canary deployment by making a [https://docs.aws.amazon.com/apigateway/api-reference/link-relation/stage-update/](https://docs.aws.amazon.com/apigateway/api-reference/link-relation/stage-update/) request to add the canary settings on the stage\.
 
 When creating a non\-canary release deployment, you can specify a non\-existing stage name\. API Gateway creates one if the specified stage does not exist\. However, you cannot specify any non\-existing stage name when creating a canary release deployment\. You will get an error and API Gateway will not create any canary release deployment\. 
 
@@ -33,7 +33,7 @@ To use the API Gateway console to create a canary release deployment, follow the
 
 1. To set stage variables, choose the **Stage Variables** tab in **Stage Editor** and follow the on\-screen instructions to add or modify stage variables\. For more information, see [Set up Stage Variable for API Deployment](stage-variables.md)\.
 
-1.  To configure execution or access logging, choose the **Logs** tab in **Stage Editor** and follow the on\-screen instructions\. For more information, see [Set up API Logging in API Gateway](set-up-logging.md)\.
+1.  To configure execution or access logging, choose the **Logs** tab in **Stage Editor** and follow the on\-screen instructions\. For more information, see [Set Up CloudWatch API Logging in API Gateway](set-up-logging.md)\.
 
 1.  In **Stage Editor**, choose the **Canary** tab and then choose **Create Canary**\.
 
@@ -57,7 +57,7 @@ After the canary release is initialized on the deployment stage, you change the 
 
 1.  If desired, reconfigure the stage settings, logs, or canary settings, as describe in [To create the initial canary release deployment](#to-create-canary-release-on-new-deployment)\.
 
- As a result, the canary release points to the latest version while the production release still points to the initial version of the API\. The [http://docs.aws.amazon.com/apigateway/api-reference/resource/stage/#canarySettings](http://docs.aws.amazon.com/apigateway/api-reference/resource/stage/#canarySettings) now has a new **deploymentId** value, whereas the stage still has the initial [http://docs.aws.amazon.com/apigateway/api-reference/resource/stage/#deploymentId](http://docs.aws.amazon.com/apigateway/api-reference/resource/stage/#deploymentId) value\. Behind the scenes, the console calls [http://docs.aws.amazon.com/apigateway/api-reference/link-relation/stage-update/](http://docs.aws.amazon.com/apigateway/api-reference/link-relation/stage-update/)\.
+ As a result, the canary release points to the latest version while the production release still points to the initial version of the API\. The [https://docs.aws.amazon.com/apigateway/api-reference/resource/stage/#canarySettings](https://docs.aws.amazon.com/apigateway/api-reference/resource/stage/#canarySettings) now has a new **deploymentId** value, whereas the stage still has the initial [https://docs.aws.amazon.com/apigateway/api-reference/resource/stage/#deploymentId](https://docs.aws.amazon.com/apigateway/api-reference/resource/stage/#deploymentId) value\. Behind the scenes, the console calls [https://docs.aws.amazon.com/apigateway/api-reference/link-relation/stage-update/](https://docs.aws.amazon.com/apigateway/api-reference/link-relation/stage-update/)\.
 
 ## Create a Canary Deployment Using the AWS CLI<a name="create-canary-deployment-using-cli"></a>
 
@@ -70,7 +70,7 @@ aws apigateway create-deployment
     --stage-name prod
 ```
 
-The command returns a representation of the resulting [http://docs.aws.amazon.com/apigateway/api-reference/resource/deployment/](http://docs.aws.amazon.com/apigateway/api-reference/resource/deployment/), similar to the following:
+The command returns a representation of the resulting [https://docs.aws.amazon.com/apigateway/api-reference/resource/deployment/](https://docs.aws.amazon.com/apigateway/api-reference/resource/deployment/), similar to the following:
 
 ```
 {
@@ -97,7 +97,7 @@ aws apigateway create-deployment
     --stage-name prod
 ```
 
-If the specified stage \(`prod`\) does not exist, the preceding command returns an error\. Otherwise, it returns the newly created [deployment](http://docs.aws.amazon.com/apigateway/api-reference/resource/deployment/) resource representation similar to the following:
+If the specified stage \(`prod`\) does not exist, the preceding command returns an error\. Otherwise, it returns the newly created [deployment](https://docs.aws.amazon.com/apigateway/api-reference/resource/deployment/) resource representation similar to the following:
 
 ```
 {
@@ -233,7 +233,7 @@ Because we just enabled a canary on an existing version of the API, both the pro
 
 ## Create a Canary Deployment Using the API Gateway API<a name="create-canary-deployment-using-api"></a>
 
-To use the API Gateway REST API to deploy your API as a canary release, call [http://docs.aws.amazon.com/apigateway/api-reference/link-relation/deployment-create/](http://docs.aws.amazon.com/apigateway/api-reference/link-relation/deployment-create/) as follows:
+To use the API Gateway REST API to deploy your API as a canary release, call [https://docs.aws.amazon.com/apigateway/api-reference/link-relation/deployment-create/](https://docs.aws.amazon.com/apigateway/api-reference/link-relation/deployment-create/) as follows:
 
 ```
 POST /restapis/fugvjdxtri/deployments HTTP/1.1
@@ -288,7 +288,7 @@ In any subsequent API deployments to the same stage, you must always specify `ca
 }
 ```
 
-The newer `deploymentId` value is set on the `canarySettings` and the canary represents the new API version, while the initial `deploymentId` remains associated with the stage that represents the initial API version\. You can verify this by calling the [http://docs.aws.amazon.com/apigateway/api-reference/link-relation/stage-by-name/](http://docs.aws.amazon.com/apigateway/api-reference/link-relation/stage-by-name/) request and examining the successful response payload:
+The newer `deploymentId` value is set on the `canarySettings` and the canary represents the new API version, while the initial `deploymentId` remains associated with the stage that represents the initial API version\. You can verify this by calling the [https://docs.aws.amazon.com/apigateway/api-reference/link-relation/stage-by-name/](https://docs.aws.amazon.com/apigateway/api-reference/link-relation/stage-by-name/) request and examining the successful response payload:
 
 ```
 {
@@ -333,7 +333,7 @@ The newer `deploymentId` value is set on the `canarySettings` and the canary rep
 }
 ```
 
-For a regular production deployment without a canary enabled on the associated stage, you can turn the deployment into a canary release deployment by enabling the canary on the stage\. To do this, call [http://docs.aws.amazon.com/apigateway/api-reference/link-relation/stage-update/](http://docs.aws.amazon.com/apigateway/api-reference/link-relation/stage-update/), as shown in the following, assuming the original deployment ID is `ghdx4w`:
+For a regular production deployment without a canary enabled on the associated stage, you can turn the deployment into a canary release deployment by enabling the canary on the stage\. To do this, call [https://docs.aws.amazon.com/apigateway/api-reference/link-relation/stage-update/](https://docs.aws.amazon.com/apigateway/api-reference/link-relation/stage-update/), as shown in the following, assuming the original deployment ID is `ghdx4w`:
 
 ```
 PATCH /restapis/4wk1k4onj3/stages/prod HTTP/1.1

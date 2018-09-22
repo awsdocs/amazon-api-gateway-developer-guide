@@ -36,7 +36,7 @@ Before you begin this walkthrough, do the following:
 
 1. Complete the rest of the steps in [Build an API Gateway API with Lambda Integration](getting-started-with-lambda-integration.md)\.
 
-1. Create at least one topic in Amazon Simple Notification Service \(Amazon SNS\)\. You will use the deployed API to get a list of topics in Amazon SNS that are associated with your AWS account\. To learn how to create a topic in Amazon SNS, see [Create a Topic](http://docs.aws.amazon.com/sns/latest/dg/CreateTopic.html)\. \(You do not need to copy the topic ARN mentioned in step 5\.\)
+1. Create at least one topic in Amazon Simple Notification Service \(Amazon SNS\)\. You will use the deployed API to get a list of topics in Amazon SNS that are associated with your AWS account\. To learn how to create a topic in Amazon SNS, see [Create a Topic](https://docs.aws.amazon.com/sns/latest/dg/CreateTopic.html)\. \(You do not need to copy the topic ARN mentioned in step 5\.\)
 
 ## Step 1: Create the Resource<a name="getting-started-aws-proxy-add-resources"></a>
 
@@ -113,13 +113,13 @@ In this step, you create an IAM role that your AWS service proxy uses to interac
 
 1.  Choose **Next: Review**\.
 
-1. For **Role Name**, type a name for the execution role \(for example, **APIGatewayAWSProxyExecRole**\), optionally, type a description for this role, and then choose **Create role**\.
+1. For **Role Name**, type a name for the execution role \(for example, **APIGatewayAWSProxyExecRole**\), optionally type a description for this role, and then choose **Create role**\.
 
 1. In the **Roles** list, choose the role you just created\. You may need to scroll down the list\.
 
 1. For the selected role, choose **Attach policy**\.
 
-1.  Select the check box next to the policy you created earlier \(APIGatewayAWSProxyExecPolicy\) and choose **Attach policy**\.
+1.  Select the check box next to the policy you created earlier \(for example, **APIGatewayAWSProxyExecPolicy**\) and choose **Attach policy**\.
 
 1. The role you just created has the following trust relationship that enables API Gateway assume to role for any actions permitted by the attached policies:
 

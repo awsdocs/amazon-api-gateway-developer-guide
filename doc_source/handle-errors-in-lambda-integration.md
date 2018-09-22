@@ -84,7 +84,10 @@ def lambda_handler(event, context):
 
  Note that the `errorType` and `stackTrace` property values are language\-dependent\. The standard error also applies to any error object that is an extension of the `Error` object or a subclass of the `Exception` class\. 
 
- To map the standard Lambda error to a method response, you must first decide on an HTTP status code for a given Lambda error\. You then set a regular expression pattern on the `[selectionPattern](http://docs.aws.amazon.com/apigateway/api-reference/resource/integration-response/#selectionPattern)` property of the [IntegrationResponse](http://docs.aws.amazon.com/apigateway/api-reference/resource/integration-response/) associated with the given HTTP status code\. In the API Gateway console, this `selectionPattern` is denoted as **Lambda Error Regex** in the **Integration Response** configuration editor\.
+ To map the standard Lambda error to a method response, you must first decide on an HTTP status code for a given Lambda error\. You then set a regular expression pattern on the `[selectionPattern](https://docs.aws.amazon.com/apigateway/api-reference/resource/integration-response/#selectionPattern)` property of the [IntegrationResponse](https://docs.aws.amazon.com/apigateway/api-reference/resource/integration-response/) associated with the given HTTP status code\. In the API Gateway console, this `selectionPattern` is denoted as **Lambda Error Regex** in the **Integration Response** configuration editor\.
+
+**Note**  
+API Gateway uses Java pattern\-style regexes for response mapping\. For more information, see [Pattern](https://docs.oracle.com/javase/8/docs/api/java/util/regex/Pattern.html) in the Oracle documentation\.
 
  For example, to set up a new `selectionPattern` expression, using AWS CLI, call the following [put\-integration\-response](http://docs.aws.amazon.com/cli/latest/reference/apigateway/put-integration-response.html) command: 
 
@@ -92,14 +95,13 @@ def lambda_handler(event, context):
 aws apigateway put-integration-response --rest-api-id z0vprf0mdh --resource-id x3o5ih --http-method GET --status-code 400 --selection-pattern "Invalid*" --region us-west-2
 ```
 
- Make sure that you also set up the corresponding error code \(`400`\) on the method request\. Otherwise, API Gateway throws an invalid configuration error response at runtime\. 
-
- At runtime, API Gateway matches the error message against the pattern of the regular expression on the `selectionPattern` property\. When there is a match, API Gateway returns the Lambda error as an HTTP response of the corresponding HTTP status code\. If there is no match, API Gateway returns the error as a default response or throws an invalid configuration exception if no default response is configured\. 
+ Make sure that you also set up the corresponding error code \(`400`\) on the [method response](api-gateway-method-settings-method-response.md#setup-method-response-status-code)\. Otherwise, API Gateway throws an invalid configuration error response at runtime\. 
 
 **Note**  
+ At runtime, API Gateway matches the Lambda error's `errorMessage` against the pattern of the regular expression on the `selectionPattern` property\. If there is a match, API Gateway returns the Lambda error as an HTTP response of the corresponding HTTP status code\. If there is no match, API Gateway returns the error as a default response or throws an invalid configuration exception if no default response is configured\.   
  Setting the `selectionPattern` value to `.*` for a given response amounts to resetting this response as the default response\. This is because such a selection pattern will match all error messages, including null, i\.e\., any unspecified error message\. The resulting mapping overrides the default mapping\. 
 
- To update an existing `selectionPattern` value using the API Gateway REST API, call the [integrationresponse:update](http://docs.aws.amazon.com/apigateway/api-reference/link-relation/integrationresponse-update/) operation to replace the `/selectionPattern` path value with the specified regex expression of the `Malformed*` pattern\. 
+ To update an existing `selectionPattern` value using the API Gateway REST API, call the [integrationresponse:update](https://docs.aws.amazon.com/apigateway/api-reference/link-relation/integrationresponse-update/) operation to replace the `/selectionPattern` path value with the specified regex expression of the `Malformed*` pattern\. 
 
 ```
 PATCH /restapis/z0vprf0mdh/resources/x3o5ih/methods/GET/integration/responses/400 HTTP/1.1

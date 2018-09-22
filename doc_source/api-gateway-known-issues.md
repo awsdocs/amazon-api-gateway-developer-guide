@@ -1,11 +1,11 @@
 # Known Issues<a name="api-gateway-known-issues"></a>
 +  API Gateway does not support wild\-card subdomain name \(of the `*.domain` form\)\. However, it support wild\-card certificates, namely, a certificate for a wild\-card subdomain name\.
-+ For an API [http://docs.aws.amazon.com/apigateway/api-reference/resource/resource/](http://docs.aws.amazon.com/apigateway/api-reference/resource/resource/) or [http://docs.aws.amazon.com/apigateway/api-reference/resource/method/](http://docs.aws.amazon.com/apigateway/api-reference/resource/method/) entity with a private integration, you should delete it after removing any hard\-coded reference of a [http://docs.aws.amazon.com/apigateway/api-reference/resource/vpc-link/](http://docs.aws.amazon.com/apigateway/api-reference/resource/vpc-link/)\. Otherwise, you have a dangling integration and receive an error stating that the VPC link is still in use even when the `Resource` or `Method` entity is deleted\. This behavior does not apply when the private integration references `VpcLink` through a stage variable\.
++ For an API [https://docs.aws.amazon.com/apigateway/api-reference/resource/resource/](https://docs.aws.amazon.com/apigateway/api-reference/resource/resource/) or [https://docs.aws.amazon.com/apigateway/api-reference/resource/method/](https://docs.aws.amazon.com/apigateway/api-reference/resource/method/) entity with a private integration, you should delete it after removing any hard\-coded reference of a [https://docs.aws.amazon.com/apigateway/api-reference/resource/vpc-link/](https://docs.aws.amazon.com/apigateway/api-reference/resource/vpc-link/)\. Otherwise, you have a dangling integration and receive an error stating that the VPC link is still in use even when the `Resource` or `Method` entity is deleted\. This behavior does not apply when the private integration references `VpcLink` through a stage variable\.
 +  The plain text pipe character \(`|`\) is not supported for any request URL query string and must be URL\-encoded\. 
 +  Paths of `/ping` and `/sping` are reserved for the service health check\. Use of these for API root\-level resources with custom domains will fail to produce the expected result\. 
 + When using the API Gateway console to test an API, you may get an "unknown endpoint errors" response if a self\-signed certificate is presented to the backend, the intermediate certificate is missing from the certificate chain, or any other unrecognizable certificate\-related exceptions thrown by the backend\.
 + API Gateway currently limits log events to 1024 bytes\. Log events larger than 1024 bytes, such as request and response bodies, will be truncated by API Gateway before submission to CloudWatch Logs\.
-+ The following backends may not support SSL client authentication in a compatible way with API Gateway:
++ The following backends may not support SSL client authentication in a way that's compatible with API Gateway:
   + [NGINX](https://nginx.org/en/)
   +  [Heroku](https://www.heroku.com/)
 + API Gateway supports most of the [Swagger specification](https://github.com/OAI/OpenAPI-Specification/blob/master/versions/2.0.md), with the following exceptions:
@@ -43,7 +43,8 @@
         }
       }
     ```
-+ API Gateway enacts the following restrictions and limitations when handling methods with either Lambda  integration or HTTP  integration\.
++ API Gateway enacts the following restrictions and limitations when handling methods with either Lambda integration or HTTP integration\.
+  + Header names and query parameters are processed in a case\-sensitive way\.
   + Duplicated query string parameters are not supported\.
   + Duplicated headers are not supported\.
   + The `Host` header will not be forwarded to HTTP endpoints\.

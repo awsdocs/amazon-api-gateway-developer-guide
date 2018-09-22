@@ -173,7 +173,7 @@ Comparing this to [the Lambda custom integration setup](set-up-lambda-custom-int
 
    Note the root resource `id` value \(`krznpq9xpg`\)\. You need it in the next step and later\.
 
-1.  Call `create-resource` to create an API Gateway [Resource](http://docs.aws.amazon.com/apigateway/api-reference/resource/resource/) of `/greeting`:
+1.  Call `create-resource` to create an API Gateway [Resource](https://docs.aws.amazon.com/apigateway/api-reference/resource/resource/) of `/greeting`:
 
    ```
    aws apigateway create-resource --rest-api-id te6si5ach7 \
@@ -247,7 +247,7 @@ Comparing this to [the Lambda custom integration setup](set-up-lambda-custom-int
    }
    ```
 
-   Instead of supplying an IAM role for `credentials`, you can call the [add\-permission](http://docs.aws.amazon.com/cli/latest/reference/lambda/add-permission.html) command to add resource\-based permissions\. This is what the API Gateway console does\. 
+   Instead of supplying an IAM role for `credentials`, you can call the [add\-permission](https://docs.aws.amazon.com/cli/latest/reference/lambda/add-permission.html) command to add resource\-based permissions\. This is what the API Gateway console does\. 
 
 1.  Call `create-deployment` to deploy the API to a `test` stage:
 
@@ -409,6 +409,9 @@ With the Lambda proxy integration, API Gateway requires the backend Lambda funct
 ```
 
 In the output, `headers` can be unspecified if no extra response headers are to be returned\. To enable CORS for the Lambda proxy integration, you must add `Access-Control-Allow-Origin:domain-name` to the output `headers`\. `domain-name` can be `*` for any domain name\. The output `body` is marshalled to the frontend as the method response payload\. If `body` is a binary blob, you can encode it as a Base64\-encoded string and set `isBase64Encoded` to `true`\. Otherwise, you can set it to `false` or leave it unspecified\.
+
+**Note**  
+For more information about enabling binary support, see [Enable Binary Support Using the API Gateway Console](api-gateway-payload-encodings-configure-with-console.md)\.
 
 If the function output is of a different format, API Gateway returns a `502 Bad Gateway` error response\. 
 

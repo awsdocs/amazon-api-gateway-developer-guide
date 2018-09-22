@@ -7,7 +7,7 @@ Use the API Gateway console to test a method\.
 + [Test a Method with the API Gateway Console](#how-to-test-method-console)
 
 ## Prerequisites<a name="how-to-test-method-prerequisites"></a>
-+ You must specify the settings for the methods you want to test\. Follow the instructions in [Set up API Methods in API Gateway ](how-to-method-settings.md)\.
++ You must specify the settings for the methods you want to test\. Follow the instructions in [Set up API Methods in API Gateway](how-to-method-settings.md)\.
 
 ## Test a Method with the API Gateway Console<a name="how-to-test-method-console"></a>
 
@@ -36,4 +36,4 @@ Depending on the mapping, the HTTP status code, response body, and response head
 **Note**  
 Although the CloudWatch Logs entries are simulated, the results of the method call are real\.
 
- In addition to using the API Gateway console, you can use AWS CLI or an AWS SDK for API Gateway to test invoking a method\. To do so using AWS CLI, see [test\-invoke\-method](http://docs.aws.amazon.com/cli/latest/reference/apigateway/test-invoke-method.html)\. 
+ In addition to using the API Gateway console, you can use AWS CLI or an AWS SDK for API Gateway to test invoking a method\. To do so using AWS CLI, see [test\-invoke\-method](https://docs.aws.amazon.com/cli/latest/reference/apigateway/test-invoke-method.html)\. 

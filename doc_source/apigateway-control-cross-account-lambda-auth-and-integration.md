@@ -4,7 +4,7 @@ You can manage access to your APIs by creating IAM permission policies to contro
 
 In the IAM policies you create for your APIs, you can use `Condition` elements to allow access only to certain Lambda integrations or authorizers\.
 
-The `Condition` block uses boolean condition operators to match the condition in the policy against values in the request\. The `StringXxx` condition operator will work both for AWS integration \(in which the value should be a Lambda function ARN\) and Http integration \(in which the value should be an Http URI\)\. The following `StringXxx` condition operators are supported: `StringEquals`, `StringNotEquals`, `StringEqualsIgnoreCase`, `StringNotEqualsIgnoreCase`, `StringLike`, `StringNotLike`\. For more information, see [String Condition Operators](http://docs.aws.amazon.com/IAM/latest/UserGuide/reference_policies_elements_condition_operators.html#Conditions_String)in the IAM User Guide\.
+The `Condition` block uses boolean condition operators to match the condition in the policy against values in the request\. The `StringXxx` condition operator will work both for AWS integration \(in which the value should be a Lambda function ARN\) and Http integration \(in which the value should be an Http URI\)\. The following `StringXxx` condition operators are supported: `StringEquals`, `StringNotEquals`, `StringEqualsIgnoreCase`, `StringNotEqualsIgnoreCase`, `StringLike`, `StringNotLike`\. For more information, see [String Condition Operators](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_policies_elements_condition_operators.html#Conditions_String)in the IAM User Guide\.
 
 ## IAM Policy for Cross\-Account Lambda Authorizer<a name="apigateway-control-cross-account-lambda-auth-policy"></a>
 
@@ -39,7 +39,7 @@ With cross\-account integration, in order to restrict operations on some specifi
 
 Here is an example of an IAM policy to control a cross\-account Lambda integrationfunction:
 
-To grant another AWS acccount permission to call [integration:put](http://docs.aws.amazon.com/apigateway/api-reference/link-relation/integration-put) or [put\-integration](http://docs.aws.amazon.com/cli/latest/reference/apigateway/put-integration.html) to set up a Lambda integration in your API, you can include the following statement in the IAM policy\.
+To grant another AWS acccount permission to call [integration:put](https://docs.aws.amazon.com/apigateway/api-reference/link-relation/integration-put) or [put\-integration](https://docs.aws.amazon.com/cli/latest/reference/apigateway/put-integration.html) to set up a Lambda integration in your API, you can include the following statement in the IAM policy\.
 
 ```
 {
@@ -66,7 +66,7 @@ To grant another AWS acccount permission to call [integration:put](http://docs.a
 
 ## Allow Another Account to Manage the Lambda Function Used When Importing a Swagger File<a name="api-gateway-control-access-cross-account-lambda-swagger-import"></a>
 
-To grant another AWS acccount permission to call [restapi:import](http://docs.aws.amazon.com/apigateway/api-reference/link-relation/integration-put) or [import\-restapi](http://docs.aws.amazon.com/cli/latest/reference/apigateway/put-integration.html) to import a Swagger file, you can include the following statement in the IAM policy\.
+To grant another AWS acccount permission to call [restapi:import](https://docs.aws.amazon.com/apigateway/api-reference/link-relation/integration-put) or [import\-restapi](https://docs.aws.amazon.com/cli/latest/reference/apigateway/put-integration.html) to import a Swagger file, you can include the following statement in the IAM policy\.
 
 In the `Condition` statement below, the string "lambda:path/2015\-03\-31/functions/arn:aws:lambda:*us\-east\-1*:*account\-id*:function:*lambda\-function\-name*" is the full ARN for the Lambda function\.
 

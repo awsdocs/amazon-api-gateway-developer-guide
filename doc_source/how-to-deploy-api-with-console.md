@@ -33,6 +33,9 @@ To associate a stage in API Gateway with a different deployment, see [Associate 
 
  After an API is deployed, you can modify the stage settings to enable or disable API cache, logging, or request throttling\. You can also choose a client certificate for the backend to authenticate API Gateway and set stage variables to pass deployment context to the API integration at run time\. For more information, see [Update Stage Settings](stages.md#how-to-stage-settings)\. 
 
+**Important**  
+After modifying stage settings, you must redeploy the API for the changes to take effect\.
+
 **Note**  
  If the updated settings, such as enabling logging, requires a new IAM role, you can add the required IAM role without redeploying the API\. However, it can take a few minutes before the new IAM role takes effect\. Before that happens, traces of your API calls will not be logged even if you have enabled the logging option\. 
 
