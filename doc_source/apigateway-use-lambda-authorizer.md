@@ -30,11 +30,11 @@ API Gateway supports Lambda authorizers of the `TOKEN` and `REQUEST` types:
 
  Before creating an API Gateway Lambda authorizer, you must first create the AWS Lambda function that implements the logic to authorize and, if necessary, to authenticate the caller\. You can do so in the Lambda console, using the code template available from the API Gateway Lambda Authorizer blueprint\. Or you can create one from scratch, following this [example in awslabs](https://github.com/awslabs/aws-apigateway-lambda-authorizer-blueprints)\. For illustration purposes, we explain how to create a simple Lambda function from scratch without using a blueprint\. In production code, you should follow the API Gateway Lambda Authorizer blueprint to implement your authorizer Lambda function\. 
 
- When creating the Lambda function for your API Gateway Lambda authorizer, you assign an execution role for the Lambda function if it calls other AWS services\. For the following example, the basic `AWSLambdaRole` suffices\. For more involved use cases, follow the [instructions](http://docs.aws.amazon.com/lambda/latest/dg/intro-permission-model.html#lambda-intro-execution-role) to grant permissions in an execution role for the Lambda function\. 
+ When creating the Lambda function for your API Gateway Lambda authorizer, you assign an execution role for the Lambda function if it calls other AWS services\. For the following example, the basic `AWSLambdaRole` suffices\. For more involved use cases, follow the [instructions](https://docs.aws.amazon.com/lambda/latest/dg/intro-permission-model.html#lambda-intro-execution-role) to grant permissions in an execution role for the Lambda function\. 
 
 ### Control a Lambda Function of a Lambda Authorizer<a name="api-gateway-lambda-authorizer-token-control-lambda-function"></a>
 
-To grant another AWS acccount permission to call [authorizer:create](http://docs.aws.amazon.com/apigateway/api-reference/link-relation/authorizer-create) or [create\-authorizer](http://docs.aws.amazon.com/cli/latest/reference/apigateway/create-authorizer.html) to control the Lambda function used in your Lambda authorizer, you can create the following IAM policy\.
+To grant another AWS acccount permission to call [authorizer:create](https://docs.aws.amazon.com/apigateway/api-reference/link-relation/authorizer-create) or [create\-authorizer](https://docs.aws.amazon.com/cli/latest/reference/apigateway/create-authorizer.html) to control the Lambda function used in your Lambda authorizer, you can create the following IAM policy\.
 
 ```
 {

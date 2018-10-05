@@ -4,7 +4,7 @@ The following procedure walks you through the steps to create and test an API fr
 
 **To build and test the example API**
 
-1.  Sign in to the API Gateway console\. 
+1. Sign in to the API Gateway console at [https://console\.aws\.amazon\.com/apigateway](https://console.aws.amazon.com/apigateway)\.
 
 1. Do one of the following:
 
@@ -15,7 +15,7 @@ The following procedure walks you through the steps to create and test an API fr
    1.  If this is not your first API, choose **Create API** from the API Gateway **APIs** home page:   
 ![\[\]](http://docs.aws.amazon.com/apigateway/latest/developerguide/images/api-gateway-service-home-page.png)
 
-1.  Under **Create new API**, choose **Examples API** and then choose **Import** to create the example API\. For your first API, the API Gateway console starts with this option as default\.   
+1.  Under **Create new API**, choose **Example API** and then choose **Import** to create the example API\. For your first API, the API Gateway console starts with this option as default\.   
 ![\[\]](http://docs.aws.amazon.com/apigateway/latest/developerguide/images/api-gateway-create-api-by-importing-example.png)
 
     You can scroll down the Swagger definition for details of this example API before choosing **Import**\. 
@@ -70,4 +70,4 @@ The following procedure walks you through the steps to create and test an API fr
    }
    ```
 
-    Invoking the API method as shown is possible because its **Authorization** type is set to `NONE`\. If the `AWS_IAM` authorization were used, you would sign the request using the Signature Version 4 protocols\. For an example of such a request, see [Build an API with HTTP Custom Integration](api-gateway-create-api-step-by-step.md)\. 
+    Invoking the API method as shown is possible because its **Authorization** type is set to `NONE`\. If the `AWS_IAM` authorization were used, you would sign the request using the [Signature Version 4](https://docs.aws.amazon.com/general/latest/gr/sigv4_signing.html) \(SigV4\) protocols\. For an example of such a request, see [Build an API with HTTP Custom Integration](api-gateway-create-api-step-by-step.md)\. 

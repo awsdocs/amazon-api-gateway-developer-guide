@@ -1,10 +1,10 @@
 # Set up a Method Request in API Gateway<a name="api-gateway-method-settings-method-request"></a>
 
-Setting up a method request involves performing the following tasks, after creating a [RestApi](http://docs.aws.amazon.com/apigateway/api-reference/resource/rest-api/) resource:
+Setting up a method request involves performing the following tasks, after creating a [RestApi](https://docs.aws.amazon.com/apigateway/api-reference/resource/rest-api/) resource:
 
-1.  Creating a new API or choosing an existing API [Resource](http://docs.aws.amazon.com/apigateway/api-reference/resource/resource/) entity\. 
+1.  Creating a new API or choosing an existing API [Resource](https://docs.aws.amazon.com/apigateway/api-reference/resource/resource/) entity\. 
 
-1.  Creating an API [Method](http://docs.aws.amazon.com/apigateway/api-reference/resource/method/) resource that is a specific HTTP verb on the new or chosen API `Resource`\. This task can be further divided into the following sub tasks:
+1.  Creating an API [Method](https://docs.aws.amazon.com/apigateway/api-reference/resource/method/) resource that is a specific HTTP verb on the new or chosen API `Resource`\. This task can be further divided into the following sub tasks:
    +  Adding an HTTP method to the method request
    +  Configuring request parameters
    +  Defining a model for the request body
@@ -13,9 +13,9 @@ Setting up a method request involves performing the following tasks, after creat
 
 You can perform these tasks using the following methods: 
 +  [API Gateway console](how-to-set-up-method-using-console.md#how-to-method-settings-callers-console)
-+  AWS CLI commands \([create\-resource](http://docs.aws.amazon.com/cli/latest/reference/apigateway/create-resource.html) and [put\-method](http://docs.aws.amazon.com/cli/latest/reference/apigateway/put-method.html)\)
++  AWS CLI commands \([create\-resource](https://docs.aws.amazon.com/cli/latest/reference/apigateway/create-resource.html) and [put\-method](https://docs.aws.amazon.com/cli/latest/reference/apigateway/put-method.html)\)
 +  AWS SDK functions \(for example, in Node\.js, [createResource](http://docs.aws.amazon.com/AWSJavaScriptSDK/latest/AWS/APIGateway.html#createResource-property) and [putMethod](http://docs.aws.amazon.com/AWSJavaScriptSDK/latest/AWS/APIGateway.html#putMethod-property)\)
-+  API Gateway REST API \([resource:create](http://docs.aws.amazon.com/apigateway/api-reference/link-relation/resource-create/) and [method:put](http://docs.aws.amazon.com/apigateway/api-reference/link-relation/method-put/)\)\.
++  API Gateway REST API \([resource:create](https://docs.aws.amazon.com/apigateway/api-reference/link-relation/resource-create/) and [method:put](https://docs.aws.amazon.com/apigateway/api-reference/link-relation/method-put/)\)\.
 
 For examples of using these tools, see [ Initialize API Setup in API Gateway ](create-api-resources-methods.md)\.
 
@@ -29,7 +29,7 @@ For examples of using these tools, see [ Initialize API Setup in API Gateway ](c
 
 ## Set up API Resources<a name="setup-method-resources"></a>
 
-In an API Gateway API, you expose addressable resources as a tree of API [Resources](http://docs.aws.amazon.com/apigateway/api-reference/resource/resources/) entities, with the root resource \(`/`\) at the top of the hierarchy\. The root resource is relative to the API's base URL, which consists of the API endpoint and a stage name\. In the API Gateway console, this base URI is referred to as the **Invoke URI** and is displayed in the API's stage editor after the API is deployed\. 
+In an API Gateway API, you expose addressable resources as a tree of API [Resources](https://docs.aws.amazon.com/apigateway/api-reference/resource/resources/) entities, with the root resource \(`/`\) at the top of the hierarchy\. The root resource is relative to the API's base URL, which consists of the API endpoint and a stage name\. In the API Gateway console, this base URI is referred to as the **Invoke URI** and is displayed in the API's stage editor after the API is deployed\. 
 
 The API endpoint can be a default host name or a custom domain name\. The default host name is of the following format:
 
@@ -50,7 +50,7 @@ aws apigateway get-resources --rest-api-id <apiId> \
                              --region <region>
 ```
 
-The result is a list of the currently available resources of the API\. For our PetStore sample API, this list looks like following:
+The result is a list of the currently available resources of the API\. For our PetStore sample API, this list looks like the following:
 
 ```
 {
@@ -103,7 +103,7 @@ For example, to add pet food for sale on the PetStore website, add a `food` reso
 
 ### Use a Proxy Resource to Streamline API Setup<a name="api-gateway-proxy-resource"></a>
 
-As business grows, the PetStore owner may decide to add food, toys, and other pet\-related items for sale\. To support this, you can add `/food`, `/toys`, and other resources under the root resource\. Under each sale category, you may also want to add more resources, such as `/food/{type}/{item}`, `/toys/{type}/{item}`, etc\. This can get tedious\. If you decide to add a middle layer `{subtype}` to the resource paths to change the path hierarchy into `/food/{type]/{subtype}/{item}`, `/toys/{type}/{subtype}/{item}`, etc\., the changes will break the existing API set up\. To avoid this, you can use an API Gateway [proxy resource](api-gateway-set-up-simple-proxy.md) to expose a set of API resources all at once\.
+As business grows, the PetStore owner may decide to add food, toys, and other pet\-related items for sale\. To support this, you can add `/food`, `/toys`, and other resources under the root resource\. Under each sale category, you may also want to add more resources, such as `/food/{type}/{item}`, `/toys/{type}/{item}`, etc\. This can get tedious\. If you decide to add a middle layer `{subtype}` to the resource paths to change the path hierarchy into `/food/{type}/{subtype}/{item}`, `/toys/{type}/{subtype}/{item}`, etc\., the changes will break the existing API set up\. To avoid this, you can use an API Gateway [proxy resource](api-gateway-set-up-simple-proxy.md) to expose a set of API resources all at once\.
 
 API Gateway defines a proxy resource as a placeholder for a resource to be specified when the request is submitted\. A proxy resource is expressed by a special path parameter of `{proxy+}`, often referred to as a greedy path parameter\. The `+` sign indicates whichever child resources are appended to it\. The `/parent/{proxy+}` placeholder stands for any resource matching the path pattern of `/parent/*`\. The greedy path parameter name, `proxy`, can be replaced by another string in the same way you treat a regular path parameter name\. 
 
@@ -127,7 +127,7 @@ The result is similar to the following:
 }
 ```
 
-For the `PetStore` API example, you can use `/{proxy+}` to represent both the `/pets` and `/pets/{petId}`\. This proxy resource can also reference any other \(existing or to\-be\-added\) resources, such as `/food/{type}/{item}`, `/toys/{type}/{item}`, etc\., or `/food/{type]/{subtype}/{item}`, `/toys/{type}/{subtype}/{item}`, etc\. The backend developer determines the resource hierarchy and the client developer is responsible for understanding it\. API Gateway simply passes whatever the client submitted to the backend\. 
+For the `PetStore` API example, you can use `/{proxy+}` to represent both the `/pets` and `/pets/{petId}`\. This proxy resource can also reference any other \(existing or to\-be\-added\) resources, such as `/food/{type}/{item}`, `/toys/{type}/{item}`, etc\., or `/food/{type}/{subtype}/{item}`, `/toys/{type}/{subtype}/{item}`, etc\. The backend developer determines the resource hierarchy and the client developer is responsible for understanding it\. API Gateway simply passes whatever the client submitted to the backend\. 
 
 An API can have more than one proxy resource\. For example, the following proxy resources are allowed within an API\.
 
@@ -149,7 +149,7 @@ A proxy resource cannot have any child resource\. Any API resource after `{proxy
 
 ## Set up an HTTP Method<a name="setup-method-add-http-method"></a>
 
-An API method request is encapsulated by the API Gateway [Method](http://docs.aws.amazon.com/apigateway/api-reference/resource/method/) resource\. To set up the method request, you must first instantiate the `Method` resource, setting at least an HTTP method and an authorization type on the method\. 
+An API method request is encapsulated by the API Gateway [Method](https://docs.aws.amazon.com/apigateway/api-reference/resource/method/) resource\. To set up the method request, you must first instantiate the `Method` resource, setting at least an HTTP method and an authorization type on the method\. 
 
 Closely associated with the proxy resource, API Gateway supports an HTTP method of `ANY`\. This `ANY` method represents any HTTP method that is to be supplied at run time\. It allows you to use a single API method setup for all of the supported HTTP methods of `DELETE`, `GET`, `HEAD`, `OPTIONS`, `PATCH`, `POST`, and `PUT`\. 
 
@@ -218,7 +218,7 @@ For information on how to map method request parameters to integration request p
 
 ## Set up Method Request Model<a name="setup-method-request-model"></a>
 
-For an API method that can take input data in a payload, you can use a model\. A model is expressed in a [JSON schema draft 4](https://tools.ietf.org/html/draft-zyp-json-schema-04) and describes the data structure of the request body\. With a model, a client can determine how to construct a method request payload as input\. More importantly, API Gateway uses the model to [validate a request](api-gateway-method-request-validation.md), [generate an SDK](how-to-generate-sdk.md), and initialize a mapping template for setting up the integration in the API Gateway console\. For information about how to create a [model](http://docs.aws.amazon.com/apigateway/api-reference/resource/model/), see [Models and Mapping Templates](models-mappings.md)\. 
+For an API method that can take input data in a payload, you can use a model\. A model is expressed in a [JSON schema draft 4](https://tools.ietf.org/html/draft-zyp-json-schema-04) and describes the data structure of the request body\. With a model, a client can determine how to construct a method request payload as input\. More importantly, API Gateway uses the model to [validate a request](api-gateway-method-request-validation.md), [generate an SDK](how-to-generate-sdk.md), and initialize a mapping template for setting up the integration in the API Gateway console\. For information about how to create a [model](https://docs.aws.amazon.com/apigateway/api-reference/resource/model/), see [Models and Mapping Templates](models-mappings.md)\. 
 
 Depending on the content types, a method payload can have different formats\. A model is indexed against the media type of the applied payload\. To set up method request models, add key\-value pairs of the `"<media-type>":"<model-name>"` format to the `requestModels` map when calling the AWS CLI `put-method` command\. 
 
@@ -234,13 +234,13 @@ aws apigateway put-method \
        --request-models '{"application/json":"petModel"}'
 ```
 
-Here, `petModel` is the `name` property value of a [http://docs.aws.amazon.com/apigateway/api-reference/resource/model/](http://docs.aws.amazon.com/apigateway/api-reference/resource/model/) resource describing a pet\. The actual schema definition is expressed as a JSON string value of the [http://docs.aws.amazon.com/apigateway/api-reference/resource/model/#schema](http://docs.aws.amazon.com/apigateway/api-reference/resource/model/#schema) property of the `Model` resource\. 
+Here, `petModel` is the `name` property value of a [https://docs.aws.amazon.com/apigateway/api-reference/resource/model/](https://docs.aws.amazon.com/apigateway/api-reference/resource/model/) resource describing a pet\. The actual schema definition is expressed as a JSON string value of the [https://docs.aws.amazon.com/apigateway/api-reference/resource/model/#schema](https://docs.aws.amazon.com/apigateway/api-reference/resource/model/#schema) property of the `Model` resource\. 
 
  In a Java, or other strongly typed SDK, of the API, the input data is cast as the `petModel` class derived from the schema definition\. With the request model, the input data in the generated SDK is cast into the `Empty` class, which is derived from the default `Empty` model\. In this case, the client cannot instantiate the correct data class to provide the required input\. 
 
 ## Set up Method Request Authorization<a name="setup-method-request-authorization"></a>
 
- To control who can call the API method, you can configure the [authorization type](http://docs.aws.amazon.com/apigateway/api-reference/resource/method/#authorizationType) on the method\. You can use this type to enact one of the supported authorizers, including IAM roles and policies \(`AWS_IAM`, an Amazon Cognito user pool \(`COGNITO_USER_POOLS`\), or a Lambda function\-based Lambda authorizer \(`CUSTOM`\)\. The API Gateway console sets `NONE` for open access as the default\. 
+ To control who can call the API method, you can configure the [authorization type](https://docs.aws.amazon.com/apigateway/api-reference/resource/method/#authorizationType) on the method\. You can use this type to enact one of the supported authorizers, including IAM roles and policies \(`AWS_IAM`, an Amazon Cognito user pool \(`COGNITO_USER_POOLS`\), or a Lambda function\-based Lambda authorizer \(`CUSTOM`\)\. The API Gateway console sets `NONE` for open access as the default\. 
 
 To use IAM permissions to authorize access to the API method, set the `authorization-type` input property to `AWS_IAM`\. When this option is set, API Gateway verifies the caller 's signature on the request, based on the caller's IAM user's access key identifier and secret key\. If the verified user has permission to call the method, the request is accepted\. Otherwise, the request is rejected and the caller receives an unauthorized error response\. The call to the method does not succeed unless the caller has been granted permission to invoke the API method or if the caller is allowed to assume a role that has been granted the permission\. The caller has permissions to call this and any other API methods created by anyone of the same AWS account if the caller has the following IAM policy attached to his or her IAM user: 
 
@@ -265,13 +265,13 @@ For more information, see [Control Access to an API with IAM Permissions](permis
 
 You can use AWS CLI, an AWS SDK, or a REST API client, such as [Postman](https://www.getpostman.com/), which implements [Signature Version 4 Signing](http://docs.aws.amazon.com/general/latest/gr/signature-version-4.html)\. 
 
-To use a Lambda authorizer to authorize access to the API method, set the `authorization-type` input property to `CUSTOM` and set the [http://docs.aws.amazon.com/apigateway/api-reference/resource/method/#authorizerId](http://docs.aws.amazon.com/apigateway/api-reference/resource/method/#authorizerId) input property to the [http://docs.aws.amazon.com/apigateway/api-reference/resource/authorizer/#id](http://docs.aws.amazon.com/apigateway/api-reference/resource/authorizer/#id) property value of a Lambda authorizer that already exists\. The referenced Lambda authorizer can be of the `TOKEN` or `REQUEST` type\. For information about creating a Lambda authorizer, see [Use API Gateway Lambda Authorizers](apigateway-use-lambda-authorizer.md)\.
+To use a Lambda authorizer to authorize access to the API method, set the `authorization-type` input property to `CUSTOM` and set the [https://docs.aws.amazon.com/apigateway/api-reference/resource/method/#authorizerId](https://docs.aws.amazon.com/apigateway/api-reference/resource/method/#authorizerId) input property to the [https://docs.aws.amazon.com/apigateway/api-reference/resource/authorizer/#id](https://docs.aws.amazon.com/apigateway/api-reference/resource/authorizer/#id) property value of a Lambda authorizer that already exists\. The referenced Lambda authorizer can be of the `TOKEN` or `REQUEST` type\. For information about creating a Lambda authorizer, see [Use API Gateway Lambda Authorizers](apigateway-use-lambda-authorizer.md)\.
 
-To use an Amazon Cognito user pool to authorize access to the API method, set the `authorization-type` input property to `COGNITO_USER_POOLS` and set the [http://docs.aws.amazon.com/apigateway/api-reference/resource/method/#authorizerId](http://docs.aws.amazon.com/apigateway/api-reference/resource/method/#authorizerId) input property to the [http://docs.aws.amazon.com/apigateway/api-reference/resource/authorizer/#id](http://docs.aws.amazon.com/apigateway/api-reference/resource/authorizer/#id) property value of the `COGNITO_USER_POOLS` authorizer that was already created\. For information about creating an Amazon Cognito user pool authorizer, see [Use Amazon Cognito User Pools](apigateway-integrate-with-cognito.md)\.
+To use an Amazon Cognito user pool to authorize access to the API method, set the `authorization-type` input property to `COGNITO_USER_POOLS` and set the [https://docs.aws.amazon.com/apigateway/api-reference/resource/method/#authorizerId](https://docs.aws.amazon.com/apigateway/api-reference/resource/method/#authorizerId) input property to the [https://docs.aws.amazon.com/apigateway/api-reference/resource/authorizer/#id](https://docs.aws.amazon.com/apigateway/api-reference/resource/authorizer/#id) property value of the `COGNITO_USER_POOLS` authorizer that was already created\. For information about creating an Amazon Cognito user pool authorizer, see [Use Amazon Cognito User Pools](apigateway-integrate-with-cognito.md)\.
 
 ## Set up Method Request Validation<a name="setup-method-request-validation"></a>
 
-You can enable request validation when setting up an API method request\. You need to first to create a [request validator](http://docs.aws.amazon.com/apigateway/api-reference/resource/request-validator/):
+You can enable request validation when setting up an API method request\. You need to first to create a [request validator](https://docs.aws.amazon.com/apigateway/api-reference/resource/request-validator/):
 
 ```
 aws apigateway create-request-validator \

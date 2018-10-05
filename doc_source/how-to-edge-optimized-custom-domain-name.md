@@ -44,11 +44,11 @@ Do not use the wildcard character \(i\.e\., `*`\) for your custom domain names\.
    1. Choose **Yes** for **Alias**, type the CloudFront domain name \(e\.g\., `d3boq9ikothtgw.cloudfront.net`\) in **Alias Target**, and then choose **Create**\. The A\-record alias here maps your custom domain name to the specified CloudFront domain name that is itself mapped to an IP4 address\.   
 ![\[Set a DNS record alias for a custom domain name for an API in API Gateway\]](http://docs.aws.amazon.com/apigateway/latest/developerguide/images/api-gateway-custom-domain-dns-alias-set.png)
 **Tip**  
- The **Alias Hosted Zone ID** identifies the hosted zone of the specified **Alias Target**\. The Route 53 console automatically fills in the value when you enter a valid domain name for **Alias Target**\. To create an A\-record alias without using the Route 53 console, such as when you use the AWS CLI, you must specified the required hosted zone Id\. For any CloudFront distribution domain name, the hosted zone Id value is always `Z2FDTNDATAQYW2`, as documented in [AWS Regions and Endpoints for CloudFront](http://docs.aws.amazon.com/general/latest/gr/rande.html#cf_region)\. 
+ The **Alias Hosted Zone ID** identifies the hosted zone of the specified **Alias Target**\. The Route 53 console automatically fills in the value when you enter a valid domain name for **Alias Target**\. To create an A\-record alias without using the Route 53 console, such as when you use the AWS CLI, you must specified the required hosted zone Id\. For any CloudFront distribution domain name, the hosted zone Id value is always `Z2FDTNDATAQYW2`, as documented in [AWS Regions and Endpoints for CloudFront](https://docs.aws.amazon.com/general/latest/gr/rande.html#cf_region)\. 
 
     For most DNS providers, a custom domain name is added to the hosted zone as a CNAME resource record set\. The CNAME record name specifies the custom domain name you typed earlier in **Domain Name** \(for example, `api.example.com`\)\. The CNAME record value specifies the domain name for the CloudFront distribution\. However, use of a CNAME record will not work if your custom domain is a zone apex \(i\.e\., `example.com` instead of `api.example.com`\)\. A zone apex is also commonly known as the root domain of your organization\. For a zone apex you need to use an A\-record alias, provided that is supported by your DNS provider\. 
 
-   With Route 53 you can create an A record alias for your custom domain name and specify the CloudFront distribution domain name as the alias target, as shown above\. This means that Route 53 can route your custom domain name even if it is a zone apex\. For more information, see [Choosing Between Alias and Non\-Alias Resource Record Sets](http://docs.aws.amazon.com/Route53/latest/DeveloperGuide/resource-record-sets-choosing-alias-non-alias.html) in the *Amazon Route 53 Developer Guide*\. 
+   With Route 53 you can create an A record alias for your custom domain name and specify the CloudFront distribution domain name as the alias target, as shown above\. This means that Route 53 can route your custom domain name even if it is a zone apex\. For more information, see [Choosing Between Alias and Non\-Alias Resource Record Sets](https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/resource-record-sets-choosing-alias-non-alias.html) in the *Amazon Route 53 Developer Guide*\. 
 
    Use of A\-record aliases also eliminates exposure of the underlying CloudFront distribution domain name because the domain name mapping takes place solely within Route 53\. For these reasons, we recommend that you use Route 53 A\-record alias whenever possible\. 
 
@@ -56,7 +56,7 @@ Do not use the wildcard character \(i\.e\., `*`\) for your custom domain names\.
 
 **To set up a custom domain name using the API Gateway REST API**
 
-1. Call [domainname:create](http://docs.aws.amazon.com/apigateway/api-reference/link-relation/domainname-create/), specifying the custom domain name and the ARN of a certificate stored in AWS Certificate Manager\.
+1. Call [domainname:create](https://docs.aws.amazon.com/apigateway/api-reference/link-relation/domainname-create/), specifying the custom domain name and the ARN of a certificate stored in AWS Certificate Manager\.
 
     The successful API call returns a `201 Created` response containing the certificate ARN as well as the associated CloudFront distribution name in its payload\.
 
@@ -64,7 +64,7 @@ Do not use the wildcard character \(i\.e\., `*`\) for your custom domain names\.
 
 1. Follow Step 6 of the previous procedure to set up an A\-record alias to map the custom domain name to its CloudFront distribution name\.
 
-For code examples of this REST API call, see [domainname:create](http://docs.aws.amazon.com/apigateway/api-reference/link-relation/domainname-create/)\.
+For code examples of this REST API call, see [domainname:create](https://docs.aws.amazon.com/apigateway/api-reference/link-relation/domainname-create/)\.
 
 ## Log Custom Domain Name Creation in CloudTrail<a name="how-to-custom-domain-log-cloudfront-distribution-update-in-cloudtrail"></a>
 
@@ -115,11 +115,11 @@ To delete a mapping after you create it, next to the mapping that you want to de
 In addition, you can call the API Gateway REST API, AWS CLI, or one of the AWS SDKs to set up the base path mapping of an API with a custom domain name as its host name\. As an illustration, the following procedure outlines the steps to do so using the REST API calls\.
 
 **To set up the base path mapping of an API using the API Gateway REST API**
-+  Call [basepathmapping:create](http://docs.aws.amazon.com/apigateway/api-reference/link-relation/basepathmapping-create/) on a specific custom domain name, specifying the `basePath`, `restApiId`, and a deployment `stage` property in the request payload\.
++  Call [basepathmapping:create](https://docs.aws.amazon.com/apigateway/api-reference/link-relation/basepathmapping-create/) on a specific custom domain name, specifying the `basePath`, `restApiId`, and a deployment `stage` property in the request payload\.
 
    The successful API call returns a `201 Created` response\.
 
-For code examples of the REST API call, see [basepathmapping:create](http://docs.aws.amazon.com/apigateway/api-reference/link-relation/basepathmapping-create/)\.
+For code examples of the REST API call, see [basepathmapping:create](https://docs.aws.amazon.com/apigateway/api-reference/link-relation/basepathmapping-create/)\.
 
 ## Rotate a Certificate Imported into ACM<a name="how-to-rotate-custom-domain-certificate"></a>
 
@@ -150,7 +150,7 @@ It takes about 40 minutes for the process to finish\. After the rotation is done
 To illustrate how to programmatically rotate an imported certificate for a custom domain name, we outline the steps using the API Gateway REST API\.
 
 **Rotate an imported certificate using the API Gateway REST API**
-+  Call [domainname:update](http://docs.aws.amazon.com/apigateway/api-reference/link-relation/domainname-update/) action, specifying the ARN of the new ACM Certificate for the specified domain name\. 
++  Call [domainname:update](https://docs.aws.amazon.com/apigateway/api-reference/link-relation/domainname-update/) action, specifying the ARN of the new ACM Certificate for the specified domain name\. 
 
 ## Call Your API with Custom Domain Names<a name="how-to-custom-domains-call-api-with-sni"></a>
 

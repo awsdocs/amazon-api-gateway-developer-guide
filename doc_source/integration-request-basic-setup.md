@@ -35,9 +35,9 @@ When setting up the Lambda or Lambda proxy integration, you assign the Amazon Re
 arn:aws:apigateway:api-region:lambda:path//2015-03-31/functions/arn:aws:lambda:lambda-region:account-id:function:lambda-function-name/invocations
 ```
 
-The part after `arn:aws:apigateway:api-region:lambda:path/`, namely, `/2015-03-31/functions/arn:aws:lambda:lambda-region:account-id:function:lambda-function-name/invocations`, is the REST API URI path of the Lambda [Invoke](http://docs.aws.amazon.com/lambda/latest/dg/API_Invoke.html) action\. If you use the API Gateway console to set up the Lambda integration, API Gateway creates the ARN and assigns it to the integration URI after prompting you to choose the `lambda-function-name` from a region\. 
+The part after `arn:aws:apigateway:api-region:lambda:path/`, namely, `/2015-03-31/functions/arn:aws:lambda:lambda-region:account-id:function:lambda-function-name/invocations`, is the REST API URI path of the Lambda [Invoke](https://docs.aws.amazon.com/lambda/latest/dg/API_Invoke.html) action\. If you use the API Gateway console to set up the Lambda integration, API Gateway creates the ARN and assigns it to the integration URI after prompting you to choose the `lambda-function-name` from a region\. 
 
-When setting up the integration request with another AWS service action, the integration request URI is also an ARN, similar to the integration with the Lambda `Invoke` action\. For example, for the integration with the [GetBucket](http://docs.aws.amazon.com/AmazonS3/latest/API/RESTBucketGET.html) action of Amazon S3, the integration request URI is an ARN of the following format:
+When setting up the integration request with another AWS service action, the integration request URI is also an ARN, similar to the integration with the Lambda `Invoke` action\. For example, for the integration with the [GetBucket](https://docs.aws.amazon.com/AmazonS3/latest/API/RESTBucketGET.html) action of Amazon S3, the integration request URI is an ARN of the following format:
 
 ```
 arn:aws:apigateway:api-region:s3:path/{bucket}
@@ -51,12 +51,12 @@ arn:aws:apigateway:api-region:s3:action/GetBucket
 
 With the action\-based integration request URI, the bucket name \(`{bucket}`\) must be specified in the integration request body \(`{ Bucket: "{bucket}" }`\), following the input format of `GetBucket` action\. 
 
-For AWS integrations, you must also configure [credentials](http://docs.aws.amazon.com/apigateway/api-reference/resource/integration/#credentials) to allow API Gateway to call the integrated actions\. You can create a new or choose an existing IAM role for API Gateway to call the action and then specify the role using its ARN\. The following shows an example of this ARN: 
+For AWS integrations, you must also configure [credentials](https://docs.aws.amazon.com/apigateway/api-reference/resource/integration/#credentials) to allow API Gateway to call the integrated actions\. You can create a new or choose an existing IAM role for API Gateway to call the action and then specify the role using its ARN\. The following shows an example of this ARN: 
 
 ```
 arn:aws:iam::account-id:role/iam-role-name
 ```
 
-This IAM role must contain a policy to allow the action to be executed\. It must also have API Gateway declared \(in the role's trust relationship\) as a trusted entity to assume the role\. Such permissions can be granted on the action itself\. They are known as resource\-based permissions\. For the Lambda integration, you can call the Lambda's [addPermission](http://docs.aws.amazon.com/lambda/latest/dg/API_AddPermission.html) action to set the resource\-based permissions and then set `credentials` to null in the API Gateway integration request\.
+This IAM role must contain a policy to allow the action to be executed\. It must also have API Gateway declared \(in the role's trust relationship\) as a trusted entity to assume the role\. Such permissions can be granted on the action itself\. They are known as resource\-based permissions\. For the Lambda integration, you can call the Lambda's [addPermission](https://docs.aws.amazon.com/lambda/latest/dg/API_AddPermission.html) action to set the resource\-based permissions and then set `credentials` to null in the API Gateway integration request\.
 
 We discussed the basic integration setup\. Advanced settings involve mapping method request data to the integration request data\. After discussing the basic setup for an integration response, we cover advanced topics in [Set up Request and Response Data Mappings Using the API Gateway Console ](how-to-method-settings-execution-console.md), where we also cover passing payload through and handling content encodings\.

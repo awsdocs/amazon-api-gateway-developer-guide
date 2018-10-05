@@ -3,7 +3,7 @@
 **Note**  
  The *Lambda custom integration*, formerly known as the *Lambda integration*, is a legacy technology\. We recommend that you use the *Lambda proxy integration* for any new API\. For more information, see [ Build an API Gateway API with Lambda Proxy Integration ](api-gateway-create-api-as-simple-proxy-for-lambda.md)
 
-In this walkthrough, we use the API Gateway console to build an API that enables a client to call Lambda functions through the Lambda custom integration\. For more information about AWS Lambda and Lambda functions, see the [AWS Lambda Developer Guide](http://docs.aws.amazon.com/lambda/latest/dg/)\. 
+In this walkthrough, we use the API Gateway console to build an API that enables a client to call Lambda functions through the Lambda custom integration\. For more information about AWS Lambda and Lambda functions, see the [AWS Lambda Developer Guide](https://docs.aws.amazon.com/lambda/latest/dg/)\. 
 
 To facilitate learning, we chose a simple Lambda function with minimal API setup to walk you through the steps of building an API Gateway API with the Lambda custom integration\. When necessary, we describe some of the logic\. For a more detailed example of the Lambda custom integration, see [Create an API Gateway API for AWS Lambda Functions](integrating-api-with-aws-services-lambda.md)\. 
 
@@ -67,7 +67,7 @@ Our Lambda function is simple\. It parses the input `event` object for the `name
 }
 ```
 
-For more information, see the [AWS Lambda Developer Guide](http://docs.aws.amazon.com/lambda/latest/dg/welcome.html)\. 
+For more information, see the [AWS Lambda Developer Guide](https://docs.aws.amazon.com/lambda/latest/dg/welcome.html)\. 
 
 In addition, the function logs its execution to Amazon CloudWatch by calling `console.log(...)`\. This is helpful for tracing calls when debugging the function\. To allow the `GetStartedLambdaIntegration` function to log the call, set an IAM role with appropriate policies for the Lambda function to create the CloudWatch streams and add log entries to the streams\. The Lambda console guides you through to create the required IAM roles and policies\.
 
@@ -85,41 +85,39 @@ Now, create the `GetStartedLambdaIntegration` Lambda function\.
    + If the welcome page appears, choose **Get Started Now** and then choose **Create a function**\.
    + If the **Lambda > Functions** list page appears, choose **Create a function**\.
 
-1.  From **Select blueprint**, choose **Author from scratch**\. 
+1. Choose **Author from scratch**\. 
 
-1. In the **Configure triggers** pane, choose **Next**\.
+1. In the **Author from scratch** pane, do the following:
 
-1. In the **Configure function** pane, do the following:
+   1. For **Name**, type **GetStartedLambdaIntegration** as the Lambda function name\.
 
-   1. Under **Basic information**: 
-      + For **Name**, type **GetStartedLambdaIntegration** as the Lambda function name\.
-      + For **Description**, type **Backend for the Getting Started walkthrough with Lambda custom integration**\. This is optional and you can leave it blank\.
-      +  For **Runtime**, choose **Node\.js 6\.10**\. 
+   1. For **Runtime**, choose **Node\.js 6\.10**\.
 
-   1. Under **Lambda function code**:
-      + Choose **Edit code inline**, if it is not already shown, under **Content entry type**\.
-      + Copy the Lambda function code listed in the beginning of this section and paste it in the inline code editor\.
-      + Leave the default choices for all other fields in this section\.
+   1. For **Role**, choose `Create new role from template(s)`\.
 
-   1.  Under **Lambda function handler and role**: 
-      +  Leave the default of `index.handler` for **Handler**\. 
-      + For **Role**, choose `Create new role from template(s)`\.
-      + For **Role name**, type a name for your role \(for example, **GetStartedLambdaIntegrationRole**\)\.
-      + For **Policy templates**, choose `Simple Microservice permissions`\. 
-**Tip**  
- To use an existing IAM role, choose `Choose an existing role` for **Role** and then select an entry from the drop\-down list of existing roles\. Alternatively, to create a custom role, choose `Create a Custom Role` and follow the instructions\. 
+   1. For **Role name**, type a name for your role \(for example, **GetStartedLambdaIntegrationRole**\)\.
 
-   1.  For **Tags**, leave them blank\. 
+   1. For **Policy templates**, choose `Simple Microservice permissions`\. 
 
-   1.  For **Advanced settings** leave the defaults\. 
+   1. Choose **Create function**\.
 
-   1.  Choose **Next**\. 
+1. In the **Configure function** pane, under **Function code** do the following:
 
-   1. Choose **Create function**\. Note of the AWS Region where you created this function\. You need it later\. 
+   1. Choose **Edit code inline**, if it is not already shown, under **Content entry type**\.
 
-1.  To test the newly created function, as a best practice, choose **Actions** and select **Configure test event**\. 
+   1. Leave **Handler** set to `index.handler`\. 
 
-   1. For **Input test event**, replace any default code statements with the following, and then choose **Save and test**\.
+   1. Leave **Runtime** set to **Node\.js 6\.10**\.
+
+   1. Copy the Lambda function code listed in the beginning of this section and paste it in the inline code editor\.
+
+   1. Leave the default choices for all other fields in this section\.
+
+   1. Choose **Save**\.
+
+1. To test the newly created function, choose **Configure test events** from **Select a test event\.\.\.**\.
+
+   1. For **Create new event**, replace any default code statements with the following, type HellowWorldTest for the Event aname, and choose **Create**\.
 
       ```
       {
@@ -222,28 +220,30 @@ The API is named `GetStartedLambdaIntegrationAPI`\.
 
    1.  To save the setting, choose the check mark\. 
 
-1.  In **Method Execution**, for the `ANY /{city}` method, do the following: 
+1.  In **Method Execution**, for the `/{city} ANY` method, do the following: 
 
    1. Choose **Lambda Function** for `Integration type`\.
 
-   1. Leave the **Use Lambda Proxy integration** box clear to use custom Lambda custom integration\.
+   1. Leave the **Use Lambda Proxy integration** box unchecked\.
 
    1. Choose the region where you created the Lambda function; for example, `us-west-2`\.
 
    1. Type the name of your Lambda function in **Lambda Function**; for example, `GetStartedLambdaIntegration`\.
 
+   1. Leave the **Use Default timeout** box checked\.
+
    1. Choose **Save**\. 
 
-   1. Choose **OK** in **Add Permission to Lambda Function** to have API Gateway set up the required access permissions for the API to invoke the integrated Lambda function\. 
+   1. Choose **OK** in the **Add Permission to Lambda Function** popup to have API Gateway set up the required access permissions for the API to invoke the integrated Lambda function\. 
 
-1.  In **Method Execution**, choose **Method Request** and configure as follows: 
+1. In this step you'll configure the following:
    + A query string parameter \(`time`\)
-   + To set up a header parameter \(`day`\) 
-   + To define a payload property \(`callerName`\)
+   + A header parameter \(`day`\)
+   + A payload property \(`callerName`\)
 
-    At run time, the client can use these request parameters and the request body to provide time of the day, the day of the week, and the name of the caller\. You already configured the /\{city\} path variable\. 
+   At run time, the client can use these request parameters and the request body to provide time of the day, the day of the week, and the name of the caller\. You already configured the /\{city\} path variable\.
 
-   1.  Under **Settings** choose the pencil icon to choose `Validate body, query string parameters, and headers` from the **Request Validator** drop\-down menu\. This lets API Gateway perform basic request validation before forwarding the request to the Lambda function\. 
+   1. Under **Settings**, choose the pencil icon and then choose `Validate body, query string parameters, and headers` from the **Request Validator** drop\-down menu\. This lets API Gateway perform basic request validation before forwarding the request to the Lambda function\. 
 
    1. Expand the **URL Query String Parameters** section\. Choose **Add query string**\. Type `time` for **Name**\. Select the **Required** option and choose the check\-mark icon to save the setting\. Leave **Caching** cleared to avoid an unnecessary charge for this exercise\.
 
@@ -257,9 +257,9 @@ The API is named `GetStartedLambdaIntegrationAPI`\.
 
       1. Type `application/json` for **Content type**\.
 
-      1. Type a description for **Model description** or leave it blank\.
+      1. Leave the **Model description** blank\.
 
-      1.  Copy the following schema definition to the **Model schema** editor:
+      1.  Copy the following schema definition into the **Model schema** editor:
 
          ```
          {
@@ -272,31 +272,21 @@ The API is named `GetStartedLambdaIntegrationAPI`\.
          }
          ```
 
-      1. Choose **Save** to finish defining the input model\.
+      1. Choose **Create model** to finish defining the input model\.
 
-      1.  Go back to **Method Request** and expand **Request body**\. Choose **Add model**\. Type `application/json` for **Content type**\. Choose `GetStartedLambdaIntegrationInput` for **Model name**\. Choose the check\-mark icon to save the setting\. 
+      1. Choose **Resources**, choose the `/{city} ANY` method, choose **Method Request**, and expand **Request body**\. Choose **Add model**\. Type `application/json` for **Content type**\. Choose `GetStartedLambdaIntegrationInput` for **Model name**\. Choose the check\-mark icon to save the setting\. 
 
-1. In **Method Execution** for the `ANY /{city}` method, choose **Integration Request** to set up a body\-mapping template\. This maps the previously configured method request parameter of `nameQuery` or `nameHeader` to the JSON payload, as required by the backend Lambda function\. 
+1. Choose the `/{city} ANY` method and choose **Integration Request** to set up a body\-mapping template\. In this step you'll map the previously configured method request parameter of `nameQuery` or `nameHeader` to the JSON payload, as required by the backend Lambda function:
 
-   1. Expand the **Body Mapping Templates** section\. Choose **Add mapping template**\. Type `application/json` for **Content\-Type**\. Choose the check\-mark icon to save the setting\. 
+   1. Expand the **Mapping Templates** section\. Choose **Add mapping template**\. Type `application/json` for **Content\-Type**\. Choose the check\-mark icon to save the setting\.
 
-   1. Type the following mapping template in the VTL script editor\. Choose **Save** to finish the setup\. 
-
-1. Choose **Integration Request** to set up a mapping template to transform the client\-supplied request data to the input format of the integrated Lambda function: 
-
-   1. Expand the **Body mapping templates** section\.
+   1. In the popup that appears, choose **Yes, secure this integration**\.
 
    1. Check the recommended `When there are no templates defined` for **Request body passthrough**\.
 
-   1. Choose **Add mapping template**\.
-
-   1. Type `application/json` for **Content\-type**\.
-
-   1. Choose the check\-mark icon to save the setting\.
-
    1. Choose `GetStartedLambaIntegrationUserInput` from **Generate template** to generate an initial mapping template\. This option is available because you defined a model schema, without which you would need to write the mapping template from scratch\.
 
-   1. Modify the mapping script in the mapping template editor as follows:
+   1. Replace the generated mapping script in the mapping template editor with the following:
 
       ```
       #set($inputRoot = $input.path('$'))
@@ -307,6 +297,8 @@ The API is named `GetStartedLambdaIntegrationAPI`\.
         "name": "$inputRoot.callerName"
       }
       ```
+
+   1. Choose **Save**\.
 
 ## Test Invoking the API Method<a name="getting-started-new-get"></a>
 
@@ -321,19 +313,21 @@ day:Wednesday
 }
 ```
 
- In this test request, you set `ANY` to `POST`, set `{city}` to `Seattle`, assign `Wednesday` as the `day` header value, and assign `"John"` as the `callerName` value\. 
+ In this test request, you'll set `ANY` to `POST`, set `{city}` to `Seattle`, assign `Wednesday` as the `day` header value, and assign `"John"` as the `callerName` value\. 
 
-**To test invoking the `ANY /{city}` method**
+**To test\-invoke the `ANY /{city}` method**
 
 1.  In **Method Execution**, choose **Test**\. 
 
 1. Choose `POST` from the **Method** drop\-down list\.
 
-1. Type `Seattle` for the `{city}` path variable\.
+1. In **Path**, type **Seattle**\.
 
-1. Type `morning` for the `day` query string parameter\.
+1. In **Query Strings**, type **time=morning**\.
 
-1. Type `{ "callerName":"John" }` for **Request Body**\.
+1. In **Headers**, type **day:Wednesday**\.
+
+1. In **Request Body**, type **\{ "callerName":"John" \}**\.
 
 1. Choose **Test**\.
 

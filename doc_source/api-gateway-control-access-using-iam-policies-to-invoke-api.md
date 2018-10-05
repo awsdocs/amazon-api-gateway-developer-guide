@@ -23,10 +23,10 @@
 }
 ```
 
- Here, *Permission* is to be replaced by `Allow` or `Deny` depending on whether you want to grant or revoke the included permissions\. *Execution\-operation* is to be replaced by the operations supported by the API execution service\. *METHOD\_HTTP\_VERB* stands for a HTTP verb supported by the specified resources\. `Resource-path` is the placeholder for the URL path of a deployed API [Resource](http://docs.aws.amazon.com/apigateway/api-reference/resource/resource/) instance supporting the said `METHOD_HTTP-VERB`\. For more information, see [Statement Reference of IAM Policies for Executing API in API Gateway](#api-gateway-calling-api-permissions)\. 
+ Here, *Permission* is to be replaced by `Allow` or `Deny` depending on whether you want to grant or revoke the included permissions\. *Execution\-operation* is to be replaced by the operations supported by the API execution service\. *METHOD\_HTTP\_VERB* stands for a HTTP verb supported by the specified resources\. `Resource-path` is the placeholder for the URL path of a deployed API [Resource](https://docs.aws.amazon.com/apigateway/api-reference/resource/resource/) instance supporting the said `METHOD_HTTP-VERB`\. For more information, see [Statement Reference of IAM Policies for Executing API in API Gateway](#api-gateway-calling-api-permissions)\. 
 
 **Note**  
- For IAM policies to be effective, you must have enabled IAM authentication on API methods by setting `AWS_IAM` for the methods' [authorizationType](http://docs.aws.amazon.com/apigateway/api-reference/resource/method/#authorizationType) property\. Failing to do so will make these API methods effectively public accessible\. 
+ For IAM policies to be effective, you must have enabled IAM authentication on API methods by setting `AWS_IAM` for the methods' [authorizationType](https://docs.aws.amazon.com/apigateway/api-reference/resource/method/#authorizationType) property\. Failing to do so will make these API methods effectively public accessible\. 
 
  For example, to grant a user the permission to view a list of pets exposed by a specified API, but to deny the user the permission to add a pet to the list, you could include the following statement in the IAM policy: 
 

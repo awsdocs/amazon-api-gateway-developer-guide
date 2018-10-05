@@ -11,7 +11,7 @@ Defines a string\-to\-string map of key\-value pairs to generate gateway respons
 
 ## x\-amazon\-apigateway\-gateway\-responses\.repsonseParameters Example<a name="api-gateway-swagger-extensions-gateway-responses.repsonseParameters-example"></a>
 
- The following Swagger extensions example shows a [GatewayResponse](http://docs.aws.amazon.com/apigateway/api-reference/resource/gateway-response/) response parameter mapping expression to enable CORS support for resources on the `*.example.domain` domains\. 
+ The following Swagger extensions example shows a [GatewayResponse](https://docs.aws.amazon.com/apigateway/api-reference/resource/gateway-response/) response parameter mapping expression to enable CORS support for resources on the `*.example.domain` domains\. 
 
 ```
       "responseParameters": {

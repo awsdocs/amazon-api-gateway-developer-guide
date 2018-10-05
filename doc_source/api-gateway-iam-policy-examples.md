@@ -167,7 +167,7 @@ The following example policy documents grants full\-access permissions on Stage 
 
 The above policy document grants full access permissions only to the `stages` collection and any of the contained `stage` resources, provided that no other policies granting more accesses have been attached to the caller\. Otherwise, you must explicitly deny all the other accesses\.
 
-Using the above policy, caller must find out the REST API's identifier beforehand because the user cannot call `GET /respais` to query the available APIs\. Also, if `arn:aws:apigateway:us-east-1::/restapis/*/stages` is not specified in the `Resource` list, the Stages resource becomes inaccessible\. In this case, the caller will not be able to create a stage nor get the existing stages, although he or she can still view, update or delete a stage, provided that he stage's name is known\.
+Using the above policy, caller must find out the REST API's identifier beforehand because the user cannot call `GET /restapis` to query the available APIs\. Also, if `arn:aws:apigateway:us-east-1::/restapis/*/stages` is not specified in the `Resource` list, the Stages resource becomes inaccessible\. In this case, the caller will not be able to create a stage nor get the existing stages, although he or she can still view, update or delete a stage, provided that he stage's name is known\.
 
 To grant permissions for a specific API's stages, simply replace the `restapis/*` portion of the `Resource` specifications by `restapis/restapi_id`, where *restapi\_id* is the identifier of the API of interest\.
 

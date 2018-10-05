@@ -83,7 +83,7 @@ The following procedure describes how to import these Swagger definitions into A
 
 1. Choose **Import** to finish importing the Swagger definitions\.
 
-To import the Swagger definitions using the API Gateway REST API, call the [restapi:import](http://docs.aws.amazon.com/apigateway/api-reference/link-relation/restapi-import/) action, supplying the preceding Swagger definitions as the payload\. For more information, see the example in the Remarks section of the `restapi:import` topic\. 
+To import the Swagger definitions using the API Gateway REST API, call the [restapi:import](https://docs.aws.amazon.com/apigateway/api-reference/link-relation/restapi-import/) action, supplying the preceding Swagger definitions as the payload\. For more information, see the example in the Remarks section of the `restapi:import` topic\. 
 
 To import the Swagger definitions using the AWS CLI, save the Swagger definitions into a file and then run the following command, assuming that you use the `us-west-2` region and the absolute Swagger file path is `file:///path/to/API_Swagger_template.json`:
 

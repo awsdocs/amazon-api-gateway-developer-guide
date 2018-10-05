@@ -34,23 +34,23 @@ If you do not have an AWS account, use the following procedure to create one\.
 
 1. Follow the online instructions\.
 
- To create, configure, and deploy an API in API Gateway, you must have an appropriate AWS Identity and Access Management policy provisioned\. The policy must have access permissions for manipulating the API Gateway [resources](http://docs.aws.amazon.com/apigateway/api-reference/resource/) and [link relations](http://docs.aws.amazon.com/apigateway/api-reference/link-relation/)\. In addition, you can set IAM permissions to allow your API clients to call your API in API Gateway\. To do so, create IAM roles and policies and, optionally, users or groups in your AWS account, and set the IAM roles and policies on a specified IAM user or group\. 
+ To create, configure, and deploy an API in API Gateway, you must have an appropriate AWS Identity and Access Management policy provisioned\. The policy must have access permissions for manipulating the API Gateway [resources](https://docs.aws.amazon.com/apigateway/api-reference/resource/) and [link relations](https://docs.aws.amazon.com/apigateway/api-reference/link-relation/)\. In addition, you can set IAM permissions to allow your API clients to call your API in API Gateway\. To do so, create IAM roles and policies and, optionally, users or groups in your AWS account, and set the IAM roles and policies on a specified IAM user or group\. 
 
 ### Create IAM Users, Groups, Roles, and Policies in Your AWS Account<a name="setting-up-iam"></a>
 
  For better security practices, you should create a new AWS Identity and Access Management \(IAM\) user or use an existing one in your AWS account\. You then access API Gateway with that IAM user's credentials, instead of using your AWS root account\. 
 
- To manage access for a user, create an IAM user and grant the user API Gateway access permissions\. To create a new IAM user, see [Creating an IAM User](http://docs.aws.amazon.com/IAM/latest/UserGuide/Using_SettingUpUser.html#Using_CreateUser_console)\. 
+ To manage access for a user, create an IAM user and grant the user API Gateway access permissions\. To create a new IAM user, see [Creating an IAM User](https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_SettingUpUser.html#Using_CreateUser_console)\. 
 
- To manage access for a group of users, create an IAM group, grant the group API Gateway access permissions, and then add one or more IAM users to the group\. To create an IAM group, see [Creating IAM Groups](http://docs.aws.amazon.com/IAM/latest/UserGuide/id_groups_create.html)\. 
+ To manage access for a group of users, create an IAM group, grant the group API Gateway access permissions, and then add one or more IAM users to the group\. To create an IAM group, see [Creating IAM Groups](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_groups_create.html)\. 
 
- To delegate access to specific users, apps, or services, create an IAM role, add the specified users or groups to the role, and grant the users or groups API Gateway access permissions\. To create an IAM role, see [Creating IAM Roles](http://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_create.html)\. 
+ To delegate access to specific users, apps, or services, create an IAM role, add the specified users or groups to the role, and grant the users or groups API Gateway access permissions\. To create an IAM role, see [Creating IAM Roles](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_create.html)\. 
 
  When setting up your API, specify the ARN of an IAM role to control access the API's methods\. This ARN must be ready when creating an API\. 
 
 ### Create IAM Policies to Configure API Gateway Resources and to Call a Deployed API<a name="setting-up-permissions"></a>
 
- In AWS, access permissions are stated as [IAM policies](http://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_managed-vs-inline.html)\. AWS provides a set of pre\-configured IAM policies, known as AWS managed policies, for individual AWS services\. Individual IAM users can create customized IAM policies, known as customer managed policies\. 
+ In AWS, access permissions are stated as [IAM policies](https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_managed-vs-inline.html)\. AWS provides a set of pre\-configured IAM policies, known as AWS managed policies, for individual AWS services\. Individual IAM users can create customized IAM policies, known as customer managed policies\. 
 
  You can create an IAM policy, role, user, or group in the IAM console or by using the AWS CLI or an AWS SDK\. Once created, IAM policies are referenced by their ARNs\. The ARN of a policy that is managed by AWS is of the `arn:aws:iam::aws:policy/PolicyName` format\. The ARN of a customer managed policy is of the `arn:aws:iam::123456789012:policy/PolicyName` format\. 
 
@@ -71,11 +71,11 @@ If you do not have an AWS account, use the following procedure to create one\.
 }
 ```
 
- To grant the permissions to a user, attach the policy to the user or a group containing the user\. For more information, see [Attaching Managed Policies](http://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_managed-using.html#attach-managed-policy-console)\. 
+ To grant the permissions to a user, attach the policy to the user or a group containing the user\. For more information, see [Attaching Managed Policies](https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_managed-using.html#attach-managed-policy-console)\. 
 
  Attaching the preceding policy to an IAM user allows \(`"Effect":"Allow"`\) the user to act with any API Gateway actions \(`"Action":["apigateway:*"]`\) on any API Gateway resources \(`arn:aws:apigateway:*::/*`\) that are associated with the user's AWS account\. 
 
- To restrict the IAM user to read and create documentation of created APIs, you can replace the `Action` property value from `"Action": ["apigateway:*"]` to `"Action":["apigateway:GET", "apigateway:POST"]` and replace the `Resource` property value from `["apigateway:*"]` to `["arn:aws:apigateway::123456789012:/restapis/*/documentation/*"]`\)\. For more information, see [Control Access to an API with IAM Permissions](permissions.md)\. 
+ To restrict the IAM user to read and create documentation of created APIs, you can change the `Action` property value from `"Action": ["apigateway:*"]` to `"Action":["apigateway:GET", "apigateway:POST"]` and change the `Resource` property value from `"arn:aws:apigateway:*::/*"` to `"arn:aws:apigateway::123456789012:/restapis/*/documentation/*"`\. For more information, see [Control Access to an API with IAM Permissions](permissions.md)\. 
 
 To control how an API is invoked, the following AWS managed IAM policy of **AmazonAPIGatewayInvokeFullAccess** \(` arn:aws:iam::aws:policy/AmazonAPIGatewayInvokeFullAccess`\) provides full access to invoke any part of an API in API Gateway: 
 
@@ -96,9 +96,9 @@ To control how an API is invoked, the following AWS managed IAM policy of **Amaz
 
  To learn how to restrict IAM users to call a specified set of API parts, see [Control Access to an API with IAM Permissions](permissions.md)\. 
 
- To grant the stated permissions to a user, attach the policy to the user or a group containing the user\. To attach a policy, see [Attaching Managed Policies](http://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_managed-using.html#attach-managed-policy-console)\. 
+ To grant the stated permissions to a user, attach the policy to the user or a group containing the user\. To attach a policy, see [Attaching Managed Policies](https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_managed-using.html#attach-managed-policy-console)\. 
 
- In this documentation, we use managed policies whenever possible\. To create and use customer managed IAM policies, see [Working with Customer Managed Policies](http://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_manage.html)\. 
+ In this documentation, we use managed policies whenever possible\. To create and use customer managed IAM policies, see [Working with Customer Managed Policies](https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_manage.html)\. 
 
 **Note**  
 To complete the preceding steps, you must have permissions to create the IAM policy and attach it to the IAM user\. 
@@ -138,7 +138,7 @@ Next, add the following trust policy to allow API Gateway to call the backend La
 
  Without specifying this trust relationship, API Gateway is denied the right to call the backend on behalf of the user, even when the user has been granted permissions to access the backend directly\. 
 
- When an API Gateway API is set up with IAM roles and policies to control client access, the client must sign API requests with [Signature Version 4](http://docs.aws.amazon.com/general/latest/gr/sigv4_signing.html)\. Alternatively, you can use the AWS CLI or one of the AWS SDKs to handle request signing for you\. For more information, see [Invoking an API in Amazon API Gateway](how-to-call-api.md)\. 
+ When an API Gateway API is set up with IAM roles and policies to control client access, the client must sign API requests with [Signature Version 4](https://docs.aws.amazon.com/general/latest/gr/sigv4_signing.html)\. Alternatively, you can use the AWS CLI or one of the AWS SDKs to handle request signing for you\. For more information, see [Invoking an API in Amazon API Gateway](how-to-call-api.md)\. 
 
 ### Next Step<a name="setting-up-next-step"></a>
 

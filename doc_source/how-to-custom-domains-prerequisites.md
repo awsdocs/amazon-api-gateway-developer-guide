@@ -1,13 +1,13 @@
 # Get Certificates Ready in AWS Certificate Manager<a name="how-to-custom-domains-prerequisites"></a>
 
-Before setting up a custom domain name for an API, you must have an SSL/TLS certificate ready in AWS Certificate Manager\. The following steps describe how to get this done\. For more information, see the [AWS Certificate Manager User Guide](http://docs.aws.amazon.com/acm/latest/userguide/)\.
+Before setting up a custom domain name for an API, you must have an SSL/TLS certificate ready in AWS Certificate Manager\. The following steps describe how to get this done\. For more information, see the [AWS Certificate Manager User Guide](https://docs.aws.amazon.com/acm/latest/userguide/)\.
 
 **Note**  
 To use an ACM Certificate with an API Gateway edge\-optimized custom domain name, you must request or import the certificate in the US East \(N\. Virginia\) \(`us-east-1`\) Region\. For an API Gateway regional custom domain name, you must request or import the certificate in the same region as your API\.
 
 **To get a certificate for a given domain name issued by or imported into ACM**
 
-1. Register your Internet domain; e\.g\., `myDomain.com`\. You can use either [Amazon Route 53](http://docs.aws.amazon.com/Route53/latest/DeveloperGuide/) or a third\-party accredited domain registrar\. For a list of such registrar, see [Accredited Registrar Directory](http://www.internic.net/regist.html) at the ICANN website\. 
+1. Register your Internet domain; e\.g\., `myDomain.com`\. You can use either [Amazon Route 53](https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/) or a third\-party accredited domain registrar\. For a list of such registrars, see [Accredited Registrar Directory](http://www.internic.net/regist.html) at the ICANN website\. 
 
 1.  To create in or import into ACM an SSL/TLS certificate for a domain name, do one of the following: <a name="request-acm-cert-for-custom-domain-name"></a>
 
@@ -37,7 +37,7 @@ To use an ACM Certificate with an API Gateway edge\-optimized custom domain name
          openssl genrsa -out private-key-file 2048
          ```
 **Note**  
-Amazon API Gateway leverages Amazon CloudFront to support certificates for custom domain names\. As such, the requirements and constraints of a custom domain name SSL/TLS certificate are dictated by [CloudFront](http://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/using-https.html#cnames-and-https-requirements)\. For example, the maximum size of the public key is 2048 and the private key size can be 1024, 2048, and 4096\. The public key size is determined by the certificate authority you use\. Ask your certificate authority to return keys of a size different from the default length\. For more information, see [Secure access to your objects](http://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/SecureConnections.html) and [Create signed URLs and signed cookies](http://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/private-content-trusted-signers.html)\.
+Amazon API Gateway leverages Amazon CloudFront to support certificates for custom domain names\. As such, the requirements and constraints of a custom domain name SSL/TLS certificate are dictated by [CloudFront](https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/using-https.html#cnames-and-https-requirements)\. For example, the maximum size of the public key is 2048 and the private key size can be 1024, 2048, and 4096\. The public key size is determined by the certificate authority you use\. Ask your certificate authority to return keys of a size different from the default length\. For more information, see [Secure access to your objects](https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/SecureConnections.html) and [Create signed URLs and signed cookies](https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/private-content-trusted-signers.html)\.
 
       1. Generate a certificate signing request \(CSR\) with the previously generated private key, using OpenSSL:
 

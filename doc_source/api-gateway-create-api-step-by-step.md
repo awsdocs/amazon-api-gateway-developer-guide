@@ -1,6 +1,6 @@
 # Build an API with HTTP Custom Integration<a name="api-gateway-create-api-step-by-step"></a>
 
- In this tutorial, you create an API from ground up using the Amazon API Gateway console\. You can think of the console as an API design studio and use it to scope the API features, to experiment with its behaviors, to build the API, and to deploy your API in stages\. 
+ In this tutorial, you create an API from scratch using the Amazon API Gateway console\. You can think of the console as an API design studio and use it to scope the API features, to experiment with its behaviors, to build the API, and to deploy your API in stages\. 
 
 **Topics**
 + [Create the API with HTTP Custom Integration](#api-gateway-create-resource-and-methods)
@@ -11,15 +11,23 @@
 
  This section walks you through the steps to create resources, expose methods on a resource, configure a method to achieve the desired API behaviors, and to test and deploy the API\.
 
-1.  From **Create new API**, select **New API**, type a name in **API Name**, optionally add a description in **Description**, and then choose **Create API**\.   
-![\[Create an API manually\]](http://docs.aws.amazon.com/apigateway/latest/developerguide/images/api-gateway-create-api-step-by-step.png)
+1. Sign in to the API Gateway console at [https://console\.aws\.amazon\.com/apigateway](https://console.aws.amazon.com/apigateway)\.
+
+1. To create an API, choose **Create new API** \(for creating the first API\) or **Create API** \(for creating any subsequent API\)\. Next, do the following:
+
+   1. Choose **New API**\.
+
+   1. Type a name in **API Name**\.
+
+   1. Optionally, add a brief description in **Description**\.
+
+   1. Choose **Create API**\.
 
     As a result, an empty API is created\. The **Resources** tree shows the root resource \(`/`\) without any methods\. In this exercise, we will build the API with the HTTP custom integration of the PetStore website \(http://petstore\-demo\-endpoint\.execute\-api\.com/petstore/pets\.\) For illustration purposes, we will create a `/pets` resource as a child of the root and expose a GET method on this resource for a client to retrieve a list of available Pets items from the PetStore website\. 
 
-1.  To create the `/pets` resource, select the root, choose **Actions** and then choose **Create Resource**\.   
-![\[Create a resource\]](http://docs.aws.amazon.com/apigateway/latest/developerguide/images/api-gateway-create-api-step-by-step-create-resource.png)
+1.  To create the `/pets` resource, select the root, choose **Actions** and then choose **Create Resource**\. 
 
-    Type `Pets` in **Resource Name**, leave the **Resource Path** value as given, and choose **Create Resource**\.   
+    Type `Pets` in **Resource Name**, leave the **Resource Path** value as given, choose **Enable API Gateway CORS**, and choose **Create Resource**\.   
 ![\[Create a resource Part B\]](http://docs.aws.amazon.com/apigateway/latest/developerguide/images/api-gateway-create-api-step-by-step-create-resource-2.png)
 
 1.  To expose a GET method on the `/pets` resource, choose **Actions** and then **Create Method**\.   
@@ -47,7 +55,7 @@ Other options for an API method include:
 
     The PetStore website allows you to retrieve a list of `Pet` items by the pet type \(e\.g\., "Dog" or "Cat"\) on a given page\. It uses the `type` and `page` query string parameters to accept such input\. As such, we must add the query string parameters to the method request and map them into the corresponding query strings of the integration request\. 
 
-1.  In the GET method's **Method Execution** pane, choose **Method Request**, select `AWS_IAM` for **Authorization**, expand the **URL Query String Parameters** section, and choose **Add query string** to create two query string parameters named `type` and `page`\. Choose the check mark icon to save the newly added query string parameters\.   
+1.  In the GET method's **Method Execution** pane, choose **Method Request**, select `AWS_IAM` for **Authorization**, expand the **URL Query String Parameters** section, and choose **Add query string** to create two query string parameters named `type` and `page`\. Choose the check mark icon to save each query string parameter as you add it\.   
 ![\[Add query strings to GET on Pets method request\]](http://docs.aws.amazon.com/apigateway/latest/developerguide/images/api-gateway-create-api-step-by-step-add-query-strings-for-get-on-pets.png)
 
     The client can now supply a pet type and a page number as query string parameters when submitting a request\. These input parameters must be mapped into the integration's query string parameters to forward the input values to our PetStore website in the backend\. Because the method uses `AWS_IAM`, you must sign the request to invoke the method\. 
@@ -73,7 +81,7 @@ Other options for an API method include:
 
     Once deployed, you can obtain the invocation URLs \(**Invoke URL**\) of the API's endpoints\. 
 
-    If the GET method supported open access, \(i\.e\., if the method's authorization type were set to `NONE`\) you could double\-click the **Invoke URL** link to invoke the method in your default browser\. If needed, you could also append necessary query string parameters to the invocation URL\. With the `AWS_IAM` authorization type described here, you must sign the request with an [access key ID and the corresponding secret key](http://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_access-keys.html) of an IAM user of your AWS account\. To do this, you must use a client that supports the [Signature Version 4](http://docs.aws.amazon.com/general/latest/gr/sigv4_signing.html) \(SigV4\) protocols\. An example of such a client is an app that uses one of the AWS SDKs or the [Postman](https://www.getpostman.com/) application or cURL commands\. To call a POST, PUT, or PATCH method that take a payload, you also need to use such a client to handle the payload\. 
+    If the GET method supported open access, \(i\.e\., if the method's authorization type were set to `NONE`\) you could double\-click the **Invoke URL** link to invoke the method in your default browser\. If needed, you could also append necessary query string parameters to the invocation URL\. With the `AWS_IAM` authorization type described here, you must sign the request with an [access key ID and the corresponding secret key](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_access-keys.html) of an IAM user of your AWS account\. To do this, you must use a client that supports the [Signature Version 4](https://docs.aws.amazon.com/general/latest/gr/sigv4_signing.html) \(SigV4\) protocols\. An example of such a client is an app that uses one of the AWS SDKs or the [Postman](https://www.getpostman.com/) application or cURL commands\. To call a POST, PUT, or PATCH method that take a payload, you also need to use such a client to handle the payload\. 
 
     To invoke this API method in the Postman, append the query string parameters to the stage\-specific method invocation URL \(as shown in the previous image\) to create the complete method request URL: 
 
@@ -82,7 +90,7 @@ Other options for an API method include:
    ```
 
     Specify this URL in the address bar of the browser\. Choose **GET** as the HTTP verb\. Select **AWS Signature** for the **Type** option under the **Authorization** tab, and then specify the following required properties before sending the request: 
-   + For **AccessKey**, type the caller's AWS access key, as provisioned from [AWS IAM](http://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_access-keys.html)\.
+   + For **AccessKey**, type the caller's AWS access key, as provisioned from [AWS IAM](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_access-keys.html)\.
    + For **SecretKey**, type the caller's AWS secret key, as provisioned from AWS IAM when the access key was first created\.
    + For **AWS Region**, type the API\-hosting AWS Region, as specified in the invocation URL\.
    + For **Service Name**, type `execute-api`, for the API Gateway execution service\. 
@@ -873,7 +881,7 @@ In this step, you create a Lambda function that returns the sample data\.
    };
    ```
 **Tip**  
-In the preceding code, written in Node\.js, `console.log` writes information to an Amazon CloudWatch log\. `event` contains the input to the Lambda function\. `context` contains calling context\. `callback` returns the result \(for Node\.js 4\.3 and later\)\. For more information about how to write Lambda function code, see the "Programming Model" section in [AWS Lambda: How it Works](http://docs.aws.amazon.com/lambda/latest/dg/lambda-introduction.html) and the sample walkthroughs in the *AWS Lambda Developer Guide*\.
+In the preceding code, written in Node\.js, `console.log` writes information to an Amazon CloudWatch log\. `event` contains the input to the Lambda function\. `context` contains calling context\. `callback` returns the result \(for Node\.js 4\.3 and later\)\. For more information about how to write Lambda function code, see the "Programming Model" section in [AWS Lambda: How it Works](https://docs.aws.amazon.com/lambda/latest/dg/lambda-introduction.html) and the sample walkthroughs in the *AWS Lambda Developer Guide*\.
 
 1. For **Handler name**, leave the default of `index.handler`\.
 

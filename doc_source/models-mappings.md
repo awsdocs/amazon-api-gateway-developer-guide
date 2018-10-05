@@ -2,7 +2,7 @@
 
  In API Gateway, an API's method request can take a payload in a different format from the corresponding integration request payload, as required in the backend\. Similarly, the backend may return an integration response payload different from the method response payload, as expected by the frontend\. API Gateway lets you use mapping templates to map the payload from a method request to the corresponding integration request and from an integration response to the corresponding method response\. 
 
- A mapping template is a script expressed in [Velocity Template Language \(VTL\)](http://velocity.apache.org/engine/devel/vtl-reference-guide.html) and applied to the payload using [JSONPath expressions](http://goessner.net/articles/JsonPath/)\. The payload can have a data model according to the [JSON schema draft 4](https://tools.ietf.org/html/draft-zyp-json-schema-04)\. You must define the model in order to have API Gateway to generate a SDK or to enable basic request validation for your API\. You do not have to define any model to create a mapping template\. However, a model can help you create a template because API Gateway will generate a template blueprint based on a provided model\. 
+ A *mapping template* is a script expressed in [Velocity Template Language \(VTL\)](http://velocity.apache.org/engine/devel/vtl-reference-guide.html) and applied to the payload using [JSONPath expressions](http://goessner.net/articles/JsonPath/)\. The payload can have a data model according to the [JSON schema draft 4](https://tools.ietf.org/html/draft-zyp-json-schema-04)\. You must define the model in order to have API Gateway to generate a SDK or to enable basic request validation for your API\. You do not have to define any model to create a mapping template\. However, a model can help you create a template because API Gateway will generate a template blueprint based on a provided model\. 
 
  The section explains how to map the API request and response payload using models and mapping templates\. 
 
@@ -12,6 +12,7 @@
 + [Tasks for Models and Mapping Templates](#models-mappings-tasks)
 + [Create a Model in API Gateway](how-to-create-model.md)
 + [View a List of Models in API Gateway](how-to-view-models-list.md)
++ [Use a Mapping Template to Override an API's Request and Response Parameters and Status Codes](apigateway-override-request-response-parameters.md)
 + [Delete a Model in API Gateway](how-to-delete-model.md)
 + [Photos Example \(API Gateway Models and Mapping Templates\)](example-photos.md)
 + [News Article Example \(API Gateway Models and Mapping Templates\)](example-news-article.md)
@@ -140,7 +141,7 @@ In the preceding example model:
 
 The `definitions` section contains the schema definition of the `Bin` item that is referenced in the `bins` array with `"ref": "#/definitions/Bin"`\. Using reusable definitions this way makes your model definition easier to read\.
 
- In addition, you can also reference another model schema defined in an external model file by setting that model's URL as the value of the `$ref` property: `"$ref": "https://apigateway.amazonaws.com/restapis/{restapi_id}/models/{model_name}"`\. For example, supposed you have the following full\-fledged model named `Bin2` created under an API with an identifier of `fugvjdxtri`: 
+ In addition, you can also reference another model schema defined in an external model file by setting that model's URL as the value of the `$ref` property: `"$ref": "https://apigateway.amazonaws.com/restapis/{restapi_id}/models/{model_name}"`\. For example, supposed you have the following full\-fledged model named `Bin` created under an API with an identifier of `fugvjdxtri`: 
 
 ```
 {
@@ -282,7 +283,7 @@ In this model, the JSON schema is expressed as follows:
 + The root object in the JSON data contains an array of objects\.
 + Each object in the array of objects contains a `kind` string, a `suggestedPrice` string, and an `available` integer \(a number without a fraction or exponent part\)\.
 
-With this model, you can call an SDK to retrieve the `kind`, `suggestedPrice` and `available` property values by reading the `GroceryStoreOutputModel.kind`, `GroceryStoreOutputModel.suggestedPrice` and `GroceryStoreOutputModel.available` properties, respectively\. If no model is provided, API Gateway will use the Empty model to create a default UDT\. In this case, you will not be able to read these properties using a strongly\-typed SDK\.
+With this model, you can call an SDK to retrieve the `kind`, `suggestedPrice` and `available` property values by reading the `GroceryStoreOutputModel[i].kind`, `GroceryStoreOutputModel[i].suggestedPrice` and `GroceryStoreOutputModel[i].available` properties, respectively\. If no model is provided, API Gateway will use the Empty model to create a default UDT\. In this case, you will not be able to read these properties using a strongly\-typed SDK\.
 
 To explore more complex mapping templates, see the following examples:
 + [Input Mapping Template \(Photos Example\)](example-photos.md#example-photos-input-mapping) and [Output Mapping Template \(Photos Example\)](example-photos.md#example-photos-output-mapping) in the [Photos Example](example-photos.md)

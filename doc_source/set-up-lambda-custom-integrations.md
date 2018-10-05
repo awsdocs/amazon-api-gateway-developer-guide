@@ -73,7 +73,7 @@ With the Lambda function set in the backend, proceed to set up the API\.<a name=
 
    Note the root resource `id` value \(`krznpq9xpg`\)\. You need it in the next step and later\.
 
-1.  Call `create-resource` to create an API Gateway [Resource](http://docs.aws.amazon.com/apigateway/api-reference/resource/resource/) of `/greeting`:
+1.  Call `create-resource` to create an API Gateway [Resource](https://docs.aws.amazon.com/apigateway/api-reference/resource/resource/) of `/greeting`:
 
    ```
    aws apigateway create-resource --rest-api-id te6si5ach7 \
@@ -174,7 +174,7 @@ With the Lambda function set in the backend, proceed to set up the API\.<a name=
    }
    ```
 
-   The IAM role of `apigAwsProxyRole` must have policies that allow the `apigateway` service to invoke Lambda functions\. Instead of supplying an IAM role for `credentials`, you can call the [add\-permission](http://docs.aws.amazon.com/cli/latest/reference/lambda/add-permission.html) command to add resource\-based permissions\. This is how the API Gateway console adds these permissions\. 
+   The IAM role of `apigAwsProxyRole` must have policies that allow the `apigateway` service to invoke Lambda functions\. Instead of supplying an IAM role for `credentials`, you can call the [add\-permission](https://docs.aws.amazon.com/cli/latest/reference/lambda/add-permission.html) command to add resource\-based permissions\. This is how the API Gateway console adds these permissions\. 
 
 1. Call `put-integration-response` to set up the integration response to pass the Lambda function output to the client as the `200 OK` method response\.
 

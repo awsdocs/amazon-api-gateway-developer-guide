@@ -1,4 +1,4 @@
-# Create, Configure, and Test Usage Plans Using the API Gateway REST API<a name="api-gateway-create-usage-plans-with-rest-api"></a>
+# Create, Configure, and Test Usage Plans Using the API Gateway CLI and REST API<a name="api-gateway-create-usage-plans-with-rest-api"></a>
 
 Before configuring a usage plan, you must have already done the following: set up methods of a selected API to require API keys, deployed or redeployed the API to a stage, and created or imported one or more API keys\. For more information, see [Set Up API Keys Using the API Gateway REST API](api-gateway-setup-api-key-with-restapi.md)\.
 
@@ -7,12 +7,13 @@ To configure a usage plan by using the API Gateway REST API, use the following i
 **Topics**
 + [Migrate to Default Usage Plans](#api-gateway-usage-plan-migrate-to-default-with-restapi)
 + [Create a Usage Plan](#api-gateway-usage-plan-create-using-rest-api)
-+ [Manage a Usage Plan](#api-gateway-usage-plan-manage-with-restapi)
++ [Manage a Usage Plan by Using the REST API](#api-gateway-usage-plan-manage-with-restapi)
++ [Manage a Usage Plan by Using the AWS CLI](#api-gateway-usage-plan-manage-with-cli)
 + [Test Usage Plans](#api-gateway-usage-plan-test-with-postman)
 
 ## Migrate to Default Usage Plans<a name="api-gateway-usage-plan-migrate-to-default-with-restapi"></a>
 
-When creating a usage plan the first time, you can migrate existing API stages that are associated with selected API keys to a usage plan by calling [account:update](http://docs.aws.amazon.com/apigateway/api-reference/link-relation/account-update/) with the following body:
+When creating a usage plan the first time, you can migrate existing API stages that are associated with selected API keys to a usage plan by calling [account:update](https://docs.aws.amazon.com/apigateway/api-reference/link-relation/account-update/) with the following body:
 
 ```
 {
@@ -32,17 +33,17 @@ The following procedure describes how to create a usage plan\.
 
 **To create a usage plan with the REST API**
 
-1. Call [usageplan:create](http://docs.aws.amazon.com/apigateway/api-reference/link-relation/usageplan-create/) to create a usage plan\. In the payload, specify the name and description of the plan, associated API stages, rate limits, and quotas\. 
+1. Call [usageplan:create](https://docs.aws.amazon.com/apigateway/api-reference/link-relation/usageplan-create/) to create a usage plan\. In the payload, specify the name and description of the plan, associated API stages, rate limits, and quotas\. 
 
    Make note of the resultant usage plan identifier\. You need it in the next step\.
 
 1. Do one of the following:
 
-   1. Call [usageplankey:create](http://docs.aws.amazon.com/apigateway/api-reference/link-relation/usageplankey-create/) to add an API key to the usage plan\. Specify `keyId` and `keyType` in the payload\. 
+   1. Call [usageplankey:create](https://docs.aws.amazon.com/apigateway/api-reference/link-relation/usageplankey-create/) to add an API key to the usage plan\. Specify `keyId` and `keyType` in the payload\. 
 
       To add more API keys to the usage plan, repeat the previous call, one API key at a time\.
 
-   1. Call [apikey:import](http://docs.aws.amazon.com/apigateway/api-reference/link-relation/apikey-import/) to add one or more API keys directly to the specified usage plan\. The request payload should contain API key values, the associated usage plan identifier, the Boolean flags to indicate that the keys are enabled for the usage plan, and, possibly, the API key names and descriptions\. 
+   1. Call [apikey:import](https://docs.aws.amazon.com/apigateway/api-reference/link-relation/apikey-import/) to add one or more API keys directly to the specified usage plan\. The request payload should contain API key values, the associated usage plan identifier, the Boolean flags to indicate that the keys are enabled for the usage plan, and, possibly, the API key names and descriptions\. 
 
       The following example of the `apikey:import` request adds three API keys \(as identified by `key`, `name`, and `description`\) to one usage plan \(as identified by `usageplanIds`\): 
 
@@ -61,20 +62,140 @@ The following procedure describes how to create a usage plan\.
       As a result, three `UsagePlanKey` resources are created and added to the `UsagePlan`\.
 
       You can also add API keys to more than one usage plan this way\. To do this, change each `usageplanIds` column value to a comma\-separated string that contains the selected usage plan identifiers, and is enclosed within a pair of quotes \(`"n371pt,m282qs"` or `'n371pt,m282qs'`\)\.
+**Note**  
+An API key can be associated with more than one usage plan\. A usage plan can be associated with more than one stage\. However, a given API key can only be associated with one usage plan for each stage of your API\.
 
-## Manage a Usage Plan<a name="api-gateway-usage-plan-manage-with-restapi"></a>
+## Manage a Usage Plan by Using the REST API<a name="api-gateway-usage-plan-manage-with-restapi"></a>
 
-The following procedure describes how to manage a usage plan\.
+The following API methods can be used to manage a usage plan\.
++ Call [usageplan:by\-id](https://docs.aws.amazon.com/apigateway/api-reference/link-relation/usageplan-by-id/) to get a usage plan of a given plan ID\. To see the available usage plans, call [apigateway:usage\-plans](https://docs.aws.amazon.com/apigateway/api-reference/link-relation/apigateway-usage-plans/)\.
++ Call [usageplan:update](https://docs.aws.amazon.com/apigateway/api-reference/link-relation/usageplan-update/) to add a new API stage to the plan, replace an existing API stage in the plan, remove an API stage from the plan, or modify the rate limits or quotas\. 
++ Call [usage:get](https://docs.aws.amazon.com/apigateway/api-reference/link-relation/usage-get/) to query the usage data in a specified time interval\.
++ Call [usage:update](https://docs.aws.amazon.com/apigateway/api-reference/link-relation/usage-update/) to grant an extension to the current usage in a usage plan\.
 
-**To manage a usage plan with the REST API**
+The following code examples show how to add, remove, or modify the method\-level throttling settings in a usage plan by calling the [usageplan:update](https://docs.aws.amazon.com/apigateway/api-reference/link-relation/usageplan-update/) command\.
 
-1. Call [usageplan:by\-id](http://docs.aws.amazon.com/apigateway/api-reference/link-relation/usageplan-by-id/) to get a usage plan of a given plan ID\. To see the available usage plans, call [apigateway:usage\-plans](http://docs.aws.amazon.com/apigateway/api-reference/link-relation/apigateway-usage-plans/)\.
+**Note**  
+Be sure to change `us-east-1` to the appropriate region value for your API\.
 
-1. Call [usageplan:update](http://docs.aws.amazon.com/apigateway/api-reference/link-relation/usageplan-update/) to add a new API stage to the plan, replace an existing API stage in the plan, remove an API stage from the plan, or modify the rate limits or quotas\. 
+To add the throttling limit for all methods in an API stage, call [usageplan:update](https://docs.aws.amazon.com/apigateway/api-reference/link-relation/usageplan-update/) with the following payload:
 
-1. Call [usage:get](http://docs.aws.amazon.com/apigateway/api-reference/link-relation/usage-get/) to query the usage data in a specified time interval\.
+```
+{
+    "op" : "add",
+    "path" : "/apiStages/<apiId:stageName>/throttle",
+    "value" : "<value>"
+}
+```
 
-1. Call [usage:update](http://docs.aws.amazon.com/apigateway/api-reference/link-relation/usage-update/) to grant an extension to the current usage in a usage plan\.
+To replace the throttling limit for all methods in an API stage, call `usageplan:update` with the following payload:
+
+```
+{
+    "op" : "replace",
+    "path" : "/apiStages/<apiId:stageName>/throttle",
+    "value" : "<value>"
+}
+```
+
+To add a rate limit for throttling an individual resource and method, call `usageplan:update` with the following payload:
+
+```
+{
+    "op" : "add",
+    "path" : "/apiStages/<apiId:stageName>/throttle/<resourcePath/method>/rateLimit",
+    "value" : "<value>"
+}
+```
+
+To replace a rate limit for throttling an individual resource and method, call `usageplan:update` with the following payload:
+
+```
+{
+    "op" : "replace",
+    "path" : "/apiStages/<apiId:stageName>/throttle/<resourcePath/method>/rateLimit",
+    "value" : "<value>"
+}
+```
+
+To add or replace a burst limit for throttling an individual resource and method, call `usageplan:update` with the following payload:
+
+```
+{
+    "op" : "add",
+    "path" : "/apiStages/<apiId:stageName>/throttle/<resourcePath/method>/burstLimit",
+    "value" : "<value>"
+}
+```
+
+To replace a burst limit for throttling an individual resource and method, call `usageplan:update` with the following payload:
+
+```
+{
+    "op" : "replace",
+    "path" : "/apiStages/<apiId:stageName>/throttle/<resourcePath/method>/burstLimit",
+    "value" : "<value>"
+}
+```
+
+To remove method\-level throttling settings for an API, call `usageplan:update` with the following payload:
+
+```
+{
+    "op" : "remove",
+    "path" : "/apiStages/<apiId:stageName>/throttle",
+    "value" : "<value>"
+}
+```
+
+To remove the method\-level throttling settings for an individual resource and method, call `usageplan:update` with the following payload:
+
+```
+{
+    "op" : "remove",
+    "path" : "/apiStages/<apiId:stageName>/throttle/<resourcePath/method>",
+    "value" : "<value>"
+}
+```
+
+## Manage a Usage Plan by Using the AWS CLI<a name="api-gateway-usage-plan-manage-with-cli"></a>
+
+The following code examples show how to add, remove, or modify the method\-level throttling settings in a usage plan by calling the [update\-usage\-plan](https://docs.aws.amazon.com/cli/latest/reference/apigateway/update-usage-plan.html) command\.
+
+**Note**  
+Be sure to change `us-east-1` to the appropriate region value for your API\.
+
+To add or replace a rate limit for throttling an individual resource and method:
+
+```
+aws apigateway --region us-east-1 update-usage-plan --usage-plan-id <planId> --patch-operations 
+                        op="replace",path="/apiStages/<apiId>:<stage>/throttle/<resourcePath>/<httpMethod>/rateLimit",value="0.1"
+```
+
+To add or replace a burst limit for throttling an individual resource and method:
+
+```
+aws apigateway --region us-east-1 update-usage-plan --usage-plan-id <planId> --patch-operations op="replace",path="/apiStages/<apiId>:<stage>/throttle/<resourcePath>/<httpMethod>/burstLimit",value="1"
+```
+
+To remove the method\-level throttling settings for an individual resource and method:
+
+```
+aws apigateway --region us-east-1 update-usage-plan --usage-plan-id <planId> --patch-operations op="remove",path="/apiStages/<apiId>:<stage>/throttle/<resourcePath>/<httpMethod>",value=""
+```
+
+To remove all method\-level throttling settings for an API:
+
+```
+aws apigateway --region us-east-1 update-usage-plan --usage-plan-id <planId> --patch-operations op="remove",path="/apiStages/<apiId>:<stage>/throttle ",value=""
+```
+
+Here is an example using the Pet Store sample API:
+
+```
+aws apigateway --region us-east-1 update-usage-plan --usage-plan-id <planId> --patch-operations 
+                op="replace",path="/apiStages/<apiId>:<stage>/throttle",value='"{\"/pets/GET\":{\"rateLimit\":1.0,\"burstLimit\":1},\"//GET\":{\"rateLimit\":1.0,\"burstLimit\":1}}"'
+```
 
 ## Test Usage Plans<a name="api-gateway-usage-plan-test-with-postman"></a>
 
@@ -96,4 +217,4 @@ You must submit this request to the `execute-api` component of API Gateway and p
 
   The successful response returns a `200 OK` status code and a payload that contains the requested results from the backend\. If you forget to set the `x-api-key` header or set it with an incorrect key, you get a `403 Forbidden` response\. However, if you didn't configure the method to require an API key, you will likely get a `200 OK` response whether you set the `x-api-key` header correctly or not, and the throttle and quota limits of the usage plan are bypassed\. 
 
-  Occasionally, when an internal error occurs where API Gateway is unable to enforce usage plan throttling limits or quotas for the request, API Gateway serves the request without applying the throttling limits or quotas as specified in the usage plan\. But, it logs an error message of `Usage Plan check failed due to an internal error` in your CloudWatch logs\. You can ignore such occasional errors\. 
+  Occasionally, when an internal error occurs where API Gateway is unable to enforce usage plan throttling limits or quotas for the request, API Gateway serves the request without applying the throttling limits or quotas as specified in the usage plan\. But, it logs an error message of `Usage Plan check failed due to an internal error` in CloudWatch\. You can ignore such occasional errors\. 

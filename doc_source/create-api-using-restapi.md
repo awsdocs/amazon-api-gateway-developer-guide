@@ -1,10 +1,10 @@
 # Set up an Edge\-Optimized API Using the API Gateway REST API<a name="create-api-using-restapi"></a>
 
- Setting up an API using the API Gateway REST API involves working with API Gateway resources of the `[RestApi](http://docs.aws.amazon.com/apigateway/api-reference/resource/rest-api/)`, `[Resource](http://docs.aws.amazon.com/apigateway/api-reference/resource/resource/)`, `[Method](http://docs.aws.amazon.com/apigateway/api-reference/resource/method/)`, `[MethodResponse](http://docs.aws.amazon.com/apigateway/api-reference/resource/method-response/)`, `[Integration](http://docs.aws.amazon.com/apigateway/api-reference/resource/integration/)`, and `[IntegrationResponse](http://docs.aws.amazon.com/apigateway/api-reference/resource/integration-response/)`types\. The following procedure walks through the basic steps to work with these API Gateway resources to set up the simple PetStore API\. 
+ Setting up an API using the API Gateway REST API involves working with API Gateway resources of the `[RestApi](https://docs.aws.amazon.com/apigateway/api-reference/resource/rest-api/)`, `[Resource](https://docs.aws.amazon.com/apigateway/api-reference/resource/resource/)`, `[Method](https://docs.aws.amazon.com/apigateway/api-reference/resource/method/)`, `[MethodResponse](https://docs.aws.amazon.com/apigateway/api-reference/resource/method-response/)`, `[Integration](https://docs.aws.amazon.com/apigateway/api-reference/resource/integration/)`, and `[IntegrationResponse](https://docs.aws.amazon.com/apigateway/api-reference/resource/integration-response/)`types\. The following procedure walks through the basic steps to work with these API Gateway resources to set up the simple PetStore API\. 
 
 **To create the simple PetStore API**
 
-1.  To set up an edge\-optimized API, invoke the API Gateway's `[restapi:create](http://docs.aws.amazon.com/apigateway/api-reference/link-relation/restapi-create/)` link\-relation to add an API Gateway resource of `[RestApi](http://docs.aws.amazon.com/apigateway/api-reference/resource/rest-api/)` to your account in a chosen region: 
+1.  To set up an edge\-optimized API, invoke the API Gateway's `[restapi:create](https://docs.aws.amazon.com/apigateway/api-reference/link-relation/restapi-create/)` link\-relation to add an API Gateway resource of `[RestApi](https://docs.aws.amazon.com/apigateway/api-reference/resource/rest-api/)` to your account in a chosen region: 
 
    ```
    POST /restapis HTTP/1.1
@@ -37,7 +37,7 @@
 
     Note of the `id` value of the newly created `RestApi`\. You will use this `id` value in subsequent operations on this API\. A newly created `RestApi` comes with the API's root resource \(`/`\) of the API\. You need to specify the `id` value of this root resource to append a child resource, and to add a method on the root resource\. To get this API identifier, get the API's `resources` collection and then parse the result to obtain the `id` property value of the entry with the `path` value of `/`\. 
 
-1.  To get the API root resource identifier, invoke the [restapi:resources](http://docs.aws.amazon.com/apigateway/api-reference/link-relation/restapi-resources/) link\-relation: 
+1.  To get the API root resource identifier, invoke the [restapi:resources](https://docs.aws.amazon.com/apigateway/api-reference/link-relation/restapi-resources/) link\-relation: 
 
    ```
    GET /restapis/x7hyqq0ik7/resources HTTP/1.1
@@ -81,7 +81,7 @@
 
    The root resource identifier is the `id` value associated with the `path` value of `"/"`\. In this example, it is `0f72nvvnkd`\.
 
-1.  To add a `pets` resource under the root resource \(`0f72nvvnkd`\) to represent the pets collection of the pet store, call the `[resource:create](http://docs.aws.amazon.com/apigateway/api-reference/link-relation/resource-create/)` link\-relation of API Gateway\. 
+1.  To add a `pets` resource under the root resource \(`0f72nvvnkd`\) to represent the pets collection of the pet store, call the `[resource:create](https://docs.aws.amazon.com/apigateway/api-reference/link-relation/resource-create/)` link\-relation of API Gateway\. 
 
    ```
    POST /restapis/x7hyqq0ik7/resources/0f72nvvnkd HTTP/1.1
@@ -137,7 +137,7 @@
    }
    ```
 
-1.  To add a `GET` method to the API's `/pets` resource \(`47rxl6`\), invoke the following `[method:put](http://docs.aws.amazon.com/apigateway/api-reference/link-relation/method-put/)` link\-relation of API Gateway: 
+1.  To add a `GET` method to the API's `/pets` resource \(`47rxl6`\), invoke the following `[method:put](https://docs.aws.amazon.com/apigateway/api-reference/link-relation/method-put/)` link\-relation of API Gateway: 
 
    ```
    PUT /restapis/x7hyqq0ik7/resources/47rxl6/methods/GET HTTP/1.1
@@ -166,7 +166,7 @@
    }
    ```
 
-    To add a `GET` method to the API's `/pets/{petId}` resource \(`ab34fgd`\), invoke the following `[method:put](http://docs.aws.amazon.com/apigateway/api-reference/link-relation/method-put/)` link\-relation of API Gateway: 
+    To add a `GET` method to the API's `/pets/{petId}` resource \(`ab34fgd`\), invoke the following `[method:put](https://docs.aws.amazon.com/apigateway/api-reference/link-relation/method-put/)` link\-relation of API Gateway: 
 
    ```
    PUT /restapis/x7hyqq0ik7/resources/ab34fgd/methods/GET HTTP/1.1
@@ -185,7 +185,7 @@
    }
    ```
 
-   You must declare the method request path parameter of `petId` for API Gateway to map its dynamically set value to the corresponding integration request parameter before passing it to the backend\. You must always set a path parameter as required\. In addition, depending on API requirements, you can set up header and query parameters on a method request\. For `POST`, `PUT`, `PATCH`, or any other method taking a payload, you can define a model for the payload in the method request\. For more information about these settings, see [Set up API Methods in API Gateway ](how-to-method-settings.md)\. 
+   You must declare the method request path parameter of `petId` for API Gateway to map its dynamically set value to the corresponding integration request parameter before passing it to the backend\. You must always set a path parameter as required\. In addition, depending on API requirements, you can set up header and query parameters on a method request\. For `POST`, `PUT`, `PATCH`, or any other method taking a payload, you can define a model for the payload in the method request\. For more information about these settings, see [Set up API Methods in API Gateway](how-to-method-settings.md)\. 
 
    The successful response has a status code of `201 Created` and a payload similar to the following:
 
@@ -200,7 +200,7 @@
    }
    ```
 
-1. To add a method response of the `200` status code for the `GET /pets` method of the API, invoke the [methodresponse:put](http://docs.aws.amazon.com/apigateway/api-reference/link-relation/methodresponse-put/) link\-relation, specifying `47rxl6` to reference the resource exposing this method:
+1. To add a method response of the `200` status code for the `GET /pets` method of the API, invoke the [methodresponse:put](https://docs.aws.amazon.com/apigateway/api-reference/link-relation/methodresponse-put/) link\-relation, specifying `47rxl6` to reference the resource exposing this method:
 
    ```
    PUT /restapis/x7hyqq0ik7/resources/47rxl6/methods/GET/responses/200 HTTP/1.1
@@ -239,7 +239,7 @@
 
     The API Gateway resources of `Method` and `MethodRepsonse` that you just set up define the client\-facing interface of the API\. For non\-proxy integrations, you must add and configure an API Gateway resource of `Integration` and `IntegrationResponse` to encapsulate the integration request submitted to the backend and the integration response returned by the backend\. For proxy integrations, however, you do not set up `Integration` and `IntegrationResponse`\.
 
-1. To set up `Integration` for the `GET /pets` method, invoke the [integration:put](http://docs.aws.amazon.com/apigateway/api-reference/link-relation/integration-put/) link\-relation of API Gateway, referencing the `/pets` resource by its ID value \(`47rxl6`\):
+1. To set up `Integration` for the `GET /pets` method, invoke the [integration:put](https://docs.aws.amazon.com/apigateway/api-reference/link-relation/integration-put/) link\-relation of API Gateway, referencing the `/pets` resource by its ID value \(`47rxl6`\):
 
    ```
    PUT /restapis/x7hyqq0ik7/resources/47rxl6/methods/GET/integration HTTP/1.1
@@ -307,7 +307,7 @@
    }
    ```
 
-1. To set up the 200 OK `IntegrationResponse` for the `GET /pets` method, invoke the following [integrationresponse:put](http://docs.aws.amazon.com/apigateway/api-reference/link-relation/integrationresponse-put/) link\-relation of API Gateway: 
+1. To set up the 200 OK `IntegrationResponse` for the `GET /pets` method, invoke the following [integrationresponse:put](https://docs.aws.amazon.com/apigateway/api-reference/link-relation/integrationresponse-put/) link\-relation of API Gateway: 
 
    ```
    PUT /restapis/x7hyqq0ik7/resources/47rxl6/methods/GET/integration/responses/200 HTTP/1.1
@@ -330,7 +330,7 @@
    }
    ```
 
-   To set up the 200 OK `IntegrationResponse` for the `GET /pets/{petId}` \(the resource `id` is `ab34fgd`\) method, invoke the following [integrationresponse:put](http://docs.aws.amazon.com/apigateway/api-reference/link-relation/integrationresponse-put/) link\-relation of API Gateway: 
+   To set up the 200 OK `IntegrationResponse` for the `GET /pets/{petId}` \(the resource `id` is `ab34fgd`\) method, invoke the following [integrationresponse:put](https://docs.aws.amazon.com/apigateway/api-reference/link-relation/integrationresponse-put/) link\-relation of API Gateway: 
 
    ```
    PUT /restapis/x7hyqq0ik7/resources/ab34fgd/methods/GET/integration/responses/200 HTTP/1.1
@@ -344,7 +344,7 @@
 
    We now have successfully created a simple PetStore API with the `GET /pets` and `GET /pets/{petId}` method with the `HTTP` integration type\. 
 
-1. To open the API for your customers to call, deploy the API to a `test` stage by invoking [deployment:create](http://docs.aws.amazon.com/apigateway/api-reference/link-relation/deployment-create)\) link\-relation of API Gateway\. 
+1. To open the API for your customers to call, deploy the API to a `test` stage by invoking [deployment:create](https://docs.aws.amazon.com/apigateway/api-reference/link-relation/deployment-create)\) link\-relation of API Gateway\. 
 
    ```
    POST /restapis/x7hyqq0ik7/deployments HTTP/1.1

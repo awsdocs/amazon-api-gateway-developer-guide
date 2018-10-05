@@ -20,7 +20,7 @@
 
     If you choose to let the API Gateway console set the resource\-based policy, the **Add Permission to Lambda Function** dialog is displayed\. Choose **OK**\. After the Lambda authorization is created, you can test it with appropriate authorization token values to verify that it works as expected\. 
 
-1.  For **Lambda Event Payload**, choose either **Token** for a `TOKEN` authorizer or **Request** for a `REQUEST` authorizer\. \(This is the same as setting the [type](http://docs.aws.amazon.com/apigateway/api-reference/resource/authorizer/#type) property to `TOKEN` or `REQUEST`\.\) 
+1.  For **Lambda Event Payload**, choose either **Token** for a `TOKEN` authorizer or **Request** for a `REQUEST` authorizer\. \(This is the same as setting the [type](https://docs.aws.amazon.com/apigateway/api-reference/resource/authorizer/#type) property to `TOKEN` or `REQUEST`\.\) 
 
 1. Depending on the choice of the previous step, do one of the following:
 
@@ -49,10 +49,10 @@
 
     For the `REQUEST` authorizer, type the valid request parameters corresponding to the specified identity sources and then choose **Test**\. 
 
-    In addition to using the API Gateway console, you can use AWS CLI or an AWS SDK for API Gateway to test invoking an authorizer\. To do so using the AWS CLI, see [test\-invoke\-authorizer](http://docs.aws.amazon.com/cli/latest/reference/apigateway/test-invoke-authorizer.html)\. 
+    In addition to using the API Gateway console, you can use AWS CLI or an AWS SDK for API Gateway to test invoking an authorizer\. To do so using the AWS CLI, see [test\-invoke\-authorizer](https://docs.aws.amazon.com/cli/latest/reference/apigateway/test-invoke-authorizer.html)\. 
 **Note**  
 Test\-invoke for method executions test\-invoke for authorizers are independent processes\.   
-To test invoking a method using the API Gateway console, see [Use the Console to Test a Method](how-to-test-method.md)\. To test invoking a method using the AWS CLI, see [test\-invoke\-method](http://docs.aws.amazon.com/cli/latest/reference/apigateway/test-invoke-method.html)\.   
+To test invoking a method using the API Gateway console, see [Use the Console to Test a Method](how-to-test-method.md)\. To test invoking a method using the AWS CLI, see [test\-invoke\-method](https://docs.aws.amazon.com/cli/latest/reference/apigateway/test-invoke-method.html)\.   
 To test invoking a method and a configured authorizer, deploy the API, and then use cURL or Postman to call the method, providing the required token or request parameters\.
 
  The next procedure shows how to configure an API method to use the Lambda authorizer\. 

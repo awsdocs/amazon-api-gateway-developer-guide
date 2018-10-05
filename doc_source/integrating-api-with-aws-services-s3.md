@@ -1,17 +1,17 @@
 # Create an API as an Amazon S3 Proxy<a name="integrating-api-with-aws-services-s3"></a>
 
 As an example to showcase using an API in API Gateway to proxy Amazon S3, this section describes how to create and configure an API to expose the following Amazon S3 operations: 
-+ Expose GET on the API's root resource to [list all of the Amazon S3 buckets of a caller](http://docs.aws.amazon.com/AmazonS3/latest/API/RESTServiceGET.html)\.
-+ Expose GET on a Folder resource to [view a list of all of the objects in an Amazon S3 bucket](http://docs.aws.amazon.com/AmazonS3/latest/API/RESTBucketGET.html)\.
-+ Expose PUT on a Folder resource to [add a bucket to Amazon S3](http://docs.aws.amazon.com/AmazonS3/latest/API/RESTBucketPUT.html)\.
-+ Expose DELETE on a Folder resource to [remove a bucket from Amazon S3](http://docs.aws.amazon.com/AmazonS3/latest/API/RESTBucketDELETE.html)\.
-+ Expose GET on a Folder/Item resource to [view or download an object from an Amazon S3 bucket](http://docs.aws.amazon.com/AmazonS3/latest/API/RESTObjectGET.html)\.
-+ Expose PUT on a Folder/Item resource to [upload an object to an Amazon S3 bucket](http://docs.aws.amazon.com/AmazonS3/latest/API/RESTObjectPUT.html)\.
-+ Expose HEAD on a Folder/Item resource to [get object metadata in an Amazon S3 bucket](http://docs.aws.amazon.com/AmazonS3/latest/API/RESTObjectHEAD.html)\.
-+ Expose DELETE on a Folder/Item resource to [remove an object from an Amazon S3 bucket](http://docs.aws.amazon.com/AmazonS3/latest/API/RESTObjectDELETE.html)\.
++ Expose GET on the API's root resource to [list all of the Amazon S3 buckets of a caller](https://docs.aws.amazon.com/AmazonS3/latest/API/RESTServiceGET.html)\.
++ Expose GET on a Folder resource to [view a list of all of the objects in an Amazon S3 bucket](https://docs.aws.amazon.com/AmazonS3/latest/API/RESTBucketGET.html)\.
++ Expose PUT on a Folder resource to [add a bucket to Amazon S3](https://docs.aws.amazon.com/AmazonS3/latest/API/RESTBucketPUT.html)\.
++ Expose DELETE on a Folder resource to [remove a bucket from Amazon S3](https://docs.aws.amazon.com/AmazonS3/latest/API/RESTBucketDELETE.html)\.
++ Expose GET on a Folder/Item resource to [view or download an object from an Amazon S3 bucket](https://docs.aws.amazon.com/AmazonS3/latest/API/RESTObjectGET.html)\.
++ Expose PUT on a Folder/Item resource to [upload an object to an Amazon S3 bucket](https://docs.aws.amazon.com/AmazonS3/latest/API/RESTObjectPUT.html)\.
++ Expose HEAD on a Folder/Item resource to [get object metadata in an Amazon S3 bucket](https://docs.aws.amazon.com/AmazonS3/latest/API/RESTObjectHEAD.html)\.
++ Expose DELETE on a Folder/Item resource to [remove an object from an Amazon S3 bucket](https://docs.aws.amazon.com/AmazonS3/latest/API/RESTObjectDELETE.html)\.
 
 **Note**  
- To integrate your API Gateway API with Amazon S3, you must choose a region where both the API Gateway and Amazon S3 services are available\. For region availability, see [Regions and Endpoints](http://docs.aws.amazon.com/general/latest/gr/rande.html#apigateway_region)\. 
+ To integrate your API Gateway API with Amazon S3, you must choose a region where both the API Gateway and Amazon S3 services are available\. For region availability, see [Regions and Endpoints](https://docs.aws.amazon.com/general/latest/gr/rande.html#apigateway_region)\. 
 
  You may want to import the sample API as an Amazon S3 proxy, as shown in [Swagger Definitions of the Sample API as an Amazon S3 Proxy](api-as-s3-proxy-export-swagger-with-extensions.md)\. For instructions on how to import an API using the Swagger definition, see [Import an API into API Gateway](api-gateway-import-api.md)\. 
 
@@ -75,7 +75,7 @@ To allow the API to invoke required Amazon S3 actions, you must have appropriate
 
  For your API to work with Amazon S3 `Get*`, `List*` and `Put*` actions, you can add the above read\-only and put\-only policies to the IAM role\.
 
- For your API to invoke the Amazon S3 `Post*` actions, you must use an Allow policy for the `s3:Post*` actions in the IAM role\. For a complete list of Amazon S3 actions, see [Specifying Amazon S3 Permissions in a Policy](http://docs.aws.amazon.com/AmazonS3/latest/dev/using-with-s3-actions.html)\. 
+ For your API to invoke the Amazon S3 `Post*` actions, you must use an Allow policy for the `s3:Post*` actions in the IAM role\. For a complete list of Amazon S3 actions, see [Specifying Amazon S3 Permissions in a Policy](https://docs.aws.amazon.com/AmazonS3/latest/dev/using-with-s3-actions.html)\. 
 
  For your API to create, view, update, and delete buckets and objects in Amazon S3, you can use the IAM \-provided AmazonS3FullAccess policy in the IAM role\. The ARN is `arn:aws:iam::aws:policy/AmazonS3FullAccess`\. 
 
@@ -129,7 +129,7 @@ We will use the API's root \(`/`\) resource as the container of an authenticated
 
 ## Expose an API Method to List the Caller's Amazon S3 Buckets<a name="api-root-get-as-s3-get-service"></a>
 
-Getting the list of Amazon S3 buckets of the caller involves invoking the [GET Service](http://docs.aws.amazon.com/AmazonS3/latest/API/RESTServiceGET.html) action on Amazon S3\. On the API's root resource, \(**/**\), create the GET method\. Configure the GET method to integrate with the Amazon S3, as follows\. 
+Getting the list of Amazon S3 buckets of the caller involves invoking the [GET Service](https://docs.aws.amazon.com/AmazonS3/latest/API/RESTServiceGET.html) action on Amazon S3\. On the API's root resource, \(**/**\), create the GET method\. Configure the GET method to integrate with the Amazon S3, as follows\. 
 
 **To create and initialize the API's `GET /` method**
 
@@ -148,7 +148,7 @@ Getting the list of Amazon S3 buckets of the caller involves invoking the [GET S
 
 1. From **HTTP method**, choose **GET**\.
 
-1. For **Action Type**, choose **Use path override**\. With path override, API Gateway forwards the client request to Amazon S3 as the corresponding [Amazon S3 REST API path\-style request](http://docs.aws.amazon.com/AmazonS3/latest/dev/RESTAPI.html), in which a Amazon S3 resource is expressed by the resource path of the `s3-host-name/bucket/key` pattern\. API Gateway sets the `s3-host-name` and passes the client specified `bucket` and `key` from the client to Amazon S3\.
+1. For **Action Type**, choose **Use path override**\. With path override, API Gateway forwards the client request to Amazon S3 as the corresponding [Amazon S3 REST API path\-style request](https://docs.aws.amazon.com/AmazonS3/latest/dev/RESTAPI.html), in which a Amazon S3 resource is expressed by the resource path of the `s3-host-name/bucket/key` pattern\. API Gateway sets the `s3-host-name` and passes the client specified `bucket` and `key` from the client to Amazon S3\.
 
 1. \(Optional\) In **Path override** type **/**\.
 
@@ -216,7 +216,7 @@ As a good practice, let us test our API we have configured so far\.
 
 ## Expose API Methods to Access an Amazon S3 Bucket<a name="api-folder-operations-as-s3-bucket-actions"></a>
 
-To work with an Amazon S3 bucket, we expose the GET, PUT, and DELETE methods on the /\{folder\} resource to list objects in a bucket, create a new bucket, and delete an existing bucket\. The instructions are similar to those prescribed in [Expose an API Method to List the Caller's Amazon S3 Buckets](#api-root-get-as-s3-get-service)\. In the following discussions, we outline the general tasks and highlight relevant differences\.
+To work with an Amazon S3 bucket, we expose the GET, PUT, and DELETE methods on the /\{folder\} resource to list objects in a bucket, create a new bucket, and delete an existing bucket\. The instructions are similar to those described in [Expose an API Method to List the Caller's Amazon S3 Buckets](#api-root-get-as-s3-get-service)\. In the following discussions, we outline the general tasks and highlight relevant differences\.
 
 **To expose GET, PUT and DELETE methods on a folder resource**
 
@@ -244,7 +244,7 @@ To work with an Amazon S3 bucket, we expose the GET, PUT, and DELETE methods on 
 1. In **Integration Request**, set up the following header mappings, following the instructions described in [Expose an API Method to List the Caller's Amazon S3 Buckets](#api-root-get-as-s3-get-service)\.  
 ![\[Set up header mappings for the PUT /{folder} method\]](http://docs.aws.amazon.com/apigateway/latest/developerguide/images/aws_proxy_s3_create_methods_on_folder_header_mappings.png)
 
-    The `x-amz-acl` header is for specifying access control on the folder \(or the corresponding Amazon S3 bucket\)\. For more information, see [Amazon S3 PUT Bucket Request](http://docs.aws.amazon.com/AmazonS3/latest/API/RESTBucketPUT.html#RESTBucketPUT-requests)\. 
+    The `x-amz-acl` header is for specifying access control on the folder \(or the corresponding Amazon S3 bucket\)\. For more information, see [Amazon S3 PUT Bucket Request](https://docs.aws.amazon.com/AmazonS3/latest/API/RESTBucketPUT.html#RESTBucketPUT-requests)\. 
 
 1. To test the `PUT` method, choose **Test** in the **Client** box from **Method Execution**, and enter the following as input to the testing: 
 
@@ -263,13 +263,13 @@ To work with an Amazon S3 bucket, we expose the GET, PUT, and DELETE methods on 
 
 1.  Repeat the preceding steps to create and configure the GET and DELETE method on the API's **/\{folder\}** resource\. 
 
-The above examples illustrate how to create a new bucket in the specified region, to view the list of objects in the bucket, and to delete the bucket\. Other Amazon S3 bucket operations allow you work with the metadata or properties of the bucket\. For example, you can set up your API to call the Amazon S3's [PUT /?notification](http://docs.aws.amazon.com/AmazonS3/latest/API/RESTBucketPUTnotification.html#RESTBucketPUTnotification-requests) action to set up notifications on the bucket, to call [PUT /?acl](http://docs.aws.amazon.com/AmazonS3/latest/API/RESTBucketPUTacl.html#RESTBucketPUTacl-requests) to set an access control list on the bucket, etc\. The API set up is similar, except for that you must append appropriate query parameters to the Amazon S3 endpoint URLs\. At run time, you must provide the appropriate XML payload to the method request\. The same can be said about supporting the other GET and DELETE operations on a Amazon S3 bucket\. For more information on possible &S3; actions on a bucket, see [Amazon S3 Operations on Buckets](http://docs.aws.amazon.com/AmazonS3/latest/API/RESTBucketOps.html)\.
+The above examples illustrate how to create a new bucket in the specified region, to view the list of objects in the bucket, and to delete the bucket\. Other Amazon S3 bucket operations allow you work with the metadata or properties of the bucket\. For example, you can set up your API to call the Amazon S3's [PUT /?notification](https://docs.aws.amazon.com/AmazonS3/latest/API/RESTBucketPUTnotification.html#RESTBucketPUTnotification-requests) action to set up notifications on the bucket, to call [PUT /?acl](https://docs.aws.amazon.com/AmazonS3/latest/API/RESTBucketPUTacl.html#RESTBucketPUTacl-requests) to set an access control list on the bucket, etc\. The API set up is similar, except for that you must append appropriate query parameters to the Amazon S3 endpoint URLs\. At run time, you must provide the appropriate XML payload to the method request\. The same can be said about supporting the other GET and DELETE operations on a Amazon S3 bucket\. For more information on possible &S3; actions on a bucket, see [Amazon S3 Operations on Buckets](https://docs.aws.amazon.com/AmazonS3/latest/API/RESTBucketOps.html)\.
 
 ## Expose API Methods to Access an Amazon S3 Object in a Bucket<a name="api-items-in-folder-as-s3-objects-in-bucket"></a>
 
-Amazon S3 supports GET, DELETE, HEAD, OPTIONS, POST and PUT actions to access and manage objects in a given bucket\. For the complete list of supported actions, see [Amazon S3 Operations on Objects](http://docs.aws.amazon.com/AmazonS3/latest/API/RESTObjectOps.html)\.
+Amazon S3 supports GET, DELETE, HEAD, OPTIONS, POST and PUT actions to access and manage objects in a given bucket\. For the complete list of supported actions, see [Amazon S3 Operations on Objects](https://docs.aws.amazon.com/AmazonS3/latest/API/RESTObjectOps.html)\.
 
-In this tutorial, we expose the [PUT Object](http://docs.aws.amazon.com/AmazonS3/latest/API/RESTObjectPUT.html) operation, the [GET Object](http://docs.aws.amazon.com/AmazonS3/latest/API/RESTObjectGET.html) operation, [HEAD Object](http://docs.aws.amazon.com/AmazonS3/latest/API/RESTObjectHEAD.html) operation, and the [DELETE Object](http://docs.aws.amazon.com/AmazonS3/latest/API/RESTObjectDELETE.html) operation through the API methods of `PUT /{folder}/{item}`, `GET /{folder}/{item}`, `HEAD /{folder}/{item}` and `DELETE /{folder}/{item}`, respectively\.
+In this tutorial, we expose the [PUT Object](https://docs.aws.amazon.com/AmazonS3/latest/API/RESTObjectPUT.html) operation, the [GET Object](https://docs.aws.amazon.com/AmazonS3/latest/API/RESTObjectGET.html) operation, [HEAD Object](https://docs.aws.amazon.com/AmazonS3/latest/API/RESTObjectHEAD.html) operation, and the [DELETE Object](https://docs.aws.amazon.com/AmazonS3/latest/API/RESTObjectDELETE.html) operation through the API methods of `PUT /{folder}/{item}`, `GET /{folder}/{item}`, `HEAD /{folder}/{item}` and `DELETE /{folder}/{item}`, respectively\.
 
 The API setups for the PUT, GET and DELETE methods on `/{folder}/{item}` are the similar to those on `/{folder}`, as prescribed in [Expose API Methods to Access an Amazon S3 Bucket](#api-folder-operations-as-s3-bucket-actions)\. One major difference is that the object\-related request path has an additional path parameter of `{item}` and this path parameter must be mapped to the integration request path parameter of `{object}`\. 
 
@@ -298,6 +298,8 @@ As an illustration, the following screen shot shows the output when testing the 
 1. Add the `Content-Type` \(for upload\) and/or `Accept` \(for download\) header to the method request to require the client to specify the required binary media type and map them to the integration request\.
 
 1. Set **Content Handling** to `Passthrough` in the integration request \(for upload\) and in a integration response \(for download\)\. Make sure that no mapping template is defined for the affected content type\. For more information, see [Integration Passthrough Behaviors](integration-passthrough-behaviors.md) and [Select VTL Mapping Templates](request-response-data-mappings.md#transforming-request-response-body)\.
+
+The payload size limit is 10 MB\. See [API Gateway Limits for Configuring and Running an API](limits.md#api-gateway-execution-service-limits-table)\.
 
 Make sure that files on Amazon S3 have the correct content types added as the files' metadata\. For streamable media content, `Content-Disposition:inline` may also need to be added to the metadata\.
 

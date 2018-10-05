@@ -6,6 +6,31 @@
 
  As an API developer, you can set the limits for individual API stages or methods to improve overall performance across all APIs in your account\. Alternatively, you can enable [usage plans](api-gateway-api-usage-plans.md) to restrict client request submissions to within specified request rates and quotas\. This restricts the overall request submissions so that they don't go significantly past the account\-level throttling limits\. 
 
+**Topics**
++ [How Throttling Limit Settings Are Applied in API Gateway](#apigateway-how-throttling-limits-are-applied)
++ [Account\-Level Throttling](#apig-request-throttling-account-level-limits)
++ [Default Method Throttling and Overriding Default Method Throttling](#apig-request-throttling-stage-and-method-level-limits)
++ [Configuring API\-level and Stage\-Level Throttling in a Usage Plan](#apigateway-api-level-throttling-in-usage-plan)
++ [Configuring Method\-Level Throttling in a Usage Plan](#apigateway-method-level-throttling-in-usage-plan)
+
+## How Throttling Limit Settings Are Applied in API Gateway<a name="apigateway-how-throttling-limits-are-applied"></a>
+
+Before you configure limit settings for your API in your stage settings and optionally a [usage plan](api-gateway-api-usage-plans.md), it's useful to understand Amazon API Gateway how throttling limit settings are applied\.
+
+Amazon API Gateway provides two basic types of throttling\-related settings:
++ *Server\-side throttling limits* are applied across all clients\. These limit settings exist to prevent your API— and your account — from being overwhelmed by too many requests\.
++ *Per\-client throttling limits* are applied to clients that use API keys associated with your usage policy as client identifier\.
+
+API Gateway throttling\-related settings are applied in the following order:
+
+1. [Per\-client per\-method throttling limits](#apigateway-method-level-throttling-in-usage-plan) that you set for an API stage in a [usage plan](api-gateway-create-usage-plans-with-console.md#api-gateway-usage-plan-create)
+
+1. [Per\-client throttling limits](#apigateway-api-level-throttling-in-usage-plan) that you set in a usage plan
+
+1. [Default per\-method limits and individual per\-method limits](#apig-request-throttling-stage-and-method-level-limits) that you set in [API stage settings](stages.md#how-to-stage-settings)
+
+1. [Account\-level throttling](#apig-request-throttling-account-level-limits)
+
 ## Account\-Level Throttling<a name="apig-request-throttling-account-level-limits"></a>
 
  By default, API Gateway limits the steady\-state request rate to 10,000 requests per second \(rps\)\. It limits the burst \(that is, the maximum bucket size\) to 5,000 requests across all APIs within an AWS account\. In API Gateway, the burst limit corresponds to the maximum number of concurrent request submissions that API Gateway can fulfill at any moment without returning `429 Too Many Requests` error responses\. 
@@ -25,11 +50,18 @@ To help understand these throttling limits, here are a few examples, given the b
 
 The account\-level rate limit can be increased upon request\. To request an increase of account\-level throttling limits, contact the [AWS Support Center](https://console.aws.amazon.com/support/home#/)\. For more information, see [API Gateway Limits](limits.md#api-gateway-limits)\. 
 
-**Note**  
-The burst limit cannot be increased\.
+## Default Method Throttling and Overriding Default Method Throttling<a name="apig-request-throttling-stage-and-method-level-limits"></a>
 
-## Default Method Throttling<a name="apig-request-throttling-stage-and-method-level-limits"></a>
+You can set the default method throttling to override the account\-level request throttling limits for a specific stage or for individual methods in your API\. The default method throttling limits are bounded by the account\-level rate limits, even if you set the default method throttling limits higher than the account\-level limits\. 
 
- As an API owner, you can set the default method throttling to override the account\-level request throttling limits for a specific stage or for individual methods in an API\. The Default method throttling limits are bounded by the account\-level rate limits, even if you set the default method throttling limits higher than the account\-level limits\. 
+You can set the default method throttling limits in the API Gateway console by using the **Default Method Throttling** setting in **Stages**\. For instructions on using the console, see [Update Stage Settings](stages.md#how-to-stage-settings)\.
 
- You can set the default method throttling limits by using the API Gateway console or by calling the [API Gateway REST API](api-ref.md)\. For instructions on using the console, see [Update Stage Settings](stages.md#how-to-stage-settings)\. 
+You can also set the default method throttling limits by calling the [API Gateway REST API](api-ref.md)\.
+
+## Configuring API\-level and Stage\-Level Throttling in a Usage Plan<a name="apigateway-api-level-throttling-in-usage-plan"></a>
+
+In a [usage plan](api-gateway-api-usage-plans.md), you can set a default per\-method throttling limit for all methods at the API or stage level under **Create Usage Plan** as shown in [Create a Usage Plan](api-gateway-create-usage-plans-with-console.md#api-gateway-usage-plan-create)\.
+
+## Configuring Method\-Level Throttling in a Usage Plan<a name="apigateway-method-level-throttling-in-usage-plan"></a>
+
+You can set additional throttling limits at the method level in **Usage Plans** as shown in [Create a Usage Plan](api-gateway-create-usage-plans-with-console.md#api-gateway-usage-plan-create)\. In the API Gateway console, these are set by specifying `Resource=<resource>`, `Method=<method>` in the **Configure Method Throttling** setting\. For example, for the [PetStore example](api-gateway-create-api-step-by-step.md), you might specify `Resource=/pets`, `Method=GET`\.

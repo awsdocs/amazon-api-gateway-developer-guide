@@ -2,7 +2,7 @@
 
  When API requests predominantly originate from an EC2 instance or services within the same region as the API is deployed, a regional API endpoint will typically lower the latency of connections and is recommended for such scenarios\. In addition, for customers to manage their own Amazon CloudFront distribution, they can use a regional API endpoint to ensure that API Gateway does not associate the API with the service\-controlled CloudFront distributions\. 
 
- To create a regional API, you follow the steps in [creating an edge\-optimized API](create-api-resources-methods.md), but must explicitly set `REGIONAL` type as the only option of the API's [endpointConfiguration](http://docs.aws.amazon.com/apigateway/api-reference/resource/rest-api/#endpointConfiguration)\. 
+ To create a regional API, you follow the steps in [creating an edge\-optimized API](create-api-resources-methods.md), but must explicitly set `REGIONAL` type as the only option of the API's [endpointConfiguration](https://docs.aws.amazon.com/apigateway/api-reference/resource/rest-api/#endpointConfiguration)\. 
 
  In the following, we show how to create a regional API using the API Gateway console, AWS CLI, the AWS SDK for Javascript for Node\.js, and the API Gateway REST API\. 
 
@@ -38,7 +38,7 @@ aws apigateway create-rest-api \
         --name 'Simple PetStore (AWS CLI, Regional)' \
         --description 'Simple regional PetStore API' \
         --region us-west-2 \
-        --endpoint-configuration '{ types: ["REGIONAL"] }'
+        --endpoint-configuration '{ "types": ["REGIONAL"] }'
 ```
 
 The successful response returns an output similar to the following:

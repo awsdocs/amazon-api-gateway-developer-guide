@@ -2,7 +2,7 @@
 
 The topics in this section describe the basic elements used in Amazon API Gateway resource policies\.
 
-Resource policies are specified using the same syntax as IAM Policies\. For complete policy language information, see [ Overview of IAM Policies](http://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies.html) and [ AWS Identity and Access Management Policy Reference](http://docs.aws.amazon.com/IAM/latest/UserGuide/reference_policies.html) in the *IAM User Guide*\.
+Resource policies are specified using the same syntax as IAM Policies\. For complete policy language information, see [ Overview of IAM Policies](https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies.html) and [ AWS Identity and Access Management Policy Reference](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_policies.html) in the *IAM User Guide*\.
 
 ## Common Elements in an Access Policy<a name="apigateway-common-elements-in-an-access-policy"></a>
 
@@ -23,7 +23,7 @@ The following example resource policy shows the preceding common policy elements
 ```
 {  
     "Id":"Policy1513815114229",
-        "Version":"2018-01-01",
+        "Version":"2012-10-17",
         "Statement":[  
             {  
                 "Sid":"Stmt1513815112643",

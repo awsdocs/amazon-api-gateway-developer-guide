@@ -1,8 +1,7 @@
-# Amazon API Gateway Limits, Pricing and Known Issues<a name="limits"></a>
+# Amazon API Gateway Limits and Known Issues<a name="limits"></a>
 
 **Topics**
 + [API Gateway Limits](#api-gateway-limits)
-+ [API Gateway Pricing](api-gateway-pricing.md)
 + [Known Issues](api-gateway-known-issues.md)
 
 ## API Gateway Limits<a name="api-gateway-limits"></a>
@@ -20,18 +19,21 @@ The following limits apply to configuring and running an API in Amazon API Gatew
 
 | Resource or Operation | Default Limit | Can Be Increased | 
 | --- | --- | --- | 
-| Throttle limits per account per region | 10000 request per second \(rps\) with an additional burst capacity provided by the [token bucket algorithm](https://en.wikipedia.org/wiki/Token_bucket), using a maximum bucket capacity of 5000 requests\.  The burst limit cannot be increased\.  | Yes | 
-| APIs \(or [RestApi](http://docs.aws.amazon.com/apigateway/api-reference/resource/rest-api/)s\) per account per region | 60 | Yes | 
-| Maximum length, in characters, of resource policy | 8092 | Yes | 
-| API keys per account per region | 500 | Yes | 
-| Client certificates per account per region | 60 | Yes | 
-| Custom authorizers per API | 10 | Yes | 
-| Documentation parts per API | 2000 | Yes | 
-| Resources per API  | 300 | Yes | 
-| Stages per API | 10 | Yes | 
-| Usage plans per account per region | 300 | Yes | 
-| Usage plans per API key | 10 | Yes | 
-| VPC links per account per region | 5 | Yes | 
+| Throttle limit per account per region | 10000 requests per second \(RPS\) with an additional burst capacity provided by the [token bucket algorithm](https://en.wikipedia.org/wiki/Token_bucket), using a maximum bucket capacity of 5000 requests\.  The burst limit is determined by the API Gateway service team based on the overall RPS limits for the account\. It is not a limit that a customer can control or request changes to\.  | Yes | 
+| Maximum number of Regional APIs per account per region | 600 | No | 
+| Maximum number of Private APIs per account per region | 600 | No | 
+| Maximum number of Edge\-Optimized APIs per account per region | 120 | No | 
+| Maximum length, in characters, of API Gateway resource policy | 8092 | Yes | 
+| Maximum number of API keys per account per region | 500 | Yes | 
+| Maximum number of client certificates per account per region | 60 | Yes | 
+| Maximum number of Lambda authorizers per API | 10 | Yes | 
+| Maximum number of documentation parts per API | 2000 | Yes | 
+| Maximum number of resources per API | 300 | Yes | 
+| Maximum number of stages per API | 10 | Yes | 
+| Maximum number of usage plans per account per region | 300 | Yes | 
+| Maximum number of usage plans per API key | 10 | Yes | 
+| Maximum number of per\-method throttling limit settings per API stage | 20 | Yes | 
+| Maximum number of VPC links per account per region | 5 | Yes | 
 | API caching TTL | 300 seconds by default and configurable between 0 and 3600 by an API owner\. | Not for the upper bound \(3600\) | 
 | Integration timeout | 50 milliseconds \- 29 seconds for all integration types, including Lambda, Lambda proxy, HTTP, HTTP proxy, and AWS integrations\. | Not for the lower or upper bounds\. | 
 | Header value size | 10240 Bytes | No | 
@@ -40,9 +42,9 @@ The following limits apply to configuring and running an API in Amazon API Gatew
 | Number of iterations in a \#foreach \.\.\. \#end loop in mapping templates | 1000 | No | 
 | ARN length of a method with authorization | 1600 bytes | No | 
 
-For [restapi:import](http://docs.aws.amazon.com/apigateway/api-reference/link-relation/restapi-import/) or [restapi:put](http://docs.aws.amazon.com/apigateway/api-reference/link-relation/restapi-put/), the maximum size of the API definition file is 2MB\. 
+For [restapi:import](https://docs.aws.amazon.com/apigateway/api-reference/link-relation/restapi-import/) or [restapi:put](https://docs.aws.amazon.com/apigateway/api-reference/link-relation/restapi-put/), the maximum size of the API definition file is 2 MB\. 
 
-All of the per API limits can only be increased on specific APIs\.
+All of the per\-API limits can only be increased on specific APIs\.
 
 ### API Gateway Limits for Creating, Deploying and Managing an API<a name="api-gateway-control-service-limits-table"></a>
 
@@ -51,16 +53,16 @@ The following fixed limits apply to creating, deploying, and managing an API in 
 
 | Action | Default Limit | Can Be Increased | 
 | --- | --- | --- | 
-| [CreateRestApi](http://docs.aws.amazon.com/apigateway/api-reference/link-relation/restapi-create/) | 2 requests per minute \(rpm\) per account\. | No | 
-| [ImportRestApi](http://docs.aws.amazon.com/apigateway/api-reference/link-relation/restapi-import/) | 2 requests per minute per account | No | 
-| [PutRestApi](http://docs.aws.amazon.com/apigateway/api-reference/link-relation/restapi-put/) | 60 requests per minute per account | No | 
-| [DeleteRestApi](http://docs.aws.amazon.com/apigateway/api-reference/link-relation/restapi-delete/) | 2 requests per minute per account | No | 
-| [CreateDeployment](http://docs.aws.amazon.com/apigateway/api-reference/link-relation/deployment-create/) | 3 requests per minute per account | No | 
-| [UpdateAccount](http://docs.aws.amazon.com/apigateway/api-reference/link-relation/account-update/) | 3 requests per minute per account | No | 
-| [GetResources](http://docs.aws.amazon.com/apigateway/api-reference/link-relation/restapi-resources/) | 150 requests per minute per account | No | 
-| [CreateResource](http://docs.aws.amazon.com/apigateway/api-reference/link-relation/resource-create/) | 300 requests per minute per account | No | 
-| [DeleteResource](http://docs.aws.amazon.com/apigateway/api-reference/link-relation/resource-delete/) | 300 requests per minute per account | No | 
-| [CreateDomainName](http://docs.aws.amazon.com/apigateway/api-reference/link-relation/domainname-create/) | 2 requests per minute per account | No | 
-| [UpdateUsagePlan](http://docs.aws.amazon.com/apigateway/api-reference/link-relation/usageplan-update/) | 3 requests per minute per account | No | 
+| [CreateRestApi](https://docs.aws.amazon.com/apigateway/api-reference/link-relation/restapi-create/) | [\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/apigateway/latest/developerguide/limits.html)[\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/apigateway/latest/developerguide/limits.html) | No | 
+| [ImportRestApi](https://docs.aws.amazon.com/apigateway/api-reference/link-relation/restapi-import/) | [\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/apigateway/latest/developerguide/limits.html)[\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/apigateway/latest/developerguide/limits.html) | No | 
+| [PutRestApi](https://docs.aws.amazon.com/apigateway/api-reference/link-relation/restapi-put/) | 1 request per second per account | No | 
+| [DeleteRestApi](https://docs.aws.amazon.com/apigateway/api-reference/link-relation/restapi-delete/) | 1 request every 30 seconds per account | No | 
+| [CreateDeployment](https://docs.aws.amazon.com/apigateway/api-reference/link-relation/deployment-create/) | 1 request every 5 seconds per account | No | 
+| [UpdateAccount](https://docs.aws.amazon.com/apigateway/api-reference/link-relation/account-update/) | 1 request every 20 seconds per account | No | 
+| [GetResources](https://docs.aws.amazon.com/apigateway/api-reference/link-relation/restapi-resources/) | 5 requests every 2 seconds per account | No | 
+| [CreateResource](https://docs.aws.amazon.com/apigateway/api-reference/link-relation/resource-create/) | 5 requests per second per account | No | 
+| [DeleteResource](https://docs.aws.amazon.com/apigateway/api-reference/link-relation/resource-delete/) | 5 requests per second per account | No | 
+| [CreateDomainName](https://docs.aws.amazon.com/apigateway/api-reference/link-relation/domainname-create/) | 1 request every 30 seconds per account | No | 
+| [UpdateUsagePlan](https://docs.aws.amazon.com/apigateway/api-reference/link-relation/usageplan-update/) | 1 request every 20 seconds per account | No | 
 | Other operations | No limit up to the total account limit\. | No | 
-| Total operations | 10 request per second \(rps\) with a burst limit of 40 requests\. | No | 
+| Total operations | 10 requests per second with a burst limit of 40 requests per second\. | No | 

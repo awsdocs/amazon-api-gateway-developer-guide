@@ -23,7 +23,6 @@ For testing, you can use the API Gateway console to call an API using the API Ga
 + [Use Postman to Call an API](how-to-use-postman-to-call-api.md)
 + [Call API through Generated SDKs](how-to-call-api-using-generated-sdk.md)
 + [Call API through AWS Amplify JavaScript Library](how-to-call-api-using-aws-amplify-javascript-library.md)
-+ [Trace API Management and Invocation](monitoring_overview.md)
 
 **Important**  
  You must have already deployed the API in API Gateway\. Follow the instructions in [Deploying an API in Amazon API Gateway](how-to-deploy-api.md)\. 

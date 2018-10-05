@@ -28,7 +28,7 @@ The following procedure describes how to enable payload compression for an API\.
 
 ## Enable Compression for an API Using AWS CLI<a name="api-gateway-enable-compression-cli"></a>
 
-To use the AWS CLI to create a new API and enable compression, call the [http://docs.aws.amazon.com/cli/latest/reference/apigateway/create-rest-api.html](http://docs.aws.amazon.com/cli/latest/reference/apigateway/create-rest-api.html) command as follows:
+To use the AWS CLI to create a new API and enable compression, call the [https://docs.aws.amazon.com/cli/latest/reference/apigateway/create-rest-api.html](https://docs.aws.amazon.com/cli/latest/reference/apigateway/create-rest-api.html) command as follows:
 
 ```
 aws apigateway create-rest-api \
@@ -36,7 +36,7 @@ aws apigateway create-rest-api \
     --minimum-compression-size 0
 ```
 
-To use the AWS CLI to enable compression on an existing API, call the [http://docs.aws.amazon.com/cli/latest/reference/apigateway/update-rest-api.html](http://docs.aws.amazon.com/cli/latest/reference/apigateway/update-rest-api.html) command as follows: 
+To use the AWS CLI to enable compression on an existing API, call the [https://docs.aws.amazon.com/cli/latest/reference/apigateway/update-rest-api.html](https://docs.aws.amazon.com/cli/latest/reference/apigateway/update-rest-api.html) command as follows: 
 
 ```
 aws apigateway update-rest-api \
@@ -46,7 +46,7 @@ aws apigateway update-rest-api \
 
 The `minimumCompressionSize` property has a non\-negative integer value between 0 and 10485760 \(10M bytes\)\. It measures the compression threshold\. If the payload size is smaller than this value, compression or decompression are not applied on the payload\. Setting it to zero allows compression for any payload size\.
 
-To use the AWS CLI to disable compression, call the [http://docs.aws.amazon.com/cli/latest/reference/apigateway/update-rest-api.html](http://docs.aws.amazon.com/cli/latest/reference/apigateway/update-rest-api.html) command as follows: 
+To use the AWS CLI to disable compression, call the [https://docs.aws.amazon.com/cli/latest/reference/apigateway/update-rest-api.html](https://docs.aws.amazon.com/cli/latest/reference/apigateway/update-rest-api.html) command as follows: 
 
 ```
 aws apigateway update-rest-api \
@@ -58,7 +58,7 @@ You can also set `value` to an empty string `""` or omit the `value` property al
 
 ## Enable Compression for an API Using the API Gateway REST API<a name="api-gateway-enable-compression-api"></a>
 
-To use the [API Gateway REST API](http://docs.aws.amazon.com/apigateway/api-reference/) to enable compression on a new API, call [http://docs.aws.amazon.com/apigateway/api-reference/link-relation/restapi-create/](http://docs.aws.amazon.com/apigateway/api-reference/link-relation/restapi-create/) as follows:
+To use the [API Gateway REST API](https://docs.aws.amazon.com/apigateway/api-reference/) to enable compression on a new API, call [https://docs.aws.amazon.com/apigateway/api-reference/link-relation/restapi-create/](https://docs.aws.amazon.com/apigateway/api-reference/link-relation/restapi-create/) as follows:
 
 ```
 POST /restapis
@@ -73,7 +73,7 @@ Content-Length: ...
 }
 ```
 
-To use the [API Gateway REST API](http://docs.aws.amazon.com/apigateway/api-reference/) to enable compression on an existing API, call [http://docs.aws.amazon.com/apigateway/api-reference/link-relation/restapi-update/](http://docs.aws.amazon.com/apigateway/api-reference/link-relation/restapi-update/) as follows:
+To use the [API Gateway REST API](https://docs.aws.amazon.com/apigateway/api-reference/) to enable compression on an existing API, call [https://docs.aws.amazon.com/apigateway/api-reference/link-relation/restapi-update/](https://docs.aws.amazon.com/apigateway/api-reference/link-relation/restapi-update/) as follows:
 
 ```
 PATCH /restapis/{restapi_id}

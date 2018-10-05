@@ -15,7 +15,7 @@
 
 1. From the **Stages** navigation pane, choose **Create**\.
 
-1.  Under **Create Stage**, type a stage name, e\.g\., `prod`, for **Stage name**\. 
+1.  Under **Create Stage**, type a stage name, for example, **prod**, for **Stage name**\. 
 
 1.  Optionally, type a stage description for **Stage description** 
 
@@ -29,27 +29,29 @@ After a successful deployment of an API, the stage is populated with default set
 
 ### Update Stage Settings Using the API Gateway Console<a name="how-to-stage-settings-console"></a>
 
- Make sure that you have already deployed the API and created a stage at least once before proceeding\. 
+These steps assume that you have already deployed the API to a stage\. 
 
 1. Sign in to the API Gateway console at [https://console\.aws\.amazon\.com/apigateway](https://console.aws.amazon.com/apigateway)\.
 
-1. In the **APIs** pane, choose the API you want to update the stage settings, and then choose **Stages**\.
+1. In the **APIs** pane, choose the API, and then choose **Stages**\.
 
 1. In the **Stages** pane, choose the name of the stage\.
 
 1. In the **Stage Editor** pane, choose the **Settings** tab\.
 
-1.  To enable API caching, select the **Enable API cache** option under the **Cache Settings** section\. Then, choose desired options and associated values for **Cache capacity**, **Encrypt cache data**, **Cache time\-to\-live \(TTL\)**, as well as the requirements for per\-key cache invalidation\. For more information about the stage\-level cache settings, see [Enable API Caching](api-gateway-caching.md)\. 
+1. To enable API caching for the stage, select the **Enable API cache** option under the **Cache Settings** section\. Then choose desired options and associated values for **Cache capacity**, **Encrypt cache data**, **Cache time\-to\-live \(TTL\)**, as well as any requirements for per\-key cache invalidation\.
+
+   For more information about stage\-level cache settings, see [Enable API Caching](api-gateway-caching.md)\.
 **Important**  
-By selecting this option, your AWS account may be charged for API caching\.
+If you enable API caching for an API stage, your AWS account may be charged for API caching\. Cachine is not eligible for the AWS free tier\.
 **Tip**  
-You can override enabled stage\-level cache settings\. To do so, expand the stage under the **Stages** secondary navigation pane and choose a method\. Then, in the stage editor, choose the **Override for this method** option for **Settings**\. In the ensuing **Cache Settings** area, clear **Enable Method Cache** or customize any other desired options, before choosing **Save Changes**\. For more information about the method\-level cache settings, see [Enable API Caching](api-gateway-caching.md)\.
+You can also override enabled stage\-level cache settings for individual methods\. To do so, expand the stage under the **Stages** secondary navigation pane and choose a method\. Then, in the stage editor, choose the **Override for this method** option for **Settings**\. In the **Cache Settings** area, you can set or clear **Enable Method Cache** or customize any other desired options\. For more information about the method\-level cache settings, see [Enable API Caching](api-gateway-caching.md)\.
 
 1. To enable Amazon CloudWatch Logs for all of the methods associated with this stage of this API Gateway API, do the following:
 
    1.  Under the **CloudWatch Settings** section, select the **Enable CloudWatch Logs** option\. 
 **Tip**  
- To enable method\-level CloudWatch settings, expand the stage under the **Stages** secondary navigation pane, choose each method of interest, and, back in the stage editor, choose **Override for this method** for **Settings**\. In the ensuing **CloudWatch Settings** area, make sure to select **Log to CloudWatch Logs** and any other desired options, before choosing **Save Changes**\. 
+ To enable method\-level CloudWatch settings, expand the stage under the **Stages** secondary navigation pane, choose each method of interest, and, back in the stage editor, choose **Override for this method** for **Settings**\. In the **CloudWatch Settings** area, make sure to select **Log to CloudWatch Logs** and any other desired options, before choosing **Save Changes**\. 
 **Important**  
 Your account will be charged for accessing method\-level CloudWatch metrics, but not the API\- or stage\- level metrics\.
 
@@ -57,7 +59,7 @@ Your account will be charged for accessing method\-level CloudWatch metrics, but
 
    1. To log full API call request and response information, select **Log full requests/responses data**\. No sensitive data will be logged unless the **Log full requests/responses data** option is selected\.
 
-   1. To have API Gateway to report to CloudWatch the API metrics of `API calls`, `Latency`, `Integration latency`, `400 errors` and `500 errors`, select the **Enable Detailed CloudWatch Metrics** option\. For more information about CloudWatch, see the [Amazon CloudWatch User Guide](http://docs.aws.amazon.com/AmazonCloudWatch/latest/DeveloperGuide/)\.
+   1. To have API Gateway report to CloudWatch the API metrics of `API calls`, `Latency`, `Integration latency`, `400 errors` and `500 errors`, choose **Enable Detailed CloudWatch Metrics** option\. For more information about CloudWatch, see the [Amazon CloudWatch User Guide](https://docs.aws.amazon.com/AmazonCloudWatch/latest/DeveloperGuide/)\.
 
    1. Choose **Save Changes**\. The new settings will take effect after a new deployment\.
 **Important**  
@@ -100,7 +102,7 @@ The IAM role must also contain the following trust relationship statement:
         ]
       }
       ```
-For more information about CloudWatch, see the [Amazon CloudWatch User Guide](http://docs.aws.amazon.com/AmazonCloudWatch/latest/DeveloperGuide/)\.
+For more information about CloudWatch, see the [Amazon CloudWatch User Guide](https://docs.aws.amazon.com/AmazonCloudWatch/latest/DeveloperGuide/)\.
 
 1.  To set the stage\-level throttle limit for all of the methods associated with this API, do the following in the **Default Method Throttling** section: 
 
@@ -108,7 +110,21 @@ For more information about CloudWatch, see the [Amazon CloudWatch User Guide](ht
 
    1.  For **Burst**, type the maximum number of stage\-level concurrent requests that API Gateway can serve without returning a `429 Too Many Requests` response\. This stage\-level burst must not be more than the [account\-level](api-gateway-request-throttling.md#apig-request-throttling-account-level-limits) burst limit as specified in [API Gateway Limits for Configuring and Running an API](limits.md#api-gateway-execution-service-limits-table)\. 
 
-1.  To override the stage\-level throttling for individual methods, expand the stage under the **Stages** secondary navigation pane, choose a method of interest, and, back in the stage editor, choose **Override for this method** for **Settings**\. In the **Default Method Throttling** area, select appropriate options\. 
+1.  To override the stage\-level throttling for an individual method, expand the stage in the **Stages** secondary navigation pane, choose a method, and choose **Override for this method** for **Settings**\. In the **Method Throttling** section, select appropriate options\. 
+
+1. To enable [AWS X\-Ray](https://docs.aws.amazon.com/xray/latest/devguide/xray-services-apigateway.html) tracing for the API stage:
+
+   1. In the **Stage Editor** pane, choose the **Logs/Tracing** tab\.
+
+   1. To enable X\-Ray tracing, choose **Enable X\-Ray Tracing** under **X\-Ray Tracing**\.
+
+   1. To set sampling rules in the X\-Ray console, choose **Set X\-Ray Sampling Rules**\.
+
+   1. If desired, choose **Set X\-Ray Sampling Rules** and go to the X\-Ray console to [configure sampling rules](https://docs.aws.amazon.com/xray/latest/devguide/xray-console-sampling.html)\.
+
+   For more information, see [Trace API Gateway API Execution with AWS X\-Ray](apigateway-xray.md)\.
+
+1. Choose **Save Changes**\. The new settings will take effect after you redeploy the API to the stage\.
 
 ## Delete a Stage for an API<a name="how-to-delete-stage"></a>
 

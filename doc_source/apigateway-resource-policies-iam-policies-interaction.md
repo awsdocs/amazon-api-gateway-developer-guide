@@ -2,11 +2,11 @@
 
 The following tables list the resulting behavior when access to an API Gateway API is controlled by both an IAM policy and an API Gateway resource policy\.
 
-For more information about how an AWS service decides whether a given request should be allowed or denied, see [Determining Whether a Request is Allowed or Denied](http://docs.aws.amazon.com/IAM/latest/UserGuide/reference_policies_evaluation-logic.html#policy-eval-denyallow)\.
+For more information about how an AWS service decides whether a given request should be allowed or denied, see [Determining Whether a Request is Allowed or Denied](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_policies_evaluation-logic.html#policy-eval-denyallow)\.
 
 **Note**  
 "Implicit deny" is the same thing as "Deny by default\."  
-"Implicit deny" is different from "Explict deny\." For more information, see [The Difference Between Denying by Default and Explicit Deny](http://docs.aws.amazon.com/IAM/latest/UserGuide/reference_policies_evaluation-logic.html#AccessPolicyLanguage_Interplay)\.
+"Implicit deny" is different from "Explict deny\." For more information, see [The Difference Between Denying by Default and Explicit Deny](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_policies_evaluation-logic.html#AccessPolicyLanguage_Interplay)\.
 
 
 **Account A Calls API Owned by Account A**  

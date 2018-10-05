@@ -1,8 +1,8 @@
 # Update a Canary Release<a name="update-canary-deployment"></a>
 
- After a canary release is deployed, you may want to adjust the percentage of the canary traffic or enable or disable the use of a stage cache to optimize the test performance\. You can also modify stage variables used in the canary release when the execution context is updated\. To make such updates, call the [http://docs.aws.amazon.com/apigateway/api-reference/link-relation/stage-update/](http://docs.aws.amazon.com/apigateway/api-reference/link-relation/stage-update/) operation with new values on [canarySettings](http://docs.aws.amazon.com/apigateway/api-reference/resource/stage/#canarySettings)\. 
+ After a canary release is deployed, you may want to adjust the percentage of the canary traffic or enable or disable the use of a stage cache to optimize the test performance\. You can also modify stage variables used in the canary release when the execution context is updated\. To make such updates, call the [https://docs.aws.amazon.com/apigateway/api-reference/link-relation/stage-update/](https://docs.aws.amazon.com/apigateway/api-reference/link-relation/stage-update/) operation with new values on [canarySettings](https://docs.aws.amazon.com/apigateway/api-reference/resource/stage/#canarySettings)\. 
 
-You can update a canary release using the API Gateway console, the AWS CLI [update\-stage](http://docs.aws.amazon.com/cli/latest/reference/apigateway/update-stage.html) command, an AWS SDK, and the API Gateway REST API's [stage:update](http://docs.aws.amazon.com/apigateway/api-reference/link-relation/stage-update/) link\-relation\.
+You can update a canary release using the API Gateway console, the AWS CLI [update\-stage](https://docs.aws.amazon.com/cli/latest/reference/apigateway/update-stage.html) command, an AWS SDK, and the API Gateway REST API's [stage:update](https://docs.aws.amazon.com/apigateway/api-reference/link-relation/stage-update/) link\-relation\.
 
 **Topics**
 + [Update a Canary Release Using the API Gateway Console](#update-canary-deployment-using-console)
@@ -29,9 +29,9 @@ To use the API Gateway console to update existing canary settings on a stage, do
 
 ## Update a Canary Release Using the AWS CLI<a name="update-canary-deployment-using-cli"></a>
 
- To use the AWS CLI to update a canary, call the [http://docs.aws.amazon.com/cli/latest/reference/apigateway/update-stage.html](http://docs.aws.amazon.com/cli/latest/reference/apigateway/update-stage.html) command\.
+ To use the AWS CLI to update a canary, call the [https://docs.aws.amazon.com/cli/latest/reference/apigateway/update-stage.html](https://docs.aws.amazon.com/cli/latest/reference/apigateway/update-stage.html) command\.
 
-To enable or disable the use of a stage cache for the canary, call the [http://docs.aws.amazon.com/cli/latest/reference/apigateway/update-stage.html](http://docs.aws.amazon.com/cli/latest/reference/apigateway/update-stage.html) command as follows: 
+To enable or disable the use of a stage cache for the canary, call the [https://docs.aws.amazon.com/cli/latest/reference/apigateway/update-stage.html](https://docs.aws.amazon.com/cli/latest/reference/apigateway/update-stage.html) command as follows: 
 
 ```
 aws apigateway update-stage          \
@@ -40,7 +40,7 @@ aws apigateway update-stage          \
     --patch-operations op=replace,path=/canarySettings/useStageCache,value=true
 ```
 
-To adjust the canary traffic percentage, call `update-stage` to replace the `/canarySettings/percentTraffic` value on the [stage](http://docs.aws.amazon.com/apigateway/api-reference/resource/stage/)\.
+To adjust the canary traffic percentage, call `update-stage` to replace the `/canarySettings/percentTraffic` value on the [stage](https://docs.aws.amazon.com/apigateway/api-reference/resource/stage/)\.
 
 ```
 aws apigateway update-stage          \
@@ -99,7 +99,7 @@ aws apigateway update-stage                                      \
 
 ## Update a Canary Release Using the API Gateway REST API<a name="update-canary-deployment-using-api"></a>
 
-To enable or disable the use of a stage cache for the canary, call [http://docs.aws.amazon.com/apigateway/api-reference/link-relation/stage-update/](http://docs.aws.amazon.com/apigateway/api-reference/link-relation/stage-update/) as follows: 
+To enable or disable the use of a stage cache for the canary, call [https://docs.aws.amazon.com/apigateway/api-reference/link-relation/stage-update/](https://docs.aws.amazon.com/apigateway/api-reference/link-relation/stage-update/) as follows: 
 
 ```
 PATCH /restapis/{rest-api-id}/stages/{stage-name}
@@ -113,7 +113,7 @@ PATCH /restapis/{rest-api-id}/stages/{stage-name}
 }
 ```
 
-To adjust the canary traffic percentage, call `stage:update` to replace the `/canarySettings/percentTraffic` value on the [stage](http://docs.aws.amazon.com/apigateway/api-reference/resource/stage/)\.
+To adjust the canary traffic percentage, call `stage:update` to replace the `/canarySettings/percentTraffic` value on the [stage](https://docs.aws.amazon.com/apigateway/api-reference/resource/stage/)\.
 
 ```
 PATCH /restapis/{rest-api-id}/stages/{stage-name}
