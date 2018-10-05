@@ -267,7 +267,7 @@ https://{restapi-id}.execute-api.{region}.amazonaws.com/{stage}
 For example, assuming you set up the `GET /pets` and `GET /pets/{petId}` methods in this example, and assuming that your API's API ID was `0qzs2sy7bh` and its public DNS name was `vpce-0c1308d7312217cd7-01234567.execute-api.us-west-1.vpce.amazonaws.com` and your region was `us-west-2`, you could test your API by using the following cURL command:
 
 ```
-curl -v https://vpce-0c1308d7312217cd7-01234567.execute-api.us-east-1.vpce.amazonaws.com/test/get -H'Host:0qzs2sy7bh.execute-api.us-west-2.amazonaws.com'
+curl -v https://vpce-0c1308d7312217cd7-01234567.execute-api.us-east-1.vpce.amazonaws.com/test/get -H"Host:0qzs2sy7bh.execute-api.us-west-2.amazonaws.com"
 ```
 
 ### Accessing Your API Using AWS Direct Connect<a name="w4aac12c15c23c29c13"></a>
