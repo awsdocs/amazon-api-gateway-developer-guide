@@ -1,6 +1,6 @@
 # Support Binary Payloads in API Gateway<a name="api-gateway-payload-encodings"></a>
 
- In API Gateway, the API request and response can have a text or binary payload\. A text payload is a `UTF-8`\-encoded JSON string\. and a binary payload is anything other than a text payload\. The binary payload can be, for example, a JPEG file, a GZip file, or an XML file\. 
+ In API Gateway, the API request and response can have a text or binary payload\. A text payload is a `UTF-8`\-encoded JSON string\, and a binary payload is anything other than a text payload\. The binary payload can be, for example, a JPEG file, a GZip file, or an XML file\. 
 
  By default, API Gateway treats the message body as a text payload and applies any preconfigured mapping template to transform the JSON string\. If no mapping template is specified, API Gateway can pass the text payload through to or from the integration endpoint without modification, provided that the passthrough behavior is enabled on the API method\. For a binary payload, API Gateway simply passes through the message as\-is\. 
 
