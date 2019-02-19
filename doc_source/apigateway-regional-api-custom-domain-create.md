@@ -122,7 +122,7 @@ To use the AWS CLI to set up a custom domain name for a regional API, use the fo
 
    ```
    aws apigateway create-base-path-mapping \
-       --domain-name 'regional.exampple.com' \
+       --domain-name 'regional.example.com' \
        --base-path 'RegionalApiTest' \
        --rest-api-id 0qzs2sy7bh \
        --stage 'test'
