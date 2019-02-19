@@ -33,7 +33,7 @@ Once you've created your VPC endpoint, you can use it to access multiple private
 
 **To create an interface VPC endpoint for API Gateway `execute-api`**
 
-1. Log in to to the Amazon VPC console at [https://console\.aws\.amazon\.com/vpc/](https://console.aws.amazon.com/vpc/)\.
+1. Log in to the Amazon VPC console at [https://console\.aws\.amazon\.com/vpc/](https://console.aws.amazon.com/vpc/)\.
 
 1. In the navigation pane, choose **Endpoints**, **Create Endpoint**\.
 
@@ -50,7 +50,7 @@ Once you've created your VPC endpoint, you can use it to access multiple private
 Not all Availability Zones may be supported for all AWS services\.
    + For **Enable Private DNS Name**, you can optionally select the check box to enable private DNS for the interface endpoint\. 
 
-     If you choose to enable private DNS, you'll be able to to access your API via private or public DNS\. This is the recommended choice\.
+     If you choose to enable private DNS, you'll be able to access your API via private or public DNS\. This is the recommended choice\.
 
      If you choose not to enable private DNS, you'll only be able to access your API via public DNS\.
 
@@ -210,7 +210,7 @@ Once you have deployed your private API, you can access it via private DNS \(if 
 
 To get the DNS names for your private API, do the following:
 
-1. Log in to to the Amazon VPC console at [https://console\.aws\.amazon\.com/vpc/](https://console.aws.amazon.com/vpc/)\.
+1. Log in to the Amazon VPC console at [https://console\.aws\.amazon\.com/vpc/](https://console.aws.amazon.com/vpc/)\.
 
 1. In the left\-hand navigation pane, choose **Endpoints** and then choose your interface VPC endpoint for API Gateway\.
 
