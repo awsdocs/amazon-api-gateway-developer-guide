@@ -40,7 +40,7 @@ The following Lambda function in Node\.js is a "Hello, World\!" application\. Th
 'use strict';
 console.log('Loading hello world function');
  
-exports.handler = function(event, context, callback) {
+exports.handler = async (event) => {
     let name = "you";
     let city = 'World';
     let time = 'day';
@@ -53,41 +53,31 @@ exports.handler = function(event, context, callback) {
     // such as 'event.headers', 'event.pathParameters', 'event.body', 'event.stageVariables', 
     // and 'event.requestContext' can be used to determine what response to return. 
     //
-    if (event.queryStringParameters !== null && event.queryStringParameters !== undefined) {
-        if (event.queryStringParameters.name !== undefined && 
-            event.queryStringParameters.name !== null && 
-            event.queryStringParameters.name !== "") {
-            console.log("Received name: " + event.queryStringParameters.name);
-            name = event.queryStringParameters.name;
-        }
+    if (event.queryStringParameters && event.queryStringParameters.name) {
+        console.log("Received name: " + event.queryStringParameters.name);
+        name = event.queryStringParameters.name;
     }
     
-    if (event.pathParameters !== null && event.pathParameters !== undefined) {
-        if (event.pathParameters.proxy !== undefined && 
-            event.pathParameters.proxy !== null && 
-            event.pathParameters.proxy !== "") {
-            console.log("Received proxy: " + event.pathParameters.proxy);
-            city = event.pathParameters.proxy;
-        }
+    if (event.pathParameters  && event.pathParameters.proxy) {
+        console.log("Received proxy: " + event.pathParameters.proxy);
+        city = event.pathParameters.proxy;
     }
     
-    if (event.headers !== null && event.headers !== undefined) {
-        if (event.headers['day'] !== undefined && event.headers['day'] !== null && event.headers['day'] !== "") {
-            console.log("Received day: " + event.headers.day);
-            day = event.headers.day;
-        }
+    if (event.headers && event.headers['day']) {
+        console.log("Received day: " + event.headers.day);
+        day = event.headers.day;
     }
     
-    if (event.body !== null && event.body !== undefined) {
+    if (event.body) {
         let body = JSON.parse(event.body)
         if (body.time) 
             time = body.time;
     }
  
-    let greeting = 'Good ' + time + ', ' + name + ' of ' + city + '. ';
-    if (day) greeting += 'Happy ' + day + '!';
+    let greeting = `Good '${time}, ${name} of ${city}. `;
+    if (day) greeting += `Happy ${day}!`;
 
-    var responseBody = {
+    let responseBody = {
         message: greeting,
         input: event
     };
@@ -98,7 +88,7 @@ exports.handler = function(event, context, callback) {
     // ones. The 'body' property  must be a JSON string. For 
     // base64-encoded payload, you must also set the 'isBase64Encoded'
     // property to 'true'.
-    var response = {
+    let response = {
         statusCode: responseCode,
         headers: {
             "x-custom-header" : "my custom header value"
@@ -106,7 +96,7 @@ exports.handler = function(event, context, callback) {
         body: JSON.stringify(responseBody)
     };
     console.log("response: " + JSON.stringify(response))
-    callback(null, response);
+    return response;
 };
 ```
 
