@@ -1,6 +1,6 @@
 # x\-amazon\-apigateway\-authorizer Object<a name="api-gateway-swagger-extensions-authorizer"></a>
 
- Defines a Lambda authorizer \(formerly known as a custom authorizer\) to be applied for authorization of method invocations in API Gateway\. This object is an extended property of the [Swagger Security Definitions](https://github.com/OAI/OpenAPI-Specification/blob/master/versions/2.0.md#security-definitions-object) object\. 
+ Defines a Lambda authorizer \(formerly known as a custom authorizer\) to be applied for authorization of method invocations in API Gateway\. This object is an extended property of the [OpenAPI Security Definitions](https://github.com/OAI/OpenAPI-Specification/blob/master/versions/2.0.md#security-definitions-object) object\. 
 
 
 **Properties**  
@@ -16,7 +16,7 @@
 
 ## x\-amazon\-apigateway\-authorizer Examples<a name="api-gateway-swagger-extensions-authorizer-example"></a>
 
-The following Swagger security definitions example specifies a Lambda authorizer of the "token" type and named `test-authorizer`\.
+The following OpenAPI security definitions example specifies a Lambda authorizer of the "token" type and named `test-authorizer`\.
 
 ```
   "securityDefinitions" : {
@@ -36,7 +36,7 @@ The following Swagger security definitions example specifies a Lambda authorizer
   }
 ```
 
-The following Swagger operation object snippet sets the `GET /http` to use the Lambda authorizer specified above\.
+The following OpenAPI operation object snippet sets the `GET /http` to use the Lambda authorizer specified above\.
 
 ```
    "/http" : {
@@ -59,7 +59,7 @@ The following Swagger operation object snippet sets the `GET /http` to use the L
     }
 ```
 
-The following Swagger security definitions example specifies a Lambda authorizer of the "request" type, with a single header parameter \(`auth`\) as the identity source\. The `securityDefinitions` is named `request_authorizer_single_header`\.
+The following OpenAPI security definitions example specifies a Lambda authorizer of the "request" type, with a single header parameter \(`auth`\) as the identity source\. The `securityDefinitions` is named `request_authorizer_single_header`\.
 
 ```
 "securityDefinitions": {
@@ -79,7 +79,7 @@ The following Swagger security definitions example specifies a Lambda authorizer
 }
 ```
 
-The following Swagger security definitions example specifies a Lambda authorizer of the "request" type, with one header \(`HeaderAuth1`\) and one query string parameter `QueryString1` as the identity sources\.
+The following OpenAPI security definitions example specifies a Lambda authorizer of the "request" type, with one header \(`HeaderAuth1`\) and one query string parameter `QueryString1` as the identity sources\.
 
 ```
 "securityDefinitions": {
@@ -99,7 +99,7 @@ The following Swagger security definitions example specifies a Lambda authorizer
 }
 ```
 
-The following Swagger security definitions example specifies an API Gateway Lambda authorizer of the "request" type, with a single stage variable \(`stage`\) as the identity source\. 
+The following OpenAPI security definitions example specifies an API Gateway Lambda authorizer of the "request" type, with a single stage variable \(`stage`\) as the identity source\. 
 
 ```
 "securityDefinitions": {

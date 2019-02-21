@@ -151,6 +151,7 @@ In this tutorial, you'll override the `GET` method's request header code by crea
    $input.json("$")
    #set($context.requestOverride.header.header3 = $header3Value)
    #set($context.requestOverride.header.header1 = $header1Override)
+   #set($context.requestOverride.header.multivalueheader=[$header1Override, $header3Value])
    ```
 
 1. Choose **Save**\.
@@ -172,8 +173,8 @@ In this tutorial, you'll override the `GET` method's request header code by crea
 
    ```
    Endpoint request headers: {header3=header1Valheader2Val, 
-   header2=header2Val, x-amzn-apigateway-api-id=<api-id>, header1=foo, 
-   Accept=application/json
+   header2=header2Val, header1=foo, x-amzn-apigateway-api-id=<api-id>,
+   Accept=application/json, multivalueheader=foo,header1Valheader2Val}
    ```
 
 ## Examples: Override an API's Request Parameters and Headers with the API Gateway CLI<a name="apigateway-override-request-response-parameters-cli"></a>

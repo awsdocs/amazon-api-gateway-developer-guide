@@ -54,4 +54,4 @@ aws apigateway get-sdk \
 
 The last input of `~/apps/myApi/myApi-ruby-sdk.zip` is the path to the downloaded SDK file named `myApi-ruby-sdk.zip`\.
 
- Next, we show how to use the generated SDK to call the underlying API\. For more information, see [Call API through Generated SDKs](how-to-call-api-using-generated-sdk.md)\. 
+ Next, we show how to use the generated SDK to call the underlying API\. For more information, see [Call REST API through Generated SDKs](how-to-call-api-using-generated-sdk.md)\. 

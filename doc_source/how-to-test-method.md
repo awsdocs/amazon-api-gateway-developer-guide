@@ -1,13 +1,13 @@
-# Use the API Gateway Console to Test a Method<a name="how-to-test-method"></a>
+# Use the API Gateway Console to Test a REST API Method<a name="how-to-test-method"></a>
 
-Use the API Gateway console to test a method\.
+Use the API Gateway console to test a REST API method\.
 
 **Topics**
 + [Prerequisites](#how-to-test-method-prerequisites)
 + [Test a Method with the API Gateway Console](#how-to-test-method-console)
 
 ## Prerequisites<a name="how-to-test-method-prerequisites"></a>
-+ You must specify the settings for the methods you want to test\. Follow the instructions in [Set up API Methods in API Gateway](how-to-method-settings.md)\.
++ You must specify the settings for the methods you want to test\. Follow the instructions in [Set up REST API Methods in API Gateway](how-to-method-settings.md)\.
 
 ## Test a Method with the API Gateway Console<a name="how-to-test-method-console"></a>
 

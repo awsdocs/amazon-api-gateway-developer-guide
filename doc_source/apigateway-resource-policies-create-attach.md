@@ -2,10 +2,13 @@
 
 To allow a user to access your API by calling the API execution service, you must create an API Gateway resource policy, which controls access to the API Gateway resources, and attach the policy to the API\.
 
+**Important**  
+To update an API Gateway resource policy, you'll need to have `apigateway:UpdateRestApiPolicy` permission in addition to `apigateway:PATCH` permission\. 
+
 The resource policy can be attached to the API when the API is being created, or it can be attached afterwards\. For private APIs, note that until you attach the resource policy to the private API, all calls to the API will fail\.
 
 **Important**  
-If you update the resource policy after the API is created, you'll need to deploy the API to propagate the changes after you've attached the updated policy\. Updating or saving the policy alone won't change the runtime behavior of the API\. For more information about deploying your API, see [Deploying an API in Amazon API Gateway](how-to-deploy-api.md)\.
+If you update the resource policy after the API is created, you'll need to deploy the API to propagate the changes after you've attached the updated policy\. Updating or saving the policy alone won't change the runtime behavior of the API\. For more information about deploying your API, see [Deploying a REST API in Amazon API Gateway](how-to-deploy-api.md)\.
 
 Access can be controlled by IAM condition elements, including conditions on AWS account, source VPC, source VPC endpoint, or IP range\. If the `Principal` in the policy is set to `"*"`, other authorization types can be used alongside the resource policy\. If the `Principal` is set to `"AWS"`, authorization will fail for all resources not secured with `AWS_IAM` authorization, including unsecured resources\.
 
@@ -18,7 +21,7 @@ If you use the API Gateway console attach a resource policy to a deployed API, o
 + [Attaching API Gateway Resource Policies \(Console\)](#apigateway-resource-policies-create-attach-console)
 + [Attaching API Gateway Resource Policies \(AWS CLI\)](#apigateway-resource-policies-create-attach-using-cli)
 + [Attaching API Gateway Resource Policies \(API Gateway API\)](#apigateway-resource-policies-create-attach-using-api)
-+ [Swagger Example of Attaching a API Gateway Resource Policy](#apigateway-resource-policies-create-attach-using-swagger)
++ [OpenAPI Example of Attaching a API Gateway Resource Policy](#apigateway-resource-policies-create-attach-using-swagger)
 
 ## Attaching API Gateway Resource Policies \(Console\)<a name="apigateway-resource-policies-create-attach-console"></a>
 
@@ -30,7 +33,7 @@ You can use the AWS Management console to attach a resource policy to an API Gat
 
 1. Choose the API name\.
 
-1. In the left\-hand navigation pane, choose **Resource Policy**\.
+1. In the left navigation pane, choose **Resource Policy**\.
 
 1. If desired, choose one of the **Examples**\. In the example policies, placeholders are enclosed in double curly braces \(`"{{placeholder}}"`\)\. Replace each of the placeholders \(including the curly braces\) with the necessary information\.
 
@@ -75,7 +78,7 @@ POST /restapis
 // ]
 ```
 
-To use the [API Gateway REST API](https://docs.aws.amazon.com/apigateway/api-reference/) to attach a resource policy to an existing API, call the [https://docs.aws.amazon.com/apigateway/api-reference/link-relation/restapi-update/](https://docs.aws.amazon.com/apigateway/api-reference/link-relation/restapi-update/) command as follows: 
+To use the [API Gateway REST API](https://docs.aws.amazon.com/apigateway/api-reference/) to attach a resource policy to an existing API, call the [https://docs.aws.amazon.com/apigateway/api-reference/link-relation/restapi-create/](https://docs.aws.amazon.com/apigateway/api-reference/link-relation/restapi-create/) command as follows: 
 
 ```
 PATCH /restapis/api-id
@@ -89,9 +92,43 @@ PATCH /restapis/api-id
 }
 ```
 
-## Swagger Example of Attaching a API Gateway Resource Policy<a name="apigateway-resource-policies-create-attach-using-swagger"></a>
+## OpenAPI Example of Attaching a API Gateway Resource Policy<a name="apigateway-resource-policies-create-attach-using-swagger"></a>
 
-The [https://docs.aws.amazon.com/apigateway/api-reference/link-relation/import-restapi/](https://docs.aws.amazon.com/apigateway/api-reference/link-relation/import-restapi/) command can be used to import a Swagger definition of an API with attached resource policy, as shown in the following example:
+The [https://docs.aws.amazon.com/apigateway/api-reference/link-relation/import-restapi/](https://docs.aws.amazon.com/apigateway/api-reference/link-relation/import-restapi/) command can be used to import an OpenAPI definition of an API with attached resource policy, as shown in the following example:
+
+------
+#### [ OpenAPI 3\.0 ]
+
+```
+{
+ "openapi": "3.0",
+ "x-amazon-apigateway-policy": {
+   "Version": "2012-10-17",
+   "Statement": [
+      {
+       "Effect": "Allow",
+       "Principal": {
+         "AWS": [
+           "arn:aws:iam::111122223333:user/Alice",
+           "arn:aws:iam::111122223333:root"
+          ]
+        },
+       "Action": "execute-api:Invoke",
+       "Resource": [
+         "execute-api:/stage/method/path" // simplified format supported here because apiId is not known yet and partition/region/account can derived at import time
+       ]
+      }
+    ]
+  },
+ "info" : {
+   "title" : "Example"
+  },
+ "paths": {...}
+}
+```
+
+------
+#### [ OpenAPI 2\.0 ]
 
 ```
 {
@@ -123,3 +160,5 @@ The [https://docs.aws.amazon.com/apigateway/api-reference/link-relation/import-r
  "paths": {...}
 }
 ```
+
+------

@@ -8,9 +8,9 @@ You can use the API dashboard in the API Gateway Console to display the CloudWat
 
 ## Prerequisites<a name="how-to-api-dashboard-prerequisites"></a>
 
-1. You must have an API created in API Gateway\. Follow the instructions in [Creating an API in Amazon API Gateway](how-to-create-api.md)\.
+1. You must have an API created in API Gateway\. Follow the instructions in [Creating a REST API in Amazon API Gateway](how-to-create-api.md)\.
 
-1. You must have the API deployed at least once\. Follow the instructions in [Deploying an API in Amazon API Gateway](how-to-deploy-api.md)\.
+1. You must have the API deployed at least once\. Follow the instructions in [Deploying a REST API in Amazon API Gateway](how-to-deploy-api.md)\.
 
 1. To get CloudWatch metrics for individual methods, you must have CloudWatch Logs enabled for those methods in a given stage as described in [Update Stage Settings](stages.md#how-to-stage-settings)\. Your account will be charged for accessing method\-level logs, but not for accessing API\- or stage\-level logs\.
 

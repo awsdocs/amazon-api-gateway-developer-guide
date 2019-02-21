@@ -1,8 +1,8 @@
-# Import an API into API Gateway<a name="api-gateway-import-api"></a>
+# Import a REST API into API Gateway<a name="api-gateway-import-api"></a>
 
- You can use the API Gateway Import API feature to import an API from an external definition file into API Gateway\. Currently, the Import API feature supports [Swagger v2\.0](https://github.com/OAI/OpenAPI-Specification/blob/master/versions/2.0.md) definition files\. 
+ You can use the API Gateway Import API feature to import a REST API from an external definition file into API Gateway\. Currently, the Import API feature supports [OpenAPI v2\.0](https://github.com/OAI/OpenAPI-Specification/blob/master/versions/2.0.md) and [OpenAPI v3\.0](https://github.com/OAI/OpenAPI-Specification/blob/master/versions/3.0.1.md) definition files\. 
 
- With the Import API, you can either create a new API by submitting a [`POST` request](https://docs.aws.amazon.com/apigateway/api-reference/link-relation/restapi-import/) that includes a Swagger definition in the payload and endpoint configuration, or you can update an existing API by using a [PUT request](https://docs.aws.amazon.com/apigateway/api-reference/link-relation/restapi-put/) that contains a Swagger definition in the payload\. You can update an API by overwriting it with a new definition, or merge a definition with an existing API\. You specify the options using a `mode` query parameter in the request URL\. 
+ With the Import API, you can either create a new API by submitting a [`POST` request](https://docs.aws.amazon.com/apigateway/api-reference/link-relation/restapi-import/) that includes an OpenAPI definition in the payload and endpoint configuration, or you can update an existing API by using a [PUT request](https://docs.aws.amazon.com/apigateway/api-reference/link-relation/restapi-put/) that contains an OpenAPI definition in the payload\. You can update an API by overwriting it with a new definition, or merge a definition with an existing API\. You specify the options using a `mode` query parameter in the request URL\. 
 
 **Note**  
  For RAML API definitions, you can continue to use [API Gateway Importer](https://github.com/awslabs/aws-apigateway-importer)\. 
@@ -12,6 +12,6 @@
 **Topics**
 + [Import an Edge\-Optimized API into API Gateway](import-edge-optimized-api.md)
 + [Import a Regional API into API Gateway](import-export-api-endpoints.md)
-+ [Import a Swagger File to Update an Existing API Definition](api-gateway-import-api-update.md)
-+ [Set the Swagger `basePath` Property](api-gateway-import-api-basePath.md)
++ [Import an OpenAPI File to Update an Existing API Definition](api-gateway-import-api-update.md)
++ [Set the OpenAPI `basePath` Property](api-gateway-import-api-basePath.md)
 + [Errors and Warnings during Import](api-gateway-import-api-errors-warnings.md)

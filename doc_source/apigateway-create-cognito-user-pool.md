@@ -1,4 +1,4 @@
-# Create an Amazon Cognito User Pool<a name="apigateway-create-cognito-user-pool"></a>
+# Create an Amazon Cognito User Pool for a REST API<a name="apigateway-create-cognito-user-pool"></a>
 
 Before integrating your API with a user pool, you must create the user pool in Amazon Cognito\. For instructions on how to create a user pool, see [Setting up User Pools](https://docs.aws.amazon.com/cognito/latest/developerguide/setting-up-cognito-user-identity-pools.html) in the *Amazon Cognito Developer Guide*\.
 

@@ -27,7 +27,7 @@
 
 1.  Choose **Create API**\.
 
-From here on, you can proceed to set up API methods and their associated integrations as described in [creating an edge optimized API](api-gateway-create-api-step-by-step.md)\. 
+From here on, you can proceed to set up API methods and their associated integrations as described in [creating an edge optimized API](create-api-using-console.md)\. 
 
 ## Create a Regional API Using the AWS CLI<a name="create-regional-endpoint-api-using-aws-cli"></a>
 
@@ -41,7 +41,7 @@ aws apigateway create-rest-api \
         --endpoint-configuration '{ "types": ["REGIONAL"] }'
 ```
 
-The successful response returns an output similar to the following:
+A successful response returns a payload similar to the following:
 
 ```
 {
@@ -79,7 +79,7 @@ apig.createRestApi({
 });
 ```
 
-The successful response returns an output similar to the following:
+A successful response returns a payload similar to the following:
 
 ```
 {
@@ -93,7 +93,7 @@ The successful response returns an output similar to the following:
 }
 ```
 
- After completing the preceding steps, you can follow the instructions in [ Set up an Edge\-Optimized API Using the AWS SDK for Node\.js ](create-api-using-awssdk.md) to set up methods and integrations for this API\. 
+ After completing the preceding steps, you can follow the instructions in [Set up an Edge\-Optimized API Using the AWS SDK for Node\.js](create-api-using-awssdk.md) to set up methods and integrations for this API\. 
 
 ## Create a Regional API Using the API Gateway REST API<a name="create-regional-endpoint-api-using-rest-api"></a>
 
@@ -115,7 +115,7 @@ Authorization: AWS4-HMAC-SHA256 Credential={ACCESS-KEY-ID}/20170511/us-west-2/ap
 }
 ```
 
-The successful response has the status code of `201 Created` and a body similar to the following output:
+A successful response has a status code of `201 Created` and a body similar to the following:
 
 ```
 {

@@ -31,13 +31,19 @@ To use the API Gateway console to create a canary release deployment, follow the
 
 1.  To enable API caching, choose the **Settings** tab in **Stage Editor** and follow the on\-screen instructions\. For more information, see [Enable API Caching to Enhance Responsiveness](api-gateway-caching.md)\.
 
-1. To set stage variables, choose the **Stage Variables** tab in **Stage Editor** and follow the on\-screen instructions to add or modify stage variables\. For more information, see [Set up Stage Variable for API Deployment](stage-variables.md)\.
+1. To set stage variables, choose the **Stage Variables** tab in **Stage Editor** and follow the on\-screen instructions to add or modify stage variables\. For more information, see [Set up Stage Variables for a REST API Deployment](stage-variables.md)\.
 
 1.  To configure execution or access logging, choose the **Logs** tab in **Stage Editor** and follow the on\-screen instructions\. For more information, see [Set Up CloudWatch API Logging in API Gateway](set-up-logging.md)\.
 
 1.  In **Stage Editor**, choose the **Canary** tab and then choose **Create Canary**\.
 
 1.  Under the **Stage's Request Distribution** section, choose the pencil icon next to **Percentage of requests to Canary** and type a number \(for example, `5.0`\) in the input text field\. Choose the check mark icon to save the setting\.
+
+1. To associate an AWS WAF web ACL with the stage, choose a web ACL from the **Web ACL** dropdown list\.
+**Note**  
+If needed, choose **Create Web ACL** to open the AWS WAF console in a new browser tab, create the web ACL, and return to the API Gateway console to associate the web ACL with the stage\.
+
+1. If desired, choose **Block API Request if WebACL cannot be evaluated \(Fail\- Close\)**\.
 
 1. If needed, choose **Add Stage Variables** to add them under the **Canary Stage Variables** section to override existing stage variables or add new stage variables for the canary release\. 
 
@@ -360,7 +366,7 @@ Authorization: AWS4-HMAC-SHA256 Credential={SECRET_ACCESS_KEY}/20171121/us-east-
 
 Because the original deployment is without a canary release, we set the `/canarysettings/deploymentId` value to the `deploymentId` \(`"ghdx4w"`\) associated with the deployment stage\. 
 
-The successful response returns a payload similar to the following:
+A successful response returns a payload similar to the following:
 
 ```
 {

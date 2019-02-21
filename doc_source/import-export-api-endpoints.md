@@ -10,28 +10,28 @@ To import an API of a regional endpoint using the API Gateway console, do the fo
 
 1.  Sign in to the API Gateway console and choose **\+ Create API**\. 
 
-1.  Select the **Import from Swagger** option under **Create new API**\.
+1.  Select the **Import from OpenAPI** option under **Create new API**\.
 
-1.  Copy an API Swagger definition and paste it into the code editor, or choose **Select Swagger File** to load a Swagger file from a local drive\.
+1.  Copy an API's OpenAPI definition and paste it into the code editor, or choose **Select OpenAPI File** to load an OpenAPI file from a local drive\.
 
 1.  Under **Settings**, for **Endpoint Type**, choose `Regional`\.\.
 
-1.  Choose **Import** to start importing the Swagger definitions\.
+1.  Choose **Import** to start importing the OpenAPI definitions\.
 
 ## Import a Regional API Using the AWS CLI<a name="import-regional-api-with-awscli"></a>
 
-To import an API from a Swagger definition file using the AWS CLI, use the `import-rest-api` command:
+To import an API from an OpenAPI definition file using the AWS CLI, use the `import-rest-api` command:
 
 ```
 aws apigateway import-rest-api \
     --endpointConfigurationTypes 'REGIONAL' \
     --fail-on-warnings \
-    --body 'file://path/to/API_Swagger_template.json'
+    --body 'file://path/to/API_OpenAPI_template.json'
 ```
 
 ## Import a Regional API Using the API Gateway REST API<a name="import-regional-api-with-restapi"></a>
 
-To use the API Gateway REST API to create a regional API by importing a Swagger definition file, call the following `restapi:import` link\-relation:
+To use the API Gateway REST API to create a regional API by importing an OpenAPI definition file, call the following `restapi:import` link\-relation:
 
 ```
 POST /restapis?mode=import&failonwarnings=true&endpointConfigurationTypes=REGIONAL
@@ -40,6 +40,6 @@ Content-Type:application/json
 Content-Length: ...
 
 {
-    //API Swagger definition
+    //OpenAPI definition
 }
 ```

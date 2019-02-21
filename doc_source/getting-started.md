@@ -1,4 +1,4 @@
-# Getting Started with Amazon API Gateway<a name="getting-started"></a>
+# Getting Started with REST APIs in Amazon API Gateway<a name="getting-started"></a>
 
  With Amazon API Gateway, you can provide your clients with a consistent and scalable programming interface to access three types of endpoints in the backend: invoking AWS Lambda functions, calling other AWS services, and accessing an HTTP website or webpage\. To do this, you create an API Gateway API to integrate each API method with a backend endpoint\. Each backend endpoint is associated with an integration type\. For details about the API integration types in API Gateway, see [Choose an API Gateway API Integration Type](api-gateway-api-integration-types.md)\. 
 
@@ -30,9 +30,13 @@ If you do not have an AWS account, use the following procedure to create one\.
 
 **To sign up for AWS**
 
-1. Open [https://aws\.amazon\.com/](https://aws.amazon.com/) and choose **Create an AWS Account**\.
+1. Open [https://aws\.amazon\.com/](https://aws.amazon.com/), and then choose **Create an AWS Account**\.
+**Note**  
+If you previously signed in to the AWS Management Console using AWS account root user credentials, choose **Sign in to a different account**\. If you previously signed in to the console using IAM credentials, choose **Sign\-in using root account credentials**\. Then choose **Create a new AWS account**\.
 
 1. Follow the online instructions\.
+
+   Part of the sign\-up procedure involves receiving a phone call and entering a verification code using the phone keypad\.
 
  To create, configure, and deploy an API in API Gateway, you must have an appropriate AWS Identity and Access Management policy provisioned\. The policy must have access permissions for manipulating the API Gateway [resources](https://docs.aws.amazon.com/apigateway/api-reference/resource/) and [link relations](https://docs.aws.amazon.com/apigateway/api-reference/link-relation/)\. In addition, you can set IAM permissions to allow your API clients to call your API in API Gateway\. To do so, create IAM roles and policies and, optionally, users or groups in your AWS account, and set the IAM roles and policies on a specified IAM user or group\. 
 
@@ -138,7 +142,7 @@ Next, add the following trust policy to allow API Gateway to call the backend La
 
  Without specifying this trust relationship, API Gateway is denied the right to call the backend on behalf of the user, even when the user has been granted permissions to access the backend directly\. 
 
- When an API Gateway API is set up with IAM roles and policies to control client access, the client must sign API requests with [Signature Version 4](https://docs.aws.amazon.com/general/latest/gr/sigv4_signing.html)\. Alternatively, you can use the AWS CLI or one of the AWS SDKs to handle request signing for you\. For more information, see [Invoking an API in Amazon API Gateway](how-to-call-api.md)\. 
+ When an API Gateway API is set up with IAM roles and policies to control client access, the client must sign API requests with [Signature Version 4](https://docs.aws.amazon.com/general/latest/gr/sigv4_signing.html)\. Alternatively, you can use the AWS CLI or one of the AWS SDKs to handle request signing for you\. For more information, see [Invoking a REST API in Amazon API Gateway](how-to-call-api.md)\. 
 
 ### Next Step<a name="setting-up-next-step"></a>
 

@@ -11,7 +11,7 @@ Defines [GatewayResponse](https://docs.aws.amazon.com/apigateway/api-reference/r
 
 ## x\-amazon\-apigateway\-gateway\-responses\.responseTemplates Example<a name="api-gateway-swagger-extensions-gateway-responses.responseTemplates-example"></a>
 
- The following Swagger extensions example shows a [GatewayResponse](https://docs.aws.amazon.com/apigateway/api-reference/resource/gateway-response/) mapping template to customize an API Gateway\-generated error response into an app\-specific format\. 
+ The following OpenAPI extensions example shows a [GatewayResponse](https://docs.aws.amazon.com/apigateway/api-reference/resource/gateway-response/) mapping template to customize an API Gateway\-generated error response into an app\-specific format\. 
 
 ```
       "responseTemplates": {
@@ -19,7 +19,7 @@ Defines [GatewayResponse](https://docs.aws.amazon.com/apigateway/api-reference/r
       }
 ```
 
- The following Swagger extensions example shows a [GatewayResponse](https://docs.aws.amazon.com/apigateway/api-reference/resource/gateway-response/) mapping template to override an API Gateway\-generated error response with a static error message\. 
+ The following OpenAPI extensions example shows a [GatewayResponse](https://docs.aws.amazon.com/apigateway/api-reference/resource/gateway-response/) mapping template to override an API Gateway\-generated error response with a static error message\. 
 
 ```
       "responseTemplates": {

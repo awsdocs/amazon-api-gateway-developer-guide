@@ -6,7 +6,7 @@ To set up API keys, do the following:
 
 Before setting up API keys, you must have created an API and deployed it to a stage\. 
 
-For instructions on how to create and deploy an API by using the API Gateway console, see [Creating an API in Amazon API Gateway](how-to-create-api.md) and [Deploying an API in Amazon API Gateway](how-to-deploy-api.md), respectively\.
+For instructions on how to create and deploy an API by using the API Gateway console, see [Creating a REST API in Amazon API Gateway](how-to-create-api.md) and [Deploying a REST API in Amazon API Gateway](how-to-deploy-api.md), respectively\.
 
 **Topics**
 + [Require API Key on a Method](#api-gateway-usage-plan-configure-apikey-on-method)

@@ -12,7 +12,7 @@ Defines the documentation parts to be imported into API Gateway\. This object is
 
 ## x\-amazon\-apigateway\-documentation Example<a name="api-gateway-swagger-extensions-documentation-example"></a>
 
- The following example of the API Gateway extension to Swagger defines `DocumentationParts` instances to be imported to or exported from an API in API Gateway\. 
+ The following example of the API Gateway extension to OpenAPI defines `DocumentationParts` instances to be imported to or exported from an API in API Gateway\. 
 
 ```
 { ...

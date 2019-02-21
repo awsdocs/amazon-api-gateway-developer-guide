@@ -3,6 +3,6 @@
 The following tutorials provide hands\-on exercises to help you learn about API Gateway\.
 
 **Topics**
-+ [Create an API Gateway API for AWS Lambda Functions](integrating-api-with-aws-services-lambda.md)
-+ [Create an API as an Amazon S3 Proxy](integrating-api-with-aws-services-s3.md)
-+ [Create an API Gateway API as an Amazon Kinesis Proxy](integrating-api-with-aws-services-kinesis.md)
++ [Create a REST API for AWS Lambda Functions in API Gateway](integrating-api-with-aws-services-lambda.md)
++ [Create a REST API as an Amazon S3 Proxy in API Gateway](integrating-api-with-aws-services-s3.md)
++ [Create a REST API as an Amazon Kinesis Proxy in API Gateway](integrating-api-with-aws-services-kinesis.md)

@@ -1,4 +1,7 @@
-# Swagger Definitions of Sample API Integrated with a Lambda Function<a name="api-as-lambda-proxy-export-swagger-with-extensions"></a>
+# OpenAPI Definitions of Sample API Integrated with a Lambda Function<a name="api-as-lambda-proxy-export-swagger-with-extensions"></a>
+
+------
+#### [ OpenAPI 2\.0 ]
 
 ```
 {
@@ -171,6 +174,7 @@
           }
         },
         "x-amazon-apigateway-integration": {
+          "credentials": "arn:aws:iam::123456789012:role/apigAwsProxyRole",
           "responses": {
             "default": {
               "statusCode": "200",
@@ -247,3 +251,5 @@
   }
 }
 ```
+
+------

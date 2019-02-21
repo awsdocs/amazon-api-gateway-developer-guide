@@ -1,11 +1,8 @@
 # Build an API Gateway API with Custom Lambda Integration<a name="getting-started-lambda-non-proxy-integration"></a>
 
-**Note**  
- The *Lambda custom integration*, formerly known as the *Lambda integration*, is a legacy technology\. We recommend that you use the *Lambda proxy integration* for any new API\. For more information, see [ Build an API Gateway API with Lambda Proxy Integration ](api-gateway-create-api-as-simple-proxy-for-lambda.md)
-
 In this walkthrough, we use the API Gateway console to build an API that enables a client to call Lambda functions through the Lambda custom integration\. For more information about AWS Lambda and Lambda functions, see the [AWS Lambda Developer Guide](https://docs.aws.amazon.com/lambda/latest/dg/)\. 
 
-To facilitate learning, we chose a simple Lambda function with minimal API setup to walk you through the steps of building an API Gateway API with the Lambda custom integration\. When necessary, we describe some of the logic\. For a more detailed example of the Lambda custom integration, see [Create an API Gateway API for AWS Lambda Functions](integrating-api-with-aws-services-lambda.md)\. 
+To facilitate learning, we chose a simple Lambda function with minimal API setup to walk you through the steps of building an API Gateway API with the Lambda custom integration\. When necessary, we describe some of the logic\. For a more detailed example of the Lambda custom integration, see [Create a REST API for AWS Lambda Functions in API Gateway](integrating-api-with-aws-services-lambda.md)\. 
 
 Before creating the API, set up the Lambda backend by creating a Lambda function in AWS Lambda, described next\.
 
@@ -71,7 +68,7 @@ For more information, see the [AWS Lambda Developer Guide](https://docs.aws.amaz
 
 In addition, the function logs its execution to Amazon CloudWatch by calling `console.log(...)`\. This is helpful for tracing calls when debugging the function\. To allow the `GetStartedLambdaIntegration` function to log the call, set an IAM role with appropriate policies for the Lambda function to create the CloudWatch streams and add log entries to the streams\. The Lambda console guides you through to create the required IAM roles and policies\.
 
-If you set up the API without using the API Gateway console, such as when [importing an API from Swagger](https://github.com/awslabs/api-gateway-secure-pet-store/blob/master/src/main/resources/swagger.yaml#L39), you must explicitly create, if necessary, and set up an invocation role and policy for API Gateway to invoke the Lambda functions\. For more information on how to set up Lambda invocation and execution roles for an API Gateway API, see [Control Access to an API with IAM Permissions](permissions.md)\. 
+If you set up the API without using the API Gateway console, such as when [importing an API from an OpenAPI file](https://github.com/awslabs/api-gateway-secure-pet-store/blob/master/src/main/resources/swagger.yaml#L39), you must explicitly create, if necessary, and set up an invocation role and policy for API Gateway to invoke the Lambda functions\. For more information on how to set up Lambda invocation and execution roles for an API Gateway API, see [Control Access to an API with IAM Permissions](permissions.md)\. 
 
  Compared to [`GetStartedLambdaProxyIntegation`](api-gateway-create-api-as-simple-proxy-for-lambda.md#api-gateway-proxy-integration-lambda-function-nodejs), the Lambda function for the Lambda proxy integration, the `GetStartedLambdaIntegration` Lambda function for the Lambda custom integration only takes input from the API Gateway API integration request body\. The function can return an output of any JSON object, a string, a number, a Boolean, or even a binary blob\. The Lambda function for the Lambda proxy integration, in contrast, can take the input from any request data, but must return an output of a particular JSON object\. The `GetStartedLambdaIntegration` function for the Lambda custom integration can have the API request parameters as input, provided that API Gateway maps the required API request parameters to the integration request body before forwarding the client request to the backend\. For this to happen, the API developer must create a mapping template and configure it on the API method when creating the API\. 
 

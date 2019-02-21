@@ -27,4 +27,4 @@ If you have a dedicated documentation team to write and edit your API documentat
 }
 ```
 
- For information on setting permissions to access API Gateway resources, see [ Control Who Can Create and Manage an API Gateway API with IAM Policies ](api-gateway-control-access-using-iam-policies-to-create-and-manage-api.md#api-gateway-control-access-using-iam-policies)\. 
+ For information on setting permissions to access API Gateway resources, see [ Control Who Can Create and Manage an API Gateway API with IAM Policies](api-gateway-control-access-using-iam-policies-to-create-and-manage-api.md#api-gateway-control-access-using-iam-policies)\. 

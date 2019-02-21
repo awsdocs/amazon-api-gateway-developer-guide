@@ -1,6 +1,6 @@
-# Set up API with Private Integrations Using Swagger<a name="set-up-api-with-vpclink-using-swagger"></a>
+# Set up API with Private Integrations Using OpenAPI<a name="set-up-api-with-vpclink-using-swagger"></a>
 
-You can set up an API with the private integration by importing the API Swagger file\. The settings are similar to the Swagger definitions of an API with HTTP integrations, with the following exceptions: 
+You can set up an API with the private integration by importing the API's OpenAPI file\. The settings are similar to the OpenAPI definitions of an API with HTTP integrations, with the following exceptions: 
 + You must explicitly set `connectionType` to `VPC_LINK`\.
 + You must explicitly set `connectionId` to the ID of a `VpcLink` or to a stage variable referencing the ID of a `VpcLink`\.
 + The `uri` parameter in the private integration points to an HTTP/HTTPS endpoint in the VPC, but is used instead to set up the integration request's `Host` header\.
@@ -8,7 +8,10 @@ You can set up an API with the private integration by importing the API Swagger 
 
  You can use a stage variable to reference the `VpcLink` ID\. Or you can assign the ID value directly to `connectionId`\. 
 
-The following JSON\-formatted API Swagger file shows an example of an API with a VPC link as referenced by a stage variable \(`${stageVariables.vpcLinkId}`\):
+The following JSON\-formatted OpenAPI file shows an example of an API with a VPC link as referenced by a stage variable \(`${stageVariables.vpcLinkId}`\):
+
+------
+#### [ OpenAPI 2\.0 ]
 
 ```
 {
@@ -60,3 +63,5 @@ The following JSON\-formatted API Swagger file shows an example of an API with a
   }
 }
 ```
+
+------

@@ -80,4 +80,4 @@
 }
 ```
 
- The `requestContext` is a map of key\-value pairs and corresponds to the [$context](api-gateway-mapping-template-reference.md#context-variable-reference) variable\. Its outcome is API\-dependent\. API Gateway may add new keys to the map\. For more information about the Lambda function input in a proxy integration, see [Input Format of a Lambda Function for Proxy Integration ](set-up-lambda-proxy-integrations.md#api-gateway-simple-proxy-for-lambda-input-format)\. 
+ The `requestContext` is a map of key\-value pairs and corresponds to the [$context](api-gateway-mapping-template-reference.md#context-variable-reference) variable\. Its outcome is API\-dependent\. API Gateway may add new keys to the map\. For more information about the Lambda function input in a proxy integration, see [Input Format of a Lambda Function for Proxy Integration](set-up-lambda-proxy-integrations.md#api-gateway-simple-proxy-for-lambda-input-format)\. 

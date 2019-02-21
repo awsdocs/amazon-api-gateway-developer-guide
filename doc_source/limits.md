@@ -2,7 +2,7 @@
 
 **Topics**
 + [API Gateway Limits](#api-gateway-limits)
-+ [Known Issues](api-gateway-known-issues.md)
++ [Amazon API Gateway Known Issues](api-gateway-known-issues.md)
 
 ## API Gateway Limits<a name="api-gateway-limits"></a>
 
@@ -12,29 +12,55 @@ Unless noted otherwise, the limits can be increased upon request\. To request a 
 
  Header values are limited to 10240 bytes\. 
 
-### API Gateway Limits for Configuring and Running an API<a name="api-gateway-execution-service-limits-table"></a>
+### API Gateway Account\-Level Limits<a name="apigateway-account-level-limits-table"></a>
 
-The following limits apply to configuring and running an API in Amazon API Gateway\.
+The following limits apply at the account level in Amazon API Gateway\.
 
 
 | Resource or Operation | Default Limit | Can Be Increased | 
 | --- | --- | --- | 
-| Throttle limit per account per region | 10000 requests per second \(RPS\) with an additional burst capacity provided by the [token bucket algorithm](https://en.wikipedia.org/wiki/Token_bucket), using a maximum bucket capacity of 5000 requests\.  The burst limit is determined by the API Gateway service team based on the overall RPS limits for the account\. It is not a limit that a customer can control or request changes to\.  | Yes | 
-| Maximum number of Regional APIs per account per region | 600 | No | 
-| Maximum number of Private APIs per account per region | 600 | No | 
-| Maximum number of Edge\-Optimized APIs per account per region | 120 | No | 
-| Maximum length, in characters, of API Gateway resource policy | 8092 | Yes | 
-| Maximum number of API keys per account per region | 500 | Yes | 
-| Maximum number of client certificates per account per region | 60 | Yes | 
-| Maximum number of Lambda authorizers per API | 10 | Yes | 
-| Maximum number of documentation parts per API | 2000 | Yes | 
-| Maximum number of resources per API | 300 | Yes | 
-| Maximum number of stages per API | 10 | Yes | 
-| Maximum number of usage plans per account per region | 300 | Yes | 
-| Maximum number of usage plans per API key | 10 | Yes | 
-| Maximum number of per\-method throttling limit settings per API stage | 20 | Yes | 
-| Maximum number of VPC links per account per region | 5 | Yes | 
+| Throttle limit per region across REST APIs, WebSocket APIs, and WebSocket callback APIs | 10,000 requests per second \(RPS\) with an additional burst capacity provided by the [token bucket algorithm](https://en.wikipedia.org/wiki/Token_bucket), using a maximum bucket capacity of 5,000 requests\.  The burst limit is determined by the API Gateway service team based on the overall RPS limits for the account\. It is not a limit that a customer can control or request changes to\.  | Yes | 
+| Regional APIs | 600 | No | 
+| Edge\-Optimized APIs | 120 | No | 
+
+### API Gateway Limits for Configuring and Running a WebSocket API<a name="apigateway-execution-service-websocket-limits-table"></a>
+
+The following limits apply to configuring and running a WebSocket API in Amazon API Gateway\.
+
+
+| Resource or Operation | Default Limit | Can Be Increased | 
+| --- | --- | --- | 
+| New connections per second per account \(across all WebSocket APIs\) per region | 500 | No | 
+| AWS Lambda authorizers per API | 10 | Yes | 
+| Routes per API | 300 | Yes | 
+| Integrations per API | 300 | Yes | 
+| Stages per API | 10 | Yes | 
+| WebSocket frame size | 32 KB | No | 
+| Message payload size | 128 KB  Because of the WebSocket frame\-size limit of 32 KB, a message larger than 32 KB must be split into multiple frames, each 32 KB or smaller\. If a larger message \(or larger frame size\) is received, the connection is closed with code 1009\.  | No | 
+| Connection duration for WebSocket API | 2 hours | No | 
+| Idle Connection Timeout | 10 minutes | No | 
+
+### API Gateway Limits for Configuring and Running a REST API<a name="api-gateway-execution-service-limits-table"></a>
+
+The following limits apply to configuring and running a REST API in Amazon API Gateway\.
+
+
+| Resource or Operation | Default Limit | Can Be Increased | 
+| --- | --- | --- | 
+| Private APIs per account per region | 600 | No | 
+| Length, in characters, of API Gateway resource policy | 8092 | Yes | 
+| API keys per account per region | 500 | Yes | 
+| Client certificates per account per region | 60 | Yes | 
+| Authorizers per API \(AWS Lambda and Amazon Cognito\) | 10 | Yes | 
+| Documentation parts per API | 2000 | Yes | 
+| Resources per API | 300 | Yes | 
+| Stages per API | 10 | Yes | 
+| Usage plans per account per region | 300 | Yes | 
+| Usage plans per API key | 10 | Yes | 
+| Per\-method throttling limit settings per API stage | 20 | Yes | 
+| VPC links per account per region | 5 | Yes | 
 | API caching TTL | 300 seconds by default and configurable between 0 and 3600 by an API owner\. | Not for the upper bound \(3600\) | 
+| Cached response size | 1048576 Bytes\. Cache data encryption may increase the size of the item that is being cached\. | No | 
 | Integration timeout | 50 milliseconds \- 29 seconds for all integration types, including Lambda, Lambda proxy, HTTP, HTTP proxy, and AWS integrations\. | Not for the lower or upper bounds\. | 
 | Header value size | 10240 Bytes | No | 
 | Payload size | 10 MB | No | 

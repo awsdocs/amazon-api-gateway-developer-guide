@@ -1,4 +1,4 @@
-# Obtain Permissions to Create User Pool Authorizers<a name="apigateway-user-pool-authorizer-permissions"></a>
+# Obtain Permissions to Create Amazon Cognito User Pool Authorizers for a REST API<a name="apigateway-user-pool-authorizer-permissions"></a>
 
 To create an authorizer with an Amazon Cognito user pool, you must have `Allow` permissions to create or update an authorizer with the chosen Amazon Cognito user pool\. The following IAM policy document shows an example of such permissions:
 

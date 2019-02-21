@@ -2,6 +2,10 @@
 
 You can enable API caching in Amazon API Gateway to cache your endpoint's responses\. With caching, you can reduce the number of calls made to your endpoint and also improve the latency of requests to your API\. When you enable caching for a stage, API Gateway caches responses from your endpoint for a specified time\-to\-live \(TTL\) period, in seconds\. API Gateway then responds to the request by looking up the endpoint response from the cache instead of making a request to your endpoint\. The default TTL value for API caching is 300 seconds\. The maximum TTL value is 3600 seconds\. TTL=0 means caching is disabled\.
 
+The maximum size of a response that can be cached is 1048576 bytes\. Cache data encryption may increase the size of the response when it is being cached\.
+
+This is a HIPAA Eligible Service\. For more information about AWS, U\.S\. Health Insurance Portability and Accountability Act of 1996 \(HIPAA\), and using AWS services to process, store, and transmit protected health information \(PHI\), see [HIPAA Overview](https://aws.amazon.com/compliance/hipaa-compliance/)\.
+
 **Important**  
 When you enable caching for a stage, only `GET` methods have caching enabled by default\. This helps to ensure the safety and availability of your API\. You can enable caching for other methods by [overriding method settings](#override-api-gateway-stage-cache-for-method-cache)\.
 
@@ -74,6 +78,9 @@ If you anticipate that a method that you are caching will receive sensitive data
 
  When a cached method or integration has parameters, which can take the form of custom headers, URL paths, or query strings, you can use some or all of the parameters to form cache keys\. API Gateway can cache the method's responses, depending on the parameter values used\. 
 
+**Note**  
+Cache keys are required when setting up caching on a resource\.
+
  For example, suppose you have a request in the following format: 
 
 ```
@@ -138,7 +145,7 @@ A client of your API can invalidate an existing cache entry and reload it from t
 
  This policy allows the API Gateway execution service to invalidate the cache for requests on the specified resource \(or resources\)\. To specify a group of targeted resources, use a wildcard \(\*\) character for `account-id`, `api-id`, and other entries in the ARN value of `Resource`\. For more information on how to set permissions for the API Gateway execution service, see [Control Access to an API with IAM Permissions](permissions.md) 
 
- If you do not impose an `InvalidateCache` policy, any client can invalidate the API cache\. If most or all of the clients invalidate the API cache, this could significantly increase the latency of your API\. 
+ If you do not impose an `InvalidateCache` policy \(or choose the **Require authorization** checkbox in the console\), any client can invalidate the API cache\. If most or all of the clients invalidate the API cache, this could significantly increase the latency of your API\. 
 
  When the policy is in place, caching is enabled, and authorization is required, you can control how unauthorized requests are handled by choosing an option from **Handle unauthorized requests** in the API Gateway console\. 
 

@@ -25,7 +25,9 @@ The following procedure describes how to set up a custom domain name for an API 
 **Note**  
 Do not use the wildcard character \(i\.e\., `*`\) for your custom domain names\. API Gateway does not support it, even though the API Gateway console \(or the AWS CLI\) accepts it and can map it to a CloudFront distribution\. However, you can use wildcard certificates\.
 
-   1.  Choose a certificate from the **ACM Certificate** list\.
+   1. Choose a certificate from the **ACM Certificate** list\.
+**Note**  
+To use an ACM certificate with an API Gateway edge\-optimized custom domain name, you must request or import the certificate in the `us-east-1` region \(Northern Virginia\)\.
 
    1.  Choose **Add mapping** under **Base Path Mappings** to set a base path \(**Path**\) for a deployed API in a given stage \(selected from the **Destination** dropdown lists\.\) You can also set the base path mapping after the custom domain name is created\. For more information, see [Configure Base Path Mapping of an API with a Custom Domain Name as its Host Name](#how-to-custom-domains-mapping-console)\. 
 

@@ -69,21 +69,21 @@ Suppose we have a canary release deployment, described by a stage similar to the
 We call the following `update-stage` request to promote it:
 
 ```
-aws apigateway update-stage                         \
-    --rest-api-id {rest-api-id}                     \
-    --stage-name '{stage-name}'                     \
-    --patch-operations '[{                          \
-        "op": "replace",                            \
-        "value": "0.0"                              \
-        "path": "/canarySettings/percentTraffic",   \
-      }, {                                          \
-        "op": "copy",                               \
-        "from": "/canary/overriddenStageVariables"  \
-        "path": "/variables",                       \
-      }, {                                          \
-        "op": "copy",                               \
-        "from": "/canary/deploymentId",             \
-        "path": "/deploymentId"                     \
+aws apigateway update-stage                               \
+    --rest-api-id {rest-api-id}                           \
+    --stage-name '{stage-name}'                           \
+    --patch-operations '[{                                \
+        "op": "replace",                                  \
+        "value": "0.0"                                    \
+        "path": "/canarySettings/percentTraffic",         \
+      }, {                                                \
+        "op": "copy",                                     \
+        "from": "/canarySettings/stageVariableOverrides", \
+        "path": "/variables",                             \
+      }, {                                                \
+        "op": "copy",                                     \
+        "from": "/canarySettings/deploymentId",           \
+        "path": "/deploymentId"                           \
       }]'
 ```
 

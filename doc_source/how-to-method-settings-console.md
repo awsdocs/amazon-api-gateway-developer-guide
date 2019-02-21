@@ -1,6 +1,6 @@
 # Set up an API Integration Request Using the API Gateway Console<a name="how-to-method-settings-console"></a>
 
- An API method setup defines the method and describes its behaviors\. To set up a method, you must specify a resource, including the root \(“/”\), on which the method is exposed, an HTTP method \(GET, POST, etc\.\), and how it will be integrated with the targeted backend\. The method request and response specify the contract with the calling app, stipulating which parameters the API can receive and what the response looks like\. 
+ An API method setup defines the method and describes its behaviors\. To set up a method, you must specify a resource, including the root \("/"\), on which the method is exposed, an HTTP method \(`GET`, `POST`, etc\.\), and how it will be integrated with the targeted backend\. The method request and response specify the contract with the calling app, stipulating which parameters the API can receive and what the response looks like\. 
 
  The following procedure describes how to use the API Gateway console to specify method settings\. 
 

@@ -10,5 +10,5 @@ AWS CloudTrail logs API Gateway API management operations, which are REST API ca
 
 **Topics**
 + [Trace API Gateway API Execution with AWS X\-Ray](apigateway-xray.md)
-+ [Log Amazon API Gateway API Calls with AWS CloudTrail](cloudtrail.md)
++ [Log Calls to Amazon API Gateway APIs with AWS CloudTrail](cloudtrail.md)
 + [Monitor API execution with Amazon CloudWatch](monitoring-cloudwatch.md)

@@ -13,7 +13,7 @@ Use the API Gateway console to view a list of APIs\.
 
 ### View a List of APIs with the API Gateway Console<a name="how-to-view-apis-list-console"></a>
 
-You must have an API available in API Gateway\. Follow the instructions in [Creating an API in Amazon API Gateway](how-to-create-api.md)\.
+You must have an API available in API Gateway\. Follow the instructions in [Creating a REST API in Amazon API Gateway](how-to-create-api.md)\.
 
 1. Sign in to the API Gateway console at [https://console\.aws\.amazon\.com/apigateway](https://console.aws.amazon.com/apigateway)\.
 
@@ -28,7 +28,7 @@ Deleting an API means that you can no longer call it\. This action cannot be und
 
 ### Delete an API with the API Gateway Console<a name="how-to-delete-api-console"></a>
 
-You must have deployed the API at least once\. Follow the instructions in [Deploying an API in Amazon API Gateway](how-to-deploy-api.md)\.
+You must have deployed the API at least once\. Follow the instructions in [Deploying a REST API in Amazon API Gateway](how-to-deploy-api.md)\.
 
 1. Sign in to the API Gateway console at [https://console\.aws\.amazon\.com/apigateway](https://console.aws.amazon.com/apigateway)\.
 

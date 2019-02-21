@@ -1,6 +1,6 @@
-# Enable CORS for an API Gateway Resource<a name="how-to-cors"></a>
+# Enable CORS for an API Gateway REST API Resource<a name="how-to-cors"></a>
 
-When your API's resources receive requests from a domain other than the API's own domain, you must enable cross\-origin resource sharing \(CORS\) for selected methods on the resource\. This amounts to having your API respond to the `OPTIONS` preflight request with at least the following CORS\-required response headers: 
+When your REST API's resources receive requests from a domain other than the API's own domain, you must enable cross\-origin resource sharing \(CORS\) for selected methods on the resource\. This amounts to having your API respond to the `OPTIONS` preflight request with at least the following CORS\-required response headers: 
 + `Access-Control-Allow-Methods`
 + `Access-Control-Allow-Headers`
 + `Access-Control-Allow-Origin`
@@ -12,7 +12,7 @@ With Lambda, AWS or HTTP integrations, you can leverage API Gateway to set up th
 **Tip**  
 You must set up an OPTIONS method to handle preflight requests to support CORS\. However, OPTIONS methods are optional if 1\) an API resource exposes only the GET, HEAD or POST methods and 2\) the request payload content type is `application/x-www-form-urlencoded`, `multipart/form-data` or `text/plain` and 3\) the request does not contain any custom headers\. When possible, we recommend to use OPTIONS method to enable CORS in your API\.
 
- This section describes how to enable CORS for a method in API Gateway using the API Gateway console or the API Gateway [Import an API into API Gateway](api-gateway-import-api.md)\. 
+ The following pages describe how to enable CORS for a method in API Gateway using the API Gateway console or the API Gateway [Import a REST API into API Gateway](api-gateway-import-api.md)\. 
 
 **Topics**
 + [Prerequisites](#how-to-cors-prerequisites)

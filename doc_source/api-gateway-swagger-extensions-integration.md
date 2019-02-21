@@ -1,6 +1,6 @@
 # x\-amazon\-apigateway\-integration Object<a name="api-gateway-swagger-extensions-integration"></a>
 
- Specifies details of the backend integration used for this method\. This extension is an extended property of the [Swagger Operation](https://github.com/swagger-api/swagger-spec/blob/master/versions/2.0.md#operationObject) object\. The result is an [API Gateway integration](https://docs.aws.amazon.com/apigateway/api-reference/resource/integration/) object\. 
+ Specifies details of the backend integration used for this method\. This extension is an extended property of the [OpenAPI Operation](https://github.com/swagger-api/swagger-spec/blob/master/versions/2.0.md#operationObject) object\. The result is an [API Gateway integration](https://docs.aws.amazon.com/apigateway/api-reference/resource/integration/) object\. 
 
 
 **Properties**  

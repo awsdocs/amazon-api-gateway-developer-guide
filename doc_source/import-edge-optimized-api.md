@@ -1,6 +1,6 @@
 # Import an Edge\-Optimized API into API Gateway<a name="import-edge-optimized-api"></a>
 
-You can import an API Swagger definition file to create a new edge\-optimized API by specifying the `EDGE` endpoint type as an additional input, besides the Swagger file, to the import operation\. You can do so using the API Gateway console, AWS CLI, an AWS SDK, or the API Gateway REST API\.
+You can import an API's OpenAPI definition file to create a new edge\-optimized API by specifying the `EDGE` endpoint type as an additional input, besides the OpenAPI file, to the import operation\. You can do so using the API Gateway console, AWS CLI, an AWS SDK, or the API Gateway REST API\.
 
 **Topics**
 + [Import an Edge\-Optimized API Using the API Gateway Console](#import-edge-optimized-api-with-console)
@@ -13,22 +13,22 @@ To import an API of an edge\-optimized API endpoint type using the API Gateway c
 
 1.  Sign in to the API Gateway console and choose **\+ Create API**\. 
 
-1.  Select the **Import from Swagger** option under **Create new API**\.
+1.  Select the **Import from OpenAPI** option under **Create new API**\.
 
-1.  Copy an API Swagger definition and paste it into the code editor, or choose **Select Swagger File** to load a Swagger file from a local drive\.
+1.  Copy an API's OpenAPI definition and paste it into the code editor, or choose **Select OpenAPI File** to load an OpenAPI file from a local drive\.
 
 1.  Under **Settings**, for **Endpoint Type**, choose `Edge optimized`\.\.
 
-1.  Choose **Import** to start importing the Swagger definitions\.
+1.  Choose **Import** to start importing the OpenAPI definitions\.
 
 ## Import an Edge\-Optimized API Using the AWS CLI<a name="import-edge-optimized-api-with-awscli"></a>
 
-To import an API from a Swagger definition file to create a new edge\-optimized API using the AWS CLI, use the `import-rest-api` command as follows:
+To import an API from an OpenAPI definition file to create a new edge\-optimized API using the AWS CLI, use the `import-rest-api` command as follows:
 
 ```
 aws apigateway import-rest-api \
     --fail-on-warnings \
-    --body 'file://path/to/API_Swagger_template.json'
+    --body 'file://path/to/API_OpenAPI_template.json'
 ```
 
 or with an explicit specification of the `endpointConfigurationTypes` query string parameter to `EDGE`: 
@@ -37,12 +37,12 @@ or with an explicit specification of the `endpointConfigurationTypes` query stri
 aws apigateway import-rest-api \
     --endpointConfigurationTypes 'EDGE' \
     --fail-on-warnings \
-    --body 'file://path/to/API_Swagger_template.json'
+    --body 'file://path/to/API_OpenAPI_template.json'
 ```
 
 ## Import an Edge\-Optimized API Using the API Gateway REST API<a name="import-edge-optimized-api-with-restapi"></a>
 
-To use the API Gateway REST API to create a regional API by importing a Swagger definition file, call the following `restapi:import` link\-relation:
+To use the API Gateway REST API to create a regional API by importing an OpenAPI definition file, call the following `restapi:import` link\-relation:
 
 ```
 POST /restapis?mode=import&failonwarnings=true
@@ -51,7 +51,7 @@ Content-Type:application/json
 Content-Length: ...
 
 {
-    //API Swagger definition
+    //OpenAPI definition
 }
 ```
 
@@ -64,6 +64,6 @@ Content-Type:application/json
 Content-Length: ...
 
 {
-    //API Swagger definition
+    //OpenAPI definition
 }
 ```

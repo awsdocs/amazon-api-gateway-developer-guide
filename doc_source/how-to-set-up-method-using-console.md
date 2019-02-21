@@ -15,7 +15,7 @@ Before setting up an API method, verify the following:
  To use the API Gateway console to specify an API's method request/response, and to configure how the method will authorize requests, follow these instructions\.
 
 **Note**  
- These instructions assume you have already completed the steps in [ Set up an API Integration Request Using the API Gateway Console ](how-to-method-settings-console.md)\. They are best used to supplement the discussions given in [Build an API Gateway API with Lambda Integration](getting-started-with-lambda-integration.md)\. 
+ These instructions assume you have already completed the steps in [Set up an API Integration Request Using the API Gateway Console](how-to-method-settings-console.md)\. They are best used to supplement the discussions given in [Build an API Gateway API with Lambda Integration](getting-started-with-lambda-integration.md)\. 
 
 1. With the method selected in the **Resources** pane, choose **Method Request** from the **Method Execution** pane\.
 
@@ -52,7 +52,7 @@ Before setting up an API method, verify the following:
 
    1.  To use a Lambda authorizer, choose one under **Token authorizer**\. You must have created a Lambda authorizer to have this choice displayed in the drop\-down menu\. For information on how to create a Lambda authorizer, see [Use API Gateway Lambda Authorizers](apigateway-use-lambda-authorizer.md)\. 
 
-   1.  To use an Amazon Cognito user pool, choose an available user pool under **Cognito user pool authorizers**\. You must have created a user pool in Amazon Cognito and an Amazon Cognito user pool authorizer in API Gateway to have this choice displayed in the drop\-down menu\. For information on how to create an Amazon Cognito user pool authorizer, see [Use Amazon Cognito User Pools](apigateway-integrate-with-cognito.md)\. 
+   1.  To use an Amazon Cognito user pool, choose an available user pool under **Cognito user pool authorizers**\. You must have created a user pool in Amazon Cognito and an Amazon Cognito user pool authorizer in API Gateway to have this choice displayed in the drop\-down menu\. For information on how to create an Amazon Cognito user pool authorizer, see [Control Access to a REST API Using Amazon Cognito User Pools as Authorizer](apigateway-integrate-with-cognito.md)\. 
 
 1.  To enable or disable request validation, choose the pencil icon from the **Request Validator** drop\-down menu and choose one of the listed options\. For more information about each option, see [Enable Request Validation in API Gateway](api-gateway-method-request-validation.md)\. 
 

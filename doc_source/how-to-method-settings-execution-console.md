@@ -3,7 +3,7 @@
 To use the API Gateway console to define the API's integration request/response, follow these instructions\.
 
 **Note**  
-These instructions assume you have already completed the steps in [ Set up an API Integration Request Using the API Gateway Console ](how-to-method-settings-console.md)\.
+These instructions assume you have already completed the steps in [Set up an API Integration Request Using the API Gateway Console](how-to-method-settings-console.md)\.
 
 1. With the method selected in the **Resources** pane, in the **Method Execution** pane, choose **Integration Request**\.
 
@@ -16,9 +16,11 @@ These instructions assume you have already completed the steps in [ Set up an AP
    1. For **Mapped from**, type the mapping value for the path parameter, query string parameter, or header parameter\. Use one of the following formats:
       + **method\.request\.path\.*parameter\-name*** for a path parameter named *parameter\-name* as defined in the **Method Request** page\.
       + **method\.request\.querystring\.*parameter\-name*** for a query string parameter named *parameter\-name* as defined in the **Method Request** page\.
+      + **method\.request\.multivaluequerystring\.*parameter\-name*** for a multi\-valued query string parameter named *parameter\-name* as defined in the **Method Request** page\.
       + **method\.request\.header\.*parameter\-name*** for a header parameter named *parameter\-name* as defined in the **Method Request** page\.
 
          Alternatively, you can set a literal string value \(enclosed by a pair of single quotes\) to an integration header\.  
+      + **method\.request\.multivalueheader\.*parameter\-name*** for a multi\-valued header parameter named *parameter\-name* as defined in the **Method Request** page\.
 
    1. Choose **Create**\. \(To delete a path parameter, query string parameter, or header parameter, choose **Cancel** or **Remove** next to the parameter you want to delete\.\)
 
@@ -37,7 +39,7 @@ When calling the API Gateway API, you choose this option by setting `NEVER` as t
 
 1.  To define a mapping template for an incoming request, choose **Add mapping template** under **Content\-Type**\. Type a content type \(e\.g\., **application/json**\) in the input text box and then choose the check mark icon to save the input\. Then, type the mapping template manually or choose **Generate template** to create one from a model template\. For more information, see [Create Models and Mapping Templates for Request and Response Mappings](models-mappings.md)\. 
 
-1.  You can map an integration response from the backend to a method response of the API returned to the calling app\. This includes returning to the client selected response headers from the available ones from the back end, transforming the data format of the backend response payload to an API\-specified format\. You can specify such mapping by configuring **Method Response** and **Integration Response** from the **Method Execution** page\. 
+1.  You can map an integration response from the backend to a method response of the API returned to the calling app\. This includes returning to the client selected response headers from the available ones from the backend, transforming the data format of the backend response payload to an API\-specified format\. You can specify such mapping by configuring **Method Response** and **Integration Response** from the **Method Execution** page\. 
 
    1. In the **Method Execution** pane, choose **Integration Response**\. Choose either the arrow next to **200** to specify settings for a 200 HTTP response code from the method, or choose **Add integration response** to specify settings for any other HTTP response status code from the method\.
 
@@ -49,7 +51,13 @@ The error patterns are matched against the entire string of the `errorMessage` p
 
    1. If enabled, for **Method response status**, choose the HTTP response status code you defined in the **Method Response** page\.
 
-   1. For **Header Mappings**, for each header you defined for the HTTP response status code in the **Method Response** page, specify a mapping value by choosing **Edit**\. For **Mapping value**, use the format **integration\.response\.header\.*header\-name*** where *header\-name* is the name of a response header from the backend\. For example, to return the backend response's `Date` header as an API method's response's `Timestamp` header, the **Response header** column will contain an **Timestamp** entry and the associated **Mapping value** should be set to **integration\.response\.header\.Date**\. 
+   1. For **Header Mappings**, for each header you defined for the HTTP response status code in the **Method Response** page, specify a mapping value by choosing **Edit**\. For **Mapping value**, use one of the following formats:
+      + **integration\.response\.multivalueheaders\.*header\-name*** where *header\-name* is the name of a multi\-valued response header from the backend\.
+
+        For example, to return the backend response's `Date` header as an API method's response's `Timestamp` header, the **Response header** column will contain a **Timestamp** entry, and the associated **Mapping value** should be set to **integration\.response\.multivalueheaders\.Date**\.
+      + **integration\.response\.header\.*header\-name*** where *header\-name* is the name of a single\-valued response header from the backend\.
+
+        For example, to return the backend response's `Date` header as an API method's response's `Timestamp` header, the **Response header** column will contain a **Timestamp** entry, and the associated **Mapping value** should be set to **integration\.response\.header\.Date**\.
 
    1. In the **Template Mappings** area, next to **Content type**, choose **Add**\. In the **Content type** box, type the content type of the data that will be passed from the Lambda function, HTTP proxy, or AWS service proxy to the method\. Choose **Update**\.
 

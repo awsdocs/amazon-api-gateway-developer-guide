@@ -125,7 +125,7 @@ The following procedure describes how to publish a documentation version\.
 
 1. Choose **Publish**\.
 
-You can now proceed to download the published documentation by exporting the documentation to an external Swagger file\.
+You can now proceed to download the published documentation by exporting the documentation to an external OpenAPI file\.
 
 ## Download a Documentation Snapshot Associated with a Stage<a name="api-gateway-documenting-api-publishing-export-documentation-version"></a>
 
@@ -133,7 +133,7 @@ After a version of the documentation parts is associated with a stage, you can e
 
 Using the API Gateway REST API, you can also explicitly set the `extension=documentation,integrations,authorizers` query parameter to include the API documentation parts, API integrations and authorizers in an API export\. By default, documentation parts are included, but integrations and authorizers are excluded, when you export an API\. The default output from an API export is suited for distribution of the documentation\.
 
-To export the API documentation in an external JSON Swagger file using the API Gateway REST API, submit the following `GET` request:
+To export the API documentation in an external JSON OpenAPI file using the API Gateway REST API, submit the following `GET` request:
 
 ```
 GET /restapis/restapi_id/stages/stage_name/exports/swagger?extensions=documentation HTTP/1.1
@@ -144,11 +144,123 @@ X-Amz-Date: YYYYMMDDTttttttZ
 Authorization: AWS4-HMAC-SHA256 Credential=access_key_id/YYYYMMDD/region/apigateway/aws4_request, SignedHeaders=content-length;content-type;host;x-amz-date, Signature=sigv4_secret
 ```
 
-Here, the `x-amazon-apigateway-documentation` object contains the documentation parts and the API entity definitions contains the documentation properties supported by Swagger\. The output does not include details of integration or Lambda authorizers \(formerly known as custom authorizers\)\. To include both details, set `extensions=integrations,authorizers,documentation`\. To include details of integrations but not of authorizers, set `extensions=integrations,documentation`\. 
+Here, the `x-amazon-apigateway-documentation` object contains the documentation parts and the API entity definitions contains the documentation properties supported by OpenAPI\. The output does not include details of integration or Lambda authorizers \(formerly known as custom authorizers\)\. To include both details, set `extensions=integrations,authorizers,documentation`\. To include details of integrations but not of authorizers, set `extensions=integrations,documentation`\. 
 
 You must set the `Accept:application/json` header in the request to output the result in a JSON file\. To produce the YAML output, change the request header to `Accept:application/yaml`\. 
 
-As an example, we will look at an API that exposes a simple `GET` method on the root resource \(`/`\)\. This API has four API entities defined in a Swagger definition file, one for each of the `API`, `MODEL`, `METHOD`, and `RESPONSE` types\. A documentation part has been added to each of the `API`, `METHOD`, and `RESPONSE` entities\. Calling the preceding documentation\-exporting command, we get the following output, with the documentation parts listed within the `x-amazon-apigateway-documentation` object as an extension to a standard Swagger file\.
+As an example, we will look at an API that exposes a simple `GET` method on the root resource \(`/`\)\. This API has four API entities defined in an OpenAPI definition file, one for each of the `API`, `MODEL`, `METHOD`, and `RESPONSE` types\. A documentation part has been added to each of the `API`, `METHOD`, and `RESPONSE` entities\. Calling the preceding documentation\-exporting command, we get the following output, with the documentation parts listed within the `x-amazon-apigateway-documentation` object as an extension to a standard OpenAPI file\.
+
+------
+#### [ OpenAPI 3\.0 ]
+
+```
+{
+   "openapi": "3.0.0",
+   "info": {
+      "description": "API info description",
+      "version": "2016-11-22T22:39:14Z",
+      "title": "doc",
+      "x-bar": "API info x-bar"
+   },
+   "paths": {
+      "/": {
+         "get": {
+            "description": "Method description.",
+            "responses": {
+               "200": {
+                  "description": "200 response",
+                  "content": {
+                     "application/json": {
+                        "schema": {
+                           "$ref": "#/components/schemas/Empty"
+                        }
+                     }
+                  }
+               }
+            },
+            "x-example": "x- Method example"
+         },
+         "x-bar": "resource x-bar"
+      }
+   },
+   "x-amazon-apigateway-documentation": {
+      "version": "1.0.0",
+      "createdDate": "2016-11-22T22:41:40Z",
+      "documentationParts": [
+         {
+            "location": {
+               "type": "API"
+            },
+            "properties": {
+               "description": "API description",
+               "foo": "API foo",
+               "x-bar": "API x-bar",
+               "info": {
+                  "description": "API info description",
+                  "version": "API info version",
+                  "foo": "API info foo",
+                  "x-bar": "API info x-bar"
+               }
+            }
+         },
+         {
+            "location": {
+               "type": "METHOD",
+               "method": "GET"
+            },
+            "properties": {
+               "description": "Method description.",
+               "x-example": "x- Method example",
+               "foo": "Method foo",
+               "info": {
+                  "version": "method info version",
+                  "description": "method info description",
+                  "foo": "method info foo"
+               }
+            }
+         },
+         {
+            "location": {
+               "type": "RESOURCE"
+            },
+            "properties": {
+               "description": "resource description",
+               "foo": "resource foo",
+               "x-bar": "resource x-bar",
+               "info": {
+                  "description": "resource info description",
+                  "version": "resource info version",
+                  "foo": "resource info foo",
+                  "x-bar": "resource info x-bar"
+               }
+            }
+         }
+      ]
+   },
+   "x-bar": "API x-bar",
+   "servers": [
+      {
+         "url": "https://rznaap68yi.execute-api.ap-southeast-1.amazonaws.com/{basePath}"
+         "variables": {
+            "basePath": {
+              "default": "/test"
+            }
+         }
+      }
+   ],
+   "components": {
+      "schemas": {
+         "Empty": {
+            "type": "object",
+            "title": "Empty Schema"
+         }
+      }
+   }
+}
+```
+
+------
+#### [ OpenAPI 2\.0 ]
 
 ```
 {
@@ -240,11 +352,13 @@ As an example, we will look at an API that exposes a simple `GET` method on the 
 }
 ```
 
-For a Swagger\-compliant attribute defined in the `properties` map of a documentation part, API Gateway inserts the attribute into the associated API entity definition\. An attribute of `x-something` is a standard Swagger extension\. This extension gets propagated into the API entity definition\. For example, see the `x-example` attribute for the `GET` method\. An attribute like `foo` is not part of the Swagger specification and is not injected into its associated API entity definitions\. 
+------
 
-If a documentation\-rendering tool \(e\.g\., [Swagger UI](http://swagger.io/swagger-ui/)\) parses the API entity definitions to extract documentation attributes, any non Swagger\-compliant `properties` attributes of a `DocumentationPart`' instance are not available for the tool\. However, if a documentation\-rendering tool parses the `x-amazon-apigateway-documentation` object to get content, or if the tool calls [restapi:documentation\-parts](https://docs.aws.amazon.com/apigateway/api-reference/link-relation/restapi-documentation-parts/) and [documenationpart:by\-id](https://docs.aws.amazon.com/apigateway/api-reference/link-relation/documentationpart-by-id/) to retrieve documentation parts from API Gateway, all the documentation attributes are available for the tool to display\.
+For an OpenAPI\-compliant attribute defined in the `properties` map of a documentation part, API Gateway inserts the attribute into the associated API entity definition\. An attribute of `x-something` is a standard OpenAPI extension\. This extension gets propagated into the API entity definition\. For example, see the `x-example` attribute for the `GET` method\. An attribute like `foo` is not part of the OpenAPI specification and is not injected into its associated API entity definitions\. 
 
-To export the documentation with API entity definitions containing integration details to a JSON Swagger file, submit the following `GET` request:
+If a documentation\-rendering tool \(e\.g\., [OpenAPI UI](http://swagger.io/swagger-ui/)\) parses the API entity definitions to extract documentation attributes, any non OpenAPI\-compliant `properties` attributes of a `DocumentationPart`' instance are not available for the tool\. However, if a documentation\-rendering tool parses the `x-amazon-apigateway-documentation` object to get content, or if the tool calls [restapi:documentation\-parts](https://docs.aws.amazon.com/apigateway/api-reference/link-relation/restapi-documentation-parts/) and [documenationpart:by\-id](https://docs.aws.amazon.com/apigateway/api-reference/link-relation/documentationpart-by-id/) to retrieve documentation parts from API Gateway, all the documentation attributes are available for the tool to display\.
+
+To export the documentation with API entity definitions containing integration details to a JSON OpenAPI file, submit the following `GET` request:
 
 ```
 GET /restapis/restapi_id/stages/stage_name/exports/swagger?extensions=integrations,documentation HTTP/1.1
@@ -255,7 +369,7 @@ X-Amz-Date: YYYYMMDDTttttttZ
 Authorization: AWS4-HMAC-SHA256 Credential=access_key_id/YYYYMMDD/region/apigateway/aws4_request, SignedHeaders=content-length;content-type;host;x-amz-date, Signature=sigv4_secret
 ```
 
-To export the documentation with API entity definitions containing details of integrations and authorizers to a YAML Swagger file, submit the following `GET` request:
+To export the documentation with API entity definitions containing details of integrations and authorizers to a YAML OpenAPI file, submit the following `GET` request:
 
 ```
 GET /restapis/restapi_id/stages/stage_name/exports/swagger?extensions=integrations,authorizers,documentation HTTP/1.1
@@ -266,4 +380,4 @@ X-Amz-Date: YYYYMMDDTttttttZ
 Authorization: AWS4-HMAC-SHA256 Credential=access_key_id/YYYYMMDD/region/apigateway/aws4_request, SignedHeaders=content-length;content-type;host;x-amz-date, Signature=sigv4_secret
 ```
 
-To use the API Gateway console to export and download the published documentation of an API, follow the instructions in [Export API Using the API Gateway Console](api-gateway-export-api.md#api-gateway-export-api-from-console)\. 
+To use the API Gateway console to export and download the published documentation of an API, follow the instructions in [Export REST API Using the API Gateway Console](api-gateway-export-api.md#api-gateway-export-api-from-console)\. 

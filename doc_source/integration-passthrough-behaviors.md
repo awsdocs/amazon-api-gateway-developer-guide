@@ -2,7 +2,7 @@
 
  With non\-proxy integrations, when a method request carries a payload and either the `Content-Type` header does not match any specified mapping template or no mapping template is defined, you can choose to pass the client\-supplied request payload through the integration request to the backend without transformation\. The process is known as integration passthrough\. 
 
- For [proxy integrations](api-gateway-set-up-simple-proxy.md), API Gateway passes entire the request through to your backend, and you do not have the option to modify the passthrough behaviors\. 
+ For [proxy integrations](api-gateway-set-up-simple-proxy.md), API Gateway passes the entire request through to your backend, and you do not have the option to modify the passthrough behaviors\. 
 
  The actual passthrough behavior of an incoming request is determined by the option you choose for a specified mapping template, during [integration request set\-up](how-to-method-settings-execution-console.md), and the Content Type header that a client set in the incoming request\. The following examples illustrate the possible passthrough behaviors\. 
 

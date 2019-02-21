@@ -7,7 +7,7 @@
 
 | Property Name | Type | Description | 
 | --- | --- | --- | 
-| statusCode | string |  HTTP status code for the method response; for example, `"200"`\. This must correspond to a matching response in the [Swagger Operation](https://github.com/swagger-api/swagger-spec/blob/master/versions/2.0.md#operationObject) `responses` field\.  | 
+| statusCode | string |  HTTP status code for the method response; for example, `"200"`\. This must correspond to a matching response in the [OpenAPI Operation](https://github.com/swagger-api/swagger-spec/blob/master/versions/2.0.md#operationObject) `responses` field\.  | 
 | responseTemplates | [x\-amazon\-apigateway\-integration\.responseTemplates Object](api-gateway-swagger-extensions-integration-responseTemplates.md) |  Specifies MIME type\-specific mapping templates for the response’s payload\.  | 
 | responseParameters | [x\-amazon\-apigateway\-integration\.responseParameters Object](api-gateway-swagger-extensions-integration-responseParameters.md) |  Specifies parameter mappings for the response\. Only the `header` and `body` parameters of the integration response can be mapped to the `header` parameters of the method\.   | 
 | contentHandling | string | Response payload encoding conversion types\. Valid values are 1\) CONVERT\_TO\_TEXT, for converting a binary payload into a Base64\-encoded string or converting a text payload into a utf\-8\-encoded string or passing through the text payload natively without modification, and 2\) CONVERT\_TO\_BINARY, for converting a text payload into Base64\-decoded blob or passing through a binary payload natively without modification\. | 

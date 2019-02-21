@@ -1,9 +1,9 @@
-# Integrate an API with a User Pool<a name="apigateway-enable-cognito-user-pool"></a>
+# Integrate a REST API with a User Pool<a name="apigateway-enable-cognito-user-pool"></a>
 
 After creating an Amazon Cognito user pool, in API Gateway, you must then create a `COGNITO_USER_POOLS` authorizer that uses the user pool\. The following procedure walks you through the steps to do this using the API Gateway console\.
 
 **Important**  
-After performing any of the procedures below, you'll need to deploy or redeploy your API to propagate the changes\. For more information about deploying your API, see [Deploying an API in Amazon API Gateway](how-to-deploy-api.md)\.
+After performing any of the procedures below, you'll need to deploy or redeploy your API to propagate the changes\. For more information about deploying your API, see [Deploying a REST API in Amazon API Gateway](how-to-deploy-api.md)\.
 
 **To create a `COGNITO_USER_POOLS` authorizer by using the API Gateway console**
 
@@ -84,7 +84,7 @@ The preceding procedure creates a `COGNITO_USER_POOLS` authorizer that uses the 
 
    1. Choose the pencil icon next to **OAuth Scopes**\. 
 
-   1. Type one or more full names of a scope that has been configured when the Amazon Cognito user pool was created\. For example, following the example given in [Create an Amazon Cognito User Pool](apigateway-create-cognito-user-pool.md),  one of the scopes is `com.hamuta.movies/drama.view`\. Use a single space to separate multiple scopes\. 
+   1. Type one or more full names of a scope that has been configured when the Amazon Cognito user pool was created\. For example, following the example given in [Create an Amazon Cognito User Pool for a REST API](apigateway-create-cognito-user-pool.md),  one of the scopes is `com.hamuta.movies/drama.view`\. Use a single space to separate multiple scopes\. 
 
       At runtime, the method call succeeds if any scope that's specified on the method in this step matches a scope that's claimed in the incoming token\. Otherwise, the call fails with a `401 Unauthorized` response\.
 
@@ -94,13 +94,35 @@ The preceding procedure creates a `COGNITO_USER_POOLS` authorizer that uses the 
 
 With the `COGNITO_USER_POOLS` authorizer, if the **OAuth Scopes** option isn't specified, API Gateway treats the supplied token as an identity token and verifies the claimed identity against the one from the user pool\. Otherwise, API Gateway treats the supplied token as an access token and verifies the access scopes that are claimed in the token against the authorization scopes declared on the method\.
 
-Instead of using the API Gateway console, you can also enable an Amazon Cognito user pool on a method by specifying a Swagger definition file and importing the API definition into API Gateway\.
+Instead of using the API Gateway console, you can also enable an Amazon Cognito user pool on a method by specifying an OpenAPI definition file and importing the API definition into API Gateway\.
 
-**To import a COGNITO\_USER\_POOLS authorizer with a Swagger definition file**
+**To import a COGNITO\_USER\_POOLS authorizer with an OpenAPI definition file**
 
-1. Create \(or export\) a Swagger definition file for your API\.
+1. Create \(or export\) an OpenAPI definition file for your API\.
 
-1. Specify the `COGNITO_USER_POOLS` authorizer \(`MyUserPool`\) definition as part of the `securityDefinitions`:
+1. Specify the `COGNITO_USER_POOLS` authorizer \(`MyUserPool`\) JSON definition as part of the `securitySchemes` section in OpenAPI 3\.0 or the `securityDefinitions` section in Open API 2\.0 as follows:
+
+------
+#### [ OpenAPI 3\.0 ]
+
+   ```
+     "securitySchemes": {
+       "MyUserPool": {
+         "type": "apiKey",
+         "name": "Authorization",
+         "in": "header",
+         "x-amazon-apigateway-authtype": "cognito_user_pools",
+         "x-amazon-apigateway-authorizer": {
+           "type": "cognito_user_pools",
+           "providerARNs": [
+             "arn:aws:cognito-idp:{region}:{account_id}:userpool/{user_pool_id}"
+           ]
+         }
+       }
+   ```
+
+------
+#### [ OpenAPI 2\.0 ]
 
    ```
      "securityDefinitions": {
@@ -117,6 +139,8 @@ Instead of using the API Gateway console, you can also enable an Amazon Cognito 
          }
        }
    ```
+
+------
 
 1. To use the identity token for method authorization, add `{ "MyUserPool": [] }` to the `security` definition of the method, as shown in the following GET method on the root resource\.
 
@@ -212,4 +236,4 @@ Instead of using the API Gateway console, you can also enable an Amazon Cognito 
       }
    ```
 
-1. If needed, you can set other API configuration settings by using the appropriate Swagger definitions or extensions\. For more information, see [API Gateway Extensions to Swagger](api-gateway-swagger-extensions.md)\.
+1. If needed, you can set other API configuration settings by using the appropriate OpenAPI definitions or extensions\. For more information, see [API Gateway Extensions to OpenAPI](api-gateway-swagger-extensions.md)\.

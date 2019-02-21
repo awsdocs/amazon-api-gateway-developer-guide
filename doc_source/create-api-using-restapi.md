@@ -185,7 +185,7 @@
    }
    ```
 
-   You must declare the method request path parameter of `petId` for API Gateway to map its dynamically set value to the corresponding integration request parameter before passing it to the backend\. You must always set a path parameter as required\. In addition, depending on API requirements, you can set up header and query parameters on a method request\. For `POST`, `PUT`, `PATCH`, or any other method taking a payload, you can define a model for the payload in the method request\. For more information about these settings, see [Set up API Methods in API Gateway](how-to-method-settings.md)\. 
+   You must declare the method request path parameter of `petId` for API Gateway to map its dynamically set value to the corresponding integration request parameter before passing it to the backend\. You must always set a path parameter as required\. In addition, depending on API requirements, you can set up header and query parameters on a method request\. For `POST`, `PUT`, `PATCH`, or any other method taking a payload, you can define a model for the payload in the method request\. For more information about these settings, see [Set up REST API Methods in API Gateway](how-to-method-settings.md)\. 
 
    The successful response has a status code of `201 Created` and a payload similar to the following:
 

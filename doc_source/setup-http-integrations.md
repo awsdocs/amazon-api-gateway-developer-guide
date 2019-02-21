@@ -2,9 +2,11 @@
 
  You can integrate an API method with an HTTP endpoint using the HTTP proxy integration or the HTTP custom integration\. 
 
- With the proxy integration, the setup is simple\. You only need to set the HTTP method and the HTTP endpoint URI, according to the backend requirements, if you are not concerned with content encoding or caching\. 
+API Gateway supports the following endpoint ports: 80, 443 and 1024\-65535\.
 
- With the custom integration, the setup is more involved\. In addition to the proxy integration setup steps, you need to specify how the incoming request data is mapped to the integration request and how the resulting integration response data is mapped to the method response\. 
+ With proxy integration, setup is simple\. You only need to set the HTTP method and the HTTP endpoint URI, according to the backend requirements, if you are not concerned with content encoding or caching\. 
+
+ With custom integration, setup is more involved\. In addition to the proxy integration setup steps, you need to specify how the incoming request data is mapped to the integration request and how the resulting integration response data is mapped to the method response\. 
 
 **Topics**
 + [Set up HTTP Proxy Integrations in API Gateway](#api-gateway-set-up-http-proxy-integration-on-proxy-resource)
@@ -14,9 +16,70 @@
 
 To set up a proxy resource with the HTTP proxy integration type, create an API resource with a greedy path parameter \(for example, `/parent/{proxy+}`\) and integrate this resource with an HTTP backend endpoint \(for example, `https://petstore-demo-endpoint.execute-api.com/petstore/{proxy}`\) on the `ANY` method\. The greedy path parameter must be at the end of the resource path\. 
 
-As with a non\-proxy resource, you can set up a proxy resource with the HTTP proxy integration by using the API Gateway console, importing a Swagger definition file, or calling the API Gateway REST API directly\. For detailed instructions about using the API Gateway console to configure a proxy resource with the HTTP integration, see [Build an API with HTTP Proxy Integration ](api-gateway-create-api-as-simple-proxy-for-http.md)\.
+As with a non\-proxy resource, you can set up a proxy resource with the HTTP proxy integration by using the API Gateway console, importing an OpenAPI definition file, or calling the API Gateway REST API directly\. For detailed instructions about using the API Gateway console to configure a proxy resource with the HTTP integration, see [Build an API with HTTP Proxy Integration](api-gateway-create-api-as-simple-proxy-for-http.md)\.
 
-The following Swagger API definition file shows an example of an API with a proxy resource that is integrated with the [PetStore](http://petstore-demo-endpoint.execute-api.com/petstore/pets) website\.
+The following OpenAPI definition file shows an example of an API with a proxy resource that is integrated with the [PetStore](http://petstore-demo-endpoint.execute-api.com/petstore/pets) website\.
+
+------
+#### [ OpenAPI 3\.0 ]
+
+```
+{
+   "openapi": "3.0.0",
+   "info": {
+      "version": "2016-09-12T23:19:28Z",
+      "title": "PetStoreWithProxyResource"
+   },
+   "paths": {
+      "/{proxy+}": {
+         "x-amazon-apigateway-any-method": {
+            "parameters": [
+               {
+                  "name": "proxy",
+                  "in": "path",
+                  "required": true,
+                  "schema": {
+                     "type": "string"
+                  }
+               }
+            ],
+            "responses": {},
+            "x-amazon-apigateway-integration": {
+               "responses": {
+                  "default": {
+                     "statusCode": "200"
+                  }
+               },
+               "requestParameters": {
+                  "integration.request.path.proxy": "method.request.path.proxy"
+               },
+               "uri": "http://petstore-demo-endpoint.execute-api.com/petstore/{proxy}",
+               "passthroughBehavior": "when_no_match",
+               "httpMethod": "ANY",
+               "cacheNamespace": "rbftud",
+               "cacheKeyParameters": [
+                  "method.request.path.proxy"
+               ],
+               "type": "http_proxy"
+            }
+         }
+      }
+   },
+   "servers": [
+      {
+         "url": "https://4z9giyi2c1.execute-api.us-east-1.amazonaws.com/{basePath}",
+         "variables": {
+            "basePath": {
+              "default": "/test"
+            }
+         }
+      }
+   ]
+}
+```
+
+------
+#### [ OpenAPI 2\.0 ]
 
 ```
 {
@@ -68,6 +131,8 @@ The following Swagger API definition file shows an example of an API with a prox
   }
 }
 ```
+
+------
 
 In this example, a cache key is declared on the `method.request.path.proxy` path parameter of the proxy resource\. This is the default setting when you create the API using the API Gateway console\. The API's base path \(`/test`, corresponding to a stage\) is mapped to the website's PetStore page \(`/petstore`\)\. The single integration request mirrors the entire PetStore website using the API's greedy path variable and the catch\-all `ANY` method\. The following examples illustrate this mirroring\. 
 + **Set `ANY` as `GET` and `{proxy+}` as `pets`**

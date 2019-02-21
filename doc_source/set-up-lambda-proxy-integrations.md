@@ -2,7 +2,8 @@
 
 **Topics**
 + [Understand API Gateway Lambda Proxy Integration](#api-gateway-create-api-as-simple-proxy)
-+ [Set up a Proxy Resource with the Lambda Proxy Integration](#api-gateway-set-up-lambda-proxy-integration-on-proxy-resource)
++ [Support for Multi\-Value Headers and Query String Parameters](#apigateway-multivalue-headers-and-parameters)
++ [Set up a Proxy Resource with Lambda Proxy Integration](#api-gateway-set-up-lambda-proxy-integration-on-proxy-resource)
 + [Set up Lambda Proxy Integration Using the AWS CLI](#set-up-lambda-proxy-integration-using-cli)
 + [Input Format of a Lambda Function for Proxy Integration](#api-gateway-simple-proxy-for-lambda-input-format)
 + [Output Format of a Lambda Function for Proxy Integration](#api-gateway-simple-proxy-for-lambda-output-format)
@@ -11,7 +12,7 @@
 
 Amazon API Gateway Lambda proxy integration is a simple, powerful, and nimble mechanism to build an API with a setup of a single API method\. The Lambda proxy integration allows the client to call a single Lambda function in the backend\. The function accesses many resources or features of other AWS services, including calling other Lambda functions\. 
 
- With the Lambda proxy integration, when a client submits an API request, API Gateway passes to the integrated Lambda function the raw request as\-is\. This [request data](#api-gateway-simple-proxy-for-lambda-input-format) includes the request headers, query string parameters, URL path variables, payload, and API configuration data\. The configuration data can include current deployment stage name, stage variables, user identity, or authorization context \(if any\)\. The backend Lambda function parses the incoming request data to determine the response that it returns\. For API Gateway to pass the Lambda output as the API response to the client, the Lambda function must return the result in [this format](#api-gateway-simple-proxy-for-lambda-output-format)\. 
+ In Lambda proxy integration, when a client submits an API request, API Gateway passes to the integrated Lambda function the raw request as\-is, except that the order of the request parameters is not preserved\. This [request data](#api-gateway-simple-proxy-for-lambda-input-format) includes the request headers, query string parameters, URL path variables, payload, and API configuration data\. The configuration data can include current deployment stage name, stage variables, user identity, or authorization context \(if any\)\. The backend Lambda function parses the incoming request data to determine the response that it returns\. For API Gateway to pass the Lambda output as the API response to the client, the Lambda function must return the result in [this format](#api-gateway-simple-proxy-for-lambda-output-format)\. 
 
  Because API Gateway doesn't intervene very much between the client and the backend Lambda function for the Lambda proxy integration, the client and the integrated Lambda function can adapt to changes in each other without breaking the existing integration setup of the API\. To enable this, the client must follow application protocols enacted by the backend Lambda function\. 
 
@@ -33,17 +34,79 @@ Amazon API Gateway Lambda proxy integration is a simple, powerful, and nimble me
 
  To let customers search for any available product, its produce category, and the associated store department, you can expose a single method of `GET /{proxy+}` with read\-only permissions\. Similarly, to allow a supervisor to update the `produce` department's inventory, you can set up another single method of `PUT /produce/{proxy+}` with read/write permissions\. To allow a cashier to update the running total of a vegetable, you can set up a `POST /produce/vegetables/{proxy+}` method with read/write permissions\. To let a store manager perform any possible action on any available product, the online store developer can expose the `ANY /{proxy+}` method with read/write permissions\. In any case, at run time, the customer or the employee must select a particular product of a given type in a chosen department, a specific produce category in a chosen department, or a specific department\. 
 
-For more information about setting up the API Gateway proxy integrations, see [Set up a Proxy Integration with a Proxy Resource](api-gateway-set-up-simple-proxy.md)\. 
+For more information about setting up API Gateway proxy integrations, see [Set up a Proxy Integration with a Proxy Resource](api-gateway-set-up-simple-proxy.md)\. 
 
- The proxy integration requires that the client have more detailed knowledge of the backend requirements\. Therefore, to ensure optimal app performance and user experience, the backend developer must communicate clearly to the client developer the requirements of the backend, and provide a robust error feedback mechanism when the requirements are not met\. 
+ Proxy integration requires that the client have more detailed knowledge of the backend requirements\. Therefore, to ensure optimal app performance and user experience, the backend developer must communicate clearly to the client developer the requirements of the backend, and provide a robust error feedback mechanism when the requirements are not met\. 
 
-## Set up a Proxy Resource with the Lambda Proxy Integration<a name="api-gateway-set-up-lambda-proxy-integration-on-proxy-resource"></a>
+## Support for Multi\-Value Headers and Query String Parameters<a name="apigateway-multivalue-headers-and-parameters"></a>
 
-To set up a proxy resource with the Lambda proxy integration type, create an API resource with a greedy path parameter \(for example, `/parent/{proxy+}`\) and integrate this resource with a Lambda function backend \(for example, `arn:aws:lambda:us-west-2:123456789012:function:SimpleLambda4ProxyResource`\) on the `ANY` method\. The greedy path parameter must be at the end of the API resource path\. As with a non\-proxy resource, you can set up the proxy resource by using the API Gateway console, importing a Swagger definition file, or calling the API Gateway REST API directly\.
+API Gateway supports multiple headers and query string parameters that have the same name\. Multi\-value headers as well as single\-value headers and parameters can be combined in the same requests and responses\. For more information, see [Input Format of a Lambda Function for Proxy Integration](#api-gateway-simple-proxy-for-lambda-input-format) and [Output Format of a Lambda Function for Proxy Integration](#api-gateway-simple-proxy-for-lambda-output-format)\.
+
+## Set up a Proxy Resource with Lambda Proxy Integration<a name="api-gateway-set-up-lambda-proxy-integration-on-proxy-resource"></a>
+
+To set up a proxy resource with the Lambda proxy integration type, create an API resource with a greedy path parameter \(for example, `/parent/{proxy+}`\) and integrate this resource with a Lambda function backend \(for example, `arn:aws:lambda:us-west-2:123456789012:function:SimpleLambda4ProxyResource`\) on the `ANY` method\. The greedy path parameter must be at the end of the API resource path\. As with a non\-proxy resource, you can set up the proxy resource by using the API Gateway console, importing an OpenAPI definition file, or calling the API Gateway REST API directly\.
 
 For detailed instructions about using the API Gateway console to configure a proxy resource with the Lambda proxy integration, see [ Build an API Gateway API with Lambda Proxy Integration ](api-gateway-create-api-as-simple-proxy-for-lambda.md)\.
 
-The following Swagger API definition file shows an example of an API with a proxy resource that is integrated with the [SimpleLambda4ProxyResource](api-gateway-create-api-as-simple-proxy-for-lambda.md#api-gateway-proxy-integration-lambda-function-nodejs) Lambda function\.
+The following OpenAPI API definition file shows an example of an API with a proxy resource that is integrated with the [SimpleLambda4ProxyResource](api-gateway-create-api-as-simple-proxy-for-lambda.md#api-gateway-proxy-integration-lambda-function-nodejs) Lambda function\.
+
+------
+#### [ OpenAPI 3\.0 ]
+
+```
+{
+   "openapi": "3.0.0",
+   "info": {
+      "version": "2016-09-12T17:50:37Z",
+      "title": "ProxyIntegrationWithLambda"
+   },
+   "paths": {
+      "/{proxy+}": {
+         "x-amazon-apigateway-any-method": {
+            "parameters": [
+               {
+                  "name": "proxy",
+                  "in": "path",
+                  "required": true,
+                  "schema": {
+                     "type": "string"
+                  }
+               }
+            ],
+            "responses": {},
+            "x-amazon-apigateway-integration": {
+               "responses": {
+                  "default": {
+                     "statusCode": "200"
+                  }
+               },
+               "uri": "arn:aws:apigateway:us-east-1:lambda:path/2015-03-31/functions/arn:aws:lambda:us-east-1:123456789012:function:SimpleLambda4ProxyResource/invocations",
+               "passthroughBehavior": "when_no_match",
+               "httpMethod": "POST",
+               "cacheNamespace": "roq9wj",
+               "cacheKeyParameters": [
+                  "method.request.path.proxy"
+               ],
+               "type": "aws_proxy"
+            }
+         }
+      }
+   },
+   "servers": [
+      {
+         "url": "https://gy415nuibc.execute-api.us-east-1.amazonaws.com/{basePath}",
+         "variables": {
+            "basePath": {
+              "default": "/testStage"
+            }
+         }
+      }
+   ]
+}
+```
+
+------
+#### [ OpenAPI 2\.0 ]
 
 ```
 {
@@ -93,9 +156,11 @@ The following Swagger API definition file shows an example of an API with a prox
 }
 ```
 
-With the Lambda proxy integration, at run time, API Gateway maps an incoming request into the input `event` parameter of the Lambda function\. The input includes the request method, path, headers, any query parameters, any payload, associated context, and any defined stage variables\. The input format is explained in [Input Format of a Lambda Function for Proxy Integration ](#api-gateway-simple-proxy-for-lambda-input-format)\. For API Gateway to map the Lambda output to HTTP responses successfully, the Lambda function must output the result in the format described in [Output Format of a Lambda Function for Proxy Integration](#api-gateway-simple-proxy-for-lambda-output-format)\. 
+------
 
-With the Lambda proxy integration of a proxy resource through the `ANY` method, the single backend Lambda function serves as the event handler for all requests through the proxy resource\. For example, to log traffic patterns, you can have a mobile device send its location information of state, city, street, and building by submitting a request with `/state/city/street/house` in the URL path for the proxy resource\. The backend Lambda function can then parse the URL path and insert the location tuples into a DynamoDB table\.
+In Lambda proxy integration, at run time, API Gateway maps an incoming request into the input `event` parameter of the Lambda function\. The input includes the request method, path, headers, any query string parameters, any payload, associated context, and any defined stage variables\. The input format is explained in [Input Format of a Lambda Function for Proxy Integration](#api-gateway-simple-proxy-for-lambda-input-format)\. For API Gateway to map the Lambda output to HTTP responses successfully, the Lambda function must output the result in the format described in [Output Format of a Lambda Function for Proxy Integration](#api-gateway-simple-proxy-for-lambda-output-format)\. 
+
+In Lambda proxy integration of a proxy resource through the `ANY` method, the single backend Lambda function serves as the event handler for all requests through the proxy resource\. For example, to log traffic patterns, you can have a mobile device send its location information of state, city, street, and building by submitting a request with `/state/city/street/house` in the URL path for the proxy resource\. The backend Lambda function can then parse the URL path and insert the location tuples into a DynamoDB table\.
 
 ## Set up Lambda Proxy Integration Using the AWS CLI<a name="set-up-lambda-proxy-integration-using-cli"></a>
 
@@ -122,9 +187,12 @@ exports.handler = function(event, context, callback) {
         }
     } else if (event.queryStringParameters && event.queryStringParameters.greeter && event.queryStringParameters.greeter !== "") {
         greeter = event.queryStringParameters.greeter;
+    } else if (event.multiValueHeaders && event.multiValueHeaders.greeter && event.multiValueHeaders.greeter != "") {
+        greeter = event.multiValueHeaders.greeter.join(" and ");
     } else if (event.headers && event.headers.greeter && event.headers.greeter != "") {
         greeter = event.headers.greeter;
-    }
+    } 
+    
     res.body = "Hello, " + greeter + "!";
     callback(null, res);
 };
@@ -293,15 +361,17 @@ Comparing this to [the Lambda custom integration setup](set-up-lambda-custom-int
 
 ## Input Format of a Lambda Function for Proxy Integration<a name="api-gateway-simple-proxy-for-lambda-input-format"></a>
 
- With the Lambda proxy integration, API Gateway maps the entire client request to the input `event` parameter of the backend Lambda function as follows: 
+In Lambda proxy integration, API Gateway maps the entire client request to the input `event` parameter of the backend Lambda function as follows: 
 
 ```
 {
     "resource": "Resource path",
     "path": "Path parameter",
     "httpMethod": "Incoming request's method name"
-    "headers": {Incoming request headers}
+    "headers": {String containing incoming request headers}
+    "multiValueHeaders": {List of strings containing incoming request headers}
     "queryStringParameters": {query string parameters }
+    "multiValueQueryStringParameters": {List of query string parameters}
     "pathParameters":  {path parameters}
     "stageVariables": {Applicable stage variables}
     "requestContext": {Request context, including authorizer-returned key-value pairs}
@@ -310,7 +380,13 @@ Comparing this to [the Lambda custom integration setup](set-up-lambda-custom-int
 }
 ```
 
-We illustrate this using the following `POST` request to show an API deployed to `testStage` with a stage variable of `stageVariableName=stageVariableValue`:
+**Note**  
+In the input:  
+The `headers` key can only contain single\-value headers\.
+The `multiValueHeaders` key can contain multi\-value headers as well as single\-value headers\.
+If you specify values for both `headers` and `multiValueHeaders`, API Gateway merges them into a single list\. If the same key\-value pair is specified in both, only the values from `multiValueHeaders` will appear in the merged list\.
+
+The following `POST` request shows an API deployed to `testStage` with a stage variable of `stageVariableName=stageVariableValue`:
 
 ```
 POST /testStage/hello/world?name=me HTTP/1.1
@@ -353,8 +429,80 @@ This request produces the following response payload, which contains the output 
       "X-Forwarded-Port": "443",
       "X-Forwarded-Proto": "https"
     },
+    "multiValueHeaders":{
+      'Accept':[
+        "*/*"
+      ],
+      'Accept-Encoding':[
+        "gzip, deflate"
+      ],
+      'cache-control':[
+        "no-cache"
+      ],
+      'CloudFront-Forwarded-Proto':[
+        "https"
+      ],
+      'CloudFront-Is-Desktop-Viewer':[
+        "true"
+      ],
+      'CloudFront-Is-Mobile-Viewer':[
+        "false"
+      ],
+      'CloudFront-Is-SmartTV-Viewer':[
+        "false"
+      ],
+      'CloudFront-Is-Tablet-Viewer':[
+        "false"
+      ],
+      'CloudFront-Viewer-Country':[
+        "US"
+      ],
+      '':[
+        ""
+      ],
+      'Content-Type':[
+        "application/json"
+      ],
+      'headerName':[
+        "headerValue"
+      ],
+      'Host':[
+        "gy415nuibc.execute-api.us-east-1.amazonaws.com"
+      ],
+      'Postman-Token':[
+        "9f583ef0-ed83-4a38-aef3-eb9ce3f7a57f"
+      ],
+      'User-Agent':[
+        "PostmanRuntime/2.4.5"
+      ],
+      'Via':[
+        "1.1 d98420743a69852491bbdea73f7680bd.cloudfront.net (CloudFront)"
+      ],
+      'X-Amz-Cf-Id':[
+        "pn-PWIJc6thYnZm5P0NMgOUglL1DYtl0gdeJky8tqsg8iS_sgsKD1A=="
+      ],
+      'X-Forwarded-For':[
+        "54.240.196.186, 54.182.214.83"
+      ],
+      'X-Forwarded-Port':[
+        "443"
+      ],
+      'X-Forwarded-Proto':[
+        "https"
+      ]
+    },
     "queryStringParameters": {
-      "name": "me"
+      "name": "me",
+      "multivalueName": "me"
+    },
+    "multiValueQueryStringParameters":{
+      "name":[
+        "me"
+      ],
+      "multivalueName":[
+        "you",
+        "me"
+      ]
     },
     "pathParameters": {
       "proxy": "hello/world"
@@ -393,22 +541,29 @@ This request produces the following response payload, which contains the output 
 In the input to Lambda, the `requestContext` object is a map of key\-value pairs\. The key is a property name of the [$context](api-gateway-mapping-template-reference.md#context-variable-reference) variable and the value is the property value of the corresponding `$context` variable\. API Gateway may add new keys to the map\. Depending on the features enabled, the `requestContext` map may vary from API to API\. For example, in the preceding example, `$context.authorizer.*` properties are absent because no Lambda authorizer \(formerly known as a custom authorizer\) is enabled for the API\.
 
 **Note**  
-API Gateway enacts certain restrictions and limitations when handling methods with either Lambda proxy integration or HTTP proxy integration\. For details, see [Known Issues](api-gateway-known-issues.md)\.
+API Gateway enacts certain restrictions and limitations when handling methods with either Lambda proxy integration or HTTP proxy integration\. For details, see [Amazon API Gateway Known Issues](api-gateway-known-issues.md)\.
 
 ## Output Format of a Lambda Function for Proxy Integration<a name="api-gateway-simple-proxy-for-lambda-output-format"></a>
 
-With the Lambda proxy integration, API Gateway requires the backend Lambda function to return output according to the following JSON format:
+In Lambda proxy integration, API Gateway requires the backend Lambda function to return output according to the following JSON format:
 
 ```
 {
     "isBase64Encoded": true|false,
     "statusCode": httpStatusCode,
     "headers": { "headerName": "headerValue", ... },
+    "multiValueHeaders": { "headerName": ["headerValue", "headerValue2", ...], ... },
     "body": "..."
 }
 ```
 
-In the output, `headers` can be unspecified if no extra response headers are to be returned\. To enable CORS for the Lambda proxy integration, you must add `Access-Control-Allow-Origin:domain-name` to the output `headers`\. `domain-name` can be `*` for any domain name\. The output `body` is marshalled to the frontend as the method response payload\. If `body` is a binary blob, you can encode it as a Base64\-encoded string and set `isBase64Encoded` to `true`\. Otherwise, you can set it to `false` or leave it unspecified\.
+In the output:
++ The `headers` and `multiValueHeaders` keys can be unspecified if no extra response headers are to be returned\.
++ The `headers` key can only contain single\-value headers\.
++ The `multiValueHeaders` key can contain multi\-value headers as well as single\-value headers\. You can use the `multiValueHeaders` key to specify all of your extra headers, including any single\-value ones\.
++ If you specify values for both `headers` and `multiValueHeaders`, API Gateway merges them into a single list\. If the same key\-value pair is specified in both, only the values from `multiValueHeaders` will appear in the merged list\.
+
+To enable CORS for the Lambda proxy integration, you must add `Access-Control-Allow-Origin:domain-name` to the output `headers`\. `domain-name` can be `*` for any domain name\. The output `body` is marshalled to the frontend as the method response payload\. If `body` is a binary blob, you can encode it as a Base64\-encoded string by setting `isBase64Encoded` to `true` and configuring `/` as a **Binary Media Type**\. Otherwise, you can set it to `false` or leave it unspecified\.
 
 **Note**  
 For more information about enabling binary support, see [Enable Binary Support Using the API Gateway Console](api-gateway-payload-encodings-configure-with-console.md)\.

@@ -2,7 +2,12 @@
 
  In API Gateway, an API's method request can take a payload in a different format from the corresponding integration request payload, as required in the backend\. Similarly, the backend may return an integration response payload different from the method response payload, as expected by the frontend\. API Gateway lets you use mapping templates to map the payload from a method request to the corresponding integration request and from an integration response to the corresponding method response\. 
 
- A *mapping template* is a script expressed in [Velocity Template Language \(VTL\)](http://velocity.apache.org/engine/devel/vtl-reference-guide.html) and applied to the payload using [JSONPath expressions](http://goessner.net/articles/JsonPath/)\. The payload can have a data model according to the [JSON schema draft 4](https://tools.ietf.org/html/draft-zyp-json-schema-04)\. You must define the model in order to have API Gateway to generate a SDK or to enable basic request validation for your API\. You do not have to define any model to create a mapping template\. However, a model can help you create a template because API Gateway will generate a template blueprint based on a provided model\. 
+ A *mapping template* is a script expressed in [Velocity Template Language \(VTL\)](http://velocity.apache.org/engine/devel/vtl-reference-guide.html) and applied to the payload using [JSONPath expressions](http://goessner.net/articles/JsonPath/)\. 
+
+The payload can have a *data model* according to the [JSON schema draft 4](https://tools.ietf.org/html/draft-zyp-json-schema-04)\. You must define the model in order to have API Gateway to generate a SDK or to enable basic request validation for your API\. You do not have to define any model to create a mapping template\. However, a model can help you create a template because API Gateway will generate a template blueprint based on a provided model\. 
+
+**Note**  
+In addition to [JSON schema draft 4](https://tools.ietf.org/html/draft-zyp-json-schema-04), API Gateway supports some extended keywords, such as the `additionalProperties` keyword, described in [Understanding the JSON Schema](https://json-schema.org/understanding-json-schema/reference/object.html), which which can be used with request validation to invalidate requests that contain additional properties\.
 
  The section explains how to map the API request and response payload using models and mapping templates\. 
 
@@ -139,7 +144,7 @@ In the preceding example model:
 }
 ```
 
-The `definitions` section contains the schema definition of the `Bin` item that is referenced in the `bins` array with `"ref": "#/definitions/Bin"`\. Using reusable definitions this way makes your model definition easier to read\.
+The `definitions` section contains the schema definition of the `Bin` item that is referenced in the `bins` array with `"$ref": "#/definitions/Bin"`\. Using reusable definitions this way makes your model definition easier to read\.
 
  In addition, you can also reference another model schema defined in an external model file by setting that model's URL as the value of the `$ref` property: `"$ref": "https://apigateway.amazonaws.com/restapis/{restapi_id}/models/{model_name}"`\. For example, supposed you have the following full\-fledged model named `Bin` created under an API with an identifier of `fugvjdxtri`: 
 

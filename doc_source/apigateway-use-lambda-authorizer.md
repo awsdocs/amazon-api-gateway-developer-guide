@@ -1,6 +1,6 @@
 # Use API Gateway Lambda Authorizers<a name="apigateway-use-lambda-authorizer"></a>
 
- An Amazon API Gateway *Lambda authorizer* \(formerly known as a *custom authorizer*\) is a Lambda function that you provide to control access to your API methods\. A Lambda authorizer uses bearer token authentication strategies, such as OAuth or SAML\. It can also use information described by headers, paths, query strings, stage variables, or context variables request parameters\. 
+ An Amazon API Gateway *Lambda authorizer* \(formerly known as a *custom authorizer*\) is a Lambda function that you provide to control access to your API\. A Lambda authorizer uses bearer token authentication strategies, such as OAuth or SAML\. It can also use information described by headers, paths, query strings, stage variables, or context variables request parameters\. 
 
 **Note**  
  Path parameters can be used to grant or deny permissions to invoke a method, but they cannot be used to define identity sources, which can be used as parts of an authorization policy caching key\. Only headers, query strings, stage variables, and context variables can be set as identity sources\. 
@@ -18,13 +18,16 @@ You can implement various authorization strategies, such as JSON Web Token \(JWT
 + [Output from an Amazon API Gateway Lambda Authorizer](api-gateway-lambda-authorizer-output.md)
 + [Configure Lambda Authorizer Using the API Gateway Console](configure-api-gateway-lambda-authorization-with-console.md)
 + [Call an API with API Gateway Lambda Authorizers](call-api-with-api-gateway-lambda-authorization.md)
-+ [Configure Cross\-Account Lambda Authorizer Using the API Gateway Console](apigateway-lambda-authorizer-cross-account-lambda-authorizer.md)
++ [Configure Cross\-Account Lambda Authorizer](apigateway-lambda-authorizer-cross-account-lambda-authorizer.md)
 
 ## Types of API Gateway Lambda Authorizers<a name="api-gateway-lambda-authorizer-types"></a>
 
-API Gateway supports Lambda authorizers of the `TOKEN` and `REQUEST` types:
-+ Lambda authorizers of the `TOKEN` type grant a caller permissions to invoke a given request using an authorization token passed in a header\. The token could be, for example, an OAuth token\.
-+ Lambda authorizers of the `REQUEST` type grant a caller permissions to invoke a given request using request parameters, including headers, query strings, stage variables, or context parameters\.
+API Gateway supports the following types of Lambda authorizers:
++ `TOKEN` type Lambda authorizers grant a caller permissions to invoke a given request using an authorization token passed in a header\. The token could be, for example, an OAuth token\.
++ `REQUEST` type Lambda authorizers grant a caller permissions to invoke a given request using request parameters, including headers, query strings, stage variables, or context parameters\.
+
+**Note**  
+For WebSocket APIs, only `REQUEST` type authorizers are supported\.
 
 ## Create an API Gateway Lambda Authorizer Lambda Function<a name="api-gateway-lambda-authorizer-lambda-function-create"></a>
 
@@ -34,7 +37,7 @@ API Gateway supports Lambda authorizers of the `TOKEN` and `REQUEST` types:
 
 ### Control a Lambda Function of a Lambda Authorizer<a name="api-gateway-lambda-authorizer-token-control-lambda-function"></a>
 
-To grant another AWS acccount permission to call [authorizer:create](https://docs.aws.amazon.com/apigateway/api-reference/link-relation/authorizer-create) or [create\-authorizer](https://docs.aws.amazon.com/cli/latest/reference/apigateway/create-authorizer.html) to control the Lambda function used in your Lambda authorizer, you can create the following IAM policy\.
+To grant IAM principals in the account that owns the API permission to call [authorizer:create](https://docs.aws.amazon.com/apigateway/api-reference/link-relation/authorizer-create) or [create\-authorizer](https://docs.aws.amazon.com/cli/latest/reference/apigateway/create-authorizer.html) to control the Lambda function used in your Lambda authorizer, you can create the following IAM policy\.
 
 ```
 {

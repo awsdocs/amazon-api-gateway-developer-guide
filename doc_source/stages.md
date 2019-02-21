@@ -43,7 +43,7 @@ These steps assume that you have already deployed the API to a stage\.
 
    For more information about stage\-level cache settings, see [Enable API Caching](api-gateway-caching.md)\.
 **Important**  
-If you enable API caching for an API stage, your AWS account may be charged for API caching\. Cachine is not eligible for the AWS free tier\.
+If you enable API caching for an API stage, your AWS account may be charged for API caching\. Caching is not eligible for the AWS free tier\.
 **Tip**  
 You can also override enabled stage\-level cache settings for individual methods\. To do so, expand the stage under the **Stages** secondary navigation pane and choose a method\. Then, in the stage editor, choose the **Override for this method** option for **Settings**\. In the **Cache Settings** area, you can set or clear **Enable Method Cache** or customize any other desired options\. For more information about the method\-level cache settings, see [Enable API Caching](api-gateway-caching.md)\.
 
@@ -58,6 +58,8 @@ Your account will be charged for accessing method\-level CloudWatch metrics, but
    1. For **Log level**, choose **ERROR** to write only error\-level entries to CloudWatch Logs, or choose **INFO** to include all **ERROR** events as well as extra informational events\. 
 
    1. To log full API call request and response information, select **Log full requests/responses data**\. No sensitive data will be logged unless the **Log full requests/responses data** option is selected\.
+**Important**  
+Setting logs to **ERROR** and then choosing **Log full requests/responses data** results in every request being logged in detail\. This is the intended behavior\.
 
    1. To have API Gateway report to CloudWatch the API metrics of `API calls`, `Latency`, `Integration latency`, `400 errors` and `500 errors`, choose **Enable Detailed CloudWatch Metrics** option\. For more information about CloudWatch, see the [Amazon CloudWatch User Guide](https://docs.aws.amazon.com/AmazonCloudWatch/latest/DeveloperGuide/)\.
 
@@ -104,13 +106,21 @@ The IAM role must also contain the following trust relationship statement:
       ```
 For more information about CloudWatch, see the [Amazon CloudWatch User Guide](https://docs.aws.amazon.com/AmazonCloudWatch/latest/DeveloperGuide/)\.
 
-1.  To set the stage\-level throttle limit for all of the methods associated with this API, do the following in the **Default Method Throttling** section: 
+1. To set stage\-level throttling limits for all of the methods associated with this API, do the following in the **Default Method Throttling** section: 
 
-   1.  For **Rate**, type the maximum number of stage\-level steady\-state requests per second that API Gateway can serve without returning a `429 Too Many Requests` response\. This stage\-level rate limit must not be more than the [account\-level](api-gateway-request-throttling.md#apig-request-throttling-account-level-limits) rate limit as specified in [API Gateway Limits for Configuring and Running an API](limits.md#api-gateway-execution-service-limits-table)\. 
+   1. Choose **Enable throttling**\.
 
-   1.  For **Burst**, type the maximum number of stage\-level concurrent requests that API Gateway can serve without returning a `429 Too Many Requests` response\. This stage\-level burst must not be more than the [account\-level](api-gateway-request-throttling.md#apig-request-throttling-account-level-limits) burst limit as specified in [API Gateway Limits for Configuring and Running an API](limits.md#api-gateway-execution-service-limits-table)\. 
+   1.  For **Rate**, type the maximum number of stage\-level steady\-state requests per second that API Gateway can serve without returning a `429 Too Many Requests` response\. This stage\-level rate limit must not be more than the [account\-level](api-gateway-request-throttling.md#apig-request-throttling-account-level-limits) rate limit as specified in [API Gateway Limits for Configuring and Running a REST API](limits.md#api-gateway-execution-service-limits-table)\. 
+
+   1.  For **Burst**, type the maximum number of stage\-level concurrent requests that API Gateway can serve without returning a `429 Too Many Requests` response\. This stage\-level burst must not be more than the [account\-level](api-gateway-request-throttling.md#apig-request-throttling-account-level-limits) burst limit as specified in [API Gateway Limits for Configuring and Running a REST API](limits.md#api-gateway-execution-service-limits-table)\. 
 
 1.  To override the stage\-level throttling for an individual method, expand the stage in the **Stages** secondary navigation pane, choose a method, and choose **Override for this method** for **Settings**\. In the **Method Throttling** section, select appropriate options\. 
+
+1. To associate an AWS WAF web ACL with the stage, choose a web ACL from the **Web ACL** dropdown list\.
+**Note**  
+If needed, choose **Create Web ACL** to open the AWS WAF console in a new browser tab, create the web ACL, and return to the API Gateway console to associate the web ACL with the stage\.
+
+1. If desired, choose **Block API Request if WebACL cannot be evaluated \(Fail\- Close\)**\.
 
 1. To enable [AWS X\-Ray](https://docs.aws.amazon.com/xray/latest/devguide/xray-services-apigateway.html) tracing for the API stage:
 

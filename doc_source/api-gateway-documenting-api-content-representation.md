@@ -37,8 +37,8 @@ The `properties` value is encoded as a JSON string\. The `properties` value cont
   "info": {
     "description": "My first API with Amazon API Gateway."
   },
-  "x-custom-info" : "My custom info, recognized by Swagger.",
-  "my-info" : "My custom info not recognized by Swagger."
+  "x-custom-info" : "My custom info, recognized by OpenAPI.",
+  "my-info" : "My custom info not recognized by OpenAPI."
 }
 ```
 
@@ -48,7 +48,7 @@ The `properties` value is encoded as a JSON string\. The `properties` value cont
 "{\n\t\"info\": {\n\t\t\"description\": \"My first API with Amazon API Gateway.\"\n\t}, … \n}"
 ```
 
-Although API Gateway accepts any valid JSON string as the content map, the content attributes are treated as two categories: those that can be recognized by Swagger and those that cannot\. In the preceding example, `info`, `description`, and `x-custom-info` are recognized by Swagger as a standard Swagger object, property, or extension\. In contrast, `my-info` is not compliant with the Swagger specification\. API Gateway propagates Swagger\-compliant content attributes into the API entity definitions from the associated `DocumentationPart` instances\. API Gateway does not propagate the non\-compliant content attributes into the API entity definitions\. 
+Although API Gateway accepts any valid JSON string as the content map, the content attributes are treated as two categories: those that can be recognized by OpenAPI and those that cannot\. In the preceding example, `info`, `description`, and `x-custom-info` are recognized by OpenAPI as a standard OpenAPI object, property, or extension\. In contrast, `my-info` is not compliant with the OpenAPI specification\. API Gateway propagates OpenAPI\-compliant content attributes into the API entity definitions from the associated `DocumentationPart` instances\. API Gateway does not propagate the non\-compliant content attributes into the API entity definitions\. 
 
 As another example, here is `DocumentationPart` targeted for a `Resource` entity:
 
@@ -94,9 +94,9 @@ This is the same as the following `DocumentationPart` instance:
 
 ### Inherit Content from an API Entity of More General Specifications<a name="api-gateway-documenting-api-content-inheritance"></a>
 
-The default value of an optional `location` field provides a patterned description of an API entity\. Using the default value in the `location` object, you can add a general description in the `properties` map to a `DocumentationPart` instance with this type of `location` pattern\. API Gateway extracts the applicable Swagger documentation attributes from the `DocumentationPart` of the generic API entity and injects them into a specific API entity with the `location` fields matching the general `location` pattern, or matching the exact value, unless the specific entity already has a `DocumentationPart` instance associated with it\. This behavior is also known as content inheritance from an API entity of more general specifications\. 
+The default value of an optional `location` field provides a patterned description of an API entity\. Using the default value in the `location` object, you can add a general description in the `properties` map to a `DocumentationPart` instance with this type of `location` pattern\. API Gateway extracts the applicable OpenAPI documentation attributes from the `DocumentationPart` of the generic API entity and injects them into a specific API entity with the `location` fields matching the general `location` pattern, or matching the exact value, unless the specific entity already has a `DocumentationPart` instance associated with it\. This behavior is also known as content inheritance from an API entity of more general specifications\. 
 
-Content inheritance does not apply to API entities of the `API`, `AUTHORIZER`, `METHOD`, `MODEL`, `REQUEST_BODY` or `RESOURCE` type\.
+Content inheritance does not apply to certain API entity types\. See the table below for details\.
 
 When an API entity matches more than one `DocumentationPart`'s location pattern, the entity will inherit the documentation part with the location fields of the highest precedence and specificities\. The order of precedence is `path` >  `statusCode`\. For matching with the `path` field, API Gateway chooses the entity with the most specific path value\. The following table shows this with a few examples\.
 
@@ -107,7 +107,7 @@ When an API entity matches more than one `DocumentationPart`'s location pattern,
 | 2 | /pets | 200 | id |  Documentation associated with this location pattern will be inherited by entities matching the location pattern when both Case 1 and Case 2 are matched, because Case 2 is more specific than Case 1\.   | 
 | 3 | /pets/petId | \* | id |  Documentation associated with this location pattern will be inherited by entities matching the location pattern when Cases 1, 2, and 3 are matched, because Case 3 has a higher precedence than Case 2 and is more specific than Case 1\.  | 
 
-Here is another example to contrast a more generic `DocumentationPart` instance to a more specific one\. The following general error message of `"Invalid request error"` is injected into the Swagger definitions of the `400` error responses, unless overridden\. 
+Here is another example to contrast a more generic `DocumentationPart` instance to a more specific one\. The following general error message of `"Invalid request error"` is injected into the OpenAPI definitions of the `400` error responses, unless overridden\. 
 
 ```
 {
@@ -158,6 +158,6 @@ The following table shows the valid and required fields as well as applicable de
 
 ## Documentation Versions<a name="api-gateway-documenting-api-content-representation-documentation-versions"></a>
 
-A documentation version is a snapshot of the [DocumentationParts](https://docs.aws.amazon.com/apigateway/api-reference/resource/documentation-parts/) collection of an API and is tagged with a version identifier\. Publishing the documentation of an API involves creating a documentation version, associating it with an API stage, and exporting that stage\-specific version of the API documentation to an external Swagger file\. In API Gateway, a documentation snapshot is represented as a [DocumentationVersion](https://docs.aws.amazon.com/apigateway/api-reference/resource/documentation-version) resource\. 
+A documentation version is a snapshot of the [DocumentationParts](https://docs.aws.amazon.com/apigateway/api-reference/resource/documentation-parts/) collection of an API and is tagged with a version identifier\. Publishing the documentation of an API involves creating a documentation version, associating it with an API stage, and exporting that stage\-specific version of the API documentation to an external OpenAPI file\. In API Gateway, a documentation snapshot is represented as a [DocumentationVersion](https://docs.aws.amazon.com/apigateway/api-reference/resource/documentation-version) resource\. 
 
 As you update an API, you create new versions of the API\. In API Gateway, you maintain all the documentation versions using the [DocumentationVersions](https://docs.aws.amazon.com/apigateway/api-reference/resource/documentation-versions) collection\.

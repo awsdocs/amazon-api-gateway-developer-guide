@@ -13,7 +13,7 @@ Defines a gateway response of a given response type, including the status code, 
 
 ## x\-amazon\-apigateway\-gateway\-responses\.gatewayResponse Example<a name="api-gateway-swagger-extensions-gateway-responses.gatewayResponse-example"></a>
 
- The following example of the API Gateway extension to Swagger defines a [GatewayResponse](https://docs.aws.amazon.com/apigateway/api-reference/resource/gateway-response/) to customize the `INVALID_API_KEY` response to return the status code of `456`, the incoming request's `api-key` header value, and `"Bad api-key"` message\. 
+ The following example of the API Gateway extension to OpenAPI defines a [GatewayResponse](https://docs.aws.amazon.com/apigateway/api-reference/resource/gateway-response/) to customize the `INVALID_API_KEY` response to return the status code of `456`, the incoming request's `api-key` header value, and `"Bad api-key"` message\. 
 
 ```
     "INVALID_API_KEY": {

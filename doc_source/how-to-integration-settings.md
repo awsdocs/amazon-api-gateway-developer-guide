@@ -1,4 +1,4 @@
-# Set up API Integrations in API Gateway<a name="how-to-integration-settings"></a>
+# Set up REST API Integrations in API Gateway<a name="how-to-integration-settings"></a>
 
  After setting up an API method, you must integrate it with an endpoint in the backend\. A backend endpoint is also referred to as an integration endpoint and can be a Lambda function, an HTTP webpage, or an AWS service action\. As with the API method, the API integration has an integration request and an integration response\. An integration request encapsulates an HTTP request received by the backend\. It may or may not differ from the method request submitted by the client\. An integration response is an HTTP response encapsulating the output returned by the backend\.
 

@@ -1,15 +1,15 @@
 # x\-amazon\-apigateway\-any\-method Object<a name="api-gateway-swagger-extensions-any-method"></a>
 
- Specifies the [Swagger Operation Object](https://github.com/OAI/OpenAPI-Specification/blob/master/versions/2.0.md#operationObject) for the API Gateway catch\-all `ANY` method in a [Swagger Path Item Object](https://github.com/OAI/OpenAPI-Specification/blob/master/versions/2.0.md#pathItemObject)\. This object can exist alongside other Operation objects and will catch any HTTP method that was not explicitly declared\. 
+ Specifies the [OpenAPI Operation Object](https://github.com/OAI/OpenAPI-Specification/blob/master/versions/2.0.md#operationObject) for the API Gateway catch\-all `ANY` method in a [OpenAPI Path Item Object](https://github.com/OAI/OpenAPI-Specification/blob/master/versions/2.0.md#pathItemObject)\. This object can exist alongside other Operation objects and will catch any HTTP method that was not explicitly declared\. 
 
- The following table lists the properties extended by API Gateway\. For the other Swagger Operation properties, see the Swagger specification\. 
+ The following table lists the properties extended by API Gateway\. For the other OpenAPI Operation properties, see the OpenAPI specification\. 
 
 
 **Properties**  
 
 | Property Name | Type | Description | 
 | --- | --- | --- | 
-| x\-amazon\-apigateway\-integration | [x\-amazon\-apigateway\-integration Object](api-gateway-swagger-extensions-integration.md) |  Specifies the integration of the method with the backend\. This is an extended property of the [Swagger Operation](https://github.com/OAI/OpenAPI-Specification/blob/master/versions/2.0.md#operationObject) object\. The integration can be of type AWS, AWS\_PROXY, HTTP, HTTP\_PROXY, or MOCK\.  | 
+| x\-amazon\-apigateway\-integration | [x\-amazon\-apigateway\-integration Object](api-gateway-swagger-extensions-integration.md) |  Specifies the integration of the method with the backend\. This is an extended property of the [OpenAPI Operation](https://github.com/OAI/OpenAPI-Specification/blob/master/versions/2.0.md#operationObject) object\. The integration can be of type AWS, AWS\_PROXY, HTTP, HTTP\_PROXY, or MOCK\.  | 
 
 ## x\-amazon\-apigateway\-any\-method Example<a name="api-gateway-swagger-extensions-any-method-example"></a>
 

@@ -34,7 +34,7 @@ In this example, `{time}` can be `morning`, `afternoon`, or `day`; `{name}` can 
 
 ### Node\.js Function for an API with Lambda Proxy Integration<a name="api-gateway-proxy-integration-lambda-function-nodejs"></a>
 
-The following Lambda function in Node\.js is a "Hello, World\!" application\. The function shows how to parse the input `event` parameter that contains a request made by a client to an API Gateway proxy resource\. This resource is integrated with the function using the Lambda proxy integration\. The function also demonstrates how to format the output of the Lambda function for API Gateway to return the results as an HTTP response\. For more information about the input and output formats that this type of Lambda function must follow, see [Input Format of a Lambda Function for Proxy Integration ](set-up-lambda-proxy-integrations.md#api-gateway-simple-proxy-for-lambda-input-format) and [Output Format of a Lambda Function for Proxy Integration](set-up-lambda-proxy-integrations.md#api-gateway-simple-proxy-for-lambda-output-format)\. 
+The following Lambda function in Node\.js is a "Hello, World\!" application\. The function shows how to parse the input `event` parameter that contains a request made by a client to an API Gateway proxy resource\. This resource is integrated with the function using the Lambda proxy integration\. The function also demonstrates how to format the output of the Lambda function for API Gateway to return the results as an HTTP response\. For more information about the input and output formats that this type of Lambda function must follow, see [Input Format of a Lambda Function for Proxy Integration](set-up-lambda-proxy-integrations.md#api-gateway-simple-proxy-for-lambda-input-format) and [Output Format of a Lambda Function for Proxy Integration](set-up-lambda-proxy-integrations.md#api-gateway-simple-proxy-for-lambda-output-format)\. 
 
 ```
 'use strict';
@@ -58,7 +58,7 @@ exports.handler = async (event) => {
         name = event.queryStringParameters.name;
     }
     
-    if (event.pathParameters  && event.pathParameters.proxy) {
+    if (event.pathParameters && event.pathParameters.proxy) {
         console.log("Received proxy: " + event.pathParameters.proxy);
         city = event.pathParameters.proxy;
     }
@@ -74,7 +74,7 @@ exports.handler = async (event) => {
             time = body.time;
     }
  
-    let greeting = `Good '${time}, ${name} of ${city}. `;
+    let greeting = `Good ${time}, ${name} of ${city}. `;
     if (day) greeting += `Happy ${day}!`;
 
     let responseBody = {
@@ -118,115 +118,107 @@ The function then returns a greeting to the named user in the `message` property
 
 ### Java Function for an API with Lambda Proxy Integration<a name="api-gateway-proxy-integration-lambda-function-java"></a>
 
-The following Lambda function in Java is a "Hello, World\!" application, similar to its Node\.js [counterpart](#api-gateway-proxy-integration-lambda-function-nodejs)\. The function shows how to parse the input event that is passed through as an [InputStream](https://docs.aws.amazon.com/lambda/latest/dg/java-programming-model-req-resp.html) object and that contains a request made by a client to an API Gateway proxy resource\. This resource is integrated with the function using the Lambda proxy integration\. It also shows how to parse the `context` object to get the `LambdaLogger`\. The example also demonstrates how to format the output of the Lambda function for API Gateway in Java to return the results in an [OutputStream](https://docs.aws.amazon.com/lambda/latest/dg/java-programming-model-req-resp.html) object as an HTTP response\. For more information about the Lambda proxy integration input and output formats, see [Input Format of a Lambda Function for Proxy Integration ](set-up-lambda-proxy-integrations.md#api-gateway-simple-proxy-for-lambda-input-format) and [Output Format of a Lambda Function for Proxy Integration](set-up-lambda-proxy-integrations.md#api-gateway-simple-proxy-for-lambda-output-format)\. 
+The following Lambda function in Java is a "Hello, World\!" application, similar to its Node\.js [counterpart](#api-gateway-proxy-integration-lambda-function-nodejs)\. The function shows how to process the input event that is passed through as an `APIGatewayProxyRequestEvent` object and that contains a request made by a client to an API Gateway proxy resource\. This resource is integrated with the function using the Lambda proxy integration\. It also shows how to use the `context` object to get the `LambdaLogger`\. The example also demonstrates how to format the output of the Lambda function for API Gateway in Java to return the results in an `APIGatewayProxyResponseEvent` object as an HTTP response\. For more information about the Lambda proxy integration input and output formats, see [Input Format of a Lambda Function for Proxy Integration](set-up-lambda-proxy-integrations.md#api-gateway-simple-proxy-for-lambda-input-format) and [Output Format of a Lambda Function for Proxy Integration](set-up-lambda-proxy-integrations.md#api-gateway-simple-proxy-for-lambda-output-format)\. 
 
 ```
 package examples;
 
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.OutputStream;
-import java.io.InputStreamReader;
-import java.io.OutputStreamWriter;
-import java.io.BufferedReader;
-import java.io.Writer;
-
-import com.amazonaws.services.lambda.runtime.RequestStreamHandler;
-import com.amazonaws.services.lambda.runtime.Context; 
-import com.amazonaws.services.lambda.runtime.LambdaLogger;
-
+import java.util.Collections;
+import java.util.HashMap;
+import java.util.Map;
 
 import org.json.simple.JSONObject;
-import org.json.simple.JSONArray;
-import org.json.simple.parser.ParseException;
 import org.json.simple.parser.JSONParser;
+import org.json.simple.parser.ParseException;
 
+import com.amazonaws.services.lambda.runtime.Context;
+import com.amazonaws.services.lambda.runtime.LambdaLogger;
+import com.amazonaws.services.lambda.runtime.RequestHandler;
+import com.amazonaws.services.lambda.runtime.events.APIGatewayProxyRequestEvent;
+import com.amazonaws.services.lambda.runtime.events.APIGatewayProxyResponseEvent;
 
+public class Proxy implements RequestHandler<APIGatewayProxyRequestEvent, APIGatewayProxyResponseEvent> {
 
-public class ProxyWithStream implements RequestStreamHandler {
-    JSONParser parser = new JSONParser();
-
-
-    public void handleRequest(InputStream inputStream, OutputStream outputStream, Context context) throws IOException {
+    @Override
+    public APIGatewayProxyResponseEvent handleRequest(APIGatewayProxyRequestEvent event, Context context) {
 
         LambdaLogger logger = context.getLogger();
-        logger.log("Loading Java Lambda handler of ProxyWithStream");
+        logger.log("Loading Java Lambda handler of Proxy");
 
-
-        BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream));
-        JSONObject responseJson = new JSONObject();
+        JSONParser parser = new JSONParser();
+    
         String name = "you";
         String city = "World";
         String time = "day";
         String day = null;
-        String responseCode = "200";
+
+        APIGatewayProxyResponseEvent response = new APIGatewayProxyResponseEvent();
 
         try {
-            JSONObject event = (JSONObject)parser.parse(reader);
-            if (event.get("queryStringParameters") != null) {
-                JSONObject qps = (JSONObject)event.get("queryStringParameters");
-                if ( qps.get("name") != null) {
-                    name = (String)qps.get("name");
+            Map<String, String> qps = event.getQueryStringParameters();
+            if (qps != null) {
+                if (qps.get("name") != null) {
+                    name = qps.get("name");
+                }
+            }
+            Map<String, String> pps = event.getPathParameters();
+            if (pps != null) {
+                if (pps.get("proxy") != null) {
+                    city = pps.get("proxy");
                 }
             }
 
-            if (event.get("pathParameters") != null) {
-                JSONObject pps = (JSONObject)event.get("pathParameters");
-                if ( pps.get("proxy") != null) {
-                    city = (String)pps.get("proxy");
+            Map<String, String> hps = event.getHeaders();
+            if (hps != null) {
+                day = hps.get("Day");
+            }
+
+            String bodyStr = event.getBody();
+            if (bodyStr != null) {
+                JSONObject body;
+
+                body = (JSONObject) parser.parse(bodyStr);
+
+                if (body.get("time") != null) {
+                    time = (String) body.get("time");
                 }
             }
 
-            if (event.get("headers") != null) {
-                JSONObject hps = (JSONObject)event.get("headers");
-                if ( hps.get("day") != null) {
-                    day = (String)hps.get("day");
-                }
-            }
-            
-            if (event.get("body") != null) {
-                JSONObject body = (JSONObject)parser.parse((String)event.get("body"));
-                if ( body.get("time") != null) {
-                    time = (String)body.get("time");
-                }
-            }
+            String greeting = "Good " + time + ", " + name + " of " + city + ".";
+            if (day != null && day != "")
+                greeting += " Happy " + day + "!";
 
-            String greeting = "Good " + time + ", " + name + " of " + city + ". ";
-            if (day!=null && day != "") greeting += "Happy " + day + "!";
+            response.setHeaders(Collections.singletonMap("x-custom-header", "my custom header value"));
+            response.setStatusCode(200);
 
-
-            JSONObject responseBody = new JSONObject();
-            responseBody.put("input", event.toJSONString());
+            Map<String, String> responseBody = new HashMap<String, String>();
+            responseBody.put("input", event.toString());
             responseBody.put("message", greeting);
+            String responseBodyString = new JSONObject(responseBody).toJSONString();
 
-            JSONObject headerJson = new JSONObject();
-            headerJson.put("x-custom-header", "my custom header value");
+            response.setBody(responseBodyString);
 
-            responseJson.put("isBase64Encoded", false);
-            responseJson.put("statusCode", responseCode);
-            responseJson.put("headers", headerJson);
-            responseJson.put("body", responseBody.toString());  
+        } catch (ParseException pex) {
+            response.setStatusCode(400);
 
-        } catch(ParseException pex) {
-            responseJson.put("statusCode", "400");
-            responseJson.put("exception", pex);
+            Map<String, String> responseBody = Collections.singletonMap("message", pex.toString());
+            String responseBodyString = new JSONObject(responseBody).toJSONString();
+            response.setBody(responseBodyString);
         }
 
-        logger.log(responseJson.toJSONString());
-        OutputStreamWriter writer = new OutputStreamWriter(outputStream, "UTF-8");
-        writer.write(responseJson.toJSONString());  
-        writer.close();
+        logger.log(response.toString());
+        return response;
     }
 }
 ```
 
-For proxy integrations in API Gateway, the input stream contains an API request serialized as a JSON string by API Gateway\. The input data can include the request's HTTP method \(`httpMethod`\), path \(`path` and `pathParameters`\), query parameters \(`queryStringParameters`\), headers \(`headers`\), applicable payload \(`body`\), the context \(`requestContext`\), and stage variables \(`stageVariables`\)\. 
+For proxy integrations in API Gateway, the input contains an API request serialized as a JSON string by API Gateway\. AWS Lambda automatically serializes the input based on standard bean naming conventions, if the handler method input parameter type is a [POJO](https://docs.aws.amazon.com/lambda/latest/dg/java-programming-model-req-resp.html)\. The AWS Lambda Java Events Library \(`com.amazonaws:aws-lambda-java-events`\) contains POJOs that represent the request and response types for API Gateway proxy integrations\. The input data can include the request's HTTP method \(`httpMethod`\), path \(`path` and `pathParameters`\), query parameters \(`queryStringParameters`\), headers \(`headers`\), applicable payload \(`body`\), the context \(`requestContext`\), and stage variables \(`stageVariables`\)\. 
 
- This example Lambda function parses the `inputStream` parameter to retrieve the query string parameter of `name`, the `proxy` path parameter, the `day` header value and the `time` property of the payload\. For logging, it retrieves the `LambdaLogger` object from the incoming `context` object\. 
+ This example Lambda function uses the `event` parameter to retrieve the query string parameter of `name`, the `proxy` path parameter, the `day` header value and the `time` property of the payload\. For logging, it retrieves the `LambdaLogger` object from the incoming `context` object\. 
 
-The function then returns a greeting to the named user in the `message` property of the `responseBody` object\. To show the details of the incoming request as marshalled by API Gateway, the function also returns the input data \(`event`\) in the response body\. 
+The function then returns a greeting to the named user in the `message` property of the `body`\. To show the details of the incoming request as marshalled by API Gateway, the function also returns the input data \(`event`\) in the body\. 
 
- Finally, upon exiting, the function returns a JSON string, containing the required `statusCode` and any applicable `headers` and `body`, for API Gateway to return it as an HTTP response to the client\. 
+ Finally, upon exiting, the function returns an object which Lambda serializes to a JSON string\. It contains the required `statusCode` and any applicable `headers` and `body`, for API Gateway to return it as an HTTP response to the client\. 
 
  To create this function in the Lambda console, you must create a deployment package before uploading the package into Lambda\. For more information, see [creating a deployment package in the *AWS Lambda Developer Guide*](https://docs.aws.amazon.com/lambda/latest/dg/lambda-java-how-to-create-deployment-package.html)\. 
 
@@ -248,7 +240,7 @@ The following procedure describes how to create the Lambda function in API Gatew
 
    1.  In the **Name** input field, type a function name\.
 
-   1.  From the **Runtime** drop\-down list, choose a supported runtime\. In this example, we use **Node\.js 4\.3**\.
+   1.  From the **Runtime** drop\-down list, choose a supported runtime\. In this example, we use **Node\.js 8\.10**\.
 
    1.  From the **Role** drop\-down list, choose **Choose an existing role**, **Create new role from template\(s\)** or **Create a custom role**\. Then, follow the ensuing instructions for the choice\.
 
@@ -256,7 +248,7 @@ The following procedure describes how to create the Lambda function in API Gatew
 
       For this example, we will skip the **Designer** section and move to the **Function code** section next\.
 
-1.  For a Node or Python runtime, you can use the inline code editor to create or edit the lambda function, in addition to uploading a zipped code file from a local drive or from Amazon S3\. For a Java or C\# runtime, you must upload the zipped code file from a local drive or from Amazon S3\. In any case, use the code example of the specified runtime as specified in [ Create Lambda Functions for an API with Lambda Proxy Integration ](#api-gateway-proxy-integration-create-lambda-backend) here\. 
+1.  For a Node or Python runtime, you can use the inline code editor to create or edit the lambda function, in addition to uploading a zipped code file from a local drive or from Amazon S3\. For a Java or C\# runtime, you must upload the zipped code file from a local drive or from Amazon S3\. In any case, use the code example of the specified runtime as specified in [ Create Lambda Functions for an API with Lambda Proxy Integration](#api-gateway-proxy-integration-create-lambda-backend) here\. 
 
 1. Choose **Save** to finish creating the Lambda function\.
 
@@ -338,35 +330,32 @@ The following procedure describes how to test the proxy integration\.
 
   1. Open a terminal window on your local computer connected to the internet\.
 
-  1. To test `POST /Seattle?time=evening`:
+  1. To test `POST /Seattle?name=John`:
 
      Copy the following cURL command and paste it into the terminal window\.
 
      ```
      curl -v -X POST \
-       'https://r275xc9bmd.execute-api.us-west-2.amazonaws.com/test/Seattle?time=evening' \
+       'https://r275xc9bmd.execute-api.us-west-2.amazonaws.com/test/Seattle?name=John' \
        -H 'content-type: application/json' \
-       -H 'day: Thursday' \
-       -H 'x-amz-docs-region: us-west-2' \
-       -d '{
-     	"callerName": "John"
-     }'
+       -H 'Day: Thursday' \
+       -d '{ "time": "evening" }'
      ```
 
      You should get a successful response with the following payload:
 
      ```
      {
-       "message": "Good day, John of Seattle. Happy Friday!",
+       "message": "Good evening, John of Seattle. Happy Thursday!",
        "input": {
          "resource": "/{proxy+}",
          "path": "/Seattle",
          "httpMethod": "POST",
          "headers": {
-           "day": "Friday"
+           "Day": "Thursday"
          },
          "queryStringParameters": {
-           "time": "morning"
+           "name": "John"
          },
          "pathParameters": {
            "proxy": "Seattle"
@@ -396,7 +385,7 @@ The following procedure describes how to test the proxy integration\.
            "httpMethod": "POST",
            "apiId": "r275xc9bmd"
          },
-         "body": "{ \"callerName\": \"John\" }",
+         "body": "{ \"time\": \"evening\" }",
          "isBase64Encoded": false
        }
      }
@@ -404,18 +393,17 @@ The following procedure describes how to test the proxy integration\.
 
      If you change `POST` to `PUT` in the preceding method request, you get the same response\.
 
-  1. To test `GET /Boston?time=morning`:
+  1. To test `GET /Seattle?name=John`:
 
      Copy the following cURL command and paste it into the terminal window\.
 
      ```
      curl -X GET \
-       'https://r275xc9bmd.execute-api.us-west-2.amazonaws.com/test/Seattle?time=evening' \
+       'https://r275xc9bmd.execute-api.us-west-2.amazonaws.com/test/Seattle?name=John' \
        -H 'content-type: application/json' \
-       -H 'day: Thursday' \
-       -H 'x-amz-docs-region: us-west-2'
+       -H 'Day: Thursday'
      ```
 
      You get a `200 OK Request` response similar to the result from the preceding `POST` request, with the exception that the `GET` request does not have any payload\. So the `body` parameter will be `null`\. 
 **Note**  
-The `requestContext` is a map of key\-value pairs and corresponds to the [$context](api-gateway-mapping-template-reference.md#context-variable-reference) variable\. Its outcome is API\-dependent\. API Gateway may add new keys to the map\. For more information, see [Input Format of a Lambda Function for Proxy Integration ](set-up-lambda-proxy-integrations.md#api-gateway-simple-proxy-for-lambda-input-format)\.
+The `requestContext` is a map of key\-value pairs and corresponds to the [$context](api-gateway-mapping-template-reference.md#context-variable-reference) variable\. Its outcome is API\-dependent\. API Gateway may add new keys to the map\. For more information, see [Input Format of a Lambda Function for Proxy Integration](set-up-lambda-proxy-integrations.md#api-gateway-simple-proxy-for-lambda-input-format)\.

@@ -53,6 +53,8 @@ After creating your VPC resource and your network load balancer with your VPC re
    1.  Type a URL, for example, `http://myApi.example.com`, for **Endpoint URL**\. 
 
       Here, the host name \(for example, `myApi.example.com`\) is used to set the `Host` header of the integration request\. 
+**Note**  
+For the network load balancer \(NLB\), be sure to use the NLB DNS name as described in [Getting Started with Network Load Balancers](https://docs.aws.amazon.com/elasticloadbalancing/latest/network/network-load-balancer-getting-started.html)\. 
 
    1.  Leave the **Use Default Timeout** selection as\-is, unless you want to customize the integration timeouts\.
 

@@ -1,0 +1,41 @@
+# Use `@connections` Commands in Your Backend Service<a name="apigateway-how-to-call-websocket-api-connections"></a>
+
+Your backend service can use the following WebSocket connection HTTP requests to send a callback message to a connected client, get connection information, or disconnect the client\.
+
+**Important**  
+These requests use [IAM authorization](apigateway-websocket-control-access-iam.md), so you must sign them with [Signature Version 4 \(SigV4\)](https://docs.aws.amazon.com/general/latest/gr/sigv4_signing.html)\.
+
+In the following command, you'll need to replace `{api-id}` with the actual API ID, which is displayed the API Gateway console or returned by the AWS CLI [https://docs.aws.amazon.com/goto/aws-cli/apigatewayv2-2018-11-29/CreateApi](https://docs.aws.amazon.com/goto/aws-cli/apigatewayv2-2018-11-29/CreateApi) command\. In addition, if your API is in a region other than `us-east-1`, you'll need to substitute the correct region\.
+
+To send a callback message to the client, use:
+
+```
+POST https://{api-id}.execute-api.us-east-1.amazonaws.com/{stage}/@connections/{connection_id}
+```
+
+You can test this request by using `[Postman](http://www.getpostman.com/)` or by calling `[awscurl](https://github.com/okigan/awscurl)` as in the following example:
+
+```
+awscurl --service execute-api -X POST -d "hello world" https://{prefix}.execute-api.us-east-1.amazonaws.com/{stage}/@connections/{connection_id}
+```
+
+You'll need to URL\-encode the command as in the following example:
+
+```
+awscurl --service execute-api -X POST -d "hello world" https://aabbccddee.execute-api.us-east-1.amazonaws.com/prod/%40connections/R0oXAdfD0kwCH6w%3D
+```
+
+**Note**  
+Postman doesn't encode the `@connections` URL, so you'll need to replace `=` and `@` characters in the encoded URL\.
+
+You can dynamically build a callback URL by using the `$context` variables in your integration\. For example, if you use Lambda proxy integration with a `Node.js` Lambda function, you can build the URL as follows:
+
+```
+exports.handler = function(event, context, callback) {
+var domain = event.requestContext.domain;
+var stage = event.requestContext.stage;
+var connectionId = event.requestContext.connectionId;
+var callbackUrl = util.format(util.format('https://%s/%s/@connections/%s', domain, stage, connectionId);
+// Do a SigV4 and then make the call
+}
+```

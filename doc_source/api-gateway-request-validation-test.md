@@ -19,7 +19,7 @@ X-Amz-Date: 20170306T234936Z
 Authorization: AWS4-HMAC-SHA256 Credential={access_key_ID}/20170306/us-east-1/apigateway/aws4_request, SignedHeaders=content-length;content-type;host;x-amz-date, Signature={sig4_hash}
 ```
 
- You can ignore the `?extensions=validators` query parameter, if you do not want to download the Swagger specifications related to the request validation\. 
+ You can ignore the `?extensions=validators` query parameter, if you do not want to download the OpenAPI specifications related to the request validation\. 
 
 **To test request validation using the API Gateway REST API calls**
 

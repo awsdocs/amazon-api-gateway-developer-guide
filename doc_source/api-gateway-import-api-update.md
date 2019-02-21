@@ -1,4 +1,4 @@
-# Import a Swagger File to Update an Existing API Definition<a name="api-gateway-import-api-update"></a>
+# Import an OpenAPI File to Update an Existing API Definition<a name="api-gateway-import-api-update"></a>
 
  You can import API definitions only to update an existing API, without changing its endpoint configuration, as well as stages and stage variables, or references to API Keys\. 
 
@@ -37,7 +37,7 @@ When an API \(`A`\) overwrites another API \(`B`\), the resulting API takes the 
 
  To merge an API, submit a `PUT` request to `https://apigateway.<region>.amazonaws.com/restapis/<restapi_id>?mode=merge`\. The `restapi_id` path parameter value specifies the API to which the supplied API definition will be merged\. 
 
- The following code snippet shows an example of the `PUT` request to merge a Swagger API definition in JSON, as the payload, with the specified API already in API Gateway\.  
+ The following code snippet shows an example of the `PUT` request to merge an OpenAPI API definition in JSON, as the payload, with the specified API already in API Gateway\. 
 
 ```
 PUT /restapis/<restapi_id>?mode=merge
@@ -45,15 +45,14 @@ Host:apigateway.<region>.amazonaws.com
 Content-Type: application/json
 Content-Length: ...
 
-
-[A Swagger API definition in JSON](api-as-lambda-proxy-export-swagger-with-extensions.md)
+[An OpenAPI API definition in JSON](api-as-lambda-proxy-export-swagger-with-extensions.md)
 ```
 
  The merging update operation takes two complete API definitions and merges them together\. For a small and incremental change, you can use the [resource update](https://docs.aws.amazon.com/apigateway/api-reference/link-relation/resource-update/) operation\. 
 
  To overwrite an API, submit a `PUT` request to `https://apigateway.<region>.amazonaws.com/restapis/<restapi_id>?mode=overwrite`\. The `restapi_id` path parameter specifies the API that will be overwritten with the supplied API definitions\. 
 
- The following code snippet shows an example of an overwriting request with the payload of a JSON\-formatted Swagger definition: 
+ The following code snippet shows an example of an overwriting request with the payload of a JSON\-formatted OpenAPI definition: 
 
 ```
 PUT /restapis/<restapi_id>?mode=overwrite
@@ -61,7 +60,7 @@ Host:apigateway.<region>.amazonaws.com
 Content-Type: application/json
 Content-Length: ...
 
-[A Swagger API definition in JSON](api-as-lambda-proxy-export-swagger-with-extensions.md)
+[An OpenAPI API definition in JSON](api-as-lambda-proxy-export-swagger-with-extensions.md)
 ```
 
  When the `mode` query parameter is not specified, merge is assumed\.

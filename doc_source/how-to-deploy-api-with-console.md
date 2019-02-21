@@ -1,19 +1,19 @@
-# Deploy API from the API Gateway Console<a name="how-to-deploy-api-with-console"></a>
+# Deploy a REST API from the API Gateway Console<a name="how-to-deploy-api-with-console"></a>
 
- You must have created an API before deploying it for the first time\. For more information see [Creating an API in Amazon API Gateway](how-to-create-api.md)\. 
+ You must have created a REST API before deploying it for the first time\. For more information see [Creating a REST API in Amazon API Gateway](how-to-create-api.md)\. 
 
 **Topics**
-+ [Deploy an API to a Stage](#how-to-deploy-api-console)
-+ [Update the Stage Configuration of a Deployment](#how-to-deploy-api-update-stage-settings)
-+ [Set Stage Variables for the Deployment](#how-to-deploy-api-set-stage-variables)
-+ [Associate a Stage with a Different Deployment](#how-to-deploy-change-deployment-console)
++ [Deploy a REST API to a Stage](#how-to-deploy-api-console)
++ [Update the Stage Configuration of a REST API Deployment](#how-to-deploy-api-update-stage-settings)
++ [Set Stage Variables for a REST API Deployment](#how-to-deploy-api-set-stage-variables)
++ [Associate a Stage with a Different REST API Deployment](#how-to-deploy-change-deployment-console)
 
-## Deploy an API to a Stage<a name="how-to-deploy-api-console"></a>
+## Deploy a REST API to a Stage<a name="how-to-deploy-api-console"></a>
 
  The API Gateway console lets you deploy an API by creating a deployment and associating it with a new or existing stage\. 
 
 **Note**  
-To associate a stage in API Gateway with a different deployment, see [Associate a Stage with a Different Deployment](#how-to-deploy-change-deployment-console) instead\.
+To associate a stage in API Gateway with a different deployment, see [Associate a Stage with a Different REST API Deployment](#how-to-deploy-change-deployment-console) instead\.
 
 1. Sign in to the API Gateway console at [https://console\.aws\.amazon\.com/apigateway](https://console.aws.amazon.com/apigateway)\.
 
@@ -29,7 +29,7 @@ To associate a stage in API Gateway with a different deployment, see [Associate 
 
 1. Choose **Deploy** to deploy the API to the specified stage with default stage settings\.
 
-## Update the Stage Configuration of a Deployment<a name="how-to-deploy-api-update-stage-settings"></a>
+## Update the Stage Configuration of a REST API Deployment<a name="how-to-deploy-api-update-stage-settings"></a>
 
  After an API is deployed, you can modify the stage settings to enable or disable API cache, logging, or request throttling\. You can also choose a client certificate for the backend to authenticate API Gateway and set stage variables to pass deployment context to the API integration at run time\. For more information, see [Update Stage Settings](stages.md#how-to-stage-settings)\. 
 
@@ -39,11 +39,11 @@ After modifying stage settings, you must redeploy the API for the changes to tak
 **Note**  
  If the updated settings, such as enabling logging, requires a new IAM role, you can add the required IAM role without redeploying the API\. However, it can take a few minutes before the new IAM role takes effect\. Before that happens, traces of your API calls will not be logged even if you have enabled the logging option\. 
 
-## Set Stage Variables for the Deployment<a name="how-to-deploy-api-set-stage-variables"></a>
+## Set Stage Variables for a REST API Deployment<a name="how-to-deploy-api-set-stage-variables"></a>
 
- For a deployment, you can set or modify stage variables to pass deployment\-specific data to the API integration at run time\. You can do this on the **Stage Variables** tab in the **Stage Editor**\. For more information, see instructions in [Set up Stage Variable for API Deployment](stage-variables.md)\. 
+ For a deployment, you can set or modify stage variables to pass deployment\-specific data to the API integration at run time\. You can do this on the **Stage Variables** tab in the **Stage Editor**\. For more information, see instructions in [Set up Stage Variables for a REST API Deployment](stage-variables.md)\. 
 
-## Associate a Stage with a Different Deployment<a name="how-to-deploy-change-deployment-console"></a>
+## Associate a Stage with a Different REST API Deployment<a name="how-to-deploy-change-deployment-console"></a>
 
  Because a deployment represents an API snapshot and a stage defines a path into a snapshot, you can choose different deployment\-stage combinations to control how users call into different versions of the API\. This is useful, for example, when you want to roll back API state to a previous deployment or to merge a 'private branch' of the API into the public one\. 
 

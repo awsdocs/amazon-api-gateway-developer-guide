@@ -1,15 +1,154 @@
 # Access Binary Files in Lambda Using an API Gateway API<a name="api-gateway-content-encodings-examples-image-lambda"></a>
 
-The following example demonstrates how to access a binary file in AWS Lambda through an API Gateway API\. The sample API is presented in a Swagger file\. The code example uses the API Gateway REST API calls\.
+The following example demonstrates how to access a binary file in AWS Lambda through an API Gateway API\. The sample API is presented in an OpenAPI file\. The code example uses the API Gateway REST API calls\.
 
 **Topics**
-+ [Swagger File of a Sample API to Access Images in Lambda](#api-gateway-content-encodings-example-image-lambda-swagger-file)
++ [OpenAPI File of a Sample API to Access Images in Lambda](#api-gateway-content-encodings-example-image-lambda-swagger-file)
 + [Download an Image from Lambda](#api-gateway-content-encodings-example-download-image-from-lambda)
 + [Upload an Image to Lambda](#api-gateway-content-encodings-example-upload-image-to-lambda)
 
-## Swagger File of a Sample API to Access Images in Lambda<a name="api-gateway-content-encodings-example-image-lambda-swagger-file"></a>
+## OpenAPI File of a Sample API to Access Images in Lambda<a name="api-gateway-content-encodings-example-image-lambda-swagger-file"></a>
 
-The following Swagger file shows an example API that illustrates downloading an image file from Lambda and uploading an image file to Lambda\.
+The following OpenAPI file shows an example API that illustrates downloading an image file from Lambda and uploading an image file to Lambda\.
+
+------
+#### [ OpenAPI 3\.0 ]
+
+```
+{
+   "openapi": "3.0.0",
+   "info": {
+      "version": "2016-10-21T17:26:28Z",
+      "title": "ApiName"
+   },
+   "paths": {
+      "/lambda": {
+         "get": {
+            "parameters": [
+               {
+                  "name": "key",
+                  "in": "query",
+                  "required": false,
+                  "schema": {
+                     "type": "string"
+                  }
+               }
+            ],
+            "responses": {
+               "200": {
+                  "description": "200 response",
+                  "content": {
+                     "application/json": {
+                        "schema": {
+                           "$ref": "#/components/schemas/Empty"
+                        }
+                     }
+                  }
+               },
+               "500": {
+                  "description": "500 response"
+               }
+            },
+            "x-amazon-apigateway-integration": {
+               "uri": "arn:aws:apigateway:us-east-1:lambda:path/2015-03-31/functions/arn:aws:lambda:us-east-1:123456789012:function:image/invocations",
+               "type": "AWS",
+               "credentials": "arn:aws:iam::123456789012:role/Lambda",
+               "httpMethod": "POST",
+               "requestTemplates": {
+                  "application/json": "{\n   \"imageKey\": \"$input.params('key')\"\n}"
+               },
+               "responses": {
+                  "default": {
+                     "statusCode": "500"
+                  },
+                  "2\\d{2}": {
+                     "statusCode": "200",
+                     "responseTemplates": {
+                        "application/json": "{\n   \"image\": \"$input.body\"\n}"
+                     }
+                  }
+               }
+            }
+         },
+         "put": {
+            "parameters": [
+               {
+                  "name": "key",
+                  "in": "query",
+                  "required": false,
+                  "schema": {
+                     "type": "string"
+                  }
+               }
+            ],
+            "responses": {
+               "200": {
+                  "description": "200 response",
+                  "content": {
+                     "application/json": {
+                        "schema": {
+                           "$ref": "#/components/schemas/Empty"
+                        }
+                     },
+                     "application/octet-stream": {
+                        "schema": {
+                           "$ref": "#/components/schemas/Empty"
+                        }
+                     }
+                  }
+               },
+               "500": {
+                  "description": "500 response"
+               }
+            },
+            "x-amazon-apigateway-integration": {
+               "uri": "arn:aws:apigateway:us-east-1:lambda:path/2015-03-31/functions/arn:aws:lambda:us-east-1:123456789012:function:image/invocations",
+               "type": "AWS",
+               "credentials": "arn:aws:iam::123456789012:role/Lambda",
+               "httpMethod": "POST",
+               "contentHandling": "CONVERT_TO_TEXT",
+               "requestTemplates": {
+                  "application/json": "{\n   \"imageKey\": \"$input.params('key')\", \"image\": \"$input.body\"\n}"
+               },
+               "responses": {
+                  "default": {
+                     "statusCode": "500"
+                  },
+                  "2\\d{2}": {
+                     "statusCode": "200"
+                  }
+               }
+            }
+         }
+      }
+   },
+   "x-amazon-apigateway-binary-media-types": [
+      "application/octet-stream",
+      "image/jpeg"
+   ],
+   "servers": [
+      {
+         "url": "https://abcdefghi.execute-api.us-east-1.amazonaws.com/{basePath}",
+         "variables": {
+            "basePath": {
+              "default": "/v1"
+            }
+         }
+      }
+   ],
+   "components": {
+      "schemas": {
+         "Empty": {
+            "type": "object",
+            "title": "Empty Schema"
+         }
+      }
+   }
+}
+```
+
+------
+#### [ OpenAPI 2\.0 ]
 
 ```
 {
@@ -122,6 +261,8 @@ The following Swagger file shows an example API that illustrates downloading an 
   }
 }
 ```
+
+------
 
 ## Download an Image from Lambda<a name="api-gateway-content-encodings-example-download-image-from-lambda"></a>
 

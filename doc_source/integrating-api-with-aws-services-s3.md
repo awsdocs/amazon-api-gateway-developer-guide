@@ -1,6 +1,6 @@
-# Create an API as an Amazon S3 Proxy<a name="integrating-api-with-aws-services-s3"></a>
+# Create a REST API as an Amazon S3 Proxy in API Gateway<a name="integrating-api-with-aws-services-s3"></a>
 
-As an example to showcase using an API in API Gateway to proxy Amazon S3, this section describes how to create and configure an API to expose the following Amazon S3 operations: 
+As an example to showcase using a REST API in API Gateway to proxy Amazon S3, this section describes how to create and configure a REST API to expose the following Amazon S3 operations: 
 + Expose GET on the API's root resource to [list all of the Amazon S3 buckets of a caller](https://docs.aws.amazon.com/AmazonS3/latest/API/RESTServiceGET.html)\.
 + Expose GET on a Folder resource to [view a list of all of the objects in an Amazon S3 bucket](https://docs.aws.amazon.com/AmazonS3/latest/API/RESTBucketGET.html)\.
 + Expose PUT on a Folder resource to [add a bucket to Amazon S3](https://docs.aws.amazon.com/AmazonS3/latest/API/RESTBucketPUT.html)\.
@@ -13,7 +13,7 @@ As an example to showcase using an API in API Gateway to proxy Amazon S3, this s
 **Note**  
  To integrate your API Gateway API with Amazon S3, you must choose a region where both the API Gateway and Amazon S3 services are available\. For region availability, see [Regions and Endpoints](https://docs.aws.amazon.com/general/latest/gr/rande.html#apigateway_region)\. 
 
- You may want to import the sample API as an Amazon S3 proxy, as shown in [Swagger Definitions of the Sample API as an Amazon S3 Proxy](api-as-s3-proxy-export-swagger-with-extensions.md)\. For instructions on how to import an API using the Swagger definition, see [Import an API into API Gateway](api-gateway-import-api.md)\. 
+ You may want to import the sample API as an Amazon S3 proxy, as shown in [OpenAPI Definitions of the Sample API as an Amazon S3 Proxy](api-as-s3-proxy-export-swagger-with-extensions.md)\. For instructions on how to import an API using the OpenAPI definition, see [Import a REST API into API Gateway](api-gateway-import-api.md)\. 
 
  To use the API Gateway console to create the API, you must first sign up for an AWS account\. 
 
@@ -21,9 +21,13 @@ If you do not have an AWS account, use the following procedure to create one\.
 
 **To sign up for AWS**
 
-1. Open [https://aws\.amazon\.com/](https://aws.amazon.com/) and choose **Create an AWS Account**\.
+1. Open [https://aws\.amazon\.com/](https://aws.amazon.com/), and then choose **Create an AWS Account**\.
+**Note**  
+If you previously signed in to the AWS Management Console using AWS account root user credentials, choose **Sign in to a different account**\. If you previously signed in to the console using IAM credentials, choose **Sign\-in using root account credentials**\. Then choose **Create a new AWS account**\.
 
 1. Follow the online instructions\.
+
+   Part of the sign\-up procedure involves receiving a phone call and entering a verification code using the phone keypad\.
 
 **Topics**
 + [Set Up IAM Permissions for the API to Invoke Amazon S3 Actions](#api-as-s3-proxy-iam-permissions)
@@ -32,7 +36,7 @@ If you do not have an AWS account, use the following procedure to create one\.
 + [Expose API Methods to Access an Amazon S3 Bucket](#api-folder-operations-as-s3-bucket-actions)
 + [Expose API Methods to Access an Amazon S3 Object in a Bucket](#api-items-in-folder-as-s3-objects-in-bucket)
 + [Call the API Using a REST API Client](#api-as-s3-proxy-test-using-postman)
-+ [Swagger Definitions of the Sample API as an Amazon S3 Proxy](api-as-s3-proxy-export-swagger-with-extensions.md)
++ [OpenAPI Definitions of the Sample API as an Amazon S3 Proxy](api-as-s3-proxy-export-swagger-with-extensions.md)
 
 ## Set Up IAM Permissions for the API to Invoke Amazon S3 Actions<a name="api-as-s3-proxy-iam-permissions"></a>
 
@@ -299,7 +303,7 @@ As an illustration, the following screen shot shows the output when testing the 
 
 1. Set **Content Handling** to `Passthrough` in the integration request \(for upload\) and in a integration response \(for download\)\. Make sure that no mapping template is defined for the affected content type\. For more information, see [Integration Passthrough Behaviors](integration-passthrough-behaviors.md) and [Select VTL Mapping Templates](request-response-data-mappings.md#transforming-request-response-body)\.
 
-The payload size limit is 10 MB\. See [API Gateway Limits for Configuring and Running an API](limits.md#api-gateway-execution-service-limits-table)\.
+The payload size limit is 10 MB\. See [API Gateway Limits for Configuring and Running a REST API](limits.md#api-gateway-execution-service-limits-table)\.
 
 Make sure that files on Amazon S3 have the correct content types added as the files' metadata\. For streamable media content, `Content-Disposition:inline` may also need to be added to the metadata\.
 

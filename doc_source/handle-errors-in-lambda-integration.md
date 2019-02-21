@@ -42,7 +42,7 @@ A standard AWS Lambda error has the following format:
 
 ```
 exports.handler = function(event, context, callback) {
-    callback(new Error("Malformed input ...");
+    callback(new Error("Malformed input ..."));
 };
 ```
 
@@ -180,7 +180,7 @@ This template translates the integration response body that contains the custom 
 
  Depending on your API requirements, you may need to pass some or all of the custom error properties as method response header parameters\. You can achieve this by applying the custom error mappings from the integration response body to the method response headers\. 
 
-For example, the following Swagger extension defines a mapping from the `errorMessage.errorType`, `errorMessage.httpStatus`, `errorMessage.trace.function`, and `errorMessage.trace` properties to the `error_type`, `error_status`, `error_trace_function`, and `error_trace` headers, respectively\. 
+For example, the following OpenAPI extension defines a mapping from the `errorMessage.errorType`, `errorMessage.httpStatus`, `errorMessage.trace.function`, and `errorMessage.trace` properties to the `error_type`, `error_status`, `error_trace_function`, and `error_trace` headers, respectively\. 
 
 ```
 "x-amazon-apigateway-integration": {

@@ -1,16 +1,15 @@
 # Change a Public or Private API Endpoint Type in API Gateway<a name="apigateway-api-migration"></a>
 
-Changing an API endpoint type requires you to update the API's configuration\. You can change an existing API type using the API Gateway console, AWS CLI, an AWS SDK for API Gateway, or the API Gateway REST API\. The update operation may take up to 60 seconds to complete, during which your API will not be available\. 
+Changing an API endpoint type requires you to update the API's configuration\. You can change an existing API type using the API Gateway console, AWS CLI, an AWS SDK for API Gateway, or the API Gateway REST API\. The update operation may take up to 60 seconds to complete\. During this time, your API will be available, but its endpoint type cannot be changed again until the current change is completed\.
 
 The following endpoint type changes are supported:
-+ From edge\-optimized to regional
-+ From regional to edge\-optimized
-+ From edge\-optimized or regional to private
++ From edge\-optimized to regional or private
++ From regional to edge\-optimized or private
 + From private to regional
 
 You cannot change a private API into an edge\-optimized API\.
 
-If you are changing a public API from edge\-optimized to regional or vice versa, note that an edge\-optimized API may have different behaviors than a regional API\. For example, an edge\-optimized API removes the `Content-MD5` header\. Any MD5 hash value passed to the backend can be expressed in a request string parameter or a body property\. However, the regional API passes this header through, although it may remap the header name to some other name\.  Understanding the differences helps you decide how to update an edge\-optimized API to a regional one or from a regional API to an edge\-optimized one\. 
+If you are changing a public API from edge\-optimized to regional or vice versa, note that an edge\-optimized API may have different behaviors than a regional API\. For example, an edge\-optimized API removes the `Content-MD5` header\. Any MD5 hash value passed to the backend can be expressed in a request string parameter or a body property\. However, the regional API passes this header through, although it may remap the header name to some other name\. Understanding the differences helps you decide how to update an edge\-optimized API to a regional one or from a regional API to an edge\-optimized one\. 
 
 **Topics**
 + [Use the API Gateway Console to Change an API Endpoint Type](#migrate-api-using-console)

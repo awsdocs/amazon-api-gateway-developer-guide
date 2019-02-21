@@ -2,7 +2,7 @@
 
 ## Errors during Import<a name="api-gateway-import-api-errors"></a>
 
- During the import, errors can be generated for major issues like an invalid Swagger document\. Errors are returned as exceptions \(for example, `BadRequestException`\) in an unsuccessful response\. When an error occurs, the new API definition is discarded and no change is made to the existing API\. 
+ During the import, errors can be generated for major issues like an invalid OpenAPI document\. Errors are returned as exceptions \(for example, `BadRequestException`\) in an unsuccessful response\. When an error occurs, the new API definition is discarded and no change is made to the existing API\. 
 
 ## Warnings during Import<a name="api-gateway-import-api-warnings"></a>
 

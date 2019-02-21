@@ -2,7 +2,7 @@
 
  Specify an optional customer\-defined information describing a Lambda authorizer \(formerly known as a custom authorizer\)\. It is used for API Gateway API import and export without functional impact\. 
 
- This property is an extended property of the [Swagger Security Definitions Operation](https://github.com/OAI/OpenAPI-Specification/blob/master/versions/2.0.md#securityDefinitionsObject) object\. 
+ This property is an extended property of the [OpenAPI Security Definitions Operation](https://github.com/OAI/OpenAPI-Specification/blob/master/versions/2.0.md#securityDefinitionsObject) object\. 
 
 ## x\-amazon\-apigateway\-authtype Example<a name="api-gateway-swagger-extensions-authtype-example"></a>
 

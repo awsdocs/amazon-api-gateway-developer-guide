@@ -48,15 +48,13 @@ Once you've created your VPC endpoint, you can use it to access multiple private
    + For **Subnets**, choose the subnets \(Availability Zones\) in which to create the endpoint network interfaces\. 
 **Note**  
 Not all Availability Zones may be supported for all AWS services\.
-   + For **Enable Private DNS Name**, you can optionally select the check box to enable private DNS for the interface endpoint\. 
+   + For **Enable Private DNS Name**, you can optionally select the check box to enable private DNS for the interface endpoint\.
 
-     If you choose to enable private DNS, you'll be able to access your API via private or public DNS\. This is the recommended choice\.
-
-     If you choose not to enable private DNS, you'll only be able to access your API via public DNS\.
-
-     This setting does not affect who can access your API, only how DNS addresses they can use\.
+     If you choose to enable private DNS, you'll be able to access your API via private or public DNS\. \(This setting does not affect who can access your API, only which DNS addresses they can use\.\) However, you cannot access public APIs from a VPC by using an API Gateway VPC endpoint with private DNS enabled\. Note that these DNS settings do not affect the ability to call these public APIs from the VPC if you are using an edge\-optimized custom domain name to access the public API\. Using an edge\-optimized custom domain name to access your public API \(while using private DNS to access your private API\) is one way to access both public and private APIs from a VPC where the endpoint has been created with private DNS enabled\.
 **Note**  
-To use the private DNS option, the `enableDnsSupport` and `enableDnsHostnames` attributes of your VPC must be set to `true`\. For more information, see [DNS Support in Your VPC](https://docs.aws.amazon.com/vpc/latest/userguide/vpc-dns.html#vpc-dns-support) and [Updating DNS Support for Your VPC](https://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/vpc-dns.html#vpc-dns-updating) in the Amazon VPC User Guide\.
+Enabling private DNS is the recommended choice\. If you choose not to enable private DNS, you'll only be able to access your API via public DNS\.
+
+     To use the private DNS option, the `enableDnsSupport` and `enableDnsHostnames` attributes of your VPC must be set to `true`\. For more information, see [DNS Support in Your VPC](https://docs.aws.amazon.com/vpc/latest/userguide/vpc-dns.html#vpc-dns-support) and [Updating DNS Support for Your VPC](https://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/vpc-dns.html#vpc-dns-updating) in the Amazon VPC User Guide\.
    + For **Security group**, select the security group to associate with the VPC endpoint network interfaces\.
 
      The security group you choose must be set to allow TCP Port 443 inbound HTTPS traffic from either an IP range in your VPC or another security group in your VPC\.
@@ -91,10 +89,10 @@ aws apigateway create-rest-api \
         --name 'Simple PetStore (AWS CLI, Private)' \
         --description 'Simple private PetStore API' \
         --region us-west-2 \
-        --endpoint-configuration '{ types: ["PRIVATE"] }'
+        --endpoint-configuration '{ "types": ["PRIVATE"] }'
 ```
 
-The successful response returns an output similar to the following:
+A successful call returns output similar to the following:
 
 ```
 {
@@ -134,7 +132,7 @@ apig.createRestApi({
 });
 ```
 
-The successful response returns an output similar to the following:
+A successful call returns output similar to the following:
 
 ```
 {
@@ -148,7 +146,7 @@ The successful response returns an output similar to the following:
 }
 ```
 
- After completing the preceding steps, you can follow the instructions in [ Set up an Edge\-Optimized API Using the AWS SDK for Node\.js ](create-api-using-awssdk.md) to set up methods and integrations for this API\. 
+ After completing the preceding steps, you can follow the instructions in [Set up an Edge\-Optimized API Using the AWS SDK for Node\.js](create-api-using-awssdk.md) to set up methods and integrations for this API\. 
 
 When you are ready to test your API, be sure to create a resource policy and attach it to the API as described in [Set Up a Resource Policy for a Private API](#apigateway-private-api-set-up-resource-policy)\.
 
@@ -172,7 +170,7 @@ Authorization: AWS4-HMAC-SHA256 Credential={ACCESS-KEY-ID}/20170511/us-west-2/ap
 }
 ```
 
-The successful response has the status code of `201 Created` and a body similar to the following output:
+A successful call has a status code of `201 Created` and a body similar to the following output:
 
 ```
 {
@@ -186,7 +184,7 @@ The successful response has the status code of `201 Created` and a body similar 
 }
 ```
 
- After completing the preceding steps, you can follow the instructions in [Set up an Edge\-Optimized API Using the API Gateway REST API](create-api-using-restapi.md) to set up methods and integrations for this API\.
+After completing the preceding steps, you can follow the instructions in [Set up an Edge\-Optimized API Using the API Gateway REST API](create-api-using-restapi.md) to set up methods and integrations for this API\.
 
 When you are ready to test your API, be sure to create a resource policy and attach it to the API as described in [Set Up a Resource Policy for a Private API](#apigateway-private-api-set-up-resource-policy)\.
 
@@ -194,7 +192,7 @@ When you are ready to test your API, be sure to create a resource policy and att
 
 Before your private API can be accessed, you need to create a resource policy and attach it to the API This will grant access to the API from your VPCs and VPC endpoints or from VPCs and VPC endpoints in other AWS accounts that you explicitly grant access\.
 
-To do this, follow the instructions in [Create and Attach an API Gateway Resource Policy to an API](apigateway-resource-policies-create-attach.md)\. In step 4, choose the **Source VPC Whitelist** example\. Replace `{{vpceID}}` \(including the curly braces\) with your VPC endpoint ID, choose **Save** to save your resource policy\.
+To do this, follow the instructions in [Create and Attach an API Gateway Resource Policy to an API](apigateway-resource-policies-create-attach.md)\. In step 4, choose the **Source VPC Whitelist** example\. Replace `{{vpceID}}` \(including the curly braces\) with your VPC endpoint ID, and then choose **Save** to save your resource policy\.
 
 ## Deploy a Private API Using the API Gateway Console<a name="apigateway-private-api-deploy-using-console"></a>
 
@@ -212,11 +210,11 @@ To get the DNS names for your private API, do the following:
 
 1. Log in to the Amazon VPC console at [https://console\.aws\.amazon\.com/vpc/](https://console.aws.amazon.com/vpc/)\.
 
-1. In the left\-hand navigation pane, choose **Endpoints** and then choose your interface VPC endpoint for API Gateway\.
+1. In the left navigation pane, choose **Endpoints** and then choose your interface VPC endpoint for API Gateway\.
 
-1. In the **Details** pane, you'll see 4 values in the **DNS names** field\. The first 2 are the private DNS names for your API\. The other 2 are the public DNS names for it\. 
+1. In the **Details** pane, you'll see 5 values in the **DNS names** field\. The first 3 are the public DNS names for your API\. The other 2 are the private DNS names for it\. 
 
-### Invoking Your Private API Using Private DNS Names<a name="w4aac12c15c23c29b9"></a>
+### Invoking Your Private API Using Private DNS Names<a name="w4aac13c15c23c29b9"></a>
 
 If you've enabled private DNS, you can access your private API using the private DNS names as follows:
 
@@ -254,23 +252,29 @@ and
 curl -X GET https://0qzs2sy7bh.execute-api.us-west-2.amazonaws.com/test/pets/2
 ```
 
-### Invoking Your API Using Public DNS Names<a name="w4aac12c15c23c29c11"></a>
+### Invoking Your Private API Using Endpoint\-Specific Public DNS Hostnames<a name="w4aac13c15c23c29c11"></a>
 
-You can access your private API using public DNS names\.
+You can access your private API using endpoint\-specific DNS hostnames\. These are public DNS hostnames containing the VPC endpoint ID or API ID for your private API\.
 
 The base URL is in the following format:
 
 ```
-https://{restapi-id}.execute-api.{region}.amazonaws.com/{stage}
+https://{vpce-id}.execute-api.{region}.vpce.amazonaws.com/{stage}
 ```
 
-For example, assuming you set up the `GET /pets` and `GET /pets/{petId}` methods in this example, and assuming that your API's API ID was `0qzs2sy7bh` and its public DNS name was `vpce-0c1308d7312217cd7-01234567.execute-api.us-west-1.vpce.amazonaws.com` and your region was `us-west-2`, you could test your API by using the following cURL command:
+For example, assuming you set up the `GET /pets` and `GET /pets/{petId}` methods in this example, and assuming that your API's API ID was `0qzs2sy7bh` and its public DNS name was `vpce-0c1308d7312217cd7-01234567.execute-api.us-west-1.vpce.amazonaws.com` and your region was `us-west-2`, you could test your API via its VPCE ID by using the `Host` header in a cURL command, as in the following example:
 
 ```
-curl -v https://vpce-0c1308d7312217cd7-01234567.execute-api.us-west-1.vpce.amazonaws.com/test/pets -H 'Host: 0qzs2sy7bh.execute-api.us-west-2.amazonaws.com'
+curl -v https://vpce-0c1308d7312217cd7-01234567.execute-api.us-east-1.vpce.amazonaws.com/test/pets -H 'Host: 0qzs2sy7bh.execute-api.us-west-2.amazonaws.com'
 ```
 
-### Accessing Your API Using AWS Direct Connect<a name="w4aac12c15c23c29c13"></a>
+Alternatively, you can access your private API via its API ID by using the `x-apigw-api-id` header in a cURL command in the following format:
+
+```
+curl -v https://{vpce-id}.execute-api.{region}.vpce.amazonaws.com/test -H'x-apigw-api-id:{api-id}'
+```
+
+### Accessing Your Private API Using AWS Direct Connect<a name="w4aac13c15c23c29c13"></a>
 
 You can also use AWS Direct Connect to establish a dedicated private connection from an on\-premises network to Amazon VPC and access your private API endpoint over that connection by using public DNS names\. 
 

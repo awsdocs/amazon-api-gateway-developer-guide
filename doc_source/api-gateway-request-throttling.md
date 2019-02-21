@@ -56,7 +56,7 @@ You can set the default method throttling to override the account\-level request
 
 You can set the default method throttling limits in the API Gateway console by using the **Default Method Throttling** setting in **Stages**\. For instructions on using the console, see [Update Stage Settings](stages.md#how-to-stage-settings)\.
 
-You can also set the default method throttling limits by calling the [API Gateway REST API](api-ref.md)\.
+You can also set the default method throttling limits by calling the [API Gateway V1 and V2 API References](api-ref.md)\.
 
 ## Configuring API\-level and Stage\-Level Throttling in a Usage Plan<a name="apigateway-api-level-throttling-in-usage-plan"></a>
 

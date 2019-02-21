@@ -17,7 +17,7 @@ You can perform these tasks using the following methods:
 +  AWS SDK functions \(for example, in Node\.js, [createResource](http://docs.aws.amazon.com/AWSJavaScriptSDK/latest/AWS/APIGateway.html#createResource-property) and [putMethod](http://docs.aws.amazon.com/AWSJavaScriptSDK/latest/AWS/APIGateway.html#putMethod-property)\)
 +  API Gateway REST API \([resource:create](https://docs.aws.amazon.com/apigateway/api-reference/link-relation/resource-create/) and [method:put](https://docs.aws.amazon.com/apigateway/api-reference/link-relation/method-put/)\)\.
 
-For examples of using these tools, see [ Initialize API Setup in API Gateway ](create-api-resources-methods.md)\.
+For examples of using these tools, see [ Initialize REST API Setup in API Gateway](create-api-resources-methods.md)\.
 
 **Topics**
 + [Set up API Resources](#setup-method-resources)
@@ -214,7 +214,7 @@ GET /pets?type=dog
 breed:poodle
 ```
 
-For information on how to map method request parameters to integration request parameters, see [Set up API Integrations in API Gateway](how-to-integration-settings.md)\.
+For information on how to map method request parameters to integration request parameters, see [Set up REST API Integrations in API Gateway](how-to-integration-settings.md)\.
 
 ## Set up Method Request Model<a name="setup-method-request-model"></a>
 
@@ -267,7 +267,7 @@ You can use AWS CLI, an AWS SDK, or a REST API client, such as [Postman](https:/
 
 To use a Lambda authorizer to authorize access to the API method, set the `authorization-type` input property to `CUSTOM` and set the [https://docs.aws.amazon.com/apigateway/api-reference/resource/method/#authorizerId](https://docs.aws.amazon.com/apigateway/api-reference/resource/method/#authorizerId) input property to the [https://docs.aws.amazon.com/apigateway/api-reference/resource/authorizer/#id](https://docs.aws.amazon.com/apigateway/api-reference/resource/authorizer/#id) property value of a Lambda authorizer that already exists\. The referenced Lambda authorizer can be of the `TOKEN` or `REQUEST` type\. For information about creating a Lambda authorizer, see [Use API Gateway Lambda Authorizers](apigateway-use-lambda-authorizer.md)\.
 
-To use an Amazon Cognito user pool to authorize access to the API method, set the `authorization-type` input property to `COGNITO_USER_POOLS` and set the [https://docs.aws.amazon.com/apigateway/api-reference/resource/method/#authorizerId](https://docs.aws.amazon.com/apigateway/api-reference/resource/method/#authorizerId) input property to the [https://docs.aws.amazon.com/apigateway/api-reference/resource/authorizer/#id](https://docs.aws.amazon.com/apigateway/api-reference/resource/authorizer/#id) property value of the `COGNITO_USER_POOLS` authorizer that was already created\. For information about creating an Amazon Cognito user pool authorizer, see [Use Amazon Cognito User Pools](apigateway-integrate-with-cognito.md)\.
+To use an Amazon Cognito user pool to authorize access to the API method, set the `authorization-type` input property to `COGNITO_USER_POOLS` and set the [https://docs.aws.amazon.com/apigateway/api-reference/resource/method/#authorizerId](https://docs.aws.amazon.com/apigateway/api-reference/resource/method/#authorizerId) input property to the [https://docs.aws.amazon.com/apigateway/api-reference/resource/authorizer/#id](https://docs.aws.amazon.com/apigateway/api-reference/resource/authorizer/#id) property value of the `COGNITO_USER_POOLS` authorizer that was already created\. For information about creating an Amazon Cognito user pool authorizer, see [Control Access to a REST API Using Amazon Cognito User Pools as Authorizer](apigateway-integrate-with-cognito.md)\.
 
 ## Set up Method Request Validation<a name="setup-method-request-validation"></a>
 

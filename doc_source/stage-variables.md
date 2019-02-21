@@ -1,8 +1,8 @@
-# Set up Stage Variable for API Deployment<a name="stage-variables"></a>
+# Set up Stage Variables for a REST API Deployment<a name="stage-variables"></a>
 
-Stage variables are name\-value pairs that you can define as configuration attributes associated with a deployment stage of an API\. They act like environment variables and can be used in your API setup and mapping templates\.
+Stage variables are name\-value pairs that you can define as configuration attributes associated with a deployment stage of a REST API\. They act like environment variables and can be used in your API setup and mapping templates\.
 
-For example, you can define a stage variable in a stage configuration, and then set its value as the URL string of an HTTP integration for a method in your API\. Later, you can reference the URL string using the associated stage variable name from the API setup\. This way, you can use the same API setup with a different endpoint at each stage by resetting the stage variable value to the corresponding URLs\. You can also access stage variables in the mapping templates, or pass configuration parameters to your AWS Lambda or HTTP backend\.
+For example, you can define a stage variable in a stage configuration, and then set its value as the URL string of an HTTP integration for a method in your REST API\. Later, you can reference the URL string using the associated stage variable name from the API setup\. This way, you can use the same API setup with a different endpoint at each stage by resetting the stage variable value to the corresponding URLs\. You can also access stage variables in the mapping templates, or pass configuration parameters to your AWS Lambda or HTTP backend\.
 
 For more information about mapping templates, see [API Gateway Mapping Template Reference](api-gateway-mapping-template-reference.md)\.
 

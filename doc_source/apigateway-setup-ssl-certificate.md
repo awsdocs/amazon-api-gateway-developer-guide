@@ -1,0 +1,3 @@
+# Set Up Client\-Side SSL Authentication in API Gateway<a name="apigateway-setup-ssl-certificate"></a>
+
+You can use API Gateway to generate an SSL certificate and use its public key in the backend to verify that HTTP requests to your backend system are from API Gateway\. You can also enable client\-side SSL authentication for an API using the API Gateway console\. For more information, see [Configure an API to Use SSL Certificates](getting-started-client-side-ssl-authentication.md#configure-api)\.

@@ -13,6 +13,10 @@
 
 The following request parameter mappings example translates a method request's query \(`version`\), header \(`x-user-id`\) and path \(`service`\) parameters to the integration request's query \(`stage`\), header \(`x-userid`\), and path parameters \(`op`\), respectively\.
 
+**Note**  
+If you are creating resources via OpenAPI or AWS CloudFormation, static values should be enclosed in single quotes\.  
+To add this value from the console, enter `application/json` in the box, without quotation marks\.
+
 ```
 "requestParameters" : {
     "integration.request.querystring.stage" : "method.request.querystring.version",

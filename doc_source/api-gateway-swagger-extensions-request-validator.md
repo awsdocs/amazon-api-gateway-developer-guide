@@ -8,6 +8,9 @@ This extension can be specified at the API level or at the method level\. The AP
 
 The following example applies the `basic` request validator at the API level while applying the `parameter-only` request validator on the `POST /validation` request\. 
 
+------
+#### [ OpenAPI 2\.0 ]
+
 ```
 {
   "swagger": "2.0",
@@ -30,3 +33,5 @@ The following example applies the `basic` request validator at the API level whi
      }
 }
 ```
+
+------

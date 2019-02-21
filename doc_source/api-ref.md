@@ -1,11 +1,10 @@
-# Amazon API Gateway REST API<a name="api-ref"></a>
+# Amazon API Gateway Version 1 and Version 2 API References<a name="api-ref"></a>
 
- When you use the Amazon API Gateway console to create, configure, update, and deploy an API, the console calls the API Gateway REST API behind the scenes to make things happen\. 
+Amazon API Gateway provides APIs for creating and deploying your own HTTP and WebSocket APIs\. In addition, API Gateway APIs are available in standard AWS SDKs\.
 
- When you use AWS Command Line Interface to create, configure, update, and deploy an API, the AWS CLI tool calls the API Gateway REST API as well\. For an example, see [ Create an API using API Gateway and Test It](https://docs.aws.amazon.com/lambda/latest/dg/with-on-demand-https-example-configure-event-source.html) in the *AWS Lambda Developer Guide* \. For more information, see [AWS Command Line Interface User Guide](https://docs.aws.amazon.com/cli/latest/userguide/)\.
+If you are using a language for which an AWS SDK exists, you may prefer to use the SDK rather than using the API Gateway REST APIs directly\. The SDKs make authentication simpler, integrate easily with your development environment, and provide easy access to API Gateway commands\.
 
-When you use an [AWS SDK](https://aws.amazon.com/tools/) to create, configure, update, and deploy an API, the SDK calls the API Gateway REST API behind the scenes\.
-
- Instead, you can call the API Gateway REST API directly to create, configure, update, and deploy an API in API Gateway\. 
-
- For more information on how to use the API Gateway REST API, see [Amazon API Gateway REST API Reference](https://docs.aws.amazon.com/apigateway/api-reference/)\. 
+Here's where to find the AWS SDKs and API Gateway REST API reference documentation:
++ [Tools for Amazon Web Services](https://aws.amazon.com/tools/) \(for developer tools, SDKs, and IDE toolkits\)
++ [Amazon API Gateway Version 1 API Reference](https://docs.aws.amazon.com/apigateway/api-reference/) \(for creating and deploying HTTP APIs\)
++ [Amazon API Gateway Version 2 API Reference](https://docs.aws.amazon.com/apigatewayv2/latest/api-reference/api-reference.html) \(for creating and deploying WebSocket APIs\)

@@ -1,15 +1,153 @@
 # Access Binary Files in Amazon S3 through an API Gateway API<a name="api-gateway-content-encodings-examples-image-s3"></a>
 
-The following examples show the Swagger file used to access images in Amazon S3, how to download an image from Amazon S3, and how to upload an image to Amazon S3\. 
+The following examples show the OpenAPI file used to access images in Amazon S3, how to download an image from Amazon S3, and how to upload an image to Amazon S3\. 
 
 **Topics**
-+ [Swagger File of a Sample API to Access Images in Amazon S3](#api-gateway-content-encodings-example-image-s3-swagger-file)
++ [OpenAPI File of a Sample API to Access Images in Amazon S3](#api-gateway-content-encodings-example-image-s3-swagger-file)
 + [Download an Image from Amazon S3](#api-gateway-content-encodings-example-download-image-from-s3)
 + [Upload an Image to Amazon S3](#api-gateway-content-encodings-example-upload-image-to-s3)
 
-## Swagger File of a Sample API to Access Images in Amazon S3<a name="api-gateway-content-encodings-example-image-s3-swagger-file"></a>
+## OpenAPI File of a Sample API to Access Images in Amazon S3<a name="api-gateway-content-encodings-example-image-s3-swagger-file"></a>
 
-The following Swagger file shows a sample API that illustrates downloading an image file from Amazon S3 and uploading an image file to Amazon S3\. This API exposes the `GET /s3?key={file-name}` and `PUT /s3?key={file-name}` methods for downloading and uploading a specified image file\. The `GET` method returns the image file as a Base64\-encoded string as part of a JSON output, following the supplied mapping template, in a 200 OK response\. The `PUT` method takes a raw binary blob as input and returns a 200 OK response with an empty payload\.
+The following OpenAPI file shows a sample API that illustrates downloading an image file from Amazon S3 and uploading an image file to Amazon S3\. This API exposes the `GET /s3?key={file-name}` and `PUT /s3?key={file-name}` methods for downloading and uploading a specified image file\. The `GET` method returns the image file as a Base64\-encoded string as part of a JSON output, following the supplied mapping template, in a 200 OK response\. The `PUT` method takes a raw binary blob as input and returns a 200 OK response with an empty payload\.
+
+------
+#### [ OpenAPI 3\.0 ]
+
+```
+{
+   "openapi": "3.0.0",
+   "info": {
+      "version": "2016-10-21T17:26:28Z",
+      "title": "ApiName"
+   },
+   "paths": {
+      "/s3": {
+         "get": {
+            "parameters": [
+               {
+                  "name": "key",
+                  "in": "query",
+                  "required": false,
+                  "schema": {
+                     "type": "string"
+                  }
+               }
+            ],
+            "responses": {
+               "200": {
+                  "description": "200 response",
+                  "content": {
+                     "application/json": {
+                        "schema": {
+                           "$ref": "#/components/schemas/Empty"
+                        }
+                     }
+                  }
+               },
+               "500": {
+                  "description": "500 response"
+               }
+            },
+            "x-amazon-apigateway-integration": {
+               "credentials": "arn:aws:iam::123456789012:role/binarySupportRole",
+               "responses": {
+                  "default": {
+                     "statusCode": "500"
+                  },
+                  "2\\d{2}": {
+                     "statusCode": "200"
+                  }
+               },
+               "requestParameters": {
+                  "integration.request.path.key": "method.request.querystring.key"
+               },
+               "uri": "arn:aws:apigateway:us-west-2:s3:path/{key}",
+               "passthroughBehavior": "when_no_match",
+               "httpMethod": "GET",
+               "type": "aws"
+            }
+         },
+         "put": {
+            "parameters": [
+               {
+                  "name": "key",
+                  "in": "query",
+                  "required": false,
+                  "schema": {
+                     "type": "string"
+                  }
+               }
+            ],
+            "responses": {
+               "200": {
+                  "description": "200 response",
+                  "content": {
+                     "application/json": {
+                        "schema": {
+                           "$ref": "#/components/schemas/Empty"
+                        }
+                     },
+                     "application/octet-stream": {
+                        "schema": {
+                           "$ref": "#/components/schemas/Empty"
+                        }
+                     }
+                  }
+               },
+               "500": {
+                  "description": "500 response"
+               }
+            },
+            "x-amazon-apigateway-integration": {
+               "credentials": "arn:aws:iam::123456789012:role/binarySupportRole",
+               "responses": {
+                  "default": {
+                     "statusCode": "500"
+                  },
+                  "2\\d{2}": {
+                     "statusCode": "200"
+                  }
+               },
+               "requestParameters": {
+                  "integration.request.path.key": "method.request.querystring.key"
+               },
+               "uri": "arn:aws:apigateway:us-west-2:s3:path/{key}",
+               "passthroughBehavior": "when_no_match",
+               "httpMethod": "PUT",
+               "type": "aws",
+               "contentHandling": "CONVERT_TO_BINARY"
+            }
+         }
+      }
+   },
+   "x-amazon-apigateway-binary-media-types": [
+      "application/octet-stream",
+      "image/jpeg"
+   ],
+   "servers": [
+      {
+         "url": "https://abcdefghi.execute-api.us-east-1.amazonaws.com/{basePath}",
+         "variables": {
+            "basePath": {
+              "default": "/v1"
+            }
+         }
+      }
+   ],
+   "components": {
+      "schemas": {
+         "Empty": {
+            "type": "object",
+            "title": "Empty Schema"
+         }
+      }
+   }
+}
+```
+
+------
+#### [ OpenAPI 2\.0 ]
 
 ```
 {
@@ -121,6 +259,8 @@ The following Swagger file shows a sample API that illustrates downloading an im
 }
 ```
 
+------
+
 ## Download an Image from Amazon S3<a name="api-gateway-content-encodings-example-download-image-from-s3"></a>
 
 To download an image file \(`image.jpg`\) as a binary blob from Amazon S3:
@@ -142,7 +282,7 @@ The successful response looks like this:
 
 The raw bytes are returned because the `Accept` header is set to a binary media type of `application/octet-stream` and binary support is enabled for the API\. 
 
-Alternatively, to download an image file \(`image.jpg`\) as a Base64\-encoded string, formatted as a JSON property, from Amazon S3, add a response template to the 200 integration response like this, as shown in the bold\-faced Swagger definition block below:
+Alternatively, to download an image file \(`image.jpg`\) as a Base64\-encoded string, formatted as a JSON property, from Amazon S3, add a response template to the 200 integration response like this, as shown in the bold\-faced OpenAPI definition block below:
 
 ```
         "x-amazon-apigateway-integration": {

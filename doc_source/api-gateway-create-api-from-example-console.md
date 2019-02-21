@@ -18,7 +18,7 @@ The following procedure walks you through the steps to create and test an API fr
 1.  Under **Create new API**, choose **Example API** and then choose **Import** to create the example API\. For your first API, the API Gateway console starts with this option as default\.   
 ![\[\]](http://docs.aws.amazon.com/apigateway/latest/developerguide/images/api-gateway-create-api-by-importing-example.png)
 
-    You can scroll down the Swagger definition for details of this example API before choosing **Import**\. 
+    You can scroll down the OpenAPI definition for details of this example API before choosing **Import**\. 
 
 1. The newly created API is shown as follows:  
 ![\[\]](http://docs.aws.amazon.com/apigateway/latest/developerguide/images/api-gateway-create-api-by-importing-example-result.png)

@@ -4,7 +4,7 @@
 
  All AWS services support dedicated APIs to expose their features\. However, the application protocols or programming interfaces are likely to differ from service to service\. An API Gateway API with the `AWS` integration has the advantage of providing a consistent application protocol for your client to access different AWS services\. 
 
- In this walkthrough, we create an API to expose Amazon SNS\. For more examples of integrating an API with other AWS services, see [Samples and Tutorials](api-gateway-tutorials.md)\. 
+ In this walkthrough, we create an API to expose Amazon SNS\. For more examples of integrating an API with other AWS services, see [REST API Samples and Tutorials](api-gateway-tutorials.md)\. 
 
  Unlike the Lambda proxy integration, there is no corresponding proxy integration for other AWS services\. Hence, an API method is integrated with a single AWS action\. For more flexibility, similar to the proxy integration, you can set up a Lambda proxy integration\. The Lambda function then parses and processes requests for other AWS actions\. 
 
@@ -249,4 +249,4 @@ If you delete an IAM resource an AWS service proxy relies on, that AWS service p
 
 1. Select **APIGatewayAWSProxyExecPolicy**, and then choose **Policy Actions**, **Delete**\. When prompted, choose **Delete**\.
 
- You have reached the end of this walkthrough\. For more detailed discussions about creating API as an AWS service proxy, see [Create an API as an Amazon S3 Proxy](integrating-api-with-aws-services-s3.md), [Create an API Gateway API for AWS Lambda Functions](integrating-api-with-aws-services-lambda.md), or [Create an API Gateway API as an Amazon Kinesis Proxy](integrating-api-with-aws-services-kinesis.md)\. 
+ You have reached the end of this walkthrough\. For more detailed discussions about creating API as an AWS service proxy, see [Create a REST API as an Amazon S3 Proxy in API Gateway](integrating-api-with-aws-services-s3.md), [Create a REST API for AWS Lambda Functions in API Gateway](integrating-api-with-aws-services-lambda.md), or [Create a REST API as an Amazon Kinesis Proxy in API Gateway](integrating-api-with-aws-services-kinesis.md)\. 

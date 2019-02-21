@@ -1,6 +1,6 @@
 # Amazon API Gateway API Request and Response Data Mapping Reference<a name="request-response-data-mappings"></a>
 
- This section explains how to set up data mappings from an API's method request data, including other data stored in [`context`](api-gateway-mapping-template-reference.md#context-variable-reference), [`stage`](api-gateway-mapping-template-reference.md#stagevariables-template-reference), or [`util`](api-gateway-mapping-template-reference.md#util-template-reference) variables, to the corresponding integration request parameters and from an integration response data, including the other data, to the method response parameters\. The method request data includes request parameters \(path, query string, headers\) and the body The integration response data includes response parameters \(headers\) and the body\. For more information about using the stage variables, see [Amazon API Gateway Stage Variables Reference](aws-api-gateway-stage-variables-reference.md)\. 
+ This section explains how to set up data mappings from an API's method request data, including other data stored in [`context`](api-gateway-mapping-template-reference.md#context-variable-reference), [`stage`](api-gateway-mapping-template-reference.md#stagevariables-template-reference), or [`util`](api-gateway-mapping-template-reference.md#util-template-reference) variables, to the corresponding integration request parameters and from an integration response data, including the other data, to the method response parameters\. The method request data includes request parameters \(path, query string, headers\) and the body\. The integration response data includes response parameters \(headers\) and the body\. For more information about using the stage variables, see [Amazon API Gateway Stage Variables Reference](aws-api-gateway-stage-variables-reference.md)\. 
 
 **Topics**
 + [Map Method Request Data to Integration Request Parameters](#mapping-request-parameters)
@@ -10,7 +10,12 @@
 
 ## Map Method Request Data to Integration Request Parameters<a name="mapping-request-parameters"></a>
 
- Integration request parameters, in the form of path variables, query strings or headers, can be mapped from any defined method request parameters and the payload\. 
+Integration request parameters, in the form of path variables, query strings or headers, can be mapped from any defined method request parameters and the payload\.
+
+In the following table, *`PARAM_NAME`* is the name of a method request parameter of the given parameter type\. It must have been defined before it can be referenced\. *`JSONPath_EXPRESSION`* is a JSONPath expression for a JSON field of the body of a request or response\.
+
+**Note**  
+The `"$"` prefix is omitted in this syntax\.
 
 
 **Integration request data mapping expressions**  
@@ -19,24 +24,26 @@
 | --- | --- | 
 | Method request path | method\.request\.path\.PARAM\_NAME | 
 | Method request query string | method\.request\.querystring\.PARAM\_NAME | 
+| Multi\-value method request query string | method\.request\.multivaluequerystring\.PARAM\_NAME | 
 | Method request header | method\.request\.header\.PARAM\_NAME | 
+| Multi\-value method request header | method\.request\.multivalueheader\.PARAM\_NAME | 
 | Method request body | method\.request\.body | 
 | Method request body \(JsonPath\) | method\.request\.body\.JSONPath\_EXPRESSION\. | 
 | Stage variables | stageVariables\.VARIABLE\_NAME | 
 | Context variables | context\.VARIABLE\_NAME that must be one of the [supported context variables](api-gateway-mapping-template-reference.md#context-variable-reference)\. | 
 | Static value | 'STATIC\_VALUE'\. The STATIC\_VALUE is a string literal and must be enclosed within a pair of single quotes\. | 
 
- Here, *PARAM\_NAME* is the name of a method request parameter of the given parameter type\. It must have been defined before it can be referenced\. *JSONPath\_EXPRESSION* is a JSONPath expression for a JSON field of the body of a request or response\. However, the "$\." prefix is omitted in this syntax\. 
-
-**Example mappings from method request parameter in Swagger**  
- The following example shows a Swagger snippet that maps 1\) the method request's header, named `methodRequestHeadParam`, into the integration request path parameter, named `integrationPathParam`; 2\) the method request query string, named `methodRequestQueryParam`, into the integration request query string, named `integrationQueryParam`\.   
+**Example mappings from method request parameter in OpenAPI**  
+The following example shows an OpenAPI snippet that maps:  
++ the method request's header, named `methodRequestHeaderParam`, into the integration request path parameter, named `integrationPathParam`
++ the multi\-value method request query string, named `methodRequestQueryParam`, into the integration request query string, named `integrationQueryParam`
 
 ```
 ...
 "requestParameters" : {
             
     "integration.request.path.integrationPathParam" : "method.request.header.methodRequestHeaderParam",        
-    "integration.request.querystring.integrationQueryParam" : "method.request.querystring.methodRequestQueryParam"
+    "integration.request.querystring.integrationQueryParam" : "method.request.multivaluequerystring.methodRequestQueryParam"
             
 }
 ...
@@ -44,8 +51,8 @@
 
  Integration request parameters can also be mapped from fields in the JSON request body using a [JSONPath expression](http://goessner.net/articles/JsonPath/index.html#e2)\. The following table shows the mapping expressions for a method request body and its JSON fields\. 
 
-**Example mapping from method request body in Swagger**  
- The following example shows a Swagger snippet that maps 1\) the method request body to the integration request header, named `body-header`, and 2\) a JSON field of the body, as expressed by a JSON expression \(`petstore.pets[0].name`, without the `$.` prefix\)\.   
+**Example mapping from method request body in OpenAPI**  
+ The following example shows an OpenAPI snippet that maps 1\) the method request body to the integration request header, named `body-header`, and 2\) a JSON field of the body, as expressed by a JSON expression \(`petstore.pets[0].name`, without the `$.` prefix\)\.   
 
 ```
 ...
@@ -68,14 +75,15 @@
 | Mapped Data Source | Mapping expression | 
 | --- | --- | 
 | Integration response header | integration\.response\.header\.PARAM\_NAME | 
+| Integration response header | integration\.response\.multivalueheader\.PARAM\_NAME | 
 | Integration response body | integration\.response\.body | 
 | Integration response body \(JsonPath\) | integration\.response\.body\.JSONPath\_EXPRESSION | 
 | Stage variable | stageVariables\.VARIABLE\_NAME | 
 | Context variable | context\.VARIABLE\_NAME that must be one of the [supported context variables](api-gateway-mapping-template-reference.md#context-variable-reference)\. | 
 | Static value | 'STATIC\_VALUE'\. The STATIC\_VALUE is a string literal and must be enclosed within a pair of single quotes\. | 
 
-**Example data mapping from integration response in Swagger**  
- The following example shows a Swagger snippet that maps 1\) the integration response's `redirect.url`, JSONPath field into the request response's `location` header; and 2\) the integration response's `x-app-id` header to the method response's `id` header\.   
+**Example data mapping from integration response in OpenAPI**  
+ The following example shows an OpenAPI snippet that maps 1\) the integration response's `redirect.url`, JSONPath field into the request response's `location` header; and 2\) the integration response's `x-app-id` header to the method response's `id` header\.   
 
 ```
 ...
@@ -83,6 +91,7 @@
             
     "method.response.header.location" : "integration.response.body.redirect.url",
     "method.response.header.id" : "integration.response.header.x-app-id",
+    "method.response.header.items" : "integration.response.multivalueheader.item",
             
 }
 ...

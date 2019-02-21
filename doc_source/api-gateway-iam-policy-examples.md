@@ -1,6 +1,6 @@
 # IAM Policy Examples for Managing API Gateway APIs<a name="api-gateway-iam-policy-examples"></a>
 
-The following example policy documents shows various use cases to set access permissions for managing API resources in API Gateway\. For permissions model and other background information, see [ Control Who Can Create and Manage an API Gateway API with IAM Policies ](api-gateway-control-access-using-iam-policies-to-create-and-manage-api.md#api-gateway-control-access-using-iam-policies)\. 
+The following example policy documents shows various use cases to set access permissions for managing API resources in API Gateway\. For permissions model and other background information, see [ Control Who Can Create and Manage an API Gateway API with IAM Policies](api-gateway-control-access-using-iam-policies-to-create-and-manage-api.md#api-gateway-control-access-using-iam-policies)\. 
 
 **Topics**
 + [Simple Read Permissions](#api-gateway-policy-example-apigateway-general)

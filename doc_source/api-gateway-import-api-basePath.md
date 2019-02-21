@@ -1,10 +1,10 @@
-# Set the Swagger `basePath` Property<a name="api-gateway-import-api-basePath"></a>
+# Set the OpenAPI `basePath` Property<a name="api-gateway-import-api-basePath"></a>
 
- In Swagger, you can use the `[basePath](https://github.com/OAI/OpenAPI-Specification/blob/master/versions/2.0.md)` property to provide one or more path parts that precede each path defined in the paths property\. Because API Gateway has several ways to express a resource's path, the Import API feature provides three options for interpreting the `basePath` property during an import: 
+ In OpenAPI, you can use the `[basePath](https://github.com/OAI/OpenAPI-Specification/blob/master/versions/2.0.md)` property to provide one or more path parts that precede each path defined in the paths property\. Because API Gateway has several ways to express a resource's path, the Import API feature provides three options for interpreting the `basePath` property during an import: 
 
 ## ignore<a name="api-gateway-import-api-basePath-ignore"></a>
 
- If the Swagger file has a `basePath` value of `/a/b/c` and the `paths` property contains `/e` and `/f`, the following `POST` or `PUT` request: 
+ If the OpenAPI file has a `basePath` value of `/a/b/c` and the `paths` property contains `/e` and `/f`, the following `POST` or `PUT` request: 
 
 ```
 POST /restapis?mode=import&basepath=ignore
@@ -28,7 +28,7 @@ PUT /restapis/api_id?basepath=ignore
 
 ## prepend<a name="api-gateway-import-api-basePath-prepend"></a>
 
- If the Swagger file has a `basePath` value of `/a/b/c` and the `paths` property contains `/e` and `/f`, the following `POST` or `PUT` request: 
+ If the OpenAPI file has a `basePath` value of `/a/b/c` and the `paths` property contains `/e` and `/f`, the following `POST` or `PUT` request: 
 
 ```
 POST /restapis?mode=import&basepath=prepend
@@ -53,7 +53,7 @@ PUT /restapis/api_id?basepath=prepend
 
 ## split<a name="api-gateway-import-api-basePath-split"></a>
 
- If the Swagger file has a `basePath` value of `/a/b/c` and the `paths` property contains `/e` and `/f`, the following `POST` or `PUT` request: 
+ If the OpenAPI file has a `basePath` value of `/a/b/c` and the `paths` property contains `/e` and `/f`, the following `POST` or `PUT` request: 
 
 ```
 POST /restapis?mode=import&basepath=split

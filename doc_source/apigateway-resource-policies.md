@@ -15,7 +15,7 @@ You can use API Gateway resource policies together with IAM policies\.
 
 **Topics**
 + [Access Policy Language Overview for Amazon API Gateway](apigateway-control-access-policy-language-overview.md)
++ [How Amazon API Gateway Resource Policies Affect Authorization Workflow](apigateway-authorization-flow.md)
 + [API Gateway Resource Policy Examples](apigateway-resource-policies-examples.md)
 + [Create and Attach an API Gateway Resource Policy to an API](apigateway-resource-policies-create-attach.md)
-+ [Interactions Between API Gateway Resource Policies and IAM Policies](apigateway-resource-policies-iam-policies-interaction.md)
 + [AWS Condition Keys that can be used in API Gateway Resource Policies](apigateway-resource-policies-aws-condition-keys.md)

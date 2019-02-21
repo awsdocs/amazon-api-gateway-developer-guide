@@ -11,4 +11,4 @@ With the API Gateway private integration, you can enable access to HTTP/HTTPS re
 + [Grant Permissions to Create a VPC Link](grant-permissions-to-create-vpclink.md)
 + [Set up an API Gateway API with Private Integrations Using the API Gateway Console](set-up-api-with-vpclink-console.md)
 + [Set up an API Gateway API with Private Integrations Using the AWS CLI](set-up-api-with-vpclink-cli.md)
-+ [Set up API with Private Integrations Using Swagger](set-up-api-with-vpclink-using-swagger.md)
++ [Set up API with Private Integrations Using OpenAPI](set-up-api-with-vpclink-using-swagger.md)

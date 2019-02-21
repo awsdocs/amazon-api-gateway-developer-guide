@@ -559,7 +559,7 @@ The next walkthrough shows how to use models and mappings in API Gateway to tran
 
 ## Map Response Payload<a name="getting-started-models"></a>
 
-In this walkthrough, we show how to use models and mapping templates in API Gateway to transform the output of an API call from one data schema to another\. This walkthrough builds on the instructions and concepts in the [Getting Started with Amazon API Gateway](getting-started.md) and the [Map Request Parameters for an API Gateway API](#getting-started-mappings)\. If you have not yet completed those walkthroughs, we suggest you do them first\.
+In this walkthrough, we show how to use models and mapping templates in API Gateway to transform the output of an API call from one data schema to another\. This walkthrough builds on the instructions and concepts in the [Getting Started with REST APIs in Amazon API Gateway](getting-started.md) and the [Map Request Parameters for an API Gateway API](#getting-started-mappings)\. If you have not yet completed those walkthroughs, we suggest you do them first\.
 
 This walkthrough uses API Gateway to get example data from a publicly accessible HTTP endpoint and from an AWS Lambda function you create\. Both the HTTP endpoint and the Lambda function return the same example data:
 

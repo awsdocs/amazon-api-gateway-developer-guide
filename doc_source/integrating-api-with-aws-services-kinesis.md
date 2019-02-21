@@ -1,6 +1,6 @@
-# Create an API Gateway API as an Amazon Kinesis Proxy<a name="integrating-api-with-aws-services-kinesis"></a>
+# Create a REST API as an Amazon Kinesis Proxy in API Gateway<a name="integrating-api-with-aws-services-kinesis"></a>
 
- This section describes how to create and configure an API Gateway API with an integration of the `AWS` type to access Kinesis\. 
+This page describes how to create and configure a REST API with an integration of the `AWS` type to access Kinesis\. 
 
 **Note**  
  To integrate your API Gateway API with Kinesis, you must choose a region where both the API Gateway and Kinesis services are available\. For region availability, see [Regions and Endpoints](https://docs.aws.amazon.com/general/latest/gr/rande.html#apigateway_region)\. 
@@ -33,15 +33,19 @@
 
  You can apply the instructions presented here to other Kinesis actions\. For the complete list of the Kinesis actions, see [Amazon Kinesis API Reference](https://docs.aws.amazon.com/kinesis/latest/APIReference/Welcome.html)\. 
 
- Instead of using the API Gateway console to create the sample API, you can import the sample API into API Gateway, using either the API Gateway [Import API](https://docs.aws.amazon.com/apigateway/api-reference/link-relation/restapi-import/) or the [API Gateway Swagger Importer](https://github.com/awslabs/aws-apigateway-importer)\. For information on how to use the Import API, see [Import an API into API Gateway](api-gateway-import-api.md)\. For information on how to use the API Gateway Swagger Importer, see [Getting Started with the API Gateway Swagger Importer](http://swagger.io/getting-started-with-the-amazon-swagger-importer/)\. 
+ Instead of using the API Gateway console to create the sample API, you can import the sample API into API Gateway using the API Gateway [Import API](https://docs.aws.amazon.com/apigateway/api-reference/link-relation/restapi-import/)\. For information on how to use the Import API, see [Import a REST API into API Gateway](api-gateway-import-api.md)\. 
 
 If you do not have an AWS account, use the following procedure to create one\.
 
 **To sign up for AWS**
 
-1. Open [https://aws\.amazon\.com/](https://aws.amazon.com/) and choose **Create an AWS Account**\.
+1. Open [https://aws\.amazon\.com/](https://aws.amazon.com/), and then choose **Create an AWS Account**\.
+**Note**  
+If you previously signed in to the AWS Management Console using AWS account root user credentials, choose **Sign in to a different account**\. If you previously signed in to the console using IAM credentials, choose **Sign\-in using root account credentials**\. Then choose **Create a new AWS account**\.
 
 1. Follow the online instructions\.
+
+   Part of the sign\-up procedure involves receiving a phone call and entering a verification code using the phone keypad\.
 
 ## Create an IAM Role and Policy for the API to Access Kinesis<a name="integrate-with-kinesis-create-iam-role-and-policy"></a>
 

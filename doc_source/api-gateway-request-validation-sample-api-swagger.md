@@ -1,10 +1,13 @@
-# Swagger Definitions of a Sample API with Basic Request Validation<a name="api-gateway-request-validation-sample-api-swagger"></a>
+# OpenAPI Definitions of a Sample API with Basic Request Validation<a name="api-gateway-request-validation-sample-api-swagger"></a>
 
- The following Swagger definition defines a sample API with request validation enabled\. The API is a subset of the [PetStore API](http://petstore-demo-endpoint.execute-api.com/petstore/pets)\. It exposes a `POST` method to add a pet to the `pets` collection and a `GET` method to query pets by a specified type\. 
+ The following OpenAPI definition defines a sample API with request validation enabled\. The API is a subset of the [PetStore API](http://petstore-demo-endpoint.execute-api.com/petstore/pets)\. It exposes a `POST` method to add a pet to the `pets` collection and a `GET` method to query pets by a specified type\. 
 
  There are two request validators declared in the `x-amazon-apigateway-request-validators` map at the API level\. The `params-only` validator is enabled on the API and inherited by the `GET` method\. This validator allows API Gateway to verify that the required query parameter \(`q1`\) is included and not blank in the incoming request\. The `all` validator is enabled on the `POST` method\. This validator verifies that the required header parameter \(`h1`\) is set and not blank\. It also verifies that the payload format adheres to the specified `RequestBodyModel` schema\. This model requires that the input JSON object contains the `name`, `type`, and `price` properties\. The `name` property can be any string, `type` must be one of the specified enumeration fields \(`["dog", "cat", "fish"]`\), and `price` must range between 25 and 500\. The `id` parameter is not required\. 
 
  For more information about the behavior of this API, see [Enable Request Validation in API Gateway](api-gateway-method-request-validation.md)\. 
+
+------
+#### [ OpenAPI 2\.0 ]
 
 ```
 {
@@ -170,3 +173,5 @@
   }
 }
 ```
+
+------

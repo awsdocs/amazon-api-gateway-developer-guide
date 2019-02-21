@@ -1,9 +1,9 @@
-# Create an API Gateway API for AWS Lambda Functions<a name="integrating-api-with-aws-services-lambda"></a>
+# Create a REST API for AWS Lambda Functions in API Gateway<a name="integrating-api-with-aws-services-lambda"></a>
 
 **Note**  
- To integrate your API Gateway API with Lambda, you must choose a region where both the API Gateway and Lambda services are available\. For region availability, see [Regions and Endpoints](https://docs.aws.amazon.com/general/latest/gr/rande.html#apigateway_region)\. 
+ To integrate your REST API with Lambda, you must choose a region where both the API Gateway and Lambda services are available\. For region availability, see [Regions and Endpoints](https://docs.aws.amazon.com/general/latest/gr/rande.html#apigateway_region)\. 
 
- In the [Getting Started](getting-started-with-lambda-integration.md) section, you learned how to use the API Gateway console to build an API to expose a Lambda function\. There, the console let you choose `Lambda Function` for **Integration type**, among other options of `HTTP`, `Mock` and `AWS Service`\. The `Lambda Function` option is a special case of the `AWS Service` integration type and simplifies the integration set\-up for you with default settings\. For example, with the former, the console automatically adds the required resource\-based permissions for invoking the Lambda function\. With the latter, you have more control, but more responsibilities to set up the integration, including creating and specifying an IAM role containing appropriate permissions\. For the both options, the underlying [integration\.type](https://docs.aws.amazon.com/apigateway/api-reference/resource/integration/#type) is `AWS` in the API Gateway REST API and its Swagger definition file\. 
+ In the [Getting Started](getting-started-with-lambda-integration.md) section, you learned how to use the API Gateway console to build an API to expose a Lambda function\. There, the console let you choose `Lambda Function` for **Integration type**, among other options of `HTTP`, `Mock` and `AWS Service`\. The `Lambda Function` option is a special case of the `AWS Service` integration type and simplifies the integration set\-up for you with default settings\. For example, with the former, the console automatically adds the required resource\-based permissions for invoking the Lambda function\. With the latter, you have more control, but more responsibilities to set up the integration, including creating and specifying an IAM role containing appropriate permissions\. For the both options, the underlying [integration\.type](https://docs.aws.amazon.com/apigateway/api-reference/resource/integration/#type) is `AWS` in the API Gateway REST API and its OpenAPI definition file\. 
 
 In this section, we walk you through the steps to integrate an API with a Lambda function using the `AWS Service` and `Lambda Function` integration types\. To support asynchronous invocation of the Lambda function, you must explicitly add the `X-Amz-Invocation-Type:Event` header to the integration request\. For the synchronous invocation, you can add the `X-Amz-Invocation-Type:RequestResponse` header to the integration request or leave it unspecified\. The following example shows the integration request of an asynchronous Lambda function invocation: 
 
@@ -30,7 +30,7 @@ In this tutorial, we will cover the following topics:
 + Expose POST on the `/calc` resource to invoke the Lambda function, supplying the input in the payload\. We will enable a request validator to ensure that the client submitted the valid request payload before API Gateway call the Lambda function\.
 +  Expose GET on the `/calc/{operand1}/{operand2}/{operator}` resource to invoke the Lambda function, specifying the input in the path parameters\. We also explain how to define a `Result` schema to model the method response body so that any strongly typed SDK of the API can access the method response data through properties defined in the `Result` schema\. 
 
- You can inspect the sample API in its [Swagger definition file](api-as-lambda-proxy-export-swagger-with-extensions.md)\. You can also [import](https://docs.aws.amazon.com/apigateway/api-reference/link-relation/restapi-import/) the API Swagger definitions to API Gateway, following the instructions given in [Import an API into API Gateway](api-gateway-import-api.md)\.
+ You can inspect the sample API in its [OpenAPI definition file](api-as-lambda-proxy-export-swagger-with-extensions.md)\. You can also [import](https://docs.aws.amazon.com/apigateway/api-reference/link-relation/restapi-import/) the API OpenAPI definitions to API Gateway, following the instructions given in [Import a REST API into API Gateway](api-gateway-import-api.md)\.
 
  To use the API Gateway console to create the API, you must first sign up for an AWS account\. 
 
@@ -38,9 +38,13 @@ If you do not have an AWS account, use the following procedure to create one\.
 
 **To sign up for AWS**
 
-1. Open [https://aws\.amazon\.com/](https://aws.amazon.com/) and choose **Create an AWS Account**\.
+1. Open [https://aws\.amazon\.com/](https://aws.amazon.com/), and then choose **Create an AWS Account**\.
+**Note**  
+If you previously signed in to the AWS Management Console using AWS account root user credentials, choose **Sign in to a different account**\. If you previously signed in to the console using IAM credentials, choose **Sign\-in using root account credentials**\. Then choose **Create a new AWS account**\.
 
 1. Follow the online instructions\.
+
+   Part of the sign\-up procedure involves receiving a phone call and entering a verification code using the phone keypad\.
 
  To allow the API to invoke Lambda functions, you must have an IAM role that has appropriate IAM policies attached to it\. The next section describes how to verify and to create, if necessary, the required IAM role and policies\. 
 
@@ -51,7 +55,7 @@ If you do not have an AWS account, use the following procedure to create one\.
 + [Create a `GET` Method with Query Parameters to Call the Lambda Function](#api-as-lambda-proxy-expose-get-method-with-query-strings-to-call-lambda-function)
 + [Create a POST Method with a JSON Payload to Call the Lambda Function](#api-as-lambda-proxy-expose-post-method-with-json-body-to-call-lambda-function)
 + [Create a GET Method with Path Parameters to Call the Lambda Function](#api-as-lambda-proxy-expose-get-method-with-path-parameters-to-call-lambda-function)
-+ [Swagger Definitions of Sample API Integrated with a Lambda Function](api-as-lambda-proxy-export-swagger-with-extensions.md)
++ [OpenAPI Definitions of Sample API Integrated with a Lambda Function](api-as-lambda-proxy-export-swagger-with-extensions.md)
 
 ## Set Up an IAM Role and Policy for an API to Invoke Lambda Functions<a name="api-as-lambda-proxy-setup-iam-role-policies"></a>
 
@@ -258,6 +262,9 @@ This function returns the calculated result \(`c`\) and the input\. For an inval
 ```
 
 You should test the function in the Lambda console before integrating it with the API in the next step\. 
+
+**Note**  
+If you are using `cURL` or `Postman`, the `+`operator is dropped before the request gets to the API endpoint\.
 
 ## Create API Resources for the Lambda Function<a name="api-as-lambda-proxy-create-api-resources"></a>
 

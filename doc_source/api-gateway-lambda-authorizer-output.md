@@ -1,6 +1,6 @@
 # Output from an Amazon API Gateway Lambda Authorizer<a name="api-gateway-lambda-authorizer-output"></a>
 
-A Lambda authorizer function's output is a dictionary-like object, which must include the principal identifier \(`principalId`\) and a policy document \(`policyDocument`\) containing a list of policy statements\. The output can also include a `context` map containing key\-value pairs\. If the API uses a usage plan \(the [https://docs.aws.amazon.com/apigateway/api-reference/resource/rest-api/#apiKeySource](https://docs.aws.amazon.com/apigateway/api-reference/resource/rest-api/#apiKeySource) is set to `AUTHORIZER`\), the Lambda authorizer function must return one of the usage plan's API keys as the `usageIdentifierKey` property value\.
+A Lambda authorizer function's output is a dictionary\-like object, which must include the principal identifier \(`principalId`\) and a policy document \(`policyDocument`\) containing a list of policy statements\. The output can also include a `context` map containing key\-value pairs\. If the API uses a usage plan \(the [https://docs.aws.amazon.com/apigateway/api-reference/resource/rest-api/#apiKeySource](https://docs.aws.amazon.com/apigateway/api-reference/resource/rest-api/#apiKeySource) is set to `AUTHORIZER`\), the Lambda authorizer function must return one of the usage plan's API keys as the `usageIdentifierKey` property value\.
 
 The following shows an example of this output\. 
 
@@ -32,7 +32,7 @@ For an authorization\-enabled method ARN, e\.g\., `arn:aws:execute-api:{region-i
 
 In addition, the Resource ARN, as shown in the policy statement output by the authorizer, is currently limited to 512 characters long\. For this reason, you must not use URI with a JWT token of a significant length in a request URI\. You can safely pass the JWT token in a request header, instead\.
 
- You can access the `principalId` value in a mapping template using the `$context.authorizer.principalId` variable\. This is useful if you want to pass the value to the backend\. For more information, see [Accessing the $context Variable](api-gateway-mapping-template-reference.md#context-variable-reference)\. 
+ You can access the `principalId` value in a mapping template using the `$context.authorizer.principalId` variable\. This is useful if you want to pass the value to the backend\. For more information, see [Accessing the `$context` Variable](api-gateway-mapping-template-reference.md#context-variable-reference)\. 
 
  You can access the `stringKey`, `numberKey`, or `booleanKey` value \(for example, `"value"`, `"1"`, or `"true"`\) of the `context` map in a mapping template by calling `$context.authorizer.stringKey`, `$context.authorizer.numberKey`, or `$context.authorizer.booleanKey`, respectively\. The returned values are all stringified\. Notice that you cannot set a JSON object or array as a valid value of any key in the `context` map\. 
 

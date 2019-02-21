@@ -13,6 +13,9 @@
 
  The following example shows a set of request validators for an API as a map between a validator name and the associated request validation rules\.
 
+------
+#### [ OpenAPI 2\.0 ]
+
 ```
 {
   "swagger": "2.0",
@@ -30,3 +33,5 @@
   ...
 }
 ```
+
+------

@@ -10,6 +10,9 @@ When you deploy an API, API Gateway creates a log group and log streams under th
 
 In access logging, you, as an API developer, want to log who has accessed your API and how the caller accessed the API\. You can create your own log group or choose an existing one, which could be managed by API Gateway\. You can specify the access details by selecting [`$context`](api-gateway-mapping-template-reference.md#context-variable-reference) variables, expressed in a format of your choosing, and by choosing a log group as the destination\. To preserve uniqueness of each log, access log format must include `$context.requestId`\. 
 
+**Note**  
+Only `$context` variables are supported, not `$input`, etc\.
+
 Choose a log format that is also adopted by your analytic backend, such as [Common Log Format](https://httpd.apache.org/docs/1.3/logs.html#common) \(CLF\), JSON, XML, or CSV\. You can then feed the access logs to it directly to have your metrics computed and rendered\. To define the log format, set the log group ARN on the [accessLogSettings/destinationArn](https://docs.aws.amazon.com/apigateway/api-reference/resource/stage/#destinationArn) property on the [stage](https://docs.aws.amazon.com/apigateway/api-reference/resource/stage/)\. You can obtain a log group ARN in the CloudWatch console, provided that the **ARN** column is selected for display\. To define the access log format, set a chosen format on the [accessLogSetting/format](https://docs.aws.amazon.com/apigateway/api-reference/resource/stage/#format) property on the [stage](https://docs.aws.amazon.com/apigateway/api-reference/resource/stage/)\. 
 
 Examples of some commonly used access log formats are shown in the API Gateway console and listed as follows\.
@@ -113,7 +116,7 @@ To set up API logging, you must have deployed the API to a stage\. You must also
 
 1. To enable execution logging, choose **Enable CloudWatch Logs** under **CloudWatch Settings**\. Choose **Error** or **Info** from the drop\-down menu\. If desired, choose **Enable Detailed CloudWatch Metrics**\.
 
-   For more information about CloudWatch metrics, see [API Gateway Metrics and Dimensions](https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/api-gateway-metrics-dimensions.html#api-gateway-metricdimensions)\.
+   For more information about CloudWatch metrics, see [Monitor API execution with Amazon CloudWatch](monitoring-cloudwatch.md)\.
 
 1. To enable access logging, choose **Enable Access Logging** under **Custom Access Logging**\. Then type the ARN of a log group in **CloudWatch Group**\. Type a log format in **Log Format**\. You can choose **CLF**, **JSON**, **XML**, or **CSV** to use one of the provided examples as a guide\.
 

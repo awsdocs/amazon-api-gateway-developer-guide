@@ -10,6 +10,9 @@ Specify the source of the API key for requests\. Valid values are:
 
 The following example sets the `X-API-Key` header as the API key source\.
 
+------
+#### [ OpenAPI 2\.0 ]
+
 ```
 {
   "swagger" : "2.0",
@@ -24,3 +27,5 @@ The following example sets the `X-API-Key` header as the API key source\.
    .
 }
 ```
+
+------

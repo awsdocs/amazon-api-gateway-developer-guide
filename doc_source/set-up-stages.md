@@ -4,10 +4,12 @@
 
 **Topics**
 + [Set up a Stage Using the API Gateway Console](stages.md)
-+ [Throttle API Requests for Better Throughput](api-gateway-request-throttling.md)
 + [Enable API Caching to Enhance Responsiveness](api-gateway-caching.md)
++ [Throttle API Requests for Better Throughput](api-gateway-request-throttling.md)
++ [Set Up Client\-Side SSL Authentication in API Gateway](apigateway-setup-ssl-certificate.md)
++ [Use AWS WAF to Protect Your Amazon API Gateway API from Common Web Exploits](apigateway-control-access-aws-waf.md)
++ [Set up Tags for an API Stage in API Gateway](set-up-tags.md)
 + [Set Up CloudWatch API Logging in API Gateway](set-up-logging.md)
 + [Set Up X\-Ray Tracing in API Gateway](apigateway-set-up-tracing.md)
 + [Set Up CloudTrail Logging in API Gateway](apigateway-setup-cloudtrail.md)
-+ [Set up Stage Variable for API Deployment](stage-variables.md)
-+ [Set up Tags for an API Stage in API Gateway](set-up-tags.md)
++ [Set up Stage Variables for a REST API Deployment](stage-variables.md)

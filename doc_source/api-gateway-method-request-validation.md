@@ -6,7 +6,7 @@
 + [Overview of Basic Request Validation in API Gateway](#api-gateway-request-validation-basic-definitions)
 + [Set up Basic Request Validation in API Gateway](api-gateway-request-validation-set-up.md)
 + [Test Basic Request Validation in API Gateway](api-gateway-request-validation-test.md)
-+ [Swagger Definitions of a Sample API with Basic Request Validation](api-gateway-request-validation-sample-api-swagger.md)
++ [OpenAPI Definitions of a Sample API with Basic Request Validation](api-gateway-request-validation-sample-api-swagger.md)
 
 ## Overview of Basic Request Validation in API Gateway<a name="api-gateway-request-validation-basic-definitions"></a>
 

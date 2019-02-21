@@ -14,15 +14,15 @@ This section describes how to create and use a usage plan by using the API Gatew
 
 If you started to use API Gateway *after* the usage plans feature was rolled out on August 11, 2016, you will automatically have usage plans enabled for you in all supported regions\.
 
-If you started to use API Gateway before that date, you may need to migrate to default usage plans\. You'll be prompted with the **Enable Usage Plans** option before using usage plans for the first time in the selected region\. When you enable this option, you have default usage plans created for every unique API stage that's associated with existing API keys\. In the default usage plan, no throttle or quota limits are set initially, and the associations between the API keys and API stages are copied to the usage plans\. The API behaves the same as before\. However, you must use the [UsagePlan](https://docs.aws.amazon.com/apigateway/api-reference/resource/usage-plan/) `apiStages` property to associate specified API stage values \(`apiId` and `stage`\) with included API keys \(via [UsagePlanKey](https://docs.aws.amazon.com/apigateway/api-reference/resource/usage-plan-key/)\), instead of using the [ApiKey](https://docs.aws.amazon.com/apigateway/api-reference/resource/api-key/) `stageKeys` property\.
+If you started to use API Gateway before that date, you may need to migrate to default usage plans\. You'll be prompted with the **Enable Usage Plans** option before using usage plans for the first time in the selected region\. When you enable this option, you have default usage plans created for every unique API stage that's associated with existing API keys\. In the default usage plan, no throttle or quota limits are set initially, and the associations between the API keys and API stages are copied to the usage plans\. The API behaves the same as before\. However, you must use the [https://docs.aws.amazon.com/apigateway/api-reference/resource/usage-plan/](https://docs.aws.amazon.com/apigateway/api-reference/resource/usage-plan/) `apiStages` property to associate specified API stage values \(`apiId` and `stage`\) with included API keys \(via [https://docs.aws.amazon.com/apigateway/api-reference/resource/usage-plan-key/](https://docs.aws.amazon.com/apigateway/api-reference/resource/usage-plan-key/)\), instead of using the [ApiKey](https://docs.aws.amazon.com/apigateway/api-reference/resource/api-key/) `stageKeys` property\.
 
-To check whether you've already migrated to default usage plans, use the [get\-account]( https://docs.aws.amazon.com/cli/latest/reference/apigateway/get-account.html) CLI command\. In the command output, the `features` list will include an entry of `"UsagePlans"` when usage plans are enabled\.
+To check whether you've already migrated to default usage plans, use the [https://docs.aws.amazon.com/cli/latest/reference/apigateway/get-account.html](https://docs.aws.amazon.com/cli/latest/reference/apigateway/get-account.html) CLI command\. In the command output, the `features` list will include an entry of `"UsagePlans"` when usage plans are enabled\.
 
 You can also migrate your APIs to default usage plans by using the AWS CLI as follows:
 
 **To migrate to default usage plans using the AWS CLI**
 
-1. Call this CLI command: [update\-account](https://docs.aws.amazon.com/cli/latest/reference/apigateway/update-account.html)\.
+1. Call this CLI command: [https://docs.aws.amazon.com/cli/latest/reference/apigateway/update-account.html](https://docs.aws.amazon.com/cli/latest/reference/apigateway/update-account.html)\.
 
 1. For the `cli-input-json` parameter, use the following JSON:
 

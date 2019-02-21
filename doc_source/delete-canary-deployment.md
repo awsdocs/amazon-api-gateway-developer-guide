@@ -36,7 +36,7 @@ aws apigateway update-stage \
     --patch-operations '["op":"remove", "path":"/canarySettings"]'
 ```
 
-The successful response returns an output similar to this:
+A successful response returns a payload similar to the following:
 
 ```
 {
@@ -78,7 +78,7 @@ Authorization: AWS4-HMAC-SHA256 Credential={SECRET_ACCESS_KEY}/20171121/us-east-
 }
 ```
 
-The successful response returns an output similar to this:
+A successful response returns a payload similar to the following:
 
 ```
 {

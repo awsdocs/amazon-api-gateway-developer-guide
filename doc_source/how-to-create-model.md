@@ -7,7 +7,7 @@ Use the API Gateway console to create a model for an API\.
 + [Create a Model With the API Gateway Console](#how-to-create-model-console)
 
 ## Prerequisites<a name="how-to-create-model-prerequisites"></a>
-+ You must have an API available in API Gateway\. Follow the instructions in [Creating an API in Amazon API Gateway](how-to-create-api.md)\.
++ You must have an API available in API Gateway\. Follow the instructions in [Creating a REST API in Amazon API Gateway](how-to-create-api.md)\.
 
 ## Create a Model With the API Gateway Console<a name="how-to-create-model-console"></a>
 
