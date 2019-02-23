@@ -96,7 +96,7 @@ To enable CloudWatch Logs, you must grant API Gateway permission to read and wri
 }
 ```
 
-**Note**
+**Note**  
 API Gateway will call the STS service in order to assume the IAM role, [make sure STS is enabled for the region](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_temp_enable-regions.html)\.
 
 To grant these permissions to your account, create an IAM role with `apigateway.amazonaws.com` as its trusted entity, attach the preceding policy to the IAM role, and set the IAM role ARN on the [cloudWatchRoleArn](https://docs.aws.amazon.com/apigateway/api-reference/resource/account/#cloudWatchRoleArn) property on your [Account](https://docs.aws.amazon.com/apigateway/api-reference/resource/account/)\.
