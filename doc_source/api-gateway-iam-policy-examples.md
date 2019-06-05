@@ -83,9 +83,7 @@ The following policy document will permit attached entities \(users, groups or r
             "Sid": "Stmt1467321341000",
             "Effect": "Deny",
             "Action": [
-                "apigateway:GET",
-                "apigateway:HEAD",
-                "apigateway:OPTIONS"
+                "apigateway:GET"
             ],
             "Resource": [
                 "arn:aws:apigateway:us-east-1::/",
@@ -99,9 +97,7 @@ The following policy document will permit attached entities \(users, groups or r
             "Sid": "Stmt1467321344000",
             "Effect": "Allow",
             "Action": [
-                "apigateway:GET",
-                "apigateway:HEAD",
-                "apigateway:OPTIONS"
+                "apigateway:GET"
             ],
             "Resource": [
                 "arn:aws:apigateway:us-east-1::/restapis/*"
@@ -184,8 +180,6 @@ The following example IAM policy document blocks a specified user from deleting 
             "Effect": "Allow",
             "Action": [
                 "apigateway:GET",
-                "apigateway:HEAD",
-                "apigateway:OPTIONS",
                 "apigateway:PATCH",
                 "apigateway:POST",
                 "apigateway:PUT"

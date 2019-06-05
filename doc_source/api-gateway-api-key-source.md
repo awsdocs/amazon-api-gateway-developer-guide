@@ -5,7 +5,7 @@ When you associate a usage plan with an API and enable API keys on API methods, 
 Your API Gateway API can receive API keys from one of two sources:
 
 **`HEADER`**  
-You distribute API keys to to your customers and require them to pass the API key as the `X-API-Key` header of each incoming request\. 
+You distribute API keys to your customers and require them to pass the API key as the `X-API-Key` header of each incoming request\. 
 
 **`AUTHORIZER`**  
 You have a Lambda authorizer return the API key as part of the authorization response\. For more information on the authorization response, see [Output from an Amazon API Gateway Lambda Authorizer](api-gateway-lambda-authorizer-output.md)\.

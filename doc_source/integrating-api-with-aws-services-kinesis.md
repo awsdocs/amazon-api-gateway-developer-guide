@@ -1,4 +1,4 @@
-# Create a REST API as an Amazon Kinesis Proxy in API Gateway<a name="integrating-api-with-aws-services-kinesis"></a>
+# TUTORIAL: Create a REST API as an Amazon Kinesis Proxy in API Gateway<a name="integrating-api-with-aws-services-kinesis"></a>
 
 This page describes how to create and configure a REST API with an integration of the `AWS` type to access Kinesis\. 
 
@@ -35,17 +35,15 @@ This page describes how to create and configure a REST API with an integration o
 
  Instead of using the API Gateway console to create the sample API, you can import the sample API into API Gateway using the API Gateway [Import API](https://docs.aws.amazon.com/apigateway/api-reference/link-relation/restapi-import/)\. For information on how to use the Import API, see [Import a REST API into API Gateway](api-gateway-import-api.md)\. 
 
-If you do not have an AWS account, use the following procedure to create one\.
+If you do not have an AWS account, complete the following steps to create one\.
 
-**To sign up for AWS**
+**To sign up for an AWS account**
 
-1. Open [https://aws\.amazon\.com/](https://aws.amazon.com/), and then choose **Create an AWS Account**\.
-**Note**  
-If you previously signed in to the AWS Management Console using AWS account root user credentials, choose **Sign in to a different account**\. If you previously signed in to the console using IAM credentials, choose **Sign\-in using root account credentials**\. Then choose **Create a new AWS account**\.
+1. Open [https://portal\.aws\.amazon\.com/billing/signup](https://portal.aws.amazon.com/billing/signup)\.
 
 1. Follow the online instructions\.
 
-   Part of the sign\-up procedure involves receiving a phone call and entering a verification code using the phone keypad\.
+   Part of the sign\-up procedure involves receiving a phone call and entering a verification code on the phone keypad\.
 
 ## Create an IAM Role and Policy for the API to Access Kinesis<a name="integrate-with-kinesis-create-iam-role-and-policy"></a>
 

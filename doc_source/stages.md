@@ -16,6 +16,8 @@
 1. From the **Stages** navigation pane, choose **Create**\.
 
 1.  Under **Create Stage**, type a stage name, for example, **prod**, for **Stage name**\. 
+**Note**  
+Stage names can only contain alphanumeric characters, hyphens, and underscores\. Maximum length is 128 characters\.
 
 1.  Optionally, type a stage description for **Stage description** 
 

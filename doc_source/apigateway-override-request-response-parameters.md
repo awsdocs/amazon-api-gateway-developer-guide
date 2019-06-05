@@ -23,7 +23,7 @@ Mapping template overrides cannot be used with proxy integration endpoints, whic
 **Important**  
 Overrides are final\. An override may only be applied to each parameter once\. Trying to override the same parameter multiple times will result in `5XX` responses from Amazon API Gateway\. If you must override the same parameter multiple times throughout the template, we recommend creating a variable and applying the override at the end of the template\. Note that the template is applied only after the entire template is parsed\. See [Tutorial: Override an API's Request Parameters and Headers with the API Gateway Console](#apigateway-override-request-response-parameters-override-request)\.
 
-The following tutorials show how to create and test a mapping template override in the API Gateway console\. These tutorials use the [PetStore sample API](api-gateway-create-api-from-example.md) as a starting point\. Both tutorials assume that you have already created the the [PetStore sample API](api-gateway-create-api-from-example.md)\.
+The following tutorials show how to create and test a mapping template override in the API Gateway console\. These tutorials use the [PetStore sample API](api-gateway-create-api-from-example.md) as a starting point\. Both tutorials assume that you have already created the [PetStore sample API](api-gateway-create-api-from-example.md)\.
 
 **Topics**
 + [Tutorial: Override an API's Response Status Code with the API Gateway Console](#apigateway-override-request-response-parameters-override-response)

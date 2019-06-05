@@ -1,82 +1,45 @@
-# Create a REST API for AWS Lambda Functions in API Gateway<a name="integrating-api-with-aws-services-lambda"></a>
+# TUTORIAL: Create a `Calc` REST API with Two AWS Service Integrations and and One Lambda Non\-Proxy Integration<a name="integrating-api-with-aws-services-lambda"></a>
 
-**Note**  
- To integrate your REST API with Lambda, you must choose a region where both the API Gateway and Lambda services are available\. For region availability, see [Regions and Endpoints](https://docs.aws.amazon.com/general/latest/gr/rande.html#apigateway_region)\. 
+The [Getting Started non\-proxy integration tutorial](getting-started-lambda-non-proxy-integration.md) uses `Lambda Function` integration exclusively\. `Lambda Function` integration is a special case of the `AWS Service` integration type that performs much of the integration setup for you, such as automatically adding the required resource\-based permissions for invoking the Lambda function\. Here, two of the three integrations use `AWS Service` integration\. In this integration type, you have more control, but you'll need to manually perform tasks like creating and specifying an IAM role containing appropriate permissions\.
 
- In the [Getting Started](getting-started-with-lambda-integration.md) section, you learned how to use the API Gateway console to build an API to expose a Lambda function\. There, the console let you choose `Lambda Function` for **Integration type**, among other options of `HTTP`, `Mock` and `AWS Service`\. The `Lambda Function` option is a special case of the `AWS Service` integration type and simplifies the integration set\-up for you with default settings\. For example, with the former, the console automatically adds the required resource\-based permissions for invoking the Lambda function\. With the latter, you have more control, but more responsibilities to set up the integration, including creating and specifying an IAM role containing appropriate permissions\. For the both options, the underlying [integration\.type](https://docs.aws.amazon.com/apigateway/api-reference/resource/integration/#type) is `AWS` in the API Gateway REST API and its OpenAPI definition file\. 
+In this tutorial, you'll create a `Calc` Lambda function that implements basic arithmetic operations, accepting and returning JSON\-formatted input and output\. Then you'll create a REST API and integrate it with the Lambda function in the following ways:
 
-In this section, we walk you through the steps to integrate an API with a Lambda function using the `AWS Service` and `Lambda Function` integration types\. To support asynchronous invocation of the Lambda function, you must explicitly add the `X-Amz-Invocation-Type:Event` header to the integration request\. For the synchronous invocation, you can add the `X-Amz-Invocation-Type:RequestResponse` header to the integration request or leave it unspecified\. The following example shows the integration request of an asynchronous Lambda function invocation: 
+1. By exposing a `GET` method on the `/calc` resource to invoke the Lambda function, supplying the input as query string parameters\. \(`AWS Service` integration\)
 
-```
-POST /2015-03-31/functions/FunctionArn/invocations?Qualifier=Qualifier HTTP/1.1 
-X-Amz-Invocation-Type: Event 
-...
-Authorization: ...
-Content-Type: application/json
-Content-Length: PayloadSize
+1. By exposing a `POST` method on the `/calc` resource to invoke the Lambda function, supplying the input in the method request payload\. \(`AWS Service` integration\)
 
-Payload
-```
+1. By exposing a `GET` on nested `/calc/{operand1}/{operand2}/{operator}` resources to invoke the Lambda function, supplying the input as path parameters\. \(`Lambda Function` integration\)
 
- In this example, *FunctionArn* is the ARN of the Lambda function to be invoked\. The `Authorization` header is required by secure invocation of Lambda functions over HTTPS\. For more information, see the `[Invoke](https://docs.aws.amazon.com/lambda/latest/dg/API_Invoke.html)` action in the *AWS Lambda Developer Guide*\. 
+In addition to trying out this tutorial, you may wish to study the [OpenAPI definition file](api-as-lambda-proxy-export-swagger-with-extensions.md) for the `Calc` API, which you can import into API Gateway by following the instructions in [Import a REST API into API Gateway](api-gateway-import-api.md)\.
 
- To illustrate how to create and configure an API as an AWS service proxy for Lambda, we will create a Lambda function \(`Calc`\) that performs addition \(\+\), subtraction \(\-\), multiplication \(\*\), and division \(/\)\. When a client submits a method request to perform any of these operations, API Gateway will post the corresponding integration request to call the specified Lambda function, passing the required input \(two operands and one operator\) as a JSON payload\. A synchronous call will return the result, if any, as the JSON payload\. An asynchronous call will return no data\. 
+**Topics**
++ [Create an AWS Account](#w52aac11c17c15)
++ [Create an Assumable IAM Role](#api-as-lambda-proxy-setup-iam-role-policies)
++ [Create a `Calc` Lambda Function](#api-as-lambda-proxy-create-lambda-function)
++ [Test the `Calc` Lambda Function](#api-as-lambda-proxy-create-lambda-function)
++ [Create a `Calc` API](#api-as-lambda-proxy-create-api-resources)
++ [Integration 1: Create a `GET` Method with Query Parameters to Call the Lambda Function](#api-as-lambda-proxy-expose-get-method-with-query-strings-to-call-lambda-function)
++ [Integration 2: Create a `POST` Method with a JSON Payload to Call the Lambda Function](#api-as-lambda-proxy-expose-post-method-with-json-body-to-call-lambda-function)
++ [Integration 3: Create a `GET` Method with Path Parameters to Call the Lambda Function](#api-as-lambda-proxy-expose-get-method-with-path-parameters-to-call-lambda-function)
++ [OpenAPI Definitions of Sample API Integrated with a Lambda Function](api-as-lambda-proxy-export-swagger-with-extensions.md)
 
-You can expose a GET or POST method on the `/calc` resource to invoke the Lambda function\. With the GET method, a client supplies the input to the backend Lambda function through three query string parameters \(`operand1`, `operand2`, and `operator`\)\. You will set up a mapping template to map these to the JSON payload of the integration request\. With the POST method, a client provides the input to the Lambda function as a JSON payload of the method request\. You can pass the method request payload through to the integration request, if the client input conforms to the input model\. Alternatively, you can expose a GET method on the `/calc/{operand1}/{operand2}/{operator}` resource\. With this method, the client specifies the Lambda function input as the values of the path parameters\. You will need to provide a mapping template to translate the path parameters of the method request into an integration request payload as the Lambda function input and to translate the output from the integration responses to the method response\. 
+## Create an AWS Account<a name="w52aac11c17c15"></a>
 
-In this tutorial, we will cover the following topics: 
-+  Create the `Calc` Lambda function to implement the arithmetic operations, accepting and returning JSON\-formatted input and output\. 
-+ Expose GET on the `/calc` resource to invoke the Lambda function, supplying the input as query strings\. We will enable a request validator to ensure that the client submit all the required query string parameters before API Gateway calling the Lambda function\. 
-+ Expose POST on the `/calc` resource to invoke the Lambda function, supplying the input in the payload\. We will enable a request validator to ensure that the client submitted the valid request payload before API Gateway call the Lambda function\.
-+  Expose GET on the `/calc/{operand1}/{operand2}/{operator}` resource to invoke the Lambda function, specifying the input in the path parameters\. We also explain how to define a `Result` schema to model the method response body so that any strongly typed SDK of the API can access the method response data through properties defined in the `Result` schema\. 
+Before you begin this tutorial, you'll need an AWS account\. 
 
- You can inspect the sample API in its [OpenAPI definition file](api-as-lambda-proxy-export-swagger-with-extensions.md)\. You can also [import](https://docs.aws.amazon.com/apigateway/api-reference/link-relation/restapi-import/) the API OpenAPI definitions to API Gateway, following the instructions given in [Import a REST API into API Gateway](api-gateway-import-api.md)\.
+If you do not have an AWS account, complete the following steps to create one\.
 
- To use the API Gateway console to create the API, you must first sign up for an AWS account\. 
+**To sign up for an AWS account**
 
-If you do not have an AWS account, use the following procedure to create one\.
-
-**To sign up for AWS**
-
-1. Open [https://aws\.amazon\.com/](https://aws.amazon.com/), and then choose **Create an AWS Account**\.
-**Note**  
-If you previously signed in to the AWS Management Console using AWS account root user credentials, choose **Sign in to a different account**\. If you previously signed in to the console using IAM credentials, choose **Sign\-in using root account credentials**\. Then choose **Create a new AWS account**\.
+1. Open [https://portal\.aws\.amazon\.com/billing/signup](https://portal.aws.amazon.com/billing/signup)\.
 
 1. Follow the online instructions\.
 
-   Part of the sign\-up procedure involves receiving a phone call and entering a verification code using the phone keypad\.
+   Part of the sign\-up procedure involves receiving a phone call and entering a verification code on the phone keypad\.
 
- To allow the API to invoke Lambda functions, you must have an IAM role that has appropriate IAM policies attached to it\. The next section describes how to verify and to create, if necessary, the required IAM role and policies\. 
+## Create an Assumable IAM Role<a name="api-as-lambda-proxy-setup-iam-role-policies"></a>
 
-**Topics**
-+ [Set Up an IAM Role and Policy for an API to Invoke Lambda Functions](#api-as-lambda-proxy-setup-iam-role-policies)
-+ [Create a Lambda Function in the Backend](#api-as-lambda-proxy-create-lambda-function)
-+ [Create API Resources for the Lambda Function](#api-as-lambda-proxy-create-api-resources)
-+ [Create a `GET` Method with Query Parameters to Call the Lambda Function](#api-as-lambda-proxy-expose-get-method-with-query-strings-to-call-lambda-function)
-+ [Create a POST Method with a JSON Payload to Call the Lambda Function](#api-as-lambda-proxy-expose-post-method-with-json-body-to-call-lambda-function)
-+ [Create a GET Method with Path Parameters to Call the Lambda Function](#api-as-lambda-proxy-expose-get-method-with-path-parameters-to-call-lambda-function)
-+ [OpenAPI Definitions of Sample API Integrated with a Lambda Function](api-as-lambda-proxy-export-swagger-with-extensions.md)
-
-## Set Up an IAM Role and Policy for an API to Invoke Lambda Functions<a name="api-as-lambda-proxy-setup-iam-role-policies"></a>
-
- For API Gateway to invoke a Lambda function, the API must have a permission to call the Lambda's [InvokeFunction](https://docs.aws.amazon.com/lambda/latest/dg/API_Invoke.html) action\. This means that, at minimum, you must attach the following IAM policy to an IAM role for API Gateway to assume the policy\. 
-
-```
-{
-    "Version": "2012-10-17",
-    "Statement": [
-        {
-            "Effect": "Allow",
-            "Action": "lambda:InvokeFunction",
-            "Resource": "*"
-        }
-    ]
-}
-```
-
- If you do not enact this policy, the API caller will receive a 500 Internal Server Error response\. The response contains the "Invalid permissions on Lambda function" error message\. For a complete list of error messages returned by Lambda, see the [Invoke](https://docs.aws.amazon.com/lambda/latest/dg/API_Invoke.html) topic\. 
-
- An API Gateway assumable role is an IAM role with the following trusted relationship: 
+In order for your API to invoke your `Calc` Lambda function, you'll need to have an API Gateway assumable IAM role, which is an IAM role with the following trusted relationship:
 
 ```
 {
@@ -94,9 +57,26 @@ If you previously signed in to the AWS Management Console using AWS account root
 }
 ```
 
-Here's how to create the IAM role you'll need for this tutorial:
+The role you create will need to have Lambda [InvokeFunction](https://docs.aws.amazon.com/lambda/latest/dg/API_Invoke.html) permission\. Otherwise, the API caller will receive a `500 Internal Server Error` response\. To give the role this permission, you'll attach the following IAM policy to it:
 
-1. Go to the IAM console\.
+```
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Effect": "Allow",
+            "Action": "lambda:InvokeFunction",
+            "Resource": "*"
+        }
+    ]
+}
+```
+
+Here's how to accomplish all this:
+
+**Create an API Gateway assumable IAM role**
+
+1. Log in to to the IAM console\.
 
 1. Choose **Roles**\.
 
@@ -139,6 +119,10 @@ Here's how to create the IAM role you'll need for this tutorial:
 
    1. Under **Attach permissions policies**, choose your **lambda\_execute** policy from the dropdown list\.
 
+      If you don't see your policy in the list, choose the refresh button at the top of the list\. \(Don't refresh the browser page\!\)
+
+   1. Choose **Next:Tags**\.
+
    1. Choose **Next:Review**\.
 
    1. For the **Role name**, type a name such as **lambda\_invoke\_function\_assume\_apigw\_role**\.
@@ -176,19 +160,19 @@ Here's how to create the IAM role you'll need for this tutorial:
 
 1. Make a note of the role ARN for the role you just created\. You'll need it later\.
 
-## Create a Lambda Function in the Backend<a name="api-as-lambda-proxy-create-lambda-function"></a>
+## Create a `Calc` Lambda Function<a name="api-as-lambda-proxy-create-lambda-function"></a>
 
-The following procedure outlines the steps to create a Lambda function using the Lambda console\.
+Next you'll create a Lambda function using the Lambda console\.
 
-1. Go to the Lambda console\.
-
-1. Choose **Create function**\.
+1. In the Lambda console, choose **Create function**\.
 
 1. Choose **Author from Scratch**\.
 
 1. For **Name**, type **Calc**\.
 
-1. Leave the **Runtime** set to **Node\.js 6\.10**\.
+1. Set the **Runtime** to **Node\.js 8\.10**\.
+
+1. Choose **Create function**\.
 
 1.  Copy the following Lambda function and paste it into the code editor in the Lambda console\. 
 
@@ -236,7 +220,9 @@ The following procedure outlines the steps to create a Lambda function using the
    };
    ```
 
-1. Choose an existing or create a new IAM role
+1. Under Execution role, choose **Choose an existing role**\.
+
+1. Enter the role ARN for the **lambda\_invoke\_function\_assume\_apigw\_role** role you created earlier\.
 
 1. Choose **Save**\.
 
@@ -263,30 +249,68 @@ This function returns the calculated result \(`c`\) and the input\. For an inval
 
 You should test the function in the Lambda console before integrating it with the API in the next step\. 
 
-**Note**  
-If you are using `cURL` or `Postman`, the `+`operator is dropped before the request gets to the API endpoint\.
+## Test the `Calc` Lambda Function<a name="api-as-lambda-proxy-create-lambda-function"></a>
 
-## Create API Resources for the Lambda Function<a name="api-as-lambda-proxy-create-api-resources"></a>
+Here's how to test your `Calc` function in the Lambda console:
 
-The following procedure shows how to create API resources for the Lambda function you just created\. In it, we will create the **/calc** resource off the API's root\. In subsequent sections, we will expose the `GET` and `POST` methods on this resource for the client to invoke the backend Lambda function\. The caller must supply the required input as query string parameters \(to be declared as `?operand1=...&operand2=...&operator=...`\) in the GET request and as a JSON payload in the POST request, respectively\.
+1. In the **Saved test events** dropdown menu, choose **Configure test events**\.
 
-We will also create the **/calc/\{operand1\}/\{operand2\}/\{operator\}** resource subtree to expose the GET method to invoke the Lambda function\. The caller must supply the required input by specifying the three path parameters: **operand1**, **operand2**, and **operator**\.
+1. For the test event name, enter **calc2plus5**\.
 
-**To create API resources for Lambda functions**
+1. Replace the test event definition with the following:
 
-1. In the API Gateway console, choose **New API**\. 
+   ```
+   {
+     "a": "2",
+     "b": "5",
+     "op": "+"
+   }
+   ```
 
-1. For **Name**, type **LambdaGate**\.
+1. Choose **Save**\.
+
+1. Choose **Test**\.
+
+1. Expand **Execution result: succeeded**\. You should see the following:
+
+   ```
+   {
+     "a": 2,
+     "b": 5,
+     "op": "+",
+     "c": 7
+   }
+   ```
+
+## Create a `Calc` API<a name="api-as-lambda-proxy-create-api-resources"></a>
+
+The following procedure shows how to create an API for the `Calc` Lambda function you just created\. In subsequent sections, you'll add resources and methods to it\.
+
+**Create the `Calc` API**
+
+1. In the API Gateway console, choose **Create API**\. 
+
+1. For **API Name**, type **LambdaCalc**\.
 
 1. Leave the **Description** blank, and leave the **Endpoint Type** set to **Regional**\.
 
-## Create a `GET` Method with Query Parameters to Call the Lambda Function<a name="api-as-lambda-proxy-expose-get-method-with-query-strings-to-call-lambda-function"></a>
+1. Choose **Create API**\.
 
- By creating a `GET` method with query parameters to call the Lambda function, we can let the API user to do the calculations via any browser\. This can be useful especially if the API allows open access\. 
+## Integration 1: Create a `GET` Method with Query Parameters to Call the Lambda Function<a name="api-as-lambda-proxy-expose-get-method-with-query-strings-to-call-lambda-function"></a>
 
-**To set up the `GET` method with query strings to invoke the Lambda function**
+By creating a `GET` method that passes query string parameters to the Lambda function, you enable the API to be invoked from a browser\. This approach can be useful, especially for APIs that allow open access\.
 
-1. In the API Gateway console, choose the API's **/calc** resource under **Resources**\.
+**To set up the `GET` method with query string parameters**
+
+1. In the API Gateway console, under your `LambdaCalc` API's **Resources**, choose **/**\.
+
+1. In the **Actions** drop\-down menu, choose **Create Resource**\. 
+
+1. For **Resource Name**, enter **calc**\.
+
+1. Choose **Create Resource**\.
+
+1. Choose the **/calc** resource you just created\.
 
 1. In the **Actions** drop\-down menu, choose **Create Method**\. 
 
@@ -308,20 +332,15 @@ We will also create the **/calc/\{operand1\}/\{operand2\}/\{operator\}** resourc
 
    1. Choose `Use path override` for **Action Type**\. This option allows us to specify the ARN of the [Invoke](https://docs.aws.amazon.com/lambda/latest/dg/API_Invoke.html) action to execute our `Calc` function\.
 
-   1. Type `/2015-03-31/functions/arn:aws:lambda:region:account-id:function:Calc/invocations` in **Path override**\.
+   1. Enter `/2015-03-31/functions/arn:aws:lambda:region:account-id:function:Calc/invocations` in **Path override**, where *region* is the region where you created your Lambda function and *account\-id* is the account number for the AWS account\.
 
-   1. For **Execution role**, type the role ARN for the **lambda\_invoke\_function\_assume\_apigw\_role** IAM role you created [earlier](#api-as-lambda-proxy-setup-iam-role-policies)\.
+   1. For **Execution role**, enter the role ARN for the **lambda\_invoke\_function\_assume\_apigw\_role** IAM role you created [earlier](#api-as-lambda-proxy-setup-iam-role-policies)\.
 
    1. Leave **Content Handling** set to **Passthrough**, because this method will not deal with any binary data\.
 
    1. Leave **Use default timeout** checked\.
 
    1. Choose **Save**\.
-
-   After the setup succeeds, the configuration should look as follows:   
-![\[Set up a method for integration with Lambda\]](http://docs.aws.amazon.com/apigateway/latest/developerguide/images/aws_proxy_lambda_calc_get_method_settings.png)
-
-    You can also add, in **Integration Request**, the `X-Amz-Invocation-Type: Event | RequestResponse | DryRun` header to have the action invoked asynchronously, as request and response, or as a test run, respectively\. If the header is not specified, the action will be invoked as request and response\. 
 
 1. Choose **Method Request**\.
 
@@ -343,9 +362,6 @@ We will also create the **/calc/\{operand1\}/\{operand2\}/\{operator\}** resourc
 
    1. Check the **Required** option for each parameter to ensure that they are validated\.
 
-   The configuration now looks as follows:  
-![\[Set up a method request URL query strings for integration with Lambda\]](http://docs.aws.amazon.com/apigateway/latest/developerguide/images/aws_proxy_lambda_calc_get_method_query_strings.png)
-
 1. Choose **Method Execution** and then choose **Integration Request** to set up the mapping template to translate the client\-supplied query strings to the integration request payload as required by the `Calc` function\.
 
    1. Expand the **Mapping Templates** section\.
@@ -358,7 +374,7 @@ We will also create the **/calc/\{operand1\}/\{operand2\}/\{operator\}** resourc
 
    1. Choose **Yes, secure this integration** to proceed\.
 
-   1. Type the following mapping script in the mapping template editor: 
+   1. Copy the following mapping script into the mapping template editor: 
 
       ```
       {
@@ -372,9 +388,6 @@ We will also create the **/calc/\{operand1\}/\{operand2\}/\{operator\}** resourc
 
    1. Choose **Save**\.
 
-   The settings should now look like this:  
-![\[Map a method request URL query strings to integration request payload to call Lambda function\]](http://docs.aws.amazon.com/apigateway/latest/developerguide/images/aws_proxy_lambda_calc_get_method_query_strings_mapping.png)
-
 1. Choose **Method Execution**\.
 
 1. You can now test your `GET` method to verify that it has been properly set up to invoke the Lambda function:
@@ -383,20 +396,20 @@ We will also create the **/calc/\{operand1\}/\{operand2\}/\{operator\}** resourc
 
    1. Choose **Test**\.
 
-      The results should look like this:  
+      The results should look similar to this:  
 ![\[Create an API in API Gateway as a Lambda proxy\]](http://docs.aws.amazon.com/apigateway/latest/developerguide/images/aws_proxy_lambda_calc_get_method_test.png)
 
-## Create a POST Method with a JSON Payload to Call the Lambda Function<a name="api-as-lambda-proxy-expose-post-method-with-json-body-to-call-lambda-function"></a>
+## Integration 2: Create a `POST` Method with a JSON Payload to Call the Lambda Function<a name="api-as-lambda-proxy-expose-post-method-with-json-body-to-call-lambda-function"></a>
 
-By creating a POST method with a JSON payload to call the Lambda function, we expect the client to submit the necessary input to the backend function in the request body\. To ensure that the client uploads the correct input data, we will enable request validation on the payload\.
+By creating a `POST` method with a JSON payload to call the Lambda function, you make it so that the client must provide the necessary input to the backend function in the request body\. To ensure that the client uploads the correct input data, you'll enable request validation on the payload\.
 
-**To set up the POST method with a JSON payload to invoke a Lambda function**
+**To set up the `POST` method with a JSON payload to invoke a Lambda function**
 
 1. Go to the API Gateway console\.
 
 1. Choose **APIs**\.
 
-1. Choose the **LambdaGate** API you created previously\.
+1. Choose the **LambdaCalc** API you created previously\.
 
 1. Choose the **/calc** resource from **Resources** pane\.
 
@@ -416,13 +429,13 @@ By creating a POST method with a JSON payload to call the Lambda function, we ex
 
    1. Leave **AWS Subdomain** blank, because our Lambda function is not hosted on any AWS subdomain\.
 
-   1. For **HTTP method**, choose **POST** and choose the checkmark icon to save your choice\. Lambda requires that the `POST` request be used to invoke any Lambda function\. This example shows that the HTTP method in a frontend method request can be different from the integration request in the backend\.
+   1. For **HTTP method**, choose **POST**\. This example shows that the HTTP method in a frontend method request can be different from the integration request in the backend\.
 
-   1. Choose the pencil icon next to **Action**\. Choose `Use path override` for **Action Type** and choose the checkmark icon to save your choice\. This option allows us to specify the ARN of the [Invoke](https://docs.aws.amazon.com/lambda/latest/dg/API_Invoke.html) action to execute our `Calc` function\.
+   1. For **Action**, choose `Use path override` for **Action Type**\. This option allows you to specify the ARN of the [Invoke](https://docs.aws.amazon.com/lambda/latest/dg/API_Invoke.html) action to execute your `Calc` function\.
 
-   1. For **Path override**, type `/2015-03-31/functions/arn:aws:lambda:region:account-id:function:Calc/invocations` \.
+   1. For **Path override**, type `/2015-03-31/functions/arn:aws:lambda:region:account-id:function:Calc/invocations` , where *region* is the region where you created your Lambda function and *account\-id* is the account number for the AWS account\.
 
-   1. For **Execution role**, type the role ARN for the **lambda\_invoke\_function\_assume\_apigw\_role** IAM role you created [earlier](#api-as-lambda-proxy-setup-iam-role-policies)\.
+   1. For **Execution role**, enter the role ARN for the **lambda\_invoke\_function\_assume\_apigw\_role** IAM role you created [earlier](#api-as-lambda-proxy-setup-iam-role-policies)\.
 
    1. Leave **Content Handling** set to **Passthrough**, because this method will not deal with any binary data\.
 
@@ -430,9 +443,9 @@ By creating a POST method with a JSON payload to call the Lambda function, we ex
 
    1. Choose **Save**\.
 
-1. Choose **Models** under the API from the API Gateway console's primary navigation pane to create data models for the method's input and output:
+1. Choose **Models** under your **LambdaCalc** API in the API Gateway console's primary navigation pane to create data models for the method's input and output:
 
-   1. Choose **Create** in the **Models** pane\. Type `Input` in **Model name**, type `application/json` in **Content type**, and type the following schema definition in **Model schema**: 
+   1. Choose **Create** in the **Models** pane\. Type `Input` in **Model name**, type `application/json` in **Content type**, and copy the following schema definition into the **Model schema** box: 
 
       ```
       {
@@ -448,7 +461,9 @@ By creating a POST method with a JSON payload to call the Lambda function, we ex
 
       This model describes the input data structure and will be used to validate the incoming request body\.
 
-   1. Choose **Create** in the **Models** pane\. Type `Output` in **Model name**, type `application/json` in **Content type**, and type the following schema definition in **Model schema**: 
+   1. Choose **Create model**\.
+
+   1. Choose **Create** in the **Models** pane\. Type `Output` in **Model name**, type `application/json` in **Content type**, and copy the following schema definition into the **Model schema** box: 
 
       ```
       {
@@ -462,9 +477,15 @@ By creating a POST method with a JSON payload to call the Lambda function, we ex
 
       This model describes the data structure of the calculated output from the backend\. It can be used to map the integration response data to a different model\. This tutorial relies on the passthrough behavior and does not use this model\.
 
-   1. Locate the API ID for your API at the top of the console screen\. It will appear in parentheses after the API name\.
+   1. Locate the API ID for your API at the top of the console screen and make a note of it\. It will appear in parentheses after the API name\.
 
-      Choose **Create** in the **Models** pane\. Type `Result` in **Model name**, type `application/json` in **Content type**, and type the following schema definition in **Model schema**: 
+   1. In the **Models** pane, choose **Create**\.
+
+   1. Type `Result` in **Model name**\.
+
+   1. Type `application/json` in **Content type**\.
+
+   1. Copy the following schema definition, where *restapi\-id* is the REST API ID you noted earlier, into the **Model schema** box: 
 
       ```
       {
@@ -483,7 +504,9 @@ By creating a POST method with a JSON payload to call the Lambda function, we ex
 
       This model describes the data structure of the returned response data\. It references both the `Input` and `Output` schemas defined in the specified API \(`restapi-id`\)\. Again, this model is not used in this tutorial because it leverages the passthrough behavior\.
 
-1. In the main navigation pane, under your API, choose **Resources**\.
+   1. Choose **Create model**\.
+
+1. In the main navigation pane, under your `LambdaCalc` API, choose **Resources**\.
 
 1. In the **Resources** pane, choose the `POST` method for your API\.
 
@@ -497,7 +520,7 @@ By creating a POST method with a JSON payload to call the Lambda function, we ex
 
    1. Type `application/json` in the **Content\-Type** input field and choose `Input` from the drop\-down list in the **Model name** column\. Choose the checkmark icon to save your choice\.
 
-1. To test your POST method, do the following:
+1. To test your `POST` method, do the following:
 
    1. Choose **Method Execution**\.
 
@@ -526,31 +549,29 @@ By creating a POST method with a JSON payload to call the Lambda function, we ex
    }
    ```
 
- If you would like to implement this method as an asynchronous call, you can add an `InvocationType` header in the method request and map it to the `X-Amz-Invocation-Type` header in the integration request with either a static value of `'Event'` or the header mapping expression of `method.request.header.InvocationType`\. For the latter, the client must include the `InvocationType:Event` header in the method request\. The asynchronous call will return an empty response instead\. 
+## Integration 3: Create a `GET` Method with Path Parameters to Call the Lambda Function<a name="api-as-lambda-proxy-expose-get-method-with-path-parameters-to-call-lambda-function"></a>
 
-## Create a GET Method with Path Parameters to Call the Lambda Function<a name="api-as-lambda-proxy-expose-get-method-with-path-parameters-to-call-lambda-function"></a>
+Now you'll create a `GET` method on a resource specified by a sequence of path parameters to call the backend Lambda function\. The path parameter values specify the input data to the Lambda function\. You'll a mapping template to map the incoming path parameter values to the required integration request payload\.
 
- In this section, we create a GET method on a resource specified by a sequence of path parameters to call the backend Lambda function\. The path parameter values specify the input data to the Lambda function\. We will define a mapping template to map the incoming path parameter values to the required integration request payload\. 
-
-In addition, we will use the simple Lambda integration feature provided by the API Gateway console to set up the method\. As you can see, this console\-provided feature provides a more streamlined user experience\. 
+This time you'll use the built\-in Lambda integration support in the API Gateway console to set up the method integration\.
 
 The resulting API resource structure will look like this:
 
 ![\[Create an API in API Gateway as a Lambda proxy\]](http://docs.aws.amazon.com/apigateway/latest/developerguide/images/aws_proxy_lambda_create_api_resources.png)
 
-**To set up a GET method with URL path parameters to call the Lambda function**
+**To set up a `GET` method with URL path parameters**
 
 1. Go to the API Gateway console\.
 
-1. Under **APIs**, choose the **LambdaGate** API you created previously\.
+1. Under **APIs**, choose the **LambdaCalc** API you created previously\.
 
 1. In the API's Resources navigation pane, choose **/calc**\.
 
 1. From the **Actions** drop\-down menu, choose **Create Resource**\.
 
-1. For **Resource Path**, type **\{operand1\}**\.
-
 1. For **Resource Name**, type **\{operand1\}**\.
+
+1. For **Resource Path**, type **\{operand1\}**\.
 
 1. Choose **Create Resource**\.
 
@@ -558,9 +579,9 @@ The resulting API resource structure will look like this:
 
 1. From the **Actions** drop\-down menu, choose **Create Resource**\.
 
-1. For **Resource Path**, type **\{operand2\}**\.
-
 1. For **Resource Name**, type **\{operand2\}**\.
+
+1. For **Resource Path**, type **\{operand2\}**\.
 
 1. Choose **Create Resource**\.
 
@@ -588,9 +609,13 @@ The resulting API resource structure will look like this:
 
 1. Choose **Save** and then choose **OK** to consent to **Add Permissions to Lambda Function**\.
 
+1. Choose **Integration Request**\.
+
 1. Set up the mapping template as follows:
 
    1. Expand the **Mapping Templates** section\.
+
+   1. Leave set to **When no template matches the requested Content\-Type header**\.
 
    1. Choose **Add mapping template**\.
 
@@ -598,7 +623,7 @@ The resulting API resource structure will look like this:
 
    1. Choose **Yes, secure this integration** to proceed\.
 
-   1. Type the following mapping script to the template editor:
+   1. Copy the following mapping script into the template editor:
 
       ```
       {
@@ -609,11 +634,11 @@ The resulting API resource structure will look like this:
       }
       ```
 
-      This template maps the three URL path parameters, declared when the **/calc/\{operand1\}/\{operand2\}/\{operator\}** resource was created, into designated property values of the JSON object\. Because URL paths must be URL\-encoded, the division operator must be specified as `%2F` instead of `/`\. This template translates the `%2F` into '`/` before passing it to the Lambda function\. 
+      This template maps the three URL path parameters, declared when the **/calc/\{operand1\}/\{operand2\}/\{operator\}** resource was created, into designated property values in the JSON object\. Because URL paths must be URL\-encoded, the division operator must be specified as `%2F` instead of `/`\. This template translates the `%2F` into `'/'` before passing it to the Lambda function\. 
 
    1. Choose **Save**\.
 
-    When the method is set up correctly, the settings should look similar to the following:   
+   When the method is set up correctly, the settings should look more or less like this:   
 ![\[Set up the GET method with path parameters to invoke the Lambda function\]](http://docs.aws.amazon.com/apigateway/latest/developerguide/images/aws_proxy_lambda_calc_get_method_with_paths_settings.png)
 
 1. To test your `GET` function, do the following:
@@ -629,11 +654,17 @@ The resulting API resource structure will look like this:
    1. The result should look like this:  
 ![\[Map a method request URL path parameters to the integration request payload to call the Lambda function\]](http://docs.aws.amazon.com/apigateway/latest/developerguide/images/aws_proxy_lambda_calc_get_method_test_result.png)
 
-   This test result shows the original output from the backend Lambda function, as passed through the integration response without mapping, because we have not configured any mapping template\. Next, we model the data structure of the method response payload after the `Result` schema\.
+   This test result shows the original output from the backend Lambda function, as passed through the integration response without mapping, because there is no mapping template\. Next, you'll model the data structure of the method response payload after the `Result` schema\.
 
-1.  By default, the method response body is assigned an Empty model\. This will cause the integration response body passed through without mapping\. However, when you generate an SDK for one of the strongly\-type languages, such as Java or Objective\-C, your SDK users will receive an empty object as the result\. To ensure both the REST client and SDK clients receive the desired result, you must model the response data using a predefined schema\. Here, we demonstrate how to define a model for the method response body and to construct a mapping template to transform the integration response body to the method response body\. 
+1. By default, the method response body is assigned an empty model\. This will cause the integration response body to be passed through without mapping\. However, when you generate an SDK for one of the strongly\-type languages, such as Java or Objective\-C, your SDK users will receive an empty object as the result\. To ensure that both the REST client and SDK clients receive the desired result, you must model the response data using a predefined schema\. Here you'll define a model for the method response body and to construct a mapping template to translate the integration response body into the method response body\.
 
-   1. In **/calc/\{operand1\}/\{operand2\}/\{operator\} \- GET \- Method Execution**, choose **Method Response**\.
+   1. Choose **/calc/\{operand1\}/\{operand2\}/\{operator\}**\.
+
+   1. Choose **GET**\.
+
+   1. Choose **Method Execution**\.
+
+   1. Choose **Method Response**\.
 
    1. Expand the **200** response, 
 
@@ -643,9 +674,9 @@ The resulting API resource structure will look like this:
 
    1. Choose the checkmark icon to save your choice\.
 
-   Setting the model for the method response body ensures that the response data will be cast into the `Result` object of a given SDK\. For this, we also need to make sure that the integration response data is mapped accordingly, which we discuss next\.
+   Setting the model for the method response body ensures that the response data will be cast into the `Result` object of a given SDK\. To make sure that the integration response data is mapped accordingly, you'll need a mapping template\.
 
-1. To return the backend result according to the specified schema, do the following:
+1. To create the mapping template, do the following:
 
    1. Choose **Method Execution**\.
 
@@ -675,7 +706,17 @@ The resulting API resource structure will look like this:
 
    1. Choose **Save**\.
 
-   1. To test the mapping template, choose **Test** in **Method Execution** and type `1` `2` and `+` in the **operand1**, **operand2** and **operator** input fields, respectively\. The integration response from the Lambda function is now mapped to a `Result` object, and you'll see the following under **Response Body** in the console:
+1. To test the mapping template, do the following:
+
+   1. Choose **Method Execution**\.
+
+   1. Choose **Test**\.
+
+   1. Type `1` `2` and `+` in the **operand1**, **operand2** and **operator** input fields, respectively\.
+
+      The integration response from the Lambda function is now mapped to a `Result` object\.
+
+   1. Choose **Test**, and you'll see the following under **Response Body** in the console:
 
       ```
       {
@@ -690,4 +731,17 @@ The resulting API resource structure will look like this:
       }
       ```
 
-1. To make the API accessible beyond Test Invoke in the API Gateway console, choose **Deploy API** from the **Actions** drop\-down menu\. Make sure to repeat deploying the API whenever you finish adding, modifying or deleting a resource or method, updating any data mapping, updating the stage settings\. Otherwise, new features or updates will not be available\.
+1. At this point the API can be called only via **Test Invoke** in the API Gateway console\. To make it available to clients, you'll need to deploy it as follows:
+
+   1. Choose **Deploy API** from the **Actions** dropdown menu\.
+
+   1. Choose **\[New Stage\]** from the **Deployment Stage** dropdown menu\.
+
+   1. For **Stage Name**, enter **test**\.
+
+   1. Choose **Deploy**\.
+
+   1. Note the **Invoke URL** at the top of the console window\. You can use this with tools such as [Postman](http://www.getpostman.com) and [cURL](https://curl.haxx.se/) to test your API\.
+
+**Note**  
+Always be sure to redeploy your API whenever you add, modify, or delete a resource or method, update a data mapping, or update stage settings\. Otherwise, new features or updates will not be available to clients of your API\.

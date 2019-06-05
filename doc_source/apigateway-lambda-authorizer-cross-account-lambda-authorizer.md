@@ -1,4 +1,4 @@
-# Configure Cross\-Account Lambda Authorizer<a name="apigateway-lambda-authorizer-cross-account-lambda-authorizer"></a>
+# Configure a Cross\-Account Lambda Authorizer<a name="apigateway-lambda-authorizer-cross-account-lambda-authorizer"></a>
 
 You can now also use an AWS Lambda function from a different AWS account as your API authorizer function\. Each account can be in any region where Amazon API Gateway is available\. The Lambda authorizer function can use bearer token authentication strategies such as OAuth or SAML\. This makes it easy to centrally manage and share a central Lambda authorizer function across multiple API Gateway APIs\.
 
@@ -6,7 +6,7 @@ In this section, we show how to configure a cross\-account Lambda authorizer fun
 
 These instructions assume that you already have an API Gateway API in one AWS account and a Lambda authorizer function in another account\.
 
-## Configure Cross\-Account Lambda Authorizer Using the API Gateway Console<a name="apigateway-cross-account-lambda-auth-configure-cross-account-authorizer"></a>
+## Configure a Cross\-Account Lambda Authorizer Using the API Gateway Console<a name="apigateway-cross-account-lambda-auth-configure-cross-account-authorizer"></a>
 
 Log in to the Amazon API Gateway console in your first account \(the one that has your API in it\) and do the following:
 
@@ -22,7 +22,7 @@ Log in to the Amazon API Gateway console in your first account \(the one that ha
 **Note**  
 In the Lambda console, you can find the ARN for your function in the upper right corner of the console window\.
 
-1.  Leave **Lambda Invoke Role** blank to let the API Gateway console set a resource\-based policy\. The policy grants API Gateway permissions to invoke the authorizer Lambda function\. You can also choose to type the name of an IAM role to allow API Gateway to invoke the authorizer Lambda function\. For an example of such a role, see [Set Up an IAM Role and Policy for an API to Invoke Lambda Functions](integrating-api-with-aws-services-lambda.md#api-as-lambda-proxy-setup-iam-role-policies)\. 
+1.  Leave **Lambda Invoke Role** blank to let the API Gateway console set a resource\-based policy\. The policy grants API Gateway permissions to invoke the authorizer Lambda function\. You can also choose to type the name of an IAM role to allow API Gateway to invoke the authorizer Lambda function\. For an example of such a role, see [Create an Assumable IAM Role](integrating-api-with-aws-services-lambda.md#api-as-lambda-proxy-setup-iam-role-policies)\. 
 
     If you choose to let the API Gateway console set the resource\-based policy, the **Add Permission to Lambda Function** dialog is displayed\. Choose **OK**\. After the Lambda authorization is created, you can test it with appropriate authorization token values to verify that it works as expected\. 
 

@@ -7,7 +7,7 @@
 
 | Property Name | Type | Description | 
 | --- | --- | --- | 
-| type | string |   The type of the authorizer\. This is a required property and the value must be "token", for an authorizer with the caller identity embedded in an authorization token, or "request", for an authorizer with the caller identity contained in request parameters\.   | 
+| type | string |   The type of the authorizer\. This is a required property\. Specify `"token"` for an authorizer with the caller identity embedded in an authorization token\. Specify `"request"` for an authorizer with the caller identity contained in request parameters\.   | 
 | authorizerUri | string |   The Uniform Resource Identifier \(URI\) of the authorizer Lambda function\. The syntax is as follows:  <pre>"arn:aws:apigateway:us-east-1:lambda:path/2015-03-31/functions/arn:aws:lambda:us-east-1:account-id:function:auth_function_name/invocations"</pre>  | 
 | authorizerCredentials | string |   Credentials required for invoking the authorizer, if any, in the form of an ARN of an IAM execution role\. For example, "arn:aws:iam::*account\-id*:*IAM\_role*"\.   | 
 | identitySource | string |  Comma\-separated list of mapping expressions of the request parameters as the identity source\. Applicable for the authorizer of the "request" type only\.   | 

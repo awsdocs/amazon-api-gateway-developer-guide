@@ -8,7 +8,7 @@ To set up a proxy integration in an API Gateway API with a proxy resource, you p
 **Note**  
 Greedy path variables, `ANY` methods, and proxy integration types are independent features, although they are commonly used together\. You can configure a specific HTTP method on a greedy resource or apply non\-proxy integration types to a proxy resource\.
 
-API Gateway enacts certain restrictions and limitations when handling methods with either a Lambda proxy integration or an HTTP proxy integration\. For details, see [Amazon API Gateway Known Issues](api-gateway-known-issues.md)\. 
+API Gateway enacts certain restrictions and limitations when handling methods with either a Lambda proxy integration or an HTTP proxy integration\. For details, see [Amazon API Gateway Important Notes](api-gateway-known-issues.md)\. 
 
 **Note**  
  When using proxy integration with a passthrough, API Gateway returns the default `Content-Type:application/json` header if the content type of a payload is unspecified\. 

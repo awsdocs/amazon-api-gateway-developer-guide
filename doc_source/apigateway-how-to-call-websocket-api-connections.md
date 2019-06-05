@@ -25,7 +25,7 @@ You'll need to URL\-encode the command as in the following example:
 awscurl --service execute-api -X POST -d "hello world" https://aabbccddee.execute-api.us-east-1.amazonaws.com/prod/%40connections/R0oXAdfD0kwCH6w%3D
 ```
 
-To get the latest connection status of the client, use: 
+To get the latest connection status of the client, use:
 
 ```
 GET https://{api-id}.execute-api.us-east-1.amazonaws.com/{stage}/@connections/{connection_id}

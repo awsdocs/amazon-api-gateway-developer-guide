@@ -42,12 +42,6 @@ The `properties` value is encoded as a JSON string\. The `properties` value cont
 }
 ```
 
- To set it as a value of `properties` using the API Gateway REST API, encode this object as a JSON string:
-
-```
-"{\n\t\"info\": {\n\t\t\"description\": \"My first API with Amazon API Gateway.\"\n\t}, … \n}"
-```
-
 Although API Gateway accepts any valid JSON string as the content map, the content attributes are treated as two categories: those that can be recognized by OpenAPI and those that cannot\. In the preceding example, `info`, `description`, and `x-custom-info` are recognized by OpenAPI as a standard OpenAPI object, property, or extension\. In contrast, `my-info` is not compliant with the OpenAPI specification\. API Gateway propagates OpenAPI\-compliant content attributes into the API entity definitions from the associated `DocumentationPart` instances\. API Gateway does not propagate the non\-compliant content attributes into the API entity definitions\. 
 
 As another example, here is `DocumentationPart` targeted for a `Resource` entity:

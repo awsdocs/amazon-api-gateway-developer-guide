@@ -7,7 +7,6 @@ To configure a usage plan by using the API Gateway REST API, use the following i
 **Topics**
 + [Migrate to Default Usage Plans](#api-gateway-usage-plan-migrate-to-default-with-restapi)
 + [Create a Usage Plan](#api-gateway-usage-plan-create-using-rest-api)
-+ [Manage a Usage Plan by Using the REST API](#api-gateway-usage-plan-manage-with-restapi)
 + [Manage a Usage Plan by Using the AWS CLI](#api-gateway-usage-plan-manage-with-cli)
 + [Test Usage Plans](#api-gateway-usage-plan-test-with-postman)
 
@@ -65,99 +64,6 @@ The following procedure describes how to create a usage plan\.
 **Note**  
 An API key can be associated with more than one usage plan\. A usage plan can be associated with more than one stage\. However, a given API key can only be associated with one usage plan for each stage of your API\.
 
-## Manage a Usage Plan by Using the REST API<a name="api-gateway-usage-plan-manage-with-restapi"></a>
-
-The following API methods can be used to manage a usage plan\.
-+ Call [https://docs.aws.amazon.com/apigateway/api-reference/link-relation/usageplan-by-id/](https://docs.aws.amazon.com/apigateway/api-reference/link-relation/usageplan-by-id/) to get a usage plan of a given plan ID\. To see the available usage plans, call [https://docs.aws.amazon.com/apigateway/api-reference/link-relation/apigateway-usage-plans/](https://docs.aws.amazon.com/apigateway/api-reference/link-relation/apigateway-usage-plans/)\.
-+ Call [https://docs.aws.amazon.com/apigateway/api-reference/link-relation/usageplan-update/](https://docs.aws.amazon.com/apigateway/api-reference/link-relation/usageplan-update/) to add a new API stage to the plan, replace an existing API stage in the plan, remove an API stage from the plan, or modify the rate limits or quotas\. 
-+ Call [https://docs.aws.amazon.com/apigateway/api-reference/link-relation/usage-get/](https://docs.aws.amazon.com/apigateway/api-reference/link-relation/usage-get/) to query the usage data in a specified time interval\.
-+ Call [https://docs.aws.amazon.com/apigateway/api-reference/link-relation/usage-update/](https://docs.aws.amazon.com/apigateway/api-reference/link-relation/usage-update/) to grant an extension to the current usage in a usage plan\.
-
-The following code examples show how to add, remove, or modify the method\-level throttling settings in a usage plan by calling the [https://docs.aws.amazon.com/apigateway/api-reference/link-relation/usageplan-update/](https://docs.aws.amazon.com/apigateway/api-reference/link-relation/usageplan-update/) command\.
-
-**Note**  
-Be sure to change `us-east-1` to the appropriate region value for your API\.
-
-To add the throttling limit for all methods in an API stage, call [https://docs.aws.amazon.com/apigateway/api-reference/link-relation/usageplan-update/](https://docs.aws.amazon.com/apigateway/api-reference/link-relation/usageplan-update/) with the following payload:
-
-```
-{
-    "op" : "add",
-    "path" : "/apiStages/<apiId:stageName>/throttle",
-    "value" : "<value>"
-}
-```
-
-To replace the throttling limit for all methods in an API stage, call `usageplan:update` with the following payload:
-
-```
-{
-    "op" : "replace",
-    "path" : "/apiStages/<apiId:stageName>/throttle",
-    "value" : "<value>"
-}
-```
-
-To add a rate limit for throttling an individual resource and method, call `usageplan:update` with the following payload:
-
-```
-{
-    "op" : "add",
-    "path" : "/apiStages/<apiId:stageName>/throttle/<resourcePath/method>/rateLimit",
-    "value" : "<value>"
-}
-```
-
-To replace a rate limit for throttling an individual resource and method, call `usageplan:update` with the following payload:
-
-```
-{
-    "op" : "replace",
-    "path" : "/apiStages/<apiId:stageName>/throttle/<resourcePath/method>/rateLimit",
-    "value" : "<value>"
-}
-```
-
-To add or replace a burst limit for throttling an individual resource and method, call `usageplan:update` with the following payload:
-
-```
-{
-    "op" : "add",
-    "path" : "/apiStages/<apiId:stageName>/throttle/<resourcePath/method>/burstLimit",
-    "value" : "<value>"
-}
-```
-
-To replace a burst limit for throttling an individual resource and method, call `usageplan:update` with the following payload:
-
-```
-{
-    "op" : "replace",
-    "path" : "/apiStages/<apiId:stageName>/throttle/<resourcePath/method>/burstLimit",
-    "value" : "<value>"
-}
-```
-
-To remove method\-level throttling settings for an API, call `usageplan:update` with the following payload:
-
-```
-{
-    "op" : "remove",
-    "path" : "/apiStages/<apiId:stageName>/throttle",
-    "value" : "<value>"
-}
-```
-
-To remove the method\-level throttling settings for an individual resource and method, call `usageplan:update` with the following payload:
-
-```
-{
-    "op" : "remove",
-    "path" : "/apiStages/<apiId:stageName>/throttle/<resourcePath/method>",
-    "value" : "<value>"
-}
-```
-
 ## Manage a Usage Plan by Using the AWS CLI<a name="api-gateway-usage-plan-manage-with-cli"></a>
 
 The following code examples show how to add, remove, or modify the method\-level throttling settings in a usage plan by calling the [https://docs.aws.amazon.com/cli/latest/reference/apigateway/update-usage-plan.html](https://docs.aws.amazon.com/cli/latest/reference/apigateway/update-usage-plan.html) command\.
@@ -199,7 +105,7 @@ aws apigateway --region us-east-1 update-usage-plan --usage-plan-id <planId> --p
 
 ## Test Usage Plans<a name="api-gateway-usage-plan-test-with-postman"></a>
 
-As an example, let's use the PetStore API, which was created in [Build an API Gateway API from an Example](api-gateway-create-api-from-example.md)\. Assume that the API is configured to use an API key of `Hiorr45VR...c4GJc`\. The following steps describe how to test a usage plan\.
+As an example, let's use the PetStore API, which was created in [TUTORIAL: Create a REST API by Importing an Example](api-gateway-create-api-from-example.md)\. Assume that the API is configured to use an API key of `Hiorr45VR...c4GJc`\. The following steps describe how to test a usage plan\.
 
 **To test your usage plan**
 + Make a `GET` request on the Pets resource \(`/pets`\), with the `?type=...&page=...` query parameters, of the API \(for example, `xbvxlpijch`\) in a usage plan:

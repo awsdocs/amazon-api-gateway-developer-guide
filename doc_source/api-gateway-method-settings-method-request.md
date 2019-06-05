@@ -155,7 +155,7 @@ Closely associated with the proxy resource, API Gateway supports an HTTP method 
 
 You can set up the `ANY` method on a non\-proxy resource as well\. Combining the `ANY` method with a proxy resource, you get a single API method setup for all of the supported HTTP methods against any resources of an API\. Furthermore, the backend can evolve without breaking the existing API setup\. 
 
- Before setting up an API method, consider who can call the method\. Set the authorization type according to your plan\. For open access, set it to `NONE`\. To use IAM permissions, set the authorization type to `AWS_IAM`\. To use a Lambda function\-based Lambda authorizer, set this property to `CUSTOM`\. To leverage an Amazon Cognito user pool set the authorization type to `COGNITO_USER_POOLS`\. 
+ Before setting up an API method, consider who can call the method\. Set the authorization type according to your plan\. For open access, set it to `NONE`\. To use IAM permissions, set the authorization type to `AWS_IAM`\. To use a Lambda authorizer function, set this property to `CUSTOM`\. To use an Amazon Cognito user pool, set the authorization type to `COGNITO_USER_POOLS`\. 
 
 The following AWS CLI command shows how to create a method request of the `ANY` verb against a specified resource \(`6sxz2j`\), using the IAM permissions to control its access\. 
 
@@ -240,9 +240,9 @@ Here, `petModel` is the `name` property value of a [https://docs.aws.amazon.com/
 
 ## Set up Method Request Authorization<a name="setup-method-request-authorization"></a>
 
- To control who can call the API method, you can configure the [authorization type](https://docs.aws.amazon.com/apigateway/api-reference/resource/method/#authorizationType) on the method\. You can use this type to enact one of the supported authorizers, including IAM roles and policies \(`AWS_IAM`, an Amazon Cognito user pool \(`COGNITO_USER_POOLS`\), or a Lambda function\-based Lambda authorizer \(`CUSTOM`\)\. The API Gateway console sets `NONE` for open access as the default\. 
+ To control who can call the API method, you can configure the [authorization type](https://docs.aws.amazon.com/apigateway/api-reference/resource/method/#authorizationType) on the method\. You can use this type to enact one of the supported authorizers, including IAM roles and policies \(`AWS_IAM`\), an Amazon Cognito user pool \(`COGNITO_USER_POOLS`\), or a Lambda authorizer \(`CUSTOM`\)\.
 
-To use IAM permissions to authorize access to the API method, set the `authorization-type` input property to `AWS_IAM`\. When this option is set, API Gateway verifies the caller 's signature on the request, based on the caller's IAM user's access key identifier and secret key\. If the verified user has permission to call the method, the request is accepted\. Otherwise, the request is rejected and the caller receives an unauthorized error response\. The call to the method does not succeed unless the caller has been granted permission to invoke the API method or if the caller is allowed to assume a role that has been granted the permission\. The caller has permissions to call this and any other API methods created by anyone of the same AWS account if the caller has the following IAM policy attached to his or her IAM user: 
+To use IAM permissions to authorize access to the API method, set the `authorization-type` input property to `AWS_IAM`\. When this option is set, API Gateway verifies the caller's signature on the request, based on the caller's IAM user's access key identifier and secret key\. If the verified user has permission to call the method, the request is accepted\. Otherwise, the request is rejected and the caller receives an unauthorized error response\. The call to the method does not succeed unless the caller has been granted permission to invoke the API method or if the caller is allowed to assume a role that has been granted the permission\. The caller has permissions to call this and any other API methods created by anyone of the same AWS account if the caller has the following IAM policy attached to his or her IAM user: 
 
 ```
 {

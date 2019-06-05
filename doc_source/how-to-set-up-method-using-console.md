@@ -1,8 +1,8 @@
 # Set up a Method Using the API Gateway Console<a name="how-to-set-up-method-using-console"></a>
 
 Before setting up an API method, verify the following:
-+ You must have the method available in API Gateway\. Follow the instructions in [Build an API with HTTP Custom Integration](api-gateway-create-api-step-by-step.md)\.
-+ If you want the method to communicate with a Lambda function, you must have already created the Lambda invocation role and Lambda execution role in IAM\. You must also have created the Lambda function with which your method will communicate in AWS Lambda\. To create the roles and function, use the instructions in [Create a Lambda Function for the Lambda Custom Integration](getting-started-lambda-non-proxy-integration.md#getting-started-new-lambda) of the [Build an API Gateway API with Lambda Integration](getting-started-with-lambda-integration.md)\. 
++ You must have the method available in API Gateway\. Follow the instructions in [TUTORIAL: Build an API with HTTP Non\-Proxy Integration](api-gateway-create-api-step-by-step.md)\.
++ If you want the method to communicate with a Lambda function, you must have already created the Lambda invocation role and Lambda execution role in IAM\. You must also have created the Lambda function with which your method will communicate in AWS Lambda\. To create the roles and function, use the instructions in [Create a Lambda Function for Lambda Non\-Proxy Integration](getting-started-lambda-non-proxy-integration.md#getting-started-new-lambda) of the [Build an API Gateway API with Lambda Integration](getting-started-with-lambda-integration.md)\. 
 + If you want the method to communicate with an HTTP or HTTP proxy integration, you must have already created, and have access to, the HTTP endpoint URL with which your method will communicate\.
 +  Verify that your certificates for HTTP and HTTP proxy endpoints are supported by API Gateway\. For details see [API Gateway\-Supported Certificate Authorities for HTTP and HTTP Proxy Integrations](api-gateway-supported-certificate-authorities-for-http-endpoints.md)\. 
 

@@ -2,7 +2,7 @@
 
 In this section, we describe how to create and maintain documentation parts of an API using the API Gateway console\. 
 
-A prerequisite for creating and editing the documentation of an API is that you must have already created the API\. In this section, we use the [PetStore](http://petstore-demo-endpoint.execute-api.com/petstore/pets) API as an example\. To create an API using the API Gateway console, follow the instructions in [Build an API Gateway API from an Example](api-gateway-create-api-from-example.md)\. 
+A prerequisite for creating and editing the documentation of an API is that you must have already created the API\. In this section, we use the [PetStore](http://petstore-demo-endpoint.execute-api.com/petstore/pets) API as an example\. To create an API using the API Gateway console, follow the instructions in [TUTORIAL: Create a REST API by Importing an Example](api-gateway-create-api-from-example.md)\. 
 
 **Topics**
 + [Document the `API` Entity](#api-gateway-document-api-add-document-part-for-api-entity-with-console)
@@ -39,7 +39,7 @@ If a documentation part was not created for the `API`, you get the documentation
 ```
 
 **Note**  
- You do not encode the `properties` map into a JSON string, as you must do when using the API Gateway REST API\. The API Gateway console stringifies the JSON object for you\. 
+ You do not need to encode the `properties` map into a JSON string\. The API Gateway console stringifies the JSON object for you\. 
 
 ![\[Edit documentation properties map for the API entity in the API Gateway console\]](http://docs.aws.amazon.com/apigateway/latest/developerguide/images/document-api-entity-edit-properties-map-using-console.png)
 

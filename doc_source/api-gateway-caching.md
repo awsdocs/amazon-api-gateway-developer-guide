@@ -115,7 +115,7 @@ host: example.com
 
  When API caching is enabled, you can flush your API stage's entire cache to ensure your API's clients get the most recent responses from your integration endpoints\. 
 
- To flush the API stage cache, you can choose the **Flush entire cache** button under the **Cache Settings** section in the **Settings** tab in a stage editor of the API Gateway console\. The cache\-flushing operation is almost instantaneous\. As a result, the cache status is `AVAILABLE` immediately after flushing\. 
+ To flush the API stage cache, you can choose the **Flush entire cache** button under the **Cache Settings** section in the **Settings** tab in a stage editor of the API Gateway console\. The cache\-flushing operation takes a couple of minutes, after which the cache status is `AVAILABLE` immediately after flushing\. 
 
 **Note**  
 After the cache is flushed, responses are serviced from the integration endpoint until the cache is built up again\. During this period, the number of requests sent to the integration endpoint may increase\. This may temporarily increase the overall latency of your API\. 

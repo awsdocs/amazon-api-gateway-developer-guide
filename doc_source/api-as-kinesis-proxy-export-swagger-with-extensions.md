@@ -242,7 +242,7 @@ Following are OpenAPI definitions for the sample API as a Kinesis proxy used in 
                   }
                },
                "requestTemplates": {
-                  "application/json": "{\n    \"StreamName\": \"$input.params('stream-name')\",\n    \"Data\": \"$util.base64Encode($input.json('$.Data'))\",\n    \"PartitionKey\": \"$input.path('$.PartitionKey')\"\n}"
+                 "application/json": "{\n    \"StreamName\": \"$input.params('stream-name')\",\n    \"Records\": [\n    #foreach($elem in $input.path('$.records'))\n    {\n    \"Data\": \"$util.base64Encode($elem.data)\",\n    \"PartitionKey\": \"$elem.partition-key\"\n}"    }#if($foreach.hasNext),#end\n    #end\n    ]\n
                },
                "uri": "arn:aws:apigateway:us-east-1:kinesis:action/PutRecord",
                "httpMethod": "POST",
@@ -701,7 +701,7 @@ Following are OpenAPI definitions for the sample API as a Kinesis proxy used in 
             }
           },
           "requestTemplates": {
-            "application/json": "{\n    \"StreamName\": \"$input.params('stream-name')\",\n    \"Data\": \"$util.base64Encode($input.json('$.Data'))\",\n    \"PartitionKey\": \"$input.path('$.PartitionKey')\"\n}"
+            "application/json": "{\n    \"StreamName\": \"$input.params('stream-name')\",\n    \"Records\": [\n    #foreach($elem in $input.path('$.records'))\n    {\n    \"Data\": \"$util.base64Encode($elem.data)\",\n    \"PartitionKey\": \"$elem.partition-key\"\n}"    }#if($foreach.hasNext),#end\n    #end\n    ]\n
           },
           "uri": "arn:aws:apigateway:us-east-1:kinesis:action/PutRecord",
           "httpMethod": "POST",

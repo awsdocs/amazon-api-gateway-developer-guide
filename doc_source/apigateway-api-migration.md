@@ -1,6 +1,6 @@
 # Change a Public or Private API Endpoint Type in API Gateway<a name="apigateway-api-migration"></a>
 
-Changing an API endpoint type requires you to update the API's configuration\. You can change an existing API type using the API Gateway console, AWS CLI, an AWS SDK for API Gateway, or the API Gateway REST API\. The update operation may take up to 60 seconds to complete\. During this time, your API will be available, but its endpoint type cannot be changed again until the current change is completed\.
+Changing an API endpoint type requires you to update the API's configuration\. You can change an existing API type using the API Gateway console, the AWS CLI, or an AWS SDK for API Gateway\. The update operation may take up to 60 seconds to complete\. During this time, your API will be available, but its endpoint type cannot be changed again until the current change is completed\.
 
 The following endpoint type changes are supported:
 + From edge\-optimized to regional or private
@@ -14,7 +14,6 @@ If you are changing a public API from edge\-optimized to regional or vice versa,
 **Topics**
 + [Use the API Gateway Console to Change an API Endpoint Type](#migrate-api-using-console)
 + [Use the AWS CLI to Change an API Endpoint Type](#migrate-api-using-aws-cli)
-+ [Use the API Gateway REST API to Change an API Endpoint Type](#migrate-api-using-api-gateway-rest-api)
 
 ## Use the API Gateway Console to Change an API Endpoint Type<a name="migrate-api-using-console"></a>
 
@@ -48,7 +47,7 @@ To change the API endpoint type of your API, perform one of the following sets o
 
 ## Use the AWS CLI to Change an API Endpoint Type<a name="migrate-api-using-aws-cli"></a>
 
- To use the AWS CLI commands to update an edge\-optimized API of `{api-id}`, call the [restapi:update](https://docs.aws.amazon.com/cli/latest/reference/apigateway/update-rest-api.html) as follows: 
+ To use the AWS CLI to update an edge\-optimized API whose API ID is `{api-id}`, call [update\-rest\-api](https://docs.aws.amazon.com/cli/latest/reference/apigateway/update-rest-api.html) as follows: 
 
 ```
 aws apigateway update-rest-api \
@@ -80,50 +79,3 @@ aws apigateway update-rest-api \
 ```
 
 Because [put\-rest\-api](https://docs.aws.amazon.com/cli/latest/reference/apigateway/put-rest-api.html) is for updating API definitions, it is not applicable to updating an API endpoint type\.
-
-## Use the API Gateway REST API to Change an API Endpoint Type<a name="migrate-api-using-api-gateway-rest-api"></a>
-
- To use the API Gateway REST API to update an edge\-optimized API of `{api-id}`, call the [restapi:update](https://docs.aws.amazon.com/apigateway/api-reference/link-relation/restapi-update/) as follows: 
-
-```
-PATCH /restapis/{api-id}
-
-{
-  "patchOperations" : [{
-    "op" : "replace",
-    "path" : "/endpointConfiguration/types/EDGE",
-    "value" : "REGIONAL"
-  }]
-}
-```
-
-The successful response has a status code of `200 OK` and a payload similar to the following:
-
-```
-{
-    
-    "createdDate": "2017-10-16T04:09:31Z",
-    "description": "Your first API with Amazon API Gateway. This is a sample API that integrates via HTTP with our demo Pet Store endpoints",
-    "endpointConfiguration": {
-        "types": "REGIONAL"
-    },
-    "id": "0gsnjtjck8",
-    "name": "PetStore imported as edge-optimized"
-}
-```
-
-Conversely, to update a regional API to an edge\-optimized API, call the [https://docs.aws.amazon.com/apigateway/api-reference/link-relation/restapi-update/](https://docs.aws.amazon.com/apigateway/api-reference/link-relation/restapi-update/) as follows:
-
-```
-PATCH /restapis/{api-id}
-
-{
-  "patchOperations" : [{
-    "op" : "replace",
-    "path" : "/endpointConfiguration/types/REGIONAL",
-    "value" : "EDGE"
-  }]
-}
-```
-
-Because [restapi:put](https://docs.aws.amazon.com/apigateway/api-reference/link-relation/restapi-put/) is for updating API definitions, it is not applicable to updating an API endpoint type\.

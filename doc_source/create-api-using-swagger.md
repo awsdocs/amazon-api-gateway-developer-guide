@@ -88,8 +88,6 @@ The following procedure describes how to import these OpenAPI definitions into A
 
 1. Choose **Import** to finish importing the OpenAPI definitions\.
 
-To import the OpenAPI definitions using the API Gateway REST API, call the [restapi:import](https://docs.aws.amazon.com/apigateway/api-reference/link-relation/restapi-import/) action, supplying the preceding OpenAPI definitions as the payload\. For more information, see the example in the Remarks section of the `restapi:import` topic\. 
-
 To import the OpenAPI definitions using the AWS CLI, save the OpenAPI definitions into a file and then run the following command, assuming that you use the `us-west-2` region and the absolute OpenAPI file path is `file:///path/to/API_OpenAPI_template.json`:
 
 ```

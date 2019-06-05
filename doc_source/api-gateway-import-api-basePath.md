@@ -1,10 +1,15 @@
 # Set the OpenAPI `basePath` Property<a name="api-gateway-import-api-basePath"></a>
 
- In OpenAPI, you can use the `[basePath](https://github.com/OAI/OpenAPI-Specification/blob/master/versions/2.0.md)` property to provide one or more path parts that precede each path defined in the paths property\. Because API Gateway has several ways to express a resource's path, the Import API feature provides three options for interpreting the `basePath` property during an import: 
+In [OpenAPI 2\.0](https://github.com/OAI/OpenAPI-Specification/blob/master/versions/2.0.md), you can use the `basePath` property to provide one or more path parts that precede each path defined in the `paths` property\. Because API Gateway has several ways to express a resource's path, the Import API feature provides the following options for interpreting the `basePath` property during import: ignore, prepend, and split\.
+
+In [https://swagger.io/docs/specification/api-host-and-base-path/](https://swagger.io/docs/specification/api-host-and-base-path/), `basePath` is no longer a top\-level property\. Instead, API Gateway uses a [server variable](https://github.com/OAI/OpenAPI-Specification/blob/master/versions/3.0.0.md#serverVariableObject) as a convention\. The Import API feature provides the same options for interpreting the base path during import\. The base path is identified as follows:
++ If the API doesn't contain any `basePath` variables, the Import API feature checks the `server.url` string to see if it contains a path beyond `"/"`\. If it does, that path is used as the base path\.
++ If the API contains only one `basePath` variable, the Import API feature uses it as the base path, even if it's not referenced in the `server.url`\.
++ If the API contains multiple `basePath` variables, the Import API feature uses only the first one as the base path\.
 
 ## ignore<a name="api-gateway-import-api-basePath-ignore"></a>
 
- If the OpenAPI file has a `basePath` value of `/a/b/c` and the `paths` property contains `/e` and `/f`, the following `POST` or `PUT` request: 
+If the OpenAPI file has a `basePath` value of `/a/b/c` and the `paths` property contains `/e` and `/f`, the following `POST` or `PUT` request: 
 
 ```
 POST /restapis?mode=import&basepath=ignore

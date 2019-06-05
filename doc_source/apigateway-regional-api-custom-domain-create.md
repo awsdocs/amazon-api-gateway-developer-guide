@@ -7,10 +7,12 @@ For an API Gateway regional custom domain name, you must request or import the c
 
  When you create a regional custom domain name \(or migrate one\) with an ACM Certificate, API Gateway creates a service\-linked role in your account, if the role does not exist already\. The service\-linked role is required to attach your ACM Certificate to your regional endpoint\. The role is named **AWSServiceRoleForAPIGateway** and will have the **APIGatewayServiceRolePolicy** managed policy attached to\. For more information about use of the service\-linked role, see [Using Service\-Linked Roles](https://docs.aws.amazon.com/IAM/latest/UserGuide/using-service-linked-roles.html)\. 
 
+**Important**  
+You must create a DNS record to point the custom domain name to the regional domain name\. This enables the traffic that is bound to the custom domain name to be routed to the API's regional host name\. The DNS record can be of the CNAME or A type\.
+
 **Topics**
 + [Set up a Regional Custom Domain Name Using the API Gateway Console](#create-regional-domain-using-console)
 + [Set up a Regional Custom Domain Name Using AWS CLI](#apigateway-regional-api-custom-domain-create-with-awscli)
-+ [Set up a Regional Custom Domain Name Using the API Gateway REST API](#apigateway-regional-api-custom-domain-create-with-restapi)
 
 ## Set up a Regional Custom Domain Name Using the API Gateway Console<a name="create-regional-domain-using-console"></a>
 
@@ -32,7 +34,7 @@ For an API Gateway regional custom domain name, you must request or import the c
 
 1.  Choose **Save**\. 
 
-1. Follow the Route 53 documentation on [configuring to route traffic to API Gateway](https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/routing-to-api-gateway.html)\.
+1. Follow the Route 53 documentation on [configuring Route 53 to route traffic to API Gateway](https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/routing-to-api-gateway.html)\.
 
 ## Set up a Regional Custom Domain Name Using AWS CLI<a name="apigateway-regional-api-custom-domain-create-with-awscli"></a>
 
@@ -109,77 +111,3 @@ To use the AWS CLI to set up a custom domain name for a regional API, use the fo
    ```
 
    where *\{your\-hosted\-zone\-id\}* is the Route 53 Hosted Zone ID of the DNS record set in your account\. The `change-batch` parameter value points to a JSON file \(*setup\-dns\-record\.json*\) in a folder \(*path/to/your*\)\.
-
-## Set up a Regional Custom Domain Name Using the API Gateway REST API<a name="apigateway-regional-api-custom-domain-create-with-restapi"></a>
-
-**To create a custom domain name for a regional API using the API Gateway REST API**
-
-1. Follow the [domainname:create](https://docs.aws.amazon.com/apigateway/api-reference/link-relation/domainname-create/) link\-relation to create a custom domain name of the `REGIONAL` endpoint type, specifying the regional certificate by using its ARN\.
-
-   ```
-   POST /domainnames HTTP/1.1
-   Host: apigateway.us-west-2.amazonaws.com
-   Content-Type: application/x-amz-json-1.0
-   X-Amz-Date: 20170511T214723Z
-   Authorization: AWS4-HMAC-SHA256 Credential={ACCESS-KEY-ID}/20170511/us-west-2/apigateway/aws4_request, SignedHeaders=content-length;content-type;host;x-amz-date, Signature=d0abd98a2a06199531c2916b162ede9f63a247032cdc8e4d077216446d13103c
-   
-   {
-       "domainName": "regional.example.com",
-       "regionalCertificateArn": "arn:aws:acm:us-west-2:123456789012:certificate/c19332f0-3be6-457f-a244-e03a423084e6",
-       "endpointConfiguration" : {
-          "types" : ["REGIONAL"]
-       }
-   }
-   ```
-
-   Note that to set up a regional custom domain name, you set the required certificate ARN on the input property of `regionalCertificateArn`\. In contrast, to create an edge\-optimized custom domain name, you set the required certificate ARN on the input property of `certificateArn`\. 
-
-   The successful response has a `201 Created` status code and a payload similar to the following:
-
-   ```
-   {
-       "_links": {
-           ...
-       },
-       "certificateUploadDate": "2017-10-13T23:02:54Z",
-       "domainName": "regional.example.com",
-       "endpointConfiguration": {
-           "types": "REGIONAL"
-       },
-       "regionalCertificateArn": "arn:aws:acm:us-west-2:123456789012:certificate/c19332f0-3be6-457f-a244-e03a423084e6",
-       "regionalDomainName": "d-numh1z56v6.execute-api.us-west-2.amazonaws.com."
-   }
-   ```
-
-   For the given custom domain name \(for example, `regional.example.com`\), API Gateway returns the associated regional domain name \(for example, `d-numh1z56v6.execute-api.us-west-2.amazonaws.com`\) as the API's regional host name\. You must create a DNS record to point the custom domain name to this regional domain name\. This enables the traffic that is bound to the custom domain name to be routed to the API's regional host name\. The DNS record can be of the CNAME or A type\.
-
-   If you set the endpoint configuration type to `EDGE` or do not set the type at all, you create an edge\-optimized custom domain name\. The output contains the `distributionDomainName` instead of `regionalDomainName`\. The `distributionDomainName` value shows the API's edge\-optimized host name\. You must create a DNS record to point the custom domain name to this distribution domain name\. This enables the traffic that is bound to the custom domain name to be routed to the API's edge\-optimized host name\.
-
-1. Set up DNS records in your DNS provider to point the custom domain name to the regional API host name\. This enables traffic that is bound to the custom domain name to be routed to the regional API host name\. In Route 53, you can set the CNAME or Alias A record using  the AWS CLI, an AWD SDK, or the Route 53 REST API\.
-
-1. With the new custom domain name created, you set a base path on the domain name to target one of the regional APIs\. Assuming you deployed a regional API \(`0qzs2sy7bh`\) to a `test` stage, you can add this API to the domain name's base path mappings by calling [basepathmapping:create](https://docs.aws.amazon.com/apigateway/api-reference/link-relation/basepathmapping-create/) from the API Gateway REST API:
-
-   ```
-   POST /domainnames/regional.example.com/basepathmappings HTTP/1.1Host: apigateway.us-west-2.amazonaws.com
-   Content-Type: application/x-amz-json-1.0
-   X-Amz-Date: 20170511T214723Z
-   Authorization: AWS4-HMAC-SHA256 Credential={ACCESS-KEY-ID}/20170511/us-west-2/apigateway/aws4_request, SignedHeaders=content-length;content-type;host;x-amz-date, Signature=d0abd98a2a06199531c2916b162ede9f63a247032cdc8e4d077216446d13103c
-   
-   {
-     "basePath" : "testRegionalApi",
-     "restApiId" : "0qzs2sy7bh",
-     "stage" : "test"
-   }
-   ```
-
-With the base path mapping set, you can now call the API by using its custom domain name\. With the regional PetStore example API, use the following REST API request to call `GET /pets`: 
-
-```
-https://regional.example.com/testRegionalApi/pets
-```
-
-To call `GET /pets/{petId}`, make the following API request:
-
-```
-https://regional.example.com/testRegionalApi/pets/1
-```

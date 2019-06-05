@@ -1,6 +1,6 @@
 # Control Access for Managing an API<a name="api-gateway-control-access-using-iam-policies-to-create-and-manage-api"></a>
 
- In this section, you will learn how to write up IAM policy statements to control who can or cannot create, deploy and update an API in API Gateway\. You'll also find the policy statements reference, including the formats of the `Action` and `Resource` fields related to the API managing service\. 
+ In this section, you will learn how to create IAM policy statements to control who can or cannot create, deploy and update an API in API Gateway\. You'll also find the policy statements reference, including the formats of the `Action` and `Resource` fields related to the API managing service\. 
 
 ## Control Who Can Create and Manage an API Gateway API with IAM Policies<a name="api-gateway-control-access-using-iam-policies"></a>
 
@@ -31,7 +31,7 @@
 
  `Resource` contains a list of ARNs of the affected API entities, including [RestApi](https://docs.aws.amazon.com/apigateway/api-reference/resource/rest-api/), [Resource](https://docs.aws.amazon.com/apigateway/api-reference/resource/resource/), [Method](https://docs.aws.amazon.com/apigateway/api-reference/resource/method/), [Integration](https://docs.aws.amazon.com/apigateway/api-reference/resource/integration/), [DocumentationPart](https://docs.aws.amazon.com/apigateway/api-reference/resource/documentation-part/), [Model](https://docs.aws.amazon.com/apigateway/api-reference/resource/model/), [Authorizer](https://docs.aws.amazon.com/apigateway/api-reference/resource/authorizer/), [UsagePlan](https://docs.aws.amazon.com/apigateway/api-reference/resource/rest-api/), etc\. For more information, see [Resource Format of Permissions for Managing API in API Gateway](#api-gateway-iam-policy-resource-format-for-managing-api)\. 
 
-By combining different policy statements, you can customize the access permissions for individual users, groups or roles to access selected API entities and to perform specified actions against those entities\. For example, you can include the following statement in the IAM policy to grant your documentation team the permissions to create, publish, update and delete the [documentation parts](https://docs.aws.amazon.com/apigateway/api-reference/resource/documentation-part/) of a specified API as well as to view the API entities\. 
+By combining different policy statements, you can customize the access permissions for individual users, groups or roles to access selected API entities and to perform specified actions against those entities\. For example, you can include the following statement in the IAM policy to grant your documentation team permission to create, publish, update and delete the [documentation parts](https://docs.aws.amazon.com/apigateway/api-reference/resource/documentation-part/) of a specified API as well as to view the API entities\. 
 
 ```
 {
@@ -99,8 +99,6 @@ where *action* is one of the following API Gateway actions:
 + **PUT**, which is primarily used to update resources \(and, although not recommended, can be used to create child resources\)\.
 + **DELETE**, which is used to delete resources\.
 + **PATCH**, which can be used to update resources\.
-+ **HEAD**, which is the same as GET but does not return the resource representation\. HEAD is used primarily in testing scenarios\.
-+ **OPTIONS**, which can be used by callers to get information about available communication options for the target service\.
 
 Some examples of the `Action` expression include:
 + **apigateway:\*** for all API Gateway actions\.

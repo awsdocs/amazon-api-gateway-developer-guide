@@ -1,13 +1,13 @@
-# Build an API with HTTP Custom Integration<a name="api-gateway-create-api-step-by-step"></a>
+# TUTORIAL: Build an API with HTTP Non\-Proxy Integration<a name="api-gateway-create-api-step-by-step"></a>
 
  In this tutorial, you create an API from scratch using the Amazon API Gateway console\. You can think of the console as an API design studio and use it to scope the API features, to experiment with its behaviors, to build the API, and to deploy your API in stages\. 
 
 **Topics**
-+ [Create the API with HTTP Custom Integration](#api-gateway-create-resource-and-methods)
++ [Create an API with HTTP Custom Integration](#api-gateway-create-resource-and-methods)
 + [Map Request Parameters for an API Gateway API](#getting-started-mappings)
 + [Map Response Payload](#getting-started-models)
 
-## Create the API with HTTP Custom Integration<a name="api-gateway-create-resource-and-methods"></a>
+## Create an API with HTTP Custom Integration<a name="api-gateway-create-resource-and-methods"></a>
 
  This section walks you through the steps to create resources, expose methods on a resource, configure a method to achieve the desired API behaviors, and to test and deploy the API\.
 
@@ -212,7 +212,6 @@ You receive the following JSON object in the response body:
 + [Step 2: Create and Test the Methods](#getting-started-mappings-set-methods)
 + [Step 3: Deploy the API](#getting-started-mappings-deploy)
 + [Step 4: Test the API](#getting-started-mappings-test)
-+ [Next Steps](#getting-started-mappings-next-steps)
 
 **Note**  
  Pay attention to the casing used in the steps of this walkthrough\. Typing a lowercase letter instead of an uppercase letter \(or vice versa\) can cause errors later in the walkthrough\. 
@@ -221,9 +220,9 @@ You receive the following JSON object in the response body:
 
 Before you begin this walkthrough, you should do the following:
 
-1. Complete the steps in [Get Ready to Build an API Gateway API](getting-started.md#setting-up), including assigning API Gateway access permission to the IAM user\.
+1. Complete the steps in [Prerequisites: Get Ready to Build an API in API Gateway](setting-up.md), including assigning API Gateway access permission to the IAM user\.
 
-1.  At a minimum, follow the steps in [Build an API with HTTP Custom Integration](#api-gateway-create-api-step-by-step) to create a new API named `MyDemoAPI` in the API Gateway console\. 
+1.  At a minimum, follow the steps in [TUTORIAL: Build an API with HTTP Non\-Proxy Integration](#api-gateway-create-api-step-by-step) to create a new API named `MyDemoAPI` in the API Gateway console\. 
 
 ### Step 1: Create Resources<a name="getting-started-mappings-add-resources"></a>
 
@@ -553,13 +552,9 @@ In this step, you go outside of the API Gateway console and use your API to acce
 
 You have reached the end of this walkthrough\.
 
-### Next Steps<a name="getting-started-mappings-next-steps"></a>
-
-The next walkthrough shows how to use models and mappings in API Gateway to transform the output of an API call from one data format to another\. See [Map Response Payload](#getting-started-models)\.
-
 ## Map Response Payload<a name="getting-started-models"></a>
 
-In this walkthrough, we show how to use models and mapping templates in API Gateway to transform the output of an API call from one data schema to another\. This walkthrough builds on the instructions and concepts in the [Getting Started with REST APIs in Amazon API Gateway](getting-started.md) and the [Map Request Parameters for an API Gateway API](#getting-started-mappings)\. If you have not yet completed those walkthroughs, we suggest you do them first\.
+In this walkthrough, we show how to use models and mapping templates in API Gateway to transform the output of an API call from one data schema to another\. This walkthrough builds on the instructions and concepts in the [Getting Started with Amazon API Gateway](getting-started.md) and the [Map Request Parameters for an API Gateway API](#getting-started-mappings)\. If you have not yet completed those walkthroughs, we suggest you do them first\.
 
 This walkthrough uses API Gateway to get example data from a publicly accessible HTTP endpoint and from an AWS Lambda function you create\. Both the HTTP endpoint and the Lambda function return the same example data:
 
@@ -647,7 +642,6 @@ The third model and mapping template is used to combine `id`, `type`, and `price
 + [Step 6: Deploy the API](#getting-started-models-deploy)
 + [Step 7: Test the API](#getting-started-models-test)
 + [Step 8: Clean Up](#getting-started-models-clean-up)
-+ [Next Steps](#getting-started-models-next-steps)
 
 ### Step 1: Create Models<a name="getting-started-models-add-models"></a>
 
@@ -881,7 +875,7 @@ In this step, you create a Lambda function that returns the sample data\.
    };
    ```
 **Tip**  
-In the preceding code, written in Node\.js, `console.log` writes information to an Amazon CloudWatch log\. `event` contains the input to the Lambda function\. `context` contains calling context\. `callback` returns the result \(for Node\.js 4\.3 and later\)\. For more information about how to write Lambda function code, see the "Programming Model" section in [AWS Lambda: How it Works](https://docs.aws.amazon.com/lambda/latest/dg/lambda-introduction.html) and the sample walkthroughs in the *AWS Lambda Developer Guide*\.
+In the preceding code, written in Node\.js, `console.log` writes information to an Amazon CloudWatch log\. `event` contains the input to the Lambda function\. `context` contains calling context\. `callback` returns the result\. For more information about how to write Lambda function code, see the "Programming Model" section in [AWS Lambda: How it Works](https://docs.aws.amazon.com/lambda/latest/dg/lambda-introduction.html) and the sample walkthroughs in the *AWS Lambda Developer Guide*\.
 
 1. For **Handler name**, leave the default of `index.handler`\.
 
@@ -1225,8 +1219,7 @@ If you no longer need the Lambda function you created for this walkthrough, you 
 
 **Warning**  
 If you delete a Lambda function your APIs rely on, those APIs will no longer work\. Deleting a Lambda function cannot be undone\. If you want to use the Lambda function again, you must re\-create the function\.  
-If you delete an IAM resource a Lambda function relies on, the Lambda function and any APIs that rely on it will no longer work\. Deleting an IAM resource cannot be undone\. If you want to use the IAM resource again, you must re\-create the resource\. If you plan to continue experimenting with the resources you created for this and the other walkthroughs, do not delete the Lambda invocation role or the Lambda execution role\.  
-API Gateway does not currently support the deactivation or deletion of APIs that no longer work\.
+If you delete an IAM resource a Lambda function relies on, the Lambda function and any APIs that rely on it will no longer work\. Deleting an IAM resource cannot be undone\. If you want to use the IAM resource again, you must re\-create the resource\. If you plan to continue experimenting with the resources you created for this and the other walkthroughs, do not delete the Lambda invocation role or the Lambda execution role\.
 
 **To delete the Lambda function**
 
@@ -1247,7 +1240,3 @@ API Gateway does not currently support the deactivation or deletion of APIs that
 1. Select **APIGatewayLambdaExecPolicy**, and then choose **Policy Actions**, **Delete**\. When prompted, choose **Delete**\.
 
 You have now reached the end of this walkthrough\.
-
-### Next Steps<a name="getting-started-models-next-steps"></a>
-
-You may want to begin the next walkthrough, which shows you how to create an API Gateway API to access an AWS service\. See [Build an API Gateway API with AWS Integration](getting-started-aws-proxy.md)\.

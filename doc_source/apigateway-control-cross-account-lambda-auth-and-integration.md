@@ -66,7 +66,7 @@ To grant another AWS acccount permission to call `[integration:put](https://docs
 
 ## Allow Another Account to Manage the Lambda Function Used When Importing an OpenAPI File<a name="api-gateway-control-access-cross-account-lambda-swagger-import"></a>
 
-To grant another AWS acccount permission to call `[restapi:import](https://docs.aws.amazon.com/apigateway/api-reference/link-relation/integration-put)` or `[import\-restapi](https://docs.aws.amazon.com/cli/latest/reference/apigateway/put-integration.html)` to import an OpenAPI file, you can include the following statement in the IAM policy\.
+To grant another AWS acccount permission to call `[restapi:import](https://docs.aws.amazon.com/apigateway/api-reference/link-relation/restapi-import/)` or `[import\-rest\-api](https://docs.aws.amazon.com/cli/latest/reference/apigateway/import-rest-api.html)` to import an OpenAPI file, you can include the following statement in the IAM policy\.
 
 In the `Condition` statement below, the string `"lambda:path/2015-03-31/functions/arn:aws:lambda:us-east-1:account-id:function:lambda-function-name"` is the full ARN for the Lambda function\.
 

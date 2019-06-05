@@ -7,7 +7,8 @@ To document your API, you can call the [API Gateway REST API](https://docs.aws.a
 **Topics**
 + [Representation of API Documentation in API Gateway](api-gateway-documenting-api-content-representation.md)
 + [Document an API Using the API Gateway Console](api-gateway-documenting-api-quick-start-with-console.md)
++ [Publish API Documentation Using the API Gateway Console](apigateway-documenting-api-with-console.md)
 + [Document an API Using the API Gateway REST API](api-gateway-documenting-api-quick-start-with-restapi.md)
-+ [Publish API Documentation](api-gateway-documenting-api-quick-start-publishing.md)
++ [Publish API Documentation Using the API Gateway REST API](api-gateway-documenting-api-quick-start-publishing.md)
 + [Import API Documentation](api-gateway-documenting-api-quick-start-import-export.md)
 + [Control Access to API Documentation](api-gateway-documenting-api-content-provision-and-consumption.md)

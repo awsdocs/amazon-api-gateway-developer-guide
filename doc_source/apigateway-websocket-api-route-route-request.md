@@ -9,7 +9,7 @@ When you set up the `$connect` route for your API, the following optional settin
   + `AWS_IAM` to use standard AWS IAM policies to control access to your API\. 
   + `CUSTOM` to implement authorization for an API by specifying a Lambda authorizer function that you have previously created\. The authorizer can reside in your own AWS account or a different AWS account\. For more information about Lambda authorizers, see [Use API Gateway Lambda Authorizers](apigateway-use-lambda-authorizer.md)\.
 **Note**  
-In the API Gateway console, the `CUSTOM` setting is visible only after you have set up an authorizer function as described in [Configure Lambda Authorizer Using the API Gateway Console](configure-api-gateway-lambda-authorization-with-console.md)\.
+In the API Gateway console, the `CUSTOM` setting is visible only after you have set up an authorizer function as described in [Configure a Lambda Authorizer Using the API Gateway Console](configure-api-gateway-lambda-authorization-with-console.md)\.
 **Important**  
 The **Authorization** setting is applied to the entire API, not just the `$connect` route\. The `$connect` route protects the other routes, because it is called on every connection\.
 + **API Key Required**: You can optionally require an API key for an API's `$connect` route\. You can use API keys together with usage plans to control and track access to your APIs\. For more information, see [Create and Use Usage Plans with API Keys](api-gateway-api-usage-plans.md)\.

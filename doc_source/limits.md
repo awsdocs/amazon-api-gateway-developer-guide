@@ -1,8 +1,8 @@
-# Amazon API Gateway Limits and Known Issues<a name="limits"></a>
+# Amazon API Gateway Limits and Important Notes<a name="limits"></a>
 
 **Topics**
 + [API Gateway Limits](#api-gateway-limits)
-+ [Amazon API Gateway Known Issues](api-gateway-known-issues.md)
++ [Amazon API Gateway Important Notes](api-gateway-known-issues.md)
 
 ## API Gateway Limits<a name="api-gateway-limits"></a>
 
@@ -47,6 +47,7 @@ The following limits apply to configuring and running a REST API in Amazon API G
 
 | Resource or Operation | Default Limit | Can Be Increased | 
 | --- | --- | --- | 
+| Custom domain names per account per region | 30 | Yes | 
 | Private APIs per account per region | 600 | No | 
 | Length, in characters, of API Gateway resource policy | 8092 | Yes | 
 | API keys per account per region | 500 | Yes | 
@@ -58,7 +59,7 @@ The following limits apply to configuring and running a REST API in Amazon API G
 | Usage plans per account per region | 300 | Yes | 
 | Usage plans per API key | 10 | Yes | 
 | Per\-method throttling limit settings per API stage | 20 | Yes | 
-| VPC links per account per region | 5 | Yes | 
+| VPC links per account per region | 20 | Yes | 
 | API caching TTL | 300 seconds by default and configurable between 0 and 3600 by an API owner\. | Not for the upper bound \(3600\) | 
 | Cached response size | 1048576 Bytes\. Cache data encryption may increase the size of the item that is being cached\. | No | 
 | Integration timeout | 50 milliseconds \- 29 seconds for all integration types, including Lambda, Lambda proxy, HTTP, HTTP proxy, and AWS integrations\. | Not for the lower or upper bounds\. | 
@@ -79,16 +80,21 @@ The following fixed limits apply to creating, deploying, and managing an API in 
 
 | Action | Default Limit | Can Be Increased | 
 | --- | --- | --- | 
+| [CreateApiKey](https://docs.aws.amazon.com/apigateway/api-reference/link-relation/apikey-create/) | 5 requests per second per account | No | 
+| [CreateDeployment](https://docs.aws.amazon.com/apigateway/api-reference/link-relation/deployment-create/) | 1 request every 5 seconds per account | No | 
+| [CreateDocumentationVersion](https://docs.aws.amazon.com/apigateway/api-reference/link-relation/documentationversion-create/) | 1 request every 20 seconds per account | No | 
+| [CreateDomainName](https://docs.aws.amazon.com/apigateway/api-reference/link-relation/domainname-create/) | 1 request every 30 seconds per account | No | 
+| [CreateResource](https://docs.aws.amazon.com/apigateway/api-reference/link-relation/resource-create/) | 5 requests per second per account | No | 
 | [CreateRestApi](https://docs.aws.amazon.com/apigateway/api-reference/link-relation/restapi-create/) | [\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/apigateway/latest/developerguide/limits.html)[\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/apigateway/latest/developerguide/limits.html) | No | 
+| [DeleteApiKey](https://docs.aws.amazon.com/apigateway/api-reference/link-relation/apikey-delete/) | 5 requests per second per account | No | 
+| [DeleteResource](https://docs.aws.amazon.com/apigateway/api-reference/link-relation/resource-delete/) | 5 requests per second per account | No | 
+| [DeleteRestApi](https://docs.aws.amazon.com/apigateway/api-reference/link-relation/restapi-delete/) | 1 request every 30 seconds per account | No | 
+| [GetResources](https://docs.aws.amazon.com/apigateway/api-reference/link-relation/restapi-resources/) | 5 requests every 2 seconds per account | No | 
+| [ImportDocumentationParts](https://docs.aws.amazon.com/apigateway/api-reference/link-relation/documentationpart-import/) | 1 request every 30 seconds per account | No | 
 | [ImportRestApi](https://docs.aws.amazon.com/apigateway/api-reference/link-relation/restapi-import/) | [\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/apigateway/latest/developerguide/limits.html)[\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/apigateway/latest/developerguide/limits.html) | No | 
 | [PutRestApi](https://docs.aws.amazon.com/apigateway/api-reference/link-relation/restapi-put/) | 1 request per second per account | No | 
-| [DeleteRestApi](https://docs.aws.amazon.com/apigateway/api-reference/link-relation/restapi-delete/) | 1 request every 30 seconds per account | No | 
-| [CreateDeployment](https://docs.aws.amazon.com/apigateway/api-reference/link-relation/deployment-create/) | 1 request every 5 seconds per account | No | 
 | [UpdateAccount](https://docs.aws.amazon.com/apigateway/api-reference/link-relation/account-update/) | 1 request every 20 seconds per account | No | 
-| [GetResources](https://docs.aws.amazon.com/apigateway/api-reference/link-relation/restapi-resources/) | 5 requests every 2 seconds per account | No | 
-| [CreateResource](https://docs.aws.amazon.com/apigateway/api-reference/link-relation/resource-create/) | 5 requests per second per account | No | 
-| [DeleteResource](https://docs.aws.amazon.com/apigateway/api-reference/link-relation/resource-delete/) | 5 requests per second per account | No | 
-| [CreateDomainName](https://docs.aws.amazon.com/apigateway/api-reference/link-relation/domainname-create/) | 1 request every 30 seconds per account | No | 
+| [UpdateDomainName](https://docs.aws.amazon.com/apigateway/api-reference/link-relation/domainname-update/) | 1 request every 30 seconds per account | No | 
 | [UpdateUsagePlan](https://docs.aws.amazon.com/apigateway/api-reference/link-relation/usageplan-update/) | 1 request every 20 seconds per account | No | 
 | Other operations | No limit up to the total account limit\. | No | 
 | Total operations | 10 requests per second with a burst limit of 40 requests per second\. | No | 

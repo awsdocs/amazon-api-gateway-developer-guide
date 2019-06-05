@@ -15,13 +15,11 @@ Access can be controlled by IAM condition elements, including conditions on AWS 
 The following sections describe how to create your own API Gateway resource policy and attach it to your API\. Attaching a policy applies the permissions in the policy to the methods in the API\.
 
 **Important**  
-If you use the API Gateway console attach a resource policy to a deployed API, or if you update an existing resource policy, you'll need to redeploy the API in the console for the changes to take effect\.
+If you use the API Gateway console to attach a resource policy to a deployed API, or if you update an existing resource policy, you'll need to redeploy the API in the console for the changes to take effect\.
 
 **Topics**
 + [Attaching API Gateway Resource Policies \(Console\)](#apigateway-resource-policies-create-attach-console)
 + [Attaching API Gateway Resource Policies \(AWS CLI\)](#apigateway-resource-policies-create-attach-using-cli)
-+ [Attaching API Gateway Resource Policies \(API Gateway API\)](#apigateway-resource-policies-create-attach-using-api)
-+ [OpenAPI Example of Attaching a API Gateway Resource Policy](#apigateway-resource-policies-create-attach-using-swagger)
 
 ## Attaching API Gateway Resource Policies \(Console\)<a name="apigateway-resource-policies-create-attach-console"></a>
 
@@ -60,105 +58,3 @@ aws apigateway update-rest-api \
     --rest-api-id api-id \
     --patch-operations op=replace,path=/policy,value='{\"jsonEscapedPolicyDocument\"}'
 ```
-
-## Attaching API Gateway Resource Policies \(API Gateway API\)<a name="apigateway-resource-policies-create-attach-using-api"></a>
-
-To use the [API Gateway REST API](https://docs.aws.amazon.com/apigateway/api-reference/) to create a new API and attach a resource policy to it, call the [https://docs.aws.amazon.com/cli/latest/reference/apigateway/create-rest-api.html](https://docs.aws.amazon.com/cli/latest/reference/apigateway/create-rest-api.html) command as follows:
-
-```
-POST /restapis
-
-{
- "name": "api-name",
- "policy": "{\"jsonEscapedPolicyDocument\"}"
-}
-// simplified format supported here because apiId is not known yet and partition/region/account can be derived at import time
-// "Resource": [
-//   "execute-api:/stage/method/path" 
-// ]
-```
-
-To use the [API Gateway REST API](https://docs.aws.amazon.com/apigateway/api-reference/) to attach a resource policy to an existing API, call the [https://docs.aws.amazon.com/apigateway/api-reference/link-relation/restapi-create/](https://docs.aws.amazon.com/apigateway/api-reference/link-relation/restapi-create/) command as follows: 
-
-```
-PATCH /restapis/api-id
-
-{
- "patchOperations" : [ {
-   "op": "replace",
-   "path": "/policy",
-   "value": "{\"jsonEscapedPolicyDocument\"}"
-  } ]
-}
-```
-
-## OpenAPI Example of Attaching a API Gateway Resource Policy<a name="apigateway-resource-policies-create-attach-using-swagger"></a>
-
-The [https://docs.aws.amazon.com/apigateway/api-reference/link-relation/import-restapi/](https://docs.aws.amazon.com/apigateway/api-reference/link-relation/import-restapi/) command can be used to import an OpenAPI definition of an API with attached resource policy, as shown in the following example:
-
-------
-#### [ OpenAPI 3\.0 ]
-
-```
-{
- "openapi": "3.0",
- "x-amazon-apigateway-policy": {
-   "Version": "2012-10-17",
-   "Statement": [
-      {
-       "Effect": "Allow",
-       "Principal": {
-         "AWS": [
-           "arn:aws:iam::111122223333:user/Alice",
-           "arn:aws:iam::111122223333:root"
-          ]
-        },
-       "Action": "execute-api:Invoke",
-       "Resource": [
-         "execute-api:/stage/method/path" // simplified format supported here because apiId is not known yet and partition/region/account can derived at import time
-       ]
-      }
-    ]
-  },
- "info" : {
-   "title" : "Example"
-  },
- "paths": {...}
-}
-```
-
-------
-#### [ OpenAPI 2\.0 ]
-
-```
-{
- "swagger": "2.0",
- "x-amazon-apigateway-policy": {
-   "Version": "2012-10-17",
-   "Statement": [
-      {
-       "Effect": "Allow",
-       "Principal": {
-         "AWS": [
-           "arn:aws:iam::111122223333:user/Alice",
-           "arn:aws:iam::111122223333:root"
-          ]
-        },
-       "Action": "execute-api:Invoke",
-       "Resource": [
-         "execute-api:/stage/method/path" // simplified format supported here because apiId is not known yet and partition/region/account can derived at import time
-       ]
-      }
-    ]
-  },
- "info" : {
-   "title" : "Example"
-  },
- "schemes": [
-   "https"
-  ],
- "paths": {...}
-}
-```
-
-------

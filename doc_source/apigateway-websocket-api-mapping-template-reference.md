@@ -20,7 +20,6 @@ This section summarizes the set of variables that are currently supported for We
 | $context\.error\.messageString | The quoted value of $context\.error\.message, namely "$context\.error\.message"\. | 
 | $context\.error\.responseType |  The error response type\. This variable can only be used in access logging\.  | 
 | $context\.error\.validationErrorString |  A string containing a detailed validation error message\.  | 
-| $context\.extendedRequestId | An automatically generated ID for the API call, which contains more useful information for debugging/troubleshooting\. | 
 | $context\.identity\.accountId |  The AWS account ID associated with the request\.  | 
 | $context\.identity\.apiKey |  The API owner key associated with key\-enabled API request\.  | 
 | $context\.identity\.apiKeyId | The API key ID associated with the key\-enabled API request | 
@@ -36,6 +35,7 @@ This section summarizes the set of variables that are currently supported for We
 | $context\.stage |  The deployment stage of the API call \(for example, Beta or Prod\)\.  | 
 | $input\.body | Returns the raw payload as a string\. | 
 | $input\.json\(x\) | This function evaluates a JSONPath expression and returns the results as a JSON string\. For example, `$input.json('$.pets')` will return a JSON string representing the pets structure\. For more information about JSONPath, see [JSONPath](http://goessner.net/articles/JsonPath/) or [JSONPath for Java](https://github.com/jayway/JsonPath)\. | 
+| $input\.path\(x\) | Takes a JSONPath expression string \(`x`\) and returns a JSON object representation of the result\. This allows you to access and manipulate elements of the payload natively in [Apache Velocity Template Language \(VTL\)](http://velocity.apache.org/engine/devel/vtl-reference-guide.html)\. For example, if the expression `$input.path('$.pets')` returns an object like this: <pre>[<br />  { <br />    "id": 1, <br />    "type": "dog", <br />    "price": 249.99 <br />  }, <br />  { <br />    "id": 2, <br />    "type": "cat", <br />    "price": 124.99 <br />  }, <br />  { <br />    "id": 3, <br />    "type": "fish", <br />    "price": 0.99 <br />  } <br />]</pre> `$input.path('$.pets').count()` would return `"3"`\. For more information about JSONPath, see [JSONPath](http://goessner.net/articles/JsonPath/) or [JSONPath for Java](https://github.com/jayway/JsonPath)\. | 
 | $stageVariables\.<variable\_name> |  *<variable\_name>* represents a stage variable name\.  | 
 | $stageVariables\['<variable\_name>'\] |  *<variable\_name>* represents any stage variable name\.  | 
 | $\{stageVariables\['<variable\_name>'\]\} |  *<variable\_name>* represents any stage variable name\.  | 

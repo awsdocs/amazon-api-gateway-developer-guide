@@ -1,6 +1,6 @@
 # Simple Calculator API in API Gateway<a name="simple-calc-lambda-api"></a>
 
-Our simple calculator API exposes three methods \(GET, POST, GET\) to invoke the [Simple Calculator Lambda Function](simple-calc-nodejs-lambda-function.md) \(`Calc`\)\. A graphical representation of this API is shown as follows:
+Our simple calculator API exposes three methods \(GET, POST, GET\) to invoke the [Simple Calculator Lambda Function](simple-calc-nodejs-lambda-function.md)\. A graphical representation of this API is shown as follows:
 
 ![\[Simple Calculator API for Generated SDK\]](http://docs.aws.amazon.com/apigateway/latest/developerguide/images/simple-calc-api-console-hierarchy.png)
 

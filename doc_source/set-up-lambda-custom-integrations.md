@@ -154,10 +154,9 @@ With the Lambda function set in the backend, proceed to set up the API\.<a name=
    ```
 
    The mapping template supplied here translates the `greeter` query string parameter to the `greeter` property of the JSON payload\. This is necessary because input to a Lambda function in the Lambda function must be expressed in the body\. You could use JSON string of the map \(for example, `"{\"greeter"\: \"'john'\"}"`\) as the `request-template` input value to the `put-integration` command\. However, using the file input avoids the difficult, and sometimes impossible, quote\-escaping that is required to stringify a JSON object\.
-
-   For Lambda integrations, you must use the HTTP method of `POST` for the integration request, according to the specification of the Lambda service action for function invocations\. The `uri` parameter is the ARN of the function\-invoking action\.
-
-   The successful output is similar to the following:
+**Important**  
+For Lambda integrations, you must use the HTTP method of `POST` for the integration request, according to the [specification of the Lambda service action for function invocations](https://docs.aws.amazon.com/lambda/latest/dg/API_Invoke.html)\. The `uri` parameter is the ARN of the function\-invoking action\.  
+Successful output is similar to the following:
 
    ```
    {
@@ -211,5 +210,3 @@ With the Lambda function set in the backend, proceed to set up the API\.<a name=
    curl -X GET 'https://te6si5ach7.execute-api.us-west-2.amazonaws.com/test/greeting?greeter=me' \
      -H 'authorization: AWS4-HMAC-SHA256 Credential={access_key}/20171020/us-west-2/execute-api/aws4_request, SignedHeaders=content-type;host;x-amz-date, Signature=f327...5751'
    ```
-
-Compared to [the setup for the Lambda proxy integration](set-up-lambda-proxy-integrations.md#set-up-lambda-proxy-integration-using-cli), it is much more involved to set up a Lambda custom integration\.

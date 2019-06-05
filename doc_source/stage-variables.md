@@ -4,13 +4,15 @@ Stage variables are name\-value pairs that you can define as configuration attri
 
 For example, you can define a stage variable in a stage configuration, and then set its value as the URL string of an HTTP integration for a method in your REST API\. Later, you can reference the URL string using the associated stage variable name from the API setup\. This way, you can use the same API setup with a different endpoint at each stage by resetting the stage variable value to the corresponding URLs\. You can also access stage variables in the mapping templates, or pass configuration parameters to your AWS Lambda or HTTP backend\.
 
-For more information about mapping templates, see [API Gateway Mapping Template Reference](api-gateway-mapping-template-reference.md)\.
+For more information about mapping templates, see [API Gateway Mapping Template and Access Logging Variable Reference](api-gateway-mapping-template-reference.md)\.
 
 ## Use Cases<a name="stage-variables-use-cases"></a>
 
 With deployment stages in API Gateway, you can manage multiple release stages for each API, such as alpha, beta, and production\. Using stage variables you can configure an API deployment stage to interact with different backend endpoints\. For example, your API can pass a GET request as an HTTP proxy to the backend web host \(for example, `http://example.com`\)\. In this case, the backend web host is configured in a stage variable so that when developers call your production endpoint, API Gateway calls example\.com\. When you call your beta endpoint, API Gateway uses the value configured in the stage variable for the beta stage, and calls a different web host \(for example, `beta.example.com`\)\. Similarly, stage variables can be used to specify a different AWS Lambda function name for each stage in your API\.
 
 You can also use stage variables to pass configuration parameters to a Lambda function through your mapping templates\. For example, you may want to re\-use the same Lambda function for multiple stages in your API, but the function should read data from a different Amazon DynamoDB table depending on which stage is being called\. In the mapping templates that generate the request for the Lambda function, you can use stage variables to pass the table name to Lambda\.
+
+Stage variables are not applied to the security definitions section of the API specification\. For example, you cannot use different Amazon Cognito user pools for different stages\.
 
 ## Examples<a name="stage-variables-examples"></a>
 

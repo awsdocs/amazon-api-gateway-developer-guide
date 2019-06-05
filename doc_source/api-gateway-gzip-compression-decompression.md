@@ -11,6 +11,6 @@ The client can submit an API request with a compressed payload and an appropriat
 When the integration endpoint expects and returns uncompressed JSON payloads, any mapping template that's configured for an uncompressed JSON payload is applicable to the compressed payload\. For a compressed method request payload, API Gateway decompresses the payload, applies the mapping template, and passes the mapped request to the integration endpoint\. For an uncompressed integration response payload, API Gateway applies the mapping template, compresses the mapped payload, and returns the compressed payload to the client\. 
 
 **Topics**
-+ [Enable Compression for an API](api-gateway-enable-compression.md)
++ [Enable Payload Compression for an API](api-gateway-enable-compression.md)
 + [Call an API Method with a Compressed Payload](api-gateway-make-request-with-compressed-payload.md)
 + [Receive an API Response with a Compressed Payload](api-gateway-receive-response-with-compressed-payload.md)

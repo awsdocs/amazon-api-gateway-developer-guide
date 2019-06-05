@@ -1,16 +1,15 @@
-# Enable Compression for an API<a name="api-gateway-enable-compression"></a>
+# Enable Payload Compression for an API<a name="api-gateway-enable-compression"></a>
 
-You can enable compression for an API using the API Gateway console, AWS CLI/SDK, or API Gateway REST API\. The steps are detailed in the following sections\. 
+You can enable compression for an API using the API Gateway console, the AWS CLI, or an AWS SDK\.
 
 For an existing API, you must deploy the API after enabling the compression in order for the change to take effect\. For a new API, you can deploy the API after the API setup is complete\.
 
 **Topics**
-+ [Enable Compression for an API Using the API Gateway Console](#api-gateway-enable-compression-console)
-+ [Enable Compression for an API Using AWS CLI](#api-gateway-enable-compression-cli)
-+ [Enable Compression for an API Using the API Gateway REST API](#api-gateway-enable-compression-api)
++ [Enable Payload Compression for an API Using the API Gateway Console](#api-gateway-enable-compression-console)
++ [Enable Payload Compression for an API Using AWS CLI](#api-gateway-enable-compression-cli)
 + [Content Codings Supported by API Gateway](#api-gateway-supported-content-encodings)
 
-## Enable Compression for an API Using the API Gateway Console<a name="api-gateway-enable-compression-console"></a>
+## Enable Payload Compression for an API Using the API Gateway Console<a name="api-gateway-enable-compression-console"></a>
 
 The following procedure describes how to enable payload compression for an API\. 
 
@@ -26,7 +25,7 @@ The following procedure describes how to enable payload compression for an API\.
 
 1. Choose **Save Changes**\.
 
-## Enable Compression for an API Using AWS CLI<a name="api-gateway-enable-compression-cli"></a>
+## Enable Payload Compression for an API Using AWS CLI<a name="api-gateway-enable-compression-cli"></a>
 
 To use the AWS CLI to create a new API and enable compression, call the [https://docs.aws.amazon.com/cli/latest/reference/apigateway/create-rest-api.html](https://docs.aws.amazon.com/cli/latest/reference/apigateway/create-rest-api.html) command as follows:
 
@@ -52,62 +51,6 @@ To use the AWS CLI to disable compression, call the [https://docs.aws.amazon.com
 aws apigateway update-rest-api \
     --rest-api-id 1234567890 \
     --patch-operations op=replace,path=/minimumCompressionSize,value=
-```
-
-You can also set `value` to an empty string `""` or omit the `value` property altogether in the preceding call\.
-
-## Enable Compression for an API Using the API Gateway REST API<a name="api-gateway-enable-compression-api"></a>
-
-To use the [API Gateway REST API](https://docs.aws.amazon.com/apigateway/api-reference/) to enable compression on a new API, call [https://docs.aws.amazon.com/apigateway/api-reference/link-relation/restapi-create/](https://docs.aws.amazon.com/apigateway/api-reference/link-relation/restapi-create/) as follows:
-
-```
-POST /restapis
-Host: apigateway.{region}.amazonaws.com 
-Authorization: apigateway.{region}.amazonaws.com
-Content-Type: application/json
-Content-Length: ...
-
-{
-   "name" : "My test API",
-   "minimumCompressionSize": 0
-}
-```
-
-To use the [API Gateway REST API](https://docs.aws.amazon.com/apigateway/api-reference/) to enable compression on an existing API, call [https://docs.aws.amazon.com/apigateway/api-reference/link-relation/restapi-update/](https://docs.aws.amazon.com/apigateway/api-reference/link-relation/restapi-update/) as follows:
-
-```
-PATCH /restapis/{restapi_id}
-Host: apigateway.{region}.amazonaws.com 
-Authorization: ...
-Content-Type: application/json
-Content-Length: ...
-
-{
-   "patchOperations" : [ {
-      "op" : "replace",    
-      "path" : "/minimumCompressionSize",
-      "value" : "0"
-   } ]
-}
-```
-
-The `minimumCompressionSize` property has a non\-negative integer value between 0 and 10485760 \(10M bytes\)\. It measures the compression threshold\. If the payload size is smaller than this value, compression or decompression are not applied on the payload\. Setting it to zero allows compression for any payload size\.
-
-To disable compression by using the API Gateway REST API, call `restapi:update` as follows:
-
-```
-PATCH /restapis/{restapi_id}
-Host: apigateway.{region}.amazonaws.com 
-Authorization: ...
-Content-Type: application/json
-Content-Length: ...
-
-{
-   "patchOperations" : [ {
-      "op" : "replace",    
-      "path" : "/minimumCompressionSize"
-   } ]
-}
 ```
 
 You can also set `value` to an empty string `""` or omit the `value` property altogether in the preceding call\.

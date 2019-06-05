@@ -9,7 +9,7 @@ This page presents a few examples of typical use cases for API Gateway resource 
 
 ## Example: Allow users in another AWS account to use an API<a name="apigateway-resource-policies-cross-account-example"></a>
 
-The following example resource policy grants access to two users in an AWS account via [Signature Version 4](https://docs.aws.amazon.com/general/latest/gr/sigv4_signing.html) \(SigV4\) protocols\. Specifically, Alice and the root user for the same AWS account are granted the `execute-api:Invoke` action to execute the `GET` action on the `pets` resource \(API\)\.
+The following example resource policy grants API access in one AWS account to two users in a different AWS account via [Signature Version 4](https://docs.aws.amazon.com/general/latest/gr/sigv4_signing.html) \(SigV4\) protocols\. Specifically, Alice and the root user for the AWS account identified by `account-id-2` are granted the `execute-api:Invoke` action to execute the `GET` action on the `pets` resource \(API\) in the AWS account identified by `account-id-1`\.
 
 ```
 {
@@ -20,12 +20,12 @@ The following example resource policy grants access to two users in an AWS accou
             "Principal": {
                 "AWS": [
                     "arn:aws:iam::account-id:user/Alice",
-                    "account-id"
+                    "account-id-2"
                 ]
             },
             "Action": "execute-api:Invoke",
             "Resource": [
-                "arn:aws:execute-api:region:account-id:api-id/stage/GET/pets"
+                "arn:aws:execute-api:region:account-id-1:api-id/stage/GET/pets"
             ]
         }
     ]
@@ -34,7 +34,7 @@ The following example resource policy grants access to two users in an AWS accou
 
 ## Example: Deny API traffic based on source IP address or range<a name="apigateway-resource-policies-source-ip-address-example"></a>
 
-The following example resource policy is a "blacklist" policy that denies \(blocks\) incoming traffic to an API from two specified source IP addresses\.
+The following example resource policy is a "blacklist" policy that denies \(blocks\) incoming traffic to an API from two specified source IP address blocks\.
 
 ```
 {

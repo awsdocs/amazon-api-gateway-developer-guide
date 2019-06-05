@@ -1,6 +1,6 @@
 # Creating, Deploying, and Invoking a WebSocket API in Amazon API Gateway<a name="apigateway-websocket-api"></a>
 
-For a brief introduction to WebSocket support in API Gateway, see [Use API Gateway to Create WebSocket APIs](welcome.md#api-gateway-overview-websocket)\.
+For a brief introduction to WebSocket support in API Gateway, see [Use API Gateway to Create WebSocket APIs](api-gateway-overview-developer-experience.md#api-gateway-overview-websocket)\.
 
 **Topics**
 + [About WebSocket APIs in API Gateway](apigateway-websocket-api-overview.md)

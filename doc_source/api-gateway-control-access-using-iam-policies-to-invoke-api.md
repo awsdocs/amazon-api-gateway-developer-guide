@@ -1,9 +1,10 @@
 # Control Access for Invoking an API<a name="api-gateway-control-access-using-iam-policies-to-invoke-api"></a>
 
- In this section you will learn how to write up IAM policy statements to control who can or cannot call a deployed API in API Gateway\. Here, you will also find the policy statement reference, including the formats of `Action` and `Resource` fields related to the API execution service\. 
+ In this section you will learn how to write up IAM policy statements to control who can call a deployed API in API Gateway\. Here, you will also find the policy statement reference, including the formats of `Action` and `Resource` fields related to the API execution service\. You should also study the IAM section in [How Amazon API Gateway Resource Policies Affect Authorization Workflow](apigateway-authorization-flow.md)\.
 
-**Note**  
-You should also study the IAM section in [How Amazon API Gateway Resource Policies Affect Authorization Workflow](apigateway-authorization-flow.md)\.
+For private APIs, you should use a combination of an API Gateway resource policy and a VPC endpoint policy\. For more information, see the following topics:
++ [Control Access to an API with Amazon API Gateway Resource Policies](apigateway-resource-policies.md)
++ [Use VPC Endpoint Policies for Private APIs in API Gateway](apigateway-vpc-endpoint-policies.md)
 
 ## Control Who Can Call an API Gateway API Method with IAM Policies<a name="api-gateway-who-can-invoke-an-api-method-using-iam-policies"></a>
 
@@ -31,7 +32,7 @@ You should also study the IAM section in [How Amazon API Gateway Resource Polici
 **Note**  
 For IAM policies to be effective, you must have enabled IAM authentication on API methods by setting `AWS_IAM` for the methods' `[authorizationType](https://docs.aws.amazon.com/apigateway/api-reference/resource/method/#authorizationType)` property\. Failing to do so will make these API methods publicly accessible\.
 
- For example, to grant a user the permission to view a list of pets exposed by a specified API, but to deny the user the permission to add a pet to the list, you could include the following statement in the IAM policy: 
+ For example, to grant a user permission to view a list of pets exposed by a specified API, but to deny the user permission to add a pet to the list, you could include the following statement in the IAM policy: 
 
 ```
 {
@@ -53,6 +54,25 @@ For IAM policies to be effective, you must have enabled IAM authentication on AP
       ],
       "Resource": [
         "arn:aws:execute-api:us-east-1:account-id:api-id/*/POST/pets"
+      ]
+    }
+  ]
+}
+```
+
+To grant a user permission to view a specific pet exposed by an API that is configured as `GET /pets/{petId}`, you could include the following statement in the IAM policy:
+
+```
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Effect": "Allow",
+      "Action": [
+        "execute-api:Invoke"           
+      ],
+      "Resource": [
+        "arn:aws:execute-api:us-east-1:account-id:api-id/*/GET/pets/a1b2"
       ]
     }
   ]
@@ -109,7 +129,7 @@ where:
 + *account\-id* is the 12\-digit AWS account Id of the REST API owner\. 
 + *api\-id* is the identifier API Gateway has assigned to the API for the method\. \(**\*** can be used for all APIs, regardless of the API's identifier\.\)
 + *stage\-name* is the name of the stage associated with the method \(**\*** can be used for all stages, regardless of the stage's name\.\)
-+ *HTTP\-VERB* is the HTTP verb for the method\. It can be one of the following: GET, POST, PUT, DELETE, PATCH, HEAD, OPTIONS\. 
++ *HTTP\-VERB* is the HTTP verb for the method\. It can be one of the following: GET, POST, PUT, DELETE, PATCH\.
 + *resource\-path\-specifier* is the path to the desired method\. \(**\*** can be used for all paths\)\.
 
 Some example resource expressions include:

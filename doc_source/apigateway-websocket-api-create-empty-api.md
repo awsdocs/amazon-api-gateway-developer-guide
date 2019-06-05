@@ -1,6 +1,9 @@
 # Create a WebSocket API in API Gateway<a name="apigateway-websocket-api-create-empty-api"></a>
 
-You can create a WebSocket API in the API Gateway console, by using the AWS CLI [https://docs.aws.amazon.com/goto/aws-cli/apigatewayv2-2018-11-29/CreateApi](https://docs.aws.amazon.com/goto/aws-cli/apigatewayv2-2018-11-29/CreateApi) command, or by using the `CreateApi` command in an AWS SDK or the API Gateway REST API\. The following procedures show how to create a new WebSocket API\.
+You can create a WebSocket API in the API Gateway console, by using the AWS CLI [https://docs.aws.amazon.com/goto/aws-cli/apigatewayv2-2018-11-29/CreateApi](https://docs.aws.amazon.com/goto/aws-cli/apigatewayv2-2018-11-29/CreateApi) command, or by using the `CreateApi` command in an AWS SDK\. The following procedures show how to create a new WebSocket API\.
+
+**Note**  
+WebSocket APIs only support TLS 1\.2\. Earlier TLS versions are not supported\.
 
 ## Create a WebSocket API Using AWS CLI Commands<a name="apigateway-websocket-api-create-using-awscli"></a>
 

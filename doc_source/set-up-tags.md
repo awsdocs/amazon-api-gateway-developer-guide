@@ -1,15 +1,14 @@
-# Set up Tags for an API Stage in API Gateway<a name="set-up-tags"></a>
+# Set Up Tags for an API Stage in API Gateway<a name="set-up-tags"></a>
 
-Tags are metadata that you assign to your AWS resources\. They are commonly used for tracking resource usage by custom\-defined categories, which provides a simple mechanism to separate distinct organizational units within a single AWS account\. A tag consists of a key\-value pair\. For more information on how to use tags, see [AWS Tagging Strategy](https://aws.amazon.com/answers/account-management/aws-tagging-strategies/)\.
+In API Gateway, you can add a tag to an API stage, remove the tag from the stage, or view the tag\. To do this, you can use the API Gateway console, the AWS CLI/SDK, or the API Gateway REST API\.
 
- In API Gateway, you can assign tags to an API stage for managing cost allocation for request invocation and caching that are associated with the stage\. For example, when you add the tag `Department:Sales` to an API stage, it shows up in AWS Billing and Cost Management as a cost allocation tag\. After a tag is activated, you can use it to filter costs and usage by using [Cost Explorer](http://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/cost-explorer-what-is.html) in the [AWS Billing and Cost Management](http://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/billing-what-is.html) console\. 
+A stage can also inherit tags from its parent REST API\. For more information, see [Tag Inheritance](apigateway-tagging-supported-resources.md#apigateway-tagging-inheritance)\.
 
-You can add a tag to an API stage, remove the tag from the stage, or view the tag\. To do this, you can use the API Gateway console, the AWS CLI/SDK, or the API Gateway REST API\.
+For more information about tagging API Gateway resources, see [Tagging Your API Gateway Resources](apigateway-tagging.md)\.
 
 **Topics**
 + [Set up Tags for an API Stage Using the API Gateway Console](#set-up-tags-using-console)
 + [Set up Tags for an API Stage Using the API Gateway REST API](#set-up-tags-using-api)
-+ [Tag Restrictions](#api-gateway-tag-restrictions)
 
 ## Set up Tags for an API Stage Using the API Gateway Console<a name="set-up-tags-using-console"></a>
 
@@ -23,13 +22,13 @@ The following procedure describes how to set up tags for an API stage\.
 
 1. Choose a stage or deploy the API to a new stage\.
 
-1. In the **Stage Editor**, choose the **Settings** tab\. 
+1. In the **Stage Editor**, choose the **Configure Tags** button\. 
 
-1.  Under the **Tags** section, choose **Add Stage Tag**\. Type a tag key \(for example, `Department`\) in the **Key** column, and type a tag value \(for example, `Sales`\) in the **Value** column\. Choose the checkmark icon to save the tag\.
+1. In the **Tag Editor**, choose **Add New Tag**\. Type a tag key \(for example, `Department`\) in the **Key** field, and type a tag value \(for example, `Sales`\) in the **Value** field\. Choose the checkmark icon to save the tag\.
 
 1.  If needed, repeat Step 5 to add more tags to the API stage\. The maximum number of tags per stage is 50\.
 
-1.  To remove an existing tag from the stage, choose the trash bin icon next to the selected tag\.
+1.  To remove an existing tag from the stage, choose the trash bin icon next to the tag\.
 
 1. Choose **Save Changes** to finish setting up the stage tags\.
 
@@ -130,14 +129,3 @@ The successful response is similar to the following:
     }
 }
 ```
-
-## Tag Restrictions<a name="api-gateway-tag-restrictions"></a>
-
-The following restrictions apply to tags for API Gateway resources:
-+ Tags are applicable to the [https://docs.aws.amazon.com/apigateway/api-reference/resource/stage/](https://docs.aws.amazon.com/apigateway/api-reference/resource/stage/) resource only\.
-+ The maximum number of tags per stage is 50\.
-+ The maximum tag key length is 128 Unicode characters in UTF\-8\.
-+ The maximum tag value length is 256 Unicode characters in UTF\-8\.
-+ Tag keys and values are case sensitive\.
-+ The valid character set is \[a\-zA\-Z\+\-=\.\_:/\] for tag keys and values\.
-+ Tag keys and values can't start with `aws:`\.

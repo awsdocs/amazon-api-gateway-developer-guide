@@ -10,7 +10,6 @@
 + [Set up an API Using the API Gateway Console](create-api-using-console.md)
 + [Set up an Edge\-Optimized API Using AWS CLI Commands](create-api-using-awscli.md)
 + [Set up an Edge\-Optimized API Using the AWS SDK for Node\.js](create-api-using-awssdk.md)
-+ [Set up an Edge\-Optimized API Using the API Gateway REST API](create-api-using-restapi.md)
 + [Set up an Edge\-Optimized API by Importing OpenAPI Definitions](create-api-using-swagger.md)
 + [Set up a Regional API in API Gateway](create-regional-api.md)
 + [Create a Private API in Amazon API Gateway](apigateway-private-apis.md)

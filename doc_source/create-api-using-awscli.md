@@ -105,7 +105,7 @@ Setting up an API using the AWS CLI requires working with the `[create\-rest\-ap
    }
    ```
 
-   The method is for open access because `authorization-type` is set to `NONE`\. To permit only authenticated users to call the method, you can use IAM roles and policies, a Lambda authorizer \(formerly known as a custom authorizer\), or an Amazon Cognito user pool\. For more information, see [ Controlling Access to an API in API Gateway](apigateway-control-access-to-api.md)\.
+   The method is for open access because `authorization-type` is set to `NONE`\. To permit only authenticated users to call the method, you can use IAM roles and policies, a Lambda authorizer \(formerly known as a custom authorizer\), or an Amazon Cognito user pool\. For more information, see [Controlling and Managing Access to a REST API in API Gateway](apigateway-control-access-to-api.md)\.
 
    To enable read access to the `/pets/{petId}` resource \(`rjkmth`\), add the `GET` HTTP method on it to create an API `Method` of `GET /pets/{petId}` as follows\. 
 

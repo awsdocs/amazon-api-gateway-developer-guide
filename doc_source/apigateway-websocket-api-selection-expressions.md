@@ -51,7 +51,7 @@ You can simply use a static value, or you can use multiple variables\. The follo
 | $request\.body\.action | join | An unwrapped variable | 
 | $\{request\.body\.action\} | join | A wrapped variable | 
 | $\{request\.body\.service\}/$\{request\.body\.action\} | chat/join | Multiple variables with static values | 
-| $\{request\.body\.action\}\-$\{request\.body\.invalidPath\}  | join- | If the JSONPath is not found, the variable will be resolved as ""\. | 
+| $\{request\.body\.action\}\-$\{request\.body\.invalidPath\}  | join | If the JSONPath is not found, the variable will be resolved as ""\. | 
 | action | action | Static value | 
 | \\$default | $default | Static value | 
 
@@ -69,7 +69,7 @@ When you define an [integration request](apigateway-websocket-api-integration-re
 
 `Integration.TemplateSelectionExpression` supports `${request.body.jsonPath}` and static values\.
 
-`IntegratiionResponse.TemplateSelectionExpression` supports `${request.body.jsonPath}`, `${integration.response.statuscode}`, `${integration.response.header.headerName}`, `${integration.response.multivalueheader.headerName}`, and static values\.
+`IntegrationResponse.TemplateSelectionExpression` supports `${request.body.jsonPath}`, `${integration.response.statuscode}`, `${integration.response.header.headerName}`, `${integration.response.multivalueheader.headerName}`, and static values\.
 
 ## Route Response Selection Expressions<a name="apigateway-websocket-api-route-response-selection-expressions"></a>
 

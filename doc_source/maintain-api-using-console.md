@@ -61,7 +61,7 @@ Use the API Gateway console to view a list of methods for a resource\.
 
 ### View a Methods List with the API Gateway Console<a name="how-to-view-methods-list-console"></a>
 
-You must have methods available in API Gateway\. Follow the instructions in [Build an API with HTTP Custom Integration](api-gateway-create-api-step-by-step.md)\.
+You must have methods available in API Gateway\. Follow the instructions in [TUTORIAL: Build an API with HTTP Non\-Proxy Integration](api-gateway-create-api-step-by-step.md)\.
 
 1. Sign in to the API Gateway console at [https://console\.aws\.amazon\.com/apigateway](https://console.aws.amazon.com/apigateway)\.
 

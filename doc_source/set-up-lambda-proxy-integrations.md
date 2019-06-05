@@ -46,9 +46,7 @@ API Gateway supports multiple headers and query string parameters that have the 
 
 To set up a proxy resource with the Lambda proxy integration type, create an API resource with a greedy path parameter \(for example, `/parent/{proxy+}`\) and integrate this resource with a Lambda function backend \(for example, `arn:aws:lambda:us-west-2:123456789012:function:SimpleLambda4ProxyResource`\) on the `ANY` method\. The greedy path parameter must be at the end of the API resource path\. As with a non\-proxy resource, you can set up the proxy resource by using the API Gateway console, importing an OpenAPI definition file, or calling the API Gateway REST API directly\.
 
-For detailed instructions about using the API Gateway console to configure a proxy resource with the Lambda proxy integration, see [ Build an API Gateway API with Lambda Proxy Integration ](api-gateway-create-api-as-simple-proxy-for-lambda.md)\.
-
-The following OpenAPI API definition file shows an example of an API with a proxy resource that is integrated with the [SimpleLambda4ProxyResource](api-gateway-create-api-as-simple-proxy-for-lambda.md#api-gateway-proxy-integration-lambda-function-nodejs) Lambda function\.
+The following OpenAPI API definition file shows an example of an API with a proxy resource that is integrated with a Lambda function named `SimpleLambda4ProxyResource`\.
 
 ------
 #### [ OpenAPI 3\.0 ]
@@ -165,6 +163,9 @@ In Lambda proxy integration of a proxy resource through the `ANY` method, the si
 ## Set up Lambda Proxy Integration Using the AWS CLI<a name="set-up-lambda-proxy-integration-using-cli"></a>
 
 In this section, we show how to use AWS CLI to set up an API with the Lambda proxy integration\. 
+
+**Note**  
+For detailed instructions for using the API Gateway console to configure a proxy resource with the Lambda proxy integration, see [TUTORIAL: Build a Hello World API with Lambda Proxy Integration](api-gateway-create-api-as-simple-proxy-for-lambda.md)\.
 
 As an example, we use the following sample Lambda function as the backend of the API:
 
@@ -298,8 +299,8 @@ Comparing this to [the Lambda custom integration setup](set-up-lambda-custom-int
            --uri arn:aws:apigateway:us-east-1:lambda:path/2015-03-31/functions/arn:aws:lambda:us-east-1:123456789012:function:HelloWorld/invocations \
            --credentials arn:aws:iam::123456789012:role/apigAwsProxyRole
    ```
-
-   For Lambda integrations, you must use the HTTP method of `POST` for the integration request\. The IAM role of `apigAwsProxyRole` must have policies allowing the `apigateway` service to invoke Lambda functions\. For more information about the IAM permissions, see [ API Gateway Permissions Model for Creating and Managing an API](permissions.md#api-gateway-control-access-iam-permissions-model-for-managing-api)\.
+**Important**  
+For Lambda integrations, you must use the HTTP method of `POST` for the integration request, according to the [specification of the Lambda service action for function invocations](https://docs.aws.amazon.com/lambda/latest/dg/API_Invoke.html)\. The IAM role of `apigAwsProxyRole` must have policies allowing the `apigateway` service to invoke Lambda functions\. For more information about IAM permissions, see [ API Gateway Permissions Model for Invoking an API](permissions.md#api-gateway-control-access-iam-permissions-model-for-calling-api)\.
 
    The successful output is similar to the following:
 
@@ -538,10 +539,47 @@ This request produces the following response payload, which contains the output 
 }
 ```
 
-In the input to Lambda, the `requestContext` object is a map of key\-value pairs\. The key is a property name of the [$context](api-gateway-mapping-template-reference.md#context-variable-reference) variable and the value is the property value of the corresponding `$context` variable\. API Gateway may add new keys to the map\. Depending on the features enabled, the `requestContext` map may vary from API to API\. For example, in the preceding example, `$context.authorizer.*` properties are absent because no Lambda authorizer \(formerly known as a custom authorizer\) is enabled for the API\.
+In the input to the backend Lambda function, the `requestContext` object is a map of key\-value pairs\. In each pair, the key is the name of a [$context](api-gateway-mapping-template-reference.md#context-variable-reference) variable property, and the value is the value of that property\. API Gateway may add new keys to the map\.
 
-**Note**  
-API Gateway enacts certain restrictions and limitations when handling methods with either Lambda proxy integration or HTTP proxy integration\. For details, see [Amazon API Gateway Known Issues](api-gateway-known-issues.md)\.
+Depending on the features that are enabled, the `requestContext` map may vary from API to API\. For example, in the preceding example, no authorization type is specified, so no `$context.authorizer.*` or `$context.identity.*` properties are present\. When an authorization type is specified, this causes API Gateway to pass authorized user information to the integration endpoint in a `requestContext.identity` object as follows:
++ When the authorization type is `AWS_IAM`, the authorized user information includes `$context.identity.*` properties\.
++ When the authorization type is `COGNITO_USER_POOLS` \(Amazon Cognito authorizer\), the authorized user information includes `$context.identity.cognito*` and `$context.authorizer.claims.*` properties\.
++ When the authorization type is `CUSTOM` \(Lambda authorizer\), the authorized user information includes `$context.authorizer.principalId` and other applicable `$context.authorizer.*` properties\.
+
+The following shows an example of a `requestContext` that is passed to a Lambda proxy integration endpoint when the authorization type is set to `AWS_IAM`\.
+
+```
+{
+    ...,
+    "requestContext": {
+        "requestTime": "20/Feb/2018:22:48:57 +0000",
+        "path": "/test/",
+        "accountId": "123456789012",
+        "protocol": "HTTP/1.1",
+        "resourceId": "yx5mhem7ye",
+        "stage": "test",
+        "requestTimeEpoch": 1519166937665,
+        "requestId": "3c3ecbaa-1690-11e8-ae31-8f39f1d24afd",
+        "identity": {
+            "cognitoIdentityPoolId": null,
+            "accountId": "123456789012",
+            "cognitoIdentityId": null,
+            "caller": "AIDAJ........4HCKVJZG",
+            "sourceIp": "51.240.196.104",
+            "accessKey": "IAM_user_access_key",
+            "cognitoAuthenticationType": null,
+            "cognitoAuthenticationProvider": null,
+            "userArn": "arn:aws:iam::123456789012:user/alice",
+            "userAgent": "PostmanRuntime/7.1.1",
+            "user": "AIDAJ........4HCKVJZG"
+        },
+        "resourcePath": "/",
+        "httpMethod": "GET",
+        "apiId": "qr2gd9cfmf"
+    },
+    ...
+}
+```
 
 ## Output Format of a Lambda Function for Proxy Integration<a name="api-gateway-simple-proxy-for-lambda-output-format"></a>
 
@@ -570,4 +608,12 @@ For more information about enabling binary support, see [Enable Binary Support U
 
 If the function output is of a different format, API Gateway returns a `502 Bad Gateway` error response\. 
 
-In a Lambda function in Node\.js, to return a successful response, call `callback(null, {"statusCode": 200, "body": "results"})`\. To throw an exception, call `callback(new Error('internal server error'))`\. For a client\-side error \(if, for example, a required parameter is missing\), you can call `callback(null, {"statusCode": 400, "body": "Missing parameters of ..."})` to return the error without throwing an exception\. 
+To return a response in a Lambda function in Node\.js, you can use commands such as the following:
++ To return a successful result, call `callback(null, {"statusCode": 200, "body": "results"})`\.
++ To throw an exception, call `callback(new Error('internal server error'))`\.
++ For a client\-side error \(if, for example, a required parameter is missing\), you can call `callback(null, {"statusCode": 400, "body": "Missing parameters of ..."})` to return the error without throwing an exception\.
+
+In a Lambda `async` function in Node\.js 8\.10, the equivalent syntax would be:
++ To return a successful result, call `return {"statusCode": 200, "body": "results"}`\.
++ To throw an exception, call `throw new Error("internal server error")`\.
++ For a client\-side error \(if, for example, a required parameter is missing\), you can call `return {"statusCode": 400, "body": "Missing parameters of ..."}` to return the error without throwing an exception\.

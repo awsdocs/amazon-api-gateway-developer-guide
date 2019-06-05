@@ -1,4 +1,4 @@
-# Publish API Documentation<a name="api-gateway-documenting-api-quick-start-publishing"></a>
+# Publish API Documentation Using the API Gateway REST API<a name="api-gateway-documenting-api-quick-start-publishing"></a>
 
 To publish the documentation for an API, create, update, or get a documentation snapshot, and then associate the documentation snapshot with an API stage\. When creating a documentation snapshot, you can also associate it with an API stage at the same time\.
 
@@ -106,26 +106,6 @@ Authorization: AWS4-HMAC-SHA256 Credential=access_key_id/YYYYMMDD/region/apigate
     }]
 }
 ```
-
-The following procedure describes how to publish a documentation version\.
-
-**To publish a documentation version using the API Gateway console**
-
-1. Choose **Documentation** for the API from the main navigation pane in the API Gateway console\.
-
-1. Choose **Publish Documentation** in the **Documentation** pane\.
-
-1. Set up the publication:
-
-   1. Choose an available name for **Stage**\.
-
-   1. Type a version identifier, e\.g\., `1.0.0`, in **Version**\.
-
-   1. Optionally, provide a description about the publication in **Description**\.
-
-1. Choose **Publish**\.
-
-You can now proceed to download the published documentation by exporting the documentation to an external OpenAPI file\.
 
 ## Download a Documentation Snapshot Associated with a Stage<a name="api-gateway-documenting-api-publishing-export-documentation-version"></a>
 

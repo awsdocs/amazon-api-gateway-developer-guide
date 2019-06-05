@@ -33,7 +33,7 @@ where `c` holds the result of the calculation\.
 The implementation of the Lambda function is as follows:
 
 ```
-console.log('Loading the Calc function');
+console.log('Loading the calculator function');
 
 exports.handler = function(event, context, callback) {
     console.log('Received event:', JSON.stringify(event, null, 2));

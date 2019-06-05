@@ -7,6 +7,8 @@ Amazon API Gateway *resource policies* are JSON policy documents that you attach
 
 You can use resource policies for all API endpoint types in API Gateway: private, edge\-optimized, and regional\.
 
+For [private APIs](https://docs.aws.amazon.com/apigateway/latest/developerguide/apigateway-private-apis.html), you can use resource policies together with VPC endpoint policies to control which principals have access to which resources and actions\. For more information, see [Use VPC Endpoint Policies for Private APIs in API Gateway](apigateway-vpc-endpoint-policies.md)\.
+
 You can attach a resource policy to an API using the AWS console, AWS CLI, or AWS SDKs\.
 
 API Gateway resource policies are different from IAM policies\. IAM policies are attached to IAM entities \(users, groups, or roles\) and define what actions those entities are capable of doing on which resources\. API Gateway resource policies are attached to resources\. For a more detailed discussion of the differences between identity\-based \(IAM\) policies and resource policies, see [Identity\-Based Policies and Resource\-Based Policies](https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_identity-vs-resource.html)\.

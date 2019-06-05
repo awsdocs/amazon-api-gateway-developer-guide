@@ -12,7 +12,7 @@
 
 Integration request parameters, in the form of path variables, query strings or headers, can be mapped from any defined method request parameters and the payload\.
 
-In the following table, *`PARAM_NAME`* is the name of a method request parameter of the given parameter type\. It must have been defined before it can be referenced\. *`JSONPath_EXPRESSION`* is a JSONPath expression for a JSON field of the body of a request or response\.
+In the following table, *`PARAM_NAME`* is the name of a method request parameter of the given parameter type\. It must match the regular expression `'^[a-zA-Z0-9._$-]+$]'`\. It must have been defined before it can be referenced\. *`JSONPath_EXPRESSION`* is a JSONPath expression for a JSON field of the body of a request or response\.
 
 **Note**  
 The `"$"` prefix is omitted in this syntax\.

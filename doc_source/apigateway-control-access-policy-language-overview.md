@@ -23,32 +23,29 @@ In its most basic sense, a resource policy contains the following elements:
 "Implicit deny" is different from "Explict deny\." For more information, see [The Difference Between Denying by Default and Explicit Deny](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_policies_evaluation-logic.html#AccessPolicyLanguage_Interplay)\.
 + **Principal** – The account or user who is allowed access to the actions and resources in the statement\. In a resource policy, the principal is the IAM user or account who is the recipient of this permission\.
 
-The following example resource policy shows the preceding common policy elements\. The policy grants access to a specific API *api\-id* in the specified *region* to any user whose source IP address is in the IP range *203\.0\.113\.0* to *203\.0\.113\.255* only\. The policy denies all access to the API if the user's source IP is not within the range\.
+The following example resource policy shows the preceding common policy elements\. The policy grants access to the API under the specified *account\-id* in the specified *region* to any user whose source IP address is in the address block *123\.4\.5\.6/24*\. The policy denies all access to the API if the user's source IP is not within the range\.
 
 ```
-{  
-    "Id":"Policy1513815114229",
-        "Version":"2012-10-17",
-        "Statement":[  
-            {  
-                "Sid":"Stmt1513815112643",
-                "Effect":"Deny",
-                "Principal":"*",
-                "Action":[  
-                    "execute-api:Invoke"
-                ],
-                "Condition":{  
-                    "NotIpAddress":{  
-                        "aws:SourceIp":[  
-                            "203.0.113.0",
-                            "203.0.113.255"
-                        ]
-                    }
-                },
-                "Resource":[  
-                    "arn:aws:execute-api:region:account-id:api-id/stage/method/path"
-                ]
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Effect": "Allow",
+            "Principal": "*",
+            "Action": "execute-api:Invoke",
+            "Resource": "arn:aws:execute-api:region:account-id:*"
+        },
+        {
+            "Effect": "Deny",
+            "Principal": "*",
+            "Action": "execute-api:Invoke",
+            "Resource": "arn:aws:execute-api:region:account-id:*",
+            "Condition": {
+                "NotIpAddress": {
+                    "aws:SourceIp": "123.4.5.6/24"
+                }
             }
-        ]
+        }
+    ]
 }
 ```

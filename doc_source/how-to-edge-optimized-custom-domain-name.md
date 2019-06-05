@@ -93,7 +93,7 @@ When CloudTrail is enabled for logging API Gateway calls made by your account, A
 
  You can use a single custom domain name as the host name of multiple APIs\. You achieve this by configuring the base path mappings on the custom domain name\. With the base path mappings, an API under the custom domain is accessible through the combination of the custom domain name and the associated base path\. 
 
-For example, if you created an API named `PetStore` and another API named `PetShop` and set up a custom domain name of `api.example.com` in API Gateway, you can set the `PetStore` API's URL as `https://api.example.com` or `https://api.example.com/myPetStore`\. The `PetStore` API is associated with the base path of an empty string or `myPetStore` under the custom domain name of `api.example.com`\. Similarly, you can assign a base path of `yourPetStore` for the `PetShop` API\. The URL of `https://api.example.com/yourPetStore` is then the root URL of the `PetShop` API\. 
+For example, if you created an API named `PetStore` and another API named `PetShop` and set up a custom domain name of `api.example.com` in API Gateway, you can set the `PetStore` API's URL as `https://api.example.com` or `https://api.example.com/myPetStore`\. The `PetStore` API is associated with the base path of an empty string or `myPetStore` under the custom domain name of `api.example.com`\. Similarly, you can assign a base path of `yourPetShop` for the `PetShop` API\. The URL of `https://api.example.com/yourPetShop` is then the root URL of the `PetShop` API\. 
 
 Before setting the base path for an API, complete the steps in [Set Up an Edge\-Optimized Custom Domain Name for an API Gateway API](#how-to-custom-domains-console)\.
 

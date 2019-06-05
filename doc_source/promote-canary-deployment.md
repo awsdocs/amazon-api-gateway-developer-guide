@@ -10,7 +10,6 @@ Promoting a canary release does not disable the canary on the stage\. To disable
 **Topics**
 + [Promote a Canary Release Using the API Gateway Console](#promote-canary-release-deployment-console)
 + [Promote a Canary Release Using the AWS CLI](#promote-canary-release-cli)
-+ [Promote a Canary Release Using the API Gateway REST API](#promote-canary-release-api)
 
 ## Promote a Canary Release Using the API Gateway Console<a name="promote-canary-release-deployment-console"></a>
 
@@ -26,7 +25,7 @@ To use the API Gateway console to promote a canary release deployment, do the fo
 
 1.  Confirm changes to be made and choose **Update**\.
 
-After the promotion, the production release references the same API version \(**deploymentId**\) as the canary release\. You can verify this using the AWS CLI or API Gateway REST API\. For example, see [Promote a Canary Release Using the AWS CLI](#promote-canary-release-cli) or [Promote a Canary Release Using the API Gateway REST API](#promote-canary-release-api)\. 
+After the promotion, the production release references the same API version \(**deploymentId**\) as the canary release\. You can verify this using the AWS CLI\. For example, see [Promote a Canary Release Using the AWS CLI](#promote-canary-release-cli)\. 
 
 ## Promote a Canary Release Using the AWS CLI<a name="promote-canary-release-cli"></a>
 
@@ -85,111 +84,6 @@ aws apigateway update-stage                               \
         "from": "/canarySettings/deploymentId",           \
         "path": "/deploymentId"                           \
       }]'
-```
-
-After the promotion, the stage now looks like this:
-
-```
-{
-    "_links": {
-        ...
-    },
-    "accessLogSettings": {
-        ...
-    },
-    "cacheClusterEnabled": false,
-    "cacheClusterStatus": "NOT_AVAILABLE",
-    "canarySettings": {
-        "deploymentId": "eh1sby",
-        "useStageCache": false,
-        "stageVariableOverrides": {
-            "sv2": "val3",
-            "sv1": "val2"
-        },
-        "percentTraffic": 0
-    },
-    "createdDate": "2017-11-20T04:42:19Z",
-    "deploymentId": "eh1sby",
-    "lastUpdatedDate": "2017-11-22T05:29:47Z",
-    "methodSettings": {
-        ...
-    },
-    "stageName": "prod",
-    "variables": {
-        "sv2": "val3",
-        "sv1": "val2"
-    }
-}
-```
-
-As you can see, promoting a canary release to the stage does not disable the canary and the deployment remains to be a canary release deployment\. To make it a regular production release deployment, you must disable the canary settings\. For more information about how to disable a canary release deployment, see [Disable a Canary Release](delete-canary-deployment.md)\.
-
-## Promote a Canary Release Using the API Gateway REST API<a name="promote-canary-release-api"></a>
-
-To promote a canary release to the production release using the API Gateway REST API, call the `stage:update` request to copy the canary\-associated `deploymentId` to the stage\-associated `deploymentId`, to reset the canary traffic percentage to zero \(`0.0`\), and, to copy any canary\-bound stage variables to the corresponding stage\-bound ones\. 
-
-Suppose we have a canary release deployment, described by a stage similar to the following: 
-
-```
-{
-    "_links": {
-        ...
-    },
-    "accessLogSettings": {
-        ...
-    },
-    "cacheClusterEnabled": false,
-    "cacheClusterStatus": "NOT_AVAILABLE",
-    "canarySettings": {
-        "deploymentId": "eh1sby",
-        "useStageCache": false,
-        "stageVariableOverrides": {
-            "sv2": "val3",
-            "sv1": "val2"
-        },
-        "percentTraffic": 10.5
-    },
-    "createdDate": "2017-11-20T04:42:19Z",
-    "deploymentId": "nfcn0x",
-    "lastUpdatedDate": "2017-11-22T00:54:28Z",
-    "methodSettings": {
-        ...
-    },
-    "stageName": "prod",
-    "variables": {
-        "sv1": "val1"
-    }
-}
-```
-
-We call the following `stage:update` request to promote it:
-
-```
-PATCH /restapis/4wk1k4onj3/stages/prod HTTP/1.1
-Host: apigateway.us-east-1.amazonaws.com
-Content-Type: application/json
-X-Amz-Date: 20171121T232431Z
-Authorization: AWS4-HMAC-SHA256 Credential={SECRET_ACCESS_KEY}/20171121/us-east-1/apigateway/aws4_request, SignedHeaders=content-length;content-type;host;x-amz-date, Signature={SIGV4_SIGNATURE}
-
-{
-	"patchOperations": [
-		{
-			"op": "copy",
-			"path": "/deploymentId",
-			"from": "/canarySettings/deploymentId"
-		},
-		{
-			"op": "replace",
-			"path": "/canarySettings/percentTraffic",
-			"value": "0.0"
-		},
-		{
-			"op": "copy",
-			"path": "/variables",
-			"from": "/canarySettings/stageVariableOverrides"
-		}
-	]
-}
 ```
 
 After the promotion, the stage now looks like this:

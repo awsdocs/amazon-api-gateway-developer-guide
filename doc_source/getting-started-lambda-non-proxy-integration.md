@@ -1,25 +1,25 @@
-# Build an API Gateway API with Custom Lambda Integration<a name="getting-started-lambda-non-proxy-integration"></a>
+# TUTORIAL: Build an API Gateway API with Lambda Non\-Proxy Integration<a name="getting-started-lambda-non-proxy-integration"></a>
 
-In this walkthrough, we use the API Gateway console to build an API that enables a client to call Lambda functions through the Lambda custom integration\. For more information about AWS Lambda and Lambda functions, see the [AWS Lambda Developer Guide](https://docs.aws.amazon.com/lambda/latest/dg/)\. 
+In this walkthrough, we use the API Gateway console to build an API that enables a client to call Lambda functions through the Lambda non\-proxy integration \(also known as custom integration\)\. For more information about AWS Lambda and Lambda functions, see the [AWS Lambda Developer Guide](https://docs.aws.amazon.com/lambda/latest/dg/)\. 
 
-To facilitate learning, we chose a simple Lambda function with minimal API setup to walk you through the steps of building an API Gateway API with the Lambda custom integration\. When necessary, we describe some of the logic\. For a more detailed example of the Lambda custom integration, see [Create a REST API for AWS Lambda Functions in API Gateway](integrating-api-with-aws-services-lambda.md)\. 
+To facilitate learning, we chose a simple Lambda function with minimal API setup to walk you through the steps of building an API Gateway API with the Lambda custom integration\. When necessary, we describe some of the logic\. For a more detailed example of the Lambda custom integration, see [TUTORIAL: Create a `Calc` REST API with Two AWS Service Integrations and and One Lambda Non\-Proxy Integration](integrating-api-with-aws-services-lambda.md)\. 
 
 Before creating the API, set up the Lambda backend by creating a Lambda function in AWS Lambda, described next\.
 
 **Topics**
-+ [Create a Lambda Function for the Lambda Custom Integration](#getting-started-new-lambda)
-+ [Create an API with the Lambda Custom Integration](#getting-started-new-api)
++ [Create a Lambda Function for Lambda Non\-Proxy Integration](#getting-started-new-lambda)
++ [Create an API with Lambda Non\-Proxy Integration](#getting-started-new-api)
 + [Test Invoking the API Method](#getting-started-new-get)
 + [Deploy the API](#getting-started-deploy-api)
 + [Test the API in a Deployment Stage](#getting-started-test)
 + [Clean Up](#getting-started-clean-up)
 
-## Create a Lambda Function for the Lambda Custom Integration<a name="getting-started-new-lambda"></a>
+## Create a Lambda Function for Lambda Non\-Proxy Integration<a name="getting-started-new-lambda"></a>
 
 **Note**  
 Creating Lambda functions may result in charges to your AWS account\.
 
- In this step, you create a "Hello, World\!"\-like Lambda function for the Lambda custom integration\. Throughout this walkthrough, the function is called `GetStartedLambdaIntegration`\. It is similar to [`GetStartedLambdaProxyIntegration`](api-gateway-create-api-as-simple-proxy-for-lambda.md#api-gateway-proxy-integration-lambda-function-nodejs), which is the function we created for the Lambda proxy integration\. 
+ In this step, you create a "Hello, World\!"\-like Lambda function for the Lambda custom integration\. Throughout this walkthrough, the function is called `GetStartedLambdaIntegration`\.
 
  The Node\.js implementation of this `GetStartedLambdaIntegration` Lambda function is as follows: 
 
@@ -70,7 +70,7 @@ In addition, the function logs its execution to Amazon CloudWatch by calling `co
 
 If you set up the API without using the API Gateway console, such as when [importing an API from an OpenAPI file](https://github.com/awslabs/api-gateway-secure-pet-store/blob/master/src/main/resources/swagger.yaml#L39), you must explicitly create, if necessary, and set up an invocation role and policy for API Gateway to invoke the Lambda functions\. For more information on how to set up Lambda invocation and execution roles for an API Gateway API, see [Control Access to an API with IAM Permissions](permissions.md)\. 
 
- Compared to [`GetStartedLambdaProxyIntegation`](api-gateway-create-api-as-simple-proxy-for-lambda.md#api-gateway-proxy-integration-lambda-function-nodejs), the Lambda function for the Lambda proxy integration, the `GetStartedLambdaIntegration` Lambda function for the Lambda custom integration only takes input from the API Gateway API integration request body\. The function can return an output of any JSON object, a string, a number, a Boolean, or even a binary blob\. The Lambda function for the Lambda proxy integration, in contrast, can take the input from any request data, but must return an output of a particular JSON object\. The `GetStartedLambdaIntegration` function for the Lambda custom integration can have the API request parameters as input, provided that API Gateway maps the required API request parameters to the integration request body before forwarding the client request to the backend\. For this to happen, the API developer must create a mapping template and configure it on the API method when creating the API\. 
+ Compared to `GetStartedLambdaProxyIntegation`, the Lambda function for the Lambda proxy integration, the `GetStartedLambdaIntegration` Lambda function for the Lambda custom integration only takes input from the API Gateway API integration request body\. The function can return an output of any JSON object, a string, a number, a Boolean, or even a binary blob\. The Lambda function for the Lambda proxy integration, in contrast, can take the input from any request data, but must return an output of a particular JSON object\. The `GetStartedLambdaIntegration` function for the Lambda custom integration can have the API request parameters as input, provided that API Gateway maps the required API request parameters to the integration request body before forwarding the client request to the backend\. For this to happen, the API developer must create a mapping template and configure it on the API method when creating the API\. 
 
 Now, create the `GetStartedLambdaIntegration` Lambda function\. 
 
@@ -88,7 +88,7 @@ Now, create the `GetStartedLambdaIntegration` Lambda function\.
 
    1. For **Name**, type **GetStartedLambdaIntegration** as the Lambda function name\.
 
-   1. For **Runtime**, choose **Node\.js 6\.10**\.
+   1. For **Runtime**, choose **Node\.js 8\.10**\.
 
    1. For **Role**, choose `Create new role from template(s)`\.
 
@@ -104,7 +104,7 @@ Now, create the `GetStartedLambdaIntegration` Lambda function\.
 
    1. Leave **Handler** set to `index.handler`\. 
 
-   1. Leave **Runtime** set to **Node\.js 6\.10**\.
+   1. Set **Runtime** to **Node\.js 8\.10**\.
 
    1. Copy the Lambda function code listed in the beginning of this section and paste it in the inline code editor\.
 
@@ -183,11 +183,9 @@ The other policy document applies to invoking another AWS service that is not us
 
 If you did not use the AWS Management Console to create the Lambda function, you need to follow these examples to create the required IAM role and policies and then manually attach the role to your function\.
 
-## Create an API with the Lambda Custom Integration<a name="getting-started-new-api"></a>
+## Create an API with Lambda Non\-Proxy Integration<a name="getting-started-new-api"></a>
 
  With the Lambda function \(`GetStartedLambdaIntegration`\) created and tested, you are ready to expose the function through an API Gateway API\. For illustration purposes, we expose the Lambda function with a generic HTTP method\. We use the request body, a URL path variable, a query string, and a header to receive required input data from the client\. We turn on the API Gateway request validator for the API to ensure that all of the required data is properly defined and specified\. We configure a mapping template for API Gateway to transform the client\-supplied request data into the valid format as required by the backend Lambda function\.
-
-The API is named `GetStartedLambdaIntegrationAPI`\. 
 
 **To create an API with Lambda custom integration with a Lambda function**
 
@@ -195,7 +193,7 @@ The API is named `GetStartedLambdaIntegrationAPI`\.
 
 1.  Choose **Create new API**\.
 
-   1. Type `GetStartedLambdaIntegrationAPI` for **API name**\. 
+   1. Type **GetStartedLambdaNonProxyIntegration** for **API name**\. 
 
    1. Type a description of the API for **Description** or leave it blank\.
 
@@ -240,7 +238,7 @@ The API is named `GetStartedLambdaIntegrationAPI`\.
 
    At run time, the client can use these request parameters and the request body to provide time of the day, the day of the week, and the name of the caller\. You already configured the /\{city\} path variable\.
 
-   1. Under **Settings**, choose the pencil icon and then choose `Validate body, query string parameters, and headers` from the **Request Validator** drop\-down menu\. This lets API Gateway perform basic request validation before forwarding the request to the Lambda function\. 
+   1. In the **Method Execution** pane, choose **Method Request**\.
 
    1. Expand the **URL Query String Parameters** section\. Choose **Add query string**\. Type `time` for **Name**\. Select the **Required** option and choose the check\-mark icon to save the setting\. Leave **Caching** cleared to avoid an unnecessary charge for this exercise\.
 

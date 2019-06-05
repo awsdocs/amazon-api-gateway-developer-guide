@@ -1,54 +1,58 @@
-# API Gateway Mapping Template Reference<a name="api-gateway-mapping-template-reference"></a>
+# API Gateway Mapping Template and Access Logging Variable Reference<a name="api-gateway-mapping-template-reference"></a>
 
-Amazon API Gateway defines a set of variables and functions for working with models and mapping templates\. This document describes those functions and provides examples for working with input payloads\.
-
- As mentioned in [Create Models and Mapping Templates for Request and Response Mappings](models-mappings.md), *mapping template* is a script expressed in [Velocity Template Language \(VTL\)](http://velocity.apache.org/engine/devel/vtl-reference-guide.html) and applied to the payload using [JSONPath expressions](http://goessner.net/articles/JsonPath/)\. The payload can have a data model according to the [JSON schema draft 4](https://tools.ietf.org/html/draft-zyp-json-schema-04)\. You must define the model in order to have API Gateway to generate a SDK or to enable basic request validation for your API\. You do not have to define any model to create a mapping template\. However, a model can help you create a template because API Gateway will generate a template blueprint based on a provided model\. 
+This section provides reference information for the variables and functions that Amazon API Gateway defines for use with data models, authorizers, mapping templates, and CloudWatch access logging\. For detailed information about how to use these variables and functions, see [Create Models and Mapping Templates for Request and Response Mappings](models-mappings.md)\.
 
 **Topics**
-+ [Accessing the `$context` Variable](#context-variable-reference)
-+ [Accessing the `$input` Variable](#input-variable-reference)
-+ [Accessing the `$stageVariables` Variable](#stagevariables-template-reference)
-+ [Accessing the `$util` Variable](#util-template-reference)
++ [`$context` Variables for Data Models, Authorizers, Mapping Templates, and CloudWatch Access Logging](#context-variable-reference)
++ [`$context` Variable Template Example](#context-variables-template-example)
++ [`$context` Variables for CloudWatch Access Logging Only](#context-variable-reference-access-logging-only)
++ [`$input` Variables](#input-variable-reference)
++ [`$input` Variable Template Examples](#input-examples-mapping-templates)
++ [`$stageVariables`](#stagevariables-template-reference)
++ [`$util` Variables](#util-template-reference)
 
 **Note**  
-For the `$method` variable, see [Amazon API Gateway API Request and Response Data Mapping Reference](request-response-data-mappings.md)\.
+For `$method` and `$integration` variables, see [Amazon API Gateway API Request and Response Data Mapping Reference](request-response-data-mappings.md)\.
 
-## Accessing the `$context` Variable<a name="context-variable-reference"></a>
+## `$context` Variables for Data Models, Authorizers, Mapping Templates, and CloudWatch Access Logging<a name="context-variable-reference"></a>
 
-The `$context` variable holds all the contextual information of your API call\.
+The following `$context` variables can be used in data models, authorizers, mapping templates, and CloudWatch access logging\.
 
+For `$context` variables that can be used only in CloudWatch access logging, see [`$context` Variables for CloudWatch Access Logging Only](#context-variable-reference-access-logging-only)\.
 
-**`$context` Variable Reference**  
 
 | Parameter | Description | 
 | --- | --- | 
+| $context\.accountId |  The API owner's AWS account ID\.  | 
 | $context\.apiId |  The identifier API Gateway assigns to your API\.  | 
-| $context\.authorizer\.claims\.property |  A property of the claims returned from the Amazon Cognito user pool after the method caller is successfully authenticated\.  Calling `$context.authorizer.claims` returns null\.   | 
-| $context\.authorizer\.principalId |  The principal user identification associated with the token sent by the client and returned from an API Gateway Lambda authorizer \(formerly known as a custom authorizer\) Lambda function\.  | 
-| $context\.authorizer\.property |  The stringified value of the specified key\-value pair of the `context` map returned from an API Gateway Lambda authorizer function\. For example, if the authorizer returns the following `context` map:  <pre>"context" : {<br />  "key": "value",<br />  "numKey": 1,<br />  "boolKey": true<br />}</pre> calling `$context.authorizer.key` returns the `"value"` string, calling `$context.authorizer.numKey` returns the `"1"` string, and calling `$context.authorizer.boolKey` returns the `"true"` string\.  | 
-| $context\.awsEndpointRequestId |  The AWS endpoint's request ID, if it exists\.  | 
-| $context\.error\.message |  A string containing an API Gateway error message\. This variable can only be used for simple variable substitution in a [GatewayResponse](https://docs.aws.amazon.com/apigateway/api-reference/resource/gateway-response/) body\-mapping template, which is not processed by the Velocity Template Language engine, and in access logging\.  | 
+| $context\.authorizer\.claims\.property |  A property of the claims returned from the Amazon Cognito user pool after the method caller is successfully authenticated\. For more information, see [Control Access to a REST API Using Amazon Cognito User Pools as Authorizer](apigateway-integrate-with-cognito.md)\.  Calling `$context.authorizer.claims` returns null\.   | 
+| $context\.authorizer\.principalId |  The principal user identification associated with the token sent by the client and returned from an API Gateway Lambda authorizer \(formerly known as a custom authorizer\)\. For more information, see [Use API Gateway Lambda Authorizers](apigateway-use-lambda-authorizer.md)\.  | 
+| $context\.authorizer\.property |  The stringified value of the specified key\-value pair of the `context` map returned from an API Gateway Lambda authorizer function\. For example, if the authorizer returns the following `context` map:  <pre>"context" : {<br />  "key": "value",<br />  "numKey": 1,<br />  "boolKey": true<br />}</pre> calling `$context.authorizer.key` returns the `"value"` string, calling `$context.authorizer.numKey` returns the `"1"` string, and calling `$context.authorizer.boolKey` returns the `"true"` string\. For more information, see [Use API Gateway Lambda Authorizers](apigateway-use-lambda-authorizer.md)\.  | 
+| $context\.awsEndpointRequestId |  The AWS endpoint's request ID\.  | 
+| $context\.domainName |  The full domain name used to invoke the API\. This should be the same as the incoming `Host` header\.  | 
+| $context\.domainPrefix |  The first label of the `$context.domainName`\. This is often used as a caller/customer identifier\.  | 
+| $context\.error\.message |  A string containing an API Gateway error message\. This variable can only be used for simple variable substitution in a [GatewayResponse](https://docs.aws.amazon.com/apigateway/api-reference/resource/gateway-response/) body\-mapping template, which is not processed by the Velocity Template Language engine, and in access logging\. For more information, see [Monitor WebSocket API Execution with CloudWatch](apigateway-websocket-api-logging.md) and [Set up Gateway Responses to Customize Error Responses](customize-gateway-responses.md)\.  | 
 | $context\.error\.messageString | The quoted value of $context\.error\.message, namely "$context\.error\.message"\. | 
-| $context\.error\.responseType |  A [type](https://docs.aws.amazon.com/apigateway/api-reference/resource/gateway-response/#responseType) of [GatewayResponse](https://docs.aws.amazon.com/apigateway/api-reference/resource/gateway-response/)\. This variable can only be used for simple variable substitution in a [GatewayResponse](https://docs.aws.amazon.com/apigateway/api-reference/resource/gateway-response/) body\-mapping template, which is not processed by the Velocity Template Language engine, and in access logging\.   | 
+| $context\.error\.responseType |  A [type](https://docs.aws.amazon.com/apigateway/api-reference/resource/gateway-response/#responseType) of [GatewayResponse](https://docs.aws.amazon.com/apigateway/api-reference/resource/gateway-response/)\. This variable can only be used for simple variable substitution in a [GatewayResponse](https://docs.aws.amazon.com/apigateway/api-reference/resource/gateway-response/) body\-mapping template, which is not processed by the Velocity Template Language engine, and in access logging\. For more information, see [Monitor WebSocket API Execution with CloudWatch](apigateway-websocket-api-logging.md) and [Set up Gateway Responses to Customize Error Responses](customize-gateway-responses.md)\.  | 
 | $context\.error\.validationErrorString |  A string containing a detailed validation error message\.  | 
-| $context\.extendedRequestId | An automatically generated ID for the API call, which contains more useful information for debugging/troubleshooting\. | 
+| $context\.extendedRequestId | The extended ID that API Gateway assigns to the API request, which contains more useful information for debugging/troubleshooting\. | 
 | $context\.httpMethod |  The HTTP method used\. Valid values include: `DELETE`, `GET`, `HEAD`, `OPTIONS`, `PATCH`, `POST`, and `PUT`\.  | 
 | $context\.identity\.accountId |  The AWS account ID associated with the request\.  | 
-| $context\.identity\.apiKey |  The API owner key associated with key\-enabled API request\.  | 
-| $context\.identity\.apiKeyId | The API key ID associated with the key\-enabled API request | 
+| $context\.identity\.apiKey |  For API methods that require an API key, this variable is the API key associated with the method request\. For methods that don't require an API key, this variable is null\. For more information, see [Create and Use Usage Plans with API Keys](api-gateway-api-usage-plans.md)\.  | 
+| $context\.identity\.apiKeyId | The API key ID associated with an API request that requires an API key\. | 
 | $context\.identity\.caller |  The principal identifier of the caller making the request\.  | 
-| $context\.identity\.cognitoAuthenticationProvider |  The Amazon Cognito authentication provider used by the caller making the request\. Available only if the request was signed with Amazon Cognito credentials\. For information related to this and the other Amazon Cognito `$context` variables, see [Using Federated Identities](https://docs.aws.amazon.com/cognito/latest/developerguide/cognito-identity.html) in the *Amazon Cognito Developer Guide*\.  | 
+| $context\.identity\.cognitoAuthenticationProvider |  The Amazon Cognito authentication provider used by the caller making the request\. Available only if the request was signed with Amazon Cognito credentials\. For information, see [Using Federated Identities](https://docs.aws.amazon.com/cognito/latest/developerguide/cognito-identity.html) in the *Amazon Cognito Developer Guide*\.  | 
 | $context\.identity\.cognitoAuthenticationType |  The Amazon Cognito authentication type of the caller making the request\. Available only if the request was signed with Amazon Cognito credentials\.  | 
 | $context\.identity\.cognitoIdentityId |  The Amazon Cognito identity ID of the caller making the request\. Available only if the request was signed with Amazon Cognito credentials\.  | 
 | $context\.identity\.cognitoIdentityPoolId |  The Amazon Cognito identity pool ID of the caller making the request\. Available only if the request was signed with Amazon Cognito credentials\.  | 
-| $context\.identity\.sourceIp |  The source IP address of the TCP connection making the request to API Gateway\.  | 
-| $context\.identity\.user |  The principal identifier of the user making the request\.  | 
-| $context\.identity\.userAgent |  The User Agent of the API caller\.  | 
-| $context\.identity\.userArn |  The Amazon Resource Name \(ARN\) of the effective user identified after authentication\.  | 
-| $context\.integrationLatency | The integration latency in ms, available for access logging only\. | 
-| $context\.path | The request path\. For example, for the non\-proxy request URI of https://\{rest\-api\-id\.execute\-api\.\{region\}\.amazonaws\.com/\{stage\}/root/child, The $context\.path value is /\{stage\}/root/child\.  | 
+| $context\.identity\.principalOrgId |  The [AWS organization ID](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_org_details.html)\.  | 
+| $context\.identity\.sourceIp |  The source IP address of the TCP connection making the request to API Gateway\.  You should not trust this value if there is any chance that the `X-Forwarded-For` header could be forged\.   | 
+| $context\.identity\.user |  The principal identifier of the user making the request\. Used in Lambda authorizers\. For more information, see [Output from an Amazon API Gateway Lambda Authorizer](api-gateway-lambda-authorizer-output.md)\.  | 
+| $context\.identity\.userAgent |  The [https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/User-Agent](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/User-Agent) header of the API caller\.  | 
+| $context\.identity\.userArn |  The Amazon Resource Name \(ARN\) of the effective user identified after authentication\. For more information, see [https://docs.aws.amazon.com/IAM/latest/UserGuide/id_users.html](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_users.html)\.  | 
+| $context\.path | The request path\. For example, for a non\-proxy request URL of https://\{rest\-api\-id\.execute\-api\.\{region\}\.amazonaws\.com/\{stage\}/root/child, the $context\.path value is /\{stage\}/root/child\.  | 
 | $context\.protocol | The request protocol, for example, HTTP/1\.1\. | 
-| $context\.requestId |  An automatically generated ID for the API call\.  | 
+| $context\.requestId |  The ID that API Gateway assigns to the API request\.  | 
 | $context\.requestOverride\.header\.header\_name |  The request header override\. If this parameter is defined, it contains the headers to be used instead of the **HTTP Headers** that are defined in the **Integration Request** pane\. For more information, see [Use a Mapping Template to Override an API's Request and Response Parameters and Status Codes](apigateway-override-request-response-parameters.md)\.  | 
 | $context\.requestOverride\.path\.path\_name |  The request path override\. If this parameter is defined, it contains the request path to be used instead of the **URL Path Parameters** that are defined in the **Integration Request** pane\. For more information, see [Use a Mapping Template to Override an API's Request and Response Parameters and Status Codes](apigateway-override-request-response-parameters.md)\.  | 
 | $context\.requestOverride\.querystring\.querystring\_name |  The request query string override\. If this parameter is defined, it contains the request query strings to be used instead of the **URL Query String Parameters** that are defined in the **Integration Request** pane\. For more information, see [Use a Mapping Template to Override an API's Request and Response Parameters and Status Codes](apigateway-override-request-response-parameters.md)\.  | 
@@ -56,23 +60,21 @@ The `$context` variable holds all the contextual information of your API call\.
 | $context\.responseOverride\.status | The response status code override\. If this parameter is defined, it contains the status code to be returned instead of the Method response status that is defined as the Default mapping in the Integration Response pane\. For more information, see [Use a Mapping Template to Override an API's Request and Response Parameters and Status Codes](apigateway-override-request-response-parameters.md)\. | 
 | $context\.requestTime | The [CLF](https://httpd.apache.org/docs/1.3/logs.html#common)\-formatted request time \(dd/MMM/yyyy:HH:mm:ss \+\-hhmm\)\. | 
 | $context\.requestTimeEpoch | The [Epoch](https://en.wikipedia.org/wiki/Unix_time)\-formatted request time\. | 
-| $context\.resourceId |  The identifier API Gateway assigns to your resource\.  | 
-| $context\.resourcePath |  The path to your resource\. For example, for the non\-proxy request URI of `https://{rest-api-id.execute-api.{region}.amazonaws.com/{stage}/root/child`, The `$context.resourcePath` value is `/root/child`\. For more information, see [Build an API with HTTP Custom Integration](api-gateway-create-api-step-by-step.md)\.   | 
-| $context\.responseLength | The response payload length, available for access logging only\. | 
-| $context\.responseLatency | The response latency in ms, available for access logging only\. | 
-| $context\.status | The response status, available for access logging only\. | 
-| $context\.stage |  The deployment stage of the API call \(for example, Beta or Prod\)\.  | 
+| $context\.resourceId |  The identifier that API Gateway assigns to your resource\.  | 
+| $context\.resourcePath |  The path to your resource\. For example, for the non\-proxy request URI of `https://{rest-api-id.execute-api.{region}.amazonaws.com/{stage}/root/child`, The `$context.resourcePath` value is `/root/child`\. For more information, see [TUTORIAL: Build an API with HTTP Non\-Proxy Integration](api-gateway-create-api-step-by-step.md)\.   | 
+| $context\.stage |  The deployment stage of the API request \(for example, `Beta` or `Prod`\)\.  | 
 | $context\.wafResponseCode |  The response received from [AWS WAF](https://docs.aws.amazon.com/waf/latest/developerguide/waf-chapter.html): `WAF_ALLOW` or `WAF_BLOCK`\. Will not be set if the stage is not associated with a web ACL\. For more information, see [Use AWS WAF to Protect Your Amazon API Gateway API from Common Web Exploits](apigateway-control-access-aws-waf.md)\.  | 
-| $context\.webaclArn |  Complete ARN of the web ACL that is used to decide whether to allow or block the request\. Will not be set if the stage is not associated with a web ACL\.  | 
-| $context\.xrayTraceId |  The trace ID for the X\-Ray trace\.  | 
+| $context\.webaclArn |  The complete ARN of the web ACL that is used to decide whether to allow or block the request\. Will not be set if the stage is not associated with a web ACL\. For more information, see [Use AWS WAF to Protect Your Amazon API Gateway API from Common Web Exploits](apigateway-control-access-aws-waf.md)\.  | 
+| $context\.xrayTraceId |  The trace ID for the X\-Ray trace\. For more information, see [Setting Up AWS X\-Ray with API Gateway](apigateway-enabling-xray.md)\.  | 
 
-### Example<a name="context-examples-mapping-templates"></a>
+## `$context` Variable Template Example<a name="context-variables-template-example"></a>
 
-You may want to use the `$context` variable if you're using AWS Lambda as the target backend that the API method calls\. For example, you may want to perform two different actions depending on whether the stage is in `Beta` or in `Prod`\.
+You may want to use `$context` variables in a mapping template if your API method passes structured data to a backend that requires the data to be in a particular format\.
 
-#### Context Variables Template Example<a name="context-variables-template-example"></a>
+The following example shows a mapping template that maps incoming `$context` variables to backend variables with slightly different names in an integration request payload:
 
-The following example shows a mapping template to map context variables to an integration request payload:
+**Note**  
+Note that one of the variables is an API key\. This example assumes that the method has "require API key" enabled\.
 
 ```
 {
@@ -92,98 +94,36 @@ The following example shows a mapping template to map context variables to an in
 }
 ```
 
-In the above example, the method is assumed to have an API key enabled\. If API key is not required on the method request, `api_key` will be null\. 
+## `$context` Variables for CloudWatch Access Logging Only<a name="context-variable-reference-access-logging-only"></a>
 
-For requests of the `AWS_IAM` authorization type, you can pass the authorized user information to the integration endpoint with `$context.identity.*` properties\. For requests of the `COGNITO_USER_POOLS` authorization type, the authorized user information will also include `$context.identity.cognito*` and `$context.authorizer.claims.*` properties\. For requests using a Lambda authorizer, you can pass `$context.authorizer.principalId` and other applicable `$context.authorizer.*` properties as additional authorized user context to the integration endpoint\.
-
-With a proxy integration, API Gateway passes the authorized identity information to the backend in the `requestContext.identity` object\. You do not set up any mapping template and, instead, parse the input to the integration backend explicitly\. The following shows an example of `requestContext` passed to a Lambda proxy integration endpoint when the authorization type is set to `AWS_IAM`\.
-
-```
-{
-    ...,
-    "requestContext": {
-        "requestTime": "20/Feb/2018:22:48:57 +0000",
-        "path": "/test/",
-        "accountId": "123456789012",
-        "protocol": "HTTP/1.1",
-        "resourceId": "yx5mhem7ye",
-        "stage": "test",
-        "requestTimeEpoch": 1519166937665,
-        "requestId": "3c3ecbaa-1690-11e8-ae31-8f39f1d24afd",
-        "identity": {
-            "cognitoIdentityPoolId": null,
-            "accountId": "123456789012",
-            "cognitoIdentityId": null,
-            "caller": "AIDAJ........4HCKVJZG",
-            "sourceIp": "51.240.196.104",
-            "accessKey": "IAM_user_access_key",
-            "cognitoAuthenticationType": null,
-            "cognitoAuthenticationProvider": null,
-            "userArn": "arn:aws:iam::123456789012:user/alice",
-            "userAgent": "PostmanRuntime/7.1.1",
-            "user": "AIDAJ........4HCKVJZG"
-        },
-        "resourcePath": "/",
-        "httpMethod": "GET",
-        "apiId": "qr2gd9cfmf"
-    },
-    ...
-}
-```
-
-## Accessing the `$input` Variable<a name="input-variable-reference"></a>
-
-The `$input` variable represents the input payload and parameters to be processed by your template\. It provides four functions:
+The following `$context` variables are available only for CloudWatch access logging\. For more information, see [Set Up CloudWatch API Logging in API Gateway](set-up-logging.md)\. \(For WebSocket APIs, see [Monitor WebSocket API Execution with CloudWatch](apigateway-websocket-api-logging.md)\.\)
 
 
-**Function Reference**  
+| Parameter | Description | 
+| --- | --- | 
+| $context\.authorizer\.integrationLatency | The authorizer latency in ms\. | 
+| $context\.integrationLatency | The integration latency in ms\. | 
+| $context\.integrationStatus | For Lambda proxy integration, this parameter represents the status code returned from AWS Lambda, not from the backend Lambda function\. | 
+| $context\.responseLatency | The response latency in ms\. | 
+| $context\.responseLength | The response payload length\. | 
+| $context\.status | The method response status\. | 
+
+## `$input` Variables<a name="input-variable-reference"></a>
+
+The `$input` variable represents the method request payload and parameters to be processed by a mapping template\. It provides four functions:
+
 
 | Variable and Function | Description | 
 | --- | --- | 
-| $input\.body | Returns the raw payload as a string\. | 
-| $input\.json\(x\) | This function evaluates a JSONPath expression and returns the results as a JSON string\. For example, `$input.json('$.pets')` will return a JSON string representing the pets structure\. For more information about JSONPath, see [JSONPath](http://goessner.net/articles/JsonPath/) or [JSONPath for Java](https://github.com/jayway/JsonPath)\. | 
-| $input\.params\(\) | Returns a map of all the request parameters of your API call\. | 
-| $input\.params\(x\) | Returns the value of a method request parameter from the path, query string, or header value \(in that order\) given a parameter name string x\. | 
-| $input\.path\(x\) | Takes a JSONPath expression string \(x\) and returns an object representation of the result\. This allows you to access and manipulate elements of the payload natively in [Apache Velocity Template Language \(VTL\)](http://velocity.apache.org/engine/devel/vtl-reference-guide.html)\. For example, `$input.path('$.pets').size()` For more information about JSONPath, see [JSONPath](http://goessner.net/articles/JsonPath/) or [JSONPath for Java](https://github.com/jayway/JsonPath)\. | 
+| $input\.body | Returns the raw request payload as a string\. | 
+| $input\.json\(x\) | This function evaluates a JSONPath expression and returns the results as a JSON string\. For example, `$input.json('$.pets')` returns a JSON string representing the `pets` structure\. For more information about JSONPath, see [JSONPath](http://goessner.net/articles/JsonPath/) or [JSONPath for Java](https://github.com/jayway/JsonPath)\. | 
+| $input\.params\(\) | Returns a map of all the request parameters\. | 
+| $input\.params\(x\) | Returns the value of a method request parameter from the path, query string, or header value \(searched in that order\), given a parameter name string `x`\. | 
+| $input\.path\(x\) | Takes a JSONPath expression string \(`x`\) and returns a JSON object representation of the result\. This allows you to access and manipulate elements of the payload natively in [Apache Velocity Template Language \(VTL\)](http://velocity.apache.org/engine/devel/vtl-reference-guide.html)\. For example, if the expression `$input.path('$.pets')` returns an object like this: <pre>[<br />  { <br />    "id": 1, <br />    "type": "dog", <br />    "price": 249.99 <br />  }, <br />  { <br />    "id": 2, <br />    "type": "cat", <br />    "price": 124.99 <br />  }, <br />  { <br />    "id": 3, <br />    "type": "fish", <br />    "price": 0.99 <br />  } <br />]</pre> `$input.path('$.pets').count()` would return `"3"`\. For more information about JSONPath, see [JSONPath](http://goessner.net/articles/JsonPath/) or [JSONPath for Java](https://github.com/jayway/JsonPath)\. | 
 
-### Examples<a name="input-examples-mapping-templates"></a>
+## `$input` Variable Template Examples<a name="input-examples-mapping-templates"></a>
 
-You may want to use the `$input` variable to get query strings and the request body with or without using models\. You may also want to get the parameter and the payload, or a subsection of the payload, into your AWS Lambda function\. The examples below show how to do this\.
-
-#### Example JSON Mapping Template<a name="input-example-json-mapping-template"></a>
-
-The following example shows how to use a mapping to read a name from the query string and then include the entire POST body in an element:
-
-```
-{
-    "name" : "$input.params('name')",
-    "body" : $input.json('$') 
-}
-```
-
- If the JSON input contains unescaped characters that cannot be parsed by JavaScript, a 400 response may be returned\. Applying `$util.escapeJavaScript($input.json('$'))` above will ensure that the JSON input can be parsed properly\. 
-
-#### Example Inputs Mapping Template<a name="input-example-inputs-mapping-template"></a>
-
-The following example shows how to pass a JSONPath expression to the `json()` method\. You could also read a specific property of your request body object by using a period `(.)`, followed by your property name:
-
-```
-{
-    "name" : "$input.params('name')",
-    "body" : $input.json('$.mykey')  
-}
-```
-
- If a method request payload contains unescaped characters that cannot be parsed by JavaScript, you may get `400` response\. In this case, you need to call `$util.escapeJavaScript()` function in the mapping template, as shown as follows: 
-
-```
-{
-    "name" : "$input.params('name')",
-    "body" : $util.escapeJavaScript($input.json('$.mykey')) 
-}
-```
-
-#### Parameter Mapping Template Example<a name="context-example-param-map-template"></a>
+### Parameter Mapping Template Example<a name="context-example-param-map-template"></a>
 
  The following parameter\-mapping example passes all parameters, including `path`, `querystring`, and `header`, through to the integration endpoint via a JSON payload:
 
@@ -226,9 +166,44 @@ In effect, this mapping template outputs all the request parameters in the paylo
 }
 ```
 
-#### Example Request and Response<a name="input-example-request-and-response"></a>
+You may want to use the `$input` variable to get query strings and the request body with or without using models\. You may also want to get the parameter and the payload, or a subsection of the payload, into your Lambda function\. The following examples show how to do this\.
 
-Here’s an example that uses all three functions:
+### Example JSON Mapping Template Using `$input`<a name="input-example-json-mapping-template"></a>
+
+The following example shows how to use a mapping to read a name from the query string and then include the entire POST body in an element:
+
+```
+{
+    "name" : "$input.params('name')",
+    "body" : $input.json('$') 
+}
+```
+
+ If the JSON input contains unescaped characters that cannot be parsed by JavaScript, a 400 response may be returned\. Applying `$util.escapeJavaScript($input.json('$'))` above will ensure that the JSON input can be parsed properly\. 
+
+### Example Mapping Template Using `$input`<a name="input-example-inputs-mapping-template"></a>
+
+The following example shows how to pass a JSONPath expression to the `json()` method\. You could also read a specific property of your request body object by using a period `(.)`, followed by your property name:
+
+```
+{
+    "name" : "$input.params('name')",
+    "body" : $input.json('$.mykey')  
+}
+```
+
+ If a method request payload contains unescaped characters that cannot be parsed by JavaScript, you may get `400` response\. In this case, you need to call `$util.escapeJavaScript()` function in the mapping template, as shown as follows: 
+
+```
+{
+    "name" : "$input.params('name')",
+    "body" : $util.escapeJavaScript($input.json('$.mykey')) 
+}
+```
+
+### Example Request and Response Using `$input`<a name="input-example-request-and-response"></a>
+
+Here's an example that uses all three functions:
 
 **Request Template:**
 
@@ -266,14 +241,12 @@ POST /things/abc
 }
 ```
 
- For more mapping examples, see [Create Models and Mapping Templates for Request and Response Mappings](models-mappings.md) 
+ For more mapping examples, see [Create Models and Mapping Templates for Request and Response Mappings](models-mappings.md)\. 
 
-## Accessing the `$stageVariables` Variable<a name="stagevariables-template-reference"></a>
+## `$stageVariables`<a name="stagevariables-template-reference"></a>
 
-The syntax for inserting a stage variable looks like this: `$stageVariables`\.
+Stage variables can be used in parameter mapping and mapping templates and as placeholders in ARNs and URLs used in method integrations\. For more information, see [Set up Stage Variables for a REST API Deployment](stage-variables.md)\.
 
-
-**$stageVariables Reference**  
 
 | Syntax | Description | 
 | --- | --- | 
@@ -281,15 +254,13 @@ The syntax for inserting a stage variable looks like this: `$stageVariables`\.
 | $stageVariables\['<variable\_name>'\] |  *<variable\_name>* represents any stage variable name\.  | 
 | $\{stageVariables\['<variable\_name>'\]\} |  *<variable\_name>* represents any stage variable name\.  | 
 
-## Accessing the `$util` Variable<a name="util-template-reference"></a>
+## `$util` Variables<a name="util-template-reference"></a>
 
 The `$util` variable contains utility functions for use in mapping templates\.
 
 **Note**  
  Unless otherwise specified, the default character set is UTF\-8\.
 
-
-**$util Variable Reference**  
 
 | Function | Description | 
 | --- | --- | 

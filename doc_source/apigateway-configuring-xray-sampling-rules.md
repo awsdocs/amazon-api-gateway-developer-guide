@@ -4,7 +4,7 @@ You can use AWS X\-Ray console or SDK to configure sampling rules for your Amazo
 
 Before you specify your X\-Ray sampling rules, read the following topics in the X\-Ray Developer Guide:
 + [Configuring Sampling Rules in the AWS X\-Ray Console](https://docs.aws.amazon.com/xray/latest/devguide/xray-console-sampling.html)
-+ [Using Sampling Rules with the X\-Ray API](https://docs.aws.amazon.com/xray/latest/devguide/xray-api-sampling)
++ [Using Sampling Rules with the X\-Ray API](https://docs.aws.amazon.com/xray/latest/devguide/xray-api-sampling.html)
 
 **Topics**
 + [X\-Ray Sampling Rule Option Values for API Gateway APIs](#apigateway-xray-sampling-rule-options)
@@ -17,7 +17,7 @@ The following X\-Ray sampling options are relevant for API Gateway\. String valu
 + **Priority** \(integer between 1 and 9999\) — The priority of the sampling rule\. Services evaluate rules in ascending order of priority, and make a sampling decision with the first rule that matches\.
 + **Reservoir** \(nonnegative integer\) — A fixed number of matching requests to instrument per second, before applying the fixed rate\. The reservoir is not used directly by services, but applies to all services using the rule collectively\.
 + **Rate** \(number between 0 and 100\) — The percentage of matching requests to instrument, after the reservoir is exhausted\.
-+ **Service name** \(string\) — API stage name, in the form ***\{api\-name\}*/*\{stage\-name\}***\. For example, if you were to deploy the [PetStore](api-gateway-create-api-from-example-console.md) sample API to a stage named `test`, the **Service name** value to specify in your sampling rule would be **pets/test**\.
++ **Service name** \(string\) — API stage name, in the form ***\{api\-name\}*/*\{stage\-name\}***\. For example, if you were to deploy the [PetStore](api-gateway-create-api-from-example.md) sample API to a stage named `test`, the **Service name** value to specify in your sampling rule would be **pets/test**\.
 + **Service type** \(string\) — For an API Gateway API, either **AWS::ApiGateway::Stage** or **AWS::ApiGateway::\*** can be specified\.
 + **Host** \(string\) — The hostname from the HTTP host header\. Set this to **\*** to match against all hostnames\. Or you can specify a full or partial hostname to match, for example, **api\.example\.com** or **\*\.example\.com**\.
 + **Resource ARN** \(string\) — The ARN of the API stage, in the format **arn:aws:execute\-api:*\{region\}*:*\{account\-id\}*:*\{api\-id\}*/*\{stage\-name\}***, for example, **arn:aws:execute\-api:us\-east\-1:123456789012:qsxrty/test**\.

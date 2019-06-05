@@ -16,7 +16,7 @@ API Gateway supports the following endpoint ports: 80, 443 and 1024\-65535\.
 
 To set up a proxy resource with the HTTP proxy integration type, create an API resource with a greedy path parameter \(for example, `/parent/{proxy+}`\) and integrate this resource with an HTTP backend endpoint \(for example, `https://petstore-demo-endpoint.execute-api.com/petstore/{proxy}`\) on the `ANY` method\. The greedy path parameter must be at the end of the resource path\. 
 
-As with a non\-proxy resource, you can set up a proxy resource with the HTTP proxy integration by using the API Gateway console, importing an OpenAPI definition file, or calling the API Gateway REST API directly\. For detailed instructions about using the API Gateway console to configure a proxy resource with the HTTP integration, see [Build an API with HTTP Proxy Integration](api-gateway-create-api-as-simple-proxy-for-http.md)\.
+As with a non\-proxy resource, you can set up a proxy resource with the HTTP proxy integration by using the API Gateway console, importing an OpenAPI definition file, or calling the API Gateway REST API directly\. For detailed instructions about using the API Gateway console to configure a proxy resource with the HTTP integration, see [TUTORIAL: Build an API with HTTP Proxy Integration](api-gateway-create-api-as-simple-proxy-for-http.md)\.
 
 The following OpenAPI definition file shows an example of an API with a proxy resource that is integrated with the [PetStore](http://petstore-demo-endpoint.execute-api.com/petstore/pets) website\.
 

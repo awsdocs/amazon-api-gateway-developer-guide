@@ -1,6 +1,6 @@
 # Set Up CloudWatch API Logging in API Gateway<a name="set-up-logging"></a>
 
- To help debug issues related to request execution or client access to your API, you can enable Amazon CloudWatch Logs to log API calls\. Once enabled, API Gateway will log API calls in CloudWatch\. For more information, see [Monitor API execution with Amazon CloudWatch](monitoring-cloudwatch.md)\.
+ To help debug issues related to request execution or client access to your API, you can enable Amazon CloudWatch Logs to log API calls\. Once enabled, API Gateway will log API calls in CloudWatch\. For more information, see [Monitor API Execution with Amazon CloudWatch](monitoring-cloudwatch.md)\.
 
 ## CloudWatch Log Formats for API Gateway<a name="apigateway-cloudwatch-log-formats"></a>
 
@@ -97,9 +97,11 @@ To enable CloudWatch Logs, you must grant API Gateway permission to read and wri
 ```
 
 **Note**  
-API Gateway will call STS in order to assume the IAM role, [make sure STS is enabled for the region](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_temp_enable-regions.html)\.
+API Gateway will call AWS Security Token Service in order to assume the IAM role, so make sure that AWS STS is enabled for the region\. For more information, see [Managing AWS STS in an AWS Region](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_temp_enable-regions.html)\.
 
 To grant these permissions to your account, create an IAM role with `apigateway.amazonaws.com` as its trusted entity, attach the preceding policy to the IAM role, and set the IAM role ARN on the [cloudWatchRoleArn](https://docs.aws.amazon.com/apigateway/api-reference/resource/account/#cloudWatchRoleArn) property on your [Account](https://docs.aws.amazon.com/apigateway/api-reference/resource/account/)\.
+
+If you receive an error when setting the IAM role ARN, check your AWS Security Token Service account settings to make sure that AWS STS is enabled in the region that you are using\. For more information about enabling AWS STS, see [Managing AWS STS in an AWS Region](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_temp_enable-regions.html#sts-regions-activate-deactivate) in the *IAM User Guide*\.
 
 ## Set up API Logging Using the API Gateway Console<a name="set-up-access-logging-using-console"></a>
 
@@ -107,7 +109,7 @@ To set up API logging, you must have deployed the API to a stage\. You must also
 
 1. Sign in to the API Gateway console at [https://console\.aws\.amazon\.com/apigateway](https://console.aws.amazon.com/apigateway)\.
 
-1. Choose **Settings** from the primary navigation panel\. Type an ARN of an IAM role with appropriate permissions in **CloudWatch log role ARN**\. You need to do this once\. 
+1. Choose **Settings** from the primary navigation panel and type an ARN of an IAM role with appropriate permissions in **CloudWatch log role ARN**\. You need to do this once\. 
 
 1.  Do one of the following:
 
@@ -117,11 +119,23 @@ To set up API logging, you must have deployed the API to a stage\. You must also
 
 1.  Choose **Logs/Tracing** in the **Stage Editor**\.
 
-1. To enable execution logging, choose **Enable CloudWatch Logs** under **CloudWatch Settings**\. Choose **Error** or **Info** from the drop\-down menu\. If desired, choose **Enable Detailed CloudWatch Metrics**\.
+1. To enable execution logging:
 
-   For more information about CloudWatch metrics, see [Monitor API execution with Amazon CloudWatch](monitoring-cloudwatch.md)\.
+   1. Choose **Enable CloudWatch Logs** under **CloudWatch Settings**\.
 
-1. To enable access logging, choose **Enable Access Logging** under **Custom Access Logging**\. Then type the ARN of a log group in **CloudWatch Group**\. Type a log format in **Log Format**\. You can choose **CLF**, **JSON**, **XML**, or **CSV** to use one of the provided examples as a guide\.
+   1. Choose **Error** or **Info** from the dropdown menu\.
+
+   1. If desired, choose **Enable Detailed CloudWatch Metrics**\.
+
+   For more information about CloudWatch metrics, see [Monitor API Execution with Amazon CloudWatch](monitoring-cloudwatch.md)\.
+
+1. To enable access logging:
+
+   1. Choose **Enable Access Logging** under **Custom Access Logging**\.
+
+   1. Type the ARN of a log group in **CloudWatch Group**\. The ARN format is `arn:aws:logs:{region}:{account-id}:log-group:API-Gateway-Execution-Logs_{rest-api-id}/{stage-name}`\.
+
+   1. Type a log format in **Log Format**\. You can choose **CLF**, **JSON**, **XML**, or **CSV** to use one of the provided examples as a guide\.
 
 1. Choose **Save Changes**\.
 

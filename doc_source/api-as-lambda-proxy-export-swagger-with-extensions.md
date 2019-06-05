@@ -8,7 +8,7 @@
   "swagger": "2.0",
   "info": {
     "version": "2017-04-20T04:08:08Z",
-    "title": "LambdaGate"
+    "title": "LambdaCalc"
   },
   "host": "uojnr9hd57.execute-api.us-east-1.amazonaws.com",
   "basePath": "/test",
@@ -96,12 +96,6 @@
           "application/json"
         ],
         "parameters": [
-          {
-            "name": "InvocationType",
-            "in": "header",
-            "required": false,
-            "type": "string"
-          },
           {
             "in": "body",
             "name": "Input",

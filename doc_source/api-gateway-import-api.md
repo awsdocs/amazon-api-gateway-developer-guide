@@ -1,13 +1,8 @@
 # Import a REST API into API Gateway<a name="api-gateway-import-api"></a>
 
- You can use the API Gateway Import API feature to import a REST API from an external definition file into API Gateway\. Currently, the Import API feature supports [OpenAPI v2\.0](https://github.com/OAI/OpenAPI-Specification/blob/master/versions/2.0.md) and [OpenAPI v3\.0](https://github.com/OAI/OpenAPI-Specification/blob/master/versions/3.0.1.md) definition files\. 
+ You can use the API Gateway Import API feature to import a REST API from an external definition file into API Gateway\. Currently, the Import API feature supports [OpenAPI v2\.0](https://github.com/OAI/OpenAPI-Specification/blob/master/versions/2.0.md) and [OpenAPI v3\.0](https://github.com/OAI/OpenAPI-Specification/blob/master/versions/3.0.1.md) definition files\. You can update an API by overwriting it with a new definition, or merge a definition with an existing API\. You specify the options using a `mode` query parameter in the request URL\. 
 
- With the Import API, you can either create a new API by submitting a [`POST` request](https://docs.aws.amazon.com/apigateway/api-reference/link-relation/restapi-import/) that includes an OpenAPI definition in the payload and endpoint configuration, or you can update an existing API by using a [PUT request](https://docs.aws.amazon.com/apigateway/api-reference/link-relation/restapi-put/) that contains an OpenAPI definition in the payload\. You can update an API by overwriting it with a new definition, or merge a definition with an existing API\. You specify the options using a `mode` query parameter in the request URL\. 
-
-**Note**  
- For RAML API definitions, you can continue to use [API Gateway Importer](https://github.com/awslabs/aws-apigateway-importer)\. 
-
- Besides making explicit calls to the REST API, as described below, you can also use the Import API feature in the API Gateway console\. For a quick start to using the Import API feature from the API Gateway console, see [Build an API Gateway API from an Example](api-gateway-create-api-from-example.md)\. 
+For a tutorial on using the Import API feature from the API Gateway console, see [TUTORIAL: Create a REST API by Importing an Example](api-gateway-create-api-from-example.md)\.
 
 **Topics**
 + [Import an Edge\-Optimized API into API Gateway](import-edge-optimized-api.md)

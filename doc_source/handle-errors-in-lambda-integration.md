@@ -38,7 +38,7 @@ A standard AWS Lambda error has the following format:
 
  Here, `errorMessage` is a string expression of the error\. The `errorType` is a language\-dependent error or exception type\. The `stackTrace` is a list of string expressions showing the stack trace leading to the occurrence of the error\. 
 
- For example, consider the following JavaScript Lambda function \(Node\.js 4\.3 and later\)\. 
+ For example, consider the following JavaScript \(Node\.js\) Lambda function\. 
 
 ```
 exports.handler = function(event, context, callback) {
@@ -101,31 +101,13 @@ aws apigateway put-integration-response --rest-api-id z0vprf0mdh --resource-id x
  At runtime, API Gateway matches the Lambda error's `errorMessage` against the pattern of the regular expression on the `selectionPattern` property\. If there is a match, API Gateway returns the Lambda error as an HTTP response of the corresponding HTTP status code\. If there is no match, API Gateway returns the error as a default response or throws an invalid configuration exception if no default response is configured\.   
  Setting the `selectionPattern` value to `.*` for a given response amounts to resetting this response as the default response\. This is because such a selection pattern will match all error messages, including null, i\.e\., any unspecified error message\. The resulting mapping overrides the default mapping\. 
 
- To update an existing `selectionPattern` value using the API Gateway REST API, call the [integrationresponse:update](https://docs.aws.amazon.com/apigateway/api-reference/link-relation/integrationresponse-update/) operation to replace the `/selectionPattern` path value with the specified regex expression of the `Malformed*` pattern\. 
-
-```
-PATCH /restapis/z0vprf0mdh/resources/x3o5ih/methods/GET/integration/responses/400 HTTP/1.1
-Host: apigateway.us-west-2.amazonaws.com
-Content-Type: application/x-amz-json-1.0
-X-Amz-Date: 20170513T044831Z
-Authorization: AWS4-HMAC-SHA256 Credential={ACCESS-KEY-ID}/20170513/us-west-2/apigateway/aws4_request, SignedHeaders=content-length;content-type;host;x-amz-date, Signature=4b4e4881a727bc999799be5110facfcf7ec81d025afc1a4386cf440b4efc80de
-Cache-Control: no-cache
-Postman-Token: 04794263-29f2-f336-fa16-5653a7f3281d
-
-{
-  "patchOperations" : [ {
-    "op" : "replace",
-    "path" : "/selectionPattern",
-    "value" : "Malformed*"
-   } ]
-}
-```
+ To update an existing `selectionPattern` value using the AWS CLI, call the [update\-integration\-response](http://docs.aws.amazon.com/cli/latest/reference/apigateway/update-integration-response.html) operation to replace the `/selectionPattern` path value with the specified regex expression of the `Malformed*` pattern\. 
 
 To set the `selectionPattern` expression using the API Gateway console, type the expression in the **Lambda Error Regex** text box when setting up or updating an integration response of a specified HTTP status code\. 
 
 ## Handle Custom Lambda Errors in API Gateway<a name="handle-custom-errors-in-lambda-integration"></a>
 
- Instead of the standard error described in the preceding section, AWS Lambda allows you to return a custom error object as JSON string\. The error can be any valid JSON object\. For example, the following JavaScript Lambda function \(Node\.js 4\.3 or later\) returns a custom error: 
+ Instead of the standard error described in the preceding section, AWS Lambda allows you to return a custom error object as JSON string\. The error can be any valid JSON object\. For example, the following JavaScript \(Node\.js\) Lambda function returns a custom error: 
 
 ```
 exports.handler = (event, context, callback) => {        

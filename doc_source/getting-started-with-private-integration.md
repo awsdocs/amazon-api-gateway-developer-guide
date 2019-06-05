@@ -1,4 +1,4 @@
-# Build an API with API Gateway Private Integration<a name="getting-started-with-private-integration"></a>
+# TUTORIAL: Build an API with API Gateway Private Integration<a name="getting-started-with-private-integration"></a>
 
  You can create an API Gateway API with private integration to provide your customers access to HTTP/HTTPS resources within your Amazon Virtual Private Cloud \(Amazon VPC\)\. Such VPC resources are HTTP/HTTPS endpoints on an EC2 instance behind a network load balancer in the VPC\. The network load balancer encapsulates the VPC resource and routes incoming requests to the targeted resource\. 
 

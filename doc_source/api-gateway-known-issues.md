@@ -1,21 +1,22 @@
-# Amazon API Gateway Known Issues<a name="api-gateway-known-issues"></a>
+# Amazon API Gateway Important Notes<a name="api-gateway-known-issues"></a>
 
 **Topics**
-+ [Amazon API Gateway Known Issues for REST and WebSocket APIs](#api-gateway-known-issues-all-apis)
-+ [Amazon API Gateway Known Issues for WebSocket APIs](#api-gateway-known-issues-websocket-apis)
-+ [Amazon API Gateway Known Issues for REST APIs](#api-gateway-known-issues-rest-apis)
++ [Amazon API Gateway Important Notes for REST and WebSocket APIs](#api-gateway-known-issues-all-apis)
++ [Amazon API Gateway Important Notes for WebSocket APIs](#api-gateway-known-issues-websocket-apis)
++ [Amazon API Gateway Important Notes for REST APIs](#api-gateway-known-issues-rest-apis)
 
-## Amazon API Gateway Known Issues for REST and WebSocket APIs<a name="api-gateway-known-issues-all-apis"></a>
+## Amazon API Gateway Important Notes for REST and WebSocket APIs<a name="api-gateway-known-issues-all-apis"></a>
 + API Gateway does not support wildcard subdomain names \(of the `*.domain` form\)\. However, it does support wildcard certificates \(certificates for wildcard subdomain names\)\.
 + API Gateway does not support sharing a custom domain name across REST and WebSocket APIs\.
++ Stage names can only contain alphanumeric characters, hyphens, and underscores\. Maximum length is 128 characters\.
 + The `/ping` and `/sping` paths are reserved for the service health check\. Use of these for API root\-level resources with custom domains will fail to produce the expected result\.
 + API Gateway currently limits log events to 1024 bytes\. Log events larger than 1024 bytes, such as request and response bodies, will be truncated by API Gateway before submission to CloudWatch Logs\.
 + CloudWatch Metrics currently limits dimension names and values to 255 valid XML characters\. \(For more information, see the [CloudWatch User Guide](https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/cloudwatch_concepts.html#Dimension)\.\) Dimension values are a function of user\-defined names, including API name, label \(stage\) name, and resource name\. When choosing these names, be careful not to exceed CloudWatch Metrics limits\.
 
-## Amazon API Gateway Known Issues for WebSocket APIs<a name="api-gateway-known-issues-websocket-apis"></a>
+## Amazon API Gateway Important Notes for WebSocket APIs<a name="api-gateway-known-issues-websocket-apis"></a>
 + API Gateway supports message payloads up to 128 KB with a maximum frame size of 32 KB\. If a message exceeds 32 KB, you must split it into multiple frames, each 32 KB or smaller\. If a larger message is received, the connection is closed with code 1009\.
 
-## Amazon API Gateway Known Issues for REST APIs<a name="api-gateway-known-issues-rest-apis"></a>
+## Amazon API Gateway Important Notes for REST APIs<a name="api-gateway-known-issues-rest-apis"></a>
 + The plain text pipe character \(`|`\) is not supported for any request URL query string and must be URL\-encoded\.
 + The semicolon character \(`;`\) is not supported for any request URL query string and results in the data being split\.
 + When using the API Gateway console to test an API, you may get an "unknown endpoint errors" response if a self\-signed certificate is presented to the backend, the intermediate certificate is missing from the certificate chain, or any other unrecognizable certificate\-related exceptions thrown by the backend\.
@@ -24,17 +25,21 @@
   + [NGINX](https://nginx.org/en/)
   +  [Heroku](https://www.heroku.com/)
 + API Gateway supports most of the [OpenAPI 2\.0 specification](https://github.com/OAI/OpenAPI-Specification/blob/master/versions/2.0.md) and the [OpenAPI 3\.0 specification](https://github.com/OAI/OpenAPI-Specification/blob/master/versions/3.0.1.md), with the following exceptions:
+  + Path segments can only contain alphanumeric characters, hyphens, periods, commas, and curly braces\. Path parameters must be separate path segments\. For example, "resource/\{path\_parameter\_name\}" is valid; "resource\{path\_parameter\_name\}" is not\.
+  + Model names can only contain alphanumeric characters\.
+  + The `securitySchemes` type, if used, must be `apiKey`\. However, OAuth 2 and HTTP Basic authentication are supported via [Lambda authorizers](apigateway-use-lambda-authorizer.md); the OpenAPI configuration is achieved via [vendor extensions](api-gateway-swagger-extensions-authorizer.md)\. 
+  + The `deprecated` field is is not supported and is dropped in exported APIs\.
   + API Gateway models are defined using [JSON schema draft 4](https://tools.ietf.org/html/draft-zyp-json-schema-04), instead of the JSON schema used by OpenAPI\.
-  + The `additionalProperties` and `anyOf `fields are not supported in Models\.
+  + The `additionalProperties` and `anyOf`fields are not supported in Models\.
   + The `discriminator` parameter is not supported in any schema object\.
   + The `example` tag is not supported\.
-  + `exclusiveMinimum` is not supported by API Gateway
+  + `exclusiveMinimum` is not supported by API Gateway\.
   + The `maxItems` and `minItems` tags are not included in simple request validation\. To work around this, update the model after import before doing validation\.
-  + `oneOf` is not supported by API Gateway
-  + `pattern` is not supported by API Gateway
+  + `oneOf` is not supported by API Gateway\.
+  + `pattern` is not supported by API Gateway\.
   + The `readOnly` field is not supported\.
   + Response definitions of the `"500": {"$ref": "#/responses/UnexpectedError"}` form is not supported in the OpenAPI document root\. To work around this, replace the reference by the inline schema\.
-  + Numbers of the `Int32` or `Int64` type is not supported\. An example is shown as follows:
+  + Numbers of the `Int32` or `Int64` type are not supported\. An example is shown as follows:
 
     ```
     "elementId": {
