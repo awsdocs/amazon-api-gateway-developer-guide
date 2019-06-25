@@ -68,3 +68,5 @@ API Gateway also supports the following `Accept-Encoding` header format, accordi
 + `Accept-Encoding:*`
 + `Accept-Encoding:deflate;q=0.5,gzip=1.0`
 + `Accept-Encoding:gzip;q=1.0,identity;q=0.5,*;q=0`
+
+The highest priority content coding must be one supported by API Gateway\. If it is not compression is not applied to the response payload\.
