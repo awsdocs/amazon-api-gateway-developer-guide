@@ -13,7 +13,7 @@ In this tutorial, you'll create a `Calc` Lambda function that implements basic a
 In addition to trying out this tutorial, you may wish to study the [OpenAPI definition file](api-as-lambda-proxy-export-swagger-with-extensions.md) for the `Calc` API, which you can import into API Gateway by following the instructions in [Import a REST API into API Gateway](api-gateway-import-api.md)\.
 
 **Topics**
-+ [Create an AWS Account](#w52aac11c17c15)
++ [Create an AWS Account](#w54aac11c17c15)
 + [Create an Assumable IAM Role](#api-as-lambda-proxy-setup-iam-role-policies)
 + [Create a `Calc` Lambda Function](#api-as-lambda-proxy-create-lambda-function)
 + [Test the `Calc` Lambda Function](#api-as-lambda-proxy-create-lambda-function)
@@ -23,7 +23,7 @@ In addition to trying out this tutorial, you may wish to study the [OpenAPI defi
 + [Integration 3: Create a `GET` Method with Path Parameters to Call the Lambda Function](#api-as-lambda-proxy-expose-get-method-with-path-parameters-to-call-lambda-function)
 + [OpenAPI Definitions of Sample API Integrated with a Lambda Function](api-as-lambda-proxy-export-swagger-with-extensions.md)
 
-## Create an AWS Account<a name="w52aac11c17c15"></a>
+## Create an AWS Account<a name="w54aac11c17c15"></a>
 
 Before you begin this tutorial, you'll need an AWS account\. 
 
@@ -551,7 +551,7 @@ By creating a `POST` method with a JSON payload to call the Lambda function, you
 
 ## Integration 3: Create a `GET` Method with Path Parameters to Call the Lambda Function<a name="api-as-lambda-proxy-expose-get-method-with-path-parameters-to-call-lambda-function"></a>
 
-Now you'll create a `GET` method on a resource specified by a sequence of path parameters to call the backend Lambda function\. The path parameter values specify the input data to the Lambda function\. You'll a mapping template to map the incoming path parameter values to the required integration request payload\.
+Now you'll create a `GET` method on a resource specified by a sequence of path parameters to call the backend Lambda function\. The path parameter values specify the input data to the Lambda function\. You'll use a mapping template to map the incoming path parameter values to the required integration request payload\.
 
 This time you'll use the built\-in Lambda integration support in the API Gateway console to set up the method integration\.
 

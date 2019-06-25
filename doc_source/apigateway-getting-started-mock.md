@@ -187,7 +187,7 @@ Explore any or all of the following topics to continue getting familiar with Ama
 | --- | --- | 
 | Defining method requests and responses | [Set up REST API Methods in API Gateway](how-to-method-settings.md) | 
 | Defining integration responses | [Set up an Integration Response in API Gateway](api-gateway-integration-settings-integration-response.md) | 
-| Setting up a custom domain name for your API | [Set up Custom Domain Name for an API in API Gateway](how-to-custom-domains.md) | 
+| Setting up a custom domain name for your API | [Set Up a Custom Domain Name for an API in API Gateway](how-to-custom-domains.md) | 
 | Enabling CORS for your API | [Enable CORS for an API Gateway REST API Resource](how-to-cors.md) | 
 
 To get help with Amazon API Gateway from the community, see the [API Gateway Discussion Forum](http://forums.aws.amazon.com/forum.jspa?forumID=199)\. \(When you enter this forum, AWS might require you to sign in\.\)

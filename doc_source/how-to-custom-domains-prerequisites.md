@@ -107,4 +107,4 @@ Amazon API Gateway leverages Amazon CloudFront to support certificates for custo
 
       1. Choose **Review and import**\.
 
-1. After the certificate is successfully created or imported, make note of the certificate ARN\. You need it when setting up the custom domain name, next\.
+1. After the certificate is successfully created or imported, make note of the certificate ARN\. You need it when setting up the custom domain name\.

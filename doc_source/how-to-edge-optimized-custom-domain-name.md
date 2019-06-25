@@ -19,11 +19,17 @@ The following procedure describes how to set up a custom domain name for an API 
 
 1. Choose **Create Custom Domain Name** next\.
 
-1. 
+1. Under **New Custom Domain Name**:
 
-   1.  Under **New Custom Domain Name**, type your domain name \(for example, **api\.example\.com**\) in **Domain Name**\. 
+   1. For the API protocol, choose **HTTP**\.
+
+   1. Under **Domain Name**, type a custom domain name, for example, `my-api.example.com`, in **Domain Name**
 **Note**  
 Do not use the wildcard character \(i\.e\., `*`\) for your custom domain names\. API Gateway does not support it, even though the API Gateway console \(or the AWS CLI\) accepts it and can map it to a CloudFront distribution\. However, you can use wildcard certificates\.
+
+   1. Under **Security Policy**, choose the desired minimum Transport Layer Security \(TLS\) version\.
+
+   1. Under **Endpoint Configuration**, choose **Edge optimized**\.
 
    1. Choose a certificate from the **ACM Certificate** list\.
 **Note**  

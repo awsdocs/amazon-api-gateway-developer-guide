@@ -10,7 +10,7 @@ To get the DNS names for your private API, do the following:
 
 1. In the **Details** pane, you'll see 5 values in the **DNS names** field\. The first 3 are the public DNS names for your API\. The other 2 are the private DNS names for it\.
 
-## Invoking Your Private API Using Private DNS Names<a name="w52aac13c16c28b9"></a>
+## Invoking Your Private API Using Private DNS Names<a name="w54aac13c16c28b9"></a>
 
 If you've enabled private DNS, you can access your private API using the private DNS names as follows:
 
@@ -48,7 +48,7 @@ and
 curl -X GET https://0qzs2sy7bh.execute-api.us-west-2.amazonaws.com/test/pets/2
 ```
 
-## Invoking Your Private API Using Endpoint\-Specific Public DNS Hostnames<a name="w52aac13c16c28c11"></a>
+## Invoking Your Private API Using Endpoint\-Specific Public DNS Hostnames<a name="w54aac13c16c28c11"></a>
 
 You can access your private API using endpoint\-specific DNS hostnames\. These are public DNS hostnames containing the VPC endpoint ID or API ID for your private API\.
 
@@ -70,7 +70,7 @@ Alternatively, you can access your private API via its API ID by using the `x-ap
 curl -v https://{vpce-id}.execute-api.{region}.vpce.amazonaws.com/test -H'x-apigw-api-id:{api-id}'
 ```
 
-## Accessing Your Private API Using AWS Direct Connect<a name="w52aac13c16c28c13"></a>
+## Accessing Your Private API Using AWS Direct Connect<a name="w54aac13c16c28c13"></a>
 
 You can also use AWS Direct Connect to establish a dedicated private connection from an on\-premises network to Amazon VPC and access your private API endpoint over that connection by using public DNS names\.
 

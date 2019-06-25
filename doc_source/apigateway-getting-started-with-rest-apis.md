@@ -281,7 +281,7 @@ Explore any or all of the following topics to continue getting familiar with Ama
 | --- | --- | 
 | Passing input to a backend Lambda function | [Input Format of a Lambda Function for Proxy Integration](set-up-lambda-proxy-integrations.md#api-gateway-simple-proxy-for-lambda-input-format) | 
 | Returning output from a backend Lambda function | [Output Format of a Lambda Function for Proxy Integration](set-up-lambda-proxy-integrations.md#api-gateway-simple-proxy-for-lambda-output-format) | 
-| Setting up a custom domain name for your API | [Set up Custom Domain Name for an API in API Gateway](how-to-custom-domains.md) | 
+| Setting up a custom domain name for your API | [Set Up a Custom Domain Name for an API in API Gateway](how-to-custom-domains.md) | 
 | Adding a Lambda authorizer function to your API | [Use API Gateway Lambda Authorizers](apigateway-use-lambda-authorizer.md) | 
 | Adding a Amazon Cognito user pool authorizer to your API | [Control Access to a REST API Using Amazon Cognito User Pools as Authorizer](apigateway-integrate-with-cognito.md) | 
 | Enabling CORS for your API | [Enable CORS for an API Gateway REST API Resource](how-to-cors.md) | 

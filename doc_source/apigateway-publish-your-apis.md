@@ -5,6 +5,6 @@ Once you've deployed your APIs, you can publish them by deploying a developer po
 **Topics**
 + [Use the Serverless Developer Portal to Catalog Your API Gateway APIs](apigateway-developer-portal.md)
 + [Sell Your API Gateway APIs through AWS Marketplace](sell-api-as-saas-on-aws-marketplace.md)
-+ [Set up Custom Domain Name for an API in API Gateway](how-to-custom-domains.md)
++ [Set Up a Custom Domain Name for an API in API Gateway](how-to-custom-domains.md)
 + [Export a REST API from API Gateway](api-gateway-export-api.md)
 + [Set up an API Gateway Canary Release Deployment](canary-release.md)

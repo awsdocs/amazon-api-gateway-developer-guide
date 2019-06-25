@@ -1,4 +1,7 @@
-# Set up Custom Domain Name for an API in API Gateway<a name="how-to-custom-domains"></a>
+# Set Up a Custom Domain Name for an API in API Gateway<a name="how-to-custom-domains"></a>
+
+**Note**  
+It is now possible to choose a minimum TLS version that your API supports\. For REST APIs, you can choose TLS 1\.2 or TLS 1\.0\. For WebSocket APIs, you can only choose TLS 1\.2\.
 
  After deploying your REST or WebSocket API, you \(and your customers\) can invoke the API using the default base URL of the following format: 
 
@@ -72,6 +75,7 @@ The following pages describe how to use ACM to create an SSL/TLS certificate for
 
 **Topics**
 + [Get Certificates Ready in AWS Certificate Manager](how-to-custom-domains-prerequisites.md)
++ [Choose a Minimum TLS Version for a Custom Domain in API Gateway](apigateway-custom-domain-tls-version.md)
 + [How to Create an Edge\-Optimized Custom Domain Name](how-to-edge-optimized-custom-domain-name.md)
-+ [Set up a Custom Domain Name for a Regional API in API Gateway](apigateway-regional-api-custom-domain-create.md)
++ [Set Up a Custom Domain Name for a Regional REST API or WebSocket API in API Gateway](apigateway-regional-api-custom-domain-create.md)
 + [Migrate a Custom Domain Name to a Different API Endpoint](apigateway-regional-api-custom-domain-migrate.md)

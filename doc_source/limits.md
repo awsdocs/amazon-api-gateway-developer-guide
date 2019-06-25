@@ -10,8 +10,6 @@ Unless noted otherwise, the limits can be increased upon request\. To request a 
 
  When authorization is enabled on a method, the maximum length of the method's ARN \(e\.g\., `arn:aws:execute-api:{region-id}:{account-id}:{api-id}/{stage-id}/{method}/{resource}/{path}`\) is 1600 bytes\. The path parameter values, the size of which are determined at run time, can cause the ARN length to exceed the limit\. When this happens, the API client will receive a `414 Request URI too long` response\. 
 
- Header values are limited to 10240 bytes\. 
-
 ### API Gateway Account\-Level Limits<a name="apigateway-account-level-limits-table"></a>
 
 The following limits apply at the account level in Amazon API Gateway\.
@@ -63,7 +61,7 @@ The following limits apply to configuring and running a REST API in Amazon API G
 | API caching TTL | 300 seconds by default and configurable between 0 and 3600 by an API owner\. | Not for the upper bound \(3600\) | 
 | Cached response size | 1048576 Bytes\. Cache data encryption may increase the size of the item that is being cached\. | No | 
 | Integration timeout | 50 milliseconds \- 29 seconds for all integration types, including Lambda, Lambda proxy, HTTP, HTTP proxy, and AWS integrations\. | Not for the lower or upper bounds\. | 
-| Header value size | 10240 Bytes | No | 
+| Total combined size of all header values | 10240 Bytes | No | 
 | Payload size | 10 MB | No | 
 | Tags per stage | 50 | No | 
 | Number of iterations in a \#foreach \.\.\. \#end loop in mapping templates | 1000 | No | 
@@ -87,6 +85,7 @@ The following fixed limits apply to creating, deploying, and managing an API in 
 | [CreateResource](https://docs.aws.amazon.com/apigateway/api-reference/link-relation/resource-create/) | 5 requests per second per account | No | 
 | [CreateRestApi](https://docs.aws.amazon.com/apigateway/api-reference/link-relation/restapi-create/) | [\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/apigateway/latest/developerguide/limits.html)[\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/apigateway/latest/developerguide/limits.html) | No | 
 | [DeleteApiKey](https://docs.aws.amazon.com/apigateway/api-reference/link-relation/apikey-delete/) | 5 requests per second per account | No | 
+| [DeleteDomainName](https://docs.aws.amazon.com/apigateway/api-reference/link-relation/domainname-delete/) | 1 request every 30 seconds per account | No | 
 | [DeleteResource](https://docs.aws.amazon.com/apigateway/api-reference/link-relation/resource-delete/) | 5 requests per second per account | No | 
 | [DeleteRestApi](https://docs.aws.amazon.com/apigateway/api-reference/link-relation/restapi-delete/) | 1 request every 30 seconds per account | No | 
 | [GetResources](https://docs.aws.amazon.com/apigateway/api-reference/link-relation/restapi-resources/) | 5 requests every 2 seconds per account | No | 

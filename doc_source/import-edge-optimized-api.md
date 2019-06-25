@@ -36,7 +36,7 @@ or with an explicit specification of the `endpointConfigurationTypes` query stri
 
 ```
 aws apigateway import-rest-api \
-    --endpointConfigurationTypes 'EDGE' \
+    --endpointConfigurationTypes=EDGE \
     --fail-on-warnings \
     --body 'file://path/to/API_OpenAPI_template.json'
 ```

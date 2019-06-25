@@ -19,7 +19,7 @@ Using the API's default domain name, the URL of \(for example\) a WebSocket API 
 wss://{api-id}.execute-api.{region}.amazonaws.com/{stageName}
 ```
 
-To make the WebSocket API's URL more user\-friendly, you can create a custom domain name \(e\.g\., `api.example.com`\) to replace the default host name of the API\. The configuration process is the same as for REST APIs\. For more information, see [Set up Custom Domain Name for an API in API Gateway](how-to-custom-domains.md)\.
+To make the WebSocket API's URL more user\-friendly, you can create a custom domain name \(e\.g\., `api.example.com`\) to replace the default host name of the API\. The configuration process is the same as for REST APIs\. For more information, see [Set Up a Custom Domain Name for an API in API Gateway](how-to-custom-domains.md)\.
 
 Stages enable robust version control of your API\. For example, you can deploy an API to a `test` stage and a `prod` stage, and use the `test` stage as a test build and use the `prod` stage as a stable build\. After the updates pass the test, you can promote the `test` stage to the `prod` stage\. The promotion can be done by redeploying the API to the `prod` stage\.
 
