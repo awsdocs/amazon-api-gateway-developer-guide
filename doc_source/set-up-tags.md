@@ -2,7 +2,7 @@
 
 In API Gateway, you can add a tag to an API stage, remove the tag from the stage, or view the tag\. To do this, you can use the API Gateway console, the AWS CLI/SDK, or the API Gateway REST API\.
 
-A stage can also inherit tags from its parent REST API\. For more information, see [Tag Inheritance](apigateway-tagging-supported-resources.md#apigateway-tagging-inheritance)\.
+A stage can also inherit tags from its parent REST API\. For more information, see [Tag Inheritance in the Amazon API Gateway V1 API](apigateway-tagging-supported-resources.md#apigateway-tagging-inheritance)\.
 
 For more information about tagging API Gateway resources, see [Tagging Your API Gateway Resources](apigateway-tagging.md)\.
 

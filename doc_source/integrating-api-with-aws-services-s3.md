@@ -120,6 +120,9 @@ To allow the API to invoke required Amazon S3 actions, you must have appropriate
 
 We will use the API's root \(`/`\) resource as the container of an authenticated caller's Amazon S3 buckets\. We will also create a `Folder` and `Item` resources to represent a particular Amazon S3 bucket and a particular Amazon S3 object, respectively\. The folder name and object key will be specified, in the form of path parameters as part of a request URL, by the caller\. 
 
+**Note**  
+When accessing objects whose object key includes `/` or any other special character, the character needs to be URL encoded\. For example, `test/test.txt` should be encoded to `test%2Ftest.txt`\.
+
 **To create an API resource that exposes the Amazon S3 service features**
 
 1.  In the API Gateway console, create an API named **MyS3**\. This API's root resource \(**/**\) represents the Amazon S3 service\. 
@@ -339,7 +342,7 @@ Be sure that the bucket name must be globally unique\.
 
    1. Choose **Send** to submit the request\. If successful, you should receive a `200 OK` response with an empty payload\. 
 
-1. To add a text file to a bucket, follow the instructions above\. If you specify a bucket name of **apig\-demo\-5** for `{folder}` and a file name of **Readme\.txt** for `{item}` in the URL and provide a text string of **Hello, World\!** as the request payload, the request becomes
+1. To add a text file to a bucket, follow the instructions above\. If you specify a bucket name of **apig\-demo\-5** for `{folder}` and a file name of **Readme\.txt** for `{item}` in the URL and provide a text string of **Hello, World\!** as the file contents \(thereby making it the request payload\), the request becomes
 
    ```
    PUT /S3/apig-demo-5/Readme.txt HTTP/1.1

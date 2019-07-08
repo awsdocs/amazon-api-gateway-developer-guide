@@ -10,6 +10,9 @@ Unless noted otherwise, the limits can be increased upon request\. To request a 
 
  When authorization is enabled on a method, the maximum length of the method's ARN \(e\.g\., `arn:aws:execute-api:{region-id}:{account-id}:{api-id}/{stage-id}/{method}/{resource}/{path}`\) is 1600 bytes\. The path parameter values, the size of which are determined at run time, can cause the ARN length to exceed the limit\. When this happens, the API client will receive a `414 Request URI too long` response\. 
 
+**Note**  
+This limits URI length when resource policies are used\. In the case of private APIs where a resource policy is required, this limits the URI length of all private APIs\.
+
 ### API Gateway Account\-Level Limits<a name="apigateway-account-level-limits-table"></a>
 
 The following limits apply at the account level in Amazon API Gateway\.
@@ -46,6 +49,8 @@ The following limits apply to configuring and running a REST API in Amazon API G
 | Resource or Operation | Default Limit | Can Be Increased | 
 | --- | --- | --- | 
 | Custom domain names per account per region | 30 | Yes | 
+| Length, in characters, of the URL for an edge\-optimized API | 8192 | No | 
+| Length, in characters, of the URL for a regional API | 10240 | No | 
 | Private APIs per account per region | 600 | No | 
 | Length, in characters, of API Gateway resource policy | 8092 | Yes | 
 | API keys per account per region | 500 | Yes | 
@@ -54,6 +59,9 @@ The following limits apply to configuring and running a REST API in Amazon API G
 | Documentation parts per API | 2000 | Yes | 
 | Resources per API | 300 | Yes | 
 | Stages per API | 10 | Yes | 
+| Stage variables per stage | 100 | Yes | 
+| Length, in characters, of the key in a stage variable | 64 | Yes | 
+| Length, in characters, of the value in a stage variable | 512 | Yes | 
 | Usage plans per account per region | 300 | Yes | 
 | Usage plans per API key | 10 | Yes | 
 | Per\-method throttling limit settings per API stage | 20 | Yes | 

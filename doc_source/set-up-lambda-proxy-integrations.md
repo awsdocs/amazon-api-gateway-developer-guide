@@ -601,7 +601,7 @@ In the output:
 + The `multiValueHeaders` key can contain multi\-value headers as well as single\-value headers\. You can use the `multiValueHeaders` key to specify all of your extra headers, including any single\-value ones\.
 + If you specify values for both `headers` and `multiValueHeaders`, API Gateway merges them into a single list\. If the same key\-value pair is specified in both, only the values from `multiValueHeaders` will appear in the merged list\.
 
-To enable CORS for the Lambda proxy integration, you must add `Access-Control-Allow-Origin:domain-name` to the output `headers`\. `domain-name` can be `*` for any domain name\. The output `body` is marshalled to the frontend as the method response payload\. If `body` is a binary blob, you can encode it as a Base64\-encoded string by setting `isBase64Encoded` to `true` and configuring `/` as a **Binary Media Type**\. Otherwise, you can set it to `false` or leave it unspecified\.
+To enable CORS for the Lambda proxy integration, you must add `Access-Control-Allow-Origin:domain-name` to the output `headers`\. `domain-name` can be `*` for any domain name\. The output `body` is marshalled to the frontend as the method response payload\. If `body` is a binary blob, you can encode it as a Base64\-encoded string by setting `isBase64Encoded` to `true` and configuring `*/*` as a **Binary Media Type**\. Otherwise, you can set it to `false` or leave it unspecified\.
 
 **Note**  
 For more information about enabling binary support, see [Enable Binary Support Using the API Gateway Console](api-gateway-payload-encodings-configure-with-console.md)\.

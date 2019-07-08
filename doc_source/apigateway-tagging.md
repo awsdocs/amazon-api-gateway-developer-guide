@@ -11,8 +11,6 @@ Tags help you do the following:
 
 For tips on using tags, see the [AWS Tagging Strategies](https://aws.amazon.com/answers/account-management/aws-tagging-strategies/) post on the *AWS Answers* blog\. 
 
-Currently tagging is available only for REST API resources, not WebSocket API resources\.
-
 The following sections provide more information about tags for Amazon API Gateway\.
 
 **Topics**

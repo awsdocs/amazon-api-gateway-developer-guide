@@ -1,4 +1,4 @@
-# Use Client\-Side SSL Certificates for Authentication by the Backend<a name="getting-started-client-side-ssl-authentication"></a>
+# Generate and Configure an SSL Certificate for Backend Authentication<a name="getting-started-client-side-ssl-authentication"></a>
 
  You can use API Gateway to generate an SSL certificate and use its public key in the backend to verify that HTTP requests to your backend system are from API Gateway\. This allows your HTTP backend to control and accept only requests originating from Amazon API Gateway, even if the backend is publicly accessible\. 
 
@@ -37,7 +37,7 @@ These instructions assume you already completed [Generate a Client Certificate U
 
 1. To save the settings, choose **Save Changes**\.
 
-   If the API has been deployed previously in the API Gateway console, you'll need to redeploy it for the changes to take effect\.
+   If the API has been deployed previously in the API Gateway console, you'll need to redeploy it for the changes to take effect\. For more information, see [Redeploy a REST API to a Stage](how-to-deploy-api-with-console.md#apigateway-how-to-redeploy-api-console)\.
 
 After a certificate is selected for the API and saved, API Gateway uses the certificate for all calls to HTTP integrations in your API\. 
 
@@ -143,4 +143,4 @@ To rotate a client certificate in the console for a previously deployed API:
 
 1. To save the settings, choose **Save Changes**\.
 
-   You'll need to redeploy the API for the changes to take effect\.
+   You'll need to redeploy the API for the changes to take effect\. For more information, see [Redeploy a REST API to a Stage](how-to-deploy-api-with-console.md#apigateway-how-to-redeploy-api-console)\.

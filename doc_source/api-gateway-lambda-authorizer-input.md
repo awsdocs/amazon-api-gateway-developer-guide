@@ -6,7 +6,7 @@
 {
     "type":"TOKEN",
     "authorizationToken":"{caller-supplied-token}",
-    "methodArn":"arn:aws:execute-api:{regionId}:{accountId}:{appId}/{stage}/{httpVerb}/[{resource}/[{child-resources}]]"
+    "methodArn":"arn:aws:execute-api:{regionId}:{accountId}:{apiId}/{stage}/{httpVerb}/[{resource}/[{child-resources}]]"
 }
 ```
 

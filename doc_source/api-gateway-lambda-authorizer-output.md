@@ -13,7 +13,7 @@ The following shows an example of this output\.
       {
         "Action": "execute-api:Invoke",
         "Effect": "Allow|Deny",
-        "Resource": "arn:aws:execute-api:{regionId}:{accountId}:{appId}/{stage}/{httpVerb}/[{resource}/[{child-resources}]]"
+        "Resource": "arn:aws:execute-api:{regionId}:{accountId}:{apiId}/{stage}/{httpVerb}/[{resource}/[{child-resources}]]"
       }
     ]
   },
@@ -28,7 +28,7 @@ The following shows an example of this output\.
 
  Here, a policy statement specifies whether to allow or deny \(`Effect`\) the API Gateway execution service to invoke \(`Action`\) the specified API method \(`Resource`\)\. You can use a wild card \(`*`\) to specify a resource type \(method\)\. For information about setting valid policies for calling an API, see [Statement Reference of IAM Policies for Executing API in API Gateway](api-gateway-control-access-using-iam-policies-to-invoke-api.md#api-gateway-calling-api-permissions)\. 
 
-For an authorization\-enabled method ARN, e\.g\., `arn:aws:execute-api:{regionId}:{accountId}:{appId}/{stage}/{httpVerb}/[{resource}/[{child-resources}]]`, the maximum length is 1600 bytes\. The path parameter values, the size of which are determined at run time, can cause the ARN length to exceed the limit\. When this happens, the API client will receive a `414 Request URI too long` response\. 
+For an authorization\-enabled method ARN, e\.g\., `arn:aws:execute-api:{regionId}:{accountId}:{apiId}/{stage}/{httpVerb}/[{resource}/[{child-resources}]]`, the maximum length is 1600 bytes\. The path parameter values, the size of which are determined at run time, can cause the ARN length to exceed the limit\. When this happens, the API client will receive a `414 Request URI too long` response\. 
 
 In addition, the Resource ARN, as shown in the policy statement output by the authorizer, is currently limited to 512 characters long\. For this reason, you must not use URI with a JWT token of a significant length in a request URI\. You can safely pass the JWT token in a request header, instead\.
 

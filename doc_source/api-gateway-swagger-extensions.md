@@ -8,6 +8,7 @@
 **Topics**
 + [x\-amazon\-apigateway\-any\-method Object](api-gateway-swagger-extensions-any-method.md)
 + [x\-amazon\-apigateway\-api\-key\-source Property](api-gateway-swagger-extensions-api-key-source.md)
++ [x\-amazon\-apigateway\-auth Object](api-gateway-swagger-extensions-auth.md)
 + [x\-amazon\-apigateway\-authorizer Object](api-gateway-swagger-extensions-authorizer.md)
 + [x\-amazon\-apigateway\-authtype Property](api-gateway-swagger-extensions-authtype.md)
 + [x\-amazon\-apigateway\-binary\-media\-types Property](api-gateway-swagger-extensions-binary-media-types.md)

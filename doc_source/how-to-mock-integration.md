@@ -34,6 +34,9 @@ Set up a `500` integration response with, for example, the following mapping tem
 
 Alternatively, you can have a method of the mock integration return the default integration response without defining the integration request mapping template\. The default integration response is the one with an undefined **HTTP status regex**\. Make sure appropriate passthrough behaviors are set\.
 
+**Note**  
+Mock integrations aren't intended to support large response templates\. If you need them for your use case, you should consider using a Lambda integration instead\.
+
 Using an integration request mapping template, you can inject application logic to decide which mock integration response to return based on certain conditions\. For example, you could use a `scope` query parameter on the incoming request to determine whether to return a successful response or an error response:
 
 ```

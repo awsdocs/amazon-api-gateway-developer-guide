@@ -6,9 +6,6 @@
 
 The payload can have a *data model* according to the [JSON schema draft 4](https://tools.ietf.org/html/draft-zyp-json-schema-04)\. You must define the model in order to have API Gateway to generate a SDK or to enable basic request validation for your API\. You do not have to define any model to create a mapping template\. However, a model can help you create a template because API Gateway will generate a template blueprint based on a provided model\. 
 
-**Note**  
-In addition to [JSON schema draft 4](https://tools.ietf.org/html/draft-zyp-json-schema-04), API Gateway supports some extended keywords, such as the `additionalProperties` keyword, described in [Understanding the JSON Schema](https://json-schema.org/understanding-json-schema/reference/object.html), which can be used with request validation to invalidate requests that contain additional properties\.
-
  The section explains how to map the API request and response payload using models and mapping templates\. 
 
 **Topics**

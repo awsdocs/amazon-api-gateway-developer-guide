@@ -12,7 +12,7 @@ The following mechanisms can be used for authentication and authorization:
 
 The following mechanisms can be used for performing other tasks related to access control:
 + **Cross\-origin resource sharing \(CORS\)** lets you control how your REST API responds to cross\-domain resource requests\. For more information, see [Enable CORS for an API Gateway REST API Resource](how-to-cors.md)\.
-+ **Client\-side SSL certificates** can be used to verify that HTTP requests to your backend system are from API Gateway\. For more information, see [Use Client\-Side SSL Certificates for Authentication by the Backend](getting-started-client-side-ssl-authentication.md)\.
++ **Client\-side SSL certificates** can be used to verify that HTTP requests to your backend system are from API Gateway\. For more information, see [Generate and Configure an SSL Certificate for Backend Authentication](getting-started-client-side-ssl-authentication.md)\.
 + **AWS WAF** can be used to protect your API Gateway API from common web exploits\. For more information, see [Use AWS WAF to Protect Your Amazon API Gateway API from Common Web Exploits](apigateway-control-access-aws-waf.md)\.
 
 The following mechanisms can be used for tracking and limiting the access that you have granted to authorized clients:

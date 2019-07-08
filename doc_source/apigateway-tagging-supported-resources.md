@@ -1,8 +1,11 @@
 # API Gateway Resources That Can Be Tagged<a name="apigateway-tagging-supported-resources"></a>
 
-Currently tagging is available only for REST API resources in the [Amazon API Gateway V1 API](https://docs.aws.amazon.com/apigateway/api-reference/)\.
+Tags can be set on the following WebSocket API resources in the [Amazon API Gateway V2 API](https://docs.aws.amazon.com/apigatewayv2/latest/api-reference/):
++ `Api`
++ `DomainName`
++ `Stage`
 
-Tags can be set on the following resources:
+In addition, tags can be set on the following REST API resources in the [Amazon API Gateway V1 API](https://docs.aws.amazon.com/apigateway/api-reference/):
 + `ApiKey`
 + `ClientCertificate`
 + `DomainName`
@@ -11,7 +14,7 @@ Tags can be set on the following resources:
 + `UsagePlan`
 + `VpcLink`
 
-Tags cannot be set directly on other resources\. However, child resources inherit the tags that are set on parent resources\. For example:
+Tags cannot be set directly on other resources\. However, in the [Amazon API Gateway V1 API](https://docs.aws.amazon.com/apigateway/api-reference/), child resources inherit the tags that are set on parent resources\. For example:
 + If a tag is set on a `RestApi` resource, that tag is inherited by the following child resources of that `RestApi`:
   + `Authorizer`
   + `Deployment`
@@ -27,7 +30,7 @@ Tags cannot be set directly on other resources\. However, child resources inheri
 + If a tag is set on a `DomainName`, that tag is inherited by any `BasePathMapping` resources under it\.
 + If a tag is set on a `UsagePlan`, that tag is inherited by any `UsagePlanKey` resources under it\.
 
-## Tag Inheritance<a name="apigateway-tagging-inheritance"></a>
+## Tag Inheritance in the Amazon API Gateway V1 API<a name="apigateway-tagging-inheritance"></a>
 
 Previously it was only possible to set tags on stages\. Now that you can also set them on other resources, a `Stage` can receive a tag two ways:
 + The tag can be set directly on the `Stage`\.
@@ -64,7 +67,6 @@ The net effect would be for the stage to have the following tags, with the follo
 ## Tag Restrictions and Usage Conventions<a name="apigateway-tagging-restrictions"></a>
 
 The following restrictions and usage conventions apply to using tags with API Gateway resources:
-+ Currently tagging is available only for REST API resources, not WebSocket API resources\.
 + Each resource can have a maximum of 50 tags\.
 + For each resource, each tag key must be unique, and each tag key can have only one value\.
 + The maximum tag key length is 128 Unicode characters in UTF\-8\.

@@ -7,7 +7,7 @@
 
 | Property Name | Type | Description | 
 | --- | --- | --- | 
-| integration\.request\.<param\-type>\.<param\-name> | string |  The value must be a predefined method request parameter of the `method.request.<param-type>.<param-name>` format, where `<param-type>` can be `querystring`, `path`, `header`, or `body`\. For the `body` parameter, the `<param-name>` is a JSON path expression without the `$.` prefix\.   | 
+| integration\.request\.<param\-type>\.<param\-name> | string |  The value is typically a predefined method request parameter of the `method.request.<param-type>.<param-name>` format, where `<param-type>` can be `querystring`, `path`, `header`, or `body`\. However, `$context.VARIABLE_NAME`, `$stageVariables.VARIABLE_NAME`, and `STATIC_VALUE` are also valid\. For the `body` parameter, the `<param-name>` is a JSON path expression without the `$.` prefix\.   | 
 
 ## `x-amazon-apigateway-integration.requestParameters` Example<a name="api-gateway-swagger-extensions-request-parameters-example"></a>
 

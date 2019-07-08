@@ -4,6 +4,7 @@
 
 **Topics**
 + [Deploy a REST API to a Stage](#how-to-deploy-api-console)
++ [Redeploy a REST API to a Stage](#apigateway-how-to-redeploy-api-console)
 + [Update the Stage Configuration of a REST API Deployment](#how-to-deploy-api-update-stage-settings)
 + [Set Stage Variables for a REST API Deployment](#how-to-deploy-api-set-stage-variables)
 + [Associate a Stage with a Different REST API Deployment](#how-to-deploy-change-deployment-console)
@@ -28,6 +29,10 @@ To associate a stage in API Gateway with a different deployment, see [Associate 
 1. If you choose **\[New Stage\]**, type a name in **Stage name** and optionally provide a description for the stage and deployment in **Stage description** and **Deployment description**\. If you choose an existing stage, you may want to provide a description of the new deployment in **Deployment description**\.
 
 1. Choose **Deploy** to deploy the API to the specified stage with default stage settings\.
+
+## Redeploy a REST API to a Stage<a name="apigateway-how-to-redeploy-api-console"></a>
+
+To redeploy an API, perform the same steps as in [Deploy a REST API to a Stage](#how-to-deploy-api-console)\. You can reuse the same stage as many times as desired\.
 
 ## Update the Stage Configuration of a REST API Deployment<a name="how-to-deploy-api-update-stage-settings"></a>
 
