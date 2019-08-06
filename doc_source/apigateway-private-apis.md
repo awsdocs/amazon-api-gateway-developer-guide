@@ -59,11 +59,11 @@ Once you've created your VPC endpoint, you can use it to access multiple private
    + For **Subnets**, choose the subnets \(Availability Zones\) in which to create the endpoint network interfaces\. 
 **Note**  
 Not all Availability Zones may be supported for all AWS services\.
-   + For **Enable Private DNS Name**, you can optionally select the check box to enable private DNS for the interface endpoint\.
+   + For **Enable Private DNS Name**, leave the check box selected\. Private DNS is enabled by default\.
 
-     If you choose to enable private DNS, you'll be able to access your API via private or public DNS\. \(This setting does not affect who can access your API, only which DNS addresses they can use\.\) However, you cannot access public APIs from a VPC by using an API Gateway VPC endpoint with private DNS enabled\. Note that these DNS settings do not affect the ability to call these public APIs from the VPC if you are using an edge\-optimized custom domain name to access the public API\. Using an edge\-optimized custom domain name to access your public API \(while using private DNS to access your private API\) is one way to access both public and private APIs from a VPC where the endpoint has been created with private DNS enabled\.
+     When private DNS is enabled, you'll be able to access your API via private or public DNS\. \(This setting does not affect who can access your API, only which DNS addresses they can use\.\) However, you cannot access public APIs from a VPC by using an API Gateway VPC endpoint with private DNS enabled\. Note that these DNS settings do not affect the ability to call these public APIs from the VPC if you are using an edge\-optimized custom domain name to access the public API\. Using an edge\-optimized custom domain name to access your public API \(while using private DNS to access your private API\) is one way to access both public and private APIs from a VPC where the endpoint has been created with private DNS enabled\.
 **Note**  
-Enabling private DNS is the recommended choice\. If you choose not to enable private DNS, you'll only be able to access your API via public DNS\.
+Leaving private DNS enabled is the recommended choice\. If you choose not to enable private DNS, you'll only be able to access your API via public DNS\.
 
      To use the private DNS option, the `enableDnsSupport` and `enableDnsHostnames` attributes of your VPC must be set to `true`\. For more information, see [DNS Support in Your VPC](https://docs.aws.amazon.com/vpc/latest/userguide/vpc-dns.html#vpc-dns-support) and [Updating DNS Support for Your VPC](https://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/vpc-dns.html#vpc-dns-updating) in the Amazon VPC User Guide\.
    + For **Security group**, select the security group to associate with the VPC endpoint network interfaces\.

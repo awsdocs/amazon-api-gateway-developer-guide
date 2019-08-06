@@ -58,7 +58,7 @@ You can use the AWS Config console to look for API Gateway resources and get cur
 
 **To find an API Gateway resource in the AWS Config console**
 
-1. Open the [AWS Config console](console.aws.amazon.com/config)\.
+1. Open the [AWS Config console](https://console.aws.amazon.com/config)\.
 
 1. Choose **Resources**\.
 

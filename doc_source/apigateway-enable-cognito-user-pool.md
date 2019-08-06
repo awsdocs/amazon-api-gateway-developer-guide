@@ -25,7 +25,7 @@ After performing any of the procedures below, you'll need to deploy or redeploy 
 
    1.  For **Token source**, type `Authorization` as the header name to pass the identity or access token that's returned by Amazon Cognito when a user signs in successfully\. 
 
-   1. Optionally, type a regular expression in the **Token validation** field to validate the `aud` field of the identity token before the request is authorized with Amazon Cognito\.
+   1. Optionally, type a regular expression in the **Token validation** field to validate the `aud` \(audience\) field of the identity token before the request is authorized with Amazon Cognito\.
 
    1. To finish integrating the user pool with the API, choose **Create**\. 
 
@@ -35,7 +35,7 @@ The preceding procedure creates a `COGNITO_USER_POOLS` authorizer that uses the 
 
 **To configure a `COGNITO_USER_POOLS` authorizer on methods**
 
-1. Choose \(or create\) a method of your API\. 
+1. Choose \(or create\) a method on your API\. 
 
 1. Choose **Method Request**\.
 
@@ -47,7 +47,7 @@ The preceding procedure creates a `COGNITO_USER_POOLS` authorizer that uses the 
 
 1.  To use an identity token, do the following:
 
-   1.  Leave the **OAuth Scopes** option unspecified \(as `NONE`\)\.
+   1. Leave the **OAuth Scopes** option unspecified \(as `NONE`\)\.
 
    1. If needed, choose **Integration Request** to add the `$context.authorizer.claims['property-name']` or `$context.authorizer.claims.property-name` expressions in a body\-mapping template to pass the specified identity claims property from the user pool to the backend\. For simple property names, such as `sub` or `custom-sub`, the two notations are identical\. For complex property names, such as `custom:role`, you can't use the dot notation\. For example, the following mapping expressions pass the claim's [standard fields](http://openid.net/specs/openid-connect-core-1_0.html#StandardClaims) of `sub` and `email` to the backend:
 
@@ -84,7 +84,7 @@ The preceding procedure creates a `COGNITO_USER_POOLS` authorizer that uses the 
 
    1. Choose the pencil icon next to **OAuth Scopes**\. 
 
-   1. Type one or more full names of a scope that has been configured when the Amazon Cognito user pool was created\. For example, following the example given in [Create an Amazon Cognito User Pool for a REST API](apigateway-create-cognito-user-pool.md),  one of the scopes is `com.hamuta.movies/drama.view`\. Use a single space to separate multiple scopes\. 
+   1. Type one or more full names of a scope that has been configured when the Amazon Cognito user pool was created\. For example, following the example given in [Create an Amazon Cognito User Pool for a REST API](apigateway-create-cognito-user-pool.md), one of the scopes is `com.hamuta.movies/drama.view`\. Use a single space to separate multiple scopes\. 
 
       At runtime, the method call succeeds if any scope that's specified on the method in this step matches a scope that's claimed in the incoming token\. Otherwise, the call fails with a `401 Unauthorized` response\.
 

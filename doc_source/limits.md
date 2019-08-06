@@ -33,6 +33,7 @@ The following limits apply to configuring and running a WebSocket API in Amazon 
 | --- | --- | --- | 
 | New connections per second per account \(across all WebSocket APIs\) per region | 500 | No | 
 | AWS Lambda authorizers per API | 10 | Yes | 
+| AWS Lambda authorizer result size | 8 KB | No | 
 | Routes per API | 300 | Yes | 
 | Integrations per API | 300 | Yes | 
 | Stages per API | 10 | Yes | 
@@ -48,11 +49,11 @@ The following limits apply to configuring and running a REST API in Amazon API G
 
 | Resource or Operation | Default Limit | Can Be Increased | 
 | --- | --- | --- | 
-| Custom domain names per account per region | 30 | Yes | 
+| Custom domain names per account per region | 120 | Yes | 
 | Length, in characters, of the URL for an edge\-optimized API | 8192 | No | 
 | Length, in characters, of the URL for a regional API | 10240 | No | 
 | Private APIs per account per region | 600 | No | 
-| Length, in characters, of API Gateway resource policy | 8092 | Yes | 
+| Length, in characters, of API Gateway resource policy | 8192 | Yes | 
 | API keys per account per region | 500 | Yes | 
 | Client certificates per account per region | 60 | Yes | 
 | Authorizers per API \(AWS Lambda and Amazon Cognito\) | 10 | Yes | 

@@ -20,7 +20,7 @@ Testing methods with the API Gateway console may result in changes to resources 
 
 1. In the **Resources** pane, choose the method you want to test\.
 
-1. In the **Method Execution** pane, in the **Client** box, choose **TEST**\. Type values in any of the displayed boxes \(such as **Query Strings**, **Headers**, and **Request Body**\)\.
+1. In the **Method Execution** pane, in the **Client** box, choose **TEST**\. Type values in any of the displayed boxes \(such as **Query Strings**, **Headers**, and **Request Body**\)\. The console includes these values in the method request in default application/json form\.
 
    For additional options you may need to specify, contact the API owner\.
 

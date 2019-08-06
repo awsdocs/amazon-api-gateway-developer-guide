@@ -3,7 +3,7 @@
 Your backend service can use the following WebSocket connection HTTP requests to send a callback message to a connected client, get connection information, or disconnect the client\.
 
 **Important**  
-These requests use [IAM authorization](apigateway-websocket-control-access-iam.md), so you must sign them with [Signature Version 4 \(SigV4\)](https://docs.aws.amazon.com/general/latest/gr/sigv4_signing.html)\.
+These requests use [IAM authorization](apigateway-websocket-control-access-iam.md), so you must sign them with [Signature Version 4 \(SigV4\)](https://docs.aws.amazon.com/general/latest/gr/sigv4_signing.html)\. To do this, you can use the API Gateway Management API\. For more information, see [ApiGatewayManagementApi](https://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/apigatewaymanagementapi.html)\.
 
 In the following command, you'll need to replace `{api-id}` with the actual API ID, which is displayed the API Gateway console or returned by the AWS CLI [https://docs.aws.amazon.com/goto/aws-cli/apigatewayv2-2018-11-29/CreateApi](https://docs.aws.amazon.com/goto/aws-cli/apigatewayv2-2018-11-29/CreateApi) command\. In addition, if your API is in a region other than `us-east-1`, you'll need to substitute the correct region\.
 
