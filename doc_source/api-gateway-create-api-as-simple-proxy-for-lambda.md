@@ -227,67 +227,74 @@ You should get a successful response with a payload similar to the following:
 
 ```
 {
-  "message":"Good evening, John of Seattle. Happy Thursday!", 
-  "input":{
-    "resource":"/helloworld",
-    "path":"/helloworld",
-    "httpMethod":"POST",
-    "headers":{"Accept":"*/*",
-    "content-type":"application/json",
-    "day":"Thursday",
-    "Host":"r275xc9bmd.execute-api.us-east-1.amazonaws.com",
-    "User-Agent":"curl/7.64.0",
-    "X-Amzn-Trace-Id":"Root=1-1a2b3c4d-a1b2c3d4e5f6a1b2c3d4e5f6",
-    "X-Forwarded-For":"72.21.198.64",
-    "X-Forwarded-Port":"443",
-    "X-Forwarded-Proto":"https"},
-    "multiValueHeaders":{"Accept":["*/*"],
-    "content-type":["application/json"],
-    "day":["Thursday"],
-    "Host":["r275xc9bmd.execute-api.us-east-1.amazonaws.com"],
-    "User-Agent":["curl/0.0.0"],
-    "X-Amzn-Trace-Id":["Root=1-1a2b3c4d-a1b2c3d4e5f6a1b2c3d4e5f6"],
-    "X-Forwarded-For":["11.22.333.44"],
-    "X-Forwarded-Port":["443"],
-    "X-Forwarded-Proto":["https"]},
-    "queryStringParameters":{"city":"Seattle",
-    "name":"John"
-  },
-  "multiValueQueryStringParameters":{
-    "city":["Seattle"],
-    "name":["John"]
-  },
-  "pathParameters":null,
-  "stageVariables":null,
-  "requestContext":{
-    "resourceId":"3htbry",
-    "resourcePath":"/helloworld",
-    "htt* Connection #0 to host r275xc9bmd.execute-api.us-east-1.amazonaws.com left intact pMethod":"POST",
-    "extendedRequestId":"a1b2c3d4e5f6g7h=",
-    "requestTime":"20/Mar/2019:20:38:30 +0000",
-    "path":"/test/helloworld",
-    "accountId":"123456789012",
-    "protocol":"HTTP/1.1",
-    "stage":"test",
-    "domainPrefix":"r275xc9bmd",
-    "requestTimeEpoch":1553114310423,
-    "requestId":"test-invoke-request",
-    "identity":{"cognitoIdentityPoolId":null,
-      "accountId":null,
-      "cognitoIdentityId":null,
-      "caller":null,
-      "sourceIp":"test-invoke-source-ip",
-      "accessKey":null,
-      "cognitoAuthenticationType":null,
-      "cognitoAuthenticationProvider":null,
-      "userArn":null,
-      "userAgent":"curl/0.0.0","user":null
+  "message": "Good evening, John of Seattle. Happy Thursday!",
+  "input": {
+    "resource": "/helloworld",
+    "path": "/helloworld",
+    "httpMethod": "POST",
+    "headers": {
+      "Accept": "*/*",
+      "content-type": "application/json",
+      "day": "Thursday",
+      "Host": "r275xc9bmd.execute-api.us-east-1.amazonaws.com",
+      "User-Agent": "curl/7.64.0",
+      "X-Amzn-Trace-Id": "Root=1-1a2b3c4d-a1b2c3d4e5f6a1b2c3d4e5f6",
+      "X-Forwarded-For": "72.21.198.64",
+      "X-Forwarded-Port": "443",
+      "X-Forwarded-Proto": "https"
     },
-    "domainName":"r275xc9bmd.execute-api.us-east-1.amazonaws.com",
-    "apiId":"r275xc9bmd"
-  },
-  "body":"{ \"time\": \"evening\" }",
-  "isBase64Encoded":false
+    "multiValueHeaders": {
+      "Accept": ["*/*"],
+      "content-type": ["application/json"],
+      "day": ["Thursday"],
+      "Host": ["r275xc9bmd.execute-api.us-east-1.amazonaws.com"],
+      "User-Agent": ["curl/0.0.0"],
+      "X-Amzn-Trace-Id": ["Root=1-1a2b3c4d-a1b2c3d4e5f6a1b2c3d4e5f6"],
+      "X-Forwarded-For": ["11.22.333.44"],
+      "X-Forwarded-Port": ["443"],
+      "X-Forwarded-Proto": ["https"]
+    },
+    "queryStringParameters": {
+      "city": "Seattle",
+      "name": "John"
+    },
+    "multiValueQueryStringParameters": {
+      "city": ["Seattle"],
+      "name": ["John"]
+    },
+    "pathParameters": null,
+    "stageVariables": null,
+    "requestContext": {
+      "resourceId": "3htbry",
+      "resourcePath": "/helloworld",
+      "htt* Connection #0 to host r275xc9bmd.execute-api.us-east-1.amazonaws.com left intact pMethod": "POST",
+      "extendedRequestId": "a1b2c3d4e5f6g7h=",
+      "requestTime": "20/Mar/2019:20:38:30 +0000",
+      "path": "/test/helloworld",
+      "accountId": "123456789012",
+      "protocol": "HTTP/1.1",
+      "stage": "test",
+      "domainPrefix": "r275xc9bmd",
+      "requestTimeEpoch": 1553114310423,
+      "requestId": "test-invoke-request",
+      "identity": {
+        "cognitoIdentityPoolId": null,
+        "accountId": null,
+        "cognitoIdentityId": null,
+        "caller": null,
+        "sourceIp": "test-invoke-source-ip",
+        "accessKey": null,
+        "cognitoAuthenticationType": null,
+        "cognitoAuthenticationProvider": null,
+        "userArn": null,
+        "userAgent": "curl/0.0.0",
+        "user": null
+      },
+      "domainName": "r275xc9bmd.execute-api.us-east-1.amazonaws.com",
+      "apiId": "r275xc9bmd"
+    },
+    "body": "{ \"time\": \"evening\" }",
+    "isBase64Encoded": false
   }
 }
 ```
