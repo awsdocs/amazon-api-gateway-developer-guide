@@ -583,7 +583,7 @@ The following shows an example of a `requestContext` that is passed to a Lambda 
 
 ## Output Format of a Lambda Function for Proxy Integration<a name="api-gateway-simple-proxy-for-lambda-output-format"></a>
 
-In Lambda proxy integration, API Gateway requires the backend Lambda function to return output according to the following JSON format:
+In Lambda proxy integration, API Gateway requires the backend Lambda function to return output according to the following JSON format for Node.js\/Ruby or a POJO\/object which serializes to the following format in Java\/C#\/Go\/Python:
 
 ```
 {
