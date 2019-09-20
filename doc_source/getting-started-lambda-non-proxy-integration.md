@@ -2,7 +2,7 @@
 
 In this walkthrough, we use the API Gateway console to build an API that enables a client to call Lambda functions through the Lambda non\-proxy integration \(also known as custom integration\)\. For more information about AWS Lambda and Lambda functions, see the [AWS Lambda Developer Guide](https://docs.aws.amazon.com/lambda/latest/dg/)\. 
 
-To facilitate learning, we chose a simple Lambda function with minimal API setup to walk you through the steps of building an API Gateway API with the Lambda custom integration\. When necessary, we describe some of the logic\. For a more detailed example of the Lambda custom integration, see [TUTORIAL: Create a `Calc` REST API with Two AWS Service Integrations and and One Lambda Non\-Proxy Integration](integrating-api-with-aws-services-lambda.md)\. 
+To facilitate learning, we chose a simple Lambda function with minimal API setup to walk you through the steps of building an API Gateway API with the Lambda custom integration\. When necessary, we describe some of the logic\. For a more detailed example of the Lambda custom integration, see [TUTORIAL: Create a `Calc` REST API with Two AWS Service Integrations and One Lambda Non\-Proxy Integration](integrating-api-with-aws-services-lambda.md)\. 
 
 Before creating the API, set up the Lambda backend by creating a Lambda function in AWS Lambda, described next\.
 

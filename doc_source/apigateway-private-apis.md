@@ -183,3 +183,4 @@ To deploy your private API, do the following in the API Gateway console:
 + [Custom domain names](how-to-custom-domains.md) are not supported for private APIs\.
 + You can use a single VPC endpoint to access multiple private APIs\.
 + VPC endpoints for private APIs are subject to the same limitations as other interface VPC endpoints\. For more information, see [Interface Endpoint Properties and Limitations](https://docs.aws.amazon.com/vpc/latest/userguide/vpce-interface.html#vpce-interface-limitations) in the Amazon VPC User Guide\.
++ You can associate or disassociate a VPC endpoint to a REST API, which gives a Route53 alias DNS record and simplifies invoking your private API\. For more information, see [Associate or Disassociate a VPC Endpoint with a Private REST API](associate-private-api-with-vpc-endpoint.md)\.

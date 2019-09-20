@@ -11,7 +11,7 @@ For more information about API Gateway REST APIs, see [Use API Gateway to Create
 
 API Gateway creates WebSocket APIs that:
 + Adhere to the [WebSocket](https://tools.ietf.org/html/rfc6455) protocol, which enables stateful, full\-duplex communication between client and server\.
-+ Route incoming messages and based on message content\.
++ Route incoming messages based on message content\.
 
 For more information about API Gateway WebSocket APIs, see [Use API Gateway to Create WebSocket APIs](api-gateway-overview-developer-experience.md#api-gateway-overview-websocket) and [About WebSocket APIs in API Gateway](apigateway-websocket-api-overview.md)\.
 

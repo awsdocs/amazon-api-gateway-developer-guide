@@ -1,10 +1,11 @@
 # Document History<a name="history"></a>
 
 The following table describes the important changes to the documentation since the last release of Amazon API Gateway\. For notification about updates to this documentation, you can subscribe to an RSS feed by choosing the RSS button in the top menu panel\.
-+ **Latest documentation update:** June 27, 2019
++ **Latest documentation update:** September 18, 2019
 
 | Change | Description | Date | 
 | --- |--- |--- |
+| [Route53 Aliases for Invoking Private APIs](#history) | Added support for additional Route53 alias DNS records for invoking private APIs\. For more information, see [Accessing Your Private API Using Route53 Alias](https://docs.aws.amazon.com/apigateway/latest/developerguide/apigateway-private-api-test-invoke-url.html#apigateway-private-api-route53-alias)\. | September 18, 2019 | 
 | [Tag\-Based Access Control for WebSocket APIs](#history) | Added support for tag\-based access control for WebSocket APIs\. For more information, see [API Gateway Resources That Can Be Tagged](https://docs.aws.amazon.com/apigateway/latest/developerguide/apigateway-tagging-supported-resources.html)\. | June 27, 2019 | 
 | [TLS version selection for custom domains](#history) | Added support for Transport Layer Security \(TLS\) version selection for APIs that are deployed to custom domains\. See the note in [Choose a Minimum TLS Version for a Custom Domain in API Gateway](https://docs.aws.amazon.com/apigateway/latest/developerguide/apigateway-custom-domain-tls-version.html)\. | June 20, 2019 | 
 | [VPC endpoint policies for private APIs](#history) | Added support for improving the security of private APIs by attaching endpoint policies to interface VPC endpoints\. For more information, see [Use VPC Endpoint Policies for Private APIs in API Gateway](https://docs.aws.amazon.com/apigateway/latest/developerguide/apigateway-vpc-endpoint-policies.html)\. | June 4, 2019 | 

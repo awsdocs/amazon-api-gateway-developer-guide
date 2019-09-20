@@ -13,6 +13,7 @@
 + [x\-amazon\-apigateway\-authtype Property](api-gateway-swagger-extensions-authtype.md)
 + [x\-amazon\-apigateway\-binary\-media\-types Property](api-gateway-swagger-extensions-binary-media-types.md)
 + [x\-amazon\-apigateway\-documentation Object](api-gateway-swagger-extensions-documentation.md)
++ [x\-amazon\-apigateway\-endpoint\-configuration Object](api-gateway-swagger-extensions-endpoint-configuration.md)
 + [x\-amazon\-apigateway\-gateway\-responses Object](api-gateway-swagger-extensions-gateway-responses.md)
 + [x\-amazon\-apigateway\-gateway\-responses\.gatewayResponse Object](api-gateway-swagger-extensions-gateway-responses.gatewayResponse.md)
 + [x\-amazon\-apigateway\-gateway\-responses\.responseParameters Object](api-gateway-swagger-extensions-gateway-responses.responseParameters.md)

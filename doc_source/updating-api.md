@@ -42,3 +42,4 @@ API resources that can be updated are detailed in the following table\.
 **Topics**
 + [Change a Public or Private API Endpoint Type in API Gateway](apigateway-api-migration.md)
 + [Maintain an API Using the API Gateway Console](maintain-api-using-console.md)
++ [Associate or Disassociate a VPC Endpoint with a Private REST API](associate-private-api-with-vpc-endpoint.md)
