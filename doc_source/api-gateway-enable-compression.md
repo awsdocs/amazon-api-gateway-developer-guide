@@ -69,5 +69,5 @@ API Gateway also supports the following `Accept-Encoding` header format, accordi
 + `Accept-Encoding:deflate,gzip`
 + `Accept-Encoding:`
 + `Accept-Encoding:*`
-+ `Accept-Encoding:deflate;q=0.5,gzip=1.0`
++ `Accept-Encoding:compress;q=0.5,gzip;q=1.0`
 + `Accept-Encoding:gzip;q=1.0,identity;q=0.5,*;q=0`
