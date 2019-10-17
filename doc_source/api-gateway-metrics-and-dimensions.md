@@ -23,6 +23,9 @@ The `AWS/ApiGateway` namespace includes the following metrics\.
 
 You can use the dimensions in the following table to filter API Gateway metrics\.
 
+**Note**  
+API Gateway removes non\-ASCII characters from the ApiName dimension before sending metrics to CloudWatch\. If the APIName contains no ASCII characters, the API ID is used as the ApiName\.
+
 
 | Dimension | Description | 
 | --- | --- | 

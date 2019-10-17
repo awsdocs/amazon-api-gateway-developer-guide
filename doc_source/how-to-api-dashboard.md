@@ -28,4 +28,4 @@ You can use the API dashboard in the API Gateway Console to display the CloudWat
 
 1. Refresh, if needed, and view individual metrics displayed in separate graphs titled **API Calls**, **Integration Latency**, **Latency**, **4xx Error** and **5xx Error**\. The **CacheHitCount** and **CacheMissCount** graphs will be displayed only if API caching has been enabled\.
 **Tip**  
-To examine method\-level CloudWatch metrics, make sure that you have enabled CloudWatch Logs on a method level\. For more information about how to set up method\-level logging, see [Update Stage Settings Using the API Gateway Console](stages.md#how-to-stage-settings-console)\.
+To examine method\-level CloudWatch metrics, make sure that you have enabled CloudWatch Logs on a method level\. For more information about how to set up method\-level logging, see [Update Stage Settings by Using the API Gateway Console](stages.md#how-to-stage-settings-console)\.

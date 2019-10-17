@@ -31,7 +31,7 @@ The following limits apply to configuring and running a WebSocket API in Amazon 
 
 | Resource or Operation | Default Limit | Can Be Increased | 
 | --- | --- | --- | 
-| New connections per second per account \(across all WebSocket APIs\) per region | 500 | No | 
+| New connections per second per account \(across all WebSocket APIs\) per region | 500 | Yes | 
 | AWS Lambda authorizers per API | 10 | Yes | 
 | AWS Lambda authorizer result size | 8 KB | No | 
 | Routes per API | 300 | Yes | 

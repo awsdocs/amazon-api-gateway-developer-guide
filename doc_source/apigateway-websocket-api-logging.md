@@ -2,7 +2,7 @@
 
 You can use [Amazon CloudWatch](https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/WhatIsCloudWatch.html) metrics and logs to monitor the execution of WebSocket APIs\. The configuration is similar to that used for REST APIs\.
 
-For instructions on how to set up CloudWatch access and execution logging, see [Set up API Logging Using the API Gateway Console](set-up-logging.md#set-up-access-logging-using-console)\.
+For instructions on how to set up CloudWatch access and execution logging, see [Set up CloudWatch API Logging Using the API Gateway Console](set-up-logging.md#set-up-access-logging-using-console)\.
 
 When you specify the **Log Format**, you can choose which context variables to log\. Here is an example of a JSON\-formatted list of context variables for a WebSocket API:
 

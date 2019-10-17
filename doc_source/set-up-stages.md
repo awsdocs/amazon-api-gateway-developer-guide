@@ -11,5 +11,6 @@
 + [Set Up Tags for an API Stage in API Gateway](set-up-tags.md)
 + [Set Up CloudWatch API Logging in API Gateway](set-up-logging.md)
 + [Set Up X\-Ray Tracing in API Gateway](apigateway-set-up-tracing.md)
++ [Set Up Access Logging to Amazon Kinesis Data Firehose in API Gateway](apigateway-set-up-logging-to-to-kinesis.md)
 + [Set Up CloudTrail Logging in API Gateway](apigateway-setup-cloudtrail.md)
 + [Set up Stage Variables for a REST API Deployment](stage-variables.md)
