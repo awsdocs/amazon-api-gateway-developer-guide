@@ -19,7 +19,7 @@ The following example resource policy grants API access in one AWS account to tw
             "Effect": "Allow",
             "Principal": {
                 "AWS": [
-                    "arn:aws:iam::account-id:user/Alice",
+                    "arn:aws:iam::account-id-2:user/Alice",
                     "account-id-2"
                 ]
             },
