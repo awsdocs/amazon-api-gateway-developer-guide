@@ -1,10 +1,11 @@
 # Document History<a name="history"></a>
 
 The following table describes the important changes to the documentation since the last release of Amazon API Gateway\. For notification about updates to this documentation, you can subscribe to an RSS feed by choosing the RSS button in the top menu panel\.
-+ **Latest documentation update:** October 15, 2019
++ **Latest documentation update:** October 21, 2019
 
 | Change | Description | Date | 
 | --- |--- |--- |
+| [Wildcard custom domain names](#history) | Added support for wildcard custom domain names\. For more information, see [Wildcard Custom Domain Names](https://docs.aws.amazon.com/apigateway/latest/developerguide/how-to-custom-domains.html#wildcard-custom-domain-names)\. | October 21, 2019 | 
 | [Amazon Kinesis Data Firehose logging](#history) | Added support for Amazon Kinesis Data Firehose as a destination for access logging data\. For more information, see [Using Amazon Kinesis Data Firehose as a Destination for API Gateway Access Logging](https://docs.aws.amazon.com/apigateway/latest/developerguide/apigateway-logging-to-kinesis.html)\. | October 15, 2019 | 
 | [Route53 Aliases for Invoking Private APIs](#history) | Added support for additional Route53 alias DNS records for invoking private APIs\. For more information, see [Accessing Your Private API Using Route53 Alias](https://docs.aws.amazon.com/apigateway/latest/developerguide/apigateway-private-api-test-invoke-url.html#apigateway-private-api-route53-alias)\. | September 18, 2019 | 
 | [Tag\-Based Access Control for WebSocket APIs](#history) | Added support for tag\-based access control for WebSocket APIs\. For more information, see [API Gateway Resources That Can Be Tagged](https://docs.aws.amazon.com/apigateway/latest/developerguide/apigateway-tagging-supported-resources.html)\. | June 27, 2019 | 

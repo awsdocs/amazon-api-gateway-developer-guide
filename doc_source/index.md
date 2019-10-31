@@ -74,6 +74,7 @@ Amazon's trademarks and trade dress may not be used in
             + [Set up an API Gateway API with Private Integrations Using the API Gateway Console](set-up-api-with-vpclink-console.md)
             + [Set up an API Gateway API with Private Integrations Using the AWS CLI](set-up-api-with-vpclink-cli.md)
             + [Set up API with Private Integrations Using OpenAPI](set-up-api-with-vpclink-using-swagger.md)
+            + [API Gateway Accounts Used for Private Integrations](set-up-api-with-vpclink-accounts.md)
          + [Set up Mock Integrations in API Gateway](how-to-mock-integration.md)
             + [Enable Mock Integration Using the API Gateway Console](how-to-mock-integration-console.md)
       + [Set up Gateway Responses to Customize Error Responses](customize-gateway-responses.md)

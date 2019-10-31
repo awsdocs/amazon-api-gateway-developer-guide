@@ -1,18 +1,21 @@
 # TUTORIAL: Build an API with API Gateway Private Integration<a name="getting-started-with-private-integration"></a>
 
- You can create an API Gateway API with private integration to provide your customers access to HTTP/HTTPS resources within your Amazon Virtual Private Cloud \(Amazon VPC\)\. Such VPC resources are HTTP/HTTPS endpoints on an EC2 instance behind a network load balancer in the VPC\. The network load balancer encapsulates the VPC resource and routes incoming requests to the targeted resource\. 
+ You can create an API Gateway API with private integration to provide your customers access to HTTP/HTTPS resources within your Amazon Virtual Private Cloud \(Amazon VPC\)\. Such VPC resources are HTTP/HTTPS endpoints on an EC2 instance behind a Network Load Balancer in the VPC\. The Network Load Balancer encapsulates the VPC resource and routes incoming requests to the targeted resource\. 
 
-When a client calls the API, API Gateway connects to the network load balancer through the pre\-configured VPC link\. A VPC link is encapsulated by an API Gateway resource of [VpcLink](https://docs.aws.amazon.com/apigateway/api-reference/resource/vpc-link/)\. It is responsible for forwarding API method requests to the VPC resources and returns backend responses to the caller\. For an API developer, a `VpcLink` is functionally equivalent to an integration endpoint\. 
+When a client calls the API, API Gateway connects to the Network Load Balancer through the pre\-configured VPC link\. A VPC link is encapsulated by an API Gateway resource of [VpcLink](https://docs.aws.amazon.com/apigateway/api-reference/resource/vpc-link/)\. It is responsible for forwarding API method requests to the VPC resources and returns backend responses to the caller\. For an API developer, a `VpcLink` is functionally equivalent to an integration endpoint\. 
 
- To create an API with private integration, you must create a new `VpcLink`, or choose an existing one, that is connected to a network load balancer that targets the desired VPC resources\. You must have [appropriate permissions](grant-permissions-to-create-vpclink.md) to create and manage a `VpcLink`\. You then set up an API [method](https://docs.aws.amazon.com/apigateway/api-reference/resource/method/) and integrate it with the `VpcLink` by setting either `HTTP` or `HTTP_PROXY` as the [integration type](https://docs.aws.amazon.com/apigateway/api-reference/resource/integration/#type), setting `VPC_LINK` as the integration [connection type](https://docs.aws.amazon.com/apigateway/api-reference/resource/integration/#connectionType), and setting the `VpcLink` identifier on the integration [https://docs.aws.amazon.com/apigateway/api-reference/resource/integration/#connectionId](https://docs.aws.amazon.com/apigateway/api-reference/resource/integration/#connectionId)\. 
+ To create an API with private integration, you must create a new `VpcLink`, or choose an existing one, that is connected to a Network Load Balancer that targets the desired VPC resources\. You must have [appropriate permissions](grant-permissions-to-create-vpclink.md) to create and manage a `VpcLink`\. You then set up an API [method](https://docs.aws.amazon.com/apigateway/api-reference/resource/method/) and integrate it with the `VpcLink` by setting either `HTTP` or `HTTP_PROXY` as the [integration type](https://docs.aws.amazon.com/apigateway/api-reference/resource/integration/#type), setting `VPC_LINK` as the integration [connection type](https://docs.aws.amazon.com/apigateway/api-reference/resource/integration/#connectionType), and setting the `VpcLink` identifier on the integration [https://docs.aws.amazon.com/apigateway/api-reference/resource/integration/#connectionId](https://docs.aws.amazon.com/apigateway/api-reference/resource/integration/#connectionId)\. 
+
+**Note**  
+The Network Load Balancer and API must be owned by the same AWS account\.
 
 To quickly get started creating an API to access VPC resources, we walk through the essential steps for building an API with the private integration, using the API Gateway console\. Before creating the API, do the following: 
 
-1.  Create a VPC resource, create or choose a network load balancer under your account in the same region, and add the EC2 instance hosting the resource as a target of the network load balancer\. For more information, see [Set up a Network Load Balancer for API Gateway Private Integrations](set-up-nlb-for-vpclink-using-console.md)\.
+1.  Create a VPC resource, create or choose a Network Load Balancer under your account in the same region, and add the EC2 instance hosting the resource as a target of the Network Load Balancer\. For more information, see [Set up a Network Load Balancer for API Gateway Private Integrations](set-up-nlb-for-vpclink-using-console.md)\.
 
 1.  Grant permissions to create the VPC links for private integrations\. For more information, see [Grant Permissions to Create a VPC Link](grant-permissions-to-create-vpclink.md)\.
 
-After creating your VPC resource and your network load balancer with your VPC resource configured in its target groups, follow the instructions below to create an API and integrate it with the VPC resource via a `VpcLink` in a private integration\. 
+After creating your VPC resource and your Network Load Balancer with your VPC resource configured in its target groups, follow the instructions below to create an API and integrate it with the VPC resource via a `VpcLink` in a private integration\. 
 
 **To create an API with private integration using the API Gateway console**
 
@@ -26,9 +29,9 @@ After creating your VPC resource and your network load balancer with your VPC re
 
    1.  Optionally, give a description of the VPC link in the **Description** text area\.
 
-   1.  Choose a network load balancer from the **Target NLB** drop\-down list\.
+   1.  Choose a Network Load Balancer from the **Target NLB** drop\-down list\.
 
-      You must have the network load balancer already created in the region you chose for the network load balancer to be present in the list\.
+      You must have the Network Load Balancer already created in the region you chose for the Network Load Balancer to be present in the list\.
 
    1.  Choose **Create** to start creating the VPC link\.
 
@@ -54,7 +57,7 @@ After creating your VPC resource and your network load balancer with your VPC re
 
       Here, the host name \(for example, `myApi.example.com`\) is used to set the `Host` header of the integration request\. 
 **Note**  
-For the network load balancer \(NLB\), be sure to use the NLB DNS name as described in [Getting Started with Network Load Balancers](https://docs.aws.amazon.com/elasticloadbalancing/latest/network/network-load-balancer-getting-started.html)\. 
+For the Network Load Balancer \(NLB\), be sure to use the NLB DNS name as described in [Getting Started with Network Load Balancers](https://docs.aws.amazon.com/elasticloadbalancing/latest/network/network-load-balancer-getting-started.html)\. 
 
    1.  Leave the **Use Default Timeout** selection as\-is, unless you want to customize the integration timeouts\.
 

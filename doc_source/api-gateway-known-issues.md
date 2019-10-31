@@ -6,7 +6,6 @@
 + [Amazon API Gateway Important Notes for REST APIs](#api-gateway-known-issues-rest-apis)
 
 ## Amazon API Gateway Important Notes for REST and WebSocket APIs<a name="api-gateway-known-issues-all-apis"></a>
-+ API Gateway does not support wildcard subdomain names \(of the `*.domain` form\)\. However, it does support wildcard certificates \(certificates for wildcard subdomain names\)\.
 + API Gateway does not support sharing a custom domain name across REST and WebSocket APIs\.
 + Stage names can only contain alphanumeric characters, hyphens, and underscores\. Maximum length is 128 characters\.
 + The `/ping` and `/sping` paths are reserved for the service health check\. Use of these for API root\-level resources with custom domains will fail to produce the expected result\.

@@ -1,6 +1,6 @@
 # Grant Permissions to Create a VPC Link<a name="grant-permissions-to-create-vpclink"></a>
 
- For you or a user in your account to create and maintain a VPC link, you or the user must have permissions to create, delete, and view VPC endpoint service configurations, change VPC endpoint service permissions, and examine load balancers\. To grant such permissions, use the following steps\. 
+For you or a user in your account to create and maintain a VPC link, you or the user must have permissions to create, delete, and view VPC endpoint service configurations, change VPC endpoint service permissions, and examine load balancers\. To grant such permissions, use the following steps\. 
 
 **To grant permissions to create and update a `VpcLink`**
 

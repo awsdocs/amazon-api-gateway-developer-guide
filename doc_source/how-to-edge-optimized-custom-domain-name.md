@@ -24,8 +24,6 @@ The following procedure describes how to set up a custom domain name for an API 
    1. For the API protocol, choose **HTTP**\.
 
    1. Under **Domain Name**, type a custom domain name, for example, `my-api.example.com`, in **Domain Name**
-**Note**  
-Do not use the wildcard character \(i\.e\., `*`\) for your custom domain names\. API Gateway does not support it, even though the API Gateway console \(or the AWS CLI\) accepts it and can map it to a CloudFront distribution\. However, you can use wildcard certificates\.
 
    1. Under **Security Policy**, choose the desired minimum Transport Layer Security \(TLS\) version\.
 
@@ -52,7 +50,7 @@ To use an ACM certificate with an API Gateway edge\-optimized custom domain name
    1. Choose **Yes** for **Alias**, type the CloudFront domain name \(e\.g\., `d3boq9ikothtgw.cloudfront.net`\) in **Alias Target**, and then choose **Create**\. The A\-record alias here maps your custom domain name to the specified CloudFront domain name that is itself mapped to an IP4 address\.   
 ![\[Set a DNS record alias for a custom domain name for an API in API Gateway\]](http://docs.aws.amazon.com/apigateway/latest/developerguide/images/api-gateway-custom-domain-dns-alias-set.png)
 **Tip**  
- The **Alias Hosted Zone ID** identifies the hosted zone of the specified **Alias Target**\. The Route 53 console automatically fills in the value when you enter a valid domain name for **Alias Target**\. To create an A\-record alias without using the Route 53 console, such as when you use the AWS CLI, you must specified the required hosted zone Id\. For any CloudFront distribution domain name, the hosted zone Id value is always `Z2FDTNDATAQYW2`, as documented in [AWS Regions and Endpoints for CloudFront](https://docs.aws.amazon.com/general/latest/gr/rande.html#cf_region)\. 
+ The **Alias Hosted Zone ID** identifies the hosted zone of the specified **Alias Target**\. The Route 53 console automatically fills in the value when you enter a valid domain name for **Alias Target**\. To create an A\-record alias without using the Route 53 console, such as when you use the AWS CLI, you must specify the required hosted zone Id\. For any CloudFront distribution domain name, the hosted zone Id value is always `Z2FDTNDATAQYW2`, as documented in [AWS Regions and Endpoints for CloudFront](https://docs.aws.amazon.com/general/latest/gr/rande.html#cf_region)\. 
 
     For most DNS providers, a custom domain name is added to the hosted zone as a CNAME resource record set\. The CNAME record name specifies the custom domain name you typed earlier in **Domain Name** \(for example, `api.example.com`\)\. The CNAME record value specifies the domain name for the CloudFront distribution\. However, use of a CNAME record will not work if your custom domain is a zone apex \(i\.e\., `example.com` instead of `api.example.com`\)\. A zone apex is also commonly known as the root domain of your organization\. For a zone apex you need to use an A\-record alias, provided that is supported by your DNS provider\. 
 
@@ -79,21 +77,26 @@ For code examples of this REST API call, see [domainname:create](https://docs.aw
 When CloudTrail is enabled for logging API Gateway calls made by your account, API Gateway logs the associated CloudFront distribution updates when a custom domain name is created or updated for an API\. Because these CloudFront distributions are owned by API Gateway, each of these reported CloudFront distributions is identified by one of the following region\-specific API Gateway account IDs, instead of the API owner's account ID\. 
 
 
-**Region\-specific API Gateway account IDs of CloudFront distributions associated with a custom domain name**  
-
 | Region | Account ID | 
 | --- | --- | 
 | us\-east\-1 | 392220576650 | 
 | us\-east\-2 | 718770453195 | 
 | us\-west\-1 | 968246515281 | 
 | us\-west\-2 | 109351309407 | 
+| ca\-central\-1 | 796887884028 | 
 | eu\-west\-1 | 631144002099 | 
 | eu\-west\-2 | 544388816663 | 
+| eu\-west\-3 | 061510835048 | 
 | eu\-central\-1 | 474240146802 | 
+| eu\-north\-1 | 394634713161 | 
 | ap\-northeast\-1 | 969236854626 | 
 | ap\-northeast\-2 | 020402002396 | 
 | ap\-southeast\-1 | 195145609632 | 
-| ap\-southeast\-2 | 798376113853  | 
+| ap\-southeast\-2 | 798376113853 | 
+| ap\-south\-1 | 507069717855 | 
+| ap\-east\-1 | 174803364771 | 
+| sa\-east\-1 | 287228555773 | 
+| me\-south\-1 | 855739686837 | 
 
 ## Configure Base Path Mapping of an API with a Custom Domain Name as its Host Name<a name="how-to-custom-domains-mapping-console"></a>
 

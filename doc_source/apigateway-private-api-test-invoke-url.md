@@ -96,5 +96,5 @@ curl -v https://vpce-01234567abcdef012-01234567.execute-api.us-east-1.vpce.amazo
 Alternatively, you can access your private API via its API ID by using the `x-apigw-api-id` header in a cURL command in the following format:
 
 ```
-curl -v https://{vpce-id}.execute-api.{region}.vpce.amazonaws.com/test -H'x-apigw-api-id:{api-id}'
+curl -v https://{public-dns-hostname}.execute-api.{region}.vpce.amazonaws.com/test -H'x-apigw-api-id:{api-id}'
 ```

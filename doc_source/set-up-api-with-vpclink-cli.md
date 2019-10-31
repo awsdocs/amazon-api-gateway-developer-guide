@@ -1,19 +1,22 @@
 # Set up an API Gateway API with Private Integrations Using the AWS CLI<a name="set-up-api-with-vpclink-cli"></a>
 
- Before creating an API with the private integration, you must have your VPC resource set up and a network load balancer created and configured with your VPC source as the target\. If the requirements are not met, follow [Set up a Network Load Balancer for API Gateway Private Integrations](set-up-nlb-for-vpclink-using-console.md) to install the VPC resource, create a NLB, set the VPC resource as a target of the network load balancer\.
+Before creating an API with the private integration, you must have your VPC resource set up and a Network Load Balancer created and configured with your VPC source as the target\. If the requirements are not met, follow [Set up a Network Load Balancer for API Gateway Private Integrations](set-up-nlb-for-vpclink-using-console.md) to install the VPC resource, create a Network Load Balancer, and set the VPC resource as a target of the Network Load Balancer\.
+
+**Note**  
+The Network Load Balancer and API must be owned by the same AWS account\.
 
 For you to be able to create and manage a `VpcLink`, you must also have the appropriate permissions configured\. For more information, see [Grant Permissions to Create a VPC Link](grant-permissions-to-create-vpclink.md)\.
 
 **Note**  
  You only need the permissions to create a `VpcLink` in your API\. You do not need the permissions to use the `VpcLink`\.
 
-After the network load balancer is created, note its ARN\. You need it to create a VPC link for the private integration\. 
+After the Network Load Balancer is created, note its ARN\. You need it to create a VPC link for the private integration\. 
 
 **To set up an API with the private integration using AWS CLI**
 
-1. Create a `VpcLink` targeting the specified network load balancer\. 
+1. Create a `VpcLink` targeting the specified Network Load Balancer\. 
 
-   For this discussion, we assume the ARN of the network load balancer is `arn:aws:elasticloadbalancing:us-east-1:123456789012:loadbalancer/net/my-vpclink-test-nlb/1f8df693cd094a72`\. 
+   For this discussion, we assume the ARN of the Network Load Balancer is `arn:aws:elasticloadbalancing:us-east-1:123456789012:loadbalancer/net/my-vpclink-test-nlb/1f8df693cd094a72`\. 
 
    ```
    aws apigateway create-vpc-link \
@@ -44,7 +47,7 @@ After the network load balancer is created, note its ARN\. You need it to create
    aws apigateway get-vpc-link --vpc-link-id gim7c3
    ```
 
-    If the operation fails, you get a `FAILED` status, with the `statusMessage` containing the error message\. For example, if you attempt to create a `VpcLink` with a network load balancer that is already associated with a VPC endpoint, you get the following on the `statusMessage` property:
+   If the operation fails, you get a `FAILED` status, with the `statusMessage` containing the error message\. For example, if you attempt to create a `VpcLink` with a Network Load Balancer that is already associated with a VPC endpoint, you get the following on the `statusMessage` property:
 
    ```
    "NLB is already associated with another VPC Endpoint Service"
@@ -148,7 +151,7 @@ After the network load balancer is created, note its ARN\. You need it to create
 
    Make sure to use a stringified JSON list as the `patch-operations` parameter value\.
 
-    Using a stage variable to set the `connectionId` value has the advantage of having the same API integrated with different `VpcLink`s by resetting the stage variable value\. This is useful for switching your API to a different VPC link to migrate to a different network load balancer or a different VPC\.
+    Using a stage variable to set the `connectionId` value has the advantage of having the same API integrated with different `VpcLink`s by resetting the stage variable value\. This is useful for switching your API to a different VPC link to migrate to a different Network Load Balancer or a different VPC\.
 
    Because we used the private proxy integration, the API is now ready for deployment and for test runs\. With the non\-proxy integration, you must also set up the method response and integration response, just as you would when setting up an [API with HTTP custom integrations](api-gateway-create-api-step-by-step.md#api-gateway-create-resource-and-methods)\.
 

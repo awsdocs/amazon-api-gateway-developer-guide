@@ -6,7 +6,7 @@
 
 ## API Gateway Limits<a name="api-gateway-limits"></a>
 
-Unless noted otherwise, the limits can be increased upon request\. To request a limit increase, contact the [AWS Support Center](https://console.aws.amazon.com/support/home#/)\.
+Unless noted otherwise, the limits can be increased upon request\. To request a limit increase, you can use [Service Quotas](https://docs.aws.amazon.com/servicequotas/latest/userguide/) or contact the [AWS Support Center](https://console.aws.amazon.com/support/home#/)\.
 
  When authorization is enabled on a method, the maximum length of the method's ARN \(e\.g\., `arn:aws:execute-api:{region-id}:{account-id}:{api-id}/{stage-id}/{method}/{resource}/{path}`\) is 1600 bytes\. The path parameter values, the size of which are determined at run time, can cause the ARN length to exceed the limit\. When this happens, the API client will receive a `414 Request URI too long` response\. 
 
@@ -60,9 +60,9 @@ The following limits apply to configuring and running a REST API in Amazon API G
 | Documentation parts per API | 2000 | Yes | 
 | Resources per API | 300 | Yes | 
 | Stages per API | 10 | Yes | 
-| Stage variables per stage | 100 | Yes | 
-| Length, in characters, of the key in a stage variable | 64 | Yes | 
-| Length, in characters, of the value in a stage variable | 512 | Yes | 
+| Stage variables per stage | 100 | No | 
+| Length, in characters, of the key in a stage variable | 64 | No | 
+| Length, in characters, of the value in a stage variable | 512 | No | 
 | Usage plans per account per region | 300 | Yes | 
 | Usage plans per API key | 10 | Yes | 
 | Per\-method throttling limit settings per API stage | 20 | Yes | 
