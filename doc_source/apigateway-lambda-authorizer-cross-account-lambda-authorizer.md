@@ -52,6 +52,6 @@ In the Lambda console, you can find the ARN for your function in the upper right
 
 1. You'll see a popup that says **Add Permission to Lambda Function: You have selected a Lambda function from another account\. Please ensure that you have the appropriate Function Policy on this function\. You can do this by running the following AWS CLI command from account *123456789012*:**, followed by an `aws lambda add-permission` command string\.
 
-1. Copy\-paste the `aws lambda add-permission` command string into an AWS CLI window that is configured for your second account\. This will grant your first account access to your second account's Lambda authorizor function\.
+1. Copy\-paste the `aws lambda add-permission` command string into an AWS CLI window that is configured for your second account\. This will grant your first account access to your second account's Lambda authorizer function\.
 
 1. In the popup from the previous step, choose **OK**\.

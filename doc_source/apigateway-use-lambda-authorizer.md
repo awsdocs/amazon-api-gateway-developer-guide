@@ -160,7 +160,7 @@ To create a token\-based Lambda authorizer function, enter the following Node\.j
 
 1. For **Token Source**, enter **tokenHeader**\.
 
-1. Choose **Create Authorizer**\.
+1. Choose **Create**, and then choose **Grant & Create**\.
 
 1. Choose **Test**\.
 
@@ -322,6 +322,8 @@ To create a request\-based Lambda authorizer function, enter the following Node\
 
 1. Under **Identity Sources**, add a **Header** named **HeaderAuth1**, a **Query String** named **QueryString1**, and a **Stage Variable** named **StageVar1**\.
 
+1. Choose **Create**, and then choose **Grant & Create**\.
+
 1. Choose **Test**\.
 
 1. For **HeaderAuth1**, enter **headerValue1**\. For **QueryString1**, enter **queryValue1**\. For **StageVar1**, enter **stageValue1**\.
@@ -343,7 +345,7 @@ In this example, the Lambda authorizer function checks the input parameters and 
     ]
   }
   ```
-+ Otherwise, the the authorizer function returns a `401 Unauthorized` HTTP response, and the method call fails\.
++ Otherwise, the authorizer function returns a `401 Unauthorized` HTTP response, and the method call fails\.
 
 **Note**  
 In production code, you may need to authenticate the user before granting authorization\. If so, you can add authentication logic in the Lambda function as well by calling an authentication provider as directed in the documentation for that provider\.

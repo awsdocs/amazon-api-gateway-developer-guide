@@ -65,7 +65,6 @@ The following limits apply to configuring and running a REST API in Amazon API G
 | Length, in characters, of the value in a stage variable | 512 | No | 
 | Usage plans per account per region | 300 | Yes | 
 | Usage plans per API key | 10 | Yes | 
-| Per\-method throttling limit settings per API stage | 20 | Yes | 
 | VPC links per account per region | 20 | Yes | 
 | API caching TTL | 300 seconds by default and configurable between 0 and 3600 by an API owner\. | Not for the upper bound \(3600\) | 
 | Cached response size | 1048576 Bytes\. Cache data encryption may increase the size of the item that is being cached\. | No | 
