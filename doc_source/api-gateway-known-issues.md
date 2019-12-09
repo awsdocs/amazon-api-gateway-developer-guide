@@ -29,7 +29,7 @@
   + Model names can only contain alphanumeric characters\.
   + For input parameters, only the following attributes are supported: `name`, `in`, `required`, `type`, `description`\. Other attributes are ignored\.
   + The `securitySchemes` type, if used, must be `apiKey`\. However, OAuth 2 and HTTP Basic authentication are supported via [Lambda authorizers](apigateway-use-lambda-authorizer.md); the OpenAPI configuration is achieved via [vendor extensions](api-gateway-swagger-extensions-authorizer.md)\. 
-  + The `deprecated` field is is not supported and is dropped in exported APIs\.
+  + The `deprecated` field is not supported and is dropped in exported APIs\.
   + API Gateway models are defined using [JSON schema draft 4](https://tools.ietf.org/html/draft-zyp-json-schema-04), instead of the JSON schema used by OpenAPI\.
   + The `additionalProperties` and `anyOf`fields are not supported in Models\.
   + The `discriminator` parameter is not supported in any schema object\.
