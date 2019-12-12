@@ -32,7 +32,7 @@ To use the AWS CLI to disable a canary release deployment, call the `update-stag
 aws apigateway update-stage \
     --rest-api-id 4wk1k4onj3 \
     --stage-name canary \
-    --patch-operations '["op":"remove", "path":"/canarySettings"]'
+    --patch-operations '[{"op":"remove", "path":"/canarySettings"}]'
 ```
 
 A successful response returns a payload similar to the following:
