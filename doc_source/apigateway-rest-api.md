@@ -8,4 +8,3 @@
 + [Deploying a REST API in Amazon API Gateway](how-to-deploy-api.md)
 + [Invoking a REST API in Amazon API Gateway](how-to-call-api.md)
 + [Tracing, Logging, and Monitoring an API Gateway API](monitoring_overview.md)
-+ [API Gateway Extensions to OpenAPI](api-gateway-swagger-extensions.md)

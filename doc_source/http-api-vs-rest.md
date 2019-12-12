@@ -1,0 +1,79 @@
+# Choosing Between HTTP APIs and REST APIs<a name="http-api-vs-rest"></a>
+
+
+|  | 
+| --- |
+| HTTP APIs are in beta for Amazon API Gateway and are subject to change\. | 
+
+## <a name="http-api-vs-rest.differences"></a>
+
+HTTP APIs are designed for low\-latency, cost\-effective AWS Lambda proxy and HTTP proxy APIs\. HTTP APIs support OIDC and OAuth 2\.0 authorization, and come with built\-in support for CORS and automatic deployments\. Previous\-generation REST APIs currently offer more features, and full control over API requests and responses\.
+
+HTTP APIs are available in the following Regions:
++ US East \(Ohio\)
++ US East \(N\. Virginia\)
++ US West \(N\. California\)
++ US West \(Oregon\)
++ Asia Pacific \(Sydney\)
++ Asia Pacific \(Tokyo\)
++ Europe \(Frankfurt\)
++ Europe \(Ireland\)
+
+The following tables summarize core features that are available in HTTP APIs and REST APIs\.
+
+
+| Authorizers | HTTP API | REST API | 
+| --- | --- | --- | 
+|  AWS Lambda  |   |  ✓  | 
+|  IAM  |   |  ✓  | 
+|  Amazon Cognito  |  ✓ \*  |  ✓  | 
+|  Native OpenID Connect / OAuth 2\.0  |  ✓  |   | 
+
+\* You can use Amazon Cognito as a JWT issuer\.
+
+
+| Integration | HTTP API | REST API | 
+| --- | --- | --- | 
+|  HTTP proxy  |  ✓  |  ✓  | 
+|  Lambda proxy  |  ✓  |  ✓  | 
+|  HTTP  |   |  ✓  | 
+|  AWS services  |   |  ✓  | 
+|  Private integration  |   |  ✓  | 
+|  Mock  |   |  ✓  | 
+
+
+| API Management | HTTP API | REST API | 
+| --- | --- | --- | 
+|  Usage plans  |   |  ✓  | 
+|  API keys  |   |  ✓  | 
+
+
+| Development | HTTP API | REST API | 
+| --- | --- | --- | 
+|  Cache  |   |  ✓  | 
+|  Request transformation  |   |  ✓  | 
+|  Request / response validation  |   |  ✓  | 
+|  Test invocation  |   |  ✓  | 
+|  CORS configuration  |  ✓  |   | 
+|  Automatic deployments  |  ✓  |   | 
+|  Default stage  |  ✓  |   | 
+|  Default route  |  ✓  |   | 
+
+
+| Security | HTTP API | REST API | 
+| --- | --- | --- | 
+|  Client certificates  |   |  ✓  | 
+|  AWS WAF  |   |  ✓  | 
+|  Resource policies  |   |  ✓  | 
+
+
+| API Type | HTTP API | REST API | 
+| --- | --- | --- | 
+|  Regional  |  ✓  |  ✓  | 
+|  Edge\-optimized  |   |  ✓  | 
+|  Private  |   |  ✓  | 
+
+
+| AWS Service Integrations | HTTP API | REST API | 
+| --- | --- | --- | 
+|  AWS X\-Ray  |   |  ✓  | 

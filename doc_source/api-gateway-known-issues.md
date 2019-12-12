@@ -36,7 +36,7 @@
   + The `example` tag is not supported\.
   + `exclusiveMinimum` is not supported by API Gateway\.
   + The `maxItems` and `minItems` tags are not included in simple request validation\. To work around this, update the model after import before doing validation\.
-  + `oneOf` is not supported by API Gateway\.
+  + `oneOf` and `allOf` are not supported by API Gateway\.
   + The `readOnly` field is not supported\.
   + Response definitions of the `"500": {"$ref": "#/responses/UnexpectedError"}` form is not supported in the OpenAPI document root\. To work around this, replace the reference by the inline schema\.
   + Numbers of the `Int32` or `Int64` type are not supported\. An example is shown as follows:

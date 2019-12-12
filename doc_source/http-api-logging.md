@@ -1,0 +1,76 @@
+# Configuring Logging for an HTTP API<a name="http-api-logging"></a>
+
+
+|  | 
+| --- |
+| HTTP APIs are in beta for Amazon API Gateway and are subject to change\. | 
+
+## HTTP API Logging<a name="http-api-logging.intro"></a>
+
+You can enable access logging to write logs to CloudWatch Logs\. You can also enable detailed metrics to write route\-level metrics to Amazon CloudWatch\. To learn more about logging and metrics, see [Monitor WebSocket API Execution with CloudWatch](apigateway-websocket-api-logging.md)\.
+
+To enable logging for an HTTP API, you must do the following\.
+
+1. Ensure that your IAM user has the required permissions to enable logging\.
+
+1. Create a CloudWatch Logs log group\.
+
+1. Provide the ARN of the CloudWatch Logs log group for a stage of your API\.
+
+### Permissions to Enable Logging<a name="http-api-logging.permissions"></a>
+
+To enable logging for an API, your IAM user must have the following permissions\.
+
+**Example**  
+
+```
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Effect": "Allow",
+            "Action": [
+                "logs:DescribeLogGroups",
+                "logs:DescribeLogStreams",
+                "logs:GetLogEvents",
+                "logs:FilterLogEvents"
+            ],
+            "Resource": "arn:aws:logs:us-east-2:123456789012:log-group:*"
+        },
+        {
+            "Effect": "Allow",
+            "Action": [
+                "logs:CreateLogDelivery",
+                "logs:PutResourcePolicy",
+                "logs:UpdateLogDelivery",
+                "logs:DeleteLogDelivery",
+                "logs:CreateLogGroup",
+                "logs:DescribeResourcePolicies",
+                "logs:GetLogDelivery",
+                "logs:ListLogDeliveries"
+            ],
+            "Resource": "*"
+        }
+    ]
+}
+```
+
+### Enable Logging by Using the AWS Management Console<a name="http-api-logging.console"></a>
+
+1. Open the [API Gateway console](https://console.aws.amazon.com/apigateway)\.
+
+1. Choose an API\.
+
+1. Under **Monitor**, choose **Logging**\.
+
+1. Choose the stage for which you want to enable logging\.
+
+1. Choose **Edit**\.
+
+1. Use the **Access logging** toggle to enable access logging\.
+
+1. For **Log destination**, enter the ARN of a CloudWatch Logs log group\. The ARN format is `arn:aws:logs:region:account-id:log-group:log-group-name`\. 
+
+1. Enter a log format in **Log format**\. You can choose **CLF**, **JSON**, **XML**, or **CSV** to use one of the provided examples as a guide\.
+
+1. Choose **Save**\.

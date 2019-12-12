@@ -1,18 +1,24 @@
 # x\-amazon\-apigateway\-authorizer Object<a name="api-gateway-swagger-extensions-authorizer"></a>
 
- Defines a Lambda authorizer \(formerly known as a custom authorizer\) to be applied for authorization of method invocations in API Gateway\. This object is an extended property of the [OpenAPI Security Definitions](https://github.com/OAI/OpenAPI-Specification/blob/master/versions/2.0.md#security-definitions-object) object\. 
+
+|  | 
+| --- |
+| HTTP APIs are in beta for Amazon API Gateway and are subject to change\. | 
+
+ Defines a Lambda authorizer \(formerly known as a custom authorizer\) for a REST API or JWT authorizer for an HTTP API to be applied for authorization of method invocations in API Gateway\. This object is an extended property of the [OpenAPI Security Definitions](https://github.com/OAI/OpenAPI-Specification/blob/master/versions/2.0.md#security-definitions-object) object\. 
 
 
 **Properties**  
 
 | Property Name | Type | Description | 
 | --- | --- | --- | 
-| type | string |   The type of the authorizer\. This is a required property\. Specify `"token"` for an authorizer with the caller identity embedded in an authorization token\. Specify `"request"` for an authorizer with the caller identity contained in request parameters\.   | 
-| authorizerUri | string |   The Uniform Resource Identifier \(URI\) of the authorizer Lambda function\. The syntax is as follows:  <pre>"arn:aws:apigateway:us-east-1:lambda:path/2015-03-31/functions/arn:aws:lambda:us-east-1:account-id:function:auth_function_name/invocations"</pre>  | 
-| authorizerCredentials | string |   Credentials required for invoking the authorizer, if any, in the form of an ARN of an IAM execution role\. For example, "arn:aws:iam::*account\-id*:*IAM\_role*"\.   | 
-| identitySource | string |  Comma\-separated list of mapping expressions of the request parameters as the identity source\. Applicable for the authorizer of the "request" type only\.   | 
-| identityValidationExpression | string |   A regular expression for validating the token as the incoming identity\. For example, "^x\-\[a\-z\]\+"\.   | 
-| authorizerResultTtlInSeconds | string |   The number of seconds during which the resulting IAM policy is cached\.   | 
+| type | string |   The type of the authorizer\. This is a required property\. Specify `"token"` for an authorizer with the caller identity embedded in an authorization token\. Specify `"request"` for an authorizer with the caller identity contained in request parameters\. Specify `"jwt"` for a JWT authorizer for an HTTP API\.  | 
+| authorizerUri | string |   The Uniform Resource Identifier \(URI\) of the authorizer Lambda function\. The syntax is as follows:  <pre>"arn:aws:apigateway:us-east-1:lambda:path/2015-03-31/functions/arn:aws:lambda:us-east-1:account-id:function:auth_function_name/invocations"</pre> Supported only for REST APIs\.  | 
+| authorizerCredentials | string |   Credentials required for invoking the authorizer, if any, in the form of an ARN of an IAM execution role\. For example, "arn:aws:iam::*account\-id*:*IAM\_role*"\. Supported only for REST APIs\.   | 
+| identitySource | string |  Comma\-separated list of mapping expressions of the request parameters as the identity source\. Applicable for the authorizer of the "request" and "jwt" type only\.  | 
+| jwtConfiguration | Object |  Specifies the issuer and audiences for a JWT authorizer\. To learn more, see [JWTConfiguration](https://docs.aws.amazon.com/apigatewayv2/latest/api-reference/apis-apiid-authorizers-authorizerid.html#apis-apiid-authorizers-authorizerid-model-jwtconfiguration) in the API Gateway Version 2 API Reference\. Supported only for HTTP APIs\.  | 
+| identityValidationExpression | string |   A regular expression for validating the token as the incoming identity\. For example, "^x\-\[a\-z\]\+"\. Supported only for REST APIs\.  | 
+| authorizerResultTtlInSeconds | string |   The number of seconds during which the resulting IAM policy is cached\. Supported only for REST APIs\.  | 
 
 ## x\-amazon\-apigateway\-authorizer Examples<a name="api-gateway-swagger-extensions-authorizer-example"></a>
 
@@ -116,5 +122,47 @@ The following OpenAPI security definitions example specifies an API Gateway Lamb
         "authorizerResultTtlInSeconds" : 300
       }
     }
+}
+```
+
+The following OpenAPI 3\.0 example creates a JWT authorizer for an HTTP API that uses Amazon Cognito as an identity provider, with the `Authorization` header as an identity source\.
+
+```
+"securitySchemes": {
+  "jwt-authorizer-oauth": {
+    "type": "oauth2",
+     "x-amazon-apigateway-authorizer": {
+       "type": "jwt",
+       "jwtConfiguration": {
+          "issuer": "https://cognito-idp.region.amazonaws.com/userPoolId",
+          "audience": [
+            "audience1",
+            "audience2"
+          ]
+        },
+        "identitySource": "$request.header.Authorization"
+    }
+  }
+}
+```
+
+The following OpenAPI 3\.0 example produces the same JWT authorizer as the previous example\. However, this example uses OpenAPI's `openIdConnectUrl` property to automatically detect the issuer\. The `openIdConnectUrl` must be fully formed\.
+
+```
+"securitySchemes": {
+  "jwt-authorizer-autofind": {
+    "type": "openIdConnect",
+    "openIdConnectUrl": "https://cognito-idp.region.amazonaws.com/userPoolId/.well-known/openid-configuration",
+    "x-amazon-apigateway-authorizer": {
+      "type": "jwt",
+      "jwtConfiguration": {
+        "audience": [
+          "audience1",
+          "audience2"
+        ]
+      },
+      "identitySource": "$request.header.Authorization"
+    }
+  }
 }
 ```

@@ -4,7 +4,9 @@
 
 1. Sign in to the API Gateway console at [https://console\.aws\.amazon\.com/apigateway](https://console.aws.amazon.com/apigateway)\.
 
-1. In the box that contains the name of the API for the stage, choose **Stages**\. 
+1. In the list of APIs, choose the name of the API that you want to generate the SDK for\.
+
+1. In the pane on the left that contains the name of the API, choose **Stages**\. 
 
 1. In the **Stages** pane, choose the name of the stage\.
 

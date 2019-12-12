@@ -1,5 +1,10 @@
 # x\-amazon\-apigateway\-any\-method Object<a name="api-gateway-swagger-extensions-any-method"></a>
 
+
+|  | 
+| --- |
+| HTTP APIs are in beta for Amazon API Gateway and are subject to change\. | 
+
  Specifies the [OpenAPI Operation Object](https://github.com/OAI/OpenAPI-Specification/blob/master/versions/2.0.md#operationObject) for the API Gateway catch\-all `ANY` method in a [OpenAPI Path Item Object](https://github.com/OAI/OpenAPI-Specification/blob/master/versions/2.0.md#pathItemObject)\. This object can exist alongside other Operation objects and will catch any HTTP method that was not explicitly declared\. 
 
  The following table lists the properties extended by API Gateway\. For the other OpenAPI Operation properties, see the OpenAPI specification\. 
@@ -9,9 +14,10 @@
 
 | Property Name | Type | Description | 
 | --- | --- | --- | 
+| isDefaultRoute | Boolean | Specifies whether a route is the $default route\. Supported only for HTTP APIs\. To learn more, see [Routes](http-api-concepts.md#http-api-concepts.routes)\. | 
 | x\-amazon\-apigateway\-integration | [x\-amazon\-apigateway\-integration Object](api-gateway-swagger-extensions-integration.md) |  Specifies the integration of the method with the backend\. This is an extended property of the [OpenAPI Operation](https://github.com/OAI/OpenAPI-Specification/blob/master/versions/2.0.md#operationObject) object\. The integration can be of type AWS, AWS\_PROXY, HTTP, HTTP\_PROXY, or MOCK\.  | 
 
-## x\-amazon\-apigateway\-any\-method Example<a name="api-gateway-swagger-extensions-any-method-example"></a>
+## x\-amazon\-apigateway\-any\-method Examples<a name="api-gateway-swagger-extensions-any-method-example"></a>
 
 The following example integrates the `ANY` method on a proxy resource, `{proxy+}`, with a Lambda function, `TestSimpleProxy`\.
 
@@ -36,4 +42,22 @@ The following example integrates the `ANY` method on a proxy resource, `{proxy+}
           "httpMethod": "POST",
           "type": "aws_proxy"
         }
+```
+
+The following example creates a `$default` route for an HTTP API that integrates with a Lambda function, `HelloWorld`\.
+
+```
+"/$default": {
+    "x-amazon-apigateway-any-method": {
+      "isDefaultRoute": true,
+      "x-amazon-apigateway-integration": {
+        "type": "AWS_PROXY",
+        "httpMethod": "POST",
+        "uri": "arn:aws:apigateway:us-east-1:lambda:path/2015-03-31/functions/arn:aws:lambda:us-east-1:123456789012:function:HelloWorld/invocations",
+        "timeoutInMillis": 1000,
+        "connectionType": "INTERNET",
+        "payloadFormatVersion": 1.0
+      }
+   }
+}
 ```

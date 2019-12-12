@@ -81,7 +81,9 @@ For example, the wildcard custom domain name `*.example.com` results in subdomai
 
 Wildcard custom domain names support distinct configurations from API Gateway's standard custom domain names\. For example, in a single AWS account, you can configure `*.example.com` and `a.example.com` to behave differently\.
 
-To create a wildcard custom domain name, you must provide a certificate issued by ACM that has been validated using either the DNS or the email validation method\. The certificate's subject must be the wildcard custom domain name\.
+You can use the `$context.domainName` and `$context.domainPrefix` context variables to determine the domain name that a client used to call your API\. To learn more about context variables, see [API Gateway Mapping Template and Access Logging Variable Reference](api-gateway-mapping-template-reference.md)\.
+
+To create a wildcard custom domain name, you must provide a certificate issued by ACM that has been validated using either the DNS or the email validation method\.
 
 **Note**  
 You can't create a wildcard custom domain name if a different AWS account has created a custom domain name that conflicts with the wildcard custom domain name\. For example, if account A has created `a.example.com`, then account B can't create the wildcard custom domain name `*.example.com`\.  
