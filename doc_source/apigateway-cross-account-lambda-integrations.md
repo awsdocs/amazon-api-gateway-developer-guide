@@ -36,21 +36,17 @@ Now you'll create a Lambda function in a different account from the one in which
 
 1. Under **Author from scratch**, do the following:
 
-   1. In the **Name** input field, type a function name\.
+   1. For **Function name**, enter a name\.
 
-   1. From the **Runtime** drop\-down list, choose a supported runtime\. In this example, we use **Node\.js 8\.10**\.
+   1. From the **Runtime** drop\-down list, choose a supported Node\.js runtime\.
 
-   1.  From the **Role** drop\-down list, choose **Choose an existing role**, **Create new role from template\(s\)** or **Create a custom role**\. Then, follow the ensuing instructions for the choice\.
+   1. Under **Permissions**, expand **Choose or create an execution role**\. You can create a role or choose an existing role\.
 
    1. Choose **Create function** to continue\.
-
-      For this example, we will skip the **Designer** section and move to the **Function code** section next\.
 
 1. Scroll down to the **Function code** pane\.
 
 1. Copy\-paste the Node\.js function implementation from [TUTORIAL: Build a Hello World API with Lambda Proxy Integration](api-gateway-create-api-as-simple-proxy-for-lambda.md)\.
-
-1. From the **Runtime** dropdown menu, choose **Node\.js 8\.10**\.
 
 1. Choose **Save**\.
 
@@ -85,7 +81,7 @@ If you are configuring a cross\-region, cross\-account authorizer, the `sourceAr
 
 1. Copy\-paste the `aws lambda add-permission` command string into an AWS CLI window that is configured for your second account\. This will grant your first account access to your second account's Lambda function\.
 
-1. In the popup from the previous step in the Lambda console, choose **OK**\.
+1. In the popup from the previous step, choose **OK**\.
 
 1. To see the updated policy for your function in the Lambda console, 
 

@@ -128,7 +128,7 @@ In this step, you'll create a second backend Lambda function\. This one takes an
 
 1. For **Function name**, enter `my-function2`\.
 
-1. Under **Runtime**, choose **Node\.js 8\.10** or **Python 3\.7**\.
+1. Under **Runtime**, choose **Node\.js 12\.x** or **Python 3\.7**\.
 
 1. Under **Permissions**, expand **Choose or create an execution role**\. From the **Execution role** dropdown list, choose **Use an existing role**\. From **Existing role**, choose the role from your previous Lambda function\. The role's name will be in the form `service-role/my-function-a1b23c4d`\. Or choose **Create a new role with basic Lambda permissions**\.
 
@@ -137,7 +137,7 @@ In this step, you'll create a second backend Lambda function\. This one takes an
 1. In the **Function code** pane, you'll see the default "Hello from Lambda\!" function\. Replace the entire function with the following:
 
 ------
-#### [ Node\.js 8\.10 ]
+#### [ Node\.js 12\.x ]
 
    ```
    exports.handler = async (event) => {

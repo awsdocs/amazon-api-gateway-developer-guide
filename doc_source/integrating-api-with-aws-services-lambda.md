@@ -168,9 +168,9 @@ Next you'll create a Lambda function using the Lambda console\.
 
 1. Choose **Author from Scratch**\.
 
-1. For **Name**, type **Calc**\.
+1. For **Name**, enter **Calc**\.
 
-1. Set the **Runtime** to **Node\.js 8\.10**\.
+1. Set the **Runtime** to a supported Node\.js runtime\.
 
 1. Choose **Create function**\.
 

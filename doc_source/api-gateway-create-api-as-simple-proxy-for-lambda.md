@@ -39,7 +39,7 @@ Note the region where you create the Lambda function\. You'll need it when you c
 
    1. In **Function name**, enter **GetStartedLambdaProxyIntegration**\.
 
-   1. From the **Runtime** dropdown list, choose **Node\.js 8\.10**\.
+   1. From the **Runtime** dropdown list, choose a supported Node\.js runtime\.
 
    1. Under **Permissions**, expand **Choose or create an execution role**\. From the **Execution role** dropdown list, choose **Create new role from AWS policy templates**\.
 

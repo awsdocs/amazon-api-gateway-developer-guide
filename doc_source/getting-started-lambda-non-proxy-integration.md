@@ -88,7 +88,7 @@ Now, create the `GetStartedLambdaIntegration` Lambda function\.
 
    1. For **Name**, type **GetStartedLambdaIntegration** as the Lambda function name\.
 
-   1. For **Runtime**, choose **Node\.js 8\.10**\.
+   1. For **Runtime**, choose a supported Node\.js runtime\.
 
    1. For **Role**, choose `Create new role from template(s)`\.
 
@@ -99,12 +99,6 @@ Now, create the `GetStartedLambdaIntegration` Lambda function\.
    1. Choose **Create function**\.
 
 1. In the **Configure function** pane, under **Function code** do the following:
-
-   1. Choose **Edit code inline**, if it is not already shown, under **Content entry type**\.
-
-   1. Leave **Handler** set to `index.handler`\. 
-
-   1. Set **Runtime** to **Node\.js 8\.10**\.
 
    1. Copy the Lambda function code listed in the beginning of this section and paste it in the inline code editor\.
 

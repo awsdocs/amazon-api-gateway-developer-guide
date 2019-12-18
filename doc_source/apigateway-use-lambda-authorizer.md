@@ -71,15 +71,13 @@ For the example Lambda authorizer functions in this section, which don't call ot
 
 ### EXAMPLE: Create a Token\-Based Lambda Authorizer Function<a name="api-gateway-lambda-authorizer-token-lambda-function-create"></a>
 
-To create a token\-based Lambda authorizer function, enter the following Node\.js 8\.10 code in the Lambda console and test it in the API Gateway console as follows\.
+To create a token\-based Lambda authorizer function, enter the following Node\.js code in the Lambda console and test it in the API Gateway console as follows\.
 
 1. In the Lambda console, choose **Create function**\.
 
 1. Choose **Author from scratch**\.
 
 1. Enter a name for the function\.
-
-1. For **Runtime**, choose **Node\.js 8\.10**\.
 
 1. Choose **Create function**\.
 
@@ -207,15 +205,13 @@ In addition to returning an IAM policy, the Lambda authorizer function must also
 
 ### EXAMPLE: Create a Request\-Based Lambda Authorizer Function<a name="api-gateway-lambda-authorizer-request-lambda-function-create"></a>
 
-To create a request\-based Lambda authorizer function, enter the following Node\.js 8\.10 code in the Lambda console and test it in the API Gateway console as follows\.
+To create a request\-based Lambda authorizer function, enter the following Node\.js code in the Lambda console and test it in the API Gateway console as follows\.
 
 1. In the Lambda console, choose **Create function**\.
 
 1. Choose **Author from scratch**\.
 
 1. Enter a name for the function\.
-
-1. For **Runtime**, choose **Node\.js 8\.10**\.
 
 1. Choose **Create function**\.
 

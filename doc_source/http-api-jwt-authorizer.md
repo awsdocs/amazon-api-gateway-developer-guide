@@ -13,6 +13,9 @@ If you configure a JWT authorizer for a route of your API, API Gateway validates
 
 You can configure distinct authorizers for each route of an API, or use the same authorizer for multiple routes\.
 
+**Note**  
+There is no standard mechanism to differentiate JWT access tokens from other types of JWTs such as OpenID Connect ID tokens\. Unless you require ID tokens for API authorization, we recommend that you configure your routes to require authorization scopes\. You can also configure your JWT authorizers to require issuers or audiences that your identity provider uses only when issuing JWT access tokens\.
+
 ## Authorizing API Requests<a name="http-api-jwt-authorizer.evaluation"></a>
 
 API Gateway uses the following general workflow to authorize requests to routes configured to use a JWT authorizer\. 
@@ -21,7 +24,7 @@ API Gateway uses the following general workflow to authorize requests to routes 
 
 1. Decode the token\.
 
-1. Check the token's algorithm and signature using the public key fetched from the issuer's `jwks_uri`\. The `none` algorithm isn't supported\. 
+1. Check the token's algorithm and signature using the public key fetched from the issuer's `jwks_uri`\. Currently, only RSA\-based algorithms are supported\.
 
 1. Validate claims\. API Gateway evaluates the following token claims:
 + [https://tools.ietf.org/html/rfc7519#section-4.1.1](https://tools.ietf.org/html/rfc7519#section-4.1.1)

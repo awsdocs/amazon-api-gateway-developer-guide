@@ -613,7 +613,7 @@ To return a response in a Lambda function in Node\.js, you can use commands such
 + To throw an exception, call `callback(new Error('internal server error'))`\.
 + For a client\-side error \(if, for example, a required parameter is missing\), you can call `callback(null, {"statusCode": 400, "body": "Missing parameters of ..."})` to return the error without throwing an exception\.
 
-In a Lambda `async` function in Node\.js 8\.10, the equivalent syntax would be:
+In a Lambda `async` function in Node\.js, the equivalent syntax would be:
 + To return a successful result, call `return {"statusCode": 200, "body": "results"}`\.
 + To throw an exception, call `throw new Error("internal server error")`\.
 + For a client\-side error \(if, for example, a required parameter is missing\), you can call `return {"statusCode": 400, "body": "Missing parameters of ..."}` to return the error without throwing an exception\.
