@@ -76,7 +76,7 @@ The following OpenAPI security definitions example specifies a Lambda authorizer
       "x-amazon-apigateway-authtype" : "custom",
       "x-amazon-apigateway-authorizer" : {
         "type" : "request",
-        "identitySource" : "method.request.header.auth",   // Reqeust parameter mapping expression of the identity source. In this example, it is the 'auth' header.
+        "identitySource" : "method.request.header.auth",   // Request parameter mapping expression of the identity source. In this example, it is the 'auth' header.
         "authorizerCredentials" : "arn:aws:iam::123456789012:role/AWSepIntegTest-CS-LambdaRole",
         "authorizerUri" : "arn:aws:apigateway:us-east-1:lambda:path/2015-03-31/functions/arn:aws:lambda:us-east-1:123456789012:function:APIGateway-Request-Authorizer:vtwo/invocations",
         "authorizerResultTtlInSeconds" : 300

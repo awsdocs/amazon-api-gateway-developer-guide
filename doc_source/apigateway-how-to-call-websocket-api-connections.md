@@ -47,7 +47,7 @@ exports.handler = function(event, context, callback) {
 var domain = event.requestContext.domain;
 var stage = event.requestContext.stage;
 var connectionId = event.requestContext.connectionId;
-var callbackUrl = util.format(util.format('https://%s/%s/@connections/%s', domain, stage, connectionId);
+var callbackUrl = util.format(util.format('https://%s/%s/@connections/%s', domain, stage, connectionId));
 // Do a SigV4 and then make the call
 }
 ```

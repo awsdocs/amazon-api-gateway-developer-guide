@@ -21,7 +21,6 @@ To see an example of a \.NET Lambda authorizer, view the [Creating an API Gatewa
 + [Steps to Create an API Gateway Lambda Authorizer](#api-gateway-lambda-authorizer-create)
 + [Create an API Gateway Lambda Authorizer Function in the Lambda Console](#api-gateway-lambda-authorizer-lambda-function-create)
 + [Configure a Lambda Authorizer Using the API Gateway Console](configure-api-gateway-lambda-authorization-with-console.md)
-+ [Configure a Lambda Authorizer Using the AWS CLI or an AWS SDK](configure-api-gateway-lambda-authorization-programmatically.md)
 + [Input to an Amazon API Gateway Lambda Authorizer](api-gateway-lambda-authorizer-input.md)
 + [Output from an Amazon API Gateway Lambda Authorizer](api-gateway-lambda-authorizer-output.md)
 + [Call an API with API Gateway Lambda Authorizers](call-api-with-api-gateway-lambda-authorization.md)
@@ -59,7 +58,7 @@ To create a Lambda authorizer, you need to perform the following tasks:
 
 1. Configure the Lambda function as an API Gateway authorizer and configure an API method to require it, as described in [Configure a Lambda Authorizer Using the API Gateway Console](configure-api-gateway-lambda-authorization-with-console.md)\. Alternatively, if you need a cross\-account Lambda authorizer, see [Configure a Cross\-Account Lambda Authorizer](apigateway-lambda-authorizer-cross-account-lambda-authorizer.md)\.
 **Note**  
-It is also possible to configure an authorizer by using the AWS CLI or an AWS SDK\. See [Configure a Lambda Authorizer Using the AWS CLI or an AWS SDK](configure-api-gateway-lambda-authorization-programmatically.md)\.
+You can also configure an authorizer by using the AWS CLI or an AWS SDK\.
 
 1. Test your authorizer by using [Postman](https://www.getpostman.com/) as described in [Call an API with API Gateway Lambda Authorizers](call-api-with-api-gateway-lambda-authorization.md)\.
 

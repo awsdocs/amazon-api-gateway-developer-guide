@@ -23,7 +23,9 @@ After creating your VPC resource and your Network Load Balancer with your VPC re
 
 1. Create a VPC link, if you have not already done so:
 
-   1.  From the primary navigation pane, choose **VPC Links** and then choose **\+ Create**\. 
+   1. Choose an API from the APIs list\.
+
+   1. From the primary navigation pane, choose **VPC Links** and then choose **\+ Create**\. 
 
    1.  Under **VPC Link**, type a name \(for example, `my-test-vpc-link`\) in the **Name** field\.
 

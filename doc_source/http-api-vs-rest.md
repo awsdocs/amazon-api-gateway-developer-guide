@@ -46,6 +46,9 @@ The following tables summarize core features that are available in HTTP APIs and
 | --- | --- | --- | 
 |  Usage plans  |   |  ✓  | 
 |  API keys  |   |  ✓  | 
+|  Custom domain names  |  ✓ \*  |  ✓  | 
+
+\* HTTP APIs don't support TLS 1\.0 or wildcard custom domain names\.
 
 
 | Development | HTTP API | REST API | 

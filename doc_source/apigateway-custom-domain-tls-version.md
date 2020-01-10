@@ -24,7 +24,8 @@ The following sections describe how to create a custom domain name, including sp
 
 You can change the security policy by updating the domain name settings\. To change the minimum TLS version, use one of the following commands, specifying the new TLS version \(`TLS_1_0` or `TLS_1_2`\) in the `securityPolicy` parameter\. Allow up to 60 minutes for the update to be completed\.
 + [https://docs.aws.amazon.com/apigateway/api-reference/link-relation/domainname-update/](https://docs.aws.amazon.com/apigateway/api-reference/link-relation/domainname-update/)
-+ [https://docs.aws.amazon.com/goto/aws-cli/apigateway/update-domain-name.html](https://docs.aws.amazon.com/goto/aws-cli/apigateway/update-domain-name.html)
++ [https://docs.aws.amazon.com/cli/latest/reference/apigateway/update-domain-name.html](https://docs.aws.amazon.com/cli/latest/reference/apigateway/update-domain-name.html)
++ [https://docs.aws.amazon.com/apigatewayv2/latest/api-reference/domainnames-domainname.html#domainnames-domainnamepatch](https://docs.aws.amazon.com/apigatewayv2/latest/api-reference/domainnames-domainname.html#domainnames-domainnamepatch)
 
 ## Supported Security Policies, TLS Protocol Versions, and Ciphers for Edge\-Optimized API Endpoints in API Gateway<a name="apigateway-custom-domain-tls-version-edge-optimized"></a>
 

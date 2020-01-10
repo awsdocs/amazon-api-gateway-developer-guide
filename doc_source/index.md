@@ -1,7 +1,7 @@
 # Amazon API Gateway Developer Guide
 
 -----
-*****Copyright &copy; 2019 Amazon Web Services, Inc. and/or its affiliates. All rights reserved.*****
+*****Copyright &copy; 2020 Amazon Web Services, Inc. and/or its affiliates. All rights reserved.*****
 
 -----
 Amazon's trademarks and trade dress may not be used in 
@@ -137,7 +137,6 @@ Amazon's trademarks and trade dress may not be used in
       + [Using Tags to Control Access to a REST API in API Gateway](apigateway-control-access-tags.md)
       + [Use API Gateway Lambda Authorizers](apigateway-use-lambda-authorizer.md)
          + [Configure a Lambda Authorizer Using the API Gateway Console](configure-api-gateway-lambda-authorization-with-console.md)
-         + [Configure a Lambda Authorizer Using the AWS CLI or an AWS SDK](configure-api-gateway-lambda-authorization-programmatically.md)
          + [Input to an Amazon API Gateway Lambda Authorizer](api-gateway-lambda-authorizer-input.md)
          + [Output from an Amazon API Gateway Lambda Authorizer](api-gateway-lambda-authorizer-output.md)
          + [Call an API with API Gateway Lambda Authorizers](call-api-with-api-gateway-lambda-authorization.md)
