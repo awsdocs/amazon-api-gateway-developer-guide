@@ -65,6 +65,39 @@ The following example resource policy is a "blacklist" policy that denies \(bloc
 }
 ```
 
+## Example: Deny API traffic based on source IP address or range when using a Private API <a name="apigateway-resource-policies-source-ip-address-provate-api-example"></a>
+
+The following example resource policy is a "blacklist" policy that denies \(blocks\) incoming traffic to an Private API from two specified source IP address blocks\. When using Private APIs, the VPC endpoint for execute-api re-writes the orginal source IP address, hence it is necessary to use the `aws:VpcSourceAddres`conditon to properly filter the request against the original requester IP address\. 
+
+```
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Effect": "Allow",
+            "Principal": "*",
+            "Action": "execute-api:Invoke",
+            "Resource": [
+                "arn:aws:execute-api:region:account-id:api-id/*"
+            ]
+        },
+        {
+            "Effect": "Deny",
+            "Principal": "*",
+            "Action": "execute-api:Invoke",
+            "Resource": [
+               "arn:aws:execute-api:region:account-id:api-id/*"
+            ],
+            "Condition" : {
+                "IpAddress": {
+                    "aws:VpcSourceIp": ["192.0.2.0/24", "10.220.0.0/16" ]
+                }
+            }
+        }
+    ]
+}
+```
+
 ## Example: Allow private API traffic based on source VPC or VPC endpoint<a name="apigateway-resource-policies-source-vpc-example"></a>
 
 The following example resource policies allow incoming traffic to a private API only from a specified virtual private cloud \(VPC\) or VPC endpoint\.
