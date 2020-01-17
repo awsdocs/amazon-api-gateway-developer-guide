@@ -149,7 +149,7 @@ In effect, this mapping template outputs all the request parameters in the paylo
 
 ```
 {
-  "parameters" : {
+  "params" : {
      "path" : {    
        "path_name" : "path_value", 
        ...
