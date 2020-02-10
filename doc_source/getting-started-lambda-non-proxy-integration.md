@@ -90,7 +90,7 @@ Now, create the `GetStartedLambdaIntegration` Lambda function\.
 
    1. For **Runtime**, choose a supported Node\.js runtime\.
 
-   1. For **Role**, choose `Create new role from template(s)`\.
+   1. For **Role**, choose `Create a new role from AWS policy templates`\.
 
    1. For **Role name**, type a name for your role \(for example, **GetStartedLambdaIntegrationRole**\)\.
 
