@@ -11,13 +11,16 @@ You can create an HTTP API by importing an OpenAPI 3\.0 definition file\.
 
 To migrate from a REST API to an HTTP API, you can export your REST API as an OpenAPI 3\.0 definition file\. Then import the API definition as an HTTP API\. To learn more about exporting a REST API, see [Export a REST API](api-gateway-export-api.md)\. 
 
+**Note**  
+HTTP APIs support the same AWS variables as REST APIs\. To learn more, see [AWS Variables for OpenAPI Import](import-api-aws-variables.md)\.
+
 ## Import Validation Information<a name="http-api-import.validation"></a>
 
 As you import an API, API Gateway provides three categories of validation information\.
 
 **Info**  
 A property is valid according to the OpenAPI specification, but that property isn’t supported for HTTP APIs\.  
-For example, the following OpenAPI 3\.0 snippet produces info on import because HTTP APIs don't support request validation\. API Gateway ignores the requestBody and Schema fields\.  
+For example, the following OpenAPI 3\.0 snippet produces info on import because HTTP APIs don't support request validation\. API Gateway ignores the `requestBody` and `schema` fields\.  
 
 ```
 "paths": {

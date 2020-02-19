@@ -1,6 +1,6 @@
 # Import an OpenAPI File to Update an Existing API Definition<a name="api-gateway-import-api-update"></a>
 
- You can import API definitions only to update an existing API, without changing its endpoint configuration, as well as stages and stage variables, or references to API Keys\. 
+ You can import API definitions only to update an existing API, without changing its endpoint configuration, as well as stages and stage variables, or references to API keys\. 
 
  The import\-to\-update operation can occur in two modes: merge or overwrite\. 
 
@@ -17,23 +17,23 @@ and `A` declares the following method to return `200` and `400` responses:
 GET /a
 ```
 
-When `A` is merged into `B`, the resulting API will yield the following methods:
+When `A` is merged into `B`, the resulting API yields the following methods:
 
 ```
 GET /a
 ```
 
-which will return `200` and `400` responses, and 
+which returns `200` and `400` responses, and 
 
 ```
 POST /a
 ```
 
-which will return `200` and `206` responses\.
+which returns `200` and `206` responses\.
 
-Merging an API is useful when you have decomposed your external API definitions into multiple, smaller parts and only want to apply changes from one of those parts at a time\. For example, this might occur if multiple teams are responsible for different parts of an API and have changes available at different rates\. In this mode, items from the existing API that are not specifically defined in the imported definition will be left alone\. 
+Merging an API is useful when you have decomposed your external API definitions into multiple, smaller parts and only want to apply changes from one of those parts at a time\. For example, this might occur if multiple teams are responsible for different parts of an API and have changes available at different rates\. In this mode, items from the existing API that aren't specifically defined in the imported definition are left alone\. 
 
-When an API \(`A`\) overwrites another API \(`B`\), the resulting API takes the definitions of the overwriting API \(`A`\)\. Overwriting an API is useful when an external API definition contains the complete definition of an API\. In this mode, items from an existing API that are not specifically defined in the imported definition will be deleted\. 
+When an API \(`A`\) overwrites another API \(`B`\), the resulting API takes the definitions of the overwriting API \(`A`\)\. Overwriting an API is useful when an external API definition contains the complete definition of an API\. In this mode, items from an existing API that aren't specifically defined in the imported definition are deleted\. 
 
  To merge an API, submit a `PUT` request to `https://apigateway.<region>.amazonaws.com/restapis/<restapi_id>?mode=merge`\. The `restapi_id` path parameter value specifies the API to which the supplied API definition will be merged\. 
 
@@ -63,7 +63,7 @@ Content-Length: ...
 [An OpenAPI API definition in JSON](api-as-lambda-proxy-export-swagger-with-extensions.md)
 ```
 
- When the `mode` query parameter is not specified, merge is assumed\.
+ When the `mode` query parameter isn't specified, merge is assumed\.
 
 **Note**  
- The `PUT` operations are idempotent, but not atomic\. That means if a system error occurs part way through processing, the API can end up in a bad state\. However, repeating the operation will put the API into the same final state as if the first operation had succeeded\.  
+ The `PUT` operations are idempotent, but not atomic\. That means if a system error occurs part way through processing, the API can end up in a bad state\. However, repeating the operation puts the API into the same final state as if the first operation had succeeded\.  

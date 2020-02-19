@@ -77,6 +77,10 @@ The following tables summarize core features that are available in HTTP APIs and
 |  Private  |   |  ✓  | 
 
 
-| AWS Service Integrations | HTTP API | REST API | 
+| Monitoring | HTTP API | REST API | 
 | --- | --- | --- | 
+|  Access logs to Amazon CloudWatch Logs  |  ✓  |  ✓  | 
+|  Access logs to Amazon Kinesis Data Firehose  |   |  ✓  | 
+|  Execution logs  |   |  ✓  | 
+|  Amazon CloudWatch metrics  |  ✓  |  ✓  | 
 |  AWS X\-Ray  |   |  ✓  | 

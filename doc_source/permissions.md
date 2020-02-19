@@ -40,7 +40,7 @@ For more information on how to use this permissions model, see [ Control Access 
 }
 ```
 
-If you create the IAM role by calling the [create\-role](https://docs.aws.amazon.com/cli/latest/reference/iam/create-role.html) command of CLI or a corresponding SDK method, you must supply the above trust policy as the input parameter of `assume-role-policy-document`\. Do not attempt to create such a policy directly in the IAM Management console or calling AWS CLI [create\-policy](https://docs.aws.amazon.com/cli/latest/reference//iam/create-policy.html) command or a corresponding SDK method\.
+If you create the IAM role by calling the [create\-role](https://docs.aws.amazon.com/cli/latest/reference/iam/create-role.html) command of CLI or a corresponding SDK method, you must supply the above trust policy as the input parameter of `assume-role-policy-document`\. Do not attempt to create such a policy directly in the IAM Management console or calling AWS CLI [create\-policy](https://docs.aws.amazon.com/cli/latest/reference/iam/create-policy.html) command or a corresponding SDK method\.
 
 For API Gateway to call the integrated AWS service, you must also attach to this role appropriate IAM permissions policies for calling integrated AWS services\. For example, to call a Lambda function, you must include the following IAM permissions policy in the IAM role: 
 

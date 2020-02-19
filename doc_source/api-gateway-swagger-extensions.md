@@ -1,6 +1,6 @@
 # API Gateway Extensions to OpenAPI<a name="api-gateway-swagger-extensions"></a>
 
- The API Gateway extensions support the AWS\-specific authorization and API Gateway\-specific API integrations\. In this section, we will describe the API Gateway extensions to the OpenAPI specification\. 
+The API Gateway extensions support the AWS\-specific authorization and API Gateway\-specific API integrations\. In this section, we will describe the API Gateway extensions to the OpenAPI specification\. 
 
 **Tip**  
  To understand how the API Gateway extensions are used in an app, you can use the API Gateway console to create an API and export it to a OpenAPI definition file\. For more information on how to export an API, see [Export a REST API](api-gateway-export-api.md)\. 

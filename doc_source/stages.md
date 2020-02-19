@@ -112,7 +112,7 @@ For more information about CloudWatch, see the *[Amazon CloudWatch User Guide](h
 
    1. Under **Custom Access Logging**, choose **Enable Access Logging**\.
 
-   1. In **Access Log Destination ARN**, enter the ARN of a Kinesis Data Firehose delivery stream\. The ARN format is `arn:aws:firehose:{region}:{account-id}:deliverystream:amazon-apigateway-{your-delivery-stream-name}`\.
+   1. In **Access Log Destination ARN**, enter the ARN of a Kinesis Data Firehose delivery stream\. The ARN format is `arn:aws:firehose:{region}:{account-id}:deliverystream/amazon-apigateway-{your-delivery-stream-name}`\.
 **Note**  
 The name of your Kinesis Data Firehose delivery stream must be `amazon-apigateway-{your-delivery-stream-name}`\.
 

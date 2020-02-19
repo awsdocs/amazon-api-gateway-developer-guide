@@ -1,10 +1,11 @@
 # Document History<a name="history"></a>
 
 The following table describes the important changes to the documentation since the last release of Amazon API Gateway\. For notification about updates to this documentation, you can subscribe to an RSS feed by choosing the RSS button in the top menu panel\.
-+ **Latest documentation update:** December 4, 2019
++ **Latest documentation update:** Feb 17, 2020
 
 | Change | Description | Date | 
 | --- |--- |--- |
+| [AWS variables for OpenAPI import](#history) | Added support for AWS variables in OpenAPI definitions\. For more information, see [AWS Variables for OpenAPI Import](https://docs.aws.amazon.com/apigateway/latest/developerguide/import-api-aws-variables.html)\. | February 17, 2020 | 
 | [HTTP APIs](#history) | Released HTTP APIs in beta\. For more information, see [HTTP APIs](https://docs.aws.amazon.com/apigateway/latest/developerguide/http-api.html)\. | December 4, 2019 | 
 | [Wildcard custom domain names](#history) | Added support for wildcard custom domain names\. For more information, see [Wildcard Custom Domain Names](https://docs.aws.amazon.com/apigateway/latest/developerguide/how-to-custom-domains.html#wildcard-custom-domain-names)\. | October 21, 2019 | 
 | [Amazon Kinesis Data Firehose logging](#history) | Added support for Amazon Kinesis Data Firehose as a destination for access logging data\. For more information, see [Using Amazon Kinesis Data Firehose as a Destination for API Gateway Access Logging](https://docs.aws.amazon.com/apigateway/latest/developerguide/apigateway-logging-to-kinesis.html)\. | October 15, 2019 | 

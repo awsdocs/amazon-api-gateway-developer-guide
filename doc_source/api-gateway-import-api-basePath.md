@@ -19,15 +19,15 @@ POST /restapis?mode=import&basepath=ignore
 PUT /restapis/api_id?basepath=ignore
 ```
 
- will result in the following resources in the API: 
+ results in the following resources in the API: 
 + `/`
 + `/e`
 + `/f`
 
- The effect is to treat the `basePath` as if it was not present, and all of the declared API resources are served relative to the host\. This can be used, for example, when you have a custom domain name with an API mapping that does not include a *Base Path* and a *Stage* value that refers to your production stage\. 
+ The effect is to treat the `basePath` as if it was not present, and all of the declared API resources are served relative to the host\. This can be used, for example, when you have a custom domain name with an API mapping that doesn't include a *Base Path* and a *Stage* value that refers to your production stage\. 
 
 **Note**  
- API Gateway will automatically create a root resource for you, even if it is not explicitly declared in your definition file\. 
+ API Gateway automatically creates a root resource for you, even if it isn't explicitly declared in your definition file\. 
 
  When unspecified, `basePath` takes `ignore` by default\. 
 
@@ -43,7 +43,7 @@ POST /restapis?mode=import&basepath=prepend
 PUT /restapis/api_id?basepath=prepend
 ```
 
- will result in the following resources in the API: 
+ results in the following resources in the API: 
 + `/`
 + `/a`
 + `/a/b`
@@ -54,7 +54,7 @@ PUT /restapis/api_id?basepath=prepend
  The effect is to treat the `basePath` as specifying additional resources \(without methods\) and to add them to the declared resource set\. This can be used, for example, when different teams are responsible for different parts of an API and the `basePath` could reference the path location for each team's API part\. 
 
 **Note**  
- API Gateway will automatically create intermediate resources for you, even if they are not explicitly declared in your definition\. 
+ API Gateway automatically creates intermediate resources for you, even if they aren't explicitly declared in your definition\. 
 
 ## split<a name="api-gateway-import-api-basePath-split"></a>
 
@@ -68,7 +68,7 @@ POST /restapis?mode=import&basepath=split
 PUT /restapis/api_id?basepath=split
 ```
 
- will result in the following resources in the API: 
+ results in the following resources in the API: 
 + `/`
 + `/b`
 + `/b/c`

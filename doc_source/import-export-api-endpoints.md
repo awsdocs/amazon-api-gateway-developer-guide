@@ -20,7 +20,7 @@ To import an API of a regional endpoint using the API Gateway console, do the fo
 
 1.  Copy an API's OpenAPI definition and paste it into the code editor, or choose **Select OpenAPI File** to load an OpenAPI file from a local drive\.
 
-1.  Under **Settings**, for **Endpoint Type**, choose `Regional`\.\.
+1.  Under **Settings**, for **Endpoint Type**, choose `Regional`\.
 
 1.  Choose **Import** to start importing the OpenAPI definitions\.
 

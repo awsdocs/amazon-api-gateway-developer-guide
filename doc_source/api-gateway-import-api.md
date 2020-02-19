@@ -9,4 +9,5 @@ For a tutorial on using the Import API feature from the API Gateway console, see
 + [Import a Regional API into API Gateway](import-export-api-endpoints.md)
 + [Import an OpenAPI File to Update an Existing API Definition](api-gateway-import-api-update.md)
 + [Set the OpenAPI `basePath` Property](api-gateway-import-api-basePath.md)
++ [AWS Variables for OpenAPI Import](import-api-aws-variables.md)
 + [Errors and Warnings during Import](api-gateway-import-api-errors-warnings.md)

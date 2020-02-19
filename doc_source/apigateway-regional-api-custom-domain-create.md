@@ -27,9 +27,9 @@ You must create a DNS record to point the custom domain name to the regional dom
 
 1. Under **New Custom Domain Name**:
 
-   1. Choose the API protocol: **HTTP** or **WebSocket**\.
+   1. Choose the API protocol\.
 
-   1. Under **Domain Name**, type a custom domain name, for example, `my-api.example.com`, in **Domain Name**
+   1. Under **Domain Name**, enter a custom domain name, for example, `my-api.example.com`, in **Domain Name**
 
 1. Under **Security Policy**, choose the desired minimum Transport Layer Security \(TLS\) version\.
 

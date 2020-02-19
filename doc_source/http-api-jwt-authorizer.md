@@ -9,7 +9,7 @@
 
 You can use JSON Web Tokens \(JWTs\) as a part of [OpenID Connect \(OIDC\)](https://openid.net/specs/openid-connect-core-1_0.html) and [OAuth 2\.0](https://oauth.net/2/) frameworks to restrict client access to your APIs\.
 
-If you configure a JWT authorizer for a route of your API, API Gateway validates the JWTs that clients submit with API requests\. API Gateway allows or denies requests based on token validation, and optionally, scopes in the token\.
+If you configure a JWT authorizer for a route of your API, API Gateway validates the JWTs that clients submit with API requests\. API Gateway allows or denies requests based on token validation, and optionally, scopes in the token\. If you configure scopes for a route, the token must include at least one of the route's scopes\.
 
 You can configure distinct authorizers for each route of an API, or use the same authorizer for multiple routes\.
 
@@ -20,18 +20,18 @@ There is no standard mechanism to differentiate JWT access tokens from other typ
 
 API Gateway uses the following general workflow to authorize requests to routes configured to use a JWT authorizer\. 
 
-1. Check the route's `identitySource` for a token\.
+1. Check the [https://docs.aws.amazon.com/apigatewayv2/latest/api-reference/apis-apiid-authorizers-authorizerid.html#apis-apiid-authorizers-authorizerid-prop-authorizer-identitysource](https://docs.aws.amazon.com/apigatewayv2/latest/api-reference/apis-apiid-authorizers-authorizerid.html#apis-apiid-authorizers-authorizerid-prop-authorizer-identitysource) for a token\. The `identitySource` can include only the token, or the token prefixed with `Bearer `\.
 
 1. Decode the token\.
 
 1. Check the token's algorithm and signature using the public key fetched from the issuer's `jwks_uri`\. Currently, only RSA\-based algorithms are supported\.
 
 1. Validate claims\. API Gateway evaluates the following token claims:
-+ [https://tools.ietf.org/html/rfc7519#section-4.1.1](https://tools.ietf.org/html/rfc7519#section-4.1.1)
-+ [https://tools.ietf.org/html/rfc7519#section-4.1.3](https://tools.ietf.org/html/rfc7519#section-4.1.3)
-+ [https://tools.ietf.org/html/rfc7519#section-4.1.4](https://tools.ietf.org/html/rfc7519#section-4.1.4) 
-+ [https://tools.ietf.org/html/rfc7519#section-4.1.5](https://tools.ietf.org/html/rfc7519#section-4.1.5) 
-+ [https://tools.ietf.org/html/rfc6749#section-3.3](https://tools.ietf.org/html/rfc6749#section-3.3) 
++ [https://tools.ietf.org/html/rfc7519#section-4.1.1](https://tools.ietf.org/html/rfc7519#section-4.1.1) — Must match the [https://docs.aws.amazon.com/apigatewayv2/latest/api-reference/apis-apiid-authorizers-authorizerid.html#apis-apiid-authorizers-authorizerid-model-jwtconfiguration](https://docs.aws.amazon.com/apigatewayv2/latest/api-reference/apis-apiid-authorizers-authorizerid.html#apis-apiid-authorizers-authorizerid-model-jwtconfiguration) configured for the authorizer\.
++ [https://tools.ietf.org/html/rfc7519#section-4.1.3](https://tools.ietf.org/html/rfc7519#section-4.1.3) — Must match one of the [https://docs.aws.amazon.com/apigatewayv2/latest/api-reference/apis-apiid-authorizers-authorizerid.html#apis-apiid-authorizers-authorizerid-model-jwtconfiguration](https://docs.aws.amazon.com/apigatewayv2/latest/api-reference/apis-apiid-authorizers-authorizerid.html#apis-apiid-authorizers-authorizerid-model-jwtconfiguration) entries configured for the authorizer\.
++ [https://tools.ietf.org/html/rfc7519#section-4.1.4](https://tools.ietf.org/html/rfc7519#section-4.1.4) — Must be after the current time in UTC\. 
++ [https://tools.ietf.org/html/rfc7519#section-4.1.5](https://tools.ietf.org/html/rfc7519#section-4.1.5) — Must be before the current time in UTC\. 
++ [https://tools.ietf.org/html/rfc6749#section-3.3](https://tools.ietf.org/html/rfc6749#section-3.3) or `scp` — The token must include at least one of the scopes in the route's [https://docs.aws.amazon.com/apigatewayv2/latest/api-reference/apis-apiid-routes-routeid.html#apis-apiid-routes-routeid-prop-updaterouteinput-authorizationscopes](https://docs.aws.amazon.com/apigatewayv2/latest/api-reference/apis-apiid-routes-routeid.html#apis-apiid-routes-routeid-prop-updaterouteinput-authorizationscopes)\.
 
 If any of these steps fail, API Gateway denies the API request\.
 

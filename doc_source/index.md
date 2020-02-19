@@ -118,6 +118,7 @@ Amazon's trademarks and trade dress may not be used in
          + [Import a Regional API into API Gateway](import-export-api-endpoints.md)
          + [Import an OpenAPI File to Update an Existing API Definition](api-gateway-import-api-update.md)
          + [Set the OpenAPI basePath Property](api-gateway-import-api-basePath.md)
+         + [AWS Variables for OpenAPI Import](import-api-aws-variables.md)
          + [Errors and Warnings during Import](api-gateway-import-api-errors-warnings.md)
    + [Controlling and Managing Access to a REST API in API Gateway](apigateway-control-access-to-api.md)
       + [Control Access to an API with Amazon API Gateway Resource Policies](apigateway-resource-policies.md)

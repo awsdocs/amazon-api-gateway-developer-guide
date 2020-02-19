@@ -30,8 +30,8 @@ A stage variable can be used as part of an HTTP integration URL, as shown in the
 ## AWS Integration URIs \(Lambda Functions\)<a name="stage-variables-in-integration-lambda-functions"></a>
 
  A stage variable can be used in place of a Lambda function name, or version/alias, as shown in the following examples\. 
-+ `arn:aws:apigateway:<region>:lambda:path/2015-03-31/functions/arn:aws:lambda::<account_id>:function:${stageVariables.<function_variable_name>}/invocations`
-+ `arn:aws:apigateway:<region>:lambda:path/2015-03-31/functions/arn:aws:lambda::<account_id>:function:<function_name>:${stageVariables.<version_variable_name>}/invocations`
++ `arn:aws:apigateway:<region>:lambda:path/2015-03-31/functions/arn:aws:lambda:<region>:<account_id>:function:${stageVariables.<function_variable_name>}/invocations`
++ `arn:aws:apigateway:<region>:lambda:path/2015-03-31/functions/arn:aws:lambda:<region>:<account_id>:function:<function_name>:${stageVariables.<version_variable_name>}/invocations`
 
 ## AWS Integration Credentials<a name="stage-variables-in-integration-aws-credentials"></a>
 

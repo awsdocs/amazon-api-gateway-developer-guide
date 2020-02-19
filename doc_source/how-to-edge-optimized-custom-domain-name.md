@@ -21,9 +21,9 @@ The following procedure describes how to set up a custom domain name for an API 
 
 1. Under **New Custom Domain Name**:
 
-   1. For the API protocol, choose **HTTP**\.
+   1. For the API protocol, choose **REST**\.
 
-   1. Under **Domain Name**, type a custom domain name, for example, `my-api.example.com`, in **Domain Name**
+   1. Under **Domain Name**, enter a custom domain name, for example, `my-api.example.com`, in **Domain Name**
 
    1. Under **Security Policy**, choose the desired minimum Transport Layer Security \(TLS\) version\.
 

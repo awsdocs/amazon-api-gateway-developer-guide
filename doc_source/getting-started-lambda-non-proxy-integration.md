@@ -79,22 +79,22 @@ Now, create the `GetStartedLambdaIntegration` Lambda function\.
 1. Open the AWS Lambda console at [https://console\.aws\.amazon\.com/lambda/](https://console.aws.amazon.com/lambda/)\.
 
 1. Do one of the following:
-   + If the welcome page appears, choose **Get Started Now** and then choose **Create a function**\.
-   + If the **Lambda > Functions** list page appears, choose **Create a function**\.
+   + If the welcome page appears, choose **Get Started Now** and then choose **Create function**\.
+   + If the **Lambda > Functions** list page appears, choose **Create function**\.
 
 1. Choose **Author from scratch**\. 
 
 1. In the **Author from scratch** pane, do the following:
 
-   1. For **Name**, type **GetStartedLambdaIntegration** as the Lambda function name\.
+   1. For **Name**, enter **GetStartedLambdaIntegration** as the Lambda function name\.
 
    1. For **Runtime**, choose a supported Node\.js runtime\.
 
-   1. For **Role**, choose `Create a new role from AWS policy templates`\.
+   1. For **Execution role**, choose **Create a new role from AWS policy templates**\.
 
-   1. For **Role name**, type a name for your role \(for example, **GetStartedLambdaIntegrationRole**\)\.
+   1. For **Role name**, enter a name for your role \(for example, **GetStartedLambdaIntegrationRole**\)\.
 
-   1. For **Policy templates**, choose `Simple Microservice permissions`\. 
+   1. For **Policy templates**, choose **Simple microservice permissions**\.
 
    1. Choose **Create function**\.
 

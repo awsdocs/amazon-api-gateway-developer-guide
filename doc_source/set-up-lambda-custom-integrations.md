@@ -127,7 +127,7 @@ With the Lambda function set in the backend, proceed to set up the API\.<a name=
    aws apigateway put-method-response \
            --region us-west-2 \
            --rest-api-id te6si5ach7 \ 
-           --resource-id 2jf6xt \ 
+           --resource-id 2jf6xt \
            --http-method GET \
            --status-code 200
    ```

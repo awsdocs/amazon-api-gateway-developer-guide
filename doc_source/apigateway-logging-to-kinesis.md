@@ -38,7 +38,7 @@ To set up API logging, you must have deployed the API to a stage\. You must also
 
    1. Choose **Enable Access Logging** under **Custom Access Logging**\.
 
-   1. Enter the ARN of a Kinesis Data Firehose delivery stream in **Access Log Destination ARN**\. The ARN format is `arn:aws:firehose:{region}:{account-id}:deliverystream:amazon-apigateway-{your-delivery-stream-name}`\.
+   1. Enter the ARN of a Kinesis Data Firehose delivery stream in **Access Log Destination ARN**\. The ARN format is `arn:aws:firehose:{region}:{account-id}:deliverystream/amazon-apigateway-{your-delivery-stream-name}`\.
 **Note**  
 The name of your delivery stream must be `amazon-apigateway-{your-delivery-stream-name}`\.
 
