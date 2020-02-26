@@ -6,6 +6,15 @@ You can configure the Lambda function for a Lambda non\-proxy integration to be 
 
 **Configure Lambda asynchronous invocation in the API Gateway console**
 
-1. In **Integration Request**, add an `X-Amz-Invocation-Type` header\.
+If you want all invocations to be asynchronous:
 
-1. In **Method Request**, add an `InvocationType` header and map it to the `X-Amz-Invocation-Type` header in the **Integration Request** with either a static value of `'Event'` or the header mapping expression of `method.request.header.InvocationType`\. For the latter, the client must include the `InvocationType:Event` header when making a request to the API method\.
+1. In **Integration Request**, add an `X-Amz-Invocation-Type` header in the **Integration Request** with a static value of `'Event'`\.
+
+If you want the client to decide if the call should be asyncrhonous or synchronous:
+
+1. In **Method Request**, add an `InvocationType` header\.
+
+1. In **Integration Request** add an `X-Amz-Invocation-Type` header with a mapping expression of `method.request.header.InvocationType`\. 
+
+1. The client must include the `InvocationType:Event` header when making a request to the API method to make it asychronous or `InvocationType:RequestResponse` to make it synchronous\.
+
