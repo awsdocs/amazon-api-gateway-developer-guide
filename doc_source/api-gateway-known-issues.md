@@ -65,6 +65,7 @@
   + API Gateway doesn't use root level security defined in the OpenAPI specification\. Hence security needs to be defined at an operation level to be appropriately applied\.
 + API Gateway enacts the following restrictions and limitations when handling methods with either Lambda integration or HTTP integration\.
   + Header names and query parameters are processed in a case\-sensitive way\.
+  + Duplicated query string parameters are not supported\.
   + The following table lists the headers that may be dropped, remapped, or otherwise modified when sent to your integration endpoint or sent back by your integration endpoint\. In this table:
     + `Remapped` means that the header name is changed from `<string>` to `X-Amzn-Remapped-<string>`\.
 
