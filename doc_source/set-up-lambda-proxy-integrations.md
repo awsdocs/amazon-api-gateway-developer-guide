@@ -390,7 +390,7 @@ If you specify values for both `headers` and `multiValueHeaders`, API Gateway me
 The following `POST` request shows an API deployed to `testStage` with a stage variable of `stageVariableName=stageVariableValue`:
 
 ```
-POST /testStage/hello/world?name=me HTTP/1.1
+POST /testStage/hello/world?name=me&multivalueName=you&multivalueName=me HTTP/1.1
 Host: gy415nuibc.execute-api.us-east-1.amazonaws.com
 Content-Type: application/json
 headerName: headerValue
