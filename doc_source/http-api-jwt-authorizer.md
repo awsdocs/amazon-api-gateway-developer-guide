@@ -32,6 +32,7 @@ API Gateway uses the following general workflow to authorize requests to routes 
 + [https://tools.ietf.org/html/rfc7519#section-4.1.4](https://tools.ietf.org/html/rfc7519#section-4.1.4) — Must be after the current time in UTC\. 
 + [https://tools.ietf.org/html/rfc7519#section-4.1.5](https://tools.ietf.org/html/rfc7519#section-4.1.5) — Must be before the current time in UTC\. 
 + [https://tools.ietf.org/html/rfc6749#section-3.3](https://tools.ietf.org/html/rfc6749#section-3.3) or `scp` — The token must include at least one of the scopes in the route's [https://docs.aws.amazon.com/apigatewayv2/latest/api-reference/apis-apiid-routes-routeid.html#apis-apiid-routes-routeid-prop-updaterouteinput-authorizationscopes](https://docs.aws.amazon.com/apigatewayv2/latest/api-reference/apis-apiid-routes-routeid.html#apis-apiid-routes-routeid-prop-updaterouteinput-authorizationscopes)\.
+5. [https://tools.ietf.org/html/rfc7517#section-4.5](https://tools.ietf.org/html/rfc7517#section-4.5]) — The token must have a header claim [`kid`](https://tools.ietf.org/html/rfc7517#section-4.5) matching a corresponding key in the `jwks_uri` which signed the token\.
 
 If any of these steps fail, API Gateway denies the API request\.
 
