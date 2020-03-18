@@ -37,7 +37,7 @@ When calling the API Gateway API, you choose this option by setting `NEVER` as t
 
    For more information about the integration passthrough behaviors, see [Integration Passthrough Behaviors](integration-passthrough-behaviors.md)\.
 
-1.  To define a mapping template for an incoming request, choose **Add mapping template** under **Content\-Type**\. Type a content type \(e\.g\., **application/json**\) in the input text box and then choose the check mark icon to save the input\. Then, type the mapping template manually or choose **Generate template** to create one from a model template\. For more information, see [Create Models and Mapping Templates for Request and Response Mappings](models-mappings.md)\. 
+1.  To define a mapping template for an incoming request, choose **Add mapping template** under **Content\-Type**\. Type a content type \(e\.g\., **application/json**\) in the input text box and then choose the check mark icon to save the input\. Then, type the mapping template manually or choose **Generate template** to create one from a model template\. For more information, see [Working with Models and Mapping Templates](models-mappings.md)\. 
 
 1.  You can map an integration response from the backend to a method response of the API returned to the calling app\. This includes returning to the client selected response headers from the available ones from the backend, transforming the data format of the backend response payload to an API\-specified format\. You can specify such mapping by configuring **Method Response** and **Integration Response** from the **Method Execution** page\. 
 

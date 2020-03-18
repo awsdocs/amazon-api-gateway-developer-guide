@@ -23,6 +23,6 @@ Use the API Gateway console to create a model for an API\.
 
 1. \(Optional\) For **Model description**, type a description for the model\.
 
-1. For **Model schema**, type the model's schema\. For more information about model schemas, see [Create Models and Mapping Templates for Request and Response Mappings](models-mappings.md)\.
+1. For **Model schema**, type the model's schema\. For more information about model schemas, see [Working with Models and Mapping Templates](models-mappings.md)\.
 
 1. Choose **Create model**\.

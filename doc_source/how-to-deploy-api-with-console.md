@@ -1,6 +1,6 @@
-# Deploy a REST API from the API Gateway Console<a name="how-to-deploy-api-with-console"></a>
+# Deploying a REST API from the API Gateway Console<a name="how-to-deploy-api-with-console"></a>
 
- You must have created a REST API before deploying it for the first time\. For more information see [Creating a REST API in Amazon API Gateway](how-to-create-api.md)\. 
+ You must have created a REST API before deploying it for the first time\. For more information, see [Creating a REST API in Amazon API Gateway](how-to-create-api.md)\. 
 
 **Topics**
 + [Deploy a REST API to a Stage](#how-to-deploy-api-console)
@@ -26,7 +26,7 @@ To associate a stage in API Gateway with a different deployment, see [Associate 
 
 1. In the **Deploy API** dialog, choose an entry from the **Deployment stage** dropdown list\. 
 
-1. If you choose **\[New Stage\]**, type a name in **Stage name** and optionally provide a description for the stage and deployment in **Stage description** and **Deployment description**\. If you choose an existing stage, you may want to provide a description of the new deployment in **Deployment description**\.
+1. If you choose **\[New Stage\]**, enter a name in **Stage name** and optionally provide a description for the stage and deployment in **Stage description** and **Deployment description**\. If you choose an existing stage, you might want to provide a description of the new deployment in **Deployment description**\.
 
 1. Choose **Deploy** to deploy the API to the specified stage with default stage settings\.
 
@@ -36,17 +36,17 @@ To redeploy an API, perform the same steps as in [Deploy a REST API to a Stage](
 
 ## Update the Stage Configuration of a REST API Deployment<a name="how-to-deploy-api-update-stage-settings"></a>
 
- After an API is deployed, you can modify the stage settings to enable or disable API cache, logging, or request throttling\. You can also choose a client certificate for the backend to authenticate API Gateway and set stage variables to pass deployment context to the API integration at run time\. For more information, see [Update Stage Settings](stages.md#how-to-stage-settings)\. 
+ After an API is deployed, you can modify the stage settings to enable or disable the API cache, logging, or request throttling\. You can also choose a client certificate for the backend to authenticate API Gateway and set stage variables to pass deployment context to the API integration at runtime\. For more information, see [Update Stage Settings](stages.md#how-to-stage-settings)\. 
 
 **Important**  
 After modifying stage settings, you must redeploy the API for the changes to take effect\.
 
 **Note**  
- If the updated settings, such as enabling logging, requires a new IAM role, you can add the required IAM role without redeploying the API\. However, it can take a few minutes before the new IAM role takes effect\. Before that happens, traces of your API calls will not be logged even if you have enabled the logging option\. 
+ If the updated settings, such as enabling logging, requires a new IAM role, you can add the required IAM role without redeploying the API\. However, it can take a few minutes before the new IAM role takes effect\. Before that happens, traces of your API calls are not logged even if you have enabled the logging option\. 
 
 ## Set Stage Variables for a REST API Deployment<a name="how-to-deploy-api-set-stage-variables"></a>
 
- For a deployment, you can set or modify stage variables to pass deployment\-specific data to the API integration at run time\. You can do this on the **Stage Variables** tab in the **Stage Editor**\. For more information, see instructions in [Set up Stage Variables for a REST API Deployment](stage-variables.md)\. 
+ For a deployment, you can set or modify stage variables to pass deployment\-specific data to the API integration at runtime\. You can do this on the **Stage Variables** tab in the **Stage Editor**\. For more information, see instructions in [Setting Up Stage Variables for a REST API Deployment](stage-variables.md)\. 
 
 ## Associate a Stage with a Different REST API Deployment<a name="how-to-deploy-change-deployment-console"></a>
 
@@ -54,7 +54,7 @@ After modifying stage settings, you must redeploy the API for the changes to tak
 
  The following procedure shows how to do this using the **Stage Editor** in the API Gateway console\. It is assumed that you must have deployed an API more than once\. 
 
-1. If not already in **Stage Editor**, choose the stage you want to update the deployment from an API's **Stages** option in the **APIs** main navigation pane\.
+1. If you're not already in **Stage Editor**, choose the stage that you want to update the deployment from an API's **Stages** option in the **APIs** main navigation pane\.
 
 1. On the **Deployment History** tab, choose the option button next to the deployment you want the stage to use\.
 

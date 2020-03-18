@@ -1,4 +1,4 @@
-# Using Amazon Kinesis Data Firehose as a Destination for API Gateway Access Logging<a name="apigateway-logging-to-kinesis"></a>
+# Logging API Calls to Kinesis Data Firehose<a name="apigateway-logging-to-kinesis"></a>
 
 To help debug issues related to client access to your API, you can log API calls to Amazon Kinesis Data Firehose\. For more information about Kinesis Data Firehose, see [What Is Amazon Kinesis Data Firehose?](https://docs.aws.amazon.com/firehose/latest/dev/what-is-this-service.html)\.
 

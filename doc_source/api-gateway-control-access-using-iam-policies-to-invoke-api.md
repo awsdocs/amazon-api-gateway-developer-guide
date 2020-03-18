@@ -1,9 +1,9 @@
 # Control Access for Invoking an API<a name="api-gateway-control-access-using-iam-policies-to-invoke-api"></a>
 
- In this section you will learn how to write up IAM policy statements to control who can call a deployed API in API Gateway\. Here, you will also find the policy statement reference, including the formats of `Action` and `Resource` fields related to the API execution service\. You should also study the IAM section in [How Amazon API Gateway Resource Policies Affect Authorization Workflow](apigateway-authorization-flow.md)\.
+ In this section you will learn how to write up IAM policy statements to control who can call a deployed API in API Gateway\. Here, you will also find the policy statement reference, including the formats of `Action` and `Resource` fields related to the API execution service\. You should also study the IAM section in [How API Gateway Resource Policies Affect Authorization Workflow](apigateway-authorization-flow.md)\.
 
 For private APIs, you should use a combination of an API Gateway resource policy and a VPC endpoint policy\. For more information, see the following topics:
-+ [Control Access to an API with Amazon API Gateway Resource Policies](apigateway-resource-policies.md)
++ [Controlling Access to an API with API Gateway Resource Policies](apigateway-resource-policies.md)
 + [Use VPC Endpoint Policies for Private APIs in API Gateway](apigateway-vpc-endpoint-policies.md)
 
 ## Control Who Can Call an API Gateway API Method with IAM Policies<a name="api-gateway-who-can-invoke-an-api-method-using-iam-policies"></a>

@@ -11,10 +11,10 @@
 
 ## `x-amazon-apigateway-integration.requestParameters` Example<a name="api-gateway-swagger-extensions-request-parameters-example"></a>
 
-The following request parameter mappings example translates a method request's query \(`version`\), header \(`x-user-id`\) and path \(`service`\) parameters to the integration request's query \(`stage`\), header \(`x-userid`\), and path parameters \(`op`\), respectively\.
+The following request parameter mappings example translates a method request's query \(`version`\), header \(`x-user-id`\), and path \(`service`\) parameters to the integration request's query \(`stage`\), header \(`x-userid`\), and path parameters \(`op`\), respectively\.
 
 **Note**  
-If you are creating resources via OpenAPI or AWS CloudFormation, static values should be enclosed in single quotes\.  
+If you're creating resources through OpenAPI or AWS CloudFormation, static values should be enclosed in single quotes\.  
 To add this value from the console, enter `application/json` in the box, without quotation marks\.
 
 ```

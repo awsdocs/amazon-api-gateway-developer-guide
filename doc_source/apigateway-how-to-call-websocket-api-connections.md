@@ -5,7 +5,7 @@ Your backend service can use the following WebSocket connection HTTP requests to
 **Important**  
 These requests use [IAM authorization](apigateway-websocket-control-access-iam.md), so you must sign them with [Signature Version 4 \(SigV4\)](https://docs.aws.amazon.com/general/latest/gr/sigv4_signing.html)\. To do this, you can use the API Gateway Management API\. For more information, see [ApiGatewayManagementApi](https://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/apigatewaymanagementapi.html)\.
 
-In the following command, you'll need to replace `{api-id}` with the actual API ID, which is displayed the API Gateway console or returned by the AWS CLI [https://docs.aws.amazon.com/goto/aws-cli/apigatewayv2-2018-11-29/CreateApi](https://docs.aws.amazon.com/goto/aws-cli/apigatewayv2-2018-11-29/CreateApi) command\. In addition, if your API is in a region other than `us-east-1`, you'll need to substitute the correct region\.
+In the following command, you need to replace `{api-id}` with the actual API ID, which is displayed in the API Gateway console or returned by the AWS CLI [https://docs.aws.amazon.com/goto/aws-cli/apigatewayv2-2018-11-29/CreateApi](https://docs.aws.amazon.com/goto/aws-cli/apigatewayv2-2018-11-29/CreateApi) command\. In addition, if your API is in a Region other than `us-east-1`, you need to substitute the correct Region\.
 
 To send a callback message to the client, use:
 
@@ -19,7 +19,7 @@ You can test this request by using `[Postman](http://www.getpostman.com/)` or by
 awscurl --service execute-api -X POST -d "hello world" https://{prefix}.execute-api.us-east-1.amazonaws.com/{stage}/@connections/{connection_id}
 ```
 
-You'll need to URL\-encode the command as in the following example:
+You need to URL\-encode the command as in the following example:
 
 ```
 awscurl --service execute-api -X POST -d "hello world" https://aabbccddee.execute-api.us-east-1.amazonaws.com/prod/%40connections/R0oXAdfD0kwCH6w%3D
@@ -38,7 +38,7 @@ DELETE https://{api-id}.execute-api.us-east-1.amazonaws.com/{stage}/@connections
 ```
 
 **Note**  
-Postman doesn't encode the `@connections` URL, so you'll need to replace `=` and `@` characters in the encoded URL\.
+Postman doesn't encode the `@connections` URL, so you need to replace `=` and `@` characters in the encoded URL\.
 
 You can dynamically build a callback URL by using the `$context` variables in your integration\. For example, if you use Lambda proxy integration with a `Node.js` Lambda function, you can build the URL as follows:
 

@@ -1,4 +1,4 @@
-# Create a Lambda `REQUEST` Authorizer Function<a name="apigateway-websocket-api-lambda-auth"></a>
+# Creating a Lambda `REQUEST` Authorizer Function<a name="apigateway-websocket-api-lambda-auth"></a>
 
 A Lambda authorizer function in WebSocket APIs is similar to that for [REST APIs](apigateway-use-lambda-authorizer.md#api-gateway-lambda-authorizer-lambda-function-create), with the following exceptions:
 + You cannot use path variables \(`event.pathParameters`\), because the path is fixed\.
@@ -91,7 +91,7 @@ To configure the preceding Lambda function as a `REQUEST` authorizer function fo
 
 To configure the `$connect` route to use this Lambda authorizer in the console, select or create the `$connect` route\. Choose the route request and choose your authorizer in the **Authorization** dropdown menu\.
 
-To test the authorizer, you'll need to create a new connection\. Changing authorizer in `$connect` does not affect the already connected client\. When you connect to your WebSocket API, you'll need to provide values for any configured identity sources\. For example, you can connect by sending a valid query string and header using `wscat` as in the following example:
+To test the authorizer, you need to create a new connection\. Changing authorizer in `$connect` doesn't affect the already connected client\. When you connect to your WebSocket API, you need to provide values for any configured identity sources\. For example, you can connect by sending a valid query string and header using `wscat` as in the following example:
 
 ```
 wscat -c 'wss://myapi.execute-api.us-east-1.amazonaws.com/beta?QueryAuth1=queryValue1' -H HeaderAuth1:headerValue1

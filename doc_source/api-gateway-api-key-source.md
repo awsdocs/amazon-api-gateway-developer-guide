@@ -28,7 +28,7 @@ To choose an API key source for an API by using the AWS CLI, call the [https://d
 aws apigateway update-rest-api --rest-api-id 1234123412 --patch-operations op=replace,path=/apiKeySource,value=AUTHORIZER
 ```
 
-To have the client submit an API key, set the `value` to `HEADER` in the above CLI command\.
+To have the client submit an API key, set the `value` to `HEADER` in the preceding CLI command\.
 
 To choose an API key source for an API by using the API Gateway REST API, call [https://docs.aws.amazon.com/apigateway/api-reference/link-relation/restapi-update/](https://docs.aws.amazon.com/apigateway/api-reference/link-relation/restapi-update/) as follows:
 
@@ -70,7 +70,7 @@ Depending on the API key source type you choose, use one of the following proced
 
 1.  Create an API with desired API methods\. And deploy the API to a stage\.
 
-1.  Create a new usage plan or choose an existing one\. Add the deployed API stage to the usage plan\. Attach an API key to the usage plan or choose an existing API key in the plan\. Note the chosen API Key value\.
+1.  Create a new usage plan or choose an existing one\. Add the deployed API stage to the usage plan\. Attach an API key to the usage plan or choose an existing API key in the plan\. Note the chosen API key value\.
 
 1.  Create a custom Lambda authorizer of the token type\. Include, as a root\-level property of the authorization response, `usageIdentifierKey:{api-key}`, where `{api-key}` stands for the API key value mentioned in the previous step\.
 

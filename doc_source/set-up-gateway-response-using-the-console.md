@@ -1,4 +1,4 @@
-# Set up a Gateway Response Using the API Gateway Console<a name="set-up-gateway-response-using-the-console"></a>
+# Set Up a Gateway Response Using the API Gateway Console<a name="set-up-gateway-response-using-the-console"></a>
 
 **To customize a gateway response using the API Gateway console**
 
@@ -23,7 +23,7 @@
 
    In the preceding header mappings, a static domain name \(`'a.b.c'`\) is mapped to the `Allow-Control-Allow-Origin` header to allow CORS access to the API; the input request header of `x-amzn-RequestId` is mapped to `request-id` in the response; the `petId` path variable of the incoming request is mapped to the `request-path` header in the response; and the `q` query parameter of the original request is mapped to the `request-query` header of the response\.
 
-1. Under **Body Mapping Templates**, leave `application/json` for **Content Type** and type the following body mapping template in the **Body Mapping Template** editor:
+1. Under **Body Mapping Templates**, keep `application/json` for **Content Type** and enter the following body mapping template in the **Body Mapping Template** editor:
 
    ```
    {
@@ -42,13 +42,13 @@
 
 1. Deploy the API to a new or existing stage\.
 
-1. Test it by calling the following CURL command, assuming the corresponding API method's Invoke URL is `https://o81lxisefl.execute-api.us-east-1.amazonaws.com/custErr/pets/{petId}`:
+1. Test it by calling the following CURL command, assuming the corresponding API method's invoke URL is `https://o81lxisefl.execute-api.us-east-1.amazonaws.com/custErr/pets/{petId}`:
 
    ```
    curl -v -H 'x-amnz-RequestId:123344566' https://o81lxisefl.execute-api.us-east-1.amazonaws.com/custErr/pets/5/type?q=1
    ```
 
-   Because the extra query string parameter `q=1` is not compatible with the API, An error is returned to trigger the specified gateway response\. You should get a gateway response similar to the following:
+   Because the extra query string parameter `q=1` isn't compatible with the API, an error is returned to trigger the specified gateway response\. You should get a gateway response similar to the following:
 
    ```
    > GET /custErr/pets/5?q=1 HTTP/1.1

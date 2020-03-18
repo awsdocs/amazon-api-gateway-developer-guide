@@ -1,13 +1,13 @@
-# Set up Basic Request Validation in API Gateway<a name="api-gateway-request-validation-set-up"></a>
+# Set Up Basic Request Validation in API Gateway<a name="api-gateway-request-validation-set-up"></a>
 
- You can set up request validators in an API's OpenAPI definition file and then import the OpenAPI definitions into API Gateway\. You can also set them up in the API Gateway console or by calling the API Gateway REST API, AWS CLI, or one of the AWS SDKs\. Here, we show how to do this with an OpenAPI file, in the console, and using the API Gateway REST API\. 
+ You can set up request validators in an API's OpenAPI definition file and then import the OpenAPI definitions into API Gateway\. You can also set them up in the API Gateway console or by calling the API Gateway REST API, the AWS CLI, or one of the AWS SDKs\. Here, we show how to do this with an OpenAPI file, in the console, and using the API Gateway REST API\. 
 
 **Topics**
-+ [Set up Basic Request Validation by Importing OpenAPI Definition](#api-gateway-request-validation-setup-importing-swagger)
-+ [Set up Request Validators Using the API Gateway REST API](#api-gateway-request-validation-setup-using-rest-api)
-+ [Set up Basic Request Validation Using the API Gateway Console](#api-gateway-request-validation-setup-in-console)
++ [Set Up Basic Request Validation by Importing OpenAPI Definition](#api-gateway-request-validation-setup-importing-swagger)
++ [Set Up Request Validators Using the API Gateway REST API](#api-gateway-request-validation-setup-using-rest-api)
++ [Set Up Basic Request Validation Using the API Gateway Console](#api-gateway-request-validation-setup-in-console)
 
-## Set up Basic Request Validation by Importing OpenAPI Definition<a name="api-gateway-request-validation-setup-importing-swagger"></a>
+## Set Up Basic Request Validation by Importing OpenAPI Definition<a name="api-gateway-request-validation-setup-importing-swagger"></a>
 
 The following steps describe how to enable basic request validation by importing an OpenAPI file\.
 
@@ -233,7 +233,7 @@ The following steps describe how to enable basic request validation by importing
 
  For instructions on how to test the request validation using the API Gateway REST API, see [Test Basic Request Validation Using the API Gateway REST API](api-gateway-request-validation-test.md#api-gateway-request-validation-test-using-rest-api)\. For instructions on how to test using the API Gateway console, see [Test Basic Request Validation Using the API Gateway Console](api-gateway-request-validation-test.md#api-gateway-request-validation-test-in-console)\. 
 
-## Set up Request Validators Using the API Gateway REST API<a name="api-gateway-request-validation-setup-using-rest-api"></a>
+## Set Up Request Validators Using the API Gateway REST API<a name="api-gateway-request-validation-setup-using-rest-api"></a>
 
  In the API Gateway REST API, a request validator is represented by a [RequestValidator](https://docs.aws.amazon.com/apigateway/api-reference/resource/request-validator/) resource\. To have an API support the same request validators as the [Sample API](api-gateway-request-validation-sample-api-swagger.md), add to the [RequestValidators](https://docs.aws.amazon.com/apigateway/api-reference/resource/request-validators/) collection a parameters\-only validator with `params-only` as the key, and add a full validator with `all` as its key\. 
 
@@ -275,7 +275,7 @@ The following steps describe how to enable basic request validation by importing
 
     If the preceding validator keys already exist in the `RequestValidators` map, call the [requestvalidator:update](https://docs.aws.amazon.com/apigateway/api-reference/link-relation/requestvalidator-update/) action instead to reset the validation rules\. 
 
-1.  To apply the `all` request validator to the `POST` method, call [method:put](https://docs.aws.amazon.com/apigateway/api-reference/link-relation/method-put/) to enable the specified validator \(as identified by the [requestValidatorId](https://docs.aws.amazon.com/apigateway/api-reference/link-relation/method-put/#requestValidatorId) property\) or call [method:update](https://docs.aws.amazon.com/apigateway/api-reference/link-relation/method-update/) to update the enabled validator\. 
+1.  To apply the `all` request validator to the `POST` method, call [method:put](https://docs.aws.amazon.com/apigateway/api-reference/link-relation/method-put/) to enable the specified validator \(as identified by the [requestValidatorId](https://docs.aws.amazon.com/apigateway/api-reference/link-relation/method-put/#requestValidatorId) property\), or call [method:update](https://docs.aws.amazon.com/apigateway/api-reference/link-relation/method-update/) to update the enabled validator\. 
 
    ```
    PUT /restapis/restapi-id/resources/resource-id/methods/POST HTTP/1.1
@@ -291,18 +291,18 @@ The following steps describe how to enable basic request validation by importing
    }
    ```
 
-## Set up Basic Request Validation Using the API Gateway Console<a name="api-gateway-request-validation-setup-in-console"></a>
+## Set Up Basic Request Validation Using the API Gateway Console<a name="api-gateway-request-validation-setup-in-console"></a>
 
  The API Gateway console lets you set up the basic request validation on a method using one of the three validators: 
 + **Validate body**: This is the body\-only validator\.
 + **Validate query string parameters and headers**: This is the parameters\-only validator\.
 + **Validate body, query string parameters, and headers**: This validator is for both body and parameters validation\.
 
- When you choose one of the above validators to enable it on an API method, the API Gateway console will add the validator to the API's [RequestValidators](https://docs.aws.amazon.com/apigateway/api-reference/resource/request-validators/) map, if the validator has not already been added to the validators map of the API\. 
+ When you choose one of the above validators to enable it on an API method, the API Gateway console adds the validator to the API's [RequestValidators](https://docs.aws.amazon.com/apigateway/api-reference/resource/request-validators/) map if the validator has not already been added to the validators map of the API\. 
 
 **To enable a request validator on a method**
 
-1. Sign in to the API Gateway console, if not already logged in\.
+1. Sign in to the API Gateway console if you're not already logged in\.
 
 1. Create a new or choose an existing API\.
 
@@ -314,7 +314,7 @@ The following steps describe how to enable basic request validation by importing
 
 1. Choose the pencil icon of **Request Validator** under **Settings**\.
 
-1. Choose `Validate body`, `Validate query string parameters and headers` or `Validate body, query string parameters, and headers` from the **Request Validator** drop\-down list and then choose the check mark icon to save your choice\.   
+1. Choose `Validate body`, `Validate query string parameters and headers`, or `Validate body, query string parameters, and headers` from the **Request Validator** drop\-down list\. Then choose the check mark icon to save your choice\.   
 ![\[\]](http://docs.aws.amazon.com/apigateway/latest/developerguide/images/request-validator-choose-to-enable.png)
 
 To test and use the request validator in the console, follow the instructions in [Test Basic Request Validation Using the API Gateway Console](api-gateway-request-validation-test.md#api-gateway-request-validation-test-in-console)\.

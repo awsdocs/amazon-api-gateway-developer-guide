@@ -1,8 +1,8 @@
-# Enable Binary Support Using the API Gateway Console<a name="api-gateway-payload-encodings-configure-with-console"></a>
+# Enabling Binary Support Using the API Gateway Console<a name="api-gateway-payload-encodings-configure-with-console"></a>
 
-The section explains how to enable binary support using the API Gateway console\. As an example, we use an API integrated with Amazon S3\. We focus on the tasks to set the supported media types and to specify how the payload should be handled\. For detailed information on how to create an API integrated with Amazon S3, see [TUTORIAL: Create a REST API as an Amazon S3 Proxy in API Gateway](integrating-api-with-aws-services-s3.md)\.
+The section explains how to enable binary support using the API Gateway console\. As an example, we use an API that is integrated with Amazon S3\. We focus on the tasks to set the supported media types and to specify how the payload should be handled\. For detailed information on how to create an API integrated with Amazon S3, see [TUTORIAL: Create a REST API as an Amazon S3 Proxy in API Gateway](integrating-api-with-aws-services-s3.md)\.
 
-**To enable binary support using the API Gateway console**
+**To enable binary support by using the API Gateway console**
 
 1. Set binary media types for the API:
 
@@ -26,15 +26,15 @@ The section explains how to enable binary support using the API Gateway console\
    1. In **Content Handling**, choose an option\.   
 ![\[Set up the GET method in the API Gateway console.\]](http://docs.aws.amazon.com/apigateway/latest/developerguide/images/binary-support-set-content-handling-on-method.png)
 
-      Choose **Passthrough** if you do not want to convert the body when the client and backend accepts the same binary format\. Choose **Convert to text \(if needed\)** to convert the binary body to a Base64\-encoded string when, for example, the backend requires that a binary request payload is passed in as a JSON property\. And choose **Convert to binary \(if needed\)** when the client submits a Base64\-encoded string and the backend requires the original binary format, or when the endpoint returns a Base64\-encoded string and the client accepts only the binary output\.
+      Choose **Passthrough** if you don't want to convert the body when the client and backend accepts the same binary format\. Choose **Convert to text \(if needed\)** to convert the binary body to a base64\-encoded string when, for example, the backend requires that a binary request payload is passed in as a JSON property\. And choose **Convert to binary \(if needed\)** when the client submits a base64\-encoded string and the backend requires the original binary format, or when the endpoint returns a base64\-encoded string and the client accepts only the binary output\.
 
-   1. Preserve the incoming request's `Accept` header in the integration request\. You should do this if you've set `contentHandling` to `passthrough` and want to override that setting at run time\.  
+   1. Preserve the incoming request's `Accept` header in the integration request\. You should do this if you've set `contentHandling` to `passthrough` and want to override that setting at runtime\.  
 ![\[Keep the Accept header in the integration request.\]](http://docs.aws.amazon.com/apigateway/latest/developerguide/images/binary-support-preserve-incoming-accept-header.png)
 
    1. Enable the passthrough behavior on the request body\.  
 ![\[Enable passthrough behavior for the request body.\]](http://docs.aws.amazon.com/apigateway/latest/developerguide/images/binary-support-ensure-payload-passthrough-on-method.png)
 
-   1. For conversion to text, define a mapping template to put the Base64\-encoded binary data into the required format\.  
+   1. For conversion to text, define a mapping template to put the base64\-encoded binary data into the required format\.  
 ![\[Mapping template for the convert-to-text option.\]](http://docs.aws.amazon.com/apigateway/latest/developerguide/images/binary-support-convert-to-text-mapping-template.png)
 
       The format of this mapping template depends on the endpoint requirements of the input\.

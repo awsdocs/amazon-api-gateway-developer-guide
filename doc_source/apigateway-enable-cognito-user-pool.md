@@ -25,7 +25,7 @@ After performing any of the procedures below, you'll need to deploy or redeploy 
 
    1.  For **Token source**, type `Authorization` as the header name to pass the identity or access token that's returned by Amazon Cognito when a user signs in successfully\. 
 
-   1. Optionally, type a regular expression in the **Token validation** field to validate the `aud` \(audience\) field of the identity token before the request is authorized with Amazon Cognito\. Note that when using an access token this validation will reject the request due to the access token not containing the `aud` field.
+   1. Optionally, enter a regular expression in the **Token validation** field to validate the `aud` \(audience\) field of the identity token before the request is authorized with Amazon Cognito\. Note that when using an access token this validation rejects the request due to the access token not containing the `aud` field\.
 
    1. To finish integrating the user pool with the API, choose **Create**\. 
 
@@ -236,4 +236,4 @@ Instead of using the API Gateway console, you can also enable an Amazon Cognito 
       }
    ```
 
-1. If needed, you can set other API configuration settings by using the appropriate OpenAPI definitions or extensions\. For more information, see [API Gateway Extensions to OpenAPI](api-gateway-swagger-extensions.md)\.
+1. If needed, you can set other API configuration settings by using the appropriate OpenAPI definitions or extensions\. For more information, see [Working with API Gateway Extensions to OpenAPI](api-gateway-swagger-extensions.md)\.

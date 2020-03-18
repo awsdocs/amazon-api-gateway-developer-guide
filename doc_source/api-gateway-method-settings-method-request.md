@@ -214,7 +214,7 @@ GET /pets?type=dog
 breed:poodle
 ```
 
-For information on how to map method request parameters to integration request parameters, see [Set up REST API Integrations in API Gateway](how-to-integration-settings.md)\.
+For information on how to map method request parameters to integration request parameters, see [Setting Up REST API Integrations](how-to-integration-settings.md)\.
 
 ## Set up Method Request Model<a name="setup-method-request-model"></a>
 

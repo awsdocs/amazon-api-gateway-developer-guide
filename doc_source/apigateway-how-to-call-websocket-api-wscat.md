@@ -4,7 +4,7 @@ The `[wscat](https://www.npmjs.com/package/wscat)` utility is a convenient tool 
 
 1. Download `wscat` from [https://www\.npmjs\.com/package/wscat](https://www.npmjs.com/package/wscat)\.
 
-1. Install it by running the following command:
+1. Install `wscat` by running the following command:
 
    ```
    npm install -g wscat
@@ -16,11 +16,11 @@ The `[wscat](https://www.npmjs.com/package/wscat)` utility is a convenient tool 
    wscat -c wss://aabbccddee.execute-api.us-east-1.amazonaws.com/test/
    ```
 
-   You'll need to replace `aabbccddee` with the actual API ID, which is displayed the API Gateway console or returned by the AWS CLI [https://docs.aws.amazon.com/goto/aws-cli/apigatewayv2-2018-11-29/CreateApi](https://docs.aws.amazon.com/goto/aws-cli/apigatewayv2-2018-11-29/CreateApi) command\.
+   You need to replace `aabbccddee` with the actual API ID, which is displayed in the API Gateway console or returned by the AWS CLI [https://docs.aws.amazon.com/goto/aws-cli/apigatewayv2-2018-11-29/CreateApi](https://docs.aws.amazon.com/goto/aws-cli/apigatewayv2-2018-11-29/CreateApi) command\.
 
-   In addition, if your API is in a region other than `us-east-1`, you'll need to substitute the correct region\.
+   In addition, if your API is in a Region other than `us-east-1`, you need to substitute the correct Region\.
 
-1. To test your API, type a message such as the following while connected:
+1. To test your API, enter a message such as the following while connected:
 
    ```
    {"{jsonpath-expression}":"{route-key}"}
@@ -35,4 +35,4 @@ The `[wscat](https://www.npmjs.com/package/wscat)` utility is a convenient tool 
 
    For more information about JSONPath, see [JSONPath](http://goessner.net/articles/JsonPath/) or [JSONPath for Java](https://github.com/jayway/JsonPath)\.
 
-1. To disconnect from your API, type `ctrl-C`\.
+1. To disconnect from your API, enter `ctrl-C`\.

@@ -15,12 +15,12 @@ A stage variable can be used in a parameter mapping expression for an API method
 
 ## HTTP Integration URIs<a name="stage-variables-in-integration-HTTP-uris"></a>
 
-A stage variable can be used as part of an HTTP integration URL, as shown in the following examples\.
-+ A full URI without protocol, e\.g\., `http://${stageVariables.<variable_name>}`
-+ A full domain: e\.g\., `http://${stageVariables.<variable_name>}/resource/operation`
-+ A subdomain: e\.g\., `http://${stageVariables.<variable_name>}.example.com/resource/operation`
-+ A path, e\.g\., `http://example.com/${stageVariables.<variable_name>}/bar`
-+ A query string, e\.g\., `http://example.com/foo?q=${stageVariables.<variable_name>}` 
+A stage variable can be used as part of an HTTP integration URL, as shown in the following examples:
++ A full URI without protocol – `http://${stageVariables.<variable_name>}`
++ A full domain – `http://${stageVariables.<variable_name>}/resource/operation`
++ A subdomain – `http://${stageVariables.<variable_name>}.example.com/resource/operation`
++ A path – `http://example.com/${stageVariables.<variable_name>}/bar`
++ A query string – `http://example.com/foo?q=${stageVariables.<variable_name>}` 
 
 ## AWS Integration URIs<a name="stage-variables-in-integration-aws-uris"></a>
 

@@ -16,9 +16,7 @@ This section summarizes the set of variables that are currently supported for We
 | $context\.apiId |  The identifier API Gateway assigns to your API\.  | 
 | $context\.authorizer\.principalId |  The principal user identification associated with the token sent by the client and returned from an API Gateway Lambda authorizer \(formerly known as a custom authorizer\) Lambda function\.  | 
 | $context\.authorizer\.property |  The stringified value of the specified key\-value pair of the `context` map returned from an API Gateway Lambda authorizer function\. For example, if the authorizer returns the following `context` map:  <pre>"context" : {<br />  "key": "value",<br />  "numKey": 1,<br />  "boolKey": true<br />}</pre> calling `$context.authorizer.key` returns the `"value"` string, calling `$context.authorizer.numKey` returns the `"1"` string, and calling `$context.authorizer.boolKey` returns the `"true"` string\.  | 
-| $context\.error\.message |  A string containing an API Gateway error message\. This variable can only be used in access logging\.  | 
 | $context\.error\.messageString | The quoted value of $context\.error\.message, namely "$context\.error\.message"\. | 
-| $context\.error\.responseType |  The error response type\. This variable can only be used in access logging\.  | 
 | $context\.error\.validationErrorString |  A string containing a detailed validation error message\.  | 
 | $context\.identity\.accountId |  The AWS account ID associated with the request\.  | 
 | $context\.identity\.apiKey |  The API owner key associated with key\-enabled API request\.  | 
@@ -29,7 +27,6 @@ This section summarizes the set of variables that are currently supported for We
 | $context\.identity\.user |  The principal identifier of the user making the request\.  | 
 | $context\.identity\.userAgent |  The User Agent of the API caller\.  | 
 | $context\.identity\.userArn |  The Amazon Resource Name \(ARN\) of the effective user identified after authentication\.  | 
-| $context\.integrationLatency | The integration latency in ms, available for access logging only\. | 
 | $context\.requestTime | The [CLF](https://httpd.apache.org/docs/1.3/logs.html#common)\-formatted request time \(dd/MMM/yyyy:HH:mm:ss \+\-hhmm\)\. | 
 | $context\.requestTimeEpoch | The [Epoch](https://en.wikipedia.org/wiki/Unix_time)\-formatted request time\. | 
 | $context\.stage |  The deployment stage of the API call \(for example, Beta or Prod\)\.  | 

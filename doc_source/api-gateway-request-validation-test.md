@@ -19,7 +19,7 @@ X-Amz-Date: 20170306T234936Z
 Authorization: AWS4-HMAC-SHA256 Credential={access_key_ID}/20170306/us-east-1/apigateway/aws4_request, SignedHeaders=content-length;content-type;host;x-amz-date, Signature={sig4_hash}
 ```
 
- You can ignore the `?extensions=validators` query parameter, if you do not want to download the OpenAPI specifications related to the request validation\. 
+ You can ignore the `?extensions=validators` query parameter if you don't want to download the OpenAPI specifications related to the request validation\. 
 
 **To test request validation using the API Gateway REST API calls**
 
@@ -98,7 +98,7 @@ Authorization: AWS4-HMAC-SHA256 Credential={access_key_ID}/20170306/us-east-1/ap
    }
    ```
 
-    Because the required header parameter of `h1` is set and not blank and the payload format adheres to the `RequestDataModel` required properties and associated constraints, the request passes the validation\. API Gateway returns the following successful response\. 
+    Because the required header parameter of `h1` is set \(and not blank\) and the payload format adheres to the `RequestDataModel` required properties and associated constraints, the request passes the validation\. API Gateway returns the following successful response\. 
 
    ```
    {
@@ -169,7 +169,7 @@ Authorization: AWS4-HMAC-SHA256 Credential={access_key_ID}/20170306/us-east-1/ap
 
 While signed in to the API Gateway console, do the following:
 
-1. Choose **Resources** for the API for which you have configured a request validators map\.
+1. Choose **Resources** for the API that you've configured a request validators map for\.
 
 1. Choose a method for which you have enabled the request validation with a specified request validator\.
 
@@ -185,7 +185,7 @@ While signed in to the API Gateway console, do the following:
 }
 ```
 
-If the request parameters are not valid, the following error message returns:
+If the request parameters aren't valid, the following error message returns:
 
 ```
 {

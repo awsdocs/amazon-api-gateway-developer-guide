@@ -390,7 +390,7 @@ If you specify values for both `headers` and `multiValueHeaders`, API Gateway me
 The following `POST` request shows an API deployed to `testStage` with a stage variable of `stageVariableName=stageVariableValue`:
 
 ```
-POST /testStage/hello/world?name=me&multivalueName=you&multivalueName=me HTTP/1.1
+POST /testStage/hello/world?name=me HTTP/1.1
 Host: gy415nuibc.execute-api.us-east-1.amazonaws.com
 Content-Type: application/json
 headerName: headerValue
@@ -604,7 +604,7 @@ In the output:
 To enable CORS for the Lambda proxy integration, you must add `Access-Control-Allow-Origin:domain-name` to the output `headers`\. `domain-name` can be `*` for any domain name\. The output `body` is marshalled to the frontend as the method response payload\. If `body` is a binary blob, you can encode it as a Base64\-encoded string by setting `isBase64Encoded` to `true` and configuring `*/*` as a **Binary Media Type**\. Otherwise, you can set it to `false` or leave it unspecified\.
 
 **Note**  
-For more information about enabling binary support, see [Enable Binary Support Using the API Gateway Console](api-gateway-payload-encodings-configure-with-console.md)\.
+For more information about enabling binary support, see [Enabling Binary Support Using the API Gateway Console](api-gateway-payload-encodings-configure-with-console.md)\.
 
 If the function output is of a different format, API Gateway returns a `502 Bad Gateway` error response\. 
 

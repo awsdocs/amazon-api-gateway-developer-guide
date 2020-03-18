@@ -1,6 +1,8 @@
-# Enable API Caching to Enhance Responsiveness<a name="api-gateway-caching"></a>
+# Enabling API Caching to Enhance Responsiveness<a name="api-gateway-caching"></a>
 
-You can enable API caching in Amazon API Gateway to cache your endpoint's responses\. With caching, you can reduce the number of calls made to your endpoint and also improve the latency of requests to your API\. When you enable caching for a stage, API Gateway caches responses from your endpoint for a specified time\-to\-live \(TTL\) period, in seconds\. API Gateway then responds to the request by looking up the endpoint response from the cache instead of making a request to your endpoint\. The default TTL value for API caching is 300 seconds\. The maximum TTL value is 3600 seconds\. TTL=0 means caching is disabled\.
+You can enable API caching in Amazon API Gateway to cache your endpoint's responses\. With caching, you can reduce the number of calls made to your endpoint and also improve the latency of requests to your API\. 
+
+When you enable caching for a stage, API Gateway caches responses from your endpoint for a specified time\-to\-live \(TTL\) period, in seconds\. API Gateway then responds to the request by looking up the endpoint response from the cache instead of making a request to your endpoint\. The default TTL value for API caching is 300 seconds\. The maximum TTL value is 3600 seconds\. TTL=0 means caching is disabled\.
 
 The maximum size of a response that can be cached is 1048576 bytes\. Cache data encryption may increase the size of the response when it is being cached\.
 
@@ -10,7 +12,7 @@ This is a HIPAA Eligible Service\. For more information about AWS, U\.S\. Health
 When you enable caching for a stage, only `GET` methods have caching enabled by default\. This helps to ensure the safety and availability of your API\. You can enable caching for other methods by [overriding method settings](#override-api-gateway-stage-cache-for-method-cache)\.
 
 **Important**  
-Caching is charged by the hour and is not eligible for the AWS free tier\. 
+Caching is charged by the hour and is not eligible for the AWS Free Tier\. 
 
 ## Enable Amazon API Gateway Caching<a name="enable-api-gateway-caching"></a>
 
@@ -43,7 +45,7 @@ API Gateway changes caching capacity by removing the existing cache instance and
 **Note**  
  Creating or deleting a cache takes about 4 minutes for API Gateway to complete\. When a cache is created, the **Cache status** value changes from `CREATE_IN_PROGRESS` to `AVAILABLE`\. When cache deletion is completed, the **Cache status** value changes from `DELETE_IN_PROGRESS` to an empty string\. 
 
-When you enable caching within a stage's **Cache Settings**, only `GET` methods are cached\. To ensure the safety and availability of your API, we recommend that you not change this setting\. However, you can enable caching for other methods by [overriding method settings](#override-api-gateway-stage-cache-for-method-cache)\.
+When you enable caching within a stage's **Cache Settings**, only `GET` methods are cached\. To ensure the safety and availability of your API, we recommend that you don't change this setting\. However, you can enable caching for other methods by [overriding method settings](#override-api-gateway-stage-cache-for-method-cache)\.
 
  If you would like to verify if caching is functioning as expected, you have two general options: 
 +  Inspect the CloudWatch metrics of **CacheHitCount** and **CacheMissCount** for your API and stage\.  
@@ -54,7 +56,7 @@ When you enable caching within a stage's **Cache Settings**, only `GET` methods 
 
 ## Override API Gateway Stage\-Level Caching for Method Caching<a name="override-api-gateway-stage-cache-for-method-cache"></a>
 
-You can override stage\-level cache settings by enabling or disabling caching for a specific method; by increasing or decreasing its TTL period; or by turning encryption on or off for cached responses\.
+You can override stage\-level cache settings by enabling or disabling caching for a specific method\. By increasing or decreasing its TTL period; or by turning encryption on or off for cached responses\.
 
 If you anticipate that a method that you are caching will receive sensitive data in its responses, in **Cache Settings**, choose **Encrypt cache data**\.
 
@@ -89,7 +91,7 @@ host: example.com
 ...
 ```
 
-In this request, `type` can take a value of `admin` or `regular`\. If you include the `type` parameter as part of the cache key, the responses from `GET /users?type=admin` will be cached separately from those from `GET /users?type=regular`\. 
+In this request, `type` can take a value of `admin` or `regular`\. If you include the `type` parameter as part of the cache key, the responses from `GET /users?type=admin` are cached separately from those from `GET /users?type=regular`\. 
 
  When a method or integration request takes more than one parameter, you can choose to include some or all of the parameters to create the cache key\. For example, you can include only the `type` parameter in the cache key for the following request, made in the listed order within a TTL period: 
 
@@ -99,7 +101,7 @@ host: example.com
 ...
 ```
 
- The response from this request will be cached and will be used to serve the following request: 
+ The response from this request is cached and is used to serve the following request: 
 
 ```
 GET /users?type=admin&department=B HTTP/1.1
@@ -143,11 +145,11 @@ A client of your API can invalidate an existing cache entry and reload it from t
 }
 ```
 
- This policy allows the API Gateway execution service to invalidate the cache for requests on the specified resource \(or resources\)\. To specify a group of targeted resources, use a wildcard \(\*\) character for `account-id`, `api-id`, and other entries in the ARN value of `Resource`\. For more information on how to set permissions for the API Gateway execution service, see [Control Access to an API with IAM Permissions](permissions.md) 
+ This policy allows the API Gateway execution service to invalidate the cache for requests on the specified resource \(or resources\)\. To specify a group of targeted resources, use a wildcard \(\*\) character for `account-id`, `api-id`, and other entries in the ARN value of `Resource`\. For more information on how to set permissions for the API Gateway execution service, see [Control Access to an API with IAM Permissions](permissions.md)\. 
 
- If you do not impose an `InvalidateCache` policy \(or choose the **Require authorization** checkbox in the console\), any client can invalidate the API cache\. If most or all of the clients invalidate the API cache, this could significantly increase the latency of your API\. 
+ If you don't impose an `InvalidateCache` policy \(or choose the **Require authorization** check box in the console\), any client can invalidate the API cache\. If most or all of the clients invalidate the API cache, this could significantly increase the latency of your API\. 
 
- When the policy is in place, caching is enabled, and authorization is required, you can control how unauthorized requests are handled by choosing an option from **Handle unauthorized requests** in the API Gateway console\. 
+ When the policy is in place, caching is enabled and authorization is required\. You can control how unauthorized requests are handled by choosing an option from **Handle unauthorized requests** in the API Gateway console\. 
 
 ![\[Configure cache invalidation\]](http://docs.aws.amazon.com/apigateway/latest/developerguide/images/apig-cache-invalidation.png)
 

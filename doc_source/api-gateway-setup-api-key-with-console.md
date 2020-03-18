@@ -51,7 +51,7 @@ If you've already created or imported API keys for use with usage plans, you can
 
 1. In **Create API Key**, do the following:
 
-   1. Type an API key name \(for example, **MyFirstKey**\) in the **Name** input field\. 
+   1. Enter an API key name \(for example, **MyFirstKey**\) in the **Name** input field\. 
 
    1. Choose **Auto Generate** to have API Gateway generate the key value, or choose **Custom** to enter the key manually\. 
 
@@ -70,7 +70,7 @@ The following procedure describes how to import API keys to use with usage plans
 
 1. From the **Actions** drop\-down menu, choose **Import API keys**\. 
 
-1. To load a comma\-separated key file, choose **Select CSV File**\. You can also type the keys manually\. For information about the file format, see [API Gateway API Key File Format](api-key-file-format.md)\.  
+1. To load a comma\-separated key file, choose **Select CSV File**\. You can also enter the keys manually\. For information about the file format, see [API Gateway API Key File Format](api-key-file-format.md)\.  
 ![\[API usage plan entities\]](http://docs.aws.amazon.com/apigateway/latest/developerguide/images/api-gateway-usage-plan-keys-import-setup.png)
 
 1. Choose **Fail on warnings** to stop the import when there's an error, or choose **Ignore warnings** to continue to import valid key entries when there's an error\.

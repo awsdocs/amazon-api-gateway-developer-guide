@@ -45,7 +45,7 @@ Once you have created the API, you cannot change the protocol you have chosen fo
 
 1. Enter a **Route Selection Expression** for your API, for example, `$request.body.action`\.
 
-   For more information about route selection expressions, see [Route Selection Expressions](apigateway-websocket-api-selection-expressions.md#apigateway-websocket-api-route-selection-expressions)\.
+   For more information about route selection expressions, see [Route Selection Expressions](websocket-api-develop-routes.md#apigateway-websocket-api-route-selection-expressions)\.
 
 1. If desired, type a **Description** for your API\.
 

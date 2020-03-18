@@ -1,3 +1,0 @@
-# Set Up AWS WAF in API Gateway<a name="apigateway-setup-waf"></a>
-
-You can use AWS WAF to protect your web applications and APIs from attacks by configuring a set of rules \(called a web access control list, or web ACL\) that allow, block, or count web requests based on customizable web security rules and conditions that you define\. For more information, see [Use AWS WAF to Protect Your Amazon API Gateway API from Common Web Exploits](apigateway-control-access-aws-waf.md)\.

@@ -1,4 +1,4 @@
-# Set up Route Responses for a WebSocket API in API Gateway<a name="apigateway-websocket-api-route-response"></a>
+# Set Up Route Responses for a WebSocket API in API Gateway<a name="apigateway-websocket-api-route-response"></a>
 
 WebSocket routes can be configured for two\-way or one\-way communication\. If a route has a route response, it is configured for two\-way communication\. Otherwise, it is configured for one\-way communication\. *Route responses* are used to enable two\-way communication, in which your API can send a response back to the client in the context of the client's message\.
 
@@ -7,10 +7,10 @@ You can configure route responses and response selection expressions by using th
 For more information about route response selection expressions, see [Route Response Selection Expressions](apigateway-websocket-api-selection-expressions.md#apigateway-websocket-api-route-response-selection-expressions)\.
 
 **Topics**
-+ [Set up a Route Response Using the API Gateway Console](#apigateway-websocket-api-route-response-using-console)
-+ [Set up a Route Response Using the AWS CLI](#apigateway-websocket-api-route-response-using-awscli)
++ [Set Up a Route Response Using the API Gateway Console](#apigateway-websocket-api-route-response-using-console)
++ [Set Up a Route Response Using the AWS CLI](#apigateway-websocket-api-route-response-using-awscli)
 
-## Set up a Route Response Using the API Gateway Console<a name="apigateway-websocket-api-route-response-using-console"></a>
+## Set Up a Route Response Using the API Gateway Console<a name="apigateway-websocket-api-route-response-using-console"></a>
 
 To set up a route response for a WebSocket API using the API Gateway console:
 
@@ -28,7 +28,7 @@ Currently only `$default` is supported in route responses for WebSocket APIs\.
 
 1. Enter the response key name and choose the checkmark icon\.
 
-## Set up a Route Response Using the AWS CLI<a name="apigateway-websocket-api-route-response-using-awscli"></a>
+## Set Up a Route Response Using the AWS CLI<a name="apigateway-websocket-api-route-response-using-awscli"></a>
 
 To set up a route response for a WebSocket API using the AWS CLI, call the [https://docs.aws.amazon.com/goto/aws-cli/apigatewayv2-2018-11-29/CreateRouteResponse](https://docs.aws.amazon.com/goto/aws-cli/apigatewayv2-2018-11-29/CreateRouteResponse) command as shown in the following example\.
 

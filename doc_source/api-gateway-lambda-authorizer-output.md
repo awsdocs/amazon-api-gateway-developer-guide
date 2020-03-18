@@ -40,7 +40,7 @@ In addition, the Resource ARN, as shown in the policy statement output by the au
 
  For the Lambda proxy integration, API Gateway passes the `context` object from a Lambda authorizer directly to the backend Lambda function as part of the input `event`\. You can retrieve the `context` key\-value pairs in the Lambda function by calling `$event.requestContext.authorizer.key`\.  
 
-`{api-key}` stands for an API key in the API stage's usage plan\. For more information, see [Create and Use Usage Plans with API Keys](api-gateway-api-usage-plans.md)\.
+`{api-key}` stands for an API key in the API stage's usage plan\. For more information, see [Creating and Using Usage Plans with API Keys](api-gateway-api-usage-plans.md)\.
 
  The following shows example output from the example Lambda authorizer\. The example output contains a policy statement to block \(`Deny`\) calls to the `GET` method in an API \(`ymy8tbxw7b`\) of an AWS account \(`123456789012`\) in any stage \(`*`\)\. 
 

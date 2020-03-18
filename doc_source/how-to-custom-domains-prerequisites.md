@@ -1,13 +1,13 @@
-# Get Certificates Ready in AWS Certificate Manager<a name="how-to-custom-domains-prerequisites"></a>
+# Getting Certificates Ready in AWS Certificate Manager<a name="how-to-custom-domains-prerequisites"></a>
 
 Before setting up a custom domain name for an API, you must have an SSL/TLS certificate ready in AWS Certificate Manager\. The following steps describe how to get this done\. For more information, see the [AWS Certificate Manager User Guide](https://docs.aws.amazon.com/acm/latest/userguide/)\.
 
 **Note**  
-To use an ACM Certificate with an API Gateway edge\-optimized custom domain name, you must request or import the certificate in the US East \(N\. Virginia\) \(`us-east-1`\) Region\. For an API Gateway regional custom domain name, you must request or import the certificate in the same region as your API\.
+To use an ACM certificate with an API Gateway edge\-optimized custom domain name, you must request or import the certificate in the US East \(N\. Virginia\) \(`us-east-1`\) Region\. For an API Gateway Regional custom domain name, you must request or import the certificate in the same Region as your API\.
 
 First, register your internet domain, for example, `example.com`\. You can use either [Amazon Route 53](https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/) or a third\-party accredited domain registrar\. For a list of such registrars, see [Accredited Registrar Directory](http://www.internic.net/regist.html) at the ICANN website\. 
 
-To create in or import into ACM an SSL/TLS certificate for a domain name, do one of the following: <a name="request-acm-cert-for-custom-domain-name"></a>
+To create in or import into ACM an SSL/TLS certificate for a domain name, do one of the following: 
 
 **To request a certificate provided by ACM for a domain name**
 
@@ -23,7 +23,7 @@ To create in or import into ACM an SSL/TLS certificate for a domain name, do one
 
 1. Choose **Confirm and request**\.
 
-1. For a valid request, a registered owner of the Internet domain must consent to the request before ACM issues the certificate\.<a name="import-acm-cert-for-custom-domain-name"></a>
+1. For a valid request, a registered owner of the internet domain must consent to the request before ACM issues the certificate\.
 
 **To import into ACM a certificate for a domain name**
 
@@ -59,7 +59,7 @@ Amazon API Gateway leverages Amazon CloudFront to support certificates for custo
 
    1. Choose **Import a certificate**\.
 
-   1. For **Certificate body**, type or paste the body of the PEM\-formatted server certificate from your certificate authority\. The following shows an abbreviated example of such a certificate\.
+   1. For **Certificate body**, enter or paste the body of the PEM\-formatted server certificate from your certificate authority\. The following shows an abbreviated example of such a certificate\.
 
       ```
       -----BEGIN CERTIFICATE-----
@@ -69,7 +69,7 @@ Amazon API Gateway leverages Amazon CloudFront to support certificates for custo
       -----END CERTIFICATE-----
       ```
 
-   1. For **Certificate private key**, type or paste your PEM\-formatted certificate's private key\. The following shows an abbreviated example of such a key\. 
+   1. For **Certificate private key**, enter or paste your PEM\-formatted certificate's private key\. The following shows an abbreviated example of such a key\. 
 
       ```
       -----BEGIN RSA PRIVATE KEY-----
@@ -79,7 +79,7 @@ Amazon API Gateway leverages Amazon CloudFront to support certificates for custo
       -----END RSA PRIVATE KEY-----
       ```
 
-   1. For **Certificate chain**, type or paste the PEM\-formatted intermediate certificates and, optionally, the root certificate, one after the other without any blank lines\. If you include the root certificate, your certificate chain must start with intermediate certificates and end with the root certificate\. Use the intermediate certificates provided by your certificate authority\. Do not include any intermediaries that are not in the chain of trust path\. The following shows an abbreviated example\. 
+   1. For **Certificate chain**, enter or paste the PEM\-formatted intermediate certificates and, optionally, the root certificate, one after the other without any blank lines\. If you include the root certificate, your certificate chain must start with intermediate certificates and end with the root certificate\. Use the intermediate certificates provided by your certificate authority\. Do not include any intermediaries that are not in the chain of trust path\. The following shows an abbreviated example\. 
 
       ```
       -----BEGIN CERTIFICATE-----

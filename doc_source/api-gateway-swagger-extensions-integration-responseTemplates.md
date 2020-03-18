@@ -7,7 +7,7 @@
 
 | Property Name | Type | Description | 
 | --- | --- | --- | 
-| MIME type | string |  Specifies a mapping template to transform the integration response body to the method response body for a given MIME type\. For information about creating a mapping template, see [Mapping Templates](models-mappings.md#models-mappings-mappings)\. An example of the *MIME type* is `application/json`\.   | 
+| MIME type | string |  Specifies a mapping template to transform the integration response body to the method response body for a given MIME type\. For information about creating a mapping template, see [Mapping Templates](rest-api-data-transformations.md#models-mappings-mappings)\. An example of the *MIME type* is `application/json`\.   | 
 
 ## x\-amazon\-apigateway\-integration\.responseTemplate Example<a name="api-gateway-swagger-extensions-response-template-example"></a>
 

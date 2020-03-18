@@ -7,7 +7,7 @@ Defines a string\-to\-string map of key\-value pairs to generate gateway respons
 
 | Property Name | Type | Description | 
 | --- | --- | --- | 
-| gatewayresponse\.param\-position\.param\-name | string |  `param-position` can be `header`, `path` or `querystring`\. For more information, see [Map Method Request Data to Integration Request Parameters](request-response-data-mappings.md#mapping-request-parameters)\.  | 
+| gatewayresponse\.param\-position\.param\-name | string |  `param-position` can be `header`, `path`, or `querystring`\. For more information, see [Map Method Request Data to Integration Request Parameters](request-response-data-mappings.md#mapping-request-parameters)\.  | 
 
 ## x\-amazon\-apigateway\-gateway\-responses\.repsonseParameters Example<a name="api-gateway-swagger-extensions-gateway-responses.repsonseParameters-example"></a>
 

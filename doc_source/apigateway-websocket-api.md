@@ -1,16 +1,14 @@
-# Creating, Deploying, and Invoking a WebSocket API in Amazon API Gateway<a name="apigateway-websocket-api"></a>
+# Working with WebSocket APIs<a name="apigateway-websocket-api"></a>
 
-For a brief introduction to WebSocket support in API Gateway, see [Use API Gateway to Create WebSocket APIs](api-gateway-overview-developer-experience.md#api-gateway-overview-websocket)\.
+A WebSocket API in API Gateway is a collection of WebSocket routes that are integrated with backend HTTP endpoints, Lambda functions, or other AWS services\. You can use API Gateway features to help you with all aspects of the API lifecycle, from creation through monitoring your production APIs\.
+
+API Gateway WebSocket APIs are bidirectional\. A client can send messages to a service, and services can independently send messages to clients\. This bidirectional behavior enables richer client/service interactions because services can push data to clients without requiring clients to make an explicit request\. WebSocket APIs are often used in real\-time applications such as chat applications, collaboration platforms, multiplayer games, and financial trading platforms\.
+
+In this section, you can learn how to develop, publish, protect, and monitor your WebSocket APIs using API Gateway\.
 
 **Topics**
 + [About WebSocket APIs in API Gateway](apigateway-websocket-api-overview.md)
-+ [Create a WebSocket API in API Gateway](apigateway-websocket-api-create-empty-api.md)
-+ [Set up Routes for a WebSocket API in API Gateway](apigateway-websocket-api-routes.md)
-+ [Set up WebSocket API Integrations in API Gateway](apigateway-websocket-api-integrations.md)
-+ [Set up Route Responses for a WebSocket API in API Gateway](apigateway-websocket-api-route-response.md)
-+ [Deploy a WebSocket API in API Gateway](apigateway-set-up-websocket-deployment.md)
-+ [Invoke a WebSocket API](apigateway-how-to-call-websocket-api.md)
-+ [Control Access to a WebSocket API in API Gateway](apigateway-websocket-api-control-access.md)
-+ [Monitor WebSocket API Execution with CloudWatch](apigateway-websocket-api-logging.md)
-+ [WebSocket Selection Expressions in API Gateway](apigateway-websocket-api-selection-expressions.md)
-+ [API Gateway WebSocket API Mapping Template Reference](apigateway-websocket-api-mapping-template-reference.md)
++ [Developing a WebSocket API in API Gateway](websocket-api-develop.md)
++ [Publishing WebSocket APIs for Customers to Invoke](websocket-api-publish.md)
++ [Protecting Your WebSocket API](websocket-api-protect.md)
++ [Monitoring WebSocket APIs](websocket-api-monitor.md)

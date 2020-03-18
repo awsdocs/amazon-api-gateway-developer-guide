@@ -12,7 +12,7 @@
 
    1.  For **Service Name**, specify the name of your SDK\. For example, `SimpleCalc`\. This is used to generate the Ruby Gem namespace of your API\. The name must be all letters, \(`a-zA-Z`\), without any other special characters or numbers\.
 
-   1.  For **Ruby Gem Name**, specify the name of the Ruby Gem to contain the generated SDK source code for your API\. By default it is the lower\-cased service name plus the `-sdk` suffix; for example `simplecalc-sdk`\.
+   1.  For **Ruby Gem Name**, specify the name of the Ruby Gem to contain the generated SDK source code for your API\. By default, it is the lower\-cased service name plus the `-sdk` suffix—for example, `simplecalc-sdk`\.
 
    1.  For **Ruby Gem Version**, specify a version number for the generated Ruby Gem\. By default, it is set to `1.0.0`\.
 

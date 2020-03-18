@@ -1,13 +1,8 @@
 # Configuring Logging for an HTTP API<a name="http-api-logging"></a>
 
+## <a name="http-api-logging.intro"></a>
 
-|  | 
-| --- |
-| HTTP APIs are in beta for Amazon API Gateway and are subject to change\. | 
-
-## HTTP API Logging<a name="http-api-logging.intro"></a>
-
-You can enable access logging to write logs to CloudWatch Logs\. You can also enable detailed metrics to write route\-level metrics to Amazon CloudWatch\. To learn more about logging and metrics, see [Monitor WebSocket API Execution with CloudWatch](apigateway-websocket-api-logging.md)\.
+You can enable logging to write logs to CloudWatch Logs\. You can use [logging variables](http-api-logging-variables.md) to customize the content of your logs\.
 
 To enable logging for an HTTP API, you must do the following\.
 
@@ -55,7 +50,9 @@ To enable logging for an API, your IAM user must have the following permissions\
 }
 ```
 
-### Enable Logging by Using the AWS Management Console<a name="http-api-logging.console"></a>
+### <a name="http-api-logging.console"></a>
+
+**To enable logging by using the AWS Management Console**
 
 1. Open the [API Gateway console](https://console.aws.amazon.com/apigateway)\.
 

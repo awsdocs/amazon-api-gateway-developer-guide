@@ -6,7 +6,6 @@
 + [Custom Routes](#apigateway-websocket-api-routes-about-custom)
 + [Using API Gateway WebSocket API Integrations to Connect to Your Business Logic](#apigateway-websocket-api-overview-integrations)
 + [Important Differences Between WebSocket APIs and REST APIs](#apigateway-websocket-api-overview-integrations-differences)
-+ [Handling Binary Payloads](#apigateway-websocket-api-overview-binary-payloads)
 
 ## Using Routes to Process Messages<a name="apigateway-websocket-api-overview-routes"></a>
 
@@ -16,7 +15,7 @@ Messages can be JSON or non\-JSON\. However, only JSON messages can be routed to
 
 **Note**  
 API Gateway supports message payloads up to 128 KB with a maximum frame size of 32 KB\. If a message exceeds 32 KB, you must split it into multiple frames, each 32 KB or smaller\. If a larger message \(or frame\) is received, the connection is closed with code 1009\.  
-Currently binary payloads are not supported\. If a binary frame is received, the connection is closed with code 1003\. However, it is possible to convert binary payloads to text\. See [Handling Binary Payloads](#apigateway-websocket-api-overview-binary-payloads)\.
+Currently binary payloads are not supported\. If a binary frame is received, the connection is closed with code 1003\. However, it is possible to convert binary payloads to text\. See [Working with Binary Media Types for WebSocket APIs](websocket-api-develop-binary-media-types.md)\.
 
 With WebSocket APIs in API Gateway, JSON messages can be routed to execute a specific backend service based on message content\. When a client sends a message over its WebSocket connection, this results in a *route request* to the WebSocket API\. The request will be matched to the route with the corresponding route key in API Gateway\. You can set up a route request for a WebSocket API in the API Gateway console, by using the AWS CLI, or by using an AWS SDK\.
 
@@ -62,7 +61,7 @@ And it might invoke the `sendmessage` route by sending a message such as the fol
 
 After setting up a route for an API Gateway WebSocket API, you must specify the integration you'd like to use\. As with a route, which can have a route request and a route response, an integration can have an *integration request* and an *integration response*\. An *integration request* contains the information expected by your backend in order to process the request that came from your client\. An *integration response* contains the data that your backend returns to API Gateway, and that may be used to construct a message to send to the client \(if a route response is defined\)\.
 
-For more information about setting up integrations, see [Set up WebSocket API Integrations in API Gateway](apigateway-websocket-api-integrations.md)\.
+For more information about setting up integrations, see [Setting Up WebSocket API Integrations](apigateway-websocket-api-integrations.md)\.
 
 ## Important Differences Between WebSocket APIs and REST APIs<a name="apigateway-websocket-api-overview-integrations-differences"></a>
 
@@ -80,11 +79,3 @@ In the HTTP protocol, in which requests and responses are sent synchronously; co
 
 **Note**  
 For a route that is configured to use `AWS_PROXY` or `LAMBDA_PROXY` integration, communication is one\-way, and API Gateway will not pass the backend response through to the route response automatically\. For example, in the case of `LAMBDA_PROXY` integration, the body that the Lambda function returns will not be returned to the client\. If you want the client to receive integration responses, you must define a route response to make two\-way communication possible\.
-
-## Handling Binary Payloads<a name="apigateway-websocket-api-overview-binary-payloads"></a>
-
-API Gateway WebSocket APIs don't currently support binary frames in incoming message payloads\. If a client app sends a binary frame, API Gateway rejects it and disconnects the client with code 1003\.
-
-There is a workaround for this behavior\. If the client sends a text\-encoded binary data \(e\.g\., Base64\) as a text frame, you can set the integration's `contentHandlingStrategy` property to `CONVERT_TO_BINARY` to convert the payload from Base64\-encoded string to binary\. 
-
-To return a route response for a binary payload in non\-proxy integrations, you can set the integration response's `contentHandlingStrategy` property to `CONVERT_TO_TEXT` to convert the payload from binary to Base64\-encoded string\.

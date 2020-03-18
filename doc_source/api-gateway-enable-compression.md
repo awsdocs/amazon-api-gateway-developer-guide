@@ -24,7 +24,7 @@ The following procedure describes how to enable payload compression for an API\.
 
 1. In the primary navigation pane, choose **Settings** under the API you chose or the one you created\.
 
-1. Under the **Content Encoding** section in the **Settings** pane, select the **Content Encoding enabled** option to enable payload compression\. Type a number for the minimum compression size \(in bytes\) next to **Minimum body size required for compression**\. To disable the compression, clear the **Content Encoding enabled** option\.
+1. Under the **Content Encoding** section in the **Settings** pane, select the **Content Encoding enabled** option to enable payload compression\. Enter a number for the minimum compression size \(in bytes\) next to **Minimum body size required for compression**\. To disable the compression, clear the **Content Encoding enabled** option\.
 
 1. Choose **Save Changes**\.
 

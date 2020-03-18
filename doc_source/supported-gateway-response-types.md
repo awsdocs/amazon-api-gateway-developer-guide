@@ -3,10 +3,10 @@
  API Gateway exposes the following gateway responses for customization by API developers\. 
 
 
-| Gateway response type | Default status code | Description | 
+| Gateway Response Type | Default Status Code | Description | 
 | --- | --- | --- | 
-| ACCESS\_DENIED | 403 | The gateway response for authorization failure; for example, when access is denied by a custom or Amazon Cognito authorizer\. If the response type is unspecified, this response defaults to the `DEFAULT_4XX` type\. | 
-| API\_CONFIGURATION\_ERROR | 500 | The gateway response for invalid API configuration, including invalid endpoint address submitted, Base64 decoding failed on binary data when binary support is enacted, or integration response mapping cannot match any template and no default template is configured\. If the response type is unspecified, this response defaults to the `DEFAULT_5XX` type\. | 
+| ACCESS\_DENIED | 403 | The gateway response for authorization failure—for example, when access is denied by a custom or Amazon Cognito authorizer\. If the response type is unspecified, this response defaults to the `DEFAULT_4XX` type\. | 
+| API\_CONFIGURATION\_ERROR | 500 | The gateway response for an invalid API configuration—including when an invalid endpoint address is submitted, when base64 decoding fails on binary data when binary support is enacted, or when integration response mapping can't match any template and no default template is configured\. If the response type is unspecified, this response defaults to the `DEFAULT_5XX` type\. | 
 | AUTHORIZER\_CONFIGURATION\_ERROR | 500 | The gateway response for failing to connect to a custom or Amazon Cognito authorizer\. If the response type is unspecified, this response defaults to the `DEFAULT_5XX` type\. | 
 | AUTHORIZER\_FAILURE | 500 | The gateway response when a custom or Amazon Cognito authorizer failed to authenticate the caller\. If the response type is unspecified, this response defaults to the `DEFAULT_5XX` type\. | 
 | BAD\_REQUEST\_PARAMETERS | 400 | The gateway response when the request parameter cannot be validated according to an enabled request validator\. If the response type is unspecified, this response defaults to the `DEFAULT_4XX` type\. | 

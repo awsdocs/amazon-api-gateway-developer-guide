@@ -13,7 +13,7 @@ As an example to showcase using a REST API in API Gateway to proxy Amazon S3, th
 **Note**  
  To integrate your API Gateway API with Amazon S3, you must choose a region where both the API Gateway and Amazon S3 services are available\. For region availability, see [Regions and Endpoints](https://docs.aws.amazon.com/general/latest/gr/rande.html#apigateway_region)\. 
 
- You may want to import the sample API as an Amazon S3 proxy, as shown in [OpenAPI Definitions of the Sample API as an Amazon S3 Proxy](api-as-s3-proxy-export-swagger-with-extensions.md)\. For instructions on how to import an API using the OpenAPI definition, see [Import a REST API into API Gateway](api-gateway-import-api.md)\. 
+ You may want to import the sample API as an Amazon S3 proxy, as shown in [OpenAPI Definitions of the Sample API as an Amazon S3 Proxy](api-as-s3-proxy-export-swagger-with-extensions.md)\. For instructions on how to import an API using the OpenAPI definition, see [Configuring a REST API Using OpenAPI](api-gateway-import-api.md)\. 
 
  To use the API Gateway console to create the API, you must first sign up for an AWS account\. 
 
@@ -304,7 +304,7 @@ As an illustration, the following screen shot shows the output when testing the 
 
 1. Set **Content Handling** to `Passthrough` in the integration request \(for upload\) and in a integration response \(for download\)\. Make sure that no mapping template is defined for the affected content type\. For more information, see [Integration Passthrough Behaviors](integration-passthrough-behaviors.md) and [Select VTL Mapping Templates](request-response-data-mappings.md#transforming-request-response-body)\.
 
-The payload size limit is 10 MB\. See [API Gateway Limits for Configuring and Running a REST API](limits.md#api-gateway-execution-service-limits-table)\.
+The payload size limit is 10 MB\. See [API Gateway Quotas for Configuring and Running a REST API](limits.md#api-gateway-execution-service-limits-table)\.
 
 Make sure that files on Amazon S3 have the correct content types added as the files' metadata\. For streamable media content, `Content-Disposition:inline` may also need to be added to the metadata\.
 

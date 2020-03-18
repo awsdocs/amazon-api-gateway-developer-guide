@@ -1,4 +1,4 @@
-# Enable Binary Support Using API Gateway REST API<a name="api-gateway-payload-encodings-configure-with-control-service-api"></a>
+# Enabling Binary Support Using the API Gateway REST API<a name="api-gateway-payload-encodings-configure-with-control-service-api"></a>
 
 The following tasks show how to enable binary support using the API Gateway REST API calls\.
 
@@ -8,7 +8,7 @@ The following tasks show how to enable binary support using the API Gateway REST
 + [Configure Response Payload Conversions](#api-gateway-payload-encodings-setup-with-api-set-integration-response-encoding)
 + [Convert Binary Data to Text Data](#api-gateway-payload-encodings-convert-binary-to-string)
 + [Convert Text Data to a Binary Payload](#api-gateway-payload-encodings-convert-string-to-binary)
-+ [Pass through a Binary Payload](#api-gateway-payload-encodings-pass-binary-as-is)
++ [Pass Through a Binary Payload](#api-gateway-payload-encodings-pass-binary-as-is)
 
 ## Add and Update Supported Binary Media Types to an API<a name="api-gateway-payload-encodings-setup-with-api-set-encodings-map"></a>
 
@@ -28,7 +28,7 @@ PATCH /restapis/<restapi_id>
 
 The MIME type specification of `image/jpeg` that is part of the `path` property value is escaped as `image~1jpeg`\.
 
-To update the supported binary media types, replace or remove the media type from the `binaryMediaTypes` list of the `RestApi` resource\. For example, to change binary support from JPEG files to raw bytes, submit a `PATCH` request to the `RestApi` resource, as follows\. 
+To update the supported binary media types, replace or remove the media type from the `binaryMediaTypes` list of the `RestApi` resource\. For example, to change binary support from JPEG files to raw bytes, submit a `PATCH` request to the `RestApi` resource, as follows: 
 
 ```
 PATCH /restapis/<restapi_id>
@@ -48,7 +48,7 @@ PATCH /restapis/<restapi_id>
 
 ## Configure Request Payload Conversions<a name="api-gateway-payload-encodings-setup-with-api-set-integration-request-encoding"></a>
 
-If the endpoint requires a binary input, set the `contentHandling` property of the `Integration` resource to `CONVERT_TO_BINARY`\. To do so, submit a `PATCH` request, as shown next: 
+If the endpoint requires a binary input, set the `contentHandling` property of the `Integration` resource to `CONVERT_TO_BINARY`\. To do so, submit a `PATCH` request, as follows: 
 
 ```
 PATCH /restapis/<restapi_id>/resources/<resource_id>/methods/<http_method>/integration
@@ -64,7 +64,7 @@ PATCH /restapis/<restapi_id>/resources/<resource_id>/methods/<http_method>/integ
 
 ## Configure Response Payload Conversions<a name="api-gateway-payload-encodings-setup-with-api-set-integration-response-encoding"></a>
 
-If the client accepts the result as a binary blob instead of a Base64\-encoded payload returned from the endpoint, set the `contentHandling` property of the `IntegrationResponse` resource to `CONVERT_TO_BINARY` by submitting a `PATCH` request, as shown next:
+If the client accepts the result as a binary blob instead of a base64\-encoded payload returned from the endpoint, set the `contentHandling` property of the `IntegrationResponse` resource to `CONVERT_TO_BINARY`\. To do this, submit a `PATCH` request, as follows:
 
 ```
 PATCH /restapis/<restapi_id>/resources/<resource_id>/methods/<http_method>/integration/responses/<status_code>
@@ -96,7 +96,7 @@ To send binary data as a JSON property of the input to AWS Lambda or Kinesis thr
    }
    ```
 
-1. Set `CONVERT_TO_TEXT` on the `contentHandling` property of the `Integration` resource and provide a mapping template to assign the Base64\-encoded string of the binary data to a JSON property\. In the following example, the JSON property is `body` and `$input.body` holds the Base64\-encoded string\.
+1. Set `CONVERT_TO_TEXT` on the `contentHandling` property of the `Integration` resource and provide a mapping template to assign the base64\-encoded string of the binary data to a JSON property\. In the following example, the JSON property is `body` and `$input.body` holds the base64\-encoded string\.
 
    ```
    PATCH /restapis/<restapi_id>/resources/<resource_id>/methods/<http_method>/integration
@@ -119,7 +119,7 @@ To send binary data as a JSON property of the input to AWS Lambda or Kinesis thr
 
 ## Convert Text Data to a Binary Payload<a name="api-gateway-payload-encodings-convert-string-to-binary"></a>
 
-Suppose a Lambda function returns an image file as a Base64\-encoded string\. To pass this binary output to the client through API Gateway, do the following: 
+Suppose a Lambda function returns an image file as a base64\-encoded string\. To pass this binary output to the client through API Gateway, do the following: 
 
 1. Update the API's `binaryMediaTypes` list by adding the binary media type of `application/octet-stream`, if it is not already in the list\. 
 
@@ -134,7 +134,7 @@ Suppose a Lambda function returns an image file as a Base64\-encoded string\. To
    }
    ```
 
-1.  Set the `contentHandling` property on the `Integration` resource to `CONVERT_TO_BINARY`\. Do not define a mapping template\. When you do not define a mapping template, API Gateway invokes the passthrough template to return the Base64\-decoded binary blob as the image file to the client\. 
+1.  Set the `contentHandling` property on the `Integration` resource to `CONVERT_TO_BINARY`\. Do not define a mapping template\. If you don't define a mapping template, API Gateway invokes the passthrough template to return the base64\-decoded binary blob as the image file to the client\. 
 
    ```
    PATCH /restapis/<restapi_id>/resources/<resource_id>/methods/<http_method>/integration/responses/<status_code>
@@ -150,11 +150,11 @@ Suppose a Lambda function returns an image file as a Base64\-encoded string\. To
    }
    ```
 
-## Pass through a Binary Payload<a name="api-gateway-payload-encodings-pass-binary-as-is"></a>
+## Pass Through a Binary Payload<a name="api-gateway-payload-encodings-pass-binary-as-is"></a>
 
  To store an image in an Amazon S3 bucket using API Gateway, do the following: 
 
-1. Update the API's `binaryMediaTypes` list by adding the binary media type of `application/octet-stream`, if it is not already in the list\. 
+1. Update the API's `binaryMediaTypes` list by adding the binary media type of `application/octet-stream`, if it isn't already in the list\. 
 
    ```
    PATCH /restapis/<restapi_id>

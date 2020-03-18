@@ -6,7 +6,7 @@ Unlike a REST API, which receives and responds to requests, a WebSocket API supp
 
 In your WebSocket API, incoming JSON messages are directed to backend integrations based on routes that you configure\. \(Non\-JSON messages are directed to a `$default` route that you configure\.\)
 
-A *route* includes a *route key*, which is the value that is expected once a *route selection expression* is evaluated\. The `routeSelectionExpression` is an attribute defined at the API level\. It specifies a JSON property that is expected to be present in the message payload\. For more information about route selection expressions, see [Route Selection Expressions](apigateway-websocket-api-selection-expressions.md#apigateway-websocket-api-route-selection-expressions)\.
+A *route* includes a *route key*, which is the value that is expected once a *route selection expression* is evaluated\. The `routeSelectionExpression` is an attribute defined at the API level\. It specifies a JSON property that is expected to be present in the message payload\. For more information about route selection expressions, see [Route Selection Expressions](websocket-api-develop-routes.md#apigateway-websocket-api-route-selection-expressions)\.
 
 For example, if your JSON messages contain an `action` property, and you want to perform different actions based on this property, your route selection expression might be `${request.body.action}`\. Your routing table would specify which action to perform by matching the value of the `action` property against the custom route key values that you have defined in the table\.
 

@@ -10,10 +10,10 @@ In this tutorial, you'll create a `Calc` Lambda function that implements basic a
 
 1. By exposing a `GET` on nested `/calc/{operand1}/{operand2}/{operator}` resources to invoke the Lambda function, supplying the input as path parameters\. \(`Lambda Function` integration\)
 
-In addition to trying out this tutorial, you may wish to study the [OpenAPI definition file](api-as-lambda-proxy-export-swagger-with-extensions.md) for the `Calc` API, which you can import into API Gateway by following the instructions in [Import a REST API into API Gateway](api-gateway-import-api.md)\.
+In addition to trying out this tutorial, you may wish to study the [OpenAPI definition file](api-as-lambda-proxy-export-swagger-with-extensions.md) for the `Calc` API, which you can import into API Gateway by following the instructions in [Configuring a REST API Using OpenAPI](api-gateway-import-api.md)\.
 
 **Topics**
-+ [Create an AWS Account](#w57aac11c17c15)
++ [Create an AWS Account](#w65aac11c17c15)
 + [Create an Assumable IAM Role](#api-as-lambda-proxy-setup-iam-role-policies)
 + [Create a `Calc` Lambda Function](#api-as-lambda-proxy-create-lambda-function)
 + [Test the `Calc` Lambda Function](#api-as-lambda-proxy-create-lambda-function)
@@ -23,7 +23,7 @@ In addition to trying out this tutorial, you may wish to study the [OpenAPI defi
 + [Integration 3: Create a `GET` Method with Path Parameters to Call the Lambda Function](#api-as-lambda-proxy-expose-get-method-with-path-parameters-to-call-lambda-function)
 + [OpenAPI Definitions of Sample API Integrated with a Lambda Function](api-as-lambda-proxy-export-swagger-with-extensions.md)
 
-## Create an AWS Account<a name="w57aac11c17c15"></a>
+## Create an AWS Account<a name="w65aac11c17c15"></a>
 
 Before you begin this tutorial, you'll need an AWS account\. 
 

@@ -28,9 +28,9 @@ You can enable AWS Config in your account by using the AWS Config console or the
 ## Supported Resource Types<a name="apigateway-config-resources-rules"></a>
 
 The following API Gateway resource types are integrated with AWS Config and are documented in [AWS Config Supported AWS Resource Types and Resource Relationships](https://docs.aws.amazon.com/config/latest/developerguide/resource-config-reference.html):
-+ `AWS::ApiGatewayV2::Api` \(WebSocket API\)
++ `AWS::ApiGatewayV2::Api` \(WebSocket and HTTP API\)
 + `AWS::ApiGateway::RestApi` \(REST API\)
-+ `AWS::ApiGatewayV2::Stage` \(WebSocket API stage\)
++ `AWS::ApiGatewayV2::Stage` \(WebSocket and HTTP API stage\)
 + `AWS::ApiGateway::Stage` \(REST API stage\)
 
 For more information about AWS Config, see the [AWS Config Developer Guide](https://docs.aws.amazon.com/config/latest/developerguide/)\. For pricing information, see the [AWS Config pricing information page](https://aws.amazon.com/config/pricing/)\.

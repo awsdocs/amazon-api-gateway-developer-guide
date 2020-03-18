@@ -33,7 +33,7 @@ This page describes how to create and configure a REST API with an integration o
 
  You can apply the instructions presented here to other Kinesis actions\. For the complete list of the Kinesis actions, see [Amazon Kinesis API Reference](https://docs.aws.amazon.com/kinesis/latest/APIReference/Welcome.html)\. 
 
- Instead of using the API Gateway console to create the sample API, you can import the sample API into API Gateway using the API Gateway [Import API](https://docs.aws.amazon.com/apigateway/api-reference/link-relation/restapi-import/)\. For information on how to use the Import API, see [Import a REST API into API Gateway](api-gateway-import-api.md)\. 
+ Instead of using the API Gateway console to create the sample API, you can import the sample API into API Gateway using the API Gateway [Import API](https://docs.aws.amazon.com/apigateway/api-reference/link-relation/restapi-import/)\. For information on how to use the Import API, see [Configuring a REST API Using OpenAPI](api-gateway-import-api.md)\. 
 
 If you do not have an AWS account, complete the following steps to create one\.
 

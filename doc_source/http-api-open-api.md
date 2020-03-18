@@ -1,11 +1,10 @@
-# Migrating to an HTTP API<a name="http-api-import"></a>
+# Working with OpenAPI Definitions for HTTP APIs<a name="http-api-open-api"></a>
 
+You can define your HTTP API by using an OpenAPI 3\.0 definition file\. Then you can import the definition into API Gateway to create an API\. To learn more about API Gateway extensions to OpenAPI, see [Working with API Gateway Extensions to OpenAPI](api-gateway-swagger-extensions.md)\.
 
-|  | 
-| --- |
-| HTTP APIs are in beta for Amazon API Gateway and are subject to change\. | 
+## Importing an HTTP API<a name="http-api-import"></a>
 
-## <a name="http-api-import.supported"></a>
+### <a name="http-api-import.supported"></a>
 
 You can create an HTTP API by importing an OpenAPI 3\.0 definition file\.
 
@@ -14,7 +13,7 @@ To migrate from a REST API to an HTTP API, you can export your REST API as an Op
 **Note**  
 HTTP APIs support the same AWS variables as REST APIs\. To learn more, see [AWS Variables for OpenAPI Import](import-api-aws-variables.md)\.
 
-## Import Validation Information<a name="http-api-import.validation"></a>
+### Import Validation Information<a name="http-api-import.validation"></a>
 
 As you import an API, API Gateway provides three categories of validation information\.
 
@@ -90,7 +89,7 @@ The following API definition produces errors on import because HTTP APIs support
 }
 ```
 
-## Import an API by Using the AWS CLI<a name="http-api-import.example"></a>
+### Import an API by Using the AWS CLI<a name="http-api-import.example"></a>
 
 The following command imports the OpenAPI 3\.0 definition file `api-definition.json` as an HTTP API\.
 
@@ -101,12 +100,11 @@ aws apigatewayv2 import-api --body file://api-definition.json
 ```
 
 **Example**  
-The following OpenAPI definition demonstrates some OpenAPI 3\.0 fields and API Gateway extensions that are supported for HTTP APIs\.  
+You can import the following example OpenAPI 3\.0 definition to create an HTTP API\.  
 
 ```
 {
   "openapi": "3.0.1",
-  "x-amazon-apigateway-importer-version": 1.0,
   "info": {
     "title": "Example Pet Store",
     "description": "A Pet Store API.",

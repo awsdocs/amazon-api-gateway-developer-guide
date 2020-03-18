@@ -14,14 +14,14 @@ Any custom domain name that you use for an edge\-optimized API applies across al
 
 ## Regional API Endpoints<a name="api-gateway-api-endpoint-types-regional"></a>
 
-A *[regional API endpoint](api-gateway-basic-concept.md#apigateway-definition-regional-api-endpoint)* is intended for clients in the same region\. When a client running on an EC2 instance calls an API in the same region, or when an API is intended to serve a small number of clients with high demands, a regional API reduces connection overhead\. For more information, see [Set up a Regional API in API Gateway](create-regional-api.md)\.
+A *[regional API endpoint](api-gateway-basic-concept.md#apigateway-definition-regional-api-endpoint)* is intended for clients in the same region\. When a client running on an EC2 instance calls an API in the same region, or when an API is intended to serve a small number of clients with high demands, a regional API reduces connection overhead\. \.
 
-For a regional API, any custom domain name that you use is specific to the region where the API is deployed\. If you deploy a regional API in multiple regions, it can have the same custom domain name in all regions\. You can use custom domains together with Amazon Route 53 to perform tasks such as [latency\-based routing](https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/routing-policy.html#routing-policy-latency)\. For more information, see [Set Up a Custom Domain Name for a Regional REST API or WebSocket API in API Gateway](apigateway-regional-api-custom-domain-create.md) and [How to Create an Edge\-Optimized Custom Domain Name](how-to-edge-optimized-custom-domain-name.md)\.
+For a regional API, any custom domain name that you use is specific to the region where the API is deployed\. If you deploy a regional API in multiple regions, it can have the same custom domain name in all regions\. You can use custom domains together with Amazon Route 53 to perform tasks such as [latency\-based routing](https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/routing-policy.html#routing-policy-latency)\. For more information, see [Setting Up a Regional Custom Domain Name in API Gateway](apigateway-regional-api-custom-domain-create.md) and [Creating an Edge\-Optimized Custom Domain Name](how-to-edge-optimized-custom-domain-name.md)\.
 
 Regional API endpoints pass all header names through as\-is\.
 
 ## Private API Endpoints<a name="api-gateway-api-endpoint-types-private"></a>
 
-A *[private API endpoint](api-gateway-basic-concept.md#apigateway-definition-private-api-endpoint)* is an API endpoint that can only be accessed from your Amazon Virtual Private Cloud \(VPC\) using an interface VPC endpoint, which is an endpoint network interface \(ENI\) that you create in your VPC\. For more information, see [Create a Private API in Amazon API Gateway](apigateway-private-apis.md)\.
+A *[private API endpoint](api-gateway-basic-concept.md#apigateway-definition-private-api-endpoint)* is an API endpoint that can only be accessed from your Amazon Virtual Private Cloud \(VPC\) using an interface VPC endpoint, which is an endpoint network interface \(ENI\) that you create in your VPC\. For more information, see [Creating a Private API in Amazon API Gateway](apigateway-private-apis.md)\.
 
 Private API endpoints pass all header names through as\-is\.

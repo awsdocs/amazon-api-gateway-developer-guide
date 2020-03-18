@@ -12,4 +12,3 @@
 + [Set up an Edge\-Optimized API Using the AWS SDK for Node\.js](create-api-using-awssdk.md)
 + [Set up an Edge\-Optimized API by Importing OpenAPI Definitions](create-api-using-swagger.md)
 + [Set up a Regional API in API Gateway](create-regional-api.md)
-+ [Create a Private API in Amazon API Gateway](apigateway-private-apis.md)

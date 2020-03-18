@@ -50,10 +50,12 @@ The following example creates an `OPTIONS` method for a mock integration\.
             application/json: |
               {}
 ```
+
+------
 #### [ OpenAPI 2\.0 ]
 
 ```
-/users 
+/users: 
    options:
       summary: CORS support
       description: |
@@ -101,65 +103,71 @@ Once you have configured the `OPTIONS` method for your resource, you can add the
 
 ------
 #### [ OpenAPI 3\.0 ]
-```
-    responses:
-      200:
-        description: Default response for CORS method
-        headers:
-          Access-Control-Allow-Origin:
-            schema:
-              type: string
-          Access-Control-Allow-Methods:
-            schema:
-              type: string
-          Access-Control-Allow-Headers:
-            schema:
-              type: string
-        content: {}
-```
+
+   ```
+       responses:
+         200:
+           description: Default response for CORS method
+           headers:
+             Access-Control-Allow-Origin:
+               schema:
+                 type: string
+             Access-Control-Allow-Methods:
+               schema:
+                 type: string
+             Access-Control-Allow-Headers:
+               schema:
+                 type: string
+           content: {}
+   ```
+
+------
 #### [ OpenAPI 2\.0 ]
 
-```
-      responses:
-        200:
-          description: Default response for CORS method
-          headers:
-            Access-Control-Allow-Headers:
-              type: "string"
-            Access-Control-Allow-Methods:
-              type: "string"
-            Access-Control-Allow-Origin:
-              type: "string"
-```
+   ```
+         responses:
+           200:
+             description: Default response for CORS method
+             headers:
+               Access-Control-Allow-Headers:
+                 type: "string"
+               Access-Control-Allow-Methods:
+                 type: "string"
+               Access-Control-Allow-Origin:
+                 type: "string"
+   ```
+
 ------
 
 1. In the `x-amazon-apigateway-integration` tag, set up the mapping for those headers to your static values:
 
 ------
 #### [ OpenAPI 3\.0 ]
-```
-      responses:
-        default:
-          statusCode: "200"
-          responseParameters:
-            method.response.header.Access-Control-Allow-Headers: '''Content-Type,X-Amz-Date,Authorization,X-Api-Key'''
-            method.response.header.Access-Control-Allow-Methods: '''*'''
-            method.response.header.Access-Control-Allow-Origin: '''*'''
-          responseTemplates:
-            application/json: |
-              {}
-```
+
+   ```
+       responses:
+           default:
+             statusCode: "200"
+             responseParameters:
+               method.response.header.Access-Control-Allow-Headers: '''Content-Type,X-Amz-Date,Authorization,X-Api-Key'''
+               method.response.header.Access-Control-Allow-Methods: '''*'''
+               method.response.header.Access-Control-Allow-Origin: '''*'''
+             responseTemplates:
+               application/json: |
+                 {}
+   ```
+
+------
 #### [ OpenAPI 2\.0 ]
-```
-        responses:
-          "default":
-            statusCode: "200"
-            responseParameters:
-              method.response.header.Access-Control-Allow-Headers : "'Content-Type,X-Amz-Date,Authorization,X-Api-Key'"
-              method.response.header.Access-Control-Allow-Methods : "'*'"
-              method.response.header.Access-Control-Allow-Origin : "'*'"
-            responseTemplates:
-              application/json: |
-                {}
-```
+
+   ```
+           responses:
+             "default":
+               statusCode: "200"
+               responseParameters:
+                 method.response.header.Access-Control-Allow-Headers : "'Content-Type,X-Amz-Date,Authorization,X-Api-Key'"
+                 method.response.header.Access-Control-Allow-Methods : "'*'"
+                 method.response.header.Access-Control-Allow-Origin : "'*'"
+   ```
+
 ------

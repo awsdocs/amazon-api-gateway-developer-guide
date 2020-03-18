@@ -68,7 +68,7 @@ Before setting up an API method, verify the following:
 
    1. If the newly created query string parameter is to be used for request validation, choose the **Required** option\. For more information about the request validation, see [Enable Request Validation in API Gateway](api-gateway-method-request-validation.md)\.
 
-   1. If the newly created query string parameter is to be used as part of a caching key, check the **Caching** option\. This is applicable only when caching is enabled\. For more information about caching, see [Use Method/Integration Parameters as Cache Keys](api-gateway-caching.md#enable-api-gateway-cache-keys)\.
+   1. If the newly created query string parameter is to be used as part of a caching key, check the **Caching** option\. This is applicable only when caching is enabled\. For more information about caching, see [Use Method or Integration Parameters as Cache Keys to Index Cached Responses](api-gateway-caching.md#enable-api-gateway-cache-keys)\.
 **Tip**  
 To remove the query string parameter, choose the **x** icon associated with it and then choose **Remove this parameter and any dependent parameters** to confirm the removal\.   
 To change the name of the query string parameter, remove it and then create a new one\.
@@ -81,7 +81,7 @@ To change the name of the query string parameter, remove it and then create a ne
 
    1. If the newly created header parameter is to be used for request validation, choose the **Required** option\. For more information about request validation, see [Enable Request Validation in API Gateway](api-gateway-method-request-validation.md)\.
 
-   1. If the newly created header parameter is to be used as part of a caching key, choose the **Caching** option\. This is applicable only when caching is enabled\. For more information about caching, see [Use Method/Integration Parameters as Cache Keys](api-gateway-caching.md#enable-api-gateway-cache-keys)\.
+   1. If the newly created header parameter is to be used as part of a caching key, choose the **Caching** option\. This is applicable only when caching is enabled\. For more information about caching, see [Use Method or Integration Parameters as Cache Keys to Index Cached Responses](api-gateway-caching.md#enable-api-gateway-cache-keys)\.
 **Tip**  
 To remove the header parameter, choose the **x** icon associated with it and then choose **Remove this parameter and any dependent parameters** to confirm the removal\.   
 To change the name of the header parameter, remove it and then create a new one\.

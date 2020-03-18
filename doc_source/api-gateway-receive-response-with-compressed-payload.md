@@ -5,7 +5,7 @@ When making a request on a compression\-enabled API, the client can choose to re
 API Gateway only compresses the response payload when the following conditions are satisfied:
 +  The incoming request has the `Accept-Encoding` header with a supported content coding and format\. 
 **Note**  
-If the header is not set, the default value is `*` as defined in [RFC 7231](https://tools.ietf.org/html/rfc7231#section-5.3.4)\. In such a case, API Gateway will not compress the payload\. Some browser or client may add `Accept-Encoding` \(for example, `Accept-Encoding:gzip, deflate, br`\) automatically to compression\-enabled requests\. This can trigger the payload compression in API Gateway\. Without an explicit specification of supported `Accept-Encoding` header values, API Gateway does not compress the payload\. 
+If the header is not set, the default value is `*` as defined in [RFC 7231](https://tools.ietf.org/html/rfc7231#section-5.3.4)\. In such a case, API Gateway does not compress the payload\. Some browser or client may add `Accept-Encoding` \(for example, `Accept-Encoding:gzip, deflate, br`\) automatically to compression\-enabled requests\. This can trigger the payload compression in API Gateway\. Without an explicit specification of supported `Accept-Encoding` header values, API Gateway does not compress the payload\. 
 +  The `minimumCompressionSize` is set on the API to enable compression\.
 +  The integration response doesn't have a `Content-Encoding` header\. 
 +  The size of an integration response payload, after the applicable mapping template is applied, is greater than or equal to the specified `minimumCompressionSize` value\.

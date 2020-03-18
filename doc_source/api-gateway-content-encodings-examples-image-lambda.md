@@ -275,7 +275,7 @@ Content-Type: application/json
 Accept: application/octet-stream
 ```
 
-The successful response looks like this:
+The successful response looks like the following:
 
 ```
 200 OK HTTP/1.1
@@ -283,7 +283,7 @@ The successful response looks like this:
 [raw bytes]
 ```
 
-To download an image file \(`image.jpg`\) as a Base64\-encoded string, formatted as a JSON property, from Lambda:
+To download an image file \(`image.jpg`\) as a base64\-encoded string \(formatted as a JSON property\) from Lambda:
 
 ```
 GET /v1/lambda?key=image.jpg HTTP/1.1
@@ -292,7 +292,7 @@ Content-Type: application/json
 Accept: application/json
 ```
 
-The successful response looks like this:
+The successful response looks like the following:
 
 ```
 200 OK HTTP/1.1
@@ -315,13 +315,13 @@ Accept: application/json
 [raw bytes]
 ```
 
-The successful response looks like this:
+The successful response looks like the following:
 
 ```
 200 OK            
 ```
 
-To upload an image file \(`image.jpg`\) as a Base64\-encoded string to Lambda:
+To upload an image file \(`image.jpg`\) as a base64\-encoded string to Lambda:
 
 ```
 PUT /v1/lambda?key=image.jpg HTTP/1.1
@@ -332,7 +332,7 @@ Accept: application/json
 W3JhdyBieXRlc10=
 ```
 
-The successful response looks like this:
+The successful response looks like the following:
 
 ```
 200 OK           

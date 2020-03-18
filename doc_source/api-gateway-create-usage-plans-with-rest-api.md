@@ -69,7 +69,7 @@ An API key can be associated with more than one usage plan\. A usage plan can be
 The following code examples show how to add, remove, or modify the method\-level throttling settings in a usage plan by calling the [https://docs.aws.amazon.com/cli/latest/reference/apigateway/update-usage-plan.html](https://docs.aws.amazon.com/cli/latest/reference/apigateway/update-usage-plan.html) command\.
 
 **Note**  
-Be sure to change `us-east-1` to the appropriate region value for your API\.
+Be sure to change `us-east-1` to the appropriate Region value for your API\.
 
 To add or replace a rate limit for throttling an individual resource and method:
 

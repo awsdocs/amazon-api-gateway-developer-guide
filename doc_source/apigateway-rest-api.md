@@ -1,10 +1,13 @@
-# Creating, Deploying, and Invoking a REST API in Amazon API Gateway<a name="apigateway-rest-api"></a>
+# Working with REST APIs<a name="apigateway-rest-api"></a>
+
+A REST API in API Gateway is a collection of resources and methods that are integrated with backend HTTP endpoints, Lambda functions, or other AWS services\. You can use API Gateway features to help you with all aspects of the API lifecycle, from creation through monitoring your production APIs\.
+
+API Gateway REST APIs use a request/response model where a client sends a request to a service and the service responds back synchronously\. This kind of model is suitable for many different kinds of applications that depend on synchronous communication\.
 
 **Topics**
-+ [Creating a REST API in Amazon API Gateway](how-to-create-api.md)
-+ [Controlling and Managing Access to a REST API in API Gateway](apigateway-control-access-to-api.md)
-+ [Documenting a REST API in API Gateway](api-gateway-documenting-api.md)
-+ [Update and Maintain a REST API in Amazon API Gateway](updating-api.md)
-+ [Deploying a REST API in Amazon API Gateway](how-to-deploy-api.md)
-+ [Invoking a REST API in Amazon API Gateway](how-to-call-api.md)
-+ [Tracing, Logging, and Monitoring an API Gateway API](monitoring_overview.md)
++ [Developing a REST API in API Gateway](rest-api-develop.md)
++ [Publishing REST APIs for Customers to Invoke](rest-api-publish.md)
++ [Optimizing Performance of REST APIs](rest-api-optimize.md)
++ [Distributing Your REST API to Clients](rest-api-distribute.md)
++ [Protecting Your REST API](rest-api-protect.md)
++ [Monitoring REST APIs](rest-api-monitor.md)

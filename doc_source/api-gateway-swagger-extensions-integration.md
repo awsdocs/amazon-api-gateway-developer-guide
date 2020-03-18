@@ -11,18 +11,26 @@
 | cacheNamespace | string | An API\-specific tag group of related cached parameters\. | 
 | connectionId | string | The ID of a [VpcLink](https://docs.aws.amazon.com/apigateway/api-reference/resource/vpc-link/) for the private integration\. | 
 | connectionType | string | The integration connection type\. The valid value is "VPC\_LINK" for private integration or "INTERNET", otherwise\. | 
-| credentials | string |  For AWS IAM role\-based credentials, specify the ARN of an appropriate IAM role\. If unspecified, credentials will default to resource\-based permissions that must be added manually to allow the API to access the resource\. For more information, see [Granting Permissions Using a Resource Policy](https://docs.aws.amazon.com/lambda/latest/dg/intro-permission-model.html#intro-permission-model-access-policy)\. Note: when using IAM credentials, please ensure that [AWS STS regional endpoints](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_temp_enable-regions.html) are enabled for the region where this API is deployed for best performance\.   | 
-| contentHandling | string | Request payload encoding conversion types\. Valid values are 1\) CONVERT\_TO\_TEXT, for converting a binary payload into a Base64\-encoded string or converting a text payload into a utf\-8\-encoded string or passing through the text payload natively without modification, and 2\) CONVERT\_TO\_BINARY, for converting a text payload into Base64\-decoded blob or passing through a binary payload natively without modification\. | 
+| credentials | string |   For AWS IAM role\-based credentials, specify the ARN of an appropriate IAM role\. If unspecified, credentials default to resource\-based permissions that must be added manually to allow the API to access the resource\. For more information, see [Granting Permissions Using a Resource Policy](https://docs.aws.amazon.com/lambda/latest/dg/intro-permission-model.html#intro-permission-model-access-policy)\.  Note: When using IAM credentials, make sure that [AWS STS Regional endpoints](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_temp_enable-regions.html) are enabled for the Region where this API is deployed for best performance\.   | 
+| contentHandling | string | Request payload encoding conversion types\. Valid values are 1\) CONVERT\_TO\_TEXT, for converting a binary payload into a base64\-encoded string or converting a text payload into a utf\-8\-encoded string or passing through the text payload natively without modification, and 2\) CONVERT\_TO\_BINARY, for converting a text payload into a base64\-decoded blob or passing through a binary payload natively without modification\. | 
 | httpMethod | string |  The HTTP method used in the integration request\. For Lambda function invocations, the value must be POST\.  | 
 | passthroughBehavior | string |  Specifies how a request payload of unmapped content type is passed through the integration request without modification\. Supported values are when\_no\_templates, when\_no\_match, and never\. For more information, see [Integration\.passthroughBehavior](https://docs.aws.amazon.com/apigateway/api-reference/resource/integration/#passthroughBehavior)\. | 
 | requestParameters | [x\-amazon\-apigateway\-integration\.requestParameters Object](api-gateway-swagger-extensions-integration-requestParameters.md) | Specifies mappings from method request parameters to integration request parameters\. Supported request parameters are querystring, path, header, and body\. | 
 | requestTemplates | [x\-amazon\-apigateway\-integration\.requestTemplates Object](api-gateway-swagger-extensions-integration-requestTemplates.md) | Mapping templates for a request payload of specified MIME types\. | 
 | responses | [x\-amazon\-apigateway\-integration\.responses Object](api-gateway-swagger-extensions-integration-responses.md) | Defines the method's responses and specifies desired parameter mappings or payload mappings from integration responses to method responses\.  | 
 | timeoutInMillis | integer | Integration timeouts between 50 ms and 29,000 ms\. | 
-| type | string |  The type of integration with the specified backend\. The valid value is  [\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/apigateway/latest/developerguide/api-gateway-swagger-extensions-integration.html) For more information about the integration types, see [integration:type](https://docs.aws.amazon.com/apigateway/api-reference/resource/integration/#type)\.  | 
+| type | string |  The type of integration with the specified backend\. Valid values are: [\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/apigateway/latest/developerguide/api-gateway-swagger-extensions-integration.html) For more information about the integration types, see [integration:type](https://docs.aws.amazon.com/apigateway/api-reference/resource/integration/#type)\.  | 
 | uri | string | The endpoint URI of the backend\. For integrations of the aws type, this is an ARN value\. For the HTTP integration, this is the URL of the HTTP endpoint including the https or http scheme\. | 
 
-## x\-amazon\-apigateway\-integration Example<a name="api-gateway-swagger-extensions-integration-example"></a>
+## x\-amazon\-apigateway\-integration Examples<a name="api-gateway-swagger-extensions-integration-example"></a>
+
+For HTTP APIs, you can define integrations in the components section of your OpenAPI definition\. To learn more, see [x\-amazon\-apigateway\-integrations Object](api-gateway-extensions-integrations.md)\.
+
+```
+"x-amazon-apigateway-integration": {
+    "$ref": "#/components/x-amazon-apigateway-integrations/integration1"
+}
+```
 
  The following example integrates an API's `POST` method with a Lambda function in the backend\. For demonstration purposes, the sample mapping templates shown in `requestTemplates` and `responseTemplates` of the examples below are assumed to apply to the following JSON\-formatted payload: `{ "name":"value_1", "key":"value_2", "redirect": {"url" :"..."} }` to generate a JSON output of `{ "stage":"value_1", "user-id":"value_2" }` or an XML output of `<stage>value_1</stage>`\. 
 
@@ -69,4 +77,4 @@
 }
 ```
 
-Note that double quotes \("\) of the JSON string in the mapping templates must be string\-escaped \(\\"\)\. 
+Note that double quotes \("\) for the JSON string in the mapping templates must be string\-escaped \(\\"\)\. 

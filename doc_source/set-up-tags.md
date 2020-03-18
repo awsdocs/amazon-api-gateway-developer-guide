@@ -1,4 +1,4 @@
-# Set Up Tags for an API Stage in API Gateway<a name="set-up-tags"></a>
+# Setting Up Tags for an API Stage in API Gateway<a name="set-up-tags"></a>
 
 In API Gateway, you can add a tag to an API stage, remove the tag from the stage, or view the tag\. To do this, you can use the API Gateway console, the AWS CLI/SDK, or the API Gateway REST API\.
 
@@ -7,10 +7,10 @@ A stage can also inherit tags from its parent REST API\. For more information, s
 For more information about tagging API Gateway resources, see [Tagging Your API Gateway Resources](apigateway-tagging.md)\.
 
 **Topics**
-+ [Set up Tags for an API Stage Using the API Gateway Console](#set-up-tags-using-console)
-+ [Set up Tags for an API Stage Using the API Gateway REST API](#set-up-tags-using-api)
++ [Set Up Tags for an API Stage Using the API Gateway Console](#set-up-tags-using-console)
++ [Set Up Tags for an API Stage Using the API Gateway REST API](#set-up-tags-using-api)
 
-## Set up Tags for an API Stage Using the API Gateway Console<a name="set-up-tags-using-console"></a>
+## Set Up Tags for an API Stage Using the API Gateway Console<a name="set-up-tags-using-console"></a>
 
 The following procedure describes how to set up tags for an API stage\.
 
@@ -24,17 +24,17 @@ The following procedure describes how to set up tags for an API stage\.
 
 1. In the **Stage Editor**, choose the **Configure Tags** button\. 
 
-1. In the **Tag Editor**, choose **Add New Tag**\. Type a tag key \(for example, `Department`\) in the **Key** field, and type a tag value \(for example, `Sales`\) in the **Value** field\. Choose the checkmark icon to save the tag\.
+1. In the **Tag Editor**, choose **Add New Tag**\. Enter a tag key \(for example, `Department`\) in the **Key** field, and enter a tag value \(for example, `Sales`\) in the **Value** field\. Choose the checkmark icon to save the tag\.
 
-1.  If needed, repeat Step 5 to add more tags to the API stage\. The maximum number of tags per stage is 50\.
+1.  If needed, repeat step 5 to add more tags to the API stage\. The maximum number of tags per stage is 50\.
 
 1.  To remove an existing tag from the stage, choose the trash bin icon next to the tag\.
 
 1. Choose **Save Changes** to finish setting up the stage tags\.
 
-   If the API has been deployed previously in the API Gateway console, you'll need to redeploy it for the changes to take effect\.
+   If the API has been deployed previously in the API Gateway console, you need to redeploy it for the changes to take effect\.
 
-## Set up Tags for an API Stage Using the API Gateway REST API<a name="set-up-tags-using-api"></a>
+## Set Up Tags for an API Stage Using the API Gateway REST API<a name="set-up-tags-using-api"></a>
 
 You can set up tags for an API stage using the API Gateway REST API by doing one of the following:
 + Call [https://docs.aws.amazon.com/apigateway/api-reference/link-relation/tags-tag/](https://docs.aws.amazon.com/apigateway/api-reference/link-relation/tags-tag/) to tag an API stage\.
@@ -92,7 +92,7 @@ Host: apigateway.us-east-1.amazonaws.com
 Authorization: ...
 ```
 
- To remove more than one tag, use a comma\-separated list of tag keys in the query expression—for example,`?tagKeys=Department,Division,…`\. 
+ To remove more than one tag, use a comma\-separated list of tag keys in the query expression—for example, `?tagKeys=Department,Division,…`\. 
 
 ### Describe Tags for an API Stage<a name="get-tags-using-api"></a>
 

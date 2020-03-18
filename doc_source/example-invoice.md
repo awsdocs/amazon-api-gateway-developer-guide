@@ -1,6 +1,6 @@
 # Sales Invoice Example \(API Gateway Models and Mapping Templates\)<a name="example-invoice"></a>
 
-The following sections provide examples of models and mapping templates that could be used for a sample sales invoice API in API Gateway\. For more information about models and mapping templates in API Gateway, see [Create Models and Mapping Templates for Request and Response Mappings](models-mappings.md)\.
+The following sections provide examples of models and mapping templates that could be used for a sample sales invoice API in API Gateway\. For more information about models and mapping templates in API Gateway, see [Working with Models and Mapping Templates](models-mappings.md)\.
 
 **Topics**
 + [Original Data \(Sales Invoice Example\)](#example-invoice-original-data)

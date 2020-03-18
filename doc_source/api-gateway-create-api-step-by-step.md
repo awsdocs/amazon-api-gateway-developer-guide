@@ -578,7 +578,7 @@ This walkthrough uses API Gateway to get example data from a publicly accessible
 ]
 ```
 
-You will use models and mapping templates to transform this data to one or more output formats\. In API Gateway, a model defines the format, also known as the schema or shape, of some data\. In API Gateway, a mapping template is used to transform some data from one format to another\. For more information, see [Create Models and Mapping Templates for Request and Response Mappings](models-mappings.md)\.
+You will use models and mapping templates to transform this data to one or more output formats\. In API Gateway, a model defines the format, also known as the schema or shape, of some data\. In API Gateway, a mapping template is used to transform some data from one format to another\. For more information, see [Working with Models and Mapping Templates](models-mappings.md)\.
 
 The first model and mapping template is used to rename `id` to `number`, `type` to `class`, and `price` to `salesPrice`, as follows:
 

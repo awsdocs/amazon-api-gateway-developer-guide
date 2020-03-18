@@ -6,7 +6,7 @@ The following steps outline how you, as the API owner, create and configure a us
 
 1. Create one or more APIs, configure the methods to require an API key, and deploy the APIs to stages\.
 
-1. Generate or import API keys to distribute to app developers \(your customers\) who will be using your API\.
+1. Generate or import API keys to distribute to application developers \(your customers\) who will be using your API\.
 
 1. Create the usage plan with the desired throttle and quota limits\.
 

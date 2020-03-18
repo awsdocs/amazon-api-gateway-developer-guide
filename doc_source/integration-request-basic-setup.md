@@ -1,6 +1,8 @@
 # Basic Tasks of an API Integration Request<a name="integration-request-basic-setup"></a>
 
- An integration request is an HTTP request that API Gateway submits to the backend, passing along the client\-submitted request data, and transforming the data, if necessary\. The HTTP method \(or verb\) and URI of the integration request are dictated by the backend \(that is, the integration endpoint\)\. They can be the same as or different from the method request's HTTP method and URI, respectively\. For example, when a Lambda function returns a file that is fetched from Amazon S3, you can expose this operation intuitively as a `GET` method request to the client even though the corresponding integration request requires that a `POST` request be used to invoke the Lambda function\. For an HTTP endpoint, it is likely that the method request and the corresponding integration request both use the same HTTP verb\. However, this is not required\. You can integrate the following method request: 
+ An integration request is an HTTP request that API Gateway submits to the backend, passing along the client\-submitted request data, and transforming the data, if necessary\. The HTTP method \(or verb\) and URI of the integration request are dictated by the backend \(that is, the integration endpoint\)\. They can be the same as or different from the method request's HTTP method and URI, respectively\. 
+
+For example, when a Lambda function returns a file that is fetched from Amazon S3, you can expose this operation intuitively as a `GET` method request to the client even though the corresponding integration request requires that a `POST` request be used to invoke the Lambda function\. For an HTTP endpoint, it is likely that the method request and the corresponding integration request both use the same HTTP verb\. However, this is not required\. You can integrate the following method request: 
 
 ```
 GET /{var}?query=value
@@ -21,7 +23,9 @@ Content-Length: ...
 }
 ```
 
- As an API developer, you can use whatever HTTP verb and URI for a method request suit your requirements\. But you must follow the requirements of the integration endpoint\. When the method request data differs from the integration request data, you can reconcile the difference by providing mappings from the method request data to the integration request data\. In the preceding examples, the mapping translates the path variable \(`{var}`\) and the query parameter \(`query`\) values of the `GET` method request to the values of the integration request's payload properties of `path` and `type`\. Other mappable request data includes request headers and body\. These are described in [Set up Request and Response Data Mappings Using the API Gateway Console](how-to-method-settings-execution-console.md)\. 
+ As an API developer, you can use whatever HTTP verb and URI for a method request suit your requirements\. But you must follow the requirements of the integration endpoint\. When the method request data differs from the integration request data, you can reconcile the difference by providing mappings from the method request data to the integration request data\. 
+
+In the preceding examples, the mapping translates the path variable \(`{var}`\) and the query parameter \(`query`\) values of the `GET` method request to the values of the integration request's payload properties of `path` and `type`\. Other mappable request data includes request headers and body\. These are described in [Set up Request and Response Data Mappings Using the API Gateway Console](how-to-method-settings-execution-console.md)\. 
 
 When setting up the HTTP or HTTP proxy integration request, you assign the backend HTTP endpoint URL as the integration request URI value\. For example, in the PetStore API, the method request to get a page of pets has the following integration request URI: 
 

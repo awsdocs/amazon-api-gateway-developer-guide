@@ -1,4 +1,4 @@
-# Set up an Integration Response in API Gateway<a name="api-gateway-integration-settings-integration-response"></a>
+# Set Up an Integration Response in API Gateway<a name="api-gateway-integration-settings-integration-response"></a>
 
  For a non\-proxy integration, you must set up at least one integration response, and make it the default response, to pass the result returned from the backend to the client\. You can choose to pass through the result as\-is or to transform the integration response data to the method response data if the two have different formats\. 
 
@@ -31,4 +31,4 @@ An integration response is an HTTP response encapsulating the backend response\.
 
 There is no need to map the Lambda function response to its proper HTTP response\.
 
-To return the result to the client, set up the integration response to pass the endpoint response through as\-is to the corresponding method response\. Or you can map the endpoint response data to the method response data\. The response data that can be mapped includes the response status code, response header parameters, and response body\. If no method response is defined for the returned status code, API Gateway returns a 500 error\. For more information, see [Create Models and Mapping Templates for Request and Response Mappings](models-mappings.md)\.
+To return the result to the client, set up the integration response to pass the endpoint response through as\-is to the corresponding method response\. Or you can map the endpoint response data to the method response data\. The response data that can be mapped includes the response status code, response header parameters, and response body\. If no method response is defined for the returned status code, API Gateway returns a 500 error\. For more information, see [Working with Models and Mapping Templates](models-mappings.md)\.

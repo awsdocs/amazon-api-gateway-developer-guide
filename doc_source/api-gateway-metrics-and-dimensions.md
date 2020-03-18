@@ -1,6 +1,6 @@
 # Amazon API Gateway Dimensions and Metrics<a name="api-gateway-metrics-and-dimensions"></a>
 
-The metrics and dimensions that API Gateway sends to Amazon CloudWatch are listed below\. For more information, see [Monitor API Execution with Amazon CloudWatch](monitoring-cloudwatch.md)\. 
+The metrics and dimensions that API Gateway sends to Amazon CloudWatch are listed below\. For more information, see [Monitoring REST API Execution with Amazon CloudWatch Metrics](monitoring-cloudwatch.md)\. 
 
 ## API Gateway Metrics<a name="api-gateway-metrics"></a>
 

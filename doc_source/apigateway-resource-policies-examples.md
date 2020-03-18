@@ -5,6 +5,7 @@ This page presents a few examples of typical use cases for API Gateway resource 
 **Topics**
 + [Example: Allow users in another AWS account to use an API](#apigateway-resource-policies-cross-account-example)
 + [Example: Deny API traffic based on source IP address or range](#apigateway-resource-policies-source-ip-address-example)
++ [Example: Deny API traffic based on source IP address or range when using a private API](#apigateway-resource-policies-source-ip-address-vpc-example)
 + [Example: Allow private API traffic based on source VPC or VPC endpoint](#apigateway-resource-policies-source-vpc-example)
 
 ## Example: Allow users in another AWS account to use an API<a name="apigateway-resource-policies-cross-account-example"></a>
@@ -65,9 +66,9 @@ The following example resource policy is a "blacklist" policy that denies \(bloc
 }
 ```
 
-## Example: Deny API traffic based on source IP address or range when using a Private API <a name="apigateway-resource-policies-source-ip-address-provate-api-example"></a>
+## Example: Deny API traffic based on source IP address or range when using a private API<a name="apigateway-resource-policies-source-ip-address-vpc-example"></a>
 
-The following example resource policy is a "blacklist" policy that denies \(blocks\) incoming traffic to an Private API from two specified source IP address blocks\. When using Private APIs, the VPC endpoint for execute-api re-writes the orginal source IP address, hence it is necessary to use the `aws:VpcSourceAddres`conditon to properly filter the request against the original requester IP address\. 
+The following example resource policy denies \(blocks\) incoming traffic to a private API from two specified source IP address blocks\. When using private APIs, the VPC endpoint for `execute-api` re\-writes the original source IP address\. The `aws:VpcSourceIp` condition filters the request against the original requester IP address\.
 
 ```
 {
@@ -90,7 +91,7 @@ The following example resource policy is a "blacklist" policy that denies \(bloc
             ],
             "Condition" : {
                 "IpAddress": {
-                    "aws:VpcSourceIp": ["192.0.2.0/24", "10.220.0.0/16" ]
+                    "aws:VpcSourceIp": ["192.0.2.0/24", "198.51.100.0/24"]
                 }
             }
         }

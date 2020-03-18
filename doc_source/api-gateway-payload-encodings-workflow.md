@@ -41,11 +41,12 @@ The following table shows how API Gateway converts the response payload for spec
 | Binary data | A binary type | Set with matching media types | CONVERT\_TO\_TEXT | Base64\-encoded string | 
 
 **Tip**  
- When a request contains multiple media types in its `Accept` header, API Gateway only honors the first `Accept` media type\. In the situation where you cannot control the order of the `Accept` media types and the media type of your binary content is not the first in the list, you can add the first `Accept` media type in the `binaryMediaTypes` list of your API, API Gateway will return your content as binary\. For example, to send a JPEG file using an `<img>` element in a browser, the browser might send `Accept:image/webp,image/*,*/*;q=0.8` in a request\. By adding `image/webp` to the `binaryMediaTypes` list, the endpoint will receive the JPEG file as binary\. 
+ When a request contains multiple media types in its `Accept` header, API Gateway only honors the first `Accept` media type\. In the situation where you can't control the order of the `Accept` media types and the media type of your binary content isn't the first in the list, you can add the first `Accept` media type in the `binaryMediaTypes` list of your API\. API Gateway returns your content as binary\.   
+For example, to send a JPEG file using an `<img>` element in a browser, the browser might send `Accept:image/webp,image/*,*/*;q=0.8` in a request\. By adding `image/webp` to the `binaryMediaTypes` list, the endpoint receives the JPEG file as binary\. 
 
-When converting a text payload to a binary blob, API Gateway assumes that the text data is a Base64\-encoded string and outputs the binary data as a Base64\-decoded blob\. If the conversion fails, it returns a `500` response indicating an API configuration error\. You do not provide a mapping template for such a conversion, although you must enable the [passthrough behaviors](integration-passthrough-behaviors.md) on the API\.
+When converting a text payload to a binary blob, API Gateway assumes that the text data is a base64\-encoded string and outputs the binary data as a base64\-decoded blob\. If the conversion fails, it returns a `500` response, which indicates an API configuration error\. You don't provide a mapping template for such a conversion, although you must enable the [passthrough behaviors](integration-passthrough-behaviors.md) on the API\.
 
-When converting a binary payload to a text string, API Gateway always applies a Base64 encoding on the binary data\. You can define a mapping template for such a payload, but can only access the Base64\-encoded string in the mapping template through `$input.body`, as shown in the following excerpt of an example mapping template\. 
+When converting a binary payload to a text string, API Gateway always applies a base64 encoding on the binary data\. You can define a mapping template for such a payload, but can only access the base64\-encoded string in the mapping template through `$input.body`, as shown in the following excerpt of an example mapping template\. 
 
 ```
 {   

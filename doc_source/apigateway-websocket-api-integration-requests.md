@@ -1,11 +1,11 @@
-# Set up a WebSocket API Integration Request in API Gateway<a name="apigateway-websocket-api-integration-requests"></a>
+# Setting Up a WebSocket API Integration Request in API Gateway<a name="apigateway-websocket-api-integration-requests"></a>
 
 Setting up an integration request involves the following:
 + Choosing a route key to integrate to the backend\.
 + Specifying the backend endpoint to invoke, such as an AWS service or HTTP endpoint\.
 + Configuring how to transform the route request data, if necessary, into integration request data by specifying one or more request templates\.
 
-## Set up a WebSocket API Integration Request Using the API Gateway Console<a name="apigateway-websocket-api-integration-request-using-console"></a>
+## Set Up a WebSocket API Integration Request Using the API Gateway Console<a name="apigateway-websocket-api-integration-request-using-console"></a>
 
 **To add an integration request to a route in a WebSocket API using the API Gateway console**
 
@@ -26,21 +26,21 @@ Setting up an integration request involves the following:
 
 1. If you chose **Lambda Function**, do the following:
 
-   1. For **Lambda Region**, choose the region identifier that corresponds to the region where you created the Lambda function\. For example, if you created the Lambda function in the US East \(N\. Virginia\) region, choose **us\-east\-1**\. For a list of region names and identifiers, see [AWS Lambda](https://docs.aws.amazon.com/general/latest/gr/rande.html#lambda_region) in the *Amazon Web Services General Reference*\.
+   1. For **Lambda Region**, choose the Region identifier that corresponds to the Region where you created the Lambda function\. For example, if you created the Lambda function in the US East \(N\. Virginia\) Region, choose **us\-east\-1**\. For a list of Region names and identifiers, see [AWS Lambda](https://docs.aws.amazon.com/general/latest/gr/rande.html#lambda_region) in the *Amazon Web Services General Reference*\.
 
-   1. For **Use Lambda Proxy integration**, choose the checkbox if you intend to use [Lambda proxy integration](set-up-lambda-proxy-integrations.md#api-gateway-create-api-as-simple-proxy) or [cross\-account Lambda proxy integration](apigateway-cross-account-lambda-integrations.md)\.
+   1. For **Use Lambda Proxy integration**, choose the check box if you intend to use [Lambda proxy integration](set-up-lambda-proxy-integrations.md#api-gateway-create-api-as-simple-proxy) or [cross\-account Lambda proxy integration](apigateway-cross-account-lambda-integrations.md)\.
 
    1. For **Lambda Function**, specify the function in one of the following ways:
       + If your Lambda function is in the same account, start typing the function name and then choose the function from the dropdown list\.
 **Note**  
 The function name can optionally include its alias or version specification, as in `HelloWorld`, `HelloWorld:1`, or `HelloWorld:alpha`\.
-      + If the function is in a different account, type the ARN for the function\.
+      + If the function is in a different account, enter the ARN for the function\.
 
    1. Choose **Invoke with caller credentials** if you want API Gateway to invoke your Lambda function using credentials received in the incoming request\.
 
-   1. For **Execution role**, type the ARN of the Lambda invocation role that enables API Gateway to invoke your Lambda functions\.
+   1. For **Execution role**, enter the ARN of the Lambda invocation role that enables API Gateway to invoke your Lambda functions\.
 
-   1. To use the default timeout value of 29 seconds, leave **Use Default Timeout** selection checked\. To set a custom timeout, uncheck the box, and enter a timeout value between `50` and `29000` milliseconds\.
+   1. To use the default timeout value of 29 seconds, leave **Use Default Timeout** check box selected\. To set a custom timeout, clear the check box, and enter a timeout value between `50` and `29000` milliseconds\.
 
    1. Choose **Save**\.
 
@@ -52,15 +52,15 @@ The function name can optionally include its alias or version specification, as 
 
 1. If you chose **VPC Link**, do the following:
 
-   1. For **Use Proxy integration**, choose the checkbox if you want requests to be proxied to your `VPCLink`'s endpoint\.
+   1. For **Use Proxy integration**, choose the check box if you want requests to be proxied to your `VPCLink`'s endpoint\.
 
-   1. From the **VPC Link** dropdown list, choose `[Use Stage Variables]` and type `${stageVariables.vpcLinkId}` in the text box below the list\.
+   1. From the **VPC Link** dropdown list, choose `[Use Stage Variables]` and enter `${stageVariables.vpcLinkId}` in the text box below the list\.
 
       We will define the `vpcLinkId` stage variable after deploying the API to a stage and set its value to the ID of the `VpcLink`\.
 
    1. For **HTTP method**, choose the HTTP method type that most closely matches the method in the HTTP backend\.
 
-   1. For **Endpoint URL**, type the URL of the HTTP backend you want this integration to use\.
+   1. For **Endpoint URL**, enter the URL of the HTTP backend you want this integration to use\.
 
    1. To use the default timeout value of 29 seconds, leave **Use Default Timeout** selection checked\. To set a custom timeout, uncheck the box, and enter a timeout value between `50` and `29000` milliseconds\.
 
@@ -68,9 +68,9 @@ The function name can optionally include its alias or version specification, as 
 
    1. For **Template Selection Expression**, choose the pencil icon and replace the word `template` with a template selection expression\. This is an expression that API Gateway looks for in the message payload\. If it is found, it is evaluated, and the result is a template key value that is used to select the data mapping template to be applied to the data in the message payload\.
 
-     For information about template selection expressions, see [Template Selection Expressions](apigateway-websocket-api-selection-expressions.md#apigateway-websocket-api-template-selection-expressions)\.
+     For information about template selection expressions, see [Template Selection Expressions](websocket-api-data-transformations.md#apigateway-websocket-api-template-selection-expressions)\.
 
-## Set up an Integration Request Using the AWS CLI<a name="apigateway-websocket-api-integration-request-using-awscli"></a>
+## Set Up an Integration Request Using the AWS CLI<a name="apigateway-websocket-api-integration-request-using-awscli"></a>
 
 You can set up an integration request for a route in a WebSocket API by using the AWS CLI as in the following example, which creates a mock integration:
 

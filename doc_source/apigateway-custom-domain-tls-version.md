@@ -1,4 +1,4 @@
-# Choose a Minimum TLS Version for a Custom Domain in API Gateway<a name="apigateway-custom-domain-tls-version"></a>
+# Choosing a Minimum TLS Version for a Custom Domain in API Gateway<a name="apigateway-custom-domain-tls-version"></a>
 
 For greater security, you can choose a minimum Transport Layer Security \(TLS\) protocol version to be enforced for your Amazon API Gateway custom domain by setting a security policy in the API Gateway console, AWS CLI, or AWS SDKs\.
 
@@ -19,8 +19,8 @@ In custom domain settings, a security policy determines two settings:
 When you create a custom domain, you specify the security policy for it\. For more information about security policies, see the tables in the following sections\.
 
 The following sections describe how to create a custom domain name, including specifying the minimum TLS version in the API Gateway console and CLI:
-+ [How to Create an Edge\-Optimized Custom Domain Name](how-to-edge-optimized-custom-domain-name.md)
-+ [Set Up a Custom Domain Name for a Regional REST API or WebSocket API in API Gateway](apigateway-regional-api-custom-domain-create.md)
++ [Creating an Edge\-Optimized Custom Domain Name](how-to-edge-optimized-custom-domain-name.md)
++ [Setting Up a Regional Custom Domain Name in API Gateway](apigateway-regional-api-custom-domain-create.md)
 
 You can change the security policy by updating the domain name settings\. To change the minimum TLS version, use one of the following commands, specifying the new TLS version \(`TLS_1_0` or `TLS_1_2`\) in the `securityPolicy` parameter\. Allow up to 60 minutes for the update to be completed\.
 + [https://docs.aws.amazon.com/apigateway/api-reference/link-relation/domainname-update/](https://docs.aws.amazon.com/apigateway/api-reference/link-relation/domainname-update/)
@@ -57,7 +57,7 @@ The following table lists the protocols and ciphers that API Gateway can use for
 
 ## Supported SSL/TLS Protocols and Ciphers for Regional, Private, and WebSocket API Endpoints in API Gateway<a name="apigateway-custom-domain-tls-version-regional-and-websocket"></a>
 
-The following table describes the security policies that can be specified for regional, private, and WebSocket API endpoints\.
+The following table describes the security policies that can be specified for Regional, private, and WebSocket API endpoints\.
 
 **Note**  
 For private and WebSocket APIs, only `TLS-1-2` can be specified\.

@@ -7,7 +7,7 @@ Defines an authentication type to be applied for authentication of method invoca
 
 | Property Name | Type | Description | 
 | --- | --- | --- | 
-| type | string | Specifies the authentication type\. Specify "NONE" for open access\. Specify "AWS\_IAM" to use IAM permissions\. Values are case\-insensitive\. | 
+| type | string | Specifies the authentication type\. Specify "NONE" for open access\. Specify "AWS\_IAM" to use IAM permissions\. Values are case insensitive\. | 
 
 ## x\-amazon\-apigateway\-auth Example<a name="api-gateway-swagger-extensions-auth-example"></a>
 

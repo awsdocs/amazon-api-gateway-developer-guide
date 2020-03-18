@@ -12,11 +12,11 @@ This section describes how to create and use a usage plan by using the API Gatew
 
 ## Migrate Your API to Default Usage Plans \(If Needed\)<a name="api-gateway-usage-plan-migrate-to-default"></a>
 
-If you started to use API Gateway *after* the usage plans feature was rolled out on August 11, 2016, you will automatically have usage plans enabled for you in all supported regions\.
+If you started to use API Gateway *after* the usage plans feature was rolled out on August 11, 2016, you will automatically have usage plans enabled for you in all supported Regions\.
 
-If you started to use API Gateway before that date, you may need to migrate to default usage plans\. You'll be prompted with the **Enable Usage Plans** option before using usage plans for the first time in the selected region\. When you enable this option, you have default usage plans created for every unique API stage that's associated with existing API keys\. In the default usage plan, no throttle or quota limits are set initially, and the associations between the API keys and API stages are copied to the usage plans\. The API behaves the same as before\. However, you must use the [https://docs.aws.amazon.com/apigateway/api-reference/resource/usage-plan/](https://docs.aws.amazon.com/apigateway/api-reference/resource/usage-plan/) `apiStages` property to associate specified API stage values \(`apiId` and `stage`\) with included API keys \(via [https://docs.aws.amazon.com/apigateway/api-reference/resource/usage-plan-key/](https://docs.aws.amazon.com/apigateway/api-reference/resource/usage-plan-key/)\), instead of using the [ApiKey](https://docs.aws.amazon.com/apigateway/api-reference/resource/api-key/) `stageKeys` property\.
+If you started to use API Gateway before that date, you might need to migrate to default usage plans\. You'll be prompted with the **Enable Usage Plans** option before using usage plans for the first time in the selected Region\. When you enable this option, you have default usage plans created for every unique API stage that's associated with existing API keys\. In the default usage plan, no throttle or quota limits are set initially, and the associations between the API keys and API stages are copied to the usage plans\. The API behaves the same as before\. However, you must use the [https://docs.aws.amazon.com/apigateway/api-reference/resource/usage-plan/](https://docs.aws.amazon.com/apigateway/api-reference/resource/usage-plan/) `apiStages` property to associate specified API stage values \(`apiId` and `stage`\) with included API keys \(via [https://docs.aws.amazon.com/apigateway/api-reference/resource/usage-plan-key/](https://docs.aws.amazon.com/apigateway/api-reference/resource/usage-plan-key/)\), instead of using the [ApiKey](https://docs.aws.amazon.com/apigateway/api-reference/resource/api-key/) `stageKeys` property\.
 
-To check whether you've already migrated to default usage plans, use the [https://docs.aws.amazon.com/cli/latest/reference/apigateway/get-account.html](https://docs.aws.amazon.com/cli/latest/reference/apigateway/get-account.html) CLI command\. In the command output, the `features` list will include an entry of `"UsagePlans"` when usage plans are enabled\.
+To check whether you've already migrated to default usage plans, use the [https://docs.aws.amazon.com/cli/latest/reference/apigateway/get-account.html](https://docs.aws.amazon.com/cli/latest/reference/apigateway/get-account.html) CLI command\. In the command output, the `features` list includes an entry of `"UsagePlans"` when usage plans are enabled\.
 
 You can also migrate your APIs to default usage plans by using the AWS CLI as follows:
 
@@ -46,9 +46,9 @@ The following procedure describes how to create a usage plan\.
 
 1. Under **Create Usage Plan**, do the following:
 
-   1. For **Name**, type a name for your plan \(for example, **Plan\_A**\)\. 
+   1. For **Name**, enter a name for your plan \(for example, **Plan\_A**\)\. 
 
-   1. For **Description**, type a description for your plan\. 
+   1. For **Description**, enter a description for your plan\. 
 
    1. Select **Enable throttling**, and set **Rate** \(for example, **100**\) and **Burst** \(for example, **200**\)\. 
 
@@ -88,7 +88,7 @@ The following procedure describes how to create a usage plan\.
 
    1. To use an existing key, choose **Add API Key to Usage Plan**\. 
 
-   1. For **Name**, type a name for the key you want to add \(for example, **MyFirstKey**\)\.
+   1. For **Name**, enter a name for the key you want to add \(for example, **MyFirstKey**\)\.
 
    1. Choose the checkmark icon to save\.
 
@@ -156,6 +156,6 @@ Maintaining a usage plan involves monitoring the used and remaining quotas over 
 
 1. In the usage plan pane, choose **Extension** from the usage plan window\.
 
-1. Type a number for the **Remaining** request quotas\.
+1. Enter a number for the **Remaining** request quotas\.
 
 1. Choose **Save**\.

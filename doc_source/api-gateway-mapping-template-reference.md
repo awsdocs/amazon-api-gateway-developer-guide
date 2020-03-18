@@ -1,6 +1,6 @@
 # API Gateway Mapping Template and Access Logging Variable Reference<a name="api-gateway-mapping-template-reference"></a>
 
-This section provides reference information for the variables and functions that Amazon API Gateway defines for use with data models, authorizers, mapping templates, and CloudWatch access logging\. For detailed information about how to use these variables and functions, see [Create Models and Mapping Templates for Request and Response Mappings](models-mappings.md)\.
+This section provides reference information for the variables and functions that Amazon API Gateway defines for use with data models, authorizers, mapping templates, and CloudWatch access logging\. For detailed information about how to use these variables and functions, see [Working with Models and Mapping Templates](models-mappings.md)\.
 
 **Topics**
 + [`$context` Variables for Data Models, Authorizers, Mapping Templates, and CloudWatch Access Logging](#context-variable-reference)
@@ -31,14 +31,14 @@ For `$context` variables that can be used only in CloudWatch access logging, see
 | $context\.awsEndpointRequestId |  The AWS endpoint's request ID\.  | 
 | $context\.domainName |  The full domain name used to invoke the API\. This should be the same as the incoming `Host` header\.  | 
 | $context\.domainPrefix |  The first label of the `$context.domainName`\. This is often used as a caller/customer identifier\.  | 
-| $context\.error\.message |  A string containing an API Gateway error message\. This variable can only be used for simple variable substitution in a [GatewayResponse](https://docs.aws.amazon.com/apigateway/api-reference/resource/gateway-response/) body\-mapping template, which is not processed by the Velocity Template Language engine, and in access logging\. For more information, see [Monitor WebSocket API Execution with CloudWatch](apigateway-websocket-api-logging.md) and [Set up Gateway Responses to Customize Error Responses](customize-gateway-responses.md)\.  | 
+| $context\.error\.message |  A string containing an API Gateway error message\. This variable can only be used for simple variable substitution in a [GatewayResponse](https://docs.aws.amazon.com/apigateway/api-reference/resource/gateway-response/) body\-mapping template, which is not processed by the Velocity Template Language engine, and in access logging\. For more information, see [Monitoring WebSocket API Execution with CloudWatch Metrics](apigateway-websocket-api-logging.md) and [Setting Up Gateway Responses to Customize Error Responses](api-gateway-gatewayResponse-definition.md#customize-gateway-responses)\.  | 
 | $context\.error\.messageString | The quoted value of $context\.error\.message, namely "$context\.error\.message"\. | 
-| $context\.error\.responseType |  A [type](https://docs.aws.amazon.com/apigateway/api-reference/resource/gateway-response/#responseType) of [GatewayResponse](https://docs.aws.amazon.com/apigateway/api-reference/resource/gateway-response/)\. This variable can only be used for simple variable substitution in a [GatewayResponse](https://docs.aws.amazon.com/apigateway/api-reference/resource/gateway-response/) body\-mapping template, which is not processed by the Velocity Template Language engine, and in access logging\. For more information, see [Monitor WebSocket API Execution with CloudWatch](apigateway-websocket-api-logging.md) and [Set up Gateway Responses to Customize Error Responses](customize-gateway-responses.md)\.  | 
+| $context\.error\.responseType |  A [type](https://docs.aws.amazon.com/apigateway/api-reference/resource/gateway-response/#responseType) of [GatewayResponse](https://docs.aws.amazon.com/apigateway/api-reference/resource/gateway-response/)\. This variable can only be used for simple variable substitution in a [GatewayResponse](https://docs.aws.amazon.com/apigateway/api-reference/resource/gateway-response/) body\-mapping template, which is not processed by the Velocity Template Language engine, and in access logging\. For more information, see [Monitoring WebSocket API Execution with CloudWatch Metrics](apigateway-websocket-api-logging.md) and [Setting Up Gateway Responses to Customize Error Responses](api-gateway-gatewayResponse-definition.md#customize-gateway-responses)\.  | 
 | $context\.error\.validationErrorString |  A string containing a detailed validation error message\.  | 
 | $context\.extendedRequestId | The extended ID that API Gateway assigns to the API request, which contains more useful information for debugging/troubleshooting\. | 
 | $context\.httpMethod |  The HTTP method used\. Valid values include: `DELETE`, `GET`, `HEAD`, `OPTIONS`, `PATCH`, `POST`, and `PUT`\.  | 
 | $context\.identity\.accountId |  The AWS account ID associated with the request\.  | 
-| $context\.identity\.apiKey |  For API methods that require an API key, this variable is the API key associated with the method request\. For methods that don't require an API key, this variable is null\. For more information, see [Create and Use Usage Plans with API Keys](api-gateway-api-usage-plans.md)\.  | 
+| $context\.identity\.apiKey |  For API methods that require an API key, this variable is the API key associated with the method request\. For methods that don't require an API key, this variable is null\. For more information, see [Creating and Using Usage Plans with API Keys](api-gateway-api-usage-plans.md)\.  | 
 | $context\.identity\.apiKeyId | The API key ID associated with an API request that requires an API key\. | 
 | $context\.identity\.caller |  The principal identifier of the caller making the request\.  | 
 | $context\.identity\.cognitoAuthenticationProvider |  The Amazon Cognito authentication provider used by the caller making the request\. Available only if the request was signed with Amazon Cognito credentials\. For information, see [Using Federated Identities](https://docs.aws.amazon.com/cognito/latest/developerguide/cognito-identity.html) in the *Amazon Cognito Developer Guide*\.  | 
@@ -50,7 +50,7 @@ For `$context` variables that can be used only in CloudWatch access logging, see
 | $context\.identity\.user |  The principal identifier of the user making the request\. Used in Lambda authorizers\. For more information, see [Output from an Amazon API Gateway Lambda Authorizer](api-gateway-lambda-authorizer-output.md)\.  | 
 | $context\.identity\.userAgent |  The [https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/User-Agent](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/User-Agent) header of the API caller\.  | 
 | $context\.identity\.userArn |  The Amazon Resource Name \(ARN\) of the effective user identified after authentication\. For more information, see [https://docs.aws.amazon.com/IAM/latest/UserGuide/id_users.html](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_users.html)\.  | 
-| $context\.path | The request path\. For example, for a non\-proxy request URL of https://\{rest\-api\-id\}\.execute\-api\.\{region\}\.amazonaws\.com/\{stage\}/root/child, the $context\.path value is /\{stage\}/root/child\.  | 
+| $context\.path | The request path\. For example, for a non\-proxy request URL of https://\{rest\-api\-id\.execute\-api\.\{region\}\.amazonaws\.com/\{stage\}/root/child, the $context\.path value is /\{stage\}/root/child\.  | 
 | $context\.protocol | The request protocol, for example, HTTP/1\.1\. | 
 | $context\.requestId |  The ID that API Gateway assigns to the API request\.  | 
 | $context\.requestOverride\.header\.header\_name |  The request header override\. If this parameter is defined, it contains the headers to be used instead of the **HTTP Headers** that are defined in the **Integration Request** pane\. For more information, see [Use a Mapping Template to Override an API's Request and Response Parameters and Status Codes](apigateway-override-request-response-parameters.md)\.  | 
@@ -61,10 +61,10 @@ For `$context` variables that can be used only in CloudWatch access logging, see
 | $context\.requestTime | The [CLF](https://httpd.apache.org/docs/1.3/logs.html#common)\-formatted request time \(dd/MMM/yyyy:HH:mm:ss \+\-hhmm\)\. | 
 | $context\.requestTimeEpoch | The [Epoch](https://en.wikipedia.org/wiki/Unix_time)\-formatted request time\. | 
 | $context\.resourceId |  The identifier that API Gateway assigns to your resource\.  | 
-| $context\.resourcePath |  The path to your resource\. For example, for the non\-proxy request URI of `https://{rest-api-id}.execute-api.{region}.amazonaws.com/{stage}/root/child`, The `$context.resourcePath` value is `/root/child`\. For more information, see [TUTORIAL: Build an API with HTTP Non\-Proxy Integration](api-gateway-create-api-step-by-step.md)\.   | 
+| $context\.resourcePath |  The path to your resource\. For example, for the non\-proxy request URI of `https://{rest-api-id.execute-api.{region}.amazonaws.com/{stage}/root/child`, The `$context.resourcePath` value is `/root/child`\. For more information, see [TUTORIAL: Build an API with HTTP Non\-Proxy Integration](api-gateway-create-api-step-by-step.md)\.   | 
 | $context\.stage |  The deployment stage of the API request \(for example, `Beta` or `Prod`\)\.  | 
-| $context\.wafResponseCode |  The response received from [AWS WAF](https://docs.aws.amazon.com/waf/latest/developerguide/waf-chapter.html): `WAF_ALLOW` or `WAF_BLOCK`\. Will not be set if the stage is not associated with a web ACL\. For more information, see [Use AWS WAF to Protect Your Amazon API Gateway API from Common Web Exploits](apigateway-control-access-aws-waf.md)\.  | 
-| $context\.webaclArn |  The complete ARN of the web ACL that is used to decide whether to allow or block the request\. Will not be set if the stage is not associated with a web ACL\. For more information, see [Use AWS WAF to Protect Your Amazon API Gateway API from Common Web Exploits](apigateway-control-access-aws-waf.md)\.  | 
+| $context\.wafResponseCode |  The response received from [AWS WAF](https://docs.aws.amazon.com/waf/latest/developerguide/waf-chapter.html): `WAF_ALLOW` or `WAF_BLOCK`\. Will not be set if the stage is not associated with a web ACL\. For more information, see [Using AWS WAF to Protect Your APIs](apigateway-control-access-aws-waf.md)\.  | 
+| $context\.webaclArn |  The complete ARN of the web ACL that is used to decide whether to allow or block the request\. Will not be set if the stage is not associated with a web ACL\. For more information, see [Using AWS WAF to Protect Your APIs](apigateway-control-access-aws-waf.md)\.  | 
 | $context\.xrayTraceId |  The trace ID for the X\-Ray trace\. For more information, see [Setting Up AWS X\-Ray with API Gateway](apigateway-enabling-xray.md)\.  | 
 
 ## `$context` Variable Template Example<a name="context-variables-template-example"></a>
@@ -96,7 +96,7 @@ Note that one of the variables is an API key\. This example assumes that the met
 
 ## `$context` Variables for CloudWatch Access Logging Only<a name="context-variable-reference-access-logging-only"></a>
 
-The following `$context` variables are available only for CloudWatch access logging\. For more information, see [Set Up CloudWatch API Logging in API Gateway](set-up-logging.md)\. \(For WebSocket APIs, see [Monitor WebSocket API Execution with CloudWatch](apigateway-websocket-api-logging.md)\.\)
+The following `$context` variables are available only for CloudWatch access logging\. For more information, see [Setting Up CloudWatch API Logging in API Gateway](set-up-logging.md)\. \(For WebSocket APIs, see [Monitoring WebSocket API Execution with CloudWatch Metrics](apigateway-websocket-api-logging.md)\.\)
 
 
 | Parameter | Description | 
@@ -241,11 +241,11 @@ POST /things/abc
 }
 ```
 
- For more mapping examples, see [Create Models and Mapping Templates for Request and Response Mappings](models-mappings.md)\. 
+ For more mapping examples, see [Working with Models and Mapping Templates](models-mappings.md)\. 
 
 ## `$stageVariables`<a name="stagevariables-template-reference"></a>
 
-Stage variables can be used in parameter mapping and mapping templates and as placeholders in ARNs and URLs used in method integrations\. For more information, see [Set up Stage Variables for a REST API Deployment](stage-variables.md)\.
+Stage variables can be used in parameter mapping and mapping templates and as placeholders in ARNs and URLs used in method integrations\. For more information, see [Setting Up Stage Variables for a REST API Deployment](stage-variables.md)\.
 
 
 | Syntax | Description | 

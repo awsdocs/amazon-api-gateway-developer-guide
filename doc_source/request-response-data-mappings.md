@@ -99,7 +99,7 @@ The following example shows an OpenAPI snippet that maps:
 
 ## Map Request and Response Payloads between Method and Integration<a name="transforming-request-response-body"></a>
 
- API Gateway uses [Velocity Template Language \(VTL\)](http://velocity.apache.org/engine/devel/vtl-reference-guide.html) engine to process body [mapping templates](models-mappings.md#models-mappings-mappings) for the integration request and integration response\. The mapping templates translate method request payloads to the corresponding integration request payloads and translate integration response bodies to the method response bodies\. 
+ API Gateway uses [Velocity Template Language \(VTL\)](http://velocity.apache.org/engine/devel/vtl-reference-guide.html) engine to process body [mapping templates](rest-api-data-transformations.md#models-mappings-mappings) for the integration request and integration response\. The mapping templates translate method request payloads to the corresponding integration request payloads and translate integration response bodies to the method response bodies\. 
 
  The VTL templates use JSONPath expressions, other parameters such as calling contexts and stage variables, and utility functions to process the JSON data\. 
 

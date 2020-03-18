@@ -1,23 +1,8 @@
 # Choosing Between HTTP APIs and REST APIs<a name="http-api-vs-rest"></a>
 
-
-|  | 
-| --- |
-| HTTP APIs are in beta for Amazon API Gateway and are subject to change\. | 
-
 ## <a name="http-api-vs-rest.differences"></a>
 
 HTTP APIs are designed for low\-latency, cost\-effective AWS Lambda proxy and HTTP proxy APIs\. HTTP APIs support OIDC and OAuth 2\.0 authorization, and come with built\-in support for CORS and automatic deployments\. Previous\-generation REST APIs currently offer more features, and full control over API requests and responses\.
-
-HTTP APIs are available in the following Regions:
-+ US East \(Ohio\)
-+ US East \(N\. Virginia\)
-+ US West \(N\. California\)
-+ US West \(Oregon\)
-+ Asia Pacific \(Sydney\)
-+ Asia Pacific \(Tokyo\)
-+ Europe \(Frankfurt\)
-+ Europe \(Ireland\)
 
 The following tables summarize core features that are available in HTTP APIs and REST APIs\.
 
@@ -38,7 +23,7 @@ The following tables summarize core features that are available in HTTP APIs and
 |  Lambda proxy  |  ✓  |  ✓  | 
 |  HTTP  |   |  ✓  | 
 |  AWS services  |   |  ✓  | 
-|  Private integration  |   |  ✓  | 
+|  Private integration  |  ✓  |  ✓  | 
 |  Mock  |   |  ✓  | 
 
 
