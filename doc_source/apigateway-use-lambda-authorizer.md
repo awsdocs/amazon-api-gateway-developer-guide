@@ -155,7 +155,7 @@ To create a token\-based Lambda authorizer function, enter the following Node\.j
 
 1. For **Lambda Event Payload**, choose **Token**\.
 
-1. For **Token Source**, enter **tokenHeader**\.
+1. For **Token Source**, enter **authorizationToken**\.
 
 1. Choose **Create**, and then choose **Grant & Create**\.
 
