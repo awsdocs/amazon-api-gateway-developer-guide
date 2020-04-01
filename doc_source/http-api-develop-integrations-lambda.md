@@ -51,6 +51,7 @@ Format `2.0` includes a new `cookies` field\. All cookie headers in the request 
         time: '12/Mar/2020:19:03:58 +0000',
         timeEpoch: 1583348638390
       },
+      pathParameters: {'param1': 'value1'},
       body: 'Hello from Lambda',
       isBase64Encoded: false,
       stageVariables: {'stageVariable1': 'value1', 'stageVariable2': 'value2'}
