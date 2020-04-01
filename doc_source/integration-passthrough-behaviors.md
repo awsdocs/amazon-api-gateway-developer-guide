@@ -9,7 +9,7 @@
 Example 1: One mapping template is defined in the integration request for the `application/json` content type\.
 
 
-| Content\-Type header\\Selected passthrough option | `WHEN_NO_MATCH` | `WHEN_NO_TEMPLATE` | `NEVER` | 
+| Content\-Type header\\Selected passthrough option | `WHEN_NO_MATCH` | `WHEN_NO_TEMPLATES` | `NEVER` | 
 | --- | --- | --- | --- | 
 | None \(default to application/json | The request payload is transformed using the template\. | The request payload is transformed using the template\. | The request payload is transformed using the template\. | 
 | application/json | The request payload is transformed using the template\. | The request payload is transformed using the template\. | The request payload is transformed using the template\. | 
@@ -18,7 +18,7 @@ Example 1: One mapping template is defined in the integration request for the `a
 Example 2: One mapping template is defined in the integration request for the `application/xml` content type\.
 
 
-| Content\-Type header\\Selected passthrough option | `WHEN_NO_MATCH` | `WHEN_NO_TEMPLATE` | `NEVER` | 
+| Content\-Type header\\Selected passthrough option | `WHEN_NO_MATCH` | `WHEN_NO_TEMPLATES` | `NEVER` | 
 | --- | --- | --- | --- | 
 | None \(default to application/json | The request payload is not transformed and is sent to the backend as\-is\. | The request is rejected with an HTTP 415 Unsupported Media Type response\. | The request is rejected with an HTTP 415 Unsupported Media Type response\. | 
 | application/json | The request payload is not transformed and is sent to the backend as\-is\. | The request is rejected with an HTTP 415 Unsupported Media Type response\. | The request is rejected with an HTTP 415 Unsupported Media Type response\. | 
