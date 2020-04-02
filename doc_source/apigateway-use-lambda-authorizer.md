@@ -161,7 +161,7 @@ To create a token\-based Lambda authorizer function, enter the following Node\.j
 
 1. Choose **Test**\.
 
-1. For the **tokenHeader** value, enter **allow**\.
+1. For the **authorizationToken** value, enter **allow**\.
 
 1. Choose **Test**\.
 
