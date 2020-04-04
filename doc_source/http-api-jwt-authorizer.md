@@ -45,7 +45,7 @@ aws apigatewayv2 create-authorizer \
     --api-id api-id \
     --authorizer-type JWT \
     --identity-source '$request.header.Authorization' \
-    --jwt-configuration "Issuer='https://cognito-idp.us-east-2.amazonaws.com/userPoolID', Audience='audience'"
+    --jwt-configuration Audience=audience,Issuer=https://cognito-idp.us-east-2.amazonaws.com/userPoolID
 ```
 
 ## Update a Route to Use a JWT Authorizer by Using the AWS CLI<a name="http-api-jwt-authorizer.create.route"></a>
