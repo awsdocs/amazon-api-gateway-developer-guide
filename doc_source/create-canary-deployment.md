@@ -1,4 +1,4 @@
-# Create a Canary Release Deployment<a name="create-canary-deployment"></a>
+# Create a canary release deployment<a name="create-canary-deployment"></a>
 
 You create a canary release deployment when deploying the API with [canary settings](https://docs.aws.amazon.com/apigateway/api-reference/link-relation/deployment-create/#canarySettings) as an additional input to the [deployment creation](https://docs.aws.amazon.com/apigateway/api-reference/link-relation/deployment-create/) operation\. 
 
@@ -9,10 +9,10 @@ When creating a non\-canary release deployment, you can specify a non\-existing 
  You can create a canary release deployment in API Gateway using the API Gateway console, the AWS CLI, or an AWS SDK\.
 
 **Topics**
-+ [Create a Canary Deployment Using the API Gateway Console](#create-canary-deployment-using-console)
-+ [Create a Canary Deployment Using the AWS CLI](#create-canary-deployment-using-cli)
++ [Create a canary deployment using the API Gateway console](#create-canary-deployment-using-console)
++ [Create a canary deployment using the AWS CLI](#create-canary-deployment-using-cli)
 
-## Create a Canary Deployment Using the API Gateway Console<a name="create-canary-deployment-using-console"></a>
+## Create a canary deployment using the API Gateway console<a name="create-canary-deployment-using-console"></a>
 
 To use the API Gateway console to create a canary release deployment, follow the instructions below:<a name="to-create-canary-release-on-new-deployment"></a>
 
@@ -28,11 +28,11 @@ To use the API Gateway console to create a canary release deployment, follow the
 
    So far, you have deployed the API to a production release stage\. Next, you configure canary settings on the stage and, if needed, also enable caching, set stage variables, or configure API execution or access logs\.
 
-1.  To enable API caching, choose the **Settings** tab in **Stage Editor** and follow the on\-screen instructions\. For more information, see [Enabling API Caching to Enhance Responsiveness](api-gateway-caching.md)\.
+1.  To enable API caching, choose the **Settings** tab in **Stage Editor** and follow the on\-screen instructions\. For more information, see [Enabling API caching to enhance responsiveness](api-gateway-caching.md)\.
 
-1. To set stage variables, choose the **Stage Variables** tab in **Stage Editor** and follow the on\-screen instructions to add or modify stage variables\. For more information, see [Setting Up Stage Variables for a REST API Deployment](stage-variables.md)\.
+1. To set stage variables, choose the **Stage Variables** tab in **Stage Editor** and follow the on\-screen instructions to add or modify stage variables\. For more information, see [Setting up stage variables for a REST API deployment](stage-variables.md)\.
 
-1.  To configure execution or access logging, choose the **Logs** tab in **Stage Editor** and follow the on\-screen instructions\. For more information, see [Setting Up CloudWatch API Logging in API Gateway](set-up-logging.md)\.
+1.  To configure execution or access logging, choose the **Logs** tab in **Stage Editor** and follow the on\-screen instructions\. For more information, see [Setting up CloudWatch API logging in API Gateway](set-up-logging.md)\.
 
 1.  In **Stage Editor**, choose the **Canary** tab and then choose **Create Canary**\.
 
@@ -64,7 +64,7 @@ After the canary release is initialized on the deployment stage, you change the 
 
  As a result, the canary release points to the latest version while the production release still points to the initial version of the API\. The [https://docs.aws.amazon.com/apigateway/api-reference/resource/stage/#canarySettings](https://docs.aws.amazon.com/apigateway/api-reference/resource/stage/#canarySettings) now has a new **deploymentId** value, whereas the stage still has the initial [https://docs.aws.amazon.com/apigateway/api-reference/resource/stage/#deploymentId](https://docs.aws.amazon.com/apigateway/api-reference/resource/stage/#deploymentId) value\. Behind the scenes, the console calls [https://docs.aws.amazon.com/apigateway/api-reference/link-relation/stage-update/](https://docs.aws.amazon.com/apigateway/api-reference/link-relation/stage-update/)\.
 
-## Create a Canary Deployment Using the AWS CLI<a name="create-canary-deployment-using-cli"></a>
+## Create a canary deployment using the AWS CLI<a name="create-canary-deployment-using-cli"></a>
 
 First create a baseline deployment with two stage variables, but without any canary:
 

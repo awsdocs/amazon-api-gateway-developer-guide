@@ -1,4 +1,4 @@
-# Configuring Logging for an HTTP API<a name="http-api-logging"></a>
+# Configuring logging for an HTTP API<a name="http-api-logging"></a>
 
 ## <a name="http-api-logging.intro"></a>
 
@@ -12,7 +12,7 @@ To enable logging for an HTTP API, you must do the following\.
 
 1. Provide the ARN of the CloudWatch Logs log group for a stage of your API\.
 
-### Permissions to Enable Logging<a name="http-api-logging.permissions"></a>
+### Permissions to enable logging<a name="http-api-logging.permissions"></a>
 
 To enable logging for an API, your IAM user must have the following permissions\.
 

@@ -1,4 +1,4 @@
-# Set Up a Gateway Response Using the API Gateway REST API<a name="set-up-gateway-response-using-the-api"></a>
+# Set up a gateway response using the API Gateway REST API<a name="set-up-gateway-response-using-the-api"></a>
 
  Before customizing a gateway response using the API Gateway REST API, you must have already created an API and have obtained its identifier\. To retrieve the API identifier, you can follow [restapi:gateway\-responses](https://docs.aws.amazon.com/apigateway/api-reference/link-relation/restapi-gateway-responses/) link relation and examine the result\. 
 

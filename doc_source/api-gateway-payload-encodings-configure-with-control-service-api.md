@@ -1,16 +1,16 @@
-# Enabling Binary Support Using the API Gateway REST API<a name="api-gateway-payload-encodings-configure-with-control-service-api"></a>
+# Enabling binary support using the API Gateway REST API<a name="api-gateway-payload-encodings-configure-with-control-service-api"></a>
 
 The following tasks show how to enable binary support using the API Gateway REST API calls\.
 
 **Topics**
-+ [Add and Update Supported Binary Media Types to an API](#api-gateway-payload-encodings-setup-with-api-set-encodings-map)
-+ [Configure Request Payload Conversions](#api-gateway-payload-encodings-setup-with-api-set-integration-request-encoding)
-+ [Configure Response Payload Conversions](#api-gateway-payload-encodings-setup-with-api-set-integration-response-encoding)
-+ [Convert Binary Data to Text Data](#api-gateway-payload-encodings-convert-binary-to-string)
-+ [Convert Text Data to a Binary Payload](#api-gateway-payload-encodings-convert-string-to-binary)
-+ [Pass Through a Binary Payload](#api-gateway-payload-encodings-pass-binary-as-is)
++ [Add and update supported binary media types to an API](#api-gateway-payload-encodings-setup-with-api-set-encodings-map)
++ [Configure request payload conversions](#api-gateway-payload-encodings-setup-with-api-set-integration-request-encoding)
++ [Configure response payload conversions](#api-gateway-payload-encodings-setup-with-api-set-integration-response-encoding)
++ [Convert binary data to text data](#api-gateway-payload-encodings-convert-binary-to-string)
++ [Convert text data to a binary payload](#api-gateway-payload-encodings-convert-string-to-binary)
++ [Pass through a binary payload](#api-gateway-payload-encodings-pass-binary-as-is)
 
-## Add and Update Supported Binary Media Types to an API<a name="api-gateway-payload-encodings-setup-with-api-set-encodings-map"></a>
+## Add and update supported binary media types to an API<a name="api-gateway-payload-encodings-setup-with-api-set-encodings-map"></a>
 
 To enable API Gateway to support a new binary media type, you must add the binary media type to the `binaryMediaTypes` list of the `RestApi` resource\. For example, to have API Gateway handle JPEG images, submit a `PATCH` request to the `RestApi` resource: 
 
@@ -46,7 +46,7 @@ PATCH /restapis/<restapi_id>
 }
 ```
 
-## Configure Request Payload Conversions<a name="api-gateway-payload-encodings-setup-with-api-set-integration-request-encoding"></a>
+## Configure request payload conversions<a name="api-gateway-payload-encodings-setup-with-api-set-integration-request-encoding"></a>
 
 If the endpoint requires a binary input, set the `contentHandling` property of the `Integration` resource to `CONVERT_TO_BINARY`\. To do so, submit a `PATCH` request, as follows: 
 
@@ -62,7 +62,7 @@ PATCH /restapis/<restapi_id>/resources/<resource_id>/methods/<http_method>/integ
 }
 ```
 
-## Configure Response Payload Conversions<a name="api-gateway-payload-encodings-setup-with-api-set-integration-response-encoding"></a>
+## Configure response payload conversions<a name="api-gateway-payload-encodings-setup-with-api-set-integration-response-encoding"></a>
 
 If the client accepts the result as a binary blob instead of a base64\-encoded payload returned from the endpoint, set the `contentHandling` property of the `IntegrationResponse` resource to `CONVERT_TO_BINARY`\. To do this, submit a `PATCH` request, as follows:
 
@@ -78,7 +78,7 @@ PATCH /restapis/<restapi_id>/resources/<resource_id>/methods/<http_method>/integ
 }
 ```
 
-## Convert Binary Data to Text Data<a name="api-gateway-payload-encodings-convert-binary-to-string"></a>
+## Convert binary data to text data<a name="api-gateway-payload-encodings-convert-binary-to-string"></a>
 
 To send binary data as a JSON property of the input to AWS Lambda or Kinesis through API Gateway, do the following: 
 
@@ -117,7 +117,7 @@ To send binary data as a JSON property of the input to AWS Lambda or Kinesis thr
    }
    ```
 
-## Convert Text Data to a Binary Payload<a name="api-gateway-payload-encodings-convert-string-to-binary"></a>
+## Convert text data to a binary payload<a name="api-gateway-payload-encodings-convert-string-to-binary"></a>
 
 Suppose a Lambda function returns an image file as a base64\-encoded string\. To pass this binary output to the client through API Gateway, do the following: 
 
@@ -150,7 +150,7 @@ Suppose a Lambda function returns an image file as a base64\-encoded string\. To
    }
    ```
 
-## Pass Through a Binary Payload<a name="api-gateway-payload-encodings-pass-binary-as-is"></a>
+## Pass through a binary payload<a name="api-gateway-payload-encodings-pass-binary-as-is"></a>
 
  To store an image in an Amazon S3 bucket using API Gateway, do the following: 
 

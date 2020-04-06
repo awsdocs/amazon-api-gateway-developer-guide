@@ -1,9 +1,9 @@
-# Set up Request and Response Data Mappings Using the API Gateway Console<a name="how-to-method-settings-execution-console"></a>
+# Set up request and response data mappings using the API Gateway console<a name="how-to-method-settings-execution-console"></a>
 
 To use the API Gateway console to define the API's integration request/response, follow these instructions\.
 
 **Note**  
-These instructions assume you have already completed the steps in [Set up an API Integration Request Using the API Gateway Console](how-to-method-settings-console.md)\.
+These instructions assume you have already completed the steps in [Set up an API integration request using the API Gateway console](how-to-method-settings-console.md)\.
 
 1. With the method selected in the **Resources** pane, in the **Method Execution** pane, choose **Integration Request**\.
 
@@ -35,9 +35,9 @@ When calling the API Gateway API, you choose this option by setting `WHEN_NO_TEM
 **Note**  
 When calling the API Gateway API, you choose this option by setting `NEVER` as the `passthroughBehavior` property value on the [Integration](https://docs.aws.amazon.com/apigateway/api-reference/resource/integration/) resource\.
 
-   For more information about the integration passthrough behaviors, see [Integration Passthrough Behaviors](integration-passthrough-behaviors.md)\.
+   For more information about the integration passthrough behaviors, see [Integration passthrough behaviors](integration-passthrough-behaviors.md)\.
 
-1.  To define a mapping template for an incoming request, choose **Add mapping template** under **Content\-Type**\. Type a content type \(e\.g\., **application/json**\) in the input text box and then choose the check mark icon to save the input\. Then, type the mapping template manually or choose **Generate template** to create one from a model template\. For more information, see [Working with Models and Mapping Templates](models-mappings.md)\. 
+1.  To define a mapping template for an incoming request, choose **Add mapping template** under **Content\-Type**\. Type a content type \(e\.g\., **application/json**\) in the input text box and then choose the check mark icon to save the input\. Then, type the mapping template manually or choose **Generate template** to create one from a model template\. For more information, see [Working with models and mapping templates](models-mappings.md)\. 
 
 1.  You can map an integration response from the backend to a method response of the API returned to the calling app\. This includes returning to the client selected response headers from the available ones from the backend, transforming the data format of the backend response payload to an API\-specified format\. You can specify such mapping by configuring **Method Response** and **Integration Response** from the **Method Execution** page\. 
 

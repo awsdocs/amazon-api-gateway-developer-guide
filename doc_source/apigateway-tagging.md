@@ -1,4 +1,4 @@
-# Tagging Your API Gateway Resources<a name="apigateway-tagging"></a>
+# Tagging your API Gateway resources<a name="apigateway-tagging"></a>
 
 A *tag* is a metadata label that you assign or that AWS assigns to an AWS resource\. Each tag has two parts:
 + A *tag key* \(for example, `CostCenter`, `Environment`, or `Project`\)\. Tag keys are case sensitive\.
@@ -14,5 +14,5 @@ For tips on using tags, see the [AWS Tagging Strategies](https://aws.amazon.com/
 The following sections provide more information about tags for Amazon API Gateway\.
 
 **Topics**
-+ [API Gateway Resources That Can Be Tagged](apigateway-tagging-supported-resources.md)
-+ [Using Tags to Control Access to API Gateway Resources](apigateway-tagging-iam-policy.md)
++ [API Gateway resources that can be tagged](apigateway-tagging-supported-resources.md)
++ [Using tags to control access to API Gateway resources](apigateway-tagging-iam-policy.md)

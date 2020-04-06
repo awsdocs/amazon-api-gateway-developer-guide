@@ -1,4 +1,4 @@
-# Set up an API Gateway Canary Release Deployment<a name="canary-release"></a>
+# Set up an API Gateway canary release deployment<a name="canary-release"></a>
 
 [Canary release](https://martinfowler.com/bliki/CanaryRelease.html) is a software development strategy in which a new version of an API \(as well as other software\) is deployed as a canary release for testing purposes, and the base version remains deployed as a production release for normal operations on the same stage\. For purposes of discussion, we refer to the base version as a production release in this documentation\. Although this is reasonable, you are free to apply canary release on any non\-production version for testing\.
 
@@ -9,13 +9,13 @@ By keeping canary traffic small and the selection random, most users are not adv
 After the test metrics pass your requirements, you can promote the canary release to the production release and disable the canary from the deployment\. This makes the new features available in the production stage\. 
 
 **Topics**
-+ [Canary Release Deployment in API Gateway](#api-gateway-canary-release-deployment-overview)
-+ [Create a Canary Release Deployment](create-canary-deployment.md)
-+ [Update a Canary Release](update-canary-deployment.md)
-+ [Promote a Canary Release](promote-canary-deployment.md)
-+ [Disable a Canary Release](delete-canary-deployment.md)
++ [Canary release deployment in API Gateway](#api-gateway-canary-release-deployment-overview)
++ [Create a canary release deployment](create-canary-deployment.md)
++ [Update a canary release](update-canary-deployment.md)
++ [Promote a canary release](promote-canary-deployment.md)
++ [Disable a canary release](delete-canary-deployment.md)
 
-## Canary Release Deployment in API Gateway<a name="api-gateway-canary-release-deployment-overview"></a>
+## Canary release deployment in API Gateway<a name="api-gateway-canary-release-deployment-overview"></a>
 
  In API Gateway, a canary release deployment uses the deployment stage for the production release of the base version of an API, and attaches to the stage a canary release for the new versions, relative to the base version, of the API\. The stage is associated with the initial deployment and the canary with subsequent deployments\. At the beginning, both the stage and the canary point to the same API version\. We use stage and production release interchangeably and use canary and canary release interchangeably throughout this section\.
 

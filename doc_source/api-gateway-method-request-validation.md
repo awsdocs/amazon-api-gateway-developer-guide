@@ -1,14 +1,14 @@
-# Enable Request Validation in API Gateway<a name="api-gateway-method-request-validation"></a>
+# Enable request validation in API Gateway<a name="api-gateway-method-request-validation"></a>
 
  You can configure API Gateway to perform basic validation of an API request before proceeding with the integration request\. When the validation fails, API Gateway immediately fails the request, returns a 400 error response to the caller, and publishes the validation results in CloudWatch Logs\. This reduces unnecessary calls to the backend\. More importantly, it lets you focus on the validation efforts specific to your application\. 
 
 **Topics**
-+ [Overview of Basic Request Validation in API Gateway](#api-gateway-request-validation-basic-definitions)
-+ [Set Up Basic Request Validation in API Gateway](api-gateway-request-validation-set-up.md)
-+ [Test Basic Request Validation in API Gateway](api-gateway-request-validation-test.md)
-+ [OpenAPI Definitions of a Sample API with Basic Request Validation](api-gateway-request-validation-sample-api-swagger.md)
++ [Overview of basic request validation in API Gateway](#api-gateway-request-validation-basic-definitions)
++ [Set up basic request validation in API Gateway](api-gateway-request-validation-set-up.md)
++ [Test basic request validation in API Gateway](api-gateway-request-validation-test.md)
++ [OpenAPI definitions of a sample API with basic request validation](api-gateway-request-validation-sample-api-swagger.md)
 
-## Overview of Basic Request Validation in API Gateway<a name="api-gateway-request-validation-basic-definitions"></a>
+## Overview of basic request validation in API Gateway<a name="api-gateway-request-validation-basic-definitions"></a>
 
  API Gateway can perform the basic validation\. This enables you, the API developer, to focus on app\-specific deep validation in the backend\. For the basic validation, API Gateway verifies either or both of the following conditions: 
 +  The required request parameters in the URI, query string, and headers of an incoming request are included and non\-blank\. 

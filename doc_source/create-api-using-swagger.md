@@ -1,4 +1,4 @@
-# Set up an Edge\-Optimized API by Importing OpenAPI Definitions<a name="create-api-using-swagger"></a>
+# Set up an edge\-optimized API by importing OpenAPI definitions<a name="create-api-using-swagger"></a>
 
 You can set up an API in API Gateway by specifying OpenAPI definitions of appropriate API Gateway API entities and importing the OpenAPI definitions into API Gateway\.
 

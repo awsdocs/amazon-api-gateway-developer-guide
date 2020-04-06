@@ -1,4 +1,4 @@
-# Monitoring API Gateway API Configuration with AWS Config<a name="apigateway-config"></a>
+# Monitoring API Gateway API configuration with AWS Config<a name="apigateway-config"></a>
 
 You can use [AWS Config](https://aws.amazon.com/config/) to record configuration changes made to your API Gateway API resources and send notifications based on resource changes\. Maintaining a configuration change history for API Gateway resources is useful for operational troubleshooting, audit, and compliance use cases\.
 
@@ -16,16 +16,16 @@ AWS Config can track changes to:
 
 In addition, the AWS Config Rules feature enables you to define configuration rules and automatically detect, track, and alert violations to these rules\. By tracking changes to these resource configuration properties, you can also author change\-triggered AWS Config rules for your API Gateway resources, and test your resource configurations against best practices\.
 
-You can enable AWS Config in your account by using the AWS Config console or the AWS CLI\. Select the resource types for which you want to track changes\. If you previously configured AWS Config to record all resource types, then these API Gateway resources will be automatically recorded in your account\. Support for Amazon API Gateway in AWS Config is available in all AWS public regions and AWS GovCloud \(US\)\. For the full list of supported Regions, see [Regions and Endpoints](https://docs.aws.amazon.com/general/latest/gr/rande.html#apigateway_region) in the AWS General Reference\.
+You can enable AWS Config in your account by using the AWS Config console or the AWS CLI\. Select the resource types for which you want to track changes\. If you previously configured AWS Config to record all resource types, then these API Gateway resources will be automatically recorded in your account\. Support for Amazon API Gateway in AWS Config is available in all AWS public regions and AWS GovCloud \(US\)\. For the full list of supported Regions, see [Amazon API Gateway Endpoints and Quotas](https://docs.aws.amazon.com/general/latest/gr/apigateway.html) in the AWS General Reference\.
 
 **Topics**
-+ [Supported Resource Types](#apigateway-config-resources-rules)
++ [Supported resource types](#apigateway-config-resources-rules)
 + [Setting up AWS Config](#apigateway-config-setup)
-+ [Configuring AWS Config to Record API Gateway Resources](#apigateway-config-configuring)
-+ [Viewing API Gateway Configuration Details in the AWS Config Console](#apigateway-config-console)
-+ [Evaluating API Gateway Resources Using AWS Config Rules](#apigateway-config-rules)
++ [Configuring AWS Config to record API Gateway resources](#apigateway-config-configuring)
++ [Viewing API Gateway configuration details in the AWS Config console](#apigateway-config-console)
++ [Evaluating API Gateway resources using AWS Config rules](#apigateway-config-rules)
 
-## Supported Resource Types<a name="apigateway-config-resources-rules"></a>
+## Supported resource types<a name="apigateway-config-resources-rules"></a>
 
 The following API Gateway resource types are integrated with AWS Config and are documented in [AWS Config Supported AWS Resource Types and Resource Relationships](https://docs.aws.amazon.com/config/latest/developerguide/resource-config-reference.html):
 + `AWS::ApiGatewayV2::Api` \(WebSocket and HTTP API\)
@@ -46,17 +46,17 @@ To initially set up AWS Config, see the following topics in the [AWS Config Deve
 + [Setting Up AWS Config with the Console](https://docs.aws.amazon.com/config/latest/developerguide/gs-console.html)
 + [Setting Up AWS Config with the AWS CLI](https://docs.aws.amazon.com/config/latest/developerguide/gs-cli.html)
 
-## Configuring AWS Config to Record API Gateway Resources<a name="apigateway-config-configuring"></a>
+## Configuring AWS Config to record API Gateway resources<a name="apigateway-config-configuring"></a>
 
 By default, AWS Config records configuration changes for all supported types of regional resources that it discovers in the region in which your environment is running\. You can customize AWS Config to record changes only for specific resource types, or changes to global resources\.
 
 To learn about regional vs\. global resources and learn how to customize your AWS Config configuration, see [Selecting which Resources AWS Config Records](https://docs.aws.amazon.com/config/latest/developerguide/select-resources.html)\.
 
-## Viewing API Gateway Configuration Details in the AWS Config Console<a name="apigateway-config-console"></a>
+## Viewing API Gateway configuration details in the AWS Config console<a name="apigateway-config-console"></a>
 
 You can use the AWS Config console to look for API Gateway resources and get current and historical details about their configurations\. The following procedure shows how to find information about an API Gateway API\.
 
-**To find an API Gateway resource in the AWS Config console**
+**To find an API Gateway resource in the AWS config console**
 
 1. Open the [AWS Config console](https://console.aws.amazon.com/config)\.
 
@@ -74,7 +74,7 @@ You can use the AWS Config console to look for API Gateway resources and get cur
 
 To learn more ways to find a resource and view information on this page, see [Viewing AWS Resource Configurations and History](https://docs.aws.amazon.com/config/latest/developerguide/view-manage-resource.html) in the AWS Config Developer Guide\.
 
-## Evaluating API Gateway Resources Using AWS Config Rules<a name="apigateway-config-rules"></a>
+## Evaluating API Gateway resources using AWS Config rules<a name="apigateway-config-rules"></a>
 
 You can create AWS Config rules, which represent the ideal configuration settings for your API Gateway resources\. You can use predefined [AWS Config Managed Rules](https://docs.aws.amazon.com/config/latest/developerguide/managed-rules-by-aws-config.html), or define custom rules\. AWS Config continuously tracks changes to the configuration of your resources to determine whether those changes violate any of the conditions in your rules\. The AWS Config console shows the compliance status of your rules and resources\.
 

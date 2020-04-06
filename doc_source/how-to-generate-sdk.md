@@ -9,8 +9,8 @@ To facilitate the discussion, we use this API Gateway [API](simple-calc-lambda-a
 Before proceeding, create or import the API and deploy it at least once in API Gateway\. For instructions, see [Deploying a REST API in Amazon API Gateway](how-to-deploy-api.md)\.
 
 **Topics**
-+ [Generate SDKs for an API Using the API Gateway Console](how-to-generate-sdk-console.md)
-+ [Generate SDKs for an API Using AWS CLI Commands](how-to-generate-sdk-cli.md)
-+ [Simple Calculator Lambda Function](simple-calc-nodejs-lambda-function.md)
-+ [Simple Calculator API in API Gateway](simple-calc-lambda-api.md)
-+ [Simple Calculator API OpenAPI Definition](simple-calc-lambda-api-swagger-definition.md)
++ [Generate SDKs for an API using the API Gateway console](how-to-generate-sdk-console.md)
++ [Generate SDKs for an API using AWS CLI commands](how-to-generate-sdk-cli.md)
++ [Simple calculator Lambda function](simple-calc-nodejs-lambda-function.md)
++ [Simple calculator API in API Gateway](simple-calc-lambda-api.md)
++ [Simple calculator API OpenAPI definition](simple-calc-lambda-api-swagger-definition.md)

@@ -1,4 +1,4 @@
-# Publish API Documentation Using the API Gateway Console<a name="apigateway-documenting-api-with-console"></a>
+# Publish API documentation using the API Gateway console<a name="apigateway-documenting-api-with-console"></a>
 
 The following procedure describes how to publish a documentation version\.
 

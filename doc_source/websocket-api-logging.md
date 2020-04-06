@@ -1,10 +1,10 @@
-# Configuring Logging for a WebSocket API<a name="websocket-api-logging"></a>
+# Configuring logging for a WebSocket API<a name="websocket-api-logging"></a>
 
 ## <a name="websocket-api-logging.intro"></a>
 
 You can enable logging to write logs to CloudWatch Logs\. You can use logging variables to customize the content of your logs\.
 
-For instructions on how to set up CloudWatch logging, see [Set Up CloudWatch API Logging Using the API Gateway Console](set-up-logging.md#set-up-access-logging-using-console)\.
+For instructions on how to set up CloudWatch logging, see [Set up CloudWatch API logging using the API Gateway console](set-up-logging.md#set-up-access-logging-using-console)\.
 
 When you specify the **Log Format**, you can choose which context variables to log\. The following variables are supported\.
 

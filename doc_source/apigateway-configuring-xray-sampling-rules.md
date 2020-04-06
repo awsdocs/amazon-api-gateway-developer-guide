@@ -1,4 +1,4 @@
-# Configuring AWS X\-Ray Sampling Rules for API Gateway APIs<a name="apigateway-configuring-xray-sampling-rules"></a>
+# Configuring AWS X\-Ray sampling rules for API Gateway APIs<a name="apigateway-configuring-xray-sampling-rules"></a>
 
 You can use AWS X\-Ray console or SDK to configure sampling rules for your Amazon API Gateway API\. A sampling rule specifies which requests X\-Ray should record for your API\. By customizing sampling rules, you can control the amount of data that you record, and modify sampling behavior on the fly without modifying or redeploying your code\.
 
@@ -7,10 +7,10 @@ Before you specify your X\-Ray sampling rules, read the following topics in the 
 + [Using Sampling Rules with the X\-Ray API](https://docs.aws.amazon.com/xray/latest/devguide/xray-api-sampling.html)
 
 **Topics**
-+ [X\-Ray Sampling Rule Option Values for API Gateway APIs](#apigateway-xray-sampling-rule-options)
-+ [X\-Ray Sampling Rule Examples](#apigateway-xray-sampling-rules-examples)
++ [X\-Ray sampling rule option values for API Gateway APIs](#apigateway-xray-sampling-rule-options)
++ [X\-Ray sampling rule examples](#apigateway-xray-sampling-rules-examples)
 
-## X\-Ray Sampling Rule Option Values for API Gateway APIs<a name="apigateway-xray-sampling-rule-options"></a>
+## X\-Ray sampling rule option values for API Gateway APIs<a name="apigateway-xray-sampling-rule-options"></a>
 
 The following X\-Ray sampling options are relevant for API Gateway\. String values can use wildcards to match a single character \(?\) or zero or more characters \(\*\)\. For more details, including a detailed explanation of how the **Reservoir** and **Rate** settings are used, [Configuring Sampling Rules in the AWS X\-Ray Console](https://docs.aws.amazon.com/xray/latest/devguide/xray-console-sampling.html)\.
 + **Rule name** \(string\) — A unique name for the rule\.
@@ -27,9 +27,9 @@ The following X\-Ray sampling options are relevant for API Gateway\. String valu
 + **URL path** \(string\) — This option is not supported for API Gateway\.
 + \(optional\) **Attributes** \(key and value\) — Headers from the original HTTP request, for example, **Connection**, **Content\-Length**, or **Content\-Type**\. Each attribute value can be up to 32 characters long\.
 
-## X\-Ray Sampling Rule Examples<a name="apigateway-xray-sampling-rules-examples"></a>
+## X\-Ray sampling rule examples<a name="apigateway-xray-sampling-rules-examples"></a>
 
-**Sampling Rule Example \#1**
+**Sampling rule example \#1**
 
 This rule samples all `GET` requests for the `testxray` API at the `test` stage\.
 + **Rule name — ****test\-sampling**
@@ -42,7 +42,7 @@ This rule samples all `GET` requests for the `testxray` API at the `test` stage\
 + **Resource ARN — ****\***
 + **Host — ****\***
 
-**Sampling Rule Example \#2**
+**Sampling rule example \#2**
 
 This rule samples all requests for the `testxray` API at the `prod` stage\.
 + **Rule name — ****prod\-sampling**

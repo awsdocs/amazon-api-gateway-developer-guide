@@ -1,14 +1,14 @@
-# Using AWS X\-Ray Service Maps and Trace Views with API Gateway<a name="apigateway-using-xray-maps"></a>
+# Using AWS X\-Ray service maps and trace views with API Gateway<a name="apigateway-using-xray-maps"></a>
 
 In this section you can find detailed information on how to use [AWS X\-Ray](https://docs.aws.amazon.com/xray/latest/devguide/xray-services-apigateway.html) service maps and trace views with API Gateway\.
 
 For detailed information about service maps and trace views, and how to interpret them, see [AWS X\-Ray Console](https://docs.aws.amazon.com/xray/latest/devguide/xray-console.html)\.
 
 **Topics**
-+ [Example X\-Ray Service Map](#apigateway-using-xray-maps-active)
-+ [Example X\-Ray Trace View](#apigateway-using-xray-trace-view-active)
++ [Example X\-Ray service map](#apigateway-using-xray-maps-active)
++ [Example X\-Ray trace view](#apigateway-using-xray-trace-view-active)
 
-## Example X\-Ray Service Map<a name="apigateway-using-xray-maps-active"></a>
+## Example X\-Ray service map<a name="apigateway-using-xray-maps-active"></a>
 
 AWS X\-Ray service maps show information about your API and all of its downstream services\. When X\-Ray is enabled for an API stage in API Gateway, you'll see a node in the service map containing information about the overall time spent in the API Gateway service\. You can get detailed information about the response status and a histogram of the API response time for the selected timeframe\. For APIs integrating with AWS services such as AWS Lambda and Amazon DynamoDB, you will see more nodes providing performance metrics related to those services\. There will be a service map for each API stage\.
 
@@ -24,7 +24,7 @@ If you choose a node or edge on an X\-Ray service map, the X\-Ray console shows 
 
 ![\[X-Ray histogram of an API Gateway API stage\]](http://docs.aws.amazon.com/apigateway/latest/developerguide/images/apigateway-xray-histogram-1.png)
 
-## Example X\-Ray Trace View<a name="apigateway-using-xray-trace-view-active"></a>
+## Example X\-Ray trace view<a name="apigateway-using-xray-trace-view-active"></a>
 
 The following diagram shows a trace view generated for the example API described above, with a Lambda backend function and a Lambda authorizer function\. A successful API method request is shown with a response code of 200\.
 

@@ -1,10 +1,10 @@
-# Import API Documentation<a name="api-gateway-documenting-api-quick-start-import-export"></a>
+# Import API documentation<a name="api-gateway-documenting-api-quick-start-import-export"></a>
 
- As with importing API entity definitions, you can import documentation parts from an external OpenAPI file into an API in API Gateway\. You specify the to\-be\-imported documentation parts within the [x\-amazon\-apigateway\-documentation Object](api-gateway-swagger-extensions-documentation.md) extension in a valid OpenAPI definition file\. Importing documentation does not alter the existing API entity definitions\.
+ As with importing API entity definitions, you can import documentation parts from an external OpenAPI file into an API in API Gateway\. You specify the to\-be\-imported documentation parts within the [x\-amazon\-apigateway\-documentation object](api-gateway-swagger-extensions-documentation.md) extension in a valid OpenAPI definition file\. Importing documentation does not alter the existing API entity definitions\.
 
 You have an option to merge the newly specified documentation parts into existing documentation parts in API Gateway or to overwrite the existing documentation parts\. In the `MERGE` mode, a new documentation part defined in the OpenAPI file is added to the `DocumentationParts` collection of the API\. If an imported `DocumentationPart` already exists, an imported attribute replaces the existing one if the two are different\. Other existing documentation attributes remain unaffected\. In the `OVERWRITE` mode, the entire `DocumentationParts` collection is replaced according to the imported OpenAPI definition file\.
 
-## Importing Documentation Parts Using the API Gateway REST API<a name="api-gateway-importing-api-with-swagger-file-using-rest-api"></a>
+## Importing documentation parts using the API Gateway REST API<a name="api-gateway-importing-api-with-swagger-file-using-rest-api"></a>
 
 To import API documentation using the API Gateway REST API, call the [documentationpart:import](https://docs.aws.amazon.com/apigateway/api-reference/link-relation/documentationpart-import/) operation\. The following example shows how to overwrite existing documentation parts of an API with a single `GET / ` method, returning a `200 OK` response when successful\.
 
@@ -216,7 +216,7 @@ When successful, this request returns a 200 OK response containing the imported 
 
 In addition, you can also call [restapi:import](https://docs.aws.amazon.com/apigateway/api-reference/link-relation/restapi-import/) or [restapi:put](https://docs.aws.amazon.com/apigateway/api-reference/link-relation/restapi-put/), supplying the documentation parts in the `x-amazon-apigateway-documentation` object as part of the input OpenAPI file of the API definition\. To exclude the documentation parts from the API import, set `ignore=documentation` in the request query parameters\.
 
-## Importing Documentation Parts Using the API Gateway Console<a name="api-gateway-importing-api-with-swagger-file-using-console"></a>
+## Importing documentation parts using the API Gateway console<a name="api-gateway-importing-api-with-swagger-file-using-console"></a>
 
 The following instructions describe how to import documentation parts\.
 
@@ -226,7 +226,7 @@ The following instructions describe how to import documentation parts\.
 
 1. Choose **Import Documentation** in the **Documentation** pane\.
 
-1. Choose **Select OpenAPI File** to load a file from a drive, or copy and paste a file contents into the file view\. For an example, see the payload of the example request in [Importing Documentation Parts Using the API Gateway REST API](#api-gateway-importing-api-with-swagger-file-using-rest-api)\.
+1. Choose **Select OpenAPI File** to load a file from a drive, or copy and paste a file contents into the file view\. For an example, see the payload of the example request in [Importing documentation parts using the API Gateway REST API](#api-gateway-importing-api-with-swagger-file-using-rest-api)\.
 
 1. Optionally, choose **Fail on warnings** or **Ignore warnings**, and choose `Merge` or `Overwrite` from **Import mode**\.
 

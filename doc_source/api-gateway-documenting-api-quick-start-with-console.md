@@ -1,24 +1,24 @@
-# Document an API Using the API Gateway Console<a name="api-gateway-documenting-api-quick-start-with-console"></a>
+# Document an API using the API Gateway console<a name="api-gateway-documenting-api-quick-start-with-console"></a>
 
 In this section, we describe how to create and maintain documentation parts of an API using the API Gateway console\. 
 
-A prerequisite for creating and editing the documentation of an API is that you must have already created the API\. In this section, we use the [PetStore](http://petstore-demo-endpoint.execute-api.com/petstore/pets) API as an example\. To create an API using the API Gateway console, follow the instructions in [TUTORIAL: Create a REST API by Importing an Example](api-gateway-create-api-from-example.md)\. 
+A prerequisite for creating and editing the documentation of an API is that you must have already created the API\. In this section, we use the [PetStore](http://petstore-demo-endpoint.execute-api.com/petstore/pets) API as an example\. To create an API using the API Gateway console, follow the instructions in [Tutorial: Create a REST API by importing an example](api-gateway-create-api-from-example.md)\. 
 
 **Topics**
-+ [Document the `API` Entity](#api-gateway-document-api-add-document-part-for-api-entity-with-console)
-+ [Document a `RESOURCE` Entity](#api-gateway-document-api-add-document-part-for-resource-entity-with-console)
-+ [Document a `METHOD` Entity](#api-gateway-document-api-add-document-part-for-method-entity-with-console)
-+ [Document a `QUERY_PARAMETER` Entity](#api-gateway-document-api-add-document-part-for-request-query-entity-with-console)
-+ [Document a `PATH_PARAMETER` Entity](#api-gateway-document-api-add-document-part-for-path-parameter-entity-with-console)
-+ [Document a `REQUEST_HEADER` Entity](#api-gateway-document-api-add-document-part-for-request-header-entity-with-console)
-+ [Document a `REQUEST_BODY` Entity](#api-gateway-document-api-add-document-part-for-request-body-entity-with-console)
-+ [Document a `RESPONSE` Entity](#api-gateway-document-api-add-document-part-for-response-with-console)
-+ [Document a `RESPONSE_HEADER` Entity](#api-gateway-document-api-add-document-part-for-response-header-entity-with-console)
-+ [Document a `RESPONSE_BODY` Entity](#api-gateway-document-api-add-document-part-for-response-body-entity-with-console)
-+ [Document a `MODEL` Entity](#api-gateway-document-api-add-document-part-for-model-entity-with-console)
-+ [Document an `AUTHORIZER` Entity](#api-gateway-document-api-add-document-part-for-authorizer-entity-with-console)
++ [Document the `API` entity](#api-gateway-document-api-add-document-part-for-api-entity-with-console)
++ [Document a `RESOURCE` entity](#api-gateway-document-api-add-document-part-for-resource-entity-with-console)
++ [Document a `METHOD` entity](#api-gateway-document-api-add-document-part-for-method-entity-with-console)
++ [Document a `QUERY_PARAMETER` entity](#api-gateway-document-api-add-document-part-for-request-query-entity-with-console)
++ [Document a `PATH_PARAMETER` entity](#api-gateway-document-api-add-document-part-for-path-parameter-entity-with-console)
++ [Document a `REQUEST_HEADER` entity](#api-gateway-document-api-add-document-part-for-request-header-entity-with-console)
++ [Document a `REQUEST_BODY` entity](#api-gateway-document-api-add-document-part-for-request-body-entity-with-console)
++ [Document a `RESPONSE` entity](#api-gateway-document-api-add-document-part-for-response-with-console)
++ [Document a `RESPONSE_HEADER` entity](#api-gateway-document-api-add-document-part-for-response-header-entity-with-console)
++ [Document a `RESPONSE_BODY` entity](#api-gateway-document-api-add-document-part-for-response-body-entity-with-console)
++ [Document a `MODEL` entity](#api-gateway-document-api-add-document-part-for-model-entity-with-console)
++ [Document an `AUTHORIZER` entity](#api-gateway-document-api-add-document-part-for-authorizer-entity-with-console)
 
-## Document the `API` Entity<a name="api-gateway-document-api-add-document-part-for-api-entity-with-console"></a>
+## Document the `API` entity<a name="api-gateway-document-api-add-document-part-for-api-entity-with-console"></a>
 
  To add a documentation part for the `API` entity, choose **Resources** from the **PetStore** API\. Choose the **Actions → Edit API Documentation** menu item\. 
 
@@ -49,7 +49,7 @@ If a documentation part has already been created, you first get the `properties`
 
  Choosing **Edit** brings up the `properties` map editor as shown previously\. 
 
-## Document a `RESOURCE` Entity<a name="api-gateway-document-api-add-document-part-for-resource-entity-with-console"></a>
+## Document a `RESOURCE` entity<a name="api-gateway-document-api-add-document-part-for-resource-entity-with-console"></a>
 
 To add or edit the documentation part for the API's root resource, choose **/** under the **Resource** tree, and then choose the **Actions → Edit Resource Documentation** menu item\. 
 
@@ -65,7 +65,7 @@ If a documentation part has already been defined for the `RESOURCE` entity, you 
 
  If necessary, repeat these steps to add a documentation part to other `RESOURCE` entities\. 
 
-## Document a `METHOD` Entity<a name="api-gateway-document-api-add-document-part-for-method-entity-with-console"></a>
+## Document a `METHOD` entity<a name="api-gateway-document-api-add-document-part-for-method-entity-with-console"></a>
 
 To add or edit documentation for a `METHOD` entity, using the `GET` method on the root resource as an example, choose **GET** under the **/** resource and the choose the **Actions → Edit Method Documentation** menu item\. 
 
@@ -84,7 +84,7 @@ From the **Documentation** viewer, you can also delete the documentation part\.
 
 If necessary, repeat these steps to add a documentation part to other methods\.
 
-## Document a `QUERY_PARAMETER` Entity<a name="api-gateway-document-api-add-document-part-for-request-query-entity-with-console"></a>
+## Document a `QUERY_PARAMETER` entity<a name="api-gateway-document-api-add-document-part-for-request-query-entity-with-console"></a>
 
  To add or edit a documentation part for a request query parameter, using the `GET /pets?type=...&page=...` method as an example, choose **GET** under **/pets** from the **Resources** tree\. Choose **Method Request** in the **Method Execution** window\. Expand the **URL Query String Parameters** section\. Choose the **page** query parameter, for example, and choose the book icon to open the **Documentation** viewer or editor\. 
 
@@ -102,7 +102,7 @@ If necessary, repeat these steps to add a documentation part to other methods\.
 
 If necessary, repeat these steps to add a documentation part to other request query parameters\.
 
-## Document a `PATH_PARAMETER` Entity<a name="api-gateway-document-api-add-document-part-for-path-parameter-entity-with-console"></a>
+## Document a `PATH_PARAMETER` entity<a name="api-gateway-document-api-add-document-part-for-path-parameter-entity-with-console"></a>
 
  To add or edit documentation for a path parameter, go to **Method Request** of the method on the resource specified by the path parameter\. Expand the **Request Paths** section\. Choose the book icon for the path parameter to open the **Documentation** viewer or editor\. Add or modify the properties of the documentation part\. 
 
@@ -112,7 +112,7 @@ To add documentation for a path parameter not listed, choose **Create Documentat
 
 If required, repeat these steps to add or edit a documentation part to other path parameters\.
 
-## Document a `REQUEST_HEADER` Entity<a name="api-gateway-document-api-add-document-part-for-request-header-entity-with-console"></a>
+## Document a `REQUEST_HEADER` entity<a name="api-gateway-document-api-add-document-part-for-request-header-entity-with-console"></a>
 
  To add or edit documentation for a request header, go to **Method Request** of the method with the header parameter\. Expand the **HTTP Request Headers** section\. Choose the book icon for the header to open the **Documentation** viewer or editor\. Add or modify the properties of the documentation part\. 
 
@@ -120,7 +120,7 @@ Alternatively, choose **Documentation** under the API from the main navigation p
 
  If required, repeat these steps to add or edit a documentation part to other request headers\. 
 
-## Document a `REQUEST_BODY` Entity<a name="api-gateway-document-api-add-document-part-for-request-body-entity-with-console"></a>
+## Document a `REQUEST_BODY` entity<a name="api-gateway-document-api-add-document-part-for-request-body-entity-with-console"></a>
 
  To add or edit documentation for a request body, go to **Method Request** for a method\. Choose the book icon for **Request Body** to open the **Documentation** viewer and then editor\. Add or modify the properties of the documentation part\. 
 
@@ -128,7 +128,7 @@ Alternatively, choose **Documentation** under the API from the main navigation p
 
  If required, repeat these steps to add or edit a documentation part to other request bodies\. 
 
-## Document a `RESPONSE` Entity<a name="api-gateway-document-api-add-document-part-for-response-with-console"></a>
+## Document a `RESPONSE` entity<a name="api-gateway-document-api-add-document-part-for-response-with-console"></a>
 
  To add or edit documentation for a response, go to **Method Response** of a method\. Choose the book icon for **Method Response** to open the **Documentation** viewer and then editor\. Add or modify the properties of the documentation part\. 
 
@@ -138,7 +138,7 @@ Alternatively, choose **Documentation** under the API from the main navigation p
 
  If required, repeat these steps to add or edit a documentation part to other responses\. 
 
-## Document a `RESPONSE_HEADER` Entity<a name="api-gateway-document-api-add-document-part-for-response-header-entity-with-console"></a>
+## Document a `RESPONSE_HEADER` entity<a name="api-gateway-document-api-add-document-part-for-response-header-entity-with-console"></a>
 
  To add or edit documentation for a response header, go to **Method Response** of a method\. Expand a response section of a given HTTP status\. Choose the book icon for a response header under **Response Headers for *StatusCode*** to open the **Documentation** viewer and then editor\. Add or modify the properties of the documentation part\. 
 
@@ -146,7 +146,7 @@ Alternatively, choose **Documentation** under the API from the main navigation p
 
  If required, repeat these steps to add or edit a documentation part to other response headers\. 
 
-## Document a `RESPONSE_BODY` Entity<a name="api-gateway-document-api-add-document-part-for-response-body-entity-with-console"></a>
+## Document a `RESPONSE_BODY` entity<a name="api-gateway-document-api-add-document-part-for-response-body-entity-with-console"></a>
 
  To add or edit documentation for a response body, go to **Method Response** of a method\. Expand the response section of a given HTTP status\. Choose the book icon for **Response Body for *StatusCode*** to open the **Documentation** viewer and then editor\. Add or modify the properties of the documentation part\. 
 
@@ -154,7 +154,7 @@ Alternatively, choose **Documentation** under the API from the main navigation p
 
  If required, repeat these steps to add or edit a documentation part to other response bodies\. 
 
-## Document a `MODEL` Entity<a name="api-gateway-document-api-add-document-part-for-model-entity-with-console"></a>
+## Document a `MODEL` entity<a name="api-gateway-document-api-add-document-part-for-model-entity-with-console"></a>
 
 Documenting a `MODEL` entity involves creating and managing `DocumentPart` instances for the model and each of the model's `properties`'\. For example, for the `Error` model that comes with every API by default has the following schema definition,
 
@@ -206,7 +206,7 @@ Alternatively, choose **Documentation** under the API from the main navigation p
 
  If required, repeat these steps to add or edit a documentation part to other models\. 
 
-## Document an `AUTHORIZER` Entity<a name="api-gateway-document-api-add-document-part-for-authorizer-entity-with-console"></a>
+## Document an `AUTHORIZER` entity<a name="api-gateway-document-api-add-document-part-for-authorizer-entity-with-console"></a>
 
  To add or edit documentation for an authorizer, go to **Authorizers** for the API in the main navigation pane\. Choose the book icon for the listed authorizer to open the **Documentation** viewer and then editor\. Add or modify the properties of the documentation part\. 
 

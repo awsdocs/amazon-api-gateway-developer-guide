@@ -1,4 +1,4 @@
-# Publishing HTTP APIs for Customers to Invoke<a name="http-api-publish"></a>
+# Publishing HTTP APIs for customers to invoke<a name="http-api-publish"></a>
 
 You can use stages and custom domain names to publish your API for clients to invoke\.
 
@@ -7,5 +7,5 @@ An API stage is a logical reference to a lifecycle state of your API \(for examp
 You can use custom domain names to provide a simpler, more intuitive URL for clients to invoke your API than the default URL, `https://api-id.execute-api.region.amazonaws.com/stage`\.
 
 **Topics**
-+ [Working with Stages for HTTP APIs](http-api-stages.md)
-+ [Setting Up Custom Domain Names for HTTP APIs](http-api-custom-domain-names.md)
++ [Working with stages for HTTP APIs](http-api-stages.md)
++ [Setting up custom domain names for HTTP APIs](http-api-custom-domain-names.md)

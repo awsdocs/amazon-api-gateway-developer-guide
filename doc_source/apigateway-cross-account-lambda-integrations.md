@@ -1,14 +1,14 @@
-# TUTORIAL: Build an API Gateway API with Cross\-Account Lambda Proxy Integration<a name="apigateway-cross-account-lambda-integrations"></a>
+# Tutorial: Build an API Gateway API with cross\-account Lambda proxy integration<a name="apigateway-cross-account-lambda-integrations"></a>
 
 You can now use an AWS Lambda function from a different AWS account as your API integration backend\. Each account can be in any region where Amazon API Gateway is available\. This makes it easy to centrally manage and share Lambda backend functions across multiple APIs\.
 
 In this section, we show how to configure cross\-account Lambda proxy integration using the Amazon API Gateway console\.
 
-First, we create the example API from [TUTORIAL: Create a REST API by Importing an Example](api-gateway-create-api-from-example.md) in one account\. We then create a Lambda function in another account\. Finally, we use cross\-account Lambda integration to allow the example API to use the Lambda function we created in the second account\.
+First, we create the example API from [Tutorial: Create a REST API by importing an example](api-gateway-create-api-from-example.md) in one account\. We then create a Lambda function in another account\. Finally, we use cross\-account Lambda integration to allow the example API to use the Lambda function we created in the second account\.
 
-## Create API for API Gateway Cross\-Account Lambda Integration<a name="apigateway-cross-account-lambda-integrations-create-api"></a>
+## Create API for API Gateway cross\-account Lambda integration<a name="apigateway-cross-account-lambda-integrations-create-api"></a>
 
-First, you'll create the example API as described in [TUTORIAL: Create a REST API by Importing an Example](api-gateway-create-api-from-example.md)\.
+First, you'll create the example API as described in [Tutorial: Create a REST API by importing an example](api-gateway-create-api-from-example.md)\.
 
 **To create the example API**
 
@@ -22,7 +22,7 @@ First, you'll create the example API as described in [TUTORIAL: Create a REST AP
 
 1. Choose **Import** to create the example API\.
 
-## Create Lambda Integration Function in Another Account<a name="apigateway-cross-account-lambda-integrations-create-lambda-function"></a>
+## Create Lambda integration function in another account<a name="apigateway-cross-account-lambda-integrations-create-lambda-function"></a>
 
 Now you'll create a Lambda function in a different account from the one in which you created the example API\.
 
@@ -46,13 +46,13 @@ Now you'll create a Lambda function in a different account from the one in which
 
 1. Scroll down to the **Function code** pane\.
 
-1. Copy\-paste the Node\.js function implementation from [TUTORIAL: Build a Hello World API with Lambda Proxy Integration](api-gateway-create-api-as-simple-proxy-for-lambda.md)\.
+1. Copy\-paste the Node\.js function implementation from [Tutorial: Build a Hello World API with Lambda proxy integration](api-gateway-create-api-as-simple-proxy-for-lambda.md)\.
 
 1. Choose **Save**\.
 
 1. Note the full ARN for your function \(in the upper right corner of the Lambda function pane\)\. You'll need it when you create your cross\-account Lambda integration\.
 
-## Configure Cross\-Account Lambda Integration<a name="apigateway-cross-account-lambda-integrations-create-integration2"></a>
+## Configure cross\-account Lambda integration<a name="apigateway-cross-account-lambda-integrations-create-integration2"></a>
 
 Once you have a Lambda integration function in a different account, you can use the API Gateway console to add it to your API in your first account\.
 

@@ -1,4 +1,4 @@
-# Control Cross\-Account Access to Your API<a name="apigateway-control-cross-account-lambda-auth-and-integration"></a>
+# Control cross\-account access to your API<a name="apigateway-control-cross-account-lambda-auth-and-integration"></a>
 
 You can manage access to your APIs by creating IAM permission policies to control who can or cannot create, update, deploy, view, or delete API entities\. A policy is attached to an IAM user representing your user, to an IAM group containing the user, or to an IAM role assumed by the user\.
 
@@ -6,7 +6,7 @@ In the IAM policies you create for your APIs, you can use `Condition` elements t
 
 The `Condition` block uses boolean condition operators to match the condition in the policy against values in the request\. The `StringXxx` condition operator will work both for AWS integration \(in which the value should be a Lambda function ARN\) and Http integration \(in which the value should be an Http URI\)\. The following `StringXxx` condition operators are supported: `StringEquals`, `StringNotEquals`, `StringEqualsIgnoreCase`, `StringNotEqualsIgnoreCase`, `StringLike`, `StringNotLike`\. For more information, see [String Condition Operators](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_policies_elements_condition_operators.html#Conditions_String) in the IAM User Guide\.
 
-## IAM Policy for Cross\-Account Lambda Authorizer<a name="apigateway-control-cross-account-lambda-auth-policy"></a>
+## IAM policy for cross\-account Lambda authorizer<a name="apigateway-control-cross-account-lambda-auth-policy"></a>
 
 Here is an example of an IAM policy to control a cross\-account Lambda authorizer function:
 
@@ -33,7 +33,7 @@ Here is an example of an IAM policy to control a cross\-account Lambda authorize
 }
 ```
 
-## IAM Policy for Cross\-Account Lambda Integration<a name="apigateway-control-cross-account-lambda-integration-policy"></a>
+## IAM policy for cross\-account Lambda integration<a name="apigateway-control-cross-account-lambda-integration-policy"></a>
 
 With cross\-account integration, in order to restrict operations on some specific resources \(such as `put-integration` for a specific Lambda function\), a `Condition` element can be added to the policy to specify which resource \(Lambda function\) is affected\.
 
@@ -64,7 +64,7 @@ To grant another AWS acccount permission to call `[integration:put](https://docs
 }
 ```
 
-## Allow Another Account to Manage the Lambda Function Used When Importing an OpenAPI File<a name="api-gateway-control-access-cross-account-lambda-swagger-import"></a>
+## Allow another account to manage the Lambda function used when importing an OpenAPI file<a name="api-gateway-control-access-cross-account-lambda-swagger-import"></a>
 
 To grant another AWS acccount permission to call `[restapi:import](https://docs.aws.amazon.com/apigateway/api-reference/link-relation/restapi-import/)` or `[import\-rest\-api](https://docs.aws.amazon.com/cli/latest/reference/apigateway/import-rest-api.html)` to import an OpenAPI file, you can include the following statement in the IAM policy\.
 

@@ -1,4 +1,4 @@
-# Enabling Payload Compression for an API<a name="api-gateway-gzip-compression-decompression"></a>
+# Enabling payload compression for an API<a name="api-gateway-gzip-compression-decompression"></a>
 
  API Gateway allows your client to call your API with compressed payloads by using one of the [supported content codings](api-gateway-enable-compression.md#api-gateway-supported-content-encodings)\. By default, API Gateway supports decompression of the method request payload\. However, you must configure your API to enable compression of the method response payload\. 
 
@@ -11,6 +11,6 @@ The client can submit an API request with a compressed payload and an appropriat
 When the integration endpoint expects and returns uncompressed JSON payloads, any mapping template that's configured for an uncompressed JSON payload is applicable to the compressed payload\. For a compressed method request payload, API Gateway decompresses the payload, applies the mapping template, and passes the mapped request to the integration endpoint\. For an uncompressed integration response payload, API Gateway applies the mapping template, compresses the mapped payload, and returns the compressed payload to the client\. 
 
 **Topics**
-+ [Enable Payload Compression for an API](api-gateway-enable-compression.md)
-+ [Call an API Method with a Compressed Payload](api-gateway-make-request-with-compressed-payload.md)
-+ [Receive an API Response with a Compressed Payload](api-gateway-receive-response-with-compressed-payload.md)
++ [Enable payload compression for an API](api-gateway-enable-compression.md)
++ [Call an API method with a compressed payload](api-gateway-make-request-with-compressed-payload.md)
++ [Receive an API response with a compressed payload](api-gateway-receive-response-with-compressed-payload.md)

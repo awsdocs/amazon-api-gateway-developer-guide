@@ -1,13 +1,13 @@
-# Access Binary Files in Amazon S3 Through an API Gateway API<a name="api-gateway-content-encodings-examples-image-s3"></a>
+# Access binary files in Amazon S3 through an API Gateway API<a name="api-gateway-content-encodings-examples-image-s3"></a>
 
 The following examples show the OpenAPI file used to access images in Amazon S3, how to download an image from Amazon S3, and how to upload an image to Amazon S3\. 
 
 **Topics**
-+ [OpenAPI File of a Sample API to Access Images in Amazon S3](#api-gateway-content-encodings-example-image-s3-swagger-file)
-+ [Download an Image from Amazon S3](#api-gateway-content-encodings-example-download-image-from-s3)
-+ [Upload an Image to Amazon S3](#api-gateway-content-encodings-example-upload-image-to-s3)
++ [OpenAPI file of a sample API to access images in Amazon S3](#api-gateway-content-encodings-example-image-s3-swagger-file)
++ [Download an image from Amazon S3](#api-gateway-content-encodings-example-download-image-from-s3)
++ [Upload an image to Amazon S3](#api-gateway-content-encodings-example-upload-image-to-s3)
 
-## OpenAPI File of a Sample API to Access Images in Amazon S3<a name="api-gateway-content-encodings-example-image-s3-swagger-file"></a>
+## OpenAPI file of a sample API to access images in Amazon S3<a name="api-gateway-content-encodings-example-image-s3-swagger-file"></a>
 
 The following OpenAPI file shows a sample API that illustrates downloading an image file from Amazon S3 and uploading an image file to Amazon S3\. This API exposes the `GET /s3?key={file-name}` and `PUT /s3?key={file-name}` methods for downloading and uploading a specified image file\. The `GET` method returns the image file as a base64\-encoded string as part of a JSON output, following the supplied mapping template, in a 200 OK response\. The `PUT` method takes a raw binary blob as input and returns a 200 OK response with an empty payload\.
 
@@ -261,7 +261,7 @@ The following OpenAPI file shows a sample API that illustrates downloading an im
 
 ------
 
-## Download an Image from Amazon S3<a name="api-gateway-content-encodings-example-download-image-from-s3"></a>
+## Download an image from Amazon S3<a name="api-gateway-content-encodings-example-download-image-from-s3"></a>
 
 To download an image file \(`image.jpg`\) as a binary blob from Amazon S3:
 
@@ -319,7 +319,7 @@ The successful response looks like the following:
 }
 ```
 
-## Upload an Image to Amazon S3<a name="api-gateway-content-encodings-example-upload-image-to-s3"></a>
+## Upload an image to Amazon S3<a name="api-gateway-content-encodings-example-upload-image-to-s3"></a>
 
 To upload an image file \(`image.jpg`\) as a binary blob to Amazon S3:
 

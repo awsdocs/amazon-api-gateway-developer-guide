@@ -1,8 +1,8 @@
-# Enabling CORS for a REST API Resource<a name="how-to-cors"></a>
+# Enabling CORS for a REST API resource<a name="how-to-cors"></a>
 
 [Cross\-origin resource sharing \(CORS\)](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS) is a browser security feature that restricts cross\-origin HTTP requests that are initiated from scripts running in the browser\. If your REST API's resources receive non\-simple cross\-origin HTTP requests, you need to enable CORS support\.
 
-## Determining Whether to Enable CORS Support<a name="apigateway-cors-request-types"></a>
+## Determining whether to enable CORS support<a name="apigateway-cors-request-types"></a>
 
 A *cross\-origin* HTTP request is one that is made to:
 + A different *domain* \(for example, from `example.com` to `amazondomains.com`\)
@@ -23,7 +23,7 @@ For simple cross\-origin `POST` method requests, the response from your resource
 
 All other cross\-origin HTTP requests are *non\-simple* requests\. If your API's resources receive non\-simple requests, you need to enable CORS support\.
 
-## What It Means to Enable CORS Support<a name="apigateway-responding-to-cors-preflight"></a>
+## What it means to enable CORS support<a name="apigateway-responding-to-cors-preflight"></a>
 
 When a browser receives a non\-simple HTTP request, the [CORS protocol](https://fetch.spec.whatwg.org/#http-cors-protocol) requires the browser to send a preflight request to the server and wait for approval \(or a request for credentials\) from the server before sending the actual request\. The *preflight request* appears to your API as an HTTP request that:
 + Includes an `Origin` header\.
@@ -39,15 +39,15 @@ To support CORS, therefore, a REST API resource needs to implement an `OPTIONS` 
 
 How you enable CORS support depends on your API's integration type\.
 
-### Enabling CORS Support for Mock Integrations<a name="apigateway-enable-cors-mock"></a>
+### Enabling CORS support for mock integrations<a name="apigateway-enable-cors-mock"></a>
 
 For a mock integration, you enable CORS by creating an `OPTIONS` method to return the required response headers \(with appropriate static values\) as the method response headers\. In addition, each of the actual CORS\-enabled methods must also return the `Access-Control-Allow-Origin:'request-originating server addresses'` header in at least its 200 response, where the value of the header key is set to `'*'` \(any origin\) or is set to the origins allowed to access the resource\.
 
-### Enabling CORS Support for Lambda or HTTP Non\-Proxy Integrations and AWS Service Integrations<a name="apigateway-enable-cors-nonproxy"></a>
+### Enabling CORS support for Lambda or HTTP non\-proxy integrations and AWS service integrations<a name="apigateway-enable-cors-nonproxy"></a>
 
 For a Lambda custom \(non\-proxy\) integration, HTTP custom \(non\-proxy\) integration, or AWS service integration, you can set up the required headers by using API Gateway method response and integration response settings\. API Gateway creates an `OPTIONS` method and attempts to add the `Access-Control-Allow-Origin` header to your existing method integration responses\. This doesn’t always work, and sometimes you need to manually modify the integration response to properly enable CORS\. Usually this just means manually modifying the integration response to return the `Access-Control-Allow-Origin` header\.
 
-### Enabling CORS Support for Lambda or HTTP Proxy Integrations<a name="apigateway-enable-cors-proxy"></a>
+### Enabling CORS support for Lambda or HTTP proxy integrations<a name="apigateway-enable-cors-proxy"></a>
 
 For a Lambda proxy integration or HTTP proxy integration, you can still set up the required `OPTIONS` response headers in API Gateway\. However, your backend is responsible for returning the `Access-Control-Allow-Origin` and `Access-Control-Allow-Headers` headers, because a proxy integration doesn't return an integration response\.
 
@@ -111,8 +111,8 @@ return {
 ```
 
 **Topics**
-+ [Determining Whether to Enable CORS Support](#apigateway-cors-request-types)
-+ [What It Means to Enable CORS Support](#apigateway-responding-to-cors-preflight)
-+ [Enable CORS on a Resource Using the API Gateway Console](how-to-cors-console.md)
-+ [Enable CORS on a Resource Using the API Gateway Import API](enable-cors-for-resource-using-swagger-importer-tool.md)
++ [Determining whether to enable CORS support](#apigateway-cors-request-types)
++ [What it means to enable CORS support](#apigateway-responding-to-cors-preflight)
++ [Enable CORS on a resource using the API Gateway console](how-to-cors-console.md)
++ [Enable CORS on a resource using the API Gateway import API](enable-cors-for-resource-using-swagger-importer-tool.md)
 + [Testing CORS](apigateway-test-cors.md)

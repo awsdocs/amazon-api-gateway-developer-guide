@@ -5,7 +5,7 @@ You can create a WebSocket API in the API Gateway console, by using the AWS CLI 
 **Note**  
 WebSocket APIs only support TLS 1\.2\. Earlier TLS versions are not supported\.
 
-## Create a WebSocket API Using AWS CLI Commands<a name="apigateway-websocket-api-create-using-awscli"></a>
+## Create a WebSocket API using AWS CLI commands<a name="apigateway-websocket-api-create-using-awscli"></a>
 
 Creating a WebSocket API using the AWS CLI requires calling the [https://docs.aws.amazon.com/goto/aws-cli/apigatewayv2-2018-11-29/CreateApi](https://docs.aws.amazon.com/goto/aws-cli/apigatewayv2-2018-11-29/CreateApi) command as shown in the following example, which creates an API with the `$request.body.action` route selection expression:
 
@@ -26,7 +26,7 @@ Example output:
 }
 ```
 
-## Create a WebSocket API Using the API Gateway Console<a name="apigateway-websocket-api-create-using-console"></a>
+## Create a WebSocket API using the API Gateway console<a name="apigateway-websocket-api-create-using-console"></a>
 
 You can create a WebSocket API in the console by choosing the WebSocket protocol and giving the API a name\.
 
@@ -45,7 +45,7 @@ Once you have created the API, you cannot change the protocol you have chosen fo
 
 1. Enter a **Route Selection Expression** for your API, for example, `$request.body.action`\.
 
-   For more information about route selection expressions, see [Route Selection Expressions](websocket-api-develop-routes.md#apigateway-websocket-api-route-selection-expressions)\.
+   For more information about route selection expressions, see [Route selection expressions](websocket-api-develop-routes.md#apigateway-websocket-api-route-selection-expressions)\.
 
 1. If desired, type a **Description** for your API\.
 

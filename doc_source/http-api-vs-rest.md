@@ -1,4 +1,4 @@
-# Choosing Between HTTP APIs and REST APIs<a name="http-api-vs-rest"></a>
+# Choosing between HTTP APIs and REST APIs<a name="http-api-vs-rest"></a>
 
 ## <a name="http-api-vs-rest.differences"></a>
 
@@ -27,7 +27,7 @@ The following tables summarize core features that are available in HTTP APIs and
 |  Mock  |   |  ✓  | 
 
 
-| API Management | HTTP API | REST API | 
+| API management | HTTP API | REST API | 
 | --- | --- | --- | 
 |  Usage plans  |   |  ✓  | 
 |  API keys  |   |  ✓  | 
@@ -55,7 +55,7 @@ The following tables summarize core features that are available in HTTP APIs and
 |  Resource policies  |   |  ✓  | 
 
 
-| API Type | HTTP API | REST API | 
+| API type | HTTP API | REST API | 
 | --- | --- | --- | 
 |  Regional  |  ✓  |  ✓  | 
 |  Edge\-optimized  |   |  ✓  | 

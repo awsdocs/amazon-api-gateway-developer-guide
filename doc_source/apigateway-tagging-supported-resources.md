@@ -1,4 +1,4 @@
-# API Gateway Resources That Can Be Tagged<a name="apigateway-tagging-supported-resources"></a>
+# API Gateway resources that can be tagged<a name="apigateway-tagging-supported-resources"></a>
 
 Tags can be set on the following HTTP API and WebSocket API resources in the [Amazon API Gateway V2 API](https://docs.aws.amazon.com/apigatewayv2/latest/api-reference/):
 + `Api`
@@ -30,7 +30,7 @@ Tags cannot be set directly on other resources\. However, in the [Amazon API Gat
 + If a tag is set on a `DomainName`, that tag is inherited by any `BasePathMapping` resources under it\.
 + If a tag is set on a `UsagePlan`, that tag is inherited by any `UsagePlanKey` resources under it\.
 
-## Tag Inheritance in the Amazon API Gateway V1 API<a name="apigateway-tagging-inheritance"></a>
+## Tag inheritance in the Amazon API Gateway V1 API<a name="apigateway-tagging-inheritance"></a>
 
 Previously it was only possible to set tags on stages\. Now that you can also set them on other resources, a `Stage` can receive a tag two ways:
 + The tag can be set directly on the `Stage`\.
@@ -64,7 +64,7 @@ The net effect would be for the stage to have the following tags, with the follo
 }
 ```
 
-## Tag Restrictions and Usage Conventions<a name="apigateway-tagging-restrictions"></a>
+## Tag restrictions and usage conventions<a name="apigateway-tagging-restrictions"></a>
 
 The following restrictions and usage conventions apply to using tags with API Gateway resources:
 + Each resource can have a maximum of 50 tags\.

@@ -1,6 +1,6 @@
-# Working with OpenAPI Definitions for HTTP APIs<a name="http-api-open-api"></a>
+# Working with OpenAPI definitions for HTTP APIs<a name="http-api-open-api"></a>
 
-You can define your HTTP API by using an OpenAPI 3\.0 definition file\. Then you can import the definition into API Gateway to create an API\. To learn more about API Gateway extensions to OpenAPI, see [Working with API Gateway Extensions to OpenAPI](api-gateway-swagger-extensions.md)\.
+You can define your HTTP API by using an OpenAPI 3\.0 definition file\. Then you can import the definition into API Gateway to create an API\. To learn more about API Gateway extensions to OpenAPI, see [Working with API Gateway extensions to OpenAPI](api-gateway-swagger-extensions.md)\.
 
 ## Importing an HTTP API<a name="http-api-import"></a>
 
@@ -11,9 +11,9 @@ You can create an HTTP API by importing an OpenAPI 3\.0 definition file\.
 To migrate from a REST API to an HTTP API, you can export your REST API as an OpenAPI 3\.0 definition file\. Then import the API definition as an HTTP API\. To learn more about exporting a REST API, see [Export a REST API](api-gateway-export-api.md)\. 
 
 **Note**  
-HTTP APIs support the same AWS variables as REST APIs\. To learn more, see [AWS Variables for OpenAPI Import](import-api-aws-variables.md)\.
+HTTP APIs support the same AWS variables as REST APIs\. To learn more, see [AWS variables for OpenAPI import](import-api-aws-variables.md)\.
 
-### Import Validation Information<a name="http-api-import.validation"></a>
+### Import validation information<a name="http-api-import.validation"></a>
 
 As you import an API, API Gateway provides three categories of validation information\.
 
@@ -89,7 +89,7 @@ The following API definition produces errors on import because HTTP APIs support
 }
 ```
 
-### Import an API by Using the AWS CLI<a name="http-api-import.example"></a>
+### Import an API by using the AWS CLI<a name="http-api-import.example"></a>
 
 The following command imports the OpenAPI 3\.0 definition file `api-definition.json` as an HTTP API\.
 

@@ -1,4 +1,4 @@
-# Choose an API Gateway API Integration Type<a name="api-gateway-api-integration-types"></a>
+# Choose an API Gateway API integration type<a name="api-gateway-api-integration-types"></a>
 
  You choose an API integration type according to the types of integration endpoint you work with and how you want data to pass to and from the integration endpoint\. For a Lambda function, you can have the Lambda proxy integration, or the Lambda custom integration\. For an HTTP endpoint, you can have the HTTP proxy integration or the HTTP custom integration\. For an AWS service action, you have the AWS integration of the non\-proxy type only\. API Gateway also supports the mock integration, where API Gateway serves as an integration endpoint to respond to a method request\.
 

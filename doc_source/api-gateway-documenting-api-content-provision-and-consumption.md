@@ -1,4 +1,4 @@
-# Control Access to API Documentation<a name="api-gateway-documenting-api-content-provision-and-consumption"></a>
+# Control access to API documentation<a name="api-gateway-documenting-api-content-provision-and-consumption"></a>
 
 If you have a dedicated documentation team to write and edit your API documentation, you can configure separate access permissions for your developers \(for API development\) and for your writers or editors \(for content development\)\. This is especially appropriate when a third\-party vendor is involved in creating the documentation for you\. 
 
@@ -27,4 +27,4 @@ If you have a dedicated documentation team to write and edit your API documentat
 }
 ```
 
- For information on setting permissions to access API Gateway resources, see [ Control Who Can Create and Manage an API Gateway API with IAM Policies](api-gateway-control-access-using-iam-policies-to-create-and-manage-api.md#api-gateway-control-access-using-iam-policies)\. 
+ For information on setting permissions to access API Gateway resources, see [ Control who can create and manage an API Gateway API with IAM policies](api-gateway-control-access-using-iam-policies-to-create-and-manage-api.md#api-gateway-control-access-using-iam-policies)\. 

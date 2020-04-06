@@ -1,9 +1,9 @@
-# Content Type Conversions in API Gateway<a name="api-gateway-payload-encodings-workflow"></a>
+# Content type conversions in API Gateway<a name="api-gateway-payload-encodings-workflow"></a>
 
 The following table shows how API Gateway converts the request payload for specific configurations of a request's `Content-Type` header, the `binaryMediaTypes` list of a [RestApi](https://docs.aws.amazon.com/apigateway/api-reference/resource/rest-api/) resource, and the `contentHandling` property value of the [Integration](https://docs.aws.amazon.com/apigateway/api-reference/resource/integration/) resource\.
 
 
-**API Request Content Type Conversions in API Gateway**  
+**API request content type conversions in API Gateway**  
 
 | Method request payload | Request `Content-Type` header | `binaryMediaTypes` | `contentHandling` | Integration request payload | 
 | --- | --- | --- | --- | --- | 
@@ -20,7 +20,7 @@ The following table shows how API Gateway converts the request payload for speci
 The following table shows how API Gateway converts the response payload for specific configurations of a request's `Accept` header, the `binaryMediaTypes` list of a [RestApi](https://docs.aws.amazon.com/apigateway/api-reference/resource/rest-api/) resource, and the `contentHandling` property value of the [IntegrationResponse](https://docs.aws.amazon.com/apigateway/api-reference/resource/integration-response/) resource\.
 
 
-**API Gateway Response Content Type Conversions**  
+**API Gateway response content type conversions**  
 
 | Integration response payload | Request `Accept` header | `binaryMediaTypes` | `contentHandling` | Method response payload | 
 | --- | --- | --- | --- | --- | 

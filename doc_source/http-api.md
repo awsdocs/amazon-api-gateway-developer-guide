@@ -12,6 +12,6 @@ You can create HTTP APIs by using the AWS Management Console, the AWS CLI, APIs,
 
 **Topics**
 + [Developing an HTTP API in API Gateway](http-api-develop.md)
-+ [Publishing HTTP APIs for Customers to Invoke](http-api-publish.md)
-+ [Protecting Your HTTP API](http-api-protect.md)
-+ [Monitoring Your HTTP API](http-api-monitor.md)
++ [Publishing HTTP APIs for customers to invoke](http-api-publish.md)
++ [Protecting your HTTP API](http-api-protect.md)
++ [Monitoring your HTTP API](http-api-monitor.md)

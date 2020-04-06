@@ -12,7 +12,7 @@ If you configure CORS for an API, API Gateway ignores CORS headers returned from
 You can specify the following parameters in a CORS configuration\.
 
 
-| CORS Headers | CORS Configuration Property | Example Values | 
+| CORS headers | CORS configuration property | Example values | 
 | --- | --- | --- | 
 |  Access\-Control\-Allow\-Origin  |  allowOrigins  |  [\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/apigateway/latest/developerguide/http-api-cors.html)  | 
 |  Access\-Control\-Allow\-Credentials  |  allowCredentials  |  true  | 
@@ -21,7 +21,7 @@ You can specify the following parameters in a CORS configuration\.
 |  Access\-Control\-Allow\-Methods  |  allowMethods  |  GET, POST, DELETE, \*  | 
 |  Access\-Control\-Allow\-Headers  |  allowHeaders  |  Authorization, \*  | 
 
-## Configure CORS for an HTTP API by Using the AWS CLI<a name="http-api-cors.example"></a>
+## Configure CORS for an HTTP API by using the AWS CLI<a name="http-api-cors.example"></a>
 
 You can use the following command to enable CORS requests from `https://www.example.com`\.
 

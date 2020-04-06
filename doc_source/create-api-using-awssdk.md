@@ -1,4 +1,4 @@
-# Set up an Edge\-Optimized API Using the AWS SDK for Node\.js<a name="create-api-using-awssdk"></a>
+# Set up an edge\-optimized API using the AWS SDK for Node\.js<a name="create-api-using-awssdk"></a>
 
  As an illustration, we use AWS SDK for Node\.js to describe how you can use an AWS SDK to create an API Gateway API\. For more information using an AWS SDK, including how to set up the development environment, see [AWS SDKs](https://aws.amazon.com/tools/)\. 
 

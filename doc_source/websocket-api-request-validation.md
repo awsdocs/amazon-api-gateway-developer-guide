@@ -1,11 +1,11 @@
-# Requesting Validation<a name="websocket-api-request-validation"></a>
+# Requesting validation<a name="websocket-api-request-validation"></a>
 
 You can configure API Gateway to perform validation on a route request before proceeding with the integration request\. If the validation fails, API Gateway fails the request without calling your backend, sends a "Bad request body" gateway response to the client, and publishes the validation results in CloudWatch Logs\. Using validation this way reduces unnecessary calls to your API backend\.
 
-## Model Selection Expressions<a name="apigateway-websocket-api-model-selection-expressions"></a>
+## Model selection expressions<a name="apigateway-websocket-api-model-selection-expressions"></a>
 
 You can use a model selection expression to dynamically validate requests within the same route\. Model validation occurs if you provide a model selection expression for either proxy or non\-proxy integrations\. You might need to define the `$default` model as a fallback when no matching model is found\. If there is no matching model and `$default` isn't defined, the validation fails\. The selection expression looks like `Route.ModelSelectionExpression` and evaluates to the key for `Route.RequestModels`\.
 
 When you define a [route](websocket-api-develop-routes.md#apigateway-websocket-api-route-route-request) for a WebSocket API, you can optionally specify a *model selection expression*\. This expression is evaluated to select the model to be used for body validation when a request is received\. The expression evaluates to one of the entries in a route's [https://docs.aws.amazon.com/apigatewayv2/latest/api-reference/apis-apiid-routes.html#apis-apiid-routes-prop-route-requestmodels](https://docs.aws.amazon.com/apigatewayv2/latest/api-reference/apis-apiid-routes.html#apis-apiid-routes-prop-route-requestmodels)\.
 
-A model is expressed as a [JSON schema](https://tools.ietf.org/html/draft-zyp-json-schema-04) and describes the data structure of the request body\. The nature of this selection expression enables you to dynamically choose the model to validate against at runtime for a particular route\. For information about how to create a model, see [Working with Models and Mapping Templates](models-mappings.md)\. 
+A model is expressed as a [JSON schema](https://tools.ietf.org/html/draft-zyp-json-schema-04) and describes the data structure of the request body\. The nature of this selection expression enables you to dynamically choose the model to validate against at runtime for a particular route\. For information about how to create a model, see [Working with models and mapping templates](models-mappings.md)\. 

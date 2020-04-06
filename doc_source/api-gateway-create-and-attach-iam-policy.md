@@ -1,4 +1,4 @@
-# Create and Attach a Policy to an IAM User<a name="api-gateway-create-and-attach-iam-policy"></a>
+# Create and attach a policy to an IAM user<a name="api-gateway-create-and-attach-iam-policy"></a>
 
 To enable a user to call the API managing service or the API execution service, you must create an IAM policy for an IAM user, which controls access to the API Gateway entities, and then attach the policy to the IAM user\. The following steps describe how to create your IAM policy\.
 

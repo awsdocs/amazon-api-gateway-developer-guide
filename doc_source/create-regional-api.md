@@ -1,4 +1,4 @@
-# Set up a Regional API in API Gateway<a name="create-regional-api"></a>
+# Set up a regional API in API Gateway<a name="create-regional-api"></a>
 
 When API requests predominantly originate from an EC2 instance or services within the same region as the API is deployed, a regional API endpoint will typically lower the latency of connections and is recommended for such scenarios\.
 
@@ -10,12 +10,12 @@ In cases where API clients are geographically dispersed, it may still make sense
  In the following, we show how to create a regional API using the API Gateway console, AWS CLI, and the AWS SDK for Javascript for Node\.js\. 
 
 **Topics**
-+ [Create a Regional API Using the API Gateway Console](#create-regional-endpoint-api-using-console)
-+ [Create a Regional API Using the AWS CLI](#create-regional-endpoint-api-using-aws-cli)
-+ [Create a Regional API Using the AWS SDK for JavaScript](#create-regional-endpoint-api-using-nodejs-sdk)
-+ [Test a Regional API](#create-regional-endpoint-api-invoke-url)
++ [Create a regional API using the API Gateway console](#create-regional-endpoint-api-using-console)
++ [Create a regional API using the AWS CLI](#create-regional-endpoint-api-using-aws-cli)
++ [Create a regional API using the AWS SDK for JavaScript](#create-regional-endpoint-api-using-nodejs-sdk)
++ [Test a regional API](#create-regional-endpoint-api-invoke-url)
 
-## Create a Regional API Using the API Gateway Console<a name="create-regional-endpoint-api-using-console"></a>
+## Create a regional API using the API Gateway console<a name="create-regional-endpoint-api-using-console"></a>
 
 **To create a regional API using the API Gateway console**
 
@@ -31,7 +31,7 @@ In cases where API clients are geographically dispersed, it may still make sense
 
 From here on, you can proceed to set up API methods and their associated integrations as described in [creating an edge optimized API](create-api-using-console.md)\. 
 
-## Create a Regional API Using the AWS CLI<a name="create-regional-endpoint-api-using-aws-cli"></a>
+## Create a regional API using the AWS CLI<a name="create-regional-endpoint-api-using-aws-cli"></a>
 
 To create a regional API using the AWS CLI, call the `create-rest-api` command:
 
@@ -57,9 +57,9 @@ A successful response returns a payload similar to the following:
 }
 ```
 
- From here on, you can follow the same instructions given in [Set up an Edge\-Optimized API Using AWS CLI Commands](create-api-using-awscli.md) to set up methods and integrations for this API\. 
+ From here on, you can follow the same instructions given in [Set up an edge\-optimized API using AWS CLI commands](create-api-using-awscli.md) to set up methods and integrations for this API\. 
 
-## Create a Regional API Using the AWS SDK for JavaScript<a name="create-regional-endpoint-api-using-nodejs-sdk"></a>
+## Create a regional API using the AWS SDK for JavaScript<a name="create-regional-endpoint-api-using-nodejs-sdk"></a>
 
 To create a regional API, using the AWS SDK for JavaScript:
 
@@ -95,9 +95,9 @@ A successful response returns a payload similar to the following:
 }
 ```
 
- After completing the preceding steps, you can follow the instructions in [Set up an Edge\-Optimized API Using the AWS SDK for Node\.js](create-api-using-awssdk.md) to set up methods and integrations for this API\. 
+ After completing the preceding steps, you can follow the instructions in [Set up an edge\-optimized API using the AWS SDK for Node\.js](create-api-using-awssdk.md) to set up methods and integrations for this API\. 
 
-## Test a Regional API<a name="create-regional-endpoint-api-invoke-url"></a>
+## Test a regional API<a name="create-regional-endpoint-api-invoke-url"></a>
 
 Once deployed, the regional API's default URL host name is of the following format: 
 

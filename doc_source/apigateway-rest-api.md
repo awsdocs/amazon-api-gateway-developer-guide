@@ -6,8 +6,8 @@ API Gateway REST APIs use a request/response model where a client sends a reques
 
 **Topics**
 + [Developing a REST API in API Gateway](rest-api-develop.md)
-+ [Publishing REST APIs for Customers to Invoke](rest-api-publish.md)
-+ [Optimizing Performance of REST APIs](rest-api-optimize.md)
-+ [Distributing Your REST API to Clients](rest-api-distribute.md)
-+ [Protecting Your REST API](rest-api-protect.md)
++ [Publishing REST APIs for customers to invoke](rest-api-publish.md)
++ [Optimizing performance of REST APIs](rest-api-optimize.md)
++ [Distributing your REST API to clients](rest-api-distribute.md)
++ [Protecting your REST API](rest-api-protect.md)
 + [Monitoring REST APIs](rest-api-monitor.md)

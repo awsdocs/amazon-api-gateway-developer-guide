@@ -1,16 +1,16 @@
-# Sales Invoice Example \(API Gateway Models and Mapping Templates\)<a name="example-invoice"></a>
+# Sales invoice example \(API Gateway models and mapping templates\)<a name="example-invoice"></a>
 
-The following sections provide examples of models and mapping templates that could be used for a sample sales invoice API in API Gateway\. For more information about models and mapping templates in API Gateway, see [Working with Models and Mapping Templates](models-mappings.md)\.
+The following sections provide examples of models and mapping templates that could be used for a sample sales invoice API in API Gateway\. For more information about models and mapping templates in API Gateway, see [Working with models and mapping templates](models-mappings.md)\.
 
 **Topics**
-+ [Original Data \(Sales Invoice Example\)](#example-invoice-original-data)
-+ [Input Model \(Sales Invoice Example\)](#example-invoice-input-model)
-+ [Input Mapping Template \(Sales Invoice Example\)](#example-invoice-input-mapping)
-+ [Transformed Data \(Sales Invoice Example\)](#example-invoice-transformed-data)
-+ [Output Model \(Sales Invoice Example\)](#example-invoice-output-model)
-+ [Output Mapping Template \(Sales Invoice Example\)](#example-invoice-output-mapping)
++ [Original data \(sales invoice example\)](#example-invoice-original-data)
++ [Input model \(sales invoice example\)](#example-invoice-input-model)
++ [Input mapping template \(sales invoice example\)](#example-invoice-input-mapping)
++ [Transformed data \(sales invoice example\)](#example-invoice-transformed-data)
++ [Output model \(sales invoice example\)](#example-invoice-output-model)
++ [Output mapping template \(sales invoice example\)](#example-invoice-output-mapping)
 
-## Original Data \(Sales Invoice Example\)<a name="example-invoice-original-data"></a>
+## Original data \(sales invoice example\)<a name="example-invoice-original-data"></a>
 
 The following is the original JSON data for the sales invoice example:
 
@@ -54,7 +54,7 @@ The following is the original JSON data for the sales invoice example:
 }
 ```
 
-## Input Model \(Sales Invoice Example\)<a name="example-invoice-input-model"></a>
+## Input model \(sales invoice example\)<a name="example-invoice-input-model"></a>
 
 The following is the input model that corresponds to the original JSON data for the sales invoice example:
 
@@ -125,7 +125,7 @@ The following is the input model that corresponds to the original JSON data for 
 }
 ```
 
-## Input Mapping Template \(Sales Invoice Example\)<a name="example-invoice-input-mapping"></a>
+## Input mapping template \(sales invoice example\)<a name="example-invoice-input-mapping"></a>
 
 The following is the input mapping template that corresponds to the original JSON data for the sales invoice example:
 
@@ -173,7 +173,7 @@ The following is the input mapping template that corresponds to the original JSO
 }
 ```
 
-## Transformed Data \(Sales Invoice Example\)<a name="example-invoice-transformed-data"></a>
+## Transformed data \(sales invoice example\)<a name="example-invoice-transformed-data"></a>
 
 The following is one example of how the original sales invoice example JSON data could be transformed for output:
 
@@ -198,7 +198,7 @@ The following is one example of how the original sales invoice example JSON data
 }
 ```
 
-## Output Model \(Sales Invoice Example\)<a name="example-invoice-output-model"></a>
+## Output model \(sales invoice example\)<a name="example-invoice-output-model"></a>
 
 The following is the output model that corresponds to the transformed JSON data format:
 
@@ -232,7 +232,7 @@ The following is the output model that corresponds to the transformed JSON data 
 }
 ```
 
-## Output Mapping Template \(Sales Invoice Example\)<a name="example-invoice-output-mapping"></a>
+## Output mapping template \(sales invoice example\)<a name="example-invoice-output-mapping"></a>
 
 The following is the output mapping template that corresponds to the transformed JSON data format\. The template variables here are based on the original, not transformed, JSON data format:
 

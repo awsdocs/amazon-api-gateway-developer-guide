@@ -1,8 +1,8 @@
-# Amazon API Gateway Dimensions and Metrics<a name="api-gateway-metrics-and-dimensions"></a>
+# Amazon API Gateway dimensions and metrics<a name="api-gateway-metrics-and-dimensions"></a>
 
-The metrics and dimensions that API Gateway sends to Amazon CloudWatch are listed below\. For more information, see [Monitoring REST API Execution with Amazon CloudWatch Metrics](monitoring-cloudwatch.md)\. 
+The metrics and dimensions that API Gateway sends to Amazon CloudWatch are listed below\. For more information, see [Monitoring REST API execution with Amazon CloudWatch metrics](monitoring-cloudwatch.md)\. 
 
-## API Gateway Metrics<a name="api-gateway-metrics"></a>
+## API Gateway metrics<a name="api-gateway-metrics"></a>
 
 Amazon API Gateway sends metric data to CloudWatch every minute\.
 
@@ -19,7 +19,7 @@ The `AWS/ApiGateway` namespace includes the following metrics\.
 |  IntegrationLatency  |  The time between when API Gateway relays a request to the backend and when it receives a response from the backend\. Unit: Millisecond  | 
 |  Latency  |  The time between when API Gateway receives a request from a client and when it returns a response to the client\. The latency includes the integration latency and other API Gateway overhead\. Unit: Millisecond  | 
 
-## Dimensions for Metrics<a name="api-gateway-metricdimensions"></a>
+## Dimensions for metrics<a name="api-gateway-metricdimensions"></a>
 
 You can use the dimensions in the following table to filter API Gateway metrics\.
 

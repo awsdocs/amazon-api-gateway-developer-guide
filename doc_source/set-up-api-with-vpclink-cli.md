@@ -1,11 +1,11 @@
-# Set up an API Gateway API with Private Integrations Using the AWS CLI<a name="set-up-api-with-vpclink-cli"></a>
+# Set up an API Gateway API with private integrations using the AWS CLI<a name="set-up-api-with-vpclink-cli"></a>
 
-Before creating an API with the private integration, you must have your VPC resource set up and a Network Load Balancer created and configured with your VPC source as the target\. If the requirements are not met, follow [Set up a Network Load Balancer for API Gateway Private Integrations](set-up-nlb-for-vpclink-using-console.md) to install the VPC resource, create a Network Load Balancer, and set the VPC resource as a target of the Network Load Balancer\.
+Before creating an API with the private integration, you must have your VPC resource set up and a Network Load Balancer created and configured with your VPC source as the target\. If the requirements are not met, follow [Set up a Network Load Balancer for API Gateway private integrations](set-up-nlb-for-vpclink-using-console.md) to install the VPC resource, create a Network Load Balancer, and set the VPC resource as a target of the Network Load Balancer\.
 
 **Note**  
 The Network Load Balancer and API must be owned by the same AWS account\.
 
-For you to be able to create and manage a `VpcLink`, you must also have the appropriate permissions configured\. For more information, see [Grant Permissions to Create a VPC Link](grant-permissions-to-create-vpclink.md)\.
+For you to be able to create and manage a `VpcLink`, you must also have the appropriate permissions configured\. For more information, see [Grant permissions to create a VPC link](grant-permissions-to-create-vpclink.md)\.
 
 **Note**  
  You only need the permissions to create a `VpcLink` in your API\. You do not need the permissions to use the `VpcLink`\.

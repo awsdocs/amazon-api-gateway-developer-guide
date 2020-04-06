@@ -1,15 +1,15 @@
-# IAM Policy Examples for Managing API Gateway APIs<a name="api-gateway-iam-policy-examples"></a>
+# IAM policy examples for managing API Gateway APIs<a name="api-gateway-iam-policy-examples"></a>
 
-The following example policy documents shows various use cases to set access permissions for managing API resources in API Gateway\. For permissions model and other background information, see [ Control Who Can Create and Manage an API Gateway API with IAM Policies](api-gateway-control-access-using-iam-policies-to-create-and-manage-api.md#api-gateway-control-access-using-iam-policies)\. 
+The following example policy documents shows various use cases to set access permissions for managing API resources in API Gateway\. For permissions model and other background information, see [ Control who can create and manage an API Gateway API with IAM policies](api-gateway-control-access-using-iam-policies-to-create-and-manage-api.md#api-gateway-control-access-using-iam-policies)\. 
 
 **Topics**
-+ [Simple Read Permissions](#api-gateway-policy-example-apigateway-general)
-+ [Read\-Only Permissions on any APIs](#api-gateway-policy-example-apigateway-readonly)
-+ [Full Access Permissions for any API Gateway Resources](#api-gateway-policy-example-apigateway-full-access)
-+ [Full\-Access Permissions for Managing API Stages](#api-gateway-policy-example-apigateway-stage-full-access)
-+ [Block Specified Users from Deleting any API Resources](#api-gateway-policy-example-apigateway-blacklist-user-for-delete)
++ [Simple read permissions](#api-gateway-policy-example-apigateway-general)
++ [Read\-only permissions on any APIs](#api-gateway-policy-example-apigateway-readonly)
++ [Full access permissions for any API Gateway resources](#api-gateway-policy-example-apigateway-full-access)
++ [Full\-access permissions for managing API stages](#api-gateway-policy-example-apigateway-stage-full-access)
++ [Block specified users from deleting any API resources](#api-gateway-policy-example-apigateway-blacklist-user-for-delete)
 
-## Simple Read Permissions<a name="api-gateway-policy-example-apigateway-general"></a>
+## Simple read permissions<a name="api-gateway-policy-example-apigateway-general"></a>
 
 The following policy statement gives the user permission to get information about all of the resources, methods, models, and stages in the API with the identifier of `a123456789` in the AWS region of us\-east\-1:
 
@@ -58,7 +58,7 @@ The following example policy statement gives the IAM user permission to list inf
 }
 ```
 
-## Read\-Only Permissions on any APIs<a name="api-gateway-policy-example-apigateway-readonly"></a>
+## Read\-only permissions on any APIs<a name="api-gateway-policy-example-apigateway-readonly"></a>
 
 The following policy document will permit attached entities \(users, groups or roles\) to retrieve any of the APIs of the caller's AWS account\. This includes any of the child resources of an API, such as method, integration, etc\.
 
@@ -115,7 +115,7 @@ To restrict the above read\-only access to specified APIs, replace the `Resource
 "Resource":  ["arn:aws:apigateway:us-east-1::/restapis/restapi_id1/*", "arn:aws:apigateway:us-east-1::/restapis/restapi_id2/*"]
 ```
 
-## Full Access Permissions for any API Gateway Resources<a name="api-gateway-policy-example-apigateway-full-access"></a>
+## Full access permissions for any API Gateway resources<a name="api-gateway-policy-example-apigateway-full-access"></a>
 
 The following example policy document grants the full access to any of the API Gateway resource of the AWS account\. 
 
@@ -139,7 +139,7 @@ The following example policy document grants the full access to any of the API G
 
 In general, you should refrain from using such a broad and open access policy\. It may be necessary to do so for your API development core team so that they can create, deploy, update, and delete any API Gateway resources\.
 
-## Full\-Access Permissions for Managing API Stages<a name="api-gateway-policy-example-apigateway-stage-full-access"></a>
+## Full\-access permissions for managing API stages<a name="api-gateway-policy-example-apigateway-stage-full-access"></a>
 
 The following example policy documents grants full\-access permissions on Stage related resources of any API in the caller's AWS account\.
 
@@ -167,7 +167,7 @@ Using the above policy, caller must find out the REST API's identifier beforehan
 
 To grant permissions for a specific API's stages, simply replace the `restapis/*` portion of the `Resource` specifications by `restapis/restapi_id`, where *restapi\_id* is the identifier of the API of interest\.
 
-## Block Specified Users from Deleting any API Resources<a name="api-gateway-policy-example-apigateway-blacklist-user-for-delete"></a>
+## Block specified users from deleting any API resources<a name="api-gateway-policy-example-apigateway-blacklist-user-for-delete"></a>
 
 The following example IAM policy document blocks a specified user from deleting any API resources in API Gateway\.
 

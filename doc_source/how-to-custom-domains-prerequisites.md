@@ -1,9 +1,9 @@
-# Getting Certificates Ready in AWS Certificate Manager<a name="how-to-custom-domains-prerequisites"></a>
+# Getting certificates ready in AWS Certificate Manager<a name="how-to-custom-domains-prerequisites"></a>
 
 Before setting up a custom domain name for an API, you must have an SSL/TLS certificate ready in AWS Certificate Manager\. The following steps describe how to get this done\. For more information, see the [AWS Certificate Manager User Guide](https://docs.aws.amazon.com/acm/latest/userguide/)\.
 
 **Note**  
-To use an ACM certificate with an API Gateway edge\-optimized custom domain name, you must request or import the certificate in the US East \(N\. Virginia\) \(`us-east-1`\) Region\. For an API Gateway Regional custom domain name, you must request or import the certificate in the same Region as your API\.
+To use an ACM certificate with an API Gateway edge\-optimized custom domain name, you must request or import the certificate in the US East \(N\. Virginia\) \(`us-east-1`\) Region\. For an API Gateway Regional custom domain name, you must request or import the certificate in the same Region as your API\. The certificate must be signed by a publicly trusted Certificate Authority and cover the custom domain name\.
 
 First, register your internet domain, for example, `example.com`\. You can use either [Amazon Route 53](https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/) or a third\-party accredited domain registrar\. For a list of such registrars, see [Accredited Registrar Directory](http://www.internic.net/regist.html) at the ICANN website\. 
 

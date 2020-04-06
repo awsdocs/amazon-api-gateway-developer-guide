@@ -1,4 +1,4 @@
-# Enabling API Caching to Enhance Responsiveness<a name="api-gateway-caching"></a>
+# Enabling API caching to enhance responsiveness<a name="api-gateway-caching"></a>
 
 You can enable API caching in Amazon API Gateway to cache your endpoint's responses\. With caching, you can reduce the number of calls made to your endpoint and also improve the latency of requests to your API\. 
 
@@ -14,7 +14,7 @@ When you enable caching for a stage, only `GET` methods have caching enabled by 
 **Important**  
 Caching is charged by the hour and is not eligible for the AWS Free Tier\. 
 
-## Enable Amazon API Gateway Caching<a name="enable-api-gateway-caching"></a>
+## Enable Amazon API Gateway caching<a name="enable-api-gateway-caching"></a>
 
 In API Gateway, you can enable caching for a specified stage\.
 
@@ -54,7 +54,7 @@ When you enable caching within a stage's **Cache Settings**, only `GET` methods 
 **Note**  
  You should not use the `X-Cache` header from the CloudFront response to determine if your API is being served from your API Gateway cache instance\. 
 
-## Override API Gateway Stage\-Level Caching for Method Caching<a name="override-api-gateway-stage-cache-for-method-cache"></a>
+## Override API Gateway stage\-level caching for method caching<a name="override-api-gateway-stage-cache-for-method-cache"></a>
 
 You can override stage\-level cache settings by enabling or disabling caching for a specific method\. By increasing or decreasing its TTL period; or by turning encryption on or off for cached responses\.
 
@@ -76,7 +76,7 @@ If you anticipate that a method that you are caching will receive sensitive data
 
 1. In the **Cache Settings** area, you can set or clear **Enable Method Cache** or customize any other desired options\. \(This section is shown only if [stage\-level caching](#enable-api-gateway-caching) is enabled\.\)
 
-## Use Method or Integration Parameters as Cache Keys to Index Cached Responses<a name="enable-api-gateway-cache-keys"></a>
+## Use method or integration parameters as cache keys to index cached responses<a name="enable-api-gateway-cache-keys"></a>
 
  When a cached method or integration has parameters, which can take the form of custom headers, URL paths, or query strings, you can use some or all of the parameters to form cache keys\. API Gateway can cache the method's responses, depending on the parameter values used\. 
 
@@ -111,9 +111,9 @@ host: example.com
 
  To include a method or integration request parameter as part of a cache key in the API Gateway console, select **Caching** after you add the parameter\. 
 
-![\[Include Method or Integration Parameters as Cache Keys to Index Cached Response\]](http://docs.aws.amazon.com/apigateway/latest/developerguide/images/api-caching-including-parameter-as-cache-key.png)
+![\[Include method or integration parameters as cache keys to index cached response\]](http://docs.aws.amazon.com/apigateway/latest/developerguide/images/api-caching-including-parameter-as-cache-key.png)
 
-## Flush the API Stage Cache in API Gateway<a name="flush-api-caching"></a>
+## Flush the API stage cache in API Gateway<a name="flush-api-caching"></a>
 
  When API caching is enabled, you can flush your API stage's entire cache to ensure your API's clients get the most recent responses from your integration endpoints\. 
 
@@ -122,7 +122,7 @@ host: example.com
 **Note**  
 After the cache is flushed, responses are serviced from the integration endpoint until the cache is built up again\. During this period, the number of requests sent to the integration endpoint may increase\. This may temporarily increase the overall latency of your API\. 
 
-## Invalidate an API Gateway Cache Entry<a name="invalidate-method-caching"></a>
+## Invalidate an API Gateway cache entry<a name="invalidate-method-caching"></a>
 
 A client of your API can invalidate an existing cache entry and reload it from the integration endpoint for individual requests\. The client must send a request that contains the `Cache-Control: max-age=0` header\. The client receives the response directly from the integration endpoint instead of the cache, provided that the client is authorized to do so\. This replaces the existing cache entry with the new response, which is fetched from the integration endpoint\. 
 
@@ -145,7 +145,7 @@ A client of your API can invalidate an existing cache entry and reload it from t
 }
 ```
 
- This policy allows the API Gateway execution service to invalidate the cache for requests on the specified resource \(or resources\)\. To specify a group of targeted resources, use a wildcard \(\*\) character for `account-id`, `api-id`, and other entries in the ARN value of `Resource`\. For more information on how to set permissions for the API Gateway execution service, see [Control Access to an API with IAM Permissions](permissions.md)\. 
+ This policy allows the API Gateway execution service to invalidate the cache for requests on the specified resource \(or resources\)\. To specify a group of targeted resources, use a wildcard \(\*\) character for `account-id`, `api-id`, and other entries in the ARN value of `Resource`\. For more information on how to set permissions for the API Gateway execution service, see [Control access to an API with IAM permissions](permissions.md)\. 
 
  If you don't impose an `InvalidateCache` policy \(or choose the **Require authorization** check box in the console\), any client can invalidate the API cache\. If most or all of the clients invalidate the API cache, this could significantly increase the latency of your API\. 
 

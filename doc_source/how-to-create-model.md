@@ -1,15 +1,15 @@
-# Create a Model in API Gateway<a name="how-to-create-model"></a>
+# Create a model in API Gateway<a name="how-to-create-model"></a>
 
 Use the API Gateway console to create a model for an API\.
 
 **Topics**
 + [Prerequisites](#how-to-create-model-prerequisites)
-+ [Create a Model With the API Gateway Console](#how-to-create-model-console)
++ [Create a model with the API Gateway console](#how-to-create-model-console)
 
 ## Prerequisites<a name="how-to-create-model-prerequisites"></a>
 + You must have an API available in API Gateway\. Follow the instructions in [Creating a REST API in Amazon API Gateway](how-to-create-api.md)\.
 
-## Create a Model With the API Gateway Console<a name="how-to-create-model-console"></a>
+## Create a model with the API Gateway console<a name="how-to-create-model-console"></a>
 
 1. Sign in to the API Gateway console at [https://console\.aws\.amazon\.com/apigateway](https://console.aws.amazon.com/apigateway)\.
 
@@ -23,6 +23,6 @@ Use the API Gateway console to create a model for an API\.
 
 1. \(Optional\) For **Model description**, type a description for the model\.
 
-1. For **Model schema**, type the model's schema\. For more information about model schemas, see [Working with Models and Mapping Templates](models-mappings.md)\.
+1. For **Model schema**, type the model's schema\. For more information about model schemas, see [Working with models and mapping templates](models-mappings.md)\.
 
 1. Choose **Create model**\.

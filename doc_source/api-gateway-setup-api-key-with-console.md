@@ -1,4 +1,4 @@
-# Set Up API Keys Using the API Gateway Console<a name="api-gateway-setup-api-key-with-console"></a>
+# Set up API keys using the API Gateway console<a name="api-gateway-setup-api-key-with-console"></a>
 
 To set up API keys, do the following:
 + Configure API methods to require an API key\.
@@ -9,11 +9,11 @@ Before setting up API keys, you must have created an API and deployed it to a st
 For instructions on how to create and deploy an API by using the API Gateway console, see [Creating a REST API in Amazon API Gateway](how-to-create-api.md) and [Deploying a REST API in Amazon API Gateway](how-to-deploy-api.md), respectively\.
 
 **Topics**
-+ [Require API Key on a Method](#api-gateway-usage-plan-configure-apikey-on-method)
-+ [Create an API Key](#api-gateway-usage-plan-create-apikey)
-+ [Import API Keys](#api-gateway-usage-pan-import-apikey)
++ [Require API key on a method](#api-gateway-usage-plan-configure-apikey-on-method)
++ [Create an API key](#api-gateway-usage-plan-create-apikey)
++ [Import API keys](#api-gateway-usage-pan-import-apikey)
 
-## Require API Key on a Method<a name="api-gateway-usage-plan-configure-apikey-on-method"></a>
+## Require API key on a method<a name="api-gateway-usage-plan-configure-apikey-on-method"></a>
 
 The following procedure describes how to configure an API method to require an API key\.
 
@@ -36,7 +36,7 @@ The following procedure describes how to configure an API method to require an A
 
 If the **API Key Required** option is set to `false` and you don't execute the previous steps, any API key that's associated with an API stage isn't used for the method\.
 
-## Create an API Key<a name="api-gateway-usage-plan-create-apikey"></a>
+## Create an API key<a name="api-gateway-usage-plan-create-apikey"></a>
 
 If you've already created or imported API keys for use with usage plans, you can skip this and the next procedure\.
 
@@ -60,7 +60,7 @@ If you've already created or imported API keys for use with usage plans, you can
 
 1. Repeat the preceding steps to create more API keys, if needed\.
 
-## Import API Keys<a name="api-gateway-usage-pan-import-apikey"></a>
+## Import API keys<a name="api-gateway-usage-pan-import-apikey"></a>
 
 The following procedure describes how to import API keys to use with usage plans\.
 
@@ -70,7 +70,7 @@ The following procedure describes how to import API keys to use with usage plans
 
 1. From the **Actions** drop\-down menu, choose **Import API keys**\. 
 
-1. To load a comma\-separated key file, choose **Select CSV File**\. You can also enter the keys manually\. For information about the file format, see [API Gateway API Key File Format](api-key-file-format.md)\.  
+1. To load a comma\-separated key file, choose **Select CSV File**\. You can also enter the keys manually\. For information about the file format, see [API Gateway API key file format](api-key-file-format.md)\.  
 ![\[API usage plan entities\]](http://docs.aws.amazon.com/apigateway/latest/developerguide/images/api-gateway-usage-plan-keys-import-setup.png)
 
 1. Choose **Fail on warnings** to stop the import when there's an error, or choose **Ignore warnings** to continue to import valid key entries when there's an error\.

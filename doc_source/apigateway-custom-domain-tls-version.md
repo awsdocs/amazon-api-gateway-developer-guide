@@ -1,4 +1,4 @@
-# Choosing a Minimum TLS Version for a Custom Domain in API Gateway<a name="apigateway-custom-domain-tls-version"></a>
+# Choosing a minimum TLS version for a custom domain in API Gateway<a name="apigateway-custom-domain-tls-version"></a>
 
 For greater security, you can choose a minimum Transport Layer Security \(TLS\) protocol version to be enforced for your Amazon API Gateway custom domain by setting a security policy in the API Gateway console, AWS CLI, or AWS SDKs\.
 
@@ -9,38 +9,38 @@ In custom domain settings, a security policy determines two settings:
 + The cipher that API Gateway uses to encrypt the content that it returns to API clients
 
 **Topics**
-+ [How to Specify a Minimum TLS Protocol Version for Custom Domains in API Gateway](#apigateway-custom-domain-tls-version-how-to)
-+ [Supported Security Policies, TLS Protocol Versions, and Ciphers for Edge\-Optimized API Endpoints in API Gateway](#apigateway-custom-domain-tls-version-edge-optimized)
-+ [Supported SSL/TLS Protocols and Ciphers for Regional, Private, and WebSocket API Endpoints in API Gateway](#apigateway-custom-domain-tls-version-regional-and-websocket)
-+ [OpenSSL and RFC Cipher Names](#apigateway-secure-connections-openssl-rfc-cipher-names)
++ [How to specify a minimum TLS protocol version for custom domains in API Gateway](#apigateway-custom-domain-tls-version-how-to)
++ [Supported security policies, TLS protocol versions, and ciphers for edge\-optimized API endpoints in API Gateway](#apigateway-custom-domain-tls-version-edge-optimized)
++ [Supported SSL/TLS protocols and ciphers for regional, private, and WebSocket API endpoints in API Gateway](#apigateway-custom-domain-tls-version-regional-and-websocket)
++ [OpenSSL and RFC cipher names](#apigateway-secure-connections-openssl-rfc-cipher-names)
 
-## How to Specify a Minimum TLS Protocol Version for Custom Domains in API Gateway<a name="apigateway-custom-domain-tls-version-how-to"></a>
+## How to specify a minimum TLS protocol version for custom domains in API Gateway<a name="apigateway-custom-domain-tls-version-how-to"></a>
 
 When you create a custom domain, you specify the security policy for it\. For more information about security policies, see the tables in the following sections\.
 
 The following sections describe how to create a custom domain name, including specifying the minimum TLS version in the API Gateway console and CLI:
-+ [Creating an Edge\-Optimized Custom Domain Name](how-to-edge-optimized-custom-domain-name.md)
-+ [Setting Up a Regional Custom Domain Name in API Gateway](apigateway-regional-api-custom-domain-create.md)
++ [Creating an edge\-optimized custom domain name](how-to-edge-optimized-custom-domain-name.md)
++ [Setting up a regional custom domain name in API Gateway](apigateway-regional-api-custom-domain-create.md)
 
 You can change the security policy by updating the domain name settings\. To change the minimum TLS version, use one of the following commands, specifying the new TLS version \(`TLS_1_0` or `TLS_1_2`\) in the `securityPolicy` parameter\. Allow up to 60 minutes for the update to be completed\.
 + [https://docs.aws.amazon.com/apigateway/api-reference/link-relation/domainname-update/](https://docs.aws.amazon.com/apigateway/api-reference/link-relation/domainname-update/)
 + [https://docs.aws.amazon.com/cli/latest/reference/apigateway/update-domain-name.html](https://docs.aws.amazon.com/cli/latest/reference/apigateway/update-domain-name.html)
 + [https://docs.aws.amazon.com/apigatewayv2/latest/api-reference/domainnames-domainname.html#domainnames-domainnamepatch](https://docs.aws.amazon.com/apigatewayv2/latest/api-reference/domainnames-domainname.html#domainnames-domainnamepatch)
 
-## Supported Security Policies, TLS Protocol Versions, and Ciphers for Edge\-Optimized API Endpoints in API Gateway<a name="apigateway-custom-domain-tls-version-edge-optimized"></a>
+## Supported security policies, TLS protocol versions, and ciphers for edge\-optimized API endpoints in API Gateway<a name="apigateway-custom-domain-tls-version-edge-optimized"></a>
 
 The following table lists the protocols and ciphers that API Gateway can use for each security policy for edge\-optimized APIs\.
 
 
 ****  
 
-|  | Security Policy |  | TLS\-1\-0 | TLS\-1\-2 | SSL/TLS Protocols Supported | 
+|  | Security policy |  | TLS\-1\-0 | TLS\-1\-2 | SSL/TLS protocols supported | 
 | --- | --- | --- | --- | --- | --- | 
 | TLSv1\.2 | ♦ | ♦ | 
 | TLSv1\.1 | ♦ |  | 
 | TLSv1 | ♦ |  | 
 | SSLv3 |  |  | 
-| Ciphers Supported | 
+| Ciphers supported | 
 | ECDHE\-RSA\-AES128\-GCM\-SHA256 | ♦ | ♦ | 
 | ECDHE\-RSA\-AES128\-SHA256 | ♦ | ♦ | 
 | ECDHE\-RSA\-AES128\-SHA | ♦ |  | 
@@ -55,7 +55,7 @@ The following table lists the protocols and ciphers that API Gateway can use for
 | DES\-CBC3\-SHA  | ♦ |  | 
 | RC4\-MD5 |  |  | 
 
-## Supported SSL/TLS Protocols and Ciphers for Regional, Private, and WebSocket API Endpoints in API Gateway<a name="apigateway-custom-domain-tls-version-regional-and-websocket"></a>
+## Supported SSL/TLS protocols and ciphers for regional, private, and WebSocket API endpoints in API Gateway<a name="apigateway-custom-domain-tls-version-regional-and-websocket"></a>
 
 The following table describes the security policies that can be specified for Regional, private, and WebSocket API endpoints\.
 
@@ -63,7 +63,7 @@ The following table describes the security policies that can be specified for Re
 For private and WebSocket APIs, only `TLS-1-2` can be specified\.
 
 
-| Security Policy | TLS\-1\-0 | TLS\-1\-2 | 
+| Security policy | TLS\-1\-0 | TLS\-1\-2 | 
 | --- | --- | --- | 
 | TLS Protocols | 
 | Protocol\-TLSv1 | ♦ |  | 
@@ -90,14 +90,14 @@ For private and WebSocket APIs, only `TLS-1-2` can be specified\.
 | AES256\-SHA | ♦ |  | 
 | DES\-CBC3\-SHA | ♦ |  | 
 
-## OpenSSL and RFC Cipher Names<a name="apigateway-secure-connections-openssl-rfc-cipher-names"></a>
+## OpenSSL and RFC cipher names<a name="apigateway-secure-connections-openssl-rfc-cipher-names"></a>
 
 OpenSSL and IETF RFC 5246, [The Transport Layer Security \(TLS\) Protocol Version 1\.2](https://tools.ietf.org/html/rfc5246), use different names for the same ciphers\. The following table maps the OpenSSL name to the RFC name for each cipher\. 
 
 
 ****  
 
-| OpenSSL Cipher Name | RFC Cipher Name | 
+| OpenSSL cipher name | RFC cipher name | 
 | --- | --- | 
 | ECDHE\-RSA\-AES128\-GCM\-SHA256 | TLS\_ECDHE\_RSA\_WITH\_AES\_128\_GCM\_SHA256 | 
 | ECDHE\-RSA\-AES128\-SHA256 | TLS\_ECDHE\_RSA\_WITH\_AES\_128\_CBC\_SHA256  | 

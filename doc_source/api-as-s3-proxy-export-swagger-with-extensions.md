@@ -1,4 +1,4 @@
-# OpenAPI Definitions of the Sample API as an Amazon S3 Proxy<a name="api-as-s3-proxy-export-swagger-with-extensions"></a>
+# OpenAPI definitions of the sample API as an Amazon S3 proxy<a name="api-as-s3-proxy-export-swagger-with-extensions"></a>
 
 The following OpenAPI definitions describe the sample API, referenced in this tutorial, as an Amazon S3 proxy\. 
 

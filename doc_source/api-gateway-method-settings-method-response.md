@@ -1,4 +1,4 @@
-# Set up Method Responses in API Gateway<a name="api-gateway-method-settings-method-response"></a>
+# Set up method responses in API Gateway<a name="api-gateway-method-settings-method-response"></a>
 
 An API method response encapsulates the output of an API method request that the client will receive\. The output data includes an HTTP status code, some headers, and possibly a body\. 
 
@@ -12,7 +12,7 @@ When setting status codes for an API method, you should choose one as the defaul
 
 To set up a method response, you must have created the method request\. 
 
-## Set up Method Response Status Code<a name="setup-method-response-status-code"></a>
+## Set up method response status code<a name="setup-method-response-status-code"></a>
 
 The status code of a method response defines a type of response\. For example, responses of 200, 400, and 500 indicate successful, client\-side error and server\-side error responses, respectively\. 
 
@@ -27,7 +27,7 @@ aws apigateway put-method-response \
        --status-code 200
 ```
 
-## Set up Method Response Parameters<a name="setup-method-response-parameters"></a>
+## Set up method response parameters<a name="setup-method-response-parameters"></a>
 
 Method response parameters define which headers the client receives in response to the associated method request\. Response parameters also specify a target to which API Gateway maps an integration response parameter, according to mappings prescribed in the API method's integration response\. 
 
@@ -43,7 +43,7 @@ aws apigateway put-method-response \
         --response-parameters method.request.header.my-header=false,method.request.path.petId=true,method.request.querystring.query=false
 ```
 
-## Set up Method Response Models<a name="setup-method-response-models"></a>
+## Set up method response models<a name="setup-method-response-models"></a>
 
  A method response model defines a format of the method response body\. Before setting up the response model, you must first create the model in API Gateway\. To do so, you can call the `[create\-model](https://docs.aws.amazon.com/cli/latest/reference/apigateway/create-model.html)` command\. The following example shows how to create a `PetStorePet` model to describe the body of the response to the `GET /pets/{petId}` method request\.
 

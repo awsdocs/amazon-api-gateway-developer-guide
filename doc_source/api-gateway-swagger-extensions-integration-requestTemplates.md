@@ -1,15 +1,15 @@
-# x\-amazon\-apigateway\-integration\.requestTemplates Object<a name="api-gateway-swagger-extensions-integration-requestTemplates"></a>
+# x\-amazon\-apigateway\-integration\.requestTemplates object<a name="api-gateway-swagger-extensions-integration-requestTemplates"></a>
 
  Specifies mapping templates for a request payload of the specified MIME types\. 
 
 
 **Properties**  
 
-| Property Name | Type | Description | 
+| Property name | Type | Description | 
 | --- | --- | --- | 
-| MIME type | string |   An example of the MIME type is `application/json`\. For information about creating a mapping template, see [Mapping Templates](rest-api-data-transformations.md#models-mappings-mappings)\.   | 
+| MIME type | string |   An example of the MIME type is `application/json`\. For information about creating a mapping template, see [Mapping templates](rest-api-data-transformations.md#models-mappings-mappings)\.   | 
 
-## x\-amazon\-apigateway\-integration\.requestTemplates Example<a name="api-gateway-swagger-extensions-request-template-example"></a>
+## x\-amazon\-apigateway\-integration\.requestTemplates example<a name="api-gateway-swagger-extensions-request-template-example"></a>
 
  The following example sets mapping templates for a request payload of the `application/json` and `application/xml` MIME types\. 
 

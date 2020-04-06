@@ -1,4 +1,4 @@
-# API Gateway Pricing<a name="api-gateway-pricing"></a>
+# API Gateway pricing<a name="api-gateway-pricing"></a>
 
  For general API Gateway region\-specific pricing information, see [Amazon API Gateway Pricing](https://aws.amazon.com/api-gateway/pricing/)\. 
 

@@ -1,4 +1,4 @@
-# API References<a name="api-ref"></a>
+# API references<a name="api-ref"></a>
 
 Amazon API Gateway provides APIs for creating and deploying your own HTTP and WebSocket APIs\. In addition, API Gateway APIs are available in standard AWS SDKs\.
 

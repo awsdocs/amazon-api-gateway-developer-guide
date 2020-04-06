@@ -1,4 +1,4 @@
-# Access Policy Language Overview for Amazon API Gateway<a name="apigateway-control-access-policy-language-overview"></a>
+# Access policy language overview for Amazon API Gateway<a name="apigateway-control-access-policy-language-overview"></a>
 
 This page describes the basic elements used in Amazon API Gateway resource policies\.
 
@@ -6,17 +6,17 @@ Resource policies are specified using the same syntax as IAM policies\. For comp
 
 For information about how an AWS service decides whether a given request should be allowed or denied, see [Determining Whether a Request is Allowed or Denied](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_policies_evaluation-logic.html#policy-eval-denyallow)\.
 
-## Common Elements in an Access Policy<a name="apigateway-common-elements-in-an-access-policy"></a>
+## Common elements in an access policy<a name="apigateway-common-elements-in-an-access-policy"></a>
 
 In its most basic sense, a resource policy contains the following elements:
 + **Resources** – APIs are the Amazon API Gateway resources for which you can allow or deny permissions\. In a policy, you use the Amazon Resource Name \(ARN\) to identify the resource\.
 
-  For the format of the `Resource` element, see [Resource Format of Permissions for Executing API in API Gateway](api-gateway-control-access-using-iam-policies-to-invoke-api.md#api-gateway-iam-policy-resource-format-for-executing-api)\.
+  For the format of the `Resource` element, see [Resource format of permissions for executing API in API Gateway](api-gateway-control-access-using-iam-policies-to-invoke-api.md#api-gateway-iam-policy-resource-format-for-executing-api)\.
 + **Actions** – For each resource, Amazon API Gateway supports a set of operations\. You identify resource operations that you will allow \(or deny\) by using action keywords\.
 
   For example, the `apigateway:invoke` permission will allow the user permission to invoke an API upon a client request\.
 
-  For the format of the `Action` element, see [Action Format of Permissions for Executing API in API Gateway](api-gateway-control-access-using-iam-policies-to-invoke-api.md#api-gateway-iam-policy-action-format-for-executing-api)\.
+  For the format of the `Action` element, see [Action format of permissions for executing API in API Gateway](api-gateway-control-access-using-iam-policies-to-invoke-api.md#api-gateway-iam-policy-action-format-for-executing-api)\.
 + **Effect** – What the effect is when the user requests the specific action—this can be either `Allow` or `Deny`\. You can also explicitly deny access to a resource, which you might do in order to make sure that a user cannot access it, even if a different policy grants access\. 
 **Note**  
 "Implicit deny" is the same thing as "deny by default"\.  

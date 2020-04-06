@@ -1,4 +1,4 @@
-# Basic Tasks of an API Integration Request<a name="integration-request-basic-setup"></a>
+# Basic tasks of an API integration request<a name="integration-request-basic-setup"></a>
 
  An integration request is an HTTP request that API Gateway submits to the backend, passing along the client\-submitted request data, and transforming the data, if necessary\. The HTTP method \(or verb\) and URI of the integration request are dictated by the backend \(that is, the integration endpoint\)\. They can be the same as or different from the method request's HTTP method and URI, respectively\. 
 
@@ -25,7 +25,7 @@ Content-Length: ...
 
  As an API developer, you can use whatever HTTP verb and URI for a method request suit your requirements\. But you must follow the requirements of the integration endpoint\. When the method request data differs from the integration request data, you can reconcile the difference by providing mappings from the method request data to the integration request data\. 
 
-In the preceding examples, the mapping translates the path variable \(`{var}`\) and the query parameter \(`query`\) values of the `GET` method request to the values of the integration request's payload properties of `path` and `type`\. Other mappable request data includes request headers and body\. These are described in [Set up Request and Response Data Mappings Using the API Gateway Console](how-to-method-settings-execution-console.md)\. 
+In the preceding examples, the mapping translates the path variable \(`{var}`\) and the query parameter \(`query`\) values of the `GET` method request to the values of the integration request's payload properties of `path` and `type`\. Other mappable request data includes request headers and body\. These are described in [Set up request and response data mappings using the API Gateway console](how-to-method-settings-execution-console.md)\. 
 
 When setting up the HTTP or HTTP proxy integration request, you assign the backend HTTP endpoint URL as the integration request URI value\. For example, in the PetStore API, the method request to get a page of pets has the following integration request URI: 
 
@@ -63,4 +63,4 @@ arn:aws:iam::account-id:role/iam-role-name
 
 This IAM role must contain a policy to allow the action to be executed\. It must also have API Gateway declared \(in the role's trust relationship\) as a trusted entity to assume the role\. Such permissions can be granted on the action itself\. They are known as resource\-based permissions\. For the Lambda integration, you can call the Lambda's [addPermission](https://docs.aws.amazon.com/lambda/latest/dg/API_AddPermission.html) action to set the resource\-based permissions and then set `credentials` to null in the API Gateway integration request\.
 
-We discussed the basic integration setup\. Advanced settings involve mapping method request data to the integration request data\. After discussing the basic setup for an integration response, we cover advanced topics in [Set up Request and Response Data Mappings Using the API Gateway Console](how-to-method-settings-execution-console.md), where we also cover passing payload through and handling content encodings\.
+We discussed the basic integration setup\. Advanced settings involve mapping method request data to the integration request data\. After discussing the basic setup for an integration response, we cover advanced topics in [Set up request and response data mappings using the API Gateway console](how-to-method-settings-execution-console.md), where we also cover passing payload through and handling content encodings\.

@@ -1,4 +1,4 @@
-# Set up an Edge\-Optimized API Using AWS CLI Commands<a name="create-api-using-awscli"></a>
+# Set up an edge\-optimized API using AWS CLI commands<a name="create-api-using-awscli"></a>
 
 Setting up an API using the AWS CLI requires working with the `[create\-rest\-api](https://docs.aws.amazon.com/cli/latest/reference/apigateway/create-rest-api.html)`, `[create\-resource](https://docs.aws.amazon.com/cli/latest/reference/apigateway/create-resource.html)` or `[get\-resources](https://docs.aws.amazon.com/cli/latest/reference/apigateway/get-resources.html)`, `[put\-method](https://docs.aws.amazon.com/cli/latest/reference/apigateway/put-method.html)`, `[put\-method\-response](https://docs.aws.amazon.com/cli/latest/reference/apigateway/put-method-response.html)`, `[put\-integration](https://docs.aws.amazon.com/cli/latest/reference/apigateway/put-integration.html)`, and `[put\-integration\-response](https://docs.aws.amazon.com/cli/latest/reference/apigateway/put-integration-response.html)` commands\. The following procedures show how to work with these AWS CLI commands to create the simple PetStore API of the `HTTP` integration type\. 
 
@@ -105,7 +105,7 @@ Setting up an API using the AWS CLI requires working with the `[create\-rest\-ap
    }
    ```
 
-   The method is for open access because `authorization-type` is set to `NONE`\. To permit only authenticated users to call the method, you can use IAM roles and policies, a Lambda authorizer \(formerly known as a custom authorizer\), or an Amazon Cognito user pool\. For more information, see [Controlling and Managing Access to a REST API in API Gateway](apigateway-control-access-to-api.md)\.
+   The method is for open access because `authorization-type` is set to `NONE`\. To permit only authenticated users to call the method, you can use IAM roles and policies, a Lambda authorizer \(formerly known as a custom authorizer\), or an Amazon Cognito user pool\. For more information, see [Controlling and managing access to a REST API in API Gateway](apigateway-control-access-to-api.md)\.
 
    To enable read access to the `/pets/{petId}` resource \(`rjkmth`\), add the `GET` HTTP method on it to create an API `Method` of `GET /pets/{petId}` as follows\. 
 

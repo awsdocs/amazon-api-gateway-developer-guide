@@ -1,4 +1,4 @@
-# Input to an Amazon API Gateway Lambda Authorizer<a name="api-gateway-lambda-authorizer-input"></a>
+# Input to an Amazon API Gateway Lambda authorizer<a name="api-gateway-lambda-authorizer-input"></a>
 
  For a Lambda authorizer \(formerly known as a custom authorizer\) of the `TOKEN` type, you must specify a custom header as the **Token Source** when you configure the authorizer for your API\. The API client must pass the required authorization token in that header in the incoming request\. Upon receiving the incoming method request, API Gateway extracts the token from the custom header\. It then passes the token as the `authorizationToken` property of the `event` object of the Lambda function, in addition to the method ARN as the `methodArn` property: 
 
@@ -83,4 +83,4 @@ Path parameters can be passed as request parameters to the Lambda authorizer fun
 }
 ```
 
- The `requestContext` is a map of key\-value pairs and corresponds to the [$context](api-gateway-mapping-template-reference.md#context-variable-reference) variable\. Its outcome is API\-dependent\. API Gateway may add new keys to the map\. For more information about Lambda function input in Lambda proxy integration, see [Input Format of a Lambda Function for Proxy Integration](set-up-lambda-proxy-integrations.md#api-gateway-simple-proxy-for-lambda-input-format)\. 
+ The `requestContext` is a map of key\-value pairs and corresponds to the [$context](api-gateway-mapping-template-reference.md#context-variable-reference) variable\. Its outcome is API\-dependent\. API Gateway may add new keys to the map\. For more information about Lambda function input in Lambda proxy integration, see [Input format of a Lambda function for proxy integration](set-up-lambda-proxy-integrations.md#api-gateway-simple-proxy-for-lambda-input-format)\. 

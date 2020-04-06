@@ -1,9 +1,9 @@
-# TUTORIAL: Create a REST API as an Amazon Kinesis Proxy in API Gateway<a name="integrating-api-with-aws-services-kinesis"></a>
+# Tutorial: Create a REST API as an Amazon Kinesis proxy in API Gateway<a name="integrating-api-with-aws-services-kinesis"></a>
 
 This page describes how to create and configure a REST API with an integration of the `AWS` type to access Kinesis\. 
 
 **Note**  
- To integrate your API Gateway API with Kinesis, you must choose a region where both the API Gateway and Kinesis services are available\. For region availability, see [Regions and Endpoints](https://docs.aws.amazon.com/general/latest/gr/rande.html#apigateway_region)\. 
+ To integrate your API Gateway API with Kinesis, you must choose a region where both the API Gateway and Kinesis services are available\. For region availability, see [Service Endpoints and Quotas](https://docs.aws.amazon.com/general/latest/gr/aws-service-information.html)\.
 
  For the purpose of illustration, we create an example API to enable a client to do the following: 
 
@@ -33,7 +33,7 @@ This page describes how to create and configure a REST API with an integration o
 
  You can apply the instructions presented here to other Kinesis actions\. For the complete list of the Kinesis actions, see [Amazon Kinesis API Reference](https://docs.aws.amazon.com/kinesis/latest/APIReference/Welcome.html)\. 
 
- Instead of using the API Gateway console to create the sample API, you can import the sample API into API Gateway using the API Gateway [Import API](https://docs.aws.amazon.com/apigateway/api-reference/link-relation/restapi-import/)\. For information on how to use the Import API, see [Configuring a REST API Using OpenAPI](api-gateway-import-api.md)\. 
+ Instead of using the API Gateway console to create the sample API, you can import the sample API into API Gateway using the API Gateway [Import API](https://docs.aws.amazon.com/apigateway/api-reference/link-relation/restapi-import/)\. For information on how to use the Import API, see [Configuring a REST API using OpenAPI](api-gateway-import-api.md)\. 
 
 If you do not have an AWS account, complete the following steps to create one\.
 
@@ -45,7 +45,7 @@ If you do not have an AWS account, complete the following steps to create one\.
 
    Part of the sign\-up procedure involves receiving a phone call and entering a verification code on the phone keypad\.
 
-## Create an IAM Role and Policy for the API to Access Kinesis<a name="integrate-with-kinesis-create-iam-role-and-policy"></a>
+## Create an IAM role and policy for the API to access Kinesis<a name="integrate-with-kinesis-create-iam-role-and-policy"></a>
 
  To allow the API to invoke Kinesis actions, you must have appropriate IAM policies attached to an IAM role\. This section explains how to verify and to create, if necessary, the required IAM role and policies\. 
 
@@ -109,7 +109,7 @@ If you create the execution role in the IAM console and choose the **Amazon API 
 
  Note the ARN of the execution role\. You will need it when creating an API method and setting up its integration request\. 
 
-## Start to Create an API as a Kinesis Proxy<a name="api-gateway-create-api-as-kinesis-proxy"></a>
+## Start to create an API as a Kinesis proxy<a name="api-gateway-create-api-as-kinesis-proxy"></a>
 
 Use the following steps to create the API in the API Gateway console\.
 
@@ -127,7 +127,7 @@ Use the following steps to create the API in the API Gateway console\.
 
  After the API is created, the API Gateway console displays the **Resources** page, which contains only the API's root \(`/`\) resource\. 
 
-## List Streams in Kinesis<a name="api-gateway-list-kinesis-streams"></a>
+## List streams in Kinesis<a name="api-gateway-list-kinesis-streams"></a>
 
  Kinesis supports the `ListStreams` action with the following REST API call: 
 
@@ -252,7 +252,7 @@ We chose `POST` here because Kinesis requires that the `ListStreams` action be i
    }
    ```
 
-## Create, Describe, and Delete a Stream in Kinesis<a name="api-gateway-create-describe-delete-stream"></a>
+## Create, describe, and delete a stream in Kinesis<a name="api-gateway-create-describe-delete-stream"></a>
 
  Creating, describing, and deleting a stream in Kinesis involves making the following Kinesis REST API requests, respectively: 
 
@@ -310,7 +310,7 @@ Content-Length: PayloadSizeBytes
 ![\[Create POST, GET, and DELETE methods on a stream resource\]](http://docs.aws.amazon.com/apigateway/latest/developerguide/images/api-gateway-kinesis-proxy-setup-streams-stream-methods.png)
 
 1. Set up the `GET /streams/{stream-name}` method to call the `POST /?Action=DescribeStream` action in Kinesis, as shown in the following\.   
-![\[Set up the GET-on-Stream method to invoke the DescribeStream action in Kinesis\]](http://docs.aws.amazon.com/apigateway/latest/developerguide/images/api-gateway-kinesis-proxy-setup-streams-stream-get-method.png)
+![\[Set up the GET-on-stream method to invoke the DescribeStream action in Kinesis\]](http://docs.aws.amazon.com/apigateway/latest/developerguide/images/api-gateway-kinesis-proxy-setup-streams-stream-get-method.png)
 
 1. Add the following `Content-Type` header mapping to the integration request:
 
@@ -458,7 +458,7 @@ Content-Length: PayloadSizeBytes
    {}
    ```
 
-## Get Records from and Add Records to a Stream in Kinesis<a name="api-gateway-get-and-add-records-to-stream"></a>
+## Get records from and add records to a stream in Kinesis<a name="api-gateway-get-and-add-records-to-stream"></a>
 
  After you create a stream in Kinesis, you can add data records to the stream and read the data from the stream\. Adding data records involves calling the [PutRecords](https://docs.aws.amazon.com/kinesis/latest/APIReference/API_PutRecords.html#API_PutRecords_Examples) or [PutRecord](https://docs.aws.amazon.com/kinesis/latest/APIReference/API_PutRecord.html#API_PutRecord_Examples) action in Kinesis\. The former adds multiple records whereas the latter adds a single record to the stream\. 
 
@@ -734,7 +734,7 @@ The `GET /streams/{stream-name}/sharditerator` method is a helper method to acqu
 ![\[Set up the GET /streams/{stream-name}/records method.\]](http://docs.aws.amazon.com/apigateway/latest/developerguide/images/api-gateway-kinesis-proxy-setup-streams-stream-records-get-method.png)
 
 1.  The `GetRecords` action requires an input of a `ShardIterator` value\. To pass a client\-supplied `ShardIterator` value, we add a `Shard-Iterator` header parameter to the method request, as shown in the following:   
-![\[Add the Shard-Iterator header parameter to the GET-on-Records method request.\]](http://docs.aws.amazon.com/apigateway/latest/developerguide/images/api-gateway-kinesis-proxy-setup-streams-stream-records-get-method-shard-iterator-header.png)
+![\[Add the Shard-Iterator header parameter to the GET-on-records method request.\]](http://docs.aws.amazon.com/apigateway/latest/developerguide/images/api-gateway-kinesis-proxy-setup-streams-stream-records-get-method-shard-iterator-header.png)
 
 1.  Set up the following mapping template to map the `Shard-Iterator` header parameter value to the `ShardIterator` property value of the JSON payload for the `GetRecords` action in Kinesis\. 
 

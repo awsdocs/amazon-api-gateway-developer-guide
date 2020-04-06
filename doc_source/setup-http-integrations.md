@@ -1,4 +1,4 @@
-# Set up HTTP Integrations in API Gateway<a name="setup-http-integrations"></a>
+# Set up HTTP integrations in API Gateway<a name="setup-http-integrations"></a>
 
  You can integrate an API method with an HTTP endpoint using the HTTP proxy integration or the HTTP custom integration\. 
 
@@ -9,14 +9,14 @@ API Gateway supports the following endpoint ports: 80, 443 and 1024\-65535\.
  With custom integration, setup is more involved\. In addition to the proxy integration setup steps, you need to specify how the incoming request data is mapped to the integration request and how the resulting integration response data is mapped to the method response\. 
 
 **Topics**
-+ [Set up HTTP Proxy Integrations in API Gateway](#api-gateway-set-up-http-proxy-integration-on-proxy-resource)
-+ [Set up HTTP Custom Integrations in API Gateway](#set-up-http-custom-integrations)
++ [Set up HTTP proxy integrations in API Gateway](#api-gateway-set-up-http-proxy-integration-on-proxy-resource)
++ [Set up HTTP custom integrations in API Gateway](#set-up-http-custom-integrations)
 
-## Set up HTTP Proxy Integrations in API Gateway<a name="api-gateway-set-up-http-proxy-integration-on-proxy-resource"></a>
+## Set up HTTP proxy integrations in API Gateway<a name="api-gateway-set-up-http-proxy-integration-on-proxy-resource"></a>
 
 To set up a proxy resource with the HTTP proxy integration type, create an API resource with a greedy path parameter \(for example, `/parent/{proxy+}`\) and integrate this resource with an HTTP backend endpoint \(for example, `https://petstore-demo-endpoint.execute-api.com/petstore/{proxy}`\) on the `ANY` method\. The greedy path parameter must be at the end of the resource path\. 
 
-As with a non\-proxy resource, you can set up a proxy resource with the HTTP proxy integration by using the API Gateway console, importing an OpenAPI definition file, or calling the API Gateway REST API directly\. For detailed instructions about using the API Gateway console to configure a proxy resource with the HTTP integration, see [TUTORIAL: Build an API with HTTP Proxy Integration](api-gateway-create-api-as-simple-proxy-for-http.md)\.
+As with a non\-proxy resource, you can set up a proxy resource with the HTTP proxy integration by using the API Gateway console, importing an OpenAPI definition file, or calling the API Gateway REST API directly\. For detailed instructions about using the API Gateway console to configure a proxy resource with the HTTP integration, see [Tutorial: Build an API with HTTP proxy integration](api-gateway-create-api-as-simple-proxy-for-http.md)\.
 
 The following OpenAPI definition file shows an example of an API with a proxy resource that is integrated with the [PetStore](http://petstore-demo-endpoint.execute-api.com/petstore/pets) website\.
 
@@ -255,7 +255,7 @@ In this example, a cache key is declared on the `method.request.path.proxy` path
 
 For any client request, if the targeted endpoint URL is invalid or the HTTP verb is valid but not supported, the backend returns a `404 Not Found` response\. For an unsupported HTTP method, a `403 Forbidden` response is returned\.
 
-## Set up HTTP Custom Integrations in API Gateway<a name="set-up-http-custom-integrations"></a>
+## Set up HTTP custom integrations in API Gateway<a name="set-up-http-custom-integrations"></a>
 
  With the HTTP custom integration, you have more control of which data to pass between an API method and an API integration and how to pass the data\. You do this using data mappings\. 
 
@@ -263,4 +263,4 @@ As part of the method request setup, you set the [requestParameters](https://doc
 
  Similarly, as part of the method response setup, you set the [responseParameters](https://docs.aws.amazon.com/apigateway/api-reference/resource/method-response/#responseParameters) property on the [MethodResponse](https://docs.aws.amazon.com/apigateway/api-reference/resource/method-response/) resource\. This declares which method response parameters, to be dispatched to the client, are to be mapped from integration response parameters or certain applicable body properties that were returned from the backend\. Then, as part of the integration response setup, you set the [responseParameters](https://docs.aws.amazon.com/apigateway/api-reference/resource/integration-response/#responseParameters) property on the corresponding [IntegrationResponse](https://docs.aws.amazon.com/apigateway/api-reference/resource/integration-response/) resource to specify the parameter\-to\-parameter mappings\. You also set the [responseTemplates](https://docs.aws.amazon.com/apigateway/api-reference/resource/integration-response/#responseTemplates) map to specify mapping templates, one for each supported content type\. The mapping templates map integration response parameters, or integration response body properties, to the method response body\. 
 
- For more information about setting up mapping templates, see [Setting Up Data Transformations for REST APIs](rest-api-data-transformations.md)\. 
+ For more information about setting up mapping templates, see [Setting up data transformations for REST APIs](rest-api-data-transformations.md)\. 

@@ -1,4 +1,4 @@
-# View API Gateway Metrics in the CloudWatch Console<a name="metrics_dimensions_view_in_cloud_watch"></a>
+# View API Gateway metrics in the CloudWatch console<a name="metrics_dimensions_view_in_cloud_watch"></a>
 
 Metrics are grouped first by the service namespace, and then by the various dimension combinations within each namespace\.
 

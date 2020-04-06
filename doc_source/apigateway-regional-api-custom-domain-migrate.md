@@ -1,4 +1,4 @@
-# Migrating a Custom Domain Name to a Different API Endpoint<a name="apigateway-regional-api-custom-domain-migrate"></a>
+# Migrating a custom domain name to a different API endpoint<a name="apigateway-regional-api-custom-domain-migrate"></a>
 
  You can migrate your custom domain name between edge\-optimized and Regional endpoints\. You first add the new endpoint configuration type to the existing `endpointConfiguration.types` list for the custom domain name\. Next, you set up a DNS record to point the custom domain name to the newly provisioned endpoint\. An optional last step is to remove the obsolete custom domain name configuration data\.
 
@@ -7,17 +7,17 @@ When planning the migration, remember that for an edge\-optimized API's custom d
  It may take up to 60 seconds to complete a migration between an edge\-optimized custom domain name and a Regional custom domain name in API Gateway\. For the newly created endpoint to become ready to accept traffic, the migration time also depends on when you update your DNS records\.
 
 **Topics**
-+ [Migrate Custom Domain Names Using the AWS CLI](#apigateway-api-custom-domain-names-migrate-with-awscli)
++ [Migrate custom domain names using the AWS CLI](#apigateway-api-custom-domain-names-migrate-with-awscli)
 
-## Migrate Custom Domain Names Using the AWS CLI<a name="apigateway-api-custom-domain-names-migrate-with-awscli"></a>
+## Migrate custom domain names using the AWS CLI<a name="apigateway-api-custom-domain-names-migrate-with-awscli"></a>
 
 To use the AWS CLI to migrate a custom domain name from an edge\-optimized endpoint to a Regional endpoint or vice versa, call the [https://docs.aws.amazon.com/cli/latest/reference/apigateway/update-domain-name.html](https://docs.aws.amazon.com/cli/latest/reference/apigateway/update-domain-name.html) command to add the new endpoint type and, optionally, call the [https://docs.aws.amazon.com/cli/latest/reference/apigateway/update-domain-name.html](https://docs.aws.amazon.com/cli/latest/reference/apigateway/update-domain-name.html) command to remove the old endpoint type\.
 
 **Topics**
-+ [Migrate an Edge\-Optimized Custom Domain Name to Regional](#update-edge-optimized-domain-name-to-regional-cli)
-+ [Migrate a Regional Custom Domain Name to Edge\-Optimized](#update-regional-domain-name-to-edge-optimized-cli)
++ [Migrate an edge\-optimized custom domain name to regional](#update-edge-optimized-domain-name-to-regional-cli)
++ [Migrate a regional custom domain name to edge\-optimized](#update-regional-domain-name-to-edge-optimized-cli)
 
-### Migrate an Edge\-Optimized Custom Domain Name to Regional<a name="update-edge-optimized-domain-name-to-regional-cli"></a>
+### Migrate an edge\-optimized custom domain name to regional<a name="update-edge-optimized-domain-name-to-regional-cli"></a>
 
 To migrate an edge\-optimized custom domain name to a Regional custom domain name, call the `update-domain-name` CLI command, as follows:
 
@@ -66,7 +66,7 @@ aws apigateway update-domain-name \
         ]
 ```
 
-### Migrate a Regional Custom Domain Name to Edge\-Optimized<a name="update-regional-domain-name-to-edge-optimized-cli"></a>
+### Migrate a regional custom domain name to edge\-optimized<a name="update-regional-domain-name-to-edge-optimized-cli"></a>
 
 To migrate a Regional custom domain name to an edge\-optimized custom domain name, call the `update-domain-name` command of the AWS CLI, as follows:
 

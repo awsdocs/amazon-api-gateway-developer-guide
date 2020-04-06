@@ -1,4 +1,4 @@
-# Set up an API Integration Request Using the API Gateway Console<a name="how-to-method-settings-console"></a>
+# Set up an API integration request using the API Gateway console<a name="how-to-method-settings-console"></a>
 
  An API method setup defines the method and describes its behaviors\. To set up a method, you must specify a resource, including the root \("/"\), on which the method is exposed, an HTTP method \(`GET`, `POST`, etc\.\), and how it will be integrated with the targeted backend\. The method request and response specify the contract with the calling app, stipulating which parameters the API can receive and what the response looks like\. 
 
@@ -10,7 +10,7 @@
    + Choose **Lambda Function** if your API will be integrated with a Lambda function\. At the API level, this is an `AWS` integration type\.
    + Choose **HTTP** if your API will be integrated with an HTTP endpoint\. At the API level, this is the `HTTP` integration type\.
    + Choose **AWS Service** if your API will be integrated directly with an AWS service\. At the API level, this is the `AWS` integration type\. The **Lambda Function** option above is a special case of the `AWS` integration for invoking a Lambda function and is available only in the API Gateway console\. To set up an API Gateway API to create a new Lambda function in AWS Lambda, to set a resource permission on the Lambda function, or to perform any other Lambda service actions, you must choose the **AWS Service** option here\.
-   +  Choose **Mock** if you want API Gateway to act as your backend to return static responses\. At the API level, this is the `MOCK` integration type\. Typically, you can use the `MOCK` integration when your API is not yet final, but you want to generate API responses to unblock dependent teams for testing\. For the `OPTION` method, API Gateway sets the `MOCK` integration as default to return CORS\-enabling headers for the applied API resource\. If you choose this option, skip the rest of the instructions in this topic and see [Set up Mock Integrations in API Gateway](how-to-mock-integration.md)\.
+   +  Choose **Mock** if you want API Gateway to act as your backend to return static responses\. At the API level, this is the `MOCK` integration type\. Typically, you can use the `MOCK` integration when your API is not yet final, but you want to generate API responses to unblock dependent teams for testing\. For the `OPTION` method, API Gateway sets the `MOCK` integration as default to return CORS\-enabling headers for the applied API resource\. If you choose this option, skip the rest of the instructions in this topic and see [Set up mock integrations in API Gateway](how-to-mock-integration.md)\.
 
 1. If you chose **Lambda Function**, do the following:
 

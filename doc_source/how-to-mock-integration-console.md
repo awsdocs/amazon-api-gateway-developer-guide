@@ -1,6 +1,6 @@
-# Enable Mock Integration Using the API Gateway Console<a name="how-to-mock-integration-console"></a>
+# Enable mock integration using the API Gateway console<a name="how-to-mock-integration-console"></a>
 
-You must have the method available in API Gateway\. Follow the instructions in [TUTORIAL: Build an API with HTTP Non\-Proxy Integration](api-gateway-create-api-step-by-step.md)\.
+You must have the method available in API Gateway\. Follow the instructions in [Tutorial: Build an API with HTTP non\-proxy integration](api-gateway-create-api-step-by-step.md)\.
 
 1. Choose an API resource and create a method\. In the method **Setup** pane, choose **Mock** for **Integration type**, and then choose **Save**\.
 

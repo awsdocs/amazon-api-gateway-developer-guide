@@ -1,11 +1,11 @@
-# x\-amazon\-apigateway\-cors Object<a name="api-gateway-swagger-extensions-cors-configuration"></a>
+# x\-amazon\-apigateway\-cors object<a name="api-gateway-swagger-extensions-cors-configuration"></a>
 
 Specifies the cross\-origin resource sharing \(CORS\) configuration for an HTTP API\. The extension applies to the root\-level OpenAPI structure\. To learn more, see [Configuring CORS for an HTTP API](http-api-cors.md)\.
 
 
 **Properties**  
 
-| Property Name | Type | Description | 
+| Property name | Type | Description | 
 | --- | --- | --- | 
 | allowOrigins | Array |  Specifies the allowed origins\.  | 
 | allowCredentials | Boolean |  Specifies whether credentials are included in the CORS request\.  | 
@@ -14,7 +14,7 @@ Specifies the cross\-origin resource sharing \(CORS\) configuration for an HTTP 
 | allowMethods | Array |  Specifies the allowed HTTP methods\.  | 
 | allowHeaders | Array |  Specifies the allowed headers\.  | 
 
-## x\-amazon\-apigateway\-cors Example<a name="api-gateway-swagger-extensions-cors-configuration"></a>
+## x\-amazon\-apigateway\-cors example<a name="api-gateway-swagger-extensions-cors-configuration"></a>
 
 The following is an example CORS configuration for an HTTP API\.
 

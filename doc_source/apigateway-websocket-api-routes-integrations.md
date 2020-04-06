@@ -1,13 +1,13 @@
-# Invoking Your Backend Integration: `$default` Route and Custom Routes<a name="apigateway-websocket-api-routes-integrations"></a>
+# Invoking your backend integration: `$default` Route and custom routes<a name="apigateway-websocket-api-routes-integrations"></a>
 
 **Topics**
-+ [Using Routes to Process Messages](#apigateway-websocket-api-overview-routes)
-+ [The `$default` Route](#apigateway-websocket-api-routes-about-default)
-+ [Custom Routes](#apigateway-websocket-api-routes-about-custom)
-+ [Using API Gateway WebSocket API Integrations to Connect to Your Business Logic](#apigateway-websocket-api-overview-integrations)
-+ [Important Differences Between WebSocket APIs and REST APIs](#apigateway-websocket-api-overview-integrations-differences)
++ [Using routes to process messages](#apigateway-websocket-api-overview-routes)
++ [The `$default` route](#apigateway-websocket-api-routes-about-default)
++ [Custom routes](#apigateway-websocket-api-routes-about-custom)
++ [Using API Gateway WebSocket API integrations to connect to your business logic](#apigateway-websocket-api-overview-integrations)
++ [Important differences between WebSocket APIs and REST APIs](#apigateway-websocket-api-overview-integrations-differences)
 
-## Using Routes to Process Messages<a name="apigateway-websocket-api-overview-routes"></a>
+## Using routes to process messages<a name="apigateway-websocket-api-overview-routes"></a>
 
 In API Gateway WebSocket APIs, messages can be sent from the client to your backend service and vice versa\. Unlike HTTP's request/response model, in WebSocket the backend can send messages to the client without the client taking any action\.
 
@@ -15,7 +15,7 @@ Messages can be JSON or non\-JSON\. However, only JSON messages can be routed to
 
 **Note**  
 API Gateway supports message payloads up to 128 KB with a maximum frame size of 32 KB\. If a message exceeds 32 KB, you must split it into multiple frames, each 32 KB or smaller\. If a larger message \(or frame\) is received, the connection is closed with code 1009\.  
-Currently binary payloads are not supported\. If a binary frame is received, the connection is closed with code 1003\. However, it is possible to convert binary payloads to text\. See [Working with Binary Media Types for WebSocket APIs](websocket-api-develop-binary-media-types.md)\.
+Currently binary payloads are not supported\. If a binary frame is received, the connection is closed with code 1003\. However, it is possible to convert binary payloads to text\. See [Working with binary media types for WebSocket APIs](websocket-api-develop-binary-media-types.md)\.
 
 With WebSocket APIs in API Gateway, JSON messages can be routed to execute a specific backend service based on message content\. When a client sends a message over its WebSocket connection, this results in a *route request* to the WebSocket API\. The request will be matched to the route with the corresponding route key in API Gateway\. You can set up a route request for a WebSocket API in the API Gateway console, by using the AWS CLI, or by using an AWS SDK\.
 
@@ -32,14 +32,14 @@ This reduces unnecessary calls to your backend and lets you focus on the other r
 
 You can also define a route response for your API's routes to enable two\-way communication\. A route response describes what data will be sent to your client upon completion of a particular route's integration\. It is not necessary to define a response for a route if, for example, you want a client to send messages to your backend without receiving a response \(one\-way communication\)\. However, if you don't provide a route response, API Gateway won't send any information about the result of your integration to your clients\.
 
-## The `$default` Route<a name="apigateway-websocket-api-routes-about-default"></a>
+## The `$default` route<a name="apigateway-websocket-api-routes-about-default"></a>
 
 Every API Gateway WebSocket API can have a `$default` route\. This is a special routing value that can be used in the following ways:
 + You can use it together with defined route keys, to specify a "fallback" route \(for example, a generic mock integration that returns a particular error message\) for incoming messages that don't match any of the defined route keys\.
 + You can use it without any defined route keys, to specify a proxy model that delegates routing to a backend component\.
 + You can use it to specify a route for non\-JSON payloads\.
 
-## Custom Routes<a name="apigateway-websocket-api-routes-about-custom"></a>
+## Custom routes<a name="apigateway-websocket-api-routes-about-custom"></a>
 
 If you want to invoke a specific integration based on message content, you can do so by creating a custom route\.
 
@@ -57,13 +57,13 @@ And it might invoke the `sendmessage` route by sending a message such as the fol
 {"action":"sendmessage","message":"Hello everyone"}
 ```
 
-## Using API Gateway WebSocket API Integrations to Connect to Your Business Logic<a name="apigateway-websocket-api-overview-integrations"></a>
+## Using API Gateway WebSocket API integrations to connect to your business logic<a name="apigateway-websocket-api-overview-integrations"></a>
 
 After setting up a route for an API Gateway WebSocket API, you must specify the integration you'd like to use\. As with a route, which can have a route request and a route response, an integration can have an *integration request* and an *integration response*\. An *integration request* contains the information expected by your backend in order to process the request that came from your client\. An *integration response* contains the data that your backend returns to API Gateway, and that may be used to construct a message to send to the client \(if a route response is defined\)\.
 
-For more information about setting up integrations, see [Setting Up WebSocket API Integrations](apigateway-websocket-api-integrations.md)\.
+For more information about setting up integrations, see [Setting up WebSocket API integrations](apigateway-websocket-api-integrations.md)\.
 
-## Important Differences Between WebSocket APIs and REST APIs<a name="apigateway-websocket-api-overview-integrations-differences"></a>
+## Important differences between WebSocket APIs and REST APIs<a name="apigateway-websocket-api-overview-integrations-differences"></a>
 
 Integrations for WebSocket APIs are similar to integrations for REST APIs, except for the following differences:
 + Currently, in the API Gateway console you must create a route first and then create an integration as that route's target\. However, in the API and CLI, you can create routes and integrations independently, in any order\.

@@ -1,4 +1,4 @@
-# Representation of API Documentation in API Gateway<a name="api-gateway-documenting-api-content-representation"></a>
+# Representation of API documentation in API Gateway<a name="api-gateway-documenting-api-content-representation"></a>
 
 API Gateway API documentation consists of individual documentation parts associated with specific API entities that include API, resource, method, request, response, message parameters \(i\.e\., path, query, header\), as well as authorizers and models\. 
 
@@ -7,10 +7,10 @@ In API Gateway, a documentation part is represented by a [DocumentationPart](htt
 Documenting an API involves creating `DocumentationPart` instances, adding them to the `DocumentationParts` collection, and maintaining versions of the documentation parts as your API evolves\.
 
 **Topics**
-+ [Documentation Parts](#api-gateway-documenting-api-content-representation-documentation-parts)
-+ [Documentation Versions](#api-gateway-documenting-api-content-representation-documentation-versions)
++ [Documentation parts](#api-gateway-documenting-api-content-representation-documentation-parts)
++ [Documentation versions](#api-gateway-documenting-api-content-representation-documentation-versions)
 
-## Documentation Parts<a name="api-gateway-documenting-api-content-representation-documentation-parts"></a>
+## Documentation parts<a name="api-gateway-documenting-api-content-representation-documentation-parts"></a>
 
 A [DocumentationPart](https://docs.aws.amazon.com/apigateway/api-reference/resource/documentation-part/) resource is a JSON object that stores the documentation content applicable to an individual API entity\. Its `properties` field contains the documentation content as a map of key\-value pairs\. Its `location` property identifies the associated API entity\. 
 
@@ -18,7 +18,7 @@ The shape of a content map is determined by you, the API developer\. The value o
 
 The `DocumentationPart` resource supports content inheritance: the documentation content of an API entity is applicable to children of that API entity\. For more information about the definition of child entities and content inheritance, see [Inherit Content from an API Entity of More General Specification](#api-gateway-documenting-api-content-inheritance)\. 
 
-### Location of a Documentation Part<a name="api-gateway-documenting-api-content-representation-documentation-parts-target"></a>
+### Location of a documentation part<a name="api-gateway-documenting-api-content-representation-documentation-parts-target"></a>
 
 The [location](https://docs.aws.amazon.com/apigateway/api-reference/resource/documentation-part/#location) property of a [DocumentationPart](https://docs.aws.amazon.com/apigateway/api-reference/resource/documentation-part) instance identifies an API entity to which the associated content applies\. The API entity can be an API Gateway REST API resource, such as [RestApi](https://docs.aws.amazon.com/apigateway/api-reference/resource/rest-api/), [Resource](https://docs.aws.amazon.com/apigateway/api-reference/resource/resource/), [Method](https://docs.aws.amazon.com/apigateway/api-reference/resource/method/), [MethodResponse](https://docs.aws.amazon.com/apigateway/api-reference/resource/method-response/), [Authorizer](https://docs.aws.amazon.com/apigateway/api-reference/resource/authorizer/), or [Model](https://docs.aws.amazon.com/apigateway/api-reference/resource/model)\. The entity can also be a message parameter, such as a URL path parameter, a query string parameter, a request or response header parameter, a request or response body, or response status code\. 
 
@@ -28,7 +28,7 @@ Depending on the `type` of an API entity, you might specify other `location` att
 
 Not all valid `location` fields are required\. For example, `type` is both the valid and required `location` field of all API entities\. However, `method`, `path`, and `statusCode` are valid but not required attributes for the `RESPONSE` entity\. When not explicitly specified, a valid `location` field assumes its default value\. The default `path` value is `/`, i\.e\., the root resource of an API\. The default value of `method`, or `statusCode` is `*`, meaning any method, or status code values, respectively\.
 
-### Content of a Documentation Part<a name="api-gateway-documenting-api-content-representation-documentation-parts-content"></a>
+### Content of a documentation part<a name="api-gateway-documenting-api-content-representation-documentation-parts-content"></a>
 
 The `properties` value is encoded as a JSON string\. The `properties` value contains any information you choose to meet your documentation requirements\. For example, the following is a valid content map: 
 
@@ -86,7 +86,7 @@ This is the same as the following `DocumentationPart` instance:
 }
 ```
 
-### Inherit Content from an API Entity of More General Specifications<a name="api-gateway-documenting-api-content-inheritance"></a>
+### Inherit content from an API entity of more general specifications<a name="api-gateway-documenting-api-content-inheritance"></a>
 
 The default value of an optional `location` field provides a patterned description of an API entity\. Using the default value in the `location` object, you can add a general description in the `properties` map to a `DocumentationPart` instance with this type of `location` pattern\. API Gateway extracts the applicable OpenAPI documentation attributes from the `DocumentationPart` of the generic API entity and injects them into a specific API entity with the `location` fields matching the general `location` pattern, or matching the exact value, unless the specific entity already has a `DocumentationPart` instance associated with it\. This behavior is also known as content inheritance from an API entity of more general specifications\. 
 
@@ -130,12 +130,12 @@ With the following overwrite, the `400` responses to any methods on the `/pets` 
 }
 ```
 
-### Valid Location Fields of `DocumentationPart`<a name="api-gateway-documenting-api-content-representation-target-specification"></a>
+### Valid location fields of `DocumentationPart`<a name="api-gateway-documenting-api-content-representation-target-specification"></a>
 
 The following table shows the valid and required fields as well as applicable default values of a [DocumentationPart](https://docs.aws.amazon.com/apigateway/api-reference/resource/documentation-part/) resource that is associated with a given type of API entities\.
 
 
-|  API entity  |  Valid location fields  | Required location fields | Default field values | Inheritable Content | 
+|  API entity  |  Valid location fields  | Required location fields | Default field values | Inheritable content | 
 | --- | --- | --- | --- | --- | 
 | [API](https://docs.aws.amazon.com/apigateway/api-reference/resource/rest-api/) |  <pre>{<br />    "location": {<br />        "type": "API" <br />    }, <br />    ... <br />}</pre>  | type | N/A | No | 
 | [Resource](https://docs.aws.amazon.com/apigateway/api-reference/resource/resource/) |  <pre>{ <br />    "location": { <br />        "type": "RESOURCE", <br />        "path": "resource_path" <br />    }, <br />    ... <br />}</pre>  | type | The default value of path is /\.  | No | 
@@ -150,7 +150,7 @@ The following table shows the valid and required fields as well as applicable de
 | [Authorizer](https://docs.aws.amazon.com/apigateway/api-reference/resource/authorizer/) |  <pre>{ <br />    "location": { <br />        "type": "AUTHORIZER", <br />        "name": "authorizer_name" <br />    }, <br />    ... <br />}</pre>  | type | N/A | No | 
 | [Model](https://docs.aws.amazon.com/apigateway/api-reference/resource/model/) |  <pre>{ <br />    "location": { <br />        "type": "MODEL", <br />        "name": "model_name" <br />    }, <br />    ... <br />}</pre>  | type | N/A | No | 
 
-## Documentation Versions<a name="api-gateway-documenting-api-content-representation-documentation-versions"></a>
+## Documentation versions<a name="api-gateway-documenting-api-content-representation-documentation-versions"></a>
 
 A documentation version is a snapshot of the [DocumentationParts](https://docs.aws.amazon.com/apigateway/api-reference/resource/documentation-parts/) collection of an API and is tagged with a version identifier\. Publishing the documentation of an API involves creating a documentation version, associating it with an API stage, and exporting that stage\-specific version of the API documentation to an external OpenAPI file\. In API Gateway, a documentation snapshot is represented as a [DocumentationVersion](https://docs.aws.amazon.com/apigateway/api-reference/resource/documentation-version) resource\. 
 

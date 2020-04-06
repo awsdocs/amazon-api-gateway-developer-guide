@@ -1,4 +1,4 @@
-# API Gateway API Key File Format<a name="api-key-file-format"></a>
+# API Gateway API key file format<a name="api-key-file-format"></a>
 
 API Gateway can import API keys from external files of a comma\-separated value \(CSV\) format, and then associate the imported keys with one or more usage plans\. The imported file must contain the `Name` and `Key` columns\. The column header names aren't case sensitive, and columns can be in any order, as shown in the following example: 
 

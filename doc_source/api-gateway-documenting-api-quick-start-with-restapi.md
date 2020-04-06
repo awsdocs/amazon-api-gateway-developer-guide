@@ -1,25 +1,25 @@
-# Document an API Using the API Gateway REST API<a name="api-gateway-documenting-api-quick-start-with-restapi"></a>
+# Document an API using the API Gateway REST API<a name="api-gateway-documenting-api-quick-start-with-restapi"></a>
 
 In this section, we describe how to create and maintain documentation parts of an API using the API Gateway REST API\.
 
-Before creating and editing the documentation of an API, first create the API\. In this section, we use the [PetStore](http://petstore-demo-endpoint.execute-api.com/petstore/pets) API as an example\. To create an API using the API Gateway console, follow the instructions in [TUTORIAL: Create a REST API by Importing an Example](api-gateway-create-api-from-example.md)\. 
+Before creating and editing the documentation of an API, first create the API\. In this section, we use the [PetStore](http://petstore-demo-endpoint.execute-api.com/petstore/pets) API as an example\. To create an API using the API Gateway console, follow the instructions in [Tutorial: Create a REST API by importing an example](api-gateway-create-api-from-example.md)\. 
 
 **Topics**
-+ [Document the `API` Entity](#api-gateway-documenting-api-quick-start-with-restapi-add-content-to-api)
-+ [Document a `RESOURCE` Entity](#api-gateway-documenting-api-quick-start-with-restapi-add-content-to-resource)
-+ [Document a `METHOD` Entity](#api-gateway-documenting-api-quick-start-with-restapi-add-content-to-method)
-+ [Document a `QUERY_PARAMETER` Entity](#api-gateway-documenting-api-quick-start-with-restapi-add-content-to-query-parameter)
-+ [Document a `PATH_PARAMETER` Entity](#api-gateway-documenting-api-quick-start-with-restapi-add-content-to-path-parameter)
-+ [Document a `REQUEST_BODY` Entity](#api-gateway-documenting-api-quick-start-with-restapi-add-content-to-request-body)
-+ [Document a `REQUEST_HEADER` Entity](#api-gateway-documenting-api-quick-start-with-restapi-add-content-to-request-header)
-+ [Document a `RESPONSE` Entity](#api-gateway-documenting-api-quick-start-with-restapi-add-content-to-response)
-+ [Document a `RESPONSE_HEADER` Entity](#api-gateway-documenting-api-quick-start-with-restapi-add-content-to-response-header)
-+ [Document an `AUTHORIZER` Entity](#api-gateway-documenting-api-quick-start-with-restapi-add-content-to-authorizer)
-+ [Document a `MODEL` Entity](#api-gateway-documenting-api-quick-start-with-restapi-add-content-to-model)
-+ [Update Documentation Parts](#api-gateway-documenting-api-quick-start-with-restapi-update-content)
-+ [List Documentation Parts](#api-gateway-documenting-api-quick-start-with-restapi-list-parts)
++ [Document the `API` entity](#api-gateway-documenting-api-quick-start-with-restapi-add-content-to-api)
++ [Document a `RESOURCE` entity](#api-gateway-documenting-api-quick-start-with-restapi-add-content-to-resource)
++ [Document a `METHOD` entity](#api-gateway-documenting-api-quick-start-with-restapi-add-content-to-method)
++ [Document a `QUERY_PARAMETER` entity](#api-gateway-documenting-api-quick-start-with-restapi-add-content-to-query-parameter)
++ [Document a `PATH_PARAMETER` entity](#api-gateway-documenting-api-quick-start-with-restapi-add-content-to-path-parameter)
++ [Document a `REQUEST_BODY` entity](#api-gateway-documenting-api-quick-start-with-restapi-add-content-to-request-body)
++ [Document a `REQUEST_HEADER` entity](#api-gateway-documenting-api-quick-start-with-restapi-add-content-to-request-header)
++ [Document a `RESPONSE` entity](#api-gateway-documenting-api-quick-start-with-restapi-add-content-to-response)
++ [Document a `RESPONSE_HEADER` entity](#api-gateway-documenting-api-quick-start-with-restapi-add-content-to-response-header)
++ [Document an `AUTHORIZER` entity](#api-gateway-documenting-api-quick-start-with-restapi-add-content-to-authorizer)
++ [Document a `MODEL` entity](#api-gateway-documenting-api-quick-start-with-restapi-add-content-to-model)
++ [Update documentation parts](#api-gateway-documenting-api-quick-start-with-restapi-update-content)
++ [List documentation parts](#api-gateway-documenting-api-quick-start-with-restapi-list-parts)
 
-## Document the `API` Entity<a name="api-gateway-documenting-api-quick-start-with-restapi-add-content-to-api"></a>
+## Document the `API` entity<a name="api-gateway-documenting-api-quick-start-with-restapi-add-content-to-api"></a>
 
 To add documentation for an [API](https://docs.aws.amazon.com/apigateway/api-reference/resource/rest-api/), add a [DocumentationPart](https://docs.aws.amazon.com/apigateway/api-reference/resource/documentation-part/) resource for the API entity:
 
@@ -75,7 +75,7 @@ Authorization: AWS4-HMAC-SHA256 Credential=access_key_id/YYYYMMDD/region/apigate
 
 The successful response returns a `200 OK` status code with the payload containing the updated `DocumentationPart` instance in the payload\.
 
-## Document a `RESOURCE` Entity<a name="api-gateway-documenting-api-quick-start-with-restapi-add-content-to-resource"></a>
+## Document a `RESOURCE` entity<a name="api-gateway-documenting-api-quick-start-with-restapi-add-content-to-resource"></a>
 
 To add documentation for the root resource of an API, add a [DocumentationPart](https://docs.aws.amazon.com/apigateway/api-reference/resource/documentation-part/) resource targeted for the corresponding [Resource](https://docs.aws.amazon.com/apigateway/api-reference/resource/resource/) resource:
 
@@ -231,7 +231,7 @@ If successful, the operation returns a `201 Created` response containing the new
 **Note**  
 The [DocumentationPart](https://docs.aws.amazon.com/apigateway/api-reference/resource/documentation-part/) instance of a `RESOURCE` entity cannot be inherited by any of its child resources\.
 
-## Document a `METHOD` Entity<a name="api-gateway-documenting-api-quick-start-with-restapi-add-content-to-method"></a>
+## Document a `METHOD` entity<a name="api-gateway-documenting-api-quick-start-with-restapi-add-content-to-method"></a>
 
 To add documentation for a method of an API, add a [DocumentationPart](https://docs.aws.amazon.com/apigateway/api-reference/resource/documentation-part/) resource targeted for the corresponding [Method](https://docs.aws.amazon.com/apigateway/api-reference/resource/method/) resource:
 
@@ -368,7 +368,7 @@ The successful response returns a `200 OK` status code with the payload containi
 }
 ```
 
-## Document a `QUERY_PARAMETER` Entity<a name="api-gateway-documenting-api-quick-start-with-restapi-add-content-to-query-parameter"></a>
+## Document a `QUERY_PARAMETER` entity<a name="api-gateway-documenting-api-quick-start-with-restapi-add-content-to-query-parameter"></a>
 
 To add documentation for a request query parameter, add a [DocumentationPart](https://docs.aws.amazon.com/apigateway/api-reference/resource/documentation-part/) resource targeted for the `QUERY_PARAMETER` type, with the valid fields of `path` and `name`\.
 
@@ -424,7 +424,7 @@ If successful, the operation returns a `201 Created` response containing the new
 
 The documentation part's `properties` map of a `QUERY_PARAMETER` entity can be inherited by one of its child `QUERY_PARAMETER` entities\. For example, if you add a `treats` resource after `/pets/{petId}`, enable the `GET` method on `/pets/{petId}/treats`, and expose the `page` query parameter, this child query parameter inherits the `DocumentationPart`'s `properties` map from the like\-named query parameter of the `GET /pets` method, unless you explicitly add a `DocumentationPart` resource to the `page` query parameter of the `GET /pets/{petId}/treats` method\.
 
-## Document a `PATH_PARAMETER` Entity<a name="api-gateway-documenting-api-quick-start-with-restapi-add-content-to-path-parameter"></a>
+## Document a `PATH_PARAMETER` entity<a name="api-gateway-documenting-api-quick-start-with-restapi-add-content-to-path-parameter"></a>
 
 To add documentation for a path parameter, add a [DocumentationPart](https://docs.aws.amazon.com/apigateway/api-reference/resource/documentation-part/) resource for the `PATH_PARAMETER` entity\.
 
@@ -478,7 +478,7 @@ If successful, the operation returns a `201 Created` response containing the new
 }
 ```
 
-## Document a `REQUEST_BODY` Entity<a name="api-gateway-documenting-api-quick-start-with-restapi-add-content-to-request-body"></a>
+## Document a `REQUEST_BODY` entity<a name="api-gateway-documenting-api-quick-start-with-restapi-add-content-to-request-body"></a>
 
 To add documentation for a request body, add a [DocumentationPart](https://docs.aws.amazon.com/apigateway/api-reference/resource/documentation-part/) resource for the request body\.
 
@@ -531,7 +531,7 @@ If successful, the operation returns a `201 Created` response containing the new
 }
 ```
 
-## Document a `REQUEST_HEADER` Entity<a name="api-gateway-documenting-api-quick-start-with-restapi-add-content-to-request-header"></a>
+## Document a `REQUEST_HEADER` entity<a name="api-gateway-documenting-api-quick-start-with-restapi-add-content-to-request-header"></a>
 
 To add documentation for a request header, add a [DocumentationPart](https://docs.aws.amazon.com/apigateway/api-reference/resource/documentation-part/) resource for the request header\.
 
@@ -585,7 +585,7 @@ If successful, the operation returns a `201 Created` response containing the new
 }
 ```
 
-## Document a `RESPONSE` Entity<a name="api-gateway-documenting-api-quick-start-with-restapi-add-content-to-response"></a>
+## Document a `RESPONSE` entity<a name="api-gateway-documenting-api-quick-start-with-restapi-add-content-to-response"></a>
 
 To add documentation for a response of a status code, add a [DocumentationPart](https://docs.aws.amazon.com/apigateway/api-reference/resource/documentation-part/) resource targeted for the corresponding [MethodResponse](https://docs.aws.amazon.com/apigateway/api-reference/resource/method-response/) resource\.
 
@@ -635,7 +635,7 @@ If successful, the operation returns a `201 Created` response containing the new
 }
 ```
 
-## Document a `RESPONSE_HEADER` Entity<a name="api-gateway-documenting-api-quick-start-with-restapi-add-content-to-response-header"></a>
+## Document a `RESPONSE_HEADER` entity<a name="api-gateway-documenting-api-quick-start-with-restapi-add-content-to-response-header"></a>
 
 To add documentation for a response header, add a [DocumentationPart](https://docs.aws.amazon.com/apigateway/api-reference/resource/documentation-part/) resource for the response header\.
 
@@ -690,7 +690,7 @@ If successful, the operation returns a `201 Created` response containing the new
 
 The documentation of this `Content-Type` response header is the default documentation for the `Content-Type` headers of any responses of the API\. 
 
-## Document an `AUTHORIZER` Entity<a name="api-gateway-documenting-api-quick-start-with-restapi-add-content-to-authorizer"></a>
+## Document an `AUTHORIZER` entity<a name="api-gateway-documenting-api-quick-start-with-restapi-add-content-to-authorizer"></a>
 
 To add documentation for an API authorizer, add a [DocumentationPart](https://docs.aws.amazon.com/apigateway/api-reference/resource/documentation-part/) resource targeted for the specified authorizer\.
 
@@ -745,7 +745,7 @@ If successful, the operation returns a `201 Created` response containing the new
 **Note**  
 The [DocumentationPart](https://docs.aws.amazon.com/apigateway/api-reference/resource/documentation-part/) instance of an `AUTHORIZER` entity cannot be inherited by any of its child resources\.
 
-## Document a `MODEL` Entity<a name="api-gateway-documenting-api-quick-start-with-restapi-add-content-to-model"></a>
+## Document a `MODEL` entity<a name="api-gateway-documenting-api-quick-start-with-restapi-add-content-to-model"></a>
 
  Documenting a `MODEL` entity involves creating and managing `DocumentPart` instances for the model and each of the model's `properties`'\. For example, for the `Error` model that comes with every API by default has the following schema definition, 
 
@@ -846,7 +846,7 @@ Repeat the same step to create a DocumentationPart instance for any of the model
 **Note**  
 The [DocumentationPart](https://docs.aws.amazon.com/apigateway/api-reference/resource/documentation-part/) instance of a `MODEL` entity cannot be inherited by any of its child resources\.
 
-## Update Documentation Parts<a name="api-gateway-documenting-api-quick-start-with-restapi-update-content"></a>
+## Update documentation parts<a name="api-gateway-documenting-api-quick-start-with-restapi-update-content"></a>
 
  To update the documentation parts of any type of API entities, submit a PATCH request on a [DocumentationPart](https://docs.aws.amazon.com/apigateway/api-reference/resource/documentation-part/) instance of a specified part identifier to replace the existing `properties` map with a new one\. 
 
@@ -870,7 +870,7 @@ The successful response returns a `200 OK` status code with the payload containi
 
 You can update multiple documentation parts in a single `PATCH` request\.
 
-## List Documentation Parts<a name="api-gateway-documenting-api-quick-start-with-restapi-list-parts"></a>
+## List documentation parts<a name="api-gateway-documenting-api-quick-start-with-restapi-list-parts"></a>
 
  To list the documentation parts of any type of API entities, submit a GET request on a [DocumentationParts](https://docs.aws.amazon.com/apigateway/api-reference/resource/documentation-parts/) collection\. 
 

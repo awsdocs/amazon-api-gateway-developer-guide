@@ -1,16 +1,16 @@
-# Employee Record Example \(API Gateway Models and Mapping Templates\)<a name="example-employee"></a>
+# Employee record example \(API Gateway models and mapping templates\)<a name="example-employee"></a>
 
-The following sections provide examples of models and mapping templates that can be used for a sample employee record API in API Gateway\. For more information about models and mapping templates in API Gateway, see [Working with Models and Mapping Templates](models-mappings.md)\.
+The following sections provide examples of models and mapping templates that can be used for a sample employee record API in API Gateway\. For more information about models and mapping templates in API Gateway, see [Working with models and mapping templates](models-mappings.md)\.
 
 **Topics**
-+ [Original Data \(Employee Record Example\)](#example-employee-original-data)
-+ [Input Model \(Employee Record Example\)](#example-employee-input-model)
-+ [Input Mapping Template \(Employee Record Example\)](#example-employee-input-mapping)
-+ [Transformed Data \(Employee Record Example\)](#example-employee-transformed-data)
-+ [Output Model \(Employee Record Example\)](#example-employee-output-model)
-+ [Output Mapping Template \(Employee Record Example\)](#example-employee-output-mapping)
++ [Original data \(employee record example\)](#example-employee-original-data)
++ [Input model \(employee record example\)](#example-employee-input-model)
++ [Input mapping template \(employee record example\)](#example-employee-input-mapping)
++ [Transformed data \(employee record example\)](#example-employee-transformed-data)
++ [Output model \(employee record example\)](#example-employee-output-model)
++ [Output mapping template \(employee record example\)](#example-employee-output-mapping)
 
-## Original Data \(Employee Record Example\)<a name="example-employee-original-data"></a>
+## Original data \(employee record example\)<a name="example-employee-original-data"></a>
 
 The following is the original JSON data for the employee record example:
 
@@ -50,7 +50,7 @@ The following is the original JSON data for the employee record example:
 }
 ```
 
-## Input Model \(Employee Record Example\)<a name="example-employee-input-model"></a>
+## Input model \(employee record example\)<a name="example-employee-input-model"></a>
 
 The following is the input model that corresponds to the original JSON data for the employee record example:
 
@@ -117,7 +117,7 @@ The following is the input model that corresponds to the original JSON data for 
 }
 ```
 
-## Input Mapping Template \(Employee Record Example\)<a name="example-employee-input-mapping"></a>
+## Input mapping template \(employee record example\)<a name="example-employee-input-mapping"></a>
 
 The following is the input mapping template that corresponds to the original JSON data for the employee record example:
 
@@ -158,7 +158,7 @@ The following is the input mapping template that corresponds to the original JSO
 }
 ```
 
-## Transformed Data \(Employee Record Example\)<a name="example-employee-transformed-data"></a>
+## Transformed data \(employee record example\)<a name="example-employee-transformed-data"></a>
 
 The following is one example of how the original employee record example JSON data could be transformed for output:
 
@@ -197,7 +197,7 @@ The following is one example of how the original employee record example JSON da
 }
 ```
 
-## Output Model \(Employee Record Example\)<a name="example-employee-output-model"></a>
+## Output model \(employee record example\)<a name="example-employee-output-model"></a>
 
 The following is the output model that corresponds to the transformed JSON data format:
 
@@ -255,7 +255,7 @@ The following is the output model that corresponds to the transformed JSON data 
 }
 ```
 
-## Output Mapping Template \(Employee Record Example\)<a name="example-employee-output-mapping"></a>
+## Output mapping template \(employee record example\)<a name="example-employee-output-mapping"></a>
 
 The following is the output mapping template that corresponds to the transformed JSON data format\. The template variables here are based on the original, not transformed, JSON data format:
 

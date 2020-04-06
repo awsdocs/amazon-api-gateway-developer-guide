@@ -1,15 +1,15 @@
-# View a List of Models in API Gateway<a name="how-to-view-models-list"></a>
+# View a list of models in API Gateway<a name="how-to-view-models-list"></a>
 
 Use the API Gateway console to view a list of models\.
 
 **Topics**
 + [Prerequisites](#how-to-view-models-list-prerequisites)
-+ [View a List of Models with the API Gateway Console](#how-to-view-models-list-console)
++ [View a list of models with the API Gateway console](#how-to-view-models-list-console)
 
 ## Prerequisites<a name="how-to-view-models-list-prerequisites"></a>
-+ You must have at least one model in API Gateway\. Follow the instructions in [Create a Model](how-to-create-model.md)\.
++ You must have at least one model in API Gateway\. Follow the instructions in [Create a model](how-to-create-model.md)\.
 
-## View a List of Models with the API Gateway Console<a name="how-to-view-models-list-console"></a>
+## View a list of models with the API Gateway console<a name="how-to-view-models-list-console"></a>
 
 1. Sign in to the API Gateway console at [https://console\.aws\.amazon\.com/apigateway](https://console.aws.amazon.com/apigateway)\.
 

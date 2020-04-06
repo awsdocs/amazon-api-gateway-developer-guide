@@ -1,14 +1,14 @@
-# Update a Canary Release<a name="update-canary-deployment"></a>
+# Update a canary release<a name="update-canary-deployment"></a>
 
  After a canary release is deployed, you may want to adjust the percentage of the canary traffic or enable or disable the use of a stage cache to optimize the test performance\. You can also modify stage variables used in the canary release when the execution context is updated\. To make such updates, call the [https://docs.aws.amazon.com/apigateway/api-reference/link-relation/stage-update/](https://docs.aws.amazon.com/apigateway/api-reference/link-relation/stage-update/) operation with new values on [canarySettings](https://docs.aws.amazon.com/apigateway/api-reference/resource/stage/#canarySettings)\. 
 
 You can update a canary release using the API Gateway console, the AWS CLI [update\-stage](https://docs.aws.amazon.com/cli/latest/reference/apigateway/update-stage.html) command or an AWS SDK\.
 
 **Topics**
-+ [Update a Canary Release Using the API Gateway Console](#update-canary-deployment-using-console)
-+ [Update a Canary Release Using the AWS CLI](#update-canary-deployment-using-cli)
++ [Update a canary release using the API Gateway console](#update-canary-deployment-using-console)
++ [Update a canary release using the AWS CLI](#update-canary-deployment-using-cli)
 
-## Update a Canary Release Using the API Gateway Console<a name="update-canary-deployment-using-console"></a>
+## Update a canary release using the API Gateway console<a name="update-canary-deployment-using-console"></a>
 
 To use the API Gateway console to update existing canary settings on a stage, do the following:
 
@@ -26,7 +26,7 @@ To use the API Gateway console to update existing canary settings on a stage, do
 
 1.  Save the changes\.
 
-## Update a Canary Release Using the AWS CLI<a name="update-canary-deployment-using-cli"></a>
+## Update a canary release using the AWS CLI<a name="update-canary-deployment-using-cli"></a>
 
  To use the AWS CLI to update a canary, call the [https://docs.aws.amazon.com/cli/latest/reference/apigateway/update-stage.html](https://docs.aws.amazon.com/cli/latest/reference/apigateway/update-stage.html) command\.
 

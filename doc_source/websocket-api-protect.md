@@ -1,10 +1,10 @@
-# Protecting Your WebSocket API<a name="websocket-api-protect"></a>
+# Protecting your WebSocket API<a name="websocket-api-protect"></a>
 
  To prevent your API from being overwhelmed by too many requests, Amazon API Gateway throttles requests to your API using the [token bucket algorithm](https://en.wikipedia.org/wiki/Token_bucket), where a token counts for a request\. Specifically, API Gateway sets a limit on a steady\-state rate and a burst of request submissions against all APIs in your account\. In the token bucket algorithm, the burst is the maximum bucket size\. 
 
  When request submissions exceed the steady\-state request rate and burst limits, API Gateway fails the limit\-exceeding requests and returns `429 Too Many Requests` error responses to the client\. When a client receives these error responses, the client can resubmit the failed requests in a way that limits the rate, while complying with the API Gateway throttling limits\.
 
-## Account\-Level Throttling<a name="websocket-api-protect-throttling-account"></a>
+## Account\-level throttling<a name="websocket-api-protect-throttling-account"></a>
 
  By default, API Gateway limits the steady\-state request rate to 10,000 requests per second \(rps\)\. It limits the burst \(that is, the maximum bucket size\) to 5,000 requests across all APIs within an AWS account\. In API Gateway, the burst limit corresponds to the maximum number of concurrent request submissions that API Gateway can fulfill at any moment without returning `429 Too Many Requests` error responses\. 
 
@@ -23,8 +23,8 @@ In general, `Δ` varies in time\. The value ranges from zero when the bucket is 
 
 ![\[Burst as a function of time given the token bucket size and a combined burn rate\]](http://docs.aws.amazon.com/apigateway/latest/developerguide/images/tokenBucketBurst.png)
 
-The account\-level rate limit can be increased upon request\. To request an increase of account\-level throttling limits, contact the [AWS Support Center](https://console.aws.amazon.com/support/home#/)\. For more information, see [API Gateway Quotas](limits.md#api-gateway-limits)\. 
+The account\-level rate limit can be increased upon request\. To request an increase of account\-level throttling limits, contact the [AWS Support Center](https://console.aws.amazon.com/support/home#/)\. For more information, see [API Gateway quotas](limits.md#api-gateway-limits)\. 
 
-## Route\-Level Throttling<a name="websocket-api-protect-throttling-route"></a>
+## Route\-level throttling<a name="websocket-api-protect-throttling-route"></a>
 
 You can set route\-level throttling to override the account\-level request throttling limits for a specific stage or for individual routes in your API\. The default route throttling limits are bounded by the account\-level rate limits, even if you set the default route throttling limits higher than the account\-level limits\. 

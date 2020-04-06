@@ -1,14 +1,14 @@
-# Set up Lambda Proxy Integrations in API Gateway<a name="set-up-lambda-proxy-integrations"></a>
+# Set up Lambda proxy integrations in API Gateway<a name="set-up-lambda-proxy-integrations"></a>
 
 **Topics**
-+ [Understand API Gateway Lambda Proxy Integration](#api-gateway-create-api-as-simple-proxy)
-+ [Support for Multi\-Value Headers and Query String Parameters](#apigateway-multivalue-headers-and-parameters)
-+ [Set up a Proxy Resource with Lambda Proxy Integration](#api-gateway-set-up-lambda-proxy-integration-on-proxy-resource)
-+ [Set up Lambda Proxy Integration Using the AWS CLI](#set-up-lambda-proxy-integration-using-cli)
-+ [Input Format of a Lambda Function for Proxy Integration](#api-gateway-simple-proxy-for-lambda-input-format)
-+ [Output Format of a Lambda Function for Proxy Integration](#api-gateway-simple-proxy-for-lambda-output-format)
++ [Understand API Gateway Lambda proxy integration](#api-gateway-create-api-as-simple-proxy)
++ [Support for multi\-value headers and query string parameters](#apigateway-multivalue-headers-and-parameters)
++ [Set up a proxy resource with Lambda proxy integration](#api-gateway-set-up-lambda-proxy-integration-on-proxy-resource)
++ [Set up Lambda proxy integration using the AWS CLI](#set-up-lambda-proxy-integration-using-cli)
++ [Input format of a Lambda function for proxy integration](#api-gateway-simple-proxy-for-lambda-input-format)
++ [Output format of a Lambda function for proxy integration](#api-gateway-simple-proxy-for-lambda-output-format)
 
-## Understand API Gateway Lambda Proxy Integration<a name="api-gateway-create-api-as-simple-proxy"></a>
+## Understand API Gateway Lambda proxy integration<a name="api-gateway-create-api-as-simple-proxy"></a>
 
 Amazon API Gateway Lambda proxy integration is a simple, powerful, and nimble mechanism to build an API with a setup of a single API method\. The Lambda proxy integration allows the client to call a single Lambda function in the backend\. The function accesses many resources or features of other AWS services, including calling other Lambda functions\. 
 
@@ -34,15 +34,15 @@ Amazon API Gateway Lambda proxy integration is a simple, powerful, and nimble me
 
  To let customers search for any available product, its produce category, and the associated store department, you can expose a single method of `GET /{proxy+}` with read\-only permissions\. Similarly, to allow a supervisor to update the `produce` department's inventory, you can set up another single method of `PUT /produce/{proxy+}` with read/write permissions\. To allow a cashier to update the running total of a vegetable, you can set up a `POST /produce/vegetables/{proxy+}` method with read/write permissions\. To let a store manager perform any possible action on any available product, the online store developer can expose the `ANY /{proxy+}` method with read/write permissions\. In any case, at run time, the customer or the employee must select a particular product of a given type in a chosen department, a specific produce category in a chosen department, or a specific department\. 
 
-For more information about setting up API Gateway proxy integrations, see [Set up a Proxy Integration with a Proxy Resource](api-gateway-set-up-simple-proxy.md)\. 
+For more information about setting up API Gateway proxy integrations, see [Set up a proxy integration with a proxy resource](api-gateway-set-up-simple-proxy.md)\. 
 
  Proxy integration requires that the client have more detailed knowledge of the backend requirements\. Therefore, to ensure optimal app performance and user experience, the backend developer must communicate clearly to the client developer the requirements of the backend, and provide a robust error feedback mechanism when the requirements are not met\. 
 
-## Support for Multi\-Value Headers and Query String Parameters<a name="apigateway-multivalue-headers-and-parameters"></a>
+## Support for multi\-value headers and query string parameters<a name="apigateway-multivalue-headers-and-parameters"></a>
 
-API Gateway supports multiple headers and query string parameters that have the same name\. Multi\-value headers as well as single\-value headers and parameters can be combined in the same requests and responses\. For more information, see [Input Format of a Lambda Function for Proxy Integration](#api-gateway-simple-proxy-for-lambda-input-format) and [Output Format of a Lambda Function for Proxy Integration](#api-gateway-simple-proxy-for-lambda-output-format)\.
+API Gateway supports multiple headers and query string parameters that have the same name\. Multi\-value headers as well as single\-value headers and parameters can be combined in the same requests and responses\. For more information, see [Input format of a Lambda function for proxy integration](#api-gateway-simple-proxy-for-lambda-input-format) and [Output format of a Lambda function for proxy integration](#api-gateway-simple-proxy-for-lambda-output-format)\.
 
-## Set up a Proxy Resource with Lambda Proxy Integration<a name="api-gateway-set-up-lambda-proxy-integration-on-proxy-resource"></a>
+## Set up a proxy resource with Lambda proxy integration<a name="api-gateway-set-up-lambda-proxy-integration-on-proxy-resource"></a>
 
 To set up a proxy resource with the Lambda proxy integration type, create an API resource with a greedy path parameter \(for example, `/parent/{proxy+}`\) and integrate this resource with a Lambda function backend \(for example, `arn:aws:lambda:us-west-2:123456789012:function:SimpleLambda4ProxyResource`\) on the `ANY` method\. The greedy path parameter must be at the end of the API resource path\. As with a non\-proxy resource, you can set up the proxy resource by using the API Gateway console, importing an OpenAPI definition file, or calling the API Gateway REST API directly\.
 
@@ -156,16 +156,16 @@ The following OpenAPI API definition file shows an example of an API with a prox
 
 ------
 
-In Lambda proxy integration, at run time, API Gateway maps an incoming request into the input `event` parameter of the Lambda function\. The input includes the request method, path, headers, any query string parameters, any payload, associated context, and any defined stage variables\. The input format is explained in [Input Format of a Lambda Function for Proxy Integration](#api-gateway-simple-proxy-for-lambda-input-format)\. For API Gateway to map the Lambda output to HTTP responses successfully, the Lambda function must output the result in the format described in [Output Format of a Lambda Function for Proxy Integration](#api-gateway-simple-proxy-for-lambda-output-format)\. 
+In Lambda proxy integration, at run time, API Gateway maps an incoming request into the input `event` parameter of the Lambda function\. The input includes the request method, path, headers, any query string parameters, any payload, associated context, and any defined stage variables\. The input format is explained in [Input format of a Lambda function for proxy integration](#api-gateway-simple-proxy-for-lambda-input-format)\. For API Gateway to map the Lambda output to HTTP responses successfully, the Lambda function must output the result in the format described in [Output format of a Lambda function for proxy integration](#api-gateway-simple-proxy-for-lambda-output-format)\. 
 
 In Lambda proxy integration of a proxy resource through the `ANY` method, the single backend Lambda function serves as the event handler for all requests through the proxy resource\. For example, to log traffic patterns, you can have a mobile device send its location information of state, city, street, and building by submitting a request with `/state/city/street/house` in the URL path for the proxy resource\. The backend Lambda function can then parse the URL path and insert the location tuples into a DynamoDB table\.
 
-## Set up Lambda Proxy Integration Using the AWS CLI<a name="set-up-lambda-proxy-integration-using-cli"></a>
+## Set up Lambda proxy integration using the AWS CLI<a name="set-up-lambda-proxy-integration-using-cli"></a>
 
 In this section, we show how to use AWS CLI to set up an API with the Lambda proxy integration\. 
 
 **Note**  
-For detailed instructions for using the API Gateway console to configure a proxy resource with the Lambda proxy integration, see [TUTORIAL: Build a Hello World API with Lambda Proxy Integration](api-gateway-create-api-as-simple-proxy-for-lambda.md)\.
+For detailed instructions for using the API Gateway console to configure a proxy resource with the Lambda proxy integration, see [Tutorial: Build a Hello World API with Lambda proxy integration](api-gateway-create-api-as-simple-proxy-for-lambda.md)\.
 
 As an example, we use the following sample Lambda function as the backend of the API:
 
@@ -300,7 +300,7 @@ Comparing this to [the Lambda custom integration setup](set-up-lambda-custom-int
            --credentials arn:aws:iam::123456789012:role/apigAwsProxyRole
    ```
 **Important**  
-For Lambda integrations, you must use the HTTP method of `POST` for the integration request, according to the [specification of the Lambda service action for function invocations](https://docs.aws.amazon.com/lambda/latest/dg/API_Invoke.html)\. The IAM role of `apigAwsProxyRole` must have policies allowing the `apigateway` service to invoke Lambda functions\. For more information about IAM permissions, see [ API Gateway Permissions Model for Invoking an API](permissions.md#api-gateway-control-access-iam-permissions-model-for-calling-api)\.
+For Lambda integrations, you must use the HTTP method of `POST` for the integration request, according to the [specification of the Lambda service action for function invocations](https://docs.aws.amazon.com/lambda/latest/dg/API_Invoke.html)\. The IAM role of `apigAwsProxyRole` must have policies allowing the `apigateway` service to invoke Lambda functions\. For more information about IAM permissions, see [ API Gateway permissions model for invoking an API](permissions.md#api-gateway-control-access-iam-permissions-model-for-calling-api)\.
 
    The successful output is similar to the following:
 
@@ -360,7 +360,7 @@ For Lambda integrations, you must use the HTTP method of `POST` for the integrat
    Hello, jane!
    ```
 
-## Input Format of a Lambda Function for Proxy Integration<a name="api-gateway-simple-proxy-for-lambda-input-format"></a>
+## Input format of a Lambda function for proxy integration<a name="api-gateway-simple-proxy-for-lambda-input-format"></a>
 
 In Lambda proxy integration, API Gateway maps the entire client request to the input `event` parameter of the backend Lambda function as follows: 
 
@@ -581,7 +581,7 @@ The following shows an example of a `requestContext` that is passed to a Lambda 
 }
 ```
 
-## Output Format of a Lambda Function for Proxy Integration<a name="api-gateway-simple-proxy-for-lambda-output-format"></a>
+## Output format of a Lambda function for proxy integration<a name="api-gateway-simple-proxy-for-lambda-output-format"></a>
 
 In Lambda proxy integration, API Gateway requires the backend Lambda function to return output according to the following JSON format:
 
@@ -604,7 +604,7 @@ In the output:
 To enable CORS for the Lambda proxy integration, you must add `Access-Control-Allow-Origin:domain-name` to the output `headers`\. `domain-name` can be `*` for any domain name\. The output `body` is marshalled to the frontend as the method response payload\. If `body` is a binary blob, you can encode it as a Base64\-encoded string by setting `isBase64Encoded` to `true` and configuring `*/*` as a **Binary Media Type**\. Otherwise, you can set it to `false` or leave it unspecified\.
 
 **Note**  
-For more information about enabling binary support, see [Enabling Binary Support Using the API Gateway Console](api-gateway-payload-encodings-configure-with-console.md)\.
+For more information about enabling binary support, see [Enabling binary support using the API Gateway console](api-gateway-payload-encodings-configure-with-console.md)\.
 
 If the function output is of a different format, API Gateway returns a `502 Bad Gateway` error response\. 
 

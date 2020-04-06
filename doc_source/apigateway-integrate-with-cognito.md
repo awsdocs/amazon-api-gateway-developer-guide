@@ -1,4 +1,4 @@
-# Control Access to a REST API Using Amazon Cognito User Pools as Authorizer<a name="apigateway-integrate-with-cognito"></a>
+# Control access to a REST API using Amazon Cognito User Pools as authorizer<a name="apigateway-integrate-with-cognito"></a>
 
 As an alternative to using [IAM roles and policies](permissions.md) or [Lambda authorizers](apigateway-use-lambda-authorizer.md) \(formerly known as custom authorizers\), you can use an [Amazon Cognito user pool](https://docs.aws.amazon.com/cognito/latest/developerguide/cognito-user-identity-pools.html) to control who can access your API in Amazon API Gateway\. 
 
@@ -23,8 +23,8 @@ To let a user sign in using Amazon Cognito credentials and also obtain temporary
 In this section, we describe how to create a user pool, how to integrate an API Gateway API with the user pool, and how to invoke an API that's integrated with the user pool\. 
 
 **Topics**
-+ [Obtain Permissions to Create Amazon Cognito User Pool Authorizers for a REST API](apigateway-user-pool-authorizer-permissions.md)
-+ [Create an Amazon Cognito User Pool for a REST API](apigateway-create-cognito-user-pool.md)
-+ [Integrate a REST API with an Amazon Cognito User Pool](apigateway-enable-cognito-user-pool.md)
-+ [Call a REST API Integrated with an Amazon Cognito User Pool](apigateway-invoke-api-integrated-with-cognito-user-pool.md)
-+ [Configure Cross\-Account Amazon Cognito Authorizer for a REST API Using the API Gateway Console](apigateway-cross-account-cognito-authorizer.md)
++ [Obtain permissions to create Amazon Cognito user pool authorizers for a REST API](apigateway-user-pool-authorizer-permissions.md)
++ [Create an Amazon Cognito user pool for a REST API](apigateway-create-cognito-user-pool.md)
++ [Integrate a REST API with an Amazon Cognito user pool](apigateway-enable-cognito-user-pool.md)
++ [Call a REST API integrated with an Amazon Cognito user pool](apigateway-invoke-api-integrated-with-cognito-user-pool.md)
++ [Configure cross\-account Amazon Cognito authorizer for a REST API using the API Gateway console](apigateway-cross-account-cognito-authorizer.md)

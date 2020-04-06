@@ -1,4 +1,4 @@
-# Working with Binary Media Types for REST APIs<a name="api-gateway-payload-encodings"></a>
+# Working with binary media types for REST APIs<a name="api-gateway-payload-encodings"></a>
 
  In API Gateway, the API request and response can have a text or binary payload\. A text payload is a `UTF-8`\-encoded JSON string, and a binary payload is anything other than a text payload\. The binary payload can be, for example, a JPEG file, a GZip file, or an XML file\. 
 
@@ -20,8 +20,8 @@ When a request contains multiple media types in its `Accept` header, API Gateway
 For example, to send a JPEG file using an `<img>` element in a browser, the browser might send `Accept:image/webp,image/*,*/*;q=0.8` in a request\. By adding `image/webp` to the `binaryMediaTypes` list, the endpoint receives the JPEG file as binary\. 
 
 **Topics**
-+ [Content Type Conversions in API Gateway](api-gateway-payload-encodings-workflow.md)
-+ [Enabling Binary Support Using the API Gateway Console](api-gateway-payload-encodings-configure-with-console.md)
-+ [Enabling Binary Support Using the API Gateway REST API](api-gateway-payload-encodings-configure-with-control-service-api.md)
-+ [Import and Export Content Encodings](api-gateway-payload-encodings-import-and-export.md)
-+ [Examples of Binary Support](api-gateway-content-encodings-examples.md)
++ [Content type conversions in API Gateway](api-gateway-payload-encodings-workflow.md)
++ [Enabling binary support using the API Gateway console](api-gateway-payload-encodings-configure-with-console.md)
++ [Enabling binary support using the API Gateway REST API](api-gateway-payload-encodings-configure-with-control-service-api.md)
++ [Import and export content encodings](api-gateway-payload-encodings-import-and-export.md)
++ [Examples of binary support](api-gateway-content-encodings-examples.md)

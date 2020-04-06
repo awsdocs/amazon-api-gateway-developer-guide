@@ -1,15 +1,15 @@
-# How API Gateway Resource Policies Affect Authorization Workflow<a name="apigateway-authorization-flow"></a>
+# How API Gateway resource policies affect authorization workflow<a name="apigateway-authorization-flow"></a>
 
 When API Gateway evaluates the resource policy attached to your API, the result is affected by the authentication type that you have defined for the API, as illustrated in the flowcharts in the following sections\.
 
 **Topics**
-+ [API Gateway Resource Policy Only](#apigateway-authorization-flow-resource-policy-only)
-+ [Lambda Authorizer and Resource Policy](#apigateway-authorization-flow-lambda)
-+ [IAM Authentication and Resource Policy](#apigateway-authorization-flow-iam)
-+ [Amazon Cognito Authentication and Resource Policy](#apigateway-authorization-flow-cognito)
-+ [Policy Evaluation Outcome Tables](#apigateway-resource-policies-iam-policies-interaction)
++ [API Gateway resource policy only](#apigateway-authorization-flow-resource-policy-only)
++ [Lambda authorizer and resource policy](#apigateway-authorization-flow-lambda)
++ [IAM authentication and resource policy](#apigateway-authorization-flow-iam)
++ [Amazon Cognito authentication and resource policy](#apigateway-authorization-flow-cognito)
++ [Policy evaluation outcome tables](#apigateway-resource-policies-iam-policies-interaction)
 
-## API Gateway Resource Policy Only<a name="apigateway-authorization-flow-resource-policy-only"></a>
+## API Gateway resource policy only<a name="apigateway-authorization-flow-resource-policy-only"></a>
 
 In this workflow, an API Gateway resource policy is attached to the API, but no authentication type is defined for the API\. Evaluation of the policy involves seeking an explicit allow based on the inbound criteria of the caller\. An implicit denial or any explicit denial results in denying the caller\.
 
@@ -36,7 +36,7 @@ The following is an example of such a resource policy\.
 }
 ```
 
-## Lambda Authorizer and Resource Policy<a name="apigateway-authorization-flow-lambda"></a>
+## Lambda authorizer and resource policy<a name="apigateway-authorization-flow-lambda"></a>
 
 In this workflow, a Lambda authorizer is configured for the API in addition to a resource policy\. The resource policy is evaluated in two phases\. Before calling the Lambda authorizer, API Gateway first evaluates the policy and checks for any explicit denials\. If found, the caller is denied access immediately\. Otherwise, the Lambda authorizer is called, and it returns a [policy document](api-gateway-lambda-authorizer-output.md), which is evaluated in conjunction with the resource policy\. The result is determined based on [Table A](#apigateway-resource-policies-iam-policies-interaction) \(near the end of this topic\)\.
 
@@ -65,7 +65,7 @@ The following example resource policy allows calls only from the VPC endpoint wh
 }
 ```
 
-## IAM Authentication and Resource Policy<a name="apigateway-authorization-flow-iam"></a>
+## IAM authentication and resource policy<a name="apigateway-authorization-flow-iam"></a>
 
 In this workflow, IAM authentication is configured for the API in addition to a resource policy\. After authenticating the user with the IAM service, the policies attached to the IAM user in addition to the resource policy are evaluated together\. The outcome varies based on whether the caller is in the same account, or a separate AWS account, from the API owner\. 
 
@@ -96,7 +96,7 @@ The following is an example of a cross\-account resource policy\. Assuming the I
 }
 ```
 
-## Amazon Cognito Authentication and Resource Policy<a name="apigateway-authorization-flow-cognito"></a>
+## Amazon Cognito authentication and resource policy<a name="apigateway-authorization-flow-cognito"></a>
 
 In this workflow, an [Amazon Cognito user pool](apigateway-integrate-with-cognito.md) is configured for the API in addition to a resource policy\. API Gateway first attempts to authenticate the caller through Amazon Cognito\. This is typically performed through a [JWT token](https://docs.aws.amazon.com/cognito/latest/developerguide/amazon-cognito-user-pools-using-tokens-with-identity-providers.html) that is provided by the caller\. If authentication is successful, the resource policy is evaluated independently, and an explicit allow is required\. A deny or "neither allow or deny" results in a deny\. The following is an example of a resource policy that might be used together with Amazon Cognito user pools\.
 
@@ -123,14 +123,14 @@ The following is an example of a resource policy that allows calls only from spe
 }
 ```
 
-## Policy Evaluation Outcome Tables<a name="apigateway-resource-policies-iam-policies-interaction"></a>
+## Policy evaluation outcome tables<a name="apigateway-resource-policies-iam-policies-interaction"></a>
 
 Table A lists the resulting behavior when access to an API Gateway API is controlled by an IAM policy \(or a Lambda or Amazon Cognito user pools authorizer\) and an API Gateway resource policy, both of which are in the same AWS account\.
 
 
 **Table A: Account A Calls API Owned by Account A**  
 
-| IAM User Policy \(or Lambda or Amazon Cognito User Pools Authorizer\) | API Gateway Resource Policy | Resulting Behavior | 
+| IAM user policy \(or Lambda or Amazon Cognito user pools authorizer\) | API Gateway resource policy | Resulting behavior | 
 | --- | --- | --- | 
 | Allow | Allow | Allow | 
 | Allow | Neither Allow nor Deny | Allow | 
@@ -147,7 +147,7 @@ Table B lists the resulting behavior when access to an API Gateway API is contro
 
 **Table B: Account B Calls API Owned by Account A**  
 
-| IAM User Policy \(or Lambda or Amazon Cognito User Pools Authorizer\) | API Gateway Resource Policy | Resulting Behavior | 
+| IAM user policy \(or Lambda or Amazon Cognito user pools authorizer\) | API Gateway resource policy | Resulting behavior | 
 | --- | --- | --- | 
 | Allow | Allow | Allow | 
 | Allow | Neither Allow nor Deny | Implicit Deny | 

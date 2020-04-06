@@ -1,4 +1,4 @@
-# Enable Payload Compression for an API<a name="api-gateway-enable-compression"></a>
+# Enable payload compression for an API<a name="api-gateway-enable-compression"></a>
 
 You can enable compression for an API using the API Gateway console, the AWS CLI, or an AWS SDK\.
 
@@ -8,11 +8,11 @@ For an existing API, you must deploy the API after enabling the compression in o
 The highest\-priority content encoding must be one supported by API Gateway\. If it is not, compression is not applied to the response payload\.
 
 **Topics**
-+ [Enable Payload Compression for an API Using the API Gateway Console](#api-gateway-enable-compression-console)
-+ [Enable Payload Compression for an API Using AWS CLI](#api-gateway-enable-compression-cli)
-+ [Content Codings Supported by API Gateway](#api-gateway-supported-content-encodings)
++ [Enable payload compression for an API using the API Gateway console](#api-gateway-enable-compression-console)
++ [Enable payload compression for an API using AWS CLI](#api-gateway-enable-compression-cli)
++ [Content codings supported by API Gateway](#api-gateway-supported-content-encodings)
 
-## Enable Payload Compression for an API Using the API Gateway Console<a name="api-gateway-enable-compression-console"></a>
+## Enable payload compression for an API using the API Gateway console<a name="api-gateway-enable-compression-console"></a>
 
 The following procedure describes how to enable payload compression for an API\. 
 
@@ -28,7 +28,7 @@ The following procedure describes how to enable payload compression for an API\.
 
 1. Choose **Save Changes**\.
 
-## Enable Payload Compression for an API Using AWS CLI<a name="api-gateway-enable-compression-cli"></a>
+## Enable payload compression for an API using AWS CLI<a name="api-gateway-enable-compression-cli"></a>
 
 To use the AWS CLI to create a new API and enable compression, call the [https://docs.aws.amazon.com/cli/latest/reference/apigateway/create-rest-api.html](https://docs.aws.amazon.com/cli/latest/reference/apigateway/create-rest-api.html) command as follows:
 
@@ -58,7 +58,7 @@ aws apigateway update-rest-api \
 
 You can also set `value` to an empty string `""` or omit the `value` property altogether in the preceding call\.
 
-## Content Codings Supported by API Gateway<a name="api-gateway-supported-content-encodings"></a>
+## Content codings supported by API Gateway<a name="api-gateway-supported-content-encodings"></a>
 
 API Gateway supports the following content codings:
 + `deflate`

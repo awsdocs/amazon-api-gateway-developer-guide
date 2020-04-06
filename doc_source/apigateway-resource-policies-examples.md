@@ -1,6 +1,6 @@
-# API Gateway Resource Policy Examples<a name="apigateway-resource-policies-examples"></a>
+# API Gateway resource policy examples<a name="apigateway-resource-policies-examples"></a>
 
-This page presents a few examples of typical use cases for API Gateway resource policies\. The policies use *account\-id* and *api\-id* strings in the resource value\. To test these policies, you need to replace these strings with your own account ID and API ID\. For information about access policy language, see [Access Policy Language Overview for Amazon API Gateway](apigateway-control-access-policy-language-overview.md)\.
+This page presents a few examples of typical use cases for API Gateway resource policies\. The policies use *account\-id* and *api\-id* strings in the resource value\. To test these policies, you need to replace these strings with your own account ID and API ID\. For information about access policy language, see [Access policy language overview for Amazon API Gateway](apigateway-control-access-policy-language-overview.md)\.
 
 **Topics**
 + [Example: Allow users in another AWS account to use an API](#apigateway-resource-policies-cross-account-example)

@@ -1,4 +1,4 @@
-# Handle Lambda Errors in API Gateway<a name="handle-errors-in-lambda-integration"></a>
+# Handle Lambda errors in API Gateway<a name="handle-errors-in-lambda-integration"></a>
 
  For Lambda custom integrations, you must map errors returned by Lambda in the integration response to standard HTTP error responses for your clients\. Otherwise, Lambda errors are returned as `200 OK` responses by default and the result is not intuitive for your API users\. 
 
@@ -18,10 +18,10 @@
 In this output, `statusCode` is typically `4XX` for a client error and `5XX` for a server error\. API Gateway handles these errors by mapping the Lambda error to an HTTP error response, according to the specified `statusCode`\. For API Gateway to pass the error type \(for example, `InvalidParameterException`\), as part of the response to the client, the Lambda function must include a header \(for example, `"X-Amzn-ErrorType":"InvalidParameterException"`\) in the `headers` property\. 
 
 **Topics**
-+ [Handle Standard Lambda Errors in API Gateway](#handle-standard-errors-in-lambda-integration)
-+ [Handle Custom Lambda Errors in API Gateway](#handle-custom-errors-in-lambda-integration)
++ [Handle standard Lambda errors in API Gateway](#handle-standard-errors-in-lambda-integration)
++ [Handle custom Lambda errors in API Gateway](#handle-custom-errors-in-lambda-integration)
 
-## Handle Standard Lambda Errors in API Gateway<a name="handle-standard-errors-in-lambda-integration"></a>
+## Handle standard Lambda errors in API Gateway<a name="handle-standard-errors-in-lambda-integration"></a>
 
 A standard AWS Lambda error has the following format:
 
@@ -105,7 +105,7 @@ aws apigateway put-integration-response --rest-api-id z0vprf0mdh --resource-id x
 
 To set the `selectionPattern` expression using the API Gateway console, type the expression in the **Lambda Error Regex** text box when setting up or updating an integration response of a specified HTTP status code\. 
 
-## Handle Custom Lambda Errors in API Gateway<a name="handle-custom-errors-in-lambda-integration"></a>
+## Handle custom Lambda errors in API Gateway<a name="handle-custom-errors-in-lambda-integration"></a>
 
  Instead of the standard error described in the preceding section, AWS Lambda allows you to return a custom error object as JSON string\. The error can be any valid JSON object\. For example, the following JavaScript \(Node\.js\) Lambda function returns a custom error: 
 

@@ -1,4 +1,4 @@
-# Use `wscat` to Connect to a WebSocket API and Send Messages to It<a name="apigateway-how-to-call-websocket-api-wscat"></a>
+# Use `wscat` to connect to a WebSocket API and send messages to it<a name="apigateway-how-to-call-websocket-api-wscat"></a>
 
 The `[wscat](https://www.npmjs.com/package/wscat)` utility is a convenient tool for testing a WebSocket API that you have created and deployed in API Gateway\. You can install and use `wscat` as follows:
 

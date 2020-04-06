@@ -1,4 +1,4 @@
-# Creating a Lambda `REQUEST` Authorizer Function<a name="apigateway-websocket-api-lambda-auth"></a>
+# Creating a Lambda `REQUEST` authorizer function<a name="apigateway-websocket-api-lambda-auth"></a>
 
 A Lambda authorizer function in WebSocket APIs is similar to that for [REST APIs](apigateway-use-lambda-authorizer.md#api-gateway-lambda-authorizer-lambda-function-create), with the following exceptions:
 + You cannot use path variables \(`event.pathParameters`\), because the path is fixed\.
@@ -9,7 +9,7 @@ A Lambda authorizer function in WebSocket APIs is similar to that for [REST APIs
   ```
 + The context variables in `event.requestContext` are different from those for REST APIs\.
 
-The following example Lambda authorizer function is a WebSocket version of the Lambda authorizer function for REST APIs in [Create an API Gateway Lambda Authorizer Function in the Lambda Console](apigateway-use-lambda-authorizer.md#api-gateway-lambda-authorizer-lambda-function-create):
+The following example Lambda authorizer function is a WebSocket version of the Lambda authorizer function for REST APIs in [Create an API Gateway Lambda authorizer function in the Lambda console](apigateway-use-lambda-authorizer.md#api-gateway-lambda-authorizer-lambda-function-create):
 
 ```
 exports.handler = function(event, context, callback) {        

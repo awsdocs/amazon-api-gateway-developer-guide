@@ -9,6 +9,6 @@ To control how clients call an API, use [IAM permissions](permissions.md), a [La
  You can perform these and other tasks by using the API Gateway console, the API Gateway REST API, the AWS CLI, or one of the AWS SDKs\. We discuss how to perform these tasks next\. 
 
 **Topics**
-+ [Choose an Endpoint Type to Set up for an API Gateway API](api-gateway-api-endpoint-types.md)
-+ [Initialize REST API Setup in API Gateway](create-api-resources-methods.md)
-+ [Set up REST API Methods in API Gateway](how-to-method-settings.md)
++ [Choose an endpoint type to set up for an API Gateway API](api-gateway-api-endpoint-types.md)
++ [Initialize REST API setup in API Gateway](create-api-resources-methods.md)
++ [Set up REST API methods in API Gateway](how-to-method-settings.md)

@@ -1,4 +1,4 @@
-# Set up Lambda Custom Integrations in API Gateway<a name="set-up-lambda-custom-integrations"></a>
+# Set up Lambda custom integrations in API Gateway<a name="set-up-lambda-custom-integrations"></a>
 
  To show how to set up the Lambda custom integration, we create an API Gateway API to expose the `GET /greeting?greeter={name}` method to invoke a Lambda function\. The function responds with a message of `"Hello, {name}!"` if the `greeter` parameter value is a non\-empty string\. It returns a message of `"Hello, World!"` if the `greeter` value is an empty string\. The function returns an error message of `"Missing the required greeter parameter."` if the greeter parameter is not set in the incoming request\. We name the function `HelloWorld`\.
 

@@ -1,15 +1,15 @@
-# x\-amazon\-apigateway\-gateway\-responses\.responseParameters Object<a name="api-gateway-swagger-extensions-gateway-responses.responseParameters"></a>
+# x\-amazon\-apigateway\-gateway\-responses\.responseParameters object<a name="api-gateway-swagger-extensions-gateway-responses.responseParameters"></a>
 
 Defines a string\-to\-string map of key\-value pairs to generate gateway response parameters from the incoming request parameters or using literal strings\. 
 
 
 **Properties**  
 
-| Property Name | Type | Description | 
+| Property name | Type | Description | 
 | --- | --- | --- | 
-| gatewayresponse\.param\-position\.param\-name | string |  `param-position` can be `header`, `path`, or `querystring`\. For more information, see [Map Method Request Data to Integration Request Parameters](request-response-data-mappings.md#mapping-request-parameters)\.  | 
+| gatewayresponse\.param\-position\.param\-name | string |  `param-position` can be `header`, `path`, or `querystring`\. For more information, see [Map method request data to integration request parameters](request-response-data-mappings.md#mapping-request-parameters)\.  | 
 
-## x\-amazon\-apigateway\-gateway\-responses\.repsonseParameters Example<a name="api-gateway-swagger-extensions-gateway-responses.repsonseParameters-example"></a>
+## x\-amazon\-apigateway\-gateway\-responses\.repsonseParameters example<a name="api-gateway-swagger-extensions-gateway-responses.repsonseParameters-example"></a>
 
  The following OpenAPI extensions example shows a [GatewayResponse](https://docs.aws.amazon.com/apigateway/api-reference/resource/gateway-response/) response parameter mapping expression to enable CORS support for resources on the `*.example.domain` domains\. 
 

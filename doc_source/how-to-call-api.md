@@ -14,14 +14,14 @@ where *\{restapi\_id\}* is the API identifier, *\{region\}* is the Region, and *
 Before you can invoke an API, you must deploy it in API Gateway\. To do that, follow the instructions in [Deploying a REST API in Amazon API Gateway](how-to-deploy-api.md)\. 
 
 **Topics**
-+ [Obtain an API's Invoke URL in the API Gateway Console](#apigateway-how-to-call-rest-api)
-+ [Use the API Gateway Console to Test a REST API Method](how-to-test-method.md)
-+ [Use Postman to Call a REST API](how-to-use-postman-to-call-api.md)
-+ [Call REST API through Generated SDKs](how-to-call-api-using-generated-sdk.md)
-+ [Call REST API through AWS Amplify JavaScript Library](how-to-call-api-using-aws-amplify-javascript-library.md)
-+ [How to Invoke a Private API](apigateway-private-api-test-invoke-url.md)
++ [Obtain an API's invoke URL in the API Gateway console](#apigateway-how-to-call-rest-api)
++ [Use the API Gateway console to test a REST API method](how-to-test-method.md)
++ [Use Postman to call a REST API](how-to-use-postman-to-call-api.md)
++ [Call REST API through generated SDKs](how-to-call-api-using-generated-sdk.md)
++ [Call REST API through AWS Amplify JavaScript library](how-to-call-api-using-aws-amplify-javascript-library.md)
++ [How to invoke a private API](apigateway-private-api-test-invoke-url.md)
 
-## Obtain an API's Invoke URL in the API Gateway Console<a name="apigateway-how-to-call-rest-api"></a>
+## Obtain an API's invoke URL in the API Gateway console<a name="apigateway-how-to-call-rest-api"></a>
 
 You can find a REST API's root URL in the **Stage Editor** for the API in the API Gateway console\. It's listed as the **Invoke URL** at the top\. If the API's root resource exposes a `GET` method without requiring user authentication, you can call the method by clicking the **Invoke URL** link\. You can also construct this root URL by combining the `host` and `basePath` fields of an exported OpenAPI definition file of the API\. 
 

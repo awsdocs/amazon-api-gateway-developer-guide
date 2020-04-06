@@ -1,32 +1,32 @@
-# Create a REST API with Lambda Integrations in Amazon API Gateway<a name="apigateway-getting-started-with-rest-apis"></a>
+# Create a REST API with Lambda integrations in Amazon API Gateway<a name="apigateway-getting-started-with-rest-apis"></a>
 
 You can use this walkthrough to create and deploy a REST API with a Lambda proxy integration and a Lambda non\-proxy integration in Amazon API Gateway\.
 
 In a Lambda integration, the HTTP method request from the client is mapped to a backend [Lambda function invocation](https://docs.aws.amazon.com/lambda/latest/dg/API_Invoke.html)\.
 
-In a *Lambda proxy integration*, the entire client request is sent to the backend Lambda function as is, except that the order of the request parameters isn't preserved\. API Gateway maps the entire client request to the input `event` parameter of the backend Lambda function\. The Lambda function's output, including status code, headers, and body, is returned to the client as is\. For many use cases, this is the preferred integration type\. For more information, see [Set up Lambda Proxy Integrations in API Gateway](set-up-lambda-proxy-integrations.md)\.
+In a *Lambda proxy integration*, the entire client request is sent to the backend Lambda function as is, except that the order of the request parameters isn't preserved\. API Gateway maps the entire client request to the input `event` parameter of the backend Lambda function\. The Lambda function's output, including status code, headers, and body, is returned to the client as is\. For many use cases, this is the preferred integration type\. For more information, see [Set up Lambda proxy integrations in API Gateway](set-up-lambda-proxy-integrations.md)\.
 
-In a *Lambda non\-proxy integration* \(also called a "custom integration"\), you configure the way the parameters, headers, and body of the client's request are translated into the format that your backend Lambda function requires\. And you configure the way the Lambda function output is translated back to the format that's required by the client\. For more information, see [Set up Lambda Custom Integrations in API Gateway](set-up-lambda-custom-integrations.md)\.
+In a *Lambda non\-proxy integration* \(also called a "custom integration"\), you configure the way the parameters, headers, and body of the client's request are translated into the format that your backend Lambda function requires\. And you configure the way the Lambda function output is translated back to the format that's required by the client\. For more information, see [Set up Lambda custom integrations in API Gateway](set-up-lambda-custom-integrations.md)\.
 
 Depending on your use case, you may choose to use Lambda proxy integration, Lambda non\-proxy integration, or both in your API Gateway API\.
 
 **Topics**
-+ [Step 1: Create a Lambda Function in the Lambda Console](#apigateway-getting-started-rest-step-1)
-+ [Step 2: Create a REST API in the API Gateway Console](#apigateway-getting-started-rest-step-2)
-+ [Step 3: Deploy Your REST API in the API Gateway Console](#apigateway-getting-started-rest-step-3)
-+ [Step 4: Create a Second Lambda Function in the Lambda Console](#apigateway-getting-started-rest-step-4)
-+ [Step 5: Add a Resource, Method, and Parameter to the REST API in the API Gateway Console](#apigateway-getting-started-rest-step-5)
-+ [Next Steps](#apigateway-getting-started-rest-next-steps)
++ [Step 1: Create a Lambda function in the Lambda console](#apigateway-getting-started-rest-step-1)
++ [Step 2: Create a REST API in the API Gateway console](#apigateway-getting-started-rest-step-2)
++ [Step 3: Deploy your REST API in the API Gateway console](#apigateway-getting-started-rest-step-3)
++ [Step 4: Create a second Lambda function in the Lambda console](#apigateway-getting-started-rest-step-4)
++ [Step 5: Add a resource, method, and parameter to the REST API in the API Gateway console](#apigateway-getting-started-rest-step-5)
++ [Next steps](#apigateway-getting-started-rest-next-steps)
 
-## Step 1: Create a Lambda Function in the Lambda Console<a name="apigateway-getting-started-rest-step-1"></a>
+## Step 1: Create a Lambda function in the Lambda console<a name="apigateway-getting-started-rest-step-1"></a>
 
 In this step, you use the AWS Lambda console to create a simple Lambda function\. You'll use this function in the following steps\.
 
-1. If you haven't already done so, complete the steps in [Prerequisites: Get Ready to Build an API in API Gateway](setting-up.md)\.
+1. If you haven't already done so, complete the steps in [Prerequisites: Get ready to build an API in API Gateway](setting-up.md)\.
 
 1. Complete the steps in [To create a Lambda function](https://docs.aws.amazon.com/lambda/latest/dg/getting-started-create-function.html) in the AWS Lambda Developer Guide\.
 
-## Step 2: Create a REST API in the API Gateway Console<a name="apigateway-getting-started-rest-step-2"></a>
+## Step 2: Create a REST API in the API Gateway console<a name="apigateway-getting-started-rest-step-2"></a>
 
 In this step, you create a simple REST API in the API Gateway console and attach your Lambda function to it as a backend\.
 
@@ -35,7 +35,7 @@ In this step, you create a simple REST API in the API Gateway console and attach
 1. If this is your first time using API Gateway, you see a page that introduces you to the features of the service\. Choose **Get Started**\. When the **Create Example API** popup appears, choose **OK**\.
 
    If this isn't your first time using API Gateway, choose **Create API**\.  
-![\[API Gateway Getting Started\]](http://docs.aws.amazon.com/apigateway/latest/developerguide/images/apigateway-get-started-button.png)
+![\[API Gateway getting started\]](http://docs.aws.amazon.com/apigateway/latest/developerguide/images/apigateway-get-started-button.png)
 
 1. Under **Choose the protocol**, choose **REST**\.
 
@@ -66,7 +66,7 @@ In this step, you create a simple REST API in the API Gateway console and attach
 
 Now you'll see a **/ – GET – Method Execution** pane:
 
-![\[API Gateway Method Execution pane\]](http://docs.aws.amazon.com/apigateway/latest/developerguide/images/apigateway-get-method-execution-boxes.png)
+![\[API Gateway method execution pane\]](http://docs.aws.amazon.com/apigateway/latest/developerguide/images/apigateway-get-method-execution-boxes.png)
 
 The **Method Execution** pane contains these items, in clockwise order:
 + **Client**: This box represents the client \(browser or app\) that calls your API's `GET` method\. If you choose the **Test** link and then choose **Test**, this simulates a `GET` request from a client\.
@@ -78,7 +78,7 @@ The **Method Execution** pane contains these items, in clockwise order:
   For this Getting Started procedure, leave everything set to the default values\.
 + **Method Response**: This box represents the method response that's returned to the client as an HTTP status code, an optional response header, and an optional response body\. By default, the response body that's returned by your Lambda function is passed through as is as a JSON document, so the response body default setting is `application/json` with an empty model \(indicating that the body is passed through as is\)\. Here, too, leave everything set to the default values\.
 
-## Step 3: Deploy Your REST API in the API Gateway Console<a name="apigateway-getting-started-rest-step-3"></a>
+## Step 3: Deploy your REST API in the API Gateway console<a name="apigateway-getting-started-rest-step-3"></a>
 
 Once you complete Step 2, you've created an API, but you can't actually use it yet\. This is because it needs to be deployed\.
 
@@ -116,7 +116,7 @@ For actual API testing, you would use a tool such as [cURL](https://curl.haxx.se
 
    This command returns the following output: `"Hello from Lambda!"`\.
 
-## Step 4: Create a Second Lambda Function in the Lambda Console<a name="apigateway-getting-started-rest-step-4"></a>
+## Step 4: Create a second Lambda function in the Lambda console<a name="apigateway-getting-started-rest-step-4"></a>
 
 In this step, you'll create a second backend Lambda function\. This one takes an input parameter\. In Step 5 you'll create a child resource in your API that has its own `GET` method, which you'll configure to pass a parameter value to this new function\.
 
@@ -167,7 +167,7 @@ In this step, you'll create a second backend Lambda function\. This one takes an
 
 1. Choose **Save**\.
 
-## Step 5: Add a Resource, Method, and Parameter to the REST API in the API Gateway Console<a name="apigateway-getting-started-rest-step-5"></a>
+## Step 5: Add a resource, method, and parameter to the REST API in the API Gateway console<a name="apigateway-getting-started-rest-step-5"></a>
 
 Resources and methods are the nouns and verbs of your REST API\. In this step, you'll create a child resource for the API and add a `GET` method to the resource\. You'll add a query string parameter to the new method to match the input parameter for the Lambda function you created in Step 4\. You'll integrate the new function with the method to illustrate how to get user input \(a simple "Hello from API Gateway\!" text string\) and map it to the Lambda function's input \(also a simple string\)\.
 
@@ -198,7 +198,7 @@ Resources and methods are the nouns and verbs of your REST API\. In this step, y
 1. You'll now see a **/my\-resource – GET – Method Execution** pane\. Notice that this time the **Integration Response** box is not grayed out\.
 
    Choose **Integration Request**\.  
-![\[API Gateway Method Execution pane\]](http://docs.aws.amazon.com/apigateway/latest/developerguide/images/apigateway-my-resource-get-method-execution-boxes.png)
+![\[API Gateway method execution pane\]](http://docs.aws.amazon.com/apigateway/latest/developerguide/images/apigateway-my-resource-get-method-execution-boxes.png)
 
 1. Expand **Mapping Templates**\.
 
@@ -272,19 +272,19 @@ Test your API as follows:
 
    You should now see the correct response returned: `{"statusCode": 200, "body": "\"Hello from API Gateway!\""}`\.
 
-## Next Steps<a name="apigateway-getting-started-rest-next-steps"></a>
+## Next steps<a name="apigateway-getting-started-rest-next-steps"></a>
 
 Explore any or all of the following topics to continue getting familiar with Amazon API Gateway\.
 
 
-| To Learn More About | Go To | 
+| To learn more about | Go to | 
 | --- | --- | 
-| Passing input to a backend Lambda function | [Input Format of a Lambda Function for Proxy Integration](set-up-lambda-proxy-integrations.md#api-gateway-simple-proxy-for-lambda-input-format) | 
-| Returning output from a backend Lambda function | [Output Format of a Lambda Function for Proxy Integration](set-up-lambda-proxy-integrations.md#api-gateway-simple-proxy-for-lambda-output-format) | 
-| Setting up a custom domain name for your API | [Setting Up Custom Domain Names for REST APIs](how-to-custom-domains.md) | 
-| Adding a Lambda authorizer function to your API | [Use API Gateway Lambda Authorizers](apigateway-use-lambda-authorizer.md) | 
-| Adding a Amazon Cognito user pool authorizer to your API | [Control Access to a REST API Using Amazon Cognito User Pools as Authorizer](apigateway-integrate-with-cognito.md) | 
-| Enabling CORS for your API | [Enabling CORS for a REST API Resource](how-to-cors.md) | 
+| Passing input to a backend Lambda function | [Input format of a Lambda function for proxy integration](set-up-lambda-proxy-integrations.md#api-gateway-simple-proxy-for-lambda-input-format) | 
+| Returning output from a backend Lambda function | [Output format of a Lambda function for proxy integration](set-up-lambda-proxy-integrations.md#api-gateway-simple-proxy-for-lambda-output-format) | 
+| Setting up a custom domain name for your API | [Setting up custom domain names for REST APIs](how-to-custom-domains.md) | 
+| Adding a Lambda authorizer function to your API | [Use API Gateway Lambda authorizers](apigateway-use-lambda-authorizer.md) | 
+| Adding a Amazon Cognito user pool authorizer to your API | [Control access to a REST API using Amazon Cognito User Pools as authorizer](apigateway-integrate-with-cognito.md) | 
+| Enabling CORS for your API | [Enabling CORS for a REST API resource](how-to-cors.md) | 
 
 To get help with Amazon API Gateway from the community, see the [API Gateway Discussion Forum](http://forums.aws.amazon.com/forum.jspa?forumID=199)\. \(When you enter this forum, AWS might require you to sign in\.\)
 

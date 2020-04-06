@@ -1,15 +1,15 @@
-# x\-amazon\-apigateway\-integrations Object<a name="api-gateway-extensions-integrations"></a>
+# x\-amazon\-apigateway\-integrations object<a name="api-gateway-extensions-integrations"></a>
 
 Defines a collection of integrations\. You can define integrations in the components section of your OpenAPI definition, and reuse the integrations for multiple routes\. Supported only for HTTP APIs\.
 
 
 **Properties**  
 
-| Property Name | Type | Description | 
+| Property name | Type | Description | 
 | --- | --- | --- | 
-| integration | [x\-amazon\-apigateway\-integration Object](api-gateway-swagger-extensions-integration.md) | A collection of integration objects\. | 
+| integration | [x\-amazon\-apigateway\-integration object](api-gateway-swagger-extensions-integration.md) | A collection of integration objects\. | 
 
-## x\-amazon\-apigateway\-integrations Example<a name="api-gateway-swagger-extensions-integrations-example"></a>
+## x\-amazon\-apigateway\-integrations example<a name="api-gateway-swagger-extensions-integrations-example"></a>
 
  The following example creates an HTTP API that defines two integrations, and references the integrations by using `$ref": "#/components/x-amazon-apigateway-integrations/integration-name`\.
 

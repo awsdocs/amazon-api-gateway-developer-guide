@@ -1,4 +1,4 @@
-# Set up API with Private Integrations Using OpenAPI<a name="set-up-api-with-vpclink-using-swagger"></a>
+# Set up API with private integrations using OpenAPI<a name="set-up-api-with-vpclink-using-swagger"></a>
 
 You can set up an API with the private integration by importing the API's OpenAPI file\. The settings are similar to the OpenAPI definitions of an API with HTTP integrations, with the following exceptions: 
 + You must explicitly set `connectionType` to `VPC_LINK`\.

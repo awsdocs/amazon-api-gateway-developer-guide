@@ -1,11 +1,11 @@
-# Setting Up a WebSocket API Integration Request in API Gateway<a name="apigateway-websocket-api-integration-requests"></a>
+# Setting up a WebSocket API integration request in API Gateway<a name="apigateway-websocket-api-integration-requests"></a>
 
 Setting up an integration request involves the following:
 + Choosing a route key to integrate to the backend\.
 + Specifying the backend endpoint to invoke, such as an AWS service or HTTP endpoint\.
 + Configuring how to transform the route request data, if necessary, into integration request data by specifying one or more request templates\.
 
-## Set Up a WebSocket API Integration Request Using the API Gateway Console<a name="apigateway-websocket-api-integration-request-using-console"></a>
+## Set up a WebSocket API integration request using the API Gateway console<a name="apigateway-websocket-api-integration-request-using-console"></a>
 
 **To add an integration request to a route in a WebSocket API using the API Gateway console**
 
@@ -19,10 +19,10 @@ Setting up an integration request involves the following:
    + Choose **Lambda Function** only if your API will be integrated with an AWS Lambda function that you have already created in this account or in another account\.
 
      To create a new Lambda function in AWS Lambda, to set a resource permission on the Lambda function, or to perform any other Lambda service actions, choose **AWS Service** instead\.
-   + Choose **HTTP** if your API will be integrated with an existing HTTP endpoint\. For more information, see [Set up HTTP Integrations in API Gateway](setup-http-integrations.md)\.
-   + Choose **Mock** if you want to generate API responses from API Gateway directly, without the need for an integration backend\. For more information, see [Set up Mock Integrations in API Gateway](how-to-mock-integration.md)\.
+   + Choose **HTTP** if your API will be integrated with an existing HTTP endpoint\. For more information, see [Set up HTTP integrations in API Gateway](setup-http-integrations.md)\.
+   + Choose **Mock** if you want to generate API responses from API Gateway directly, without the need for an integration backend\. For more information, see [Set up mock integrations in API Gateway](how-to-mock-integration.md)\.
    + Choose **AWS Service** if your API will be integrated with an AWS service\.
-   + Choose **VPC Link** if your API will use a `VpcLink` as a private integration endpoint\. For more information, see [Set up API Gateway Private Integrations](set-up-private-integration.md)\.
+   + Choose **VPC Link** if your API will use a `VpcLink` as a private integration endpoint\. For more information, see [Set up API Gateway private integrations](set-up-private-integration.md)\.
 
 1. If you chose **Lambda Function**, do the following:
 
@@ -44,11 +44,11 @@ The function name can optionally include its alias or version specification, as 
 
    1. Choose **Save**\.
 
-1. If you chose **HTTP**, follow the instructions in step 4 of [Set up an API Integration Request Using the API Gateway Console](how-to-method-settings-console.md)\.
+1. If you chose **HTTP**, follow the instructions in step 4 of [Set up an API integration request using the API Gateway console](how-to-method-settings-console.md)\.
 
 1. If you chose **Mock**, proceed to the **Request Templates** step\.
 
-1. If you chose **AWS Service**, follow the instructions in step 6 of [Set up an API Integration Request Using the API Gateway Console](how-to-method-settings-console.md)\.
+1. If you chose **AWS Service**, follow the instructions in step 6 of [Set up an API integration request using the API Gateway console](how-to-method-settings-console.md)\.
 
 1. If you chose **VPC Link**, do the following:
 
@@ -68,9 +68,9 @@ The function name can optionally include its alias or version specification, as 
 
    1. For **Template Selection Expression**, choose the pencil icon and replace the word `template` with a template selection expression\. This is an expression that API Gateway looks for in the message payload\. If it is found, it is evaluated, and the result is a template key value that is used to select the data mapping template to be applied to the data in the message payload\.
 
-     For information about template selection expressions, see [Template Selection Expressions](websocket-api-data-transformations.md#apigateway-websocket-api-template-selection-expressions)\.
+     For information about template selection expressions, see [Template selection expressions](websocket-api-data-transformations.md#apigateway-websocket-api-template-selection-expressions)\.
 
-## Set Up an Integration Request Using the AWS CLI<a name="apigateway-websocket-api-integration-request-using-awscli"></a>
+## Set up an integration request using the AWS CLI<a name="apigateway-websocket-api-integration-request-using-awscli"></a>
 
 You can set up an integration request for a route in a WebSocket API by using the AWS CLI as in the following example, which creates a mock integration:
 

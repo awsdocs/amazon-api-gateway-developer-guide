@@ -1,4 +1,4 @@
-# Create and Attach an API Gateway Resource Policy to an API<a name="apigateway-resource-policies-create-attach"></a>
+# Create and attach an API Gateway resource policy to an API<a name="apigateway-resource-policies-create-attach"></a>
 
 To allow a user to access your API by calling the API execution service, you must create an API Gateway resource policy, which controls access to the API Gateway resources, and attach the policy to the API\.
 
@@ -18,10 +18,10 @@ The following sections describe how to create your own API Gateway resource poli
 If you use the API Gateway console to attach a resource policy to a deployed API, or if you update an existing resource policy, you'll need to redeploy the API in the console for the changes to take effect\.
 
 **Topics**
-+ [Attaching API Gateway Resource Policies \(Console\)](#apigateway-resource-policies-create-attach-console)
-+ [Attaching API Gateway Resource Policies \(AWS CLI\)](#apigateway-resource-policies-create-attach-using-cli)
++ [Attaching API Gateway resource policies \(console\)](#apigateway-resource-policies-create-attach-console)
++ [Attaching API Gateway resource policies \(AWS CLI\)](#apigateway-resource-policies-create-attach-using-cli)
 
-## Attaching API Gateway Resource Policies \(Console\)<a name="apigateway-resource-policies-create-attach-console"></a>
+## Attaching API Gateway resource policies \(console\)<a name="apigateway-resource-policies-create-attach-console"></a>
 
 You can use the AWS Management console to attach a resource policy to an API Gateway API\. 
 
@@ -41,7 +41,7 @@ You can use the AWS Management console to attach a resource policy to an API Gat
 
 If the API has been deployed previously in the API Gateway console, you'll need to redeploy it for the resource policy to take effect\.
 
-## Attaching API Gateway Resource Policies \(AWS CLI\)<a name="apigateway-resource-policies-create-attach-using-cli"></a>
+## Attaching API Gateway resource policies \(AWS CLI\)<a name="apigateway-resource-policies-create-attach-using-cli"></a>
 
 To use the AWS CLI to create a new API and attach a resource policy to it, call the [https://docs.aws.amazon.com/cli/latest/reference/apigateway/create-rest-api.html](https://docs.aws.amazon.com/cli/latest/reference/apigateway/create-rest-api.html) command as follows:
 

@@ -1,4 +1,4 @@
-# Controlling Access to HTTP APIs with JWT Authorizers<a name="http-api-jwt-authorizer"></a>
+# Controlling access to HTTP APIs with JWT authorizers<a name="http-api-jwt-authorizer"></a>
 
 ## <a name="http-api-jwt-authorizer.intro"></a>
 
@@ -11,7 +11,7 @@ You can configure distinct authorizers for each route of an API, or use the same
 **Note**  
 There is no standard mechanism to differentiate JWT access tokens from other types of JWTs, such as OpenID Connect ID tokens\. Unless you require ID tokens for API authorization, we recommend that you configure your routes to require authorization scopes\. You can also configure your JWT authorizers to require issuers or audiences that your identity provider uses only when issuing JWT access tokens\.
 
-## Authorizing API Requests<a name="http-api-jwt-authorizer.evaluation"></a>
+## Authorizing API requests<a name="http-api-jwt-authorizer.evaluation"></a>
 
 API Gateway uses the following general workflow to authorize requests to routes that are configured to use a JWT authorizer\. 
 
@@ -33,7 +33,7 @@ If any of these steps fail, API Gateway denies the API request\.
 
 After validating the JWT, API Gateway passes the claims in the token to the API route’s integration\. Backend resources, such as Lambda functions, can access the JWT claims in `$context.authorizer.claims`\. For example, if the JWT included an identity claim `emailID`, it's available in `$context.authorizer.claims.emailID`\.
 
-## Create a JWT Authorizer by Using the AWS CLI<a name="http-api-jwt-authorizer.create"></a>
+## Create a JWT authorizer by using the AWS CLI<a name="http-api-jwt-authorizer.create"></a>
 
 Before you create a JWT authorizer, you must register a client application with an identity provider\. You must also have created an HTTP API\. For examples of creating an HTTP API, see [Creating an HTTP API](http-api-develop.md#http-api-examples)\.
 
@@ -48,7 +48,7 @@ aws apigatewayv2 create-authorizer \
     --jwt-configuration Audience=audience,Issuer=https://cognito-idp.us-east-2.amazonaws.com/userPoolID
 ```
 
-## Update a Route to Use a JWT Authorizer by Using the AWS CLI<a name="http-api-jwt-authorizer.create.route"></a>
+## Update a route to use a JWT authorizer by using the AWS CLI<a name="http-api-jwt-authorizer.create.route"></a>
 
 The following command updates a route to use a JWT authorizer\.
 

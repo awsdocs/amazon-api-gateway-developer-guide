@@ -1,4 +1,4 @@
-# Setting Up Stage Variables for a REST API Deployment<a name="stage-variables"></a>
+# Setting up stage variables for a REST API deployment<a name="stage-variables"></a>
 
 Stage variables are name\-value pairs that you can define as configuration attributes associated with a deployment stage of a REST API\. They act like environment variables and can be used in your API setup and mapping templates\.
 
@@ -6,9 +6,9 @@ For example, you can define a stage variable in a stage configuration, and then 
 
 You can also access stage variables in the mapping templates, or pass configuration parameters to your AWS Lambda or HTTP backend\.
 
-For more information about mapping templates, see [API Gateway Mapping Template and Access Logging Variable Reference](api-gateway-mapping-template-reference.md)\.
+For more information about mapping templates, see [API Gateway mapping template and access logging variable reference](api-gateway-mapping-template-reference.md)\.
 
-## Use Cases<a name="stage-variables-use-cases"></a>
+## Use cases<a name="stage-variables-use-cases"></a>
 
 With deployment stages in API Gateway, you can manage multiple release stages for each API, such as alpha, beta, and production\. Using stage variables you can configure an API deployment stage to interact with different backend endpoints\. 
 

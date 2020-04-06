@@ -1,4 +1,4 @@
-# Setting Up Custom Domain Names for REST APIs<a name="how-to-custom-domains"></a>
+# Setting up custom domain names for REST APIs<a name="how-to-custom-domains"></a>
 
 *Custom domain names* are simpler and more intuitive URLs that you can provide to your API users\.
 
@@ -25,7 +25,7 @@ A Regional custom domain can be associated with REST APIs and HTTP APIs\. You ca
 Custom domain names are not supported for [private APIs](apigateway-private-apis.md)\.  
 You can choose a minimum TLS version that your REST API supports\. For REST APIs, you can choose TLS 1\.2 or TLS 1\.0\.
 
-## Register a Domain Name<a name="custom-domain-names-register"></a>
+## Register a domain name<a name="custom-domain-names-register"></a>
 
 You must have a registered internet domain name in order to set up custom domain names for your APIs\. If needed, you can register an internet domain using [Amazon Route 53](https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/) or using a third\-party domain registrar of your choice\. An API's custom domain name can be the name of a subdomain or the root domain \(also known as "zone apex"\) of a registered internet domain\. 
 
@@ -34,14 +34,14 @@ After a custom domain name is created in API Gateway, you must create or update 
 **Note**  
  An edge\-optimized custom domain name is created in a specific Region and owned by a specific AWS account\. Moving such a custom domain name between Regions or AWS accounts involves deleting the existing CloudFront distribution and creating a new one\. The process may take approximately 30 minutes before the new custom domain name becomes available\. For more information, see [Updating CloudFront Distributions](https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/HowToUpdateDistribution.html)\. 
 
-## Edge\-Optimized Custom Domain Names<a name="edge-optimized-custom-domain-names"></a>
+## Edge\-optimized custom domain names<a name="edge-optimized-custom-domain-names"></a>
 
 When you deploy an edge\-optimized API, API Gateway sets up an Amazon CloudFront distribution and a DNS record to map the API domain name to the CloudFront distribution domain name\. Requests for the API are then routed to API Gateway through the mapped CloudFront distribution\. 
 
 When you create a custom domain name for an edge\-optimized API, API Gateway sets up a CloudFront distribution\. But you must set up a DNS record to map the custom domain name to the CloudFront distribution domain name\. This mapping is for API requests that are bound for the custom domain name to be routed to API Gateway through the mapped CloudFront distribution\. You must also provide a certificate for the custom domain name\.
 
 **Note**  
- The CloudFront distribution created by API Gateway is owned by a Region\-specific account affiliated with API Gateway\. When tracing operations to create and update such a CloudFront distribution in CloudWatch Logs, you must use this API Gateway account ID\. For more information, see [Log Custom Domain Name Creation in CloudTrail](how-to-edge-optimized-custom-domain-name.md#how-to-custom-domain-log-cloudfront-distribution-update-in-cloudtrail)\. 
+ The CloudFront distribution created by API Gateway is owned by a Region\-specific account affiliated with API Gateway\. When tracing operations to create and update such a CloudFront distribution in CloudWatch Logs, you must use this API Gateway account ID\. For more information, see [Log custom domain name creation in CloudTrail](how-to-edge-optimized-custom-domain-name.md#how-to-custom-domain-log-cloudfront-distribution-update-in-cloudtrail)\. 
 
  To set up an edge\-optimized custom domain name or to update its certificate, you must have a permission to update CloudFront distributions\. You can do so by attaching the following IAM policy statement to an IAM user, group, or role in your account: 
 
@@ -69,11 +69,11 @@ When you create a custom domain name for an edge\-optimized API, API Gateway set
 
 To provide a certificate for an edge\-optimized custom domain name, you can request [AWS Certificate Manager](https://docs.aws.amazon.com/acm/latest/userguide/) \(ACM\) to generate a new certificate in ACM or to import into ACM one issued by a third\-party certificate authority in the `us-east-1` Region \(US East \(N\. Virginia\)\)\.
 
-## Regional Custom Domain Names<a name="regional-custom-domain-names"></a>
+## Regional custom domain names<a name="regional-custom-domain-names"></a>
 
 When you create a custom domain name for a Regional API, API Gateway creates a Regional domain name for the API\. You must set up a DNS record to map the custom domain name to the Regional domain name\. You must also provide a certificate for the custom domain name\.
 
-## Wildcard Custom Domain Names<a name="wildcard-custom-domain-names"></a>
+## Wildcard custom domain names<a name="wildcard-custom-domain-names"></a>
 
 API Gateway also supports wildcard custom domain names\. You can specify a wildcard \(`*`\) as the first subdomain of a custom domain that represents all possible subdomains of a root domain\.
 
@@ -81,7 +81,7 @@ For example, the wildcard custom domain name `*.example.com` results in subdomai
 
 Wildcard custom domain names support distinct configurations from API Gateway's standard custom domain names\. For example, in a single AWS account, you can configure `*.example.com` and `a.example.com` to behave differently\.
 
-You can use the `$context.domainName` and `$context.domainPrefix` context variables to determine the domain name that a client used to call your API\. To learn more about context variables, see [API Gateway Mapping Template and Access Logging Variable Reference](api-gateway-mapping-template-reference.md)\.
+You can use the `$context.domainName` and `$context.domainPrefix` context variables to determine the domain name that a client used to call your API\. To learn more about context variables, see [API Gateway mapping template and access logging variable reference](api-gateway-mapping-template-reference.md)\.
 
 To create a wildcard custom domain name, you must provide a certificate issued by ACM that has been validated using either the DNS or the email validation method\.
 
@@ -89,7 +89,7 @@ To create a wildcard custom domain name, you must provide a certificate issued b
 You can't create a wildcard custom domain name if a different AWS account has created a custom domain name that conflicts with the wildcard custom domain name\. For example, if account A has created `a.example.com`, then account B can't create the wildcard custom domain name `*.example.com`\.  
 If account A and account B share an owner, you can contact the [AWS Support Center](https://console.aws.amazon.com/support/home#/) to request an exception\.
 
-## Certificates for Custom Domain Names<a name="custom-domain-names-certificates"></a>
+## Certificates for custom domain names<a name="custom-domain-names-certificates"></a>
 
 To provide a certificate for a custom domain name in a Region where ACM is supported, you must request a certificate from ACM\. To provide a certificate for a Regional custom domain name in a Region where ACM is not supported, you must import a certificate to API Gateway in that Region\. 
 
@@ -98,13 +98,13 @@ To import an SSL/TLS certificate, you must provide the PEM\-formatted SSL/TLS ce
  ACM makes it straightforward to set up and use a custom domain name for an API\. You create a certificate for the given domain name \(or import a certificate\), set up the domain name in API Gateway with the ARN of the certificate provided by ACM, and map a base path under the custom domain name to a deployed stage of the API\. With certificates issued by ACM, you do not have to worry about exposing any sensitive certificate details, such as the private key\.
 
 **Topics**
-+ [Register a Domain Name](#custom-domain-names-register)
-+ [Edge\-Optimized Custom Domain Names](#edge-optimized-custom-domain-names)
-+ [Regional Custom Domain Names](#regional-custom-domain-names)
-+ [Wildcard Custom Domain Names](#wildcard-custom-domain-names)
-+ [Certificates for Custom Domain Names](#custom-domain-names-certificates)
-+ [Getting Certificates Ready in AWS Certificate Manager](how-to-custom-domains-prerequisites.md)
-+ [Choosing a Minimum TLS Version for a Custom Domain in API Gateway](apigateway-custom-domain-tls-version.md)
-+ [Creating an Edge\-Optimized Custom Domain Name](how-to-edge-optimized-custom-domain-name.md)
-+ [Setting Up a Regional Custom Domain Name in API Gateway](apigateway-regional-api-custom-domain-create.md)
-+ [Migrating a Custom Domain Name to a Different API Endpoint](apigateway-regional-api-custom-domain-migrate.md)
++ [Register a domain name](#custom-domain-names-register)
++ [Edge\-optimized custom domain names](#edge-optimized-custom-domain-names)
++ [Regional custom domain names](#regional-custom-domain-names)
++ [Wildcard custom domain names](#wildcard-custom-domain-names)
++ [Certificates for custom domain names](#custom-domain-names-certificates)
++ [Getting certificates ready in AWS Certificate Manager](how-to-custom-domains-prerequisites.md)
++ [Choosing a minimum TLS version for a custom domain in API Gateway](apigateway-custom-domain-tls-version.md)
++ [Creating an edge\-optimized custom domain name](how-to-edge-optimized-custom-domain-name.md)
++ [Setting up a regional custom domain name in API Gateway](apigateway-regional-api-custom-domain-create.md)
++ [Migrating a custom domain name to a different API endpoint](apigateway-regional-api-custom-domain-migrate.md)

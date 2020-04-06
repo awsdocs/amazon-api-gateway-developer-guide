@@ -9,6 +9,6 @@ In this section, you can learn how to develop, publish, protect, and monitor you
 **Topics**
 + [About WebSocket APIs in API Gateway](apigateway-websocket-api-overview.md)
 + [Developing a WebSocket API in API Gateway](websocket-api-develop.md)
-+ [Publishing WebSocket APIs for Customers to Invoke](websocket-api-publish.md)
-+ [Protecting Your WebSocket API](websocket-api-protect.md)
++ [Publishing WebSocket APIs for customers to invoke](websocket-api-publish.md)
++ [Protecting your WebSocket API](websocket-api-protect.md)
 + [Monitoring WebSocket APIs](websocket-api-monitor.md)

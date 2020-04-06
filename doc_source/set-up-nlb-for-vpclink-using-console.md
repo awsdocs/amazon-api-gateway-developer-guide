@@ -1,8 +1,8 @@
-# Set up a Network Load Balancer for API Gateway Private Integrations<a name="set-up-nlb-for-vpclink-using-console"></a>
+# Set up a Network Load Balancer for API Gateway private integrations<a name="set-up-nlb-for-vpclink-using-console"></a>
 
  The following procedure outlines the steps to set up a Network Load Balancer \(NLB\) for API Gateway private integrations using the Amazon EC2 console and provides references for detailed instructions for each step\. 
 
-For each VPC you have resources in, you only need to configure one NLB and one VPCLink\. The NLB supports multiple [listeners](https://docs.aws.amazon.com/elasticloadbalancing/latest/network/load-balancer-listeners.html) and [target groups](https://docs.aws.amazon.com/elasticloadbalancing/latest/network/load-balancer-target-groups.html) per NLB\. You can configure each service as a specific listener on the NLB and use a single VPCLink to connect to the NLB\. When creating the private integration in API Gateway you then define each service using the specific port that is assigned for each service\. For more information, see [TUTORIAL: Build an API with API Gateway Private Integration](getting-started-with-private-integration.md)\.
+For each VPC you have resources in, you only need to configure one NLB and one VPCLink\. The NLB supports multiple [listeners](https://docs.aws.amazon.com/elasticloadbalancing/latest/network/load-balancer-listeners.html) and [target groups](https://docs.aws.amazon.com/elasticloadbalancing/latest/network/load-balancer-target-groups.html) per NLB\. You can configure each service as a specific listener on the NLB and use a single VPCLink to connect to the NLB\. When creating the private integration in API Gateway you then define each service using the specific port that is assigned for each service\. For more information, see [Tutorial: Build an API with API Gateway private integration](getting-started-with-private-integration.md)\.
 
 **Note**  
 The Network Load Balancer and API must be owned by the same AWS account\.

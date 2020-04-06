@@ -1,4 +1,4 @@
-# Promote a Canary Release<a name="promote-canary-deployment"></a>
+# Promote a canary release<a name="promote-canary-deployment"></a>
 
 To promote a canary release makes it available in the production stage the API version under testing\. The operation involves the following tasks:
 +  Reset the [deployment ID](https://docs.aws.amazon.com/apigateway/api-reference/resource/stage/#deploymentId) of the stage with the [deployment ID](https://docs.aws.amazon.com/apigateway/api-reference/resource/stage/#canarySettings) settings of the canary\. This updates the API snapshot of the stage with the snapshot of the canary, making the test version the production release as well\.
@@ -8,10 +8,10 @@ To promote a canary release makes it available in the production stage the API v
 Promoting a canary release does not disable the canary on the stage\. To disable a canary, you must remove the canary settings on the stage\.
 
 **Topics**
-+ [Promote a Canary Release Using the API Gateway Console](#promote-canary-release-deployment-console)
-+ [Promote a Canary Release Using the AWS CLI](#promote-canary-release-cli)
++ [Promote a canary release using the API Gateway console](#promote-canary-release-deployment-console)
++ [Promote a canary release using the AWS CLI](#promote-canary-release-cli)
 
-## Promote a Canary Release Using the API Gateway Console<a name="promote-canary-release-deployment-console"></a>
+## Promote a canary release using the API Gateway console<a name="promote-canary-release-deployment-console"></a>
 
 To use the API Gateway console to promote a canary release deployment, do the following:
 
@@ -25,9 +25,9 @@ To use the API Gateway console to promote a canary release deployment, do the fo
 
 1.  Confirm changes to be made and choose **Update**\.
 
-After the promotion, the production release references the same API version \(**deploymentId**\) as the canary release\. You can verify this using the AWS CLI\. For example, see [Promote a Canary Release Using the AWS CLI](#promote-canary-release-cli)\. 
+After the promotion, the production release references the same API version \(**deploymentId**\) as the canary release\. You can verify this using the AWS CLI\. For example, see [Promote a canary release using the AWS CLI](#promote-canary-release-cli)\. 
 
-## Promote a Canary Release Using the AWS CLI<a name="promote-canary-release-cli"></a>
+## Promote a canary release using the AWS CLI<a name="promote-canary-release-cli"></a>
 
 To promote a canary release to the production release using the AWS CLI commands, call the `update-stage` command to copy the canary\-associated `deploymentId` to the stage\-associated `deploymentId`, to reset the canary traffic percentage to zero \(`0.0`\), and, to copy any canary\-bound stage variables to the corresponding stage\-bound ones\. 
 
@@ -121,4 +121,4 @@ After the promotion, the stage now looks like this:
 }
 ```
 
-As you can see, promoting a canary release to the stage does not disable the canary and the deployment remains to be a canary release deployment\. To make it a regular production release deployment, you must disable the canary settings\. For more information about how to disable a canary release deployment, see [Disable a Canary Release](delete-canary-deployment.md)\.
+As you can see, promoting a canary release to the stage does not disable the canary and the deployment remains to be a canary release deployment\. To make it a regular production release deployment, you must disable the canary settings\. For more information about how to disable a canary release deployment, see [Disable a canary release](delete-canary-deployment.md)\.

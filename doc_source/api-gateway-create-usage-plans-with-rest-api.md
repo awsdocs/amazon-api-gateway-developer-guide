@@ -1,16 +1,16 @@
-# Create, Configure, and Test Usage Plans Using the API Gateway CLI and REST API<a name="api-gateway-create-usage-plans-with-rest-api"></a>
+# Create, configure, and test usage plans using the API Gateway CLI and REST API<a name="api-gateway-create-usage-plans-with-rest-api"></a>
 
-Before configuring a usage plan, you must have already done the following: set up methods of a selected API to require API keys, deployed or redeployed the API to a stage, and created or imported one or more API keys\. For more information, see [Set Up API Keys Using the API Gateway REST API](api-gateway-setup-api-key-with-restapi.md)\.
+Before configuring a usage plan, you must have already done the following: set up methods of a selected API to require API keys, deployed or redeployed the API to a stage, and created or imported one or more API keys\. For more information, see [Set up API keys using the API Gateway REST API](api-gateway-setup-api-key-with-restapi.md)\.
 
 To configure a usage plan by using the API Gateway REST API, use the following instructions, assuming that you've already created the APIs to be added to the usage plan\.
 
 **Topics**
-+ [Migrate to Default Usage Plans](#api-gateway-usage-plan-migrate-to-default-with-restapi)
-+ [Create a Usage Plan](#api-gateway-usage-plan-create-using-rest-api)
-+ [Manage a Usage Plan by Using the AWS CLI](#api-gateway-usage-plan-manage-with-cli)
-+ [Test Usage Plans](#api-gateway-usage-plan-test-with-postman)
++ [Migrate to default usage plans](#api-gateway-usage-plan-migrate-to-default-with-restapi)
++ [Create a usage plan](#api-gateway-usage-plan-create-using-rest-api)
++ [Manage a usage plan by using the AWS CLI](#api-gateway-usage-plan-manage-with-cli)
++ [Test usage plans](#api-gateway-usage-plan-test-with-postman)
 
-## Migrate to Default Usage Plans<a name="api-gateway-usage-plan-migrate-to-default-with-restapi"></a>
+## Migrate to default usage plans<a name="api-gateway-usage-plan-migrate-to-default-with-restapi"></a>
 
 When creating a usage plan the first time, you can migrate existing API stages that are associated with selected API keys to a usage plan by calling [https://docs.aws.amazon.com/apigateway/api-reference/link-relation/account-update/](https://docs.aws.amazon.com/apigateway/api-reference/link-relation/account-update/) with the following body:
 
@@ -26,7 +26,7 @@ When creating a usage plan the first time, you can migrate existing API stages t
 
 For more information about migrating API stages associated with API keys, see [Migrate to Default Usage Plans in the API Gateway Console](api-gateway-create-usage-plans-with-console.md#api-gateway-usage-plan-migrate-to-default)\.
 
-## Create a Usage Plan<a name="api-gateway-usage-plan-create-using-rest-api"></a>
+## Create a usage plan<a name="api-gateway-usage-plan-create-using-rest-api"></a>
 
 The following procedure describes how to create a usage plan\.
 
@@ -64,7 +64,7 @@ The following procedure describes how to create a usage plan\.
 **Note**  
 An API key can be associated with more than one usage plan\. A usage plan can be associated with more than one stage\. However, a given API key can only be associated with one usage plan for each stage of your API\.
 
-## Manage a Usage Plan by Using the AWS CLI<a name="api-gateway-usage-plan-manage-with-cli"></a>
+## Manage a usage plan by using the AWS CLI<a name="api-gateway-usage-plan-manage-with-cli"></a>
 
 The following code examples show how to add, remove, or modify the method\-level throttling settings in a usage plan by calling the [https://docs.aws.amazon.com/cli/latest/reference/apigateway/update-usage-plan.html](https://docs.aws.amazon.com/cli/latest/reference/apigateway/update-usage-plan.html) command\.
 
@@ -103,9 +103,9 @@ aws apigateway --region us-east-1 update-usage-plan --usage-plan-id <planId> --p
                 op="replace",path="/apiStages/<apiId>:<stage>/throttle",value='"{\"/pets/GET\":{\"rateLimit\":1.0,\"burstLimit\":1},\"//GET\":{\"rateLimit\":1.0,\"burstLimit\":1}}"'
 ```
 
-## Test Usage Plans<a name="api-gateway-usage-plan-test-with-postman"></a>
+## Test usage plans<a name="api-gateway-usage-plan-test-with-postman"></a>
 
-As an example, let's use the PetStore API, which was created in [TUTORIAL: Create a REST API by Importing an Example](api-gateway-create-api-from-example.md)\. Assume that the API is configured to use an API key of `Hiorr45VR...c4GJc`\. The following steps describe how to test a usage plan\.
+As an example, let's use the PetStore API, which was created in [Tutorial: Create a REST API by importing an example](api-gateway-create-api-from-example.md)\. Assume that the API is configured to use an API key of `Hiorr45VR...c4GJc`\. The following steps describe how to test a usage plan\.
 
 **To test your usage plan**
 + Make a `GET` request on the Pets resource \(`/pets`\), with the `?type=...&page=...` query parameters, of the API \(for example, `xbvxlpijch`\) in a usage plan:

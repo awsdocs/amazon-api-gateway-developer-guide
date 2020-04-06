@@ -1,9 +1,9 @@
-# Setting Stage Variables Using the Amazon API Gateway Console<a name="how-to-set-stage-variables-aws-console"></a>
+# Setting stage variables using the Amazon API Gateway console<a name="how-to-set-stage-variables-aws-console"></a>
 
  In this tutorial, you learn how to set stage variables for two deployment stages of a sample API by using the Amazon API Gateway console\. Before you begin, make sure the following prerequisites are met: 
 + You must have an API available in API Gateway\. Follow the instructions in [Creating a REST API in Amazon API Gateway](how-to-create-api.md)\.
 + You must have deployed the API at least once\. Follow the instructions in [Deploying a REST API in Amazon API Gateway](how-to-deploy-api.md)\.
-+ You must have created the first stage for a deployed API\. Follow the instructions in [Create a New Stage](stages.md#how-to-create-stage-console)\.
++ You must have created the first stage for a deployed API\. Follow the instructions in [Create a new stage](stages.md#how-to-create-stage-console)\.
 
 **To declare stage variables using the API Gateway console**
 

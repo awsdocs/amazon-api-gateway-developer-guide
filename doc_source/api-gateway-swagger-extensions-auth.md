@@ -1,15 +1,15 @@
-# x\-amazon\-apigateway\-auth Object<a name="api-gateway-swagger-extensions-auth"></a>
+# x\-amazon\-apigateway\-auth object<a name="api-gateway-swagger-extensions-auth"></a>
 
 Defines an authentication type to be applied for authentication of method invocations in API Gateway\.
 
 
 **Properties**  
 
-| Property Name | Type | Description | 
+| Property name | Type | Description | 
 | --- | --- | --- | 
 | type | string | Specifies the authentication type\. Specify "NONE" for open access\. Specify "AWS\_IAM" to use IAM permissions\. Values are case insensitive\. | 
 
-## x\-amazon\-apigateway\-auth Example<a name="api-gateway-swagger-extensions-auth-example"></a>
+## x\-amazon\-apigateway\-auth example<a name="api-gateway-swagger-extensions-auth-example"></a>
 
 The following example sets the authentication type for a REST API method\.
 

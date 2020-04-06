@@ -11,7 +11,7 @@ aws apigateway get-export --parameters extensions='apigateway' --rest-api-id abc
 
  You cannot export an API if its payloads are not of the `application/json` type\. If you try, you will get an error response stating that JSON body models are not found\. 
 
-## Request to Export a REST API<a name="api-gateway-export-api-request"></a>
+## Request to export a REST API<a name="api-gateway-export-api-request"></a>
 
  With the Export API, you export an existing REST API by submitting a GET request, specifying the to\-be\-exported API as part of URL paths\. The request URL is of the following format: 
 
@@ -41,7 +41,7 @@ aws apigateway get-export --parameters extensions='apigateway' --rest-api-id abc
  If you define models in your API, they must be for the content type of "application/json" for API Gateway to export the model\. Otherwise, API Gateway throws an exception with the "Only found non\-JSON body models for \.\.\." error message\.   
  Models must contain properties or be defined as a particular JSONSchema type\. 
 
-## Download REST API OpenAPI Definition in JSON<a name="api-gateway-export-api-download-swagger-json"></a>
+## Download REST API OpenAPI definition in JSON<a name="api-gateway-export-api-download-swagger-json"></a>
 
 To export and download a REST API in OpenAPI definitions in JSON format:
 
@@ -67,7 +67,7 @@ Accept: application/json
 
  Here, `<region>` could be, for example, `us-east-1`\. For all the regions where API Gateway is available, see [Regions and Endpoints](https://docs.aws.amazon.com/general/latest/gr/rande.html#apigateway_region) 
 
-## Download REST API OpenAPI Definition in YAML<a name="api-gateway-export-api-download-swagger-yaml"></a>
+## Download REST API OpenAPI definition in YAML<a name="api-gateway-export-api-download-swagger-yaml"></a>
 
 To export and download a REST API in OpenAPI definitions in YAML format:
 
@@ -91,7 +91,7 @@ Accept: application/yaml
 
 ------
 
-## Download REST API OpenAPI Definition with Postman Extensions in JSON<a name="api-gateway-export-api-download-swagger-json-with-postman"></a>
+## Download REST API OpenAPI definition with Postman extensions in JSON<a name="api-gateway-export-api-download-swagger-json-with-postman"></a>
 
 To export and download a REST API in OpenAPI definitions with Postman in JSON format:
 
@@ -115,7 +115,7 @@ Accept: application/json
 
 ------
 
-## Download REST API OpenAPI Definition with API Gateway Integration in YAML<a name="api-gateway-export-api-download-swagger-yaml-with-apig"></a>
+## Download REST API OpenAPI definition with API Gateway integration in YAML<a name="api-gateway-export-api-download-swagger-yaml-with-apig"></a>
 
 To export and download a REST API in OpenAPI definitions with API Gateway integration in YAML format:
 
@@ -139,7 +139,7 @@ Accept: application/yaml
 
 ------
 
-## Export REST API Using the API Gateway Console<a name="api-gateway-export-api-from-console"></a>
+## Export REST API using the API Gateway console<a name="api-gateway-export-api-from-console"></a>
 
 After [deploying your REST API to a stage](how-to-deploy-api-with-console.md), you can proceed to export the API in the stage to an OpenAPI file using the API Gateway console\.
 

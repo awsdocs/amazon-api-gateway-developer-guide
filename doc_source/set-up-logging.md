@@ -1,8 +1,8 @@
-# Setting Up CloudWatch API Logging in API Gateway<a name="set-up-logging"></a>
+# Setting up CloudWatch API logging in API Gateway<a name="set-up-logging"></a>
 
- To help debug issues related to request execution or client access to your API, you can enable Amazon CloudWatch Logs to log API calls\. For more information about CloudWatch, see [Monitoring REST API Execution with Amazon CloudWatch Metrics](monitoring-cloudwatch.md)\.
+ To help debug issues related to request execution or client access to your API, you can enable Amazon CloudWatch Logs to log API calls\. For more information about CloudWatch, see [Monitoring REST API execution with Amazon CloudWatch metrics](monitoring-cloudwatch.md)\.
 
-## CloudWatch Log Formats for API Gateway<a name="apigateway-cloudwatch-log-formats"></a>
+## CloudWatch log formats for API Gateway<a name="apigateway-cloudwatch-log-formats"></a>
 
  There are two types of API logging in CloudWatch: execution logging and access logging\. In execution logging, API Gateway manages the CloudWatch Logs\. The process includes creating log groups and log streams, and reporting to the log streams any caller's requests and responses\. 
 
@@ -73,7 +73,7 @@ Examples of some commonly used access log formats are shown in the API Gateway c
 
   The continuation characters \(`\`\) are meant as a visual aid\. The log format cannot have any line breaks\.
 
-## Permissions for CloudWatch Logging<a name="set-up-access-logging-permissions"></a>
+## Permissions for CloudWatch logging<a name="set-up-access-logging-permissions"></a>
 
 To enable CloudWatch Logs, you must grant API Gateway permission to read and write logs to CloudWatch for your account\. The `AmazonAPIGatewayPushToCloudWatchLogs` managed policy \(with an ARN of `arn:aws:iam::aws:policy/service-role/AmazonAPIGatewayPushToCloudWatchLogs`\) has all the required permissions:
 
@@ -105,7 +105,7 @@ To grant these permissions to your account, create an IAM role with `apigateway.
 
 If you receive an error when setting the IAM role ARN, check your AWS Security Token Service account settings to make sure that AWS STS is enabled in the Region that you're using\. For more information about enabling AWS STS, see [Managing AWS STS in an AWS Region](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_temp_enable-regions.html#sts-regions-activate-deactivate) in the *IAM User Guide*\.
 
-## Set Up CloudWatch API Logging Using the API Gateway Console<a name="set-up-access-logging-using-console"></a>
+## Set up CloudWatch API logging using the API Gateway console<a name="set-up-access-logging-using-console"></a>
 
 To set up CloudWatch API logging, you must have deployed the API to a stage\. You must also have configured [an appropriate CloudWatch Logs role](#set-up-access-logging-permissions) ARN for your account\. 
 
@@ -129,7 +129,7 @@ To set up CloudWatch API logging, you must have deployed the API to a stage\. Yo
 
    1. If desired, choose **Enable Detailed CloudWatch Metrics**\.
 
-   For more information about CloudWatch metrics, see [Monitoring REST API Execution with Amazon CloudWatch Metrics](monitoring-cloudwatch.md)\.
+   For more information about CloudWatch metrics, see [Monitoring REST API execution with Amazon CloudWatch metrics](monitoring-cloudwatch.md)\.
 
 1. To enable access logging:
 

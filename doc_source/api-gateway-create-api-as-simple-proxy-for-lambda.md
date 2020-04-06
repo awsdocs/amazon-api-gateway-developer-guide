@@ -1,4 +1,4 @@
-# TUTORIAL: Build a Hello World API with Lambda Proxy Integration<a name="api-gateway-create-api-as-simple-proxy-for-lambda"></a>
+# Tutorial: Build a Hello World API with Lambda proxy integration<a name="api-gateway-create-api-as-simple-proxy-for-lambda"></a>
 
 [Lambda proxy integration](set-up-lambda-proxy-integrations.md) is a lightweight, flexible API Gateway API integration type that allows you to integrate an API method – or an entire API – with a Lambda function\. The Lambda function can be written in [any language that Lambda supports](https://docs.aws.amazon.com/lambda/latest/dg/lambda-runtimes.html)\. Because it's a proxy integration, you can change the Lambda function implementation at any time without needing to redeploy your API\.
 
@@ -7,11 +7,11 @@ In this tutorial, you do the following:
 + Create and test a "Hello, World\!" API with Lambda proxy integration\.
 
 **Topics**
-+ [Create a "Hello, World\!" Lambda Function](#api-gateway-proxy-integration-create-lambda-backend)
++ [Create a "Hello, World\!" Lambda function](#api-gateway-proxy-integration-create-lambda-backend)
 + [Create a "Hello, World\!" API](#api-gateway-create-api-as-simple-proxy-for-lambda-build)
-+ [Deploy and Test the API](#api-gateway-create-api-as-simple-proxy-for-lambda-test)
++ [Deploy and test the API](#api-gateway-create-api-as-simple-proxy-for-lambda-test)
 
-## Create a "Hello, World\!" Lambda Function<a name="api-gateway-proxy-integration-create-lambda-backend"></a>
+## Create a "Hello, World\!" Lambda function<a name="api-gateway-proxy-integration-create-lambda-backend"></a>
 
 This function returns a greeting to the caller as a JSON object in the following format:
 
@@ -177,7 +177,7 @@ Now create an API for your "Hello, World\!" Lambda function by using the API Gat
 
    1. Choose **OK** when prompted with **Add Permission to Lambda Function**\.
 
-## Deploy and Test the API<a name="api-gateway-create-api-as-simple-proxy-for-lambda-test"></a>
+## Deploy and test the API<a name="api-gateway-create-api-as-simple-proxy-for-lambda-test"></a>
 
 **Deploy the API in the API Gateway console**
 
@@ -195,7 +195,7 @@ Now create an API for your "Hello, World\!" Lambda function by using the API Gat
 
 1. Note the API's **Invoke URL**\.
 
-### Use Browser and cURL to Test an API with Lambda Proxy Integration<a name="api-gateway-create-api-as-simple-proxy-for-lambda-test-curl"></a>
+### Use browser and cURL to test an API with Lambda proxy integration<a name="api-gateway-create-api-as-simple-proxy-for-lambda-test-curl"></a>
 
 You can use a browser or [cURL](https://curl.haxx.se/) to test your API\.
 

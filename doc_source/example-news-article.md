@@ -1,16 +1,16 @@
-# News Article Example \(API Gateway Models and Mapping Templates\)<a name="example-news-article"></a>
+# News article example \(API Gateway models and mapping templates\)<a name="example-news-article"></a>
 
-The following sections provide examples of models and mapping templates that could be used for a sample news article API in API Gateway\. For more information about models and mapping templates in API Gateway, see [Working with Models and Mapping Templates](models-mappings.md)\.
+The following sections provide examples of models and mapping templates that could be used for a sample news article API in API Gateway\. For more information about models and mapping templates in API Gateway, see [Working with models and mapping templates](models-mappings.md)\.
 
 **Topics**
-+ [Original Data \(News Article Example\)](#example-news-article-original-data)
-+ [Input Model \(News Article Example\)](#example-news-article-input-model)
-+ [Input Mapping Template \(News Article Example\)](#example-news-article-input-mapping)
-+ [Transformed Data \(News Article Example\)](#example-news-article-transformed-data)
-+ [Output Model \(News Article Example\)](#example-news-article-output-model)
-+ [Output Mapping Template \(News Article Example\)](#example-news-article-output-mapping)
++ [Original data \(news article example\)](#example-news-article-original-data)
++ [Input model \(news article example\)](#example-news-article-input-model)
++ [Input mapping template \(news article example\)](#example-news-article-input-mapping)
++ [Transformed data \(news article example\)](#example-news-article-transformed-data)
++ [Output model \(news article example\)](#example-news-article-output-model)
++ [Output mapping template \(news article example\)](#example-news-article-output-mapping)
 
-## Original Data \(News Article Example\)<a name="example-news-article-original-data"></a>
+## Original data \(news article example\)<a name="example-news-article-original-data"></a>
 
 The following is the original JSON data for the news article example:
 
@@ -43,7 +43,7 @@ The following is the original JSON data for the news article example:
 }
 ```
 
-## Input Model \(News Article Example\)<a name="example-news-article-input-model"></a>
+## Input model \(news article example\)<a name="example-news-article-input-model"></a>
 
 The following is the input model that corresponds to the original JSON data for the news article example:
 
@@ -88,7 +88,7 @@ The following is the input model that corresponds to the original JSON data for 
 }
 ```
 
-## Input Mapping Template \(News Article Example\)<a name="example-news-article-input-mapping"></a>
+## Input mapping template \(news article example\)<a name="example-news-article-input-mapping"></a>
 
 The following is the input mapping template that corresponds to the original JSON data for the news article example:
 
@@ -125,7 +125,7 @@ The following is the input mapping template that corresponds to the original JSO
 }
 ```
 
-## Transformed Data \(News Article Example\)<a name="example-news-article-transformed-data"></a>
+## Transformed data \(news article example\)<a name="example-news-article-transformed-data"></a>
 
 The following is one example of how the original news article example JSON data could be transformed for output:
 
@@ -146,7 +146,7 @@ The following is one example of how the original news article example JSON data 
 }
 ```
 
-## Output Model \(News Article Example\)<a name="example-news-article-output-model"></a>
+## Output model \(news article example\)<a name="example-news-article-output-model"></a>
 
 The following is the output model that corresponds to the transformed JSON data format:
 
@@ -176,7 +176,7 @@ The following is the output model that corresponds to the transformed JSON data 
 }
 ```
 
-## Output Mapping Template \(News Article Example\)<a name="example-news-article-output-mapping"></a>
+## Output mapping template \(news article example\)<a name="example-news-article-output-mapping"></a>
 
 The following is the output mapping template that corresponds to the transformed JSON data format\. The template variables here are based on the original, not transformed, JSON data format:
 

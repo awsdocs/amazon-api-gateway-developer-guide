@@ -6,10 +6,10 @@ As you're developing your API Gateway API, you decide on a number of characteris
 
 **Topics**
 + [Create a WebSocket API in API Gateway](apigateway-websocket-api-create-empty-api.md)
-+ [Working with Routes for WebSocket APIs](websocket-api-develop-routes.md)
-+ [Controlling and Managing Access to a WebSocket API in API Gateway](apigateway-websocket-api-control-access.md)
-+ [Setting Up WebSocket API Integrations](apigateway-websocket-api-integrations.md)
-+ [Requesting Validation](websocket-api-request-validation.md)
-+ [Setting Up Data Transformations for WebSocket APIs](websocket-api-data-transformations.md)
-+ [Working with Binary Media Types for WebSocket APIs](websocket-api-develop-binary-media-types.md)
++ [Working with routes for WebSocket APIs](websocket-api-develop-routes.md)
++ [Controlling and managing access to a WebSocket API in API Gateway](apigateway-websocket-api-control-access.md)
++ [Setting up WebSocket API integrations](apigateway-websocket-api-integrations.md)
++ [Requesting validation](websocket-api-request-validation.md)
++ [Setting up data transformations for WebSocket APIs](websocket-api-data-transformations.md)
++ [Working with binary media types for WebSocket APIs](websocket-api-develop-binary-media-types.md)
 + [Invoking a WebSocket API](apigateway-how-to-call-websocket-api.md)

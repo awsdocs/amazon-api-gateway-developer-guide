@@ -1,4 +1,4 @@
-# Enable CORS on a Resource Using the API Gateway Console<a name="how-to-cors-console"></a>
+# Enable CORS on a resource using the API Gateway console<a name="how-to-cors-console"></a>
 
 You can use the API Gateway console to enable CORS support for one or all methods on a REST API resource that you have created\.
 
@@ -16,7 +16,7 @@ Resources can contain child resources\. Enabling CORS support for a resource and
    Alternatively, you could choose a method under the resource to enable CORS for just this method\.
 
 1. Choose **Enable CORS** from the **Actions** drop\-down menu\.  
-![\[Choose Enable CORS\]](http://docs.aws.amazon.com/apigateway/latest/developerguide/images/amazon-api-gateway-enable-cors.png)
+![\[Choose enable CORS\]](http://docs.aws.amazon.com/apigateway/latest/developerguide/images/amazon-api-gateway-enable-cors.png)
 
 1.  In the **Enable CORS** form, do the following: 
 
@@ -34,4 +34,4 @@ Resources can contain child resources\. Enabling CORS support for a resource and
 
 After CORS is enabled on the `GET` method, an `OPTIONS` method is added to the resource, if it is not already there\. The `200` response of the `OPTIONS` method is automatically configured to return the three `Access-Control-Allow-*` headers to fulfill preflight handshakes\. In addition, the actual \(`GET`\) method is also configured by default to return the `Access-Control-Allow-Origin` header in its 200 response as well\. For other types of responses, you will need to manually configure them to return `Access-Control-Allow-Origin'` header with '\*' or specific origins, if you do not want to return the `Cross-origin access` error\.
 
-After you enable CORS support on your resource, you must deploy or redeploy the API for the new settings to take effect\. For more information, see [Deploying a REST API from the API Gateway Console](how-to-deploy-api-with-console.md)\.
+After you enable CORS support on your resource, you must deploy or redeploy the API for the new settings to take effect\. For more information, see [Deploying a REST API from the API Gateway console](how-to-deploy-api-with-console.md)\.

@@ -1,4 +1,4 @@
-# How to Invoke a Private API<a name="apigateway-private-api-test-invoke-url"></a>
+# How to invoke a private API<a name="apigateway-private-api-test-invoke-url"></a>
 
 Private APIs are accessible only from within your VPCs, and the [resource policies](apigateway-private-apis.md#apigateway-private-api-set-up-resource-policy) must allow access from the VPCs and VPC endpoints you have configured\. How you access your private API will depend upon whether or not you have enabled private DNS on the VPC endpoint\. For example, while accessing private API from on\-premises network via AWS Direct Connect, you will have private DNS enabled on the VPC endpoint\. In such a case, follow the steps outlined in [Invoking Your Private API Using Endpoint\-Specific Public DNS Hostnames](#apigateway-private-api-public-dns)\.
 
@@ -12,7 +12,7 @@ To get the DNS names for your private API, do the following:
 
 1. In the **Details** pane, you'll see 5 values in the **DNS names** field\. The first 3 are the public DNS names for your API\. The other 2 are the private DNS names for it\.
 
-## Invoking Your Private API Using Private DNS Names<a name="w65aac16b9c33c26c11"></a>
+## Invoking your private API using private DNS names<a name="w90aac16b9c33c26c11"></a>
 
 **Warning**  
 When you select the Enable Private DNS Name option while creating an interface VPC endpoint for API Gateway, the VPC where the VPC Endpoint is present won't be able to access public \(edge\-optimized and regional\) APIs\. For more information, see [Why can't I connect to my public API from an API Gateway VPC endpoint?](https://aws.amazon.com/premiumsupport/knowledge-center/api-gateway-vpc-connections/)\.
@@ -53,13 +53,13 @@ and
 curl -X GET https://01234567ab.execute-api.us-west-2.amazonaws.com/test/pets/2
 ```
 
-## Accessing Your Private API Using AWS Direct Connect<a name="w65aac16b9c33c26c13"></a>
+## Accessing your private API using AWS Direct Connect<a name="w90aac16b9c33c26c13"></a>
 
 You can also use AWS Direct Connect to establish a dedicated private connection from an on\-premises network to Amazon VPC and access your private API endpoint over that connection by using public DNS names\.
 
 You cannot use private DNS names to access your private API from an on\-premises network\.
 
-## Accessing Your Private API Using a Route53 Alias<a name="apigateway-private-api-route53-alias"></a>
+## Accessing your private API using a Route53 alias<a name="apigateway-private-api-route53-alias"></a>
 
 You can associate or disassociate a VPC endpoint with your private API by using the procedure outlined in [Associate or Disassociate a VPC Endpoint with a Private REST API](apigateway-private-apis.md#associate-private-api-with-vpc-endpoint)\.
 
@@ -77,7 +77,7 @@ For example, assuming you set up the GET /pets and GET /pets/*\{petId\} * method
 curl -v https://01234567ab-vpce-01234567abcdef012.execute-api.us-west-2.amazonaws.com/test/pets/
 ```
 
-## Invoking Your Private API Using Endpoint\-Specific Public DNS Hostnames<a name="apigateway-private-api-public-dns"></a>
+## Invoking your private API using endpoint\-specific public DNS hostnames<a name="apigateway-private-api-public-dns"></a>
 
 You can access your private API using endpoint\-specific DNS hostnames\. These are public DNS hostnames containing the VPC endpoint ID or API ID for your private API\.
 

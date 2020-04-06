@@ -1,12 +1,12 @@
-# Test Basic Request Validation in API Gateway<a name="api-gateway-request-validation-test"></a>
+# Test basic request validation in API Gateway<a name="api-gateway-request-validation-test"></a>
 
 Choose one of the following topics for instructions on testing the basic request validation against the [sample API](api-gateway-request-validation-sample-api-swagger.md)\. 
 
 **Topics**
-+ [Test Basic Request Validation Using the API Gateway REST API](#api-gateway-request-validation-test-using-rest-api)
-+ [Test Basic Request Validation Using the API Gateway Console](#api-gateway-request-validation-test-in-console)
++ [Test basic request validation using the API Gateway REST API](#api-gateway-request-validation-test-using-rest-api)
++ [Test basic request validation using the API Gateway console](#api-gateway-request-validation-test-in-console)
 
-## Test Basic Request Validation Using the API Gateway REST API<a name="api-gateway-request-validation-test-using-rest-api"></a>
+## Test basic request validation using the API Gateway REST API<a name="api-gateway-request-validation-test-using-rest-api"></a>
 
  To see the invocation URL of the deployed API, you can export the API from the stage, making sure to include the `Accept: application/json` or `Accept: application/yaml` header: 
 
@@ -161,7 +161,7 @@ Authorization: AWS4-HMAC-SHA256 Credential={access_key_ID}/20170306/us-east-1/ap
 
     Setting `price` to `501` violates the constraint on the property\. This causes the validation to fail and the same `400 Bad Request` response is returned\. 
 
-## Test Basic Request Validation Using the API Gateway Console<a name="api-gateway-request-validation-test-in-console"></a>
+## Test basic request validation using the API Gateway console<a name="api-gateway-request-validation-test-in-console"></a>
 
  The following steps describe how to test basic request validation in the API Gateway console\.
 

@@ -1,4 +1,4 @@
-# Enable CORS on a Resource Using the API Gateway Import API<a name="enable-cors-for-resource-using-swagger-importer-tool"></a>
+# Enable CORS on a resource using the API Gateway import API<a name="enable-cors-for-resource-using-swagger-importer-tool"></a>
 
 If you are using the [API Gateway Import API](api-gateway-import-api.md), you can set up CORS support using an OpenAPI file\. You must first define an `OPTIONS` method in your resource that returns the required headers\.
 

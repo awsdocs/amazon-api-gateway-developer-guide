@@ -1,14 +1,14 @@
-# Amazon API Gateway API Request and Response Data Mapping Reference<a name="request-response-data-mappings"></a>
+# Amazon API Gateway API request and response data mapping reference<a name="request-response-data-mappings"></a>
 
- This section explains how to set up data mappings from an API's method request data, including other data stored in [`context`](api-gateway-mapping-template-reference.md#context-variable-reference), [`stage`](api-gateway-mapping-template-reference.md#stagevariables-template-reference), or [`util`](api-gateway-mapping-template-reference.md#util-template-reference) variables, to the corresponding integration request parameters and from an integration response data, including the other data, to the method response parameters\. The method request data includes request parameters \(path, query string, headers\) and the body\. The integration response data includes response parameters \(headers\) and the body\. For more information about using the stage variables, see [Amazon API Gateway Stage Variables Reference](aws-api-gateway-stage-variables-reference.md)\. 
+ This section explains how to set up data mappings from an API's method request data, including other data stored in [`context`](api-gateway-mapping-template-reference.md#context-variable-reference), [`stage`](api-gateway-mapping-template-reference.md#stagevariables-template-reference), or [`util`](api-gateway-mapping-template-reference.md#util-template-reference) variables, to the corresponding integration request parameters and from an integration response data, including the other data, to the method response parameters\. The method request data includes request parameters \(path, query string, headers\) and the body\. The integration response data includes response parameters \(headers\) and the body\. For more information about using the stage variables, see [Amazon API Gateway stage variables reference](aws-api-gateway-stage-variables-reference.md)\. 
 
 **Topics**
-+ [Map Method Request Data to Integration Request Parameters](#mapping-request-parameters)
-+ [Map Integration Response Data to Method Response Headers](#mapping-response-parameters)
-+ [Map Request and Response Payloads between Method and Integration](#transforming-request-response-body)
-+ [Integration Passthrough Behaviors](integration-passthrough-behaviors.md)
++ [Map method request data to integration request parameters](#mapping-request-parameters)
++ [Map integration response data to method response headers](#mapping-response-parameters)
++ [Map request and response payloads between method and integration](#transforming-request-response-body)
++ [Integration passthrough behaviors](integration-passthrough-behaviors.md)
 
-## Map Method Request Data to Integration Request Parameters<a name="mapping-request-parameters"></a>
+## Map method request data to integration request parameters<a name="mapping-request-parameters"></a>
 
 Integration request parameters, in the form of path variables, query strings or headers, can be mapped from any defined method request parameters and the payload\.
 
@@ -33,7 +33,7 @@ The `"$"` prefix is omitted in this syntax\.
 | Context variables | context\.VARIABLE\_NAME that must be one of the [supported context variables](api-gateway-mapping-template-reference.md#context-variable-reference)\. | 
 | Static value | 'STATIC\_VALUE'\. The STATIC\_VALUE is a string literal and must be enclosed within a pair of single quotes\. | 
 
-**Example mappings from method request parameter in OpenAPI**  
+**Example Mappings from method request parameter in OpenAPI**  
 The following example shows an OpenAPI snippet that maps:  
 + the method request's header, named `methodRequestHeaderParam`, into the integration request path parameter, named `integrationPathParam`
 + the multi\-value method request query string, named `methodRequestQueryParam`, into the integration request query string, named `integrationQueryParam`
@@ -51,7 +51,7 @@ The following example shows an OpenAPI snippet that maps:
 
  Integration request parameters can also be mapped from fields in the JSON request body using a [JSONPath expression](http://goessner.net/articles/JsonPath/index.html#e2)\. The following table shows the mapping expressions for a method request body and its JSON fields\. 
 
-**Example mapping from method request body in OpenAPI**  
+**Example Mapping from method request body in OpenAPI**  
  The following example shows an OpenAPI snippet that maps 1\) the method request body to the integration request header, named `body-header`, and 2\) a JSON field of the body, as expressed by a JSON expression \(`petstore.pets[0].name`, without the `$.` prefix\)\.   
 
 ```
@@ -65,14 +65,14 @@ The following example shows an OpenAPI snippet that maps:
 ...
 ```
 
-## Map Integration Response Data to Method Response Headers<a name="mapping-response-parameters"></a>
+## Map integration response data to method response headers<a name="mapping-response-parameters"></a>
 
  Method response header parameters can be mapped from any integration response header or integration response body, `$context` variables, or static values\.  
 
 
 **Method response header mapping expressions**  
 
-| Mapped Data Source | Mapping expression | 
+| Mapped data source | Mapping expression | 
 | --- | --- | 
 | Integration response header | integration\.response\.header\.PARAM\_NAME | 
 | Integration response header | integration\.response\.multivalueheader\.PARAM\_NAME | 
@@ -82,7 +82,7 @@ The following example shows an OpenAPI snippet that maps:
 | Context variable | context\.VARIABLE\_NAME that must be one of the [supported context variables](api-gateway-mapping-template-reference.md#context-variable-reference)\. | 
 | Static value | 'STATIC\_VALUE'\. The STATIC\_VALUE is a string literal and must be enclosed within a pair of single quotes\. | 
 
-**Example data mapping from integration response in OpenAPI**  
+**Example Data mapping from integration response in OpenAPI**  
  The following example shows an OpenAPI snippet that maps 1\) the integration response's `redirect.url`, JSONPath field into the request response's `location` header; and 2\) the integration response's `x-app-id` header to the method response's `id` header\.   
 
 ```
@@ -97,7 +97,7 @@ The following example shows an OpenAPI snippet that maps:
 ...
 ```
 
-## Map Request and Response Payloads between Method and Integration<a name="transforming-request-response-body"></a>
+## Map request and response payloads between method and integration<a name="transforming-request-response-body"></a>
 
  API Gateway uses [Velocity Template Language \(VTL\)](http://velocity.apache.org/engine/devel/vtl-reference-guide.html) engine to process body [mapping templates](rest-api-data-transformations.md#models-mappings-mappings) for the integration request and integration response\. The mapping templates translate method request payloads to the corresponding integration request payloads and translate integration response bodies to the method response bodies\. 
 
@@ -105,7 +105,7 @@ The following example shows an OpenAPI snippet that maps:
 
  If a model is defined to describe the data structure of a payload, API Gateway can use the model to generate a skeletal mapping template for an integration request or integration response\. You can use the skeletal template as an aid to customize and expand the mapping VTL script\. However, you can create a mapping template from scratch without defining a model for the payload's data structure\. 
 
-### Select a VTL Mapping Template<a name="selecting-mapping-templates"></a>
+### Select a VTL mapping template<a name="selecting-mapping-templates"></a>
 
  API Gateway uses the following logic to select a mapping template, in [Velocity Template Language \(VTL\)](http://velocity.apache.org/engine/devel/vtl-reference-guide.html), to map the payload from a method request to the corresponding integration request or to map the payload from an integration response to the corresponding method response\. 
 

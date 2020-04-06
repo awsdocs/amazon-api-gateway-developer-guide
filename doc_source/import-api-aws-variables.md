@@ -1,17 +1,17 @@
-# AWS Variables for OpenAPI Import<a name="import-api-aws-variables"></a>
+# AWS variables for OpenAPI import<a name="import-api-aws-variables"></a>
 
 You can use the following AWS variables in OpenAPI definitions\. API Gateway resolves the variables when the API is imported\. To specify a variable, use `${variable-name}`\. 
 
 
-**AWS Variables**  
+**AWS variables**  
 
-| Variable Name | Description | 
+| Variable name | Description | 
 | --- | --- | 
 | AWS::AccountId | The AWS account ID that imports the API—for example, 123456789012\. | 
 | AWS::Partition | The AWS partition in which the API is imported\. For standard AWS Regions, the partition is aws\. | 
 | AWS::Region | The AWS Region in which the API is imported—for example, us\-east\-2\. | 
 
-## AWS Variables Example<a name="import-api-aws-variables-example"></a>
+## AWS variables example<a name="import-api-aws-variables-example"></a>
 
 The following example uses AWS variables to specify an AWS Lambda function for an integration\.
 

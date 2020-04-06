@@ -1,4 +1,4 @@
-# Use the Serverless Developer Portal to Catalog Your API Gateway APIs<a name="apigateway-developer-portal"></a>
+# Use the serverless developer portal to catalog your API Gateway APIs<a name="apigateway-developer-portal"></a>
 
 A *developer portal* is an application that you use to make your APIs available to your customers\. You can use the Serverless Developer Portal to publish API Gateway managed APIs directly from API Gateway\. You can also use it to publish non\-API Gateway managed APIs by uploading OpenAPI definitions for them\. When you publish APIs in a developer portal, your customers can easily:
 + Discover which APIs are available\.
@@ -15,23 +15,23 @@ For more information about the AWS Serverless Application Repository, see the [A
 If you'd like to try out an example developer portal, see [https://developer\.exampleapigateway\.com/](https://developer.exampleapigateway.com/)\.
 
 **Topics**
-+ [Create a Developer Portal](#apigateway-developer-portal-create)
-+ [Developer Portal Settings](#apigateway-developer-portal-settings)
-+ [Create an Admin User for Your Developer Portal](#apigateway-developer-portal-create-admin)
-+ [Publish an API Gateway Managed API to Your Developer Portal](#apigateway-developer-portal-publish)
-+ [Update or Delete an API Gateway Managed API](#apigateway-developer-portal-update)
-+ [Remove a Non\-API Gateway Managed API](#apigateway-developer-portal-update-generic)
-+ [Publish a Non\-API Gateway Managed API to Your Developer Portal](#apigateway-developer-portal-publish-generic)
-+ [How Your Customers Use Your Developer Portal](#apigateway-developer-portal-get-api-key)
-+ [Best Practices for Developer Portals](#apigateway-developer-portal-best-practices)
++ [Create a developer portal](#apigateway-developer-portal-create)
++ [Developer portal settings](#apigateway-developer-portal-settings)
++ [Create an admin user for your developer portal](#apigateway-developer-portal-create-admin)
++ [Publish an API Gateway managed API to your developer portal](#apigateway-developer-portal-publish)
++ [Update or delete an API Gateway managed API](#apigateway-developer-portal-update)
++ [Remove a non\-API Gateway managed API](#apigateway-developer-portal-update-generic)
++ [Publish a non\-API Gateway managed API to your developer portal](#apigateway-developer-portal-publish-generic)
++ [How your customers use your developer portal](#apigateway-developer-portal-get-api-key)
++ [Best practices for developer portals](#apigateway-developer-portal-best-practices)
 
-## Create a Developer Portal<a name="apigateway-developer-portal-create"></a>
+## Create a developer portal<a name="apigateway-developer-portal-create"></a>
 
 You can deploy the API Gateway Serverless Developer Portal as\-is or customize it to fit your branding\. There are two ways to deploy your developer portal:
 + By using the AWS Serverless Application Repository\. Just choose the **Deploy** button to launch the API Gateway Serverless Developer Portal AWS CloudFormation stack and enter a handful of stack parameters in the Lambda console\.
 + By downloading the API Gateway Serverless Developer Portal from the AWS GitHub repository and launching the API Gateway Serverless Developer Portal AWS CloudFormation stack from the AWS SAM CLI\.
 
-**To deploy the Serverless Developer Portal using the AWS Serverless Application Repository**
+**To deploy the serverless developer portal using the AWS Serverless Application Repository**
 
 1. Go to the [API Gateway Serverless Developer Portal](https://serverlessrepo.aws.amazon.com/applications/arn:aws:serverlessrepo:us-east-1:563878140293:applications~api-gateway-dev-portal) page in the AWS Serverless Application Repository\.
 
@@ -55,7 +55,7 @@ If you don't supply an email address, the **Got an opinion?** doesn't appear in 
 
 1. If you entered an email address in the AdminEmail stack parameter, an Amazon SNS subscription email is sent to that email address to confirm that you'd like to subscribe to the Amazon SNS topic that you specified in the **MarketplaceSubscriptionTopicProductCode** setting\.
 
-**To download and deploy the Serverless Developer Portal using AWS SAM**
+**To download and deploy the serverless developer portal using AWS SAM**
 
 1. Ensure that you have the latest [AWS CLI](https://docs.aws.amazon.com/cli/latest/userguide/) and [AWS SAM CLI](https://github.com/awslabs/aws-sam-cli) installed and configured\.
 
@@ -69,7 +69,7 @@ If you don't supply an email address, the **Got an opinion?** doesn't appear in 
    sam package --template-file ./cloudformation/template.yaml --output-template-file ./cloudformation/packaged.yaml --s3-bucket {your-lambda-artifacts-bucket-name}
    ```
 
-1. For this step, see [Developer Portal Settings](#apigateway-developer-portal-settings) for more information about parameters \(such as `CognitoDomainNameOrPrefix`\) that follow `--parameter-overrides`\.
+1. For this step, see [Developer portal settings](#apigateway-developer-portal-settings) for more information about parameters \(such as `CognitoDomainNameOrPrefix`\) that follow `--parameter-overrides`\.
 **Note**  
 Ensure that you have a privately accessible Amazon S3 bucket to upload the AWS SAM template into\. \(AWS CloudFormation reads the template from the bucket to deploy the developer portal\.\) This can be the same bucket that you specified in the previous step for uploading the zipped Lambda functions\.
 
@@ -92,7 +92,7 @@ After your developer portal has been fully deployed, you can get its URL as foll
 
 1. Open the `Outputs` section\. The URL for the developer portal is specified in the `WebSiteURL` property\.
 
-## Developer Portal Settings<a name="apigateway-developer-portal-settings"></a>
+## Developer portal settings<a name="apigateway-developer-portal-settings"></a>
 
 The following are settings you need to set during and after deployment of your developer portal:
 
@@ -137,11 +137,11 @@ Provide a token different from the last deployment's token to re\-upload the dev
 **UseRoute53Nameservers**  
 Only applicable if you're creating a custom domain name for your developer portal\. Specify **true** to skip creating a Route 53 HostedZone and RecordSet\. You'll need to provide your own name server hosting in place of Route 53\. Otherwise, leave this field set to **false**\.
 
-## Create an Admin User for Your Developer Portal<a name="apigateway-developer-portal-create-admin"></a>
+## Create an admin user for your developer portal<a name="apigateway-developer-portal-create-admin"></a>
 
 After you've deployed your developer portal, you'll want to create at least one Admin user\. You do that by creating a new user and adding that user to the administrator group for the Amazon Cognito user pool that AWS CloudFormation created when you deployed the developer portal\.
 
-**Create an Admin user**
+**Create an admin user**
 
 1. In your developer portal, choose **Register**\.
 
@@ -163,7 +163,7 @@ After you've deployed your developer portal, you'll want to create at least one 
 
 1. In your developer portal, log out and log back in using the same credentials\. You should now see an **Admin Panel** link in the upper right corner, next to **My Dashboard**\.
 
-## Publish an API Gateway Managed API to Your Developer Portal<a name="apigateway-developer-portal-publish"></a>
+## Publish an API Gateway managed API to your developer portal<a name="apigateway-developer-portal-publish"></a>
 
 The following steps outline how you, as the API owner, publish an API to your developer portal so that your customers can subscribe to it\.
 
@@ -201,7 +201,7 @@ Now that the API Gateway managed API is displayed, you can enable SDK generation
 
    If you choose the **Download SDK** button, you should see a list of SDK types that you can download\.
 
-## Update or Delete an API Gateway Managed API<a name="apigateway-developer-portal-update"></a>
+## Update or delete an API Gateway managed API<a name="apigateway-developer-portal-update"></a>
 
 If you make changes to your API in API Gateway after you've published it, you need to redeploy it\.
 
@@ -229,11 +229,11 @@ To revoke customers' access to an API without deleting it entirely, you must do 
 + Remove the API keys from the usage plan\.
 + Remove the API stage from the usage plan\.
 
-## Remove a Non\-API Gateway Managed API<a name="apigateway-developer-portal-update-generic"></a>
+## Remove a non\-API Gateway managed API<a name="apigateway-developer-portal-update-generic"></a>
 
 To stop displaying a non\-API Gateway managed API and remove customers' access to it, choose **Delete**\. This won't delete the API, but it will delete its OpenAPI specification file from the developer portal\.
 
-## Publish a Non\-API Gateway Managed API to Your Developer Portal<a name="apigateway-developer-portal-publish-generic"></a>
+## Publish a non\-API Gateway managed API to your developer portal<a name="apigateway-developer-portal-publish-generic"></a>
 
 The following steps outline how you publish non\-API Gateway managed \(or "generic"\) APIs to your customers\. You can upload OpenAPI 2\.0 \(Swagger\) or 3\.x definitions for the APIs in `JSON`, `YAML`, or `YML` files\.
 
@@ -251,7 +251,7 @@ If any of the files can't be parsed or don't contain an API title, you'll get a 
 
 1. You should now see your API listed under **Generic APIs**\. If you don't, navigate away from the **Admin Panel** and back to it again to refresh the list\.
 
-## How Your Customers Use Your Developer Portal<a name="apigateway-developer-portal-get-api-key"></a>
+## How your customers use your developer portal<a name="apigateway-developer-portal-get-api-key"></a>
 
 To build applications and test your APIs, your customers need to create developer accounts by registering with your developer portal\.
 
@@ -327,7 +327,7 @@ If you've enabled SDK generation for the API in the **Admin Panel**, the custome
    + For JavaScript, the SDK is downloaded immediately\.
    + For **iOS \(Objective\-C\)** or **iOS \(Swift\)**, Type a unique prefix in the **Prefix** box\.
 
-     The effect of prefix is as follows: if you assign, for example, `SIMPLE_CALC` as the prefix for the SDK of the [SimpleCalc](simple-calc-lambda-api.md) API with `Input`, `Output`, and `Result` models, the generated SDK will contain the `SIMPLE_CALCSimpleCalcClient` class that encapsulates the API, including the method requests/responses\. In addition, the generated SDK will contain the `SIMPLE_CALCInput`, `SIMPLE_CALCOutput`, and `SIMPLE_CALCResult` classes to represent the input, output, and results, respectively, to represent the request input and response output\. For more information, see [Use iOS SDK Generated by API Gateway for a REST API in Objective\-C or Swift](how-to-generate-sdk-ios.md)\.
+     The effect of prefix is as follows: if you assign, for example, `SIMPLE_CALC` as the prefix for the SDK of the [SimpleCalc](simple-calc-lambda-api.md) API with `Input`, `Output`, and `Result` models, the generated SDK will contain the `SIMPLE_CALCSimpleCalcClient` class that encapsulates the API, including the method requests/responses\. In addition, the generated SDK will contain the `SIMPLE_CALCInput`, `SIMPLE_CALCOutput`, and `SIMPLE_CALCResult` classes to represent the input, output, and results, respectively, to represent the request input and response output\. For more information, see [Use iOS SDK generated by API Gateway for a REST API in Objective\-C or Swift](how-to-generate-sdk-ios.md)\.
    + For **Java**:
 
      1. For **Service Name**, specify the name of your SDK\. For example, **SimpleCalcSdk**\. This becomes the name of your SDK client class\. The name corresponds to the `<name>` tag under `<project>` in the `pom.xml` file, which is in the SDK's project folder\. Do not include hyphens\.
@@ -335,7 +335,7 @@ If you've enabled SDK generation for the API in the **Admin Panel**, the custome
      1. For **Java Package Name**, specify a package name for your SDK\. For example, **examples\.aws\.apig\.simpleCalc\.sdk**\. This package name is used as the namespace of your SDK library\. Do not include hyphens\.
    + For Ruby, for **Service Name**, specify the name of your SDK\. For example, `SimpleCalc`\. This is used to generate the Ruby Gem namespace of your API\. The name must be all letters, \(`a-zA-Z`\), without any other special characters or numbers\.
 
-## Best Practices for Developer Portals<a name="apigateway-developer-portal-best-practices"></a>
+## Best practices for developer portals<a name="apigateway-developer-portal-best-practices"></a>
 
 The following are suggested best practices to follow when deploying a developer portal\.
 + In most cases, you'll only want to deploy one developer portal for all of your APIs\. In some cases, you might choose to have separate developer portals for development and production versions of your APIs\. We don't recommended using more than one developer portal for production APIs\.

@@ -1,12 +1,12 @@
-# Control Access for Invoking an API<a name="api-gateway-control-access-using-iam-policies-to-invoke-api"></a>
+# Control access for invoking an API<a name="api-gateway-control-access-using-iam-policies-to-invoke-api"></a>
 
- In this section you will learn how to write up IAM policy statements to control who can call a deployed API in API Gateway\. Here, you will also find the policy statement reference, including the formats of `Action` and `Resource` fields related to the API execution service\. You should also study the IAM section in [How API Gateway Resource Policies Affect Authorization Workflow](apigateway-authorization-flow.md)\.
+ In this section you will learn how to write up IAM policy statements to control who can call a deployed API in API Gateway\. Here, you will also find the policy statement reference, including the formats of `Action` and `Resource` fields related to the API execution service\. You should also study the IAM section in [How API Gateway resource policies affect authorization workflow](apigateway-authorization-flow.md)\.
 
 For private APIs, you should use a combination of an API Gateway resource policy and a VPC endpoint policy\. For more information, see the following topics:
-+ [Controlling Access to an API with API Gateway Resource Policies](apigateway-resource-policies.md)
-+ [Use VPC Endpoint Policies for Private APIs in API Gateway](apigateway-vpc-endpoint-policies.md)
++ [Controlling access to an API with API Gateway resource policies](apigateway-resource-policies.md)
++ [Use VPC endpoint policies for private APIs in API Gateway](apigateway-vpc-endpoint-policies.md)
 
-## Control Who Can Call an API Gateway API Method with IAM Policies<a name="api-gateway-who-can-invoke-an-api-method-using-iam-policies"></a>
+## Control who can call an API Gateway API method with IAM policies<a name="api-gateway-who-can-invoke-an-api-method-using-iam-policies"></a>
 
  To control who can or cannot call a deployed API with IAM permissions, create an IAM policy document with required permissions\. A template for such a policy document is shown as follows\. 
 
@@ -27,7 +27,7 @@ For private APIs, you should use a combination of an API Gateway resource policy
 }
 ```
 
- Here, `Permission` is to be replaced by `Allow` or `Deny` depending on whether you want to grant or revoke the included permissions\. `Execution-operation` is to be replaced by the operations supported by the API execution service\. `METHOD_HTTP_VERB` stands for a HTTP verb supported by the specified resources\. `Resource-path` is the placeholder for the URL path of a deployed API `[Resource](https://docs.aws.amazon.com/apigateway/api-reference/resource/resource/)` instance supporting the said `METHOD_HTTP-VERB`\. For more information, see [Statement Reference of IAM Policies for Executing API in API Gateway](#api-gateway-calling-api-permissions)\. 
+ Here, `Permission` is to be replaced by `Allow` or `Deny` depending on whether you want to grant or revoke the included permissions\. `Execution-operation` is to be replaced by the operations supported by the API execution service\. `METHOD_HTTP_VERB` stands for a HTTP verb supported by the specified resources\. `Resource-path` is the placeholder for the URL path of a deployed API `[Resource](https://docs.aws.amazon.com/apigateway/api-reference/resource/resource/)` instance supporting the said `METHOD_HTTP-VERB`\. For more information, see [Statement reference of IAM policies for executing API in API Gateway](#api-gateway-calling-api-permissions)\. 
 
 **Note**  
 For IAM policies to be effective, you must have enabled IAM authentication on API methods by setting `AWS_IAM` for the methods' `[authorizationType](https://docs.aws.amazon.com/apigateway/api-reference/resource/method/#authorizationType)` property\. Failing to do so will make these API methods publicly accessible\.
@@ -99,11 +99,11 @@ To grant a user permission to view a specific pet exposed by an API that is conf
 }
 ```
 
-## Statement Reference of IAM Policies for Executing API in API Gateway<a name="api-gateway-calling-api-permissions"></a>
+## Statement reference of IAM policies for executing API in API Gateway<a name="api-gateway-calling-api-permissions"></a>
 
 The following information describes the Action and Resource format of IAM policy statements of access permissions for executing an API\.
 
-### Action Format of Permissions for Executing API in API Gateway<a name="api-gateway-iam-policy-action-format-for-executing-api"></a>
+### Action format of permissions for executing API in API Gateway<a name="api-gateway-iam-policy-action-format-for-executing-api"></a>
 
 The API\-executing `Action` expression has the following general format:
 
@@ -116,7 +116,7 @@ where *action* is an available API\-executing action:
 + **Invoke**, used to invoke an API upon a client request\.
 + **InvalidateCache**, used to invalidate API cache upon a client request\.
 
-### Resource Format of Permissions for Executing API in API Gateway<a name="api-gateway-iam-policy-resource-format-for-executing-api"></a>
+### Resource format of permissions for executing API in API Gateway<a name="api-gateway-iam-policy-resource-format-for-executing-api"></a>
 
 The API\-executing `Resource` expression has the following general format:
 

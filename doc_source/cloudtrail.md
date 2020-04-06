@@ -1,4 +1,4 @@
-# Logging Calls to Amazon API Gateway APIs with AWS CloudTrail<a name="cloudtrail"></a>
+# Logging calls to Amazon API Gateway APIs with AWS CloudTrail<a name="cloudtrail"></a>
 
 Amazon API Gateway is integrated with AWS CloudTrail, a service that provides a record of actions taken by a user, a role, or an AWS service in API Gateway\. CloudTrail captures all REST API calls for API Gateway as events, including calls from the API Gateway console and from code calls to the API Gateway APIs\. 
 
@@ -8,7 +8,7 @@ Using the information collected by CloudTrail, you can determine the request tha
 
 To learn more about CloudTrail, see the [AWS CloudTrail User Guide](https://docs.aws.amazon.com/awscloudtrail/latest/userguide/)\.
 
-## API Gateway Information in CloudTrail<a name="service-info-in-cloudtrail"></a>
+## API Gateway information in CloudTrail<a name="service-info-in-cloudtrail"></a>
 
 CloudTrail is enabled on your AWS account when you create the account\. When activity occurs in Amazon API Gateway, that activity is recorded in a CloudTrail event along with other AWS service events in **Event history**\. You can view, search, and download recent events in your AWS account\. For more information, see [Viewing Events with CloudTrail Event History](https://docs.aws.amazon.com/awscloudtrail/latest/userguide/view-cloudtrail-events.html)\. 
 
@@ -18,7 +18,7 @@ For an ongoing record of events in your AWS account, including events for API Ga
 + [Configuring Amazon SNS Notifications for CloudTrail](https://docs.aws.amazon.com/awscloudtrail/latest/userguide/getting_notifications_top_level.html)
 + [Receiving CloudTrail Log Files from Multiple Regions](https://docs.aws.amazon.com/awscloudtrail/latest/userguide/receive-cloudtrail-log-files-from-multiple-regions.html) and [Receiving CloudTrail Log Files from Multiple Accounts](https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-receive-logs-from-multiple-accounts.html)
 
-All Amazon API Gateway actions are logged by CloudTrail and are documented in the [API References](api-ref.md)\. For example, calls to create a new API, resource, or method in API Gateway generate entries in CloudTrail log files\.
+All Amazon API Gateway actions are logged by CloudTrail and are documented in the [API references](api-ref.md)\. For example, calls to create a new API, resource, or method in API Gateway generate entries in CloudTrail log files\.
 
 Every event or log entry contains information about who generated the request\. The identity information helps you determine the following: 
 + Whether the request was made with root or IAM user credentials\.
@@ -27,7 +27,7 @@ Every event or log entry contains information about who generated the request\. 
 
 For more information, see the [CloudTrail userIdentity Element](https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-event-reference-user-identity.html)\.
 
-## Understanding API Gateway Log File Entries<a name="understanding-service-name-entries"></a>
+## Understanding API Gateway log file entries<a name="understanding-service-name-entries"></a>
 
 A trail is a configuration that enables delivery of events as log files to an Amazon S3 bucket that you specify\. CloudTrail log files contain one or more log entries\. An event represents a single request from any source and includes information about the requested action, the date and time of the action, request parameters, and so on\. CloudTrail log files are not an ordered stack trace of the public API calls, so they do not appear in any specific order\. 
 

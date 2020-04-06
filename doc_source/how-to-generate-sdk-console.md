@@ -1,4 +1,4 @@
-# Generate SDKs for an API Using the API Gateway Console<a name="how-to-generate-sdk-console"></a>
+# Generate SDKs for an API using the API Gateway console<a name="how-to-generate-sdk-console"></a>
 
  To generate a platform\- or language\-specific SDK for an API in API Gateway, you must first create, test, and deploy the API in a stage\. For illustration purposes, we use the [Simple Calculator](simple-calc-lambda-api-swagger-definition.md) API as an example to generate language\-specific or platform\-specific SDKs throughout this section\. For instructions on how to create, test, and deploy this API, see [Create the Simple Calculator API](simple-calc-lambda-api.md)\. 
 

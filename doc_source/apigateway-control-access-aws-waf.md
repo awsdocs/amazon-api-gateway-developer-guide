@@ -1,4 +1,4 @@
-# Using AWS WAF to Protect Your APIs<a name="apigateway-control-access-aws-waf"></a>
+# Using AWS WAF to protect your APIs<a name="apigateway-control-access-aws-waf"></a>
 
 AWS WAF is a web application firewall that helps protect web applications and APIs from attacks\. It enables you to configure a set of rules \(called a web access control list \(web ACL\)\) that allow, block, or count web requests based on customizable web security rules and conditions that you define\. For more information, see [How AWS WAF Works](https://docs.aws.amazon.com/waf/latest/developerguide/how-aws-waf-works.html)\.
 
@@ -17,7 +17,7 @@ API Gateway requires a Regional web ACL\.
 
 1. Associate the AWS WAF Regional web ACL with an API stage\. You can do this by using the AWS WAF console, AWS SDK, or CLI or by using the API Gateway console, AWS SDK, or CLI\.
 
-## To Associate an AWS WAF Regional Web ACL with an API Gateway API Stage Using the API Gateway Console<a name="apigateway-control-access-aws-waf-console"></a>
+## To associate an AWS WAF regional Web ACL with an API Gateway API stage using the API Gateway console<a name="apigateway-control-access-aws-waf-console"></a>
 
 To use the API Gateway console to associate an AWS WAF Regional web ACL with an existing API Gateway API stage, use the following steps:
 
@@ -37,7 +37,7 @@ If the web ACL you need doesn't exist yet, choose **Create WebACL**\. Then choos
 
 1. Choose **Save Changes**\.
 
-## Associate an AWS WAF Regional Web ACL with an API Gateway API Stage Using the AWS CLI<a name="apigateway-control-access-aws-waf-awscli"></a>
+## Associate an AWS WAF regional Web ACL with an API Gateway API stage using the AWS CLI<a name="apigateway-control-access-aws-waf-awscli"></a>
 
 To use the AWS CLI to associate an AWS WAF Regional web ACL with an existing API Gateway API stage, call the [https://docs.aws.amazon.com/cli/latest/reference/waf-regional/associate-web-acl.html](https://docs.aws.amazon.com/cli/latest/reference/waf-regional/associate-web-acl.html) command, as in the following example:
 
@@ -47,7 +47,7 @@ aws waf-regional associate-web-acl \
 --resource-arn 'arn:aws:apigateway:{region}::/restapis/4wk1k4onj3/stages/prod'
 ```
 
-## Associate an AWS WAF Regional Web ACL with an API Stage Using the AWS WAF REST API<a name="apigateway-control-access-aws-waf-api"></a>
+## Associate an AWS WAF regional web ACL with an API stage using the AWS WAF REST API<a name="apigateway-control-access-aws-waf-api"></a>
 
 To use the AWS WAF REST API to associate an AWS WAF Regional web ACL with an existing API Gateway API stage, call the [https://docs.aws.amazon.com/waf/latest/APIReference/API_regional_AssociateWebACL.html](https://docs.aws.amazon.com/waf/latest/APIReference/API_regional_AssociateWebACL.html) command, as in the following example:
 

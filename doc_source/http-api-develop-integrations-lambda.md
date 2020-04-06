@@ -1,8 +1,8 @@
-# Working with AWS Lambda Proxy Integrations for HTTP APIs<a name="http-api-develop-integrations-lambda"></a>
+# Working with AWS Lambda proxy integrations for HTTP APIs<a name="http-api-develop-integrations-lambda"></a>
 
 A Lambda proxy integration enables you to integrate an API route with a Lambda function\. When a client calls your API, API Gateway sends the request to the Lambda function and returns the function's response to the client\. For examples of creating an HTTP API, see [Creating an HTTP API](http-api-develop.md#http-api-examples)\.
 
-## Payload Format Version<a name="http-api-develop-integrations-lambda.proxy-format"></a>
+## Payload format version<a name="http-api-develop-integrations-lambda.proxy-format"></a>
 
 The payload format version specifies the format of the data that API Gateway sends to a Lambda integration, and how API Gateway interprets the response from Lambda\. If you don't specify a payload format version, the AWS Management Console uses the latest version by default\. If you create a Lambda integration by using the AWS CLI, AWS CloudFormation, or an SDK, you must specify a `payloadFormatVersion`\. The supported values are `1.0` and `2.0`\. 
 
@@ -45,14 +45,13 @@ Format `2.0` includes a new `cookies` field\. All cookie headers in the request 
           userAgent: 'agent'
         },
         requestId: 'id',
-        routeId: null,
         routeKey: '$default',
         stage: '$default',
         time: '12/Mar/2020:19:03:58 +0000',
         timeEpoch: 1583348638390
       },
-      pathParameters: {'param1': 'value1'},
       body: 'Hello from Lambda',
+      pathParameters: {'parameter1': 'value1'},
       isBase64Encoded: false,
       stageVariables: {'stageVariable1': 'value1', 'stageVariable2': 'value2'}
     }
@@ -117,11 +116,11 @@ Format `2.0` includes a new `cookies` field\. All cookie headers in the request 
 
 ------
 
-## Lambda Function Response Format<a name="http-api-develop-integrations-lambda.response"></a>
+## Lambda function response format<a name="http-api-develop-integrations-lambda.response"></a>
 
 The payload format version determines the structure of the response that your Lambda function must return\.
 
-### Lambda Function Response for Format 1\.0<a name="http-api-develop-integrations-lambda.v1"></a>
+### Lambda function response for format 1\.0<a name="http-api-develop-integrations-lambda.v1"></a>
 
 With the `1.0` format version, Lambda integrations must return a response in the following format\.
 
@@ -137,7 +136,7 @@ With the `1.0` format version, Lambda integrations must return a response in the
 }
 ```
 
-### Lambda Function Response for Format 2\.0<a name="http-api-develop-integrations-lambda.v2"></a>
+### Lambda function response for format 2\.0<a name="http-api-develop-integrations-lambda.v2"></a>
 
 With the `2.0` format version, API Gateway can infer the response format for you\. API Gateway makes the following assumptions if your Lambda function returns valid JSON and doesn't return a `statusCode`:
 + `isBase64Encoded` is `false`\.
@@ -148,7 +147,7 @@ With the `2.0` format version, API Gateway can infer the response format for you
 The following examples show the output of a Lambda function and API Gateway's interpretation\.
 
 
-| Lambda Function Output | API Gateway Interpretation | 
+| Lambda function output | API Gateway interpretation | 
 | --- | --- | 
 |  <pre>"Hello from Lambda!"</pre>  |  <pre>{<br />  "isBase64Encoded": false,<br />  "statusCode": 200,<br />  "body": "Hello from Lambda!",<br />  "headers": {<br />    "Content-Type": "application/json"<br />  }<br />}</pre>  | 
 |  <pre>{ message: "Hello from Lambda!" }</pre>  |  <pre>{<br />  "isBase64Encoded": false,<br />  "statusCode": 200,<br />  "body": { message: "Hello from Lambda!" },<br />  "headers": {<br />    "Content-Type": "application/json"<br />  }<br />}</pre>  | 

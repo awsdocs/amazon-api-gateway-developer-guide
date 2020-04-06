@@ -1,13 +1,13 @@
-# Creating an Edge\-Optimized Custom Domain Name<a name="how-to-edge-optimized-custom-domain-name"></a>
+# Creating an edge\-optimized custom domain name<a name="how-to-edge-optimized-custom-domain-name"></a>
 
 **Topics**
-+ [Set Up an Edge\-Optimized Custom Domain Name for an API Gateway API](#how-to-custom-domains-console)
-+ [Log Custom Domain Name Creation in CloudTrail](#how-to-custom-domain-log-cloudfront-distribution-update-in-cloudtrail)
-+ [Configure Base Path Mapping of an API with a Custom Domain Name as its Hostname](#how-to-custom-domains-mapping-console)
-+ [Rotate a Certificate Imported into ACM](#how-to-rotate-custom-domain-certificate)
-+ [Call Your API with Custom Domain Names](#how-to-custom-domains-call-api-with-sni)
++ [Set up an edge\-optimized custom domain name for an API Gateway API](#how-to-custom-domains-console)
++ [Log custom domain name creation in CloudTrail](#how-to-custom-domain-log-cloudfront-distribution-update-in-cloudtrail)
++ [Configure base path mapping of an API with a custom domain name as its hostname](#how-to-custom-domains-mapping-console)
++ [Rotate a certificate imported into ACM](#how-to-rotate-custom-domain-certificate)
++ [Call your API with custom domain names](#how-to-custom-domains-call-api-with-sni)
 
-## Set Up an Edge\-Optimized Custom Domain Name for an API Gateway API<a name="how-to-custom-domains-console"></a>
+## Set up an edge\-optimized custom domain name for an API Gateway API<a name="how-to-custom-domains-console"></a>
 
 The following procedure describes how to set create a custom domain name for an API using the API Gateway console\.
 
@@ -66,7 +66,7 @@ To use an ACM certificate with an API Gateway edge\-optimized custom domain name
 
 For code examples of this REST API call, see [domainname:create](https://docs.aws.amazon.com/apigateway/api-reference/link-relation/domainname-create/)\.
 
-## Log Custom Domain Name Creation in CloudTrail<a name="how-to-custom-domain-log-cloudfront-distribution-update-in-cloudtrail"></a>
+## Log custom domain name creation in CloudTrail<a name="how-to-custom-domain-log-cloudfront-distribution-update-in-cloudtrail"></a>
 
 When CloudTrail is enabled for logging API Gateway calls made by your account, API Gateway logs the associated CloudFront distribution updates when a custom domain name is created or updated for an API\. Because these CloudFront distributions are owned by API Gateway, each of these reported CloudFront distributions is identified by one of the following Region\-specific API Gateway account IDs, instead of the API owner's account ID\. 
 
@@ -92,13 +92,13 @@ When CloudTrail is enabled for logging API Gateway calls made by your account, A
 | sa\-east\-1 | 287228555773 | 
 | me\-south\-1 | 855739686837 | 
 
-## Configure Base Path Mapping of an API with a Custom Domain Name as its Hostname<a name="how-to-custom-domains-mapping-console"></a>
+## Configure base path mapping of an API with a custom domain name as its hostname<a name="how-to-custom-domains-mapping-console"></a>
 
  You can use a single custom domain name as the hostname of multiple APIs\. You achieve this by configuring the base path mappings on the custom domain name\. With the base path mappings, an API under the custom domain is accessible through the combination of the custom domain name and the associated base path\. 
 
 For example, if you created an API named `PetStore` and another API named `PetShop` and set up a custom domain name of `api.example.com` in API Gateway, you can set the `PetStore` API's URL as `https://api.example.com` or `https://api.example.com/myPetStore`\. The `PetStore` API is associated with the base path of an empty string or `myPetStore` under the custom domain name of `api.example.com`\. Similarly, you can assign a base path of `yourPetShop` for the `PetShop` API\. The URL of `https://api.example.com/yourPetShop` is then the root URL of the `PetShop` API\. 
 
-Before setting the base path for an API, complete the steps in [Set Up an Edge\-Optimized Custom Domain Name for an API Gateway API](#how-to-custom-domains-console)\.
+Before setting the base path for an API, complete the steps in [Set up an edge\-optimized custom domain name for an API Gateway API](#how-to-custom-domains-console)\.
 
 The following procedure sets up API mappings to map paths from your custom domain name to your API stages\.
 
@@ -125,7 +125,7 @@ In addition, you can call the API Gateway REST API, AWS CLI, or one of the AWS S
 
 For code examples of the REST API call, see [basepathmapping:create](https://docs.aws.amazon.com/apigateway/api-reference/link-relation/basepathmapping-create/)\.
 
-## Rotate a Certificate Imported into ACM<a name="how-to-rotate-custom-domain-certificate"></a>
+## Rotate a certificate imported into ACM<a name="how-to-rotate-custom-domain-certificate"></a>
 
  ACM automatically handles renewal of certificates it issues\. You do not need to rotate any ACM\-issued certificates for your custom domain names\. CloudFront handles it on your behalf\. 
 
@@ -156,7 +156,7 @@ To illustrate how to programmatically rotate an imported certificate for a custo
 **Rotate an imported certificate using the API Gateway REST API**
 +  Call [domainname:update](https://docs.aws.amazon.com/apigateway/api-reference/link-relation/domainname-update/) action, specifying the ARN of the new ACM certificate for the specified domain name\. 
 
-## Call Your API with Custom Domain Names<a name="how-to-custom-domains-call-api-with-sni"></a>
+## Call your API with custom domain names<a name="how-to-custom-domains-call-api-with-sni"></a>
 
 Calling an API with a custom domain name is the same as calling the API with its default domain name, provided that the correct URL is used\.
 

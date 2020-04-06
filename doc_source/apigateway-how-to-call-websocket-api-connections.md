@@ -1,4 +1,4 @@
-# Use `@connections` Commands in Your Backend Service<a name="apigateway-how-to-call-websocket-api-connections"></a>
+# Use `@connections` commands in your backend service<a name="apigateway-how-to-call-websocket-api-connections"></a>
 
 Your backend service can use the following WebSocket connection HTTP requests to send a callback message to a connected client, get connection information, or disconnect the client\.
 

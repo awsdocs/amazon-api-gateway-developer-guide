@@ -1,14 +1,14 @@
-# Disable a Canary Release<a name="delete-canary-deployment"></a>
+# Disable a canary release<a name="delete-canary-deployment"></a>
 
 To disable a canary release deployment is to set the [https://docs.aws.amazon.com/apigateway/api-reference/resource/stage/#canarySettings](https://docs.aws.amazon.com/apigateway/api-reference/resource/stage/#canarySettings) to null to remove it from the stage\. 
 
 You can disable a canary release deployment using the API Gateway console, the AWS CLI, or an AWS SDK\.
 
 **Topics**
-+ [Disable a Canary Release Using the API Gateway Console](#delete-canary-release-console)
-+ [Disable a Canary Release Using the AWS CLI](#delete-canary-release-cli)
++ [Disable a canary release using the API Gateway console](#delete-canary-release-console)
++ [Disable a canary release using the AWS CLI](#delete-canary-release-cli)
 
-## Disable a Canary Release Using the API Gateway Console<a name="delete-canary-release-console"></a>
+## Disable a canary release using the API Gateway console<a name="delete-canary-release-console"></a>
 
 To use the API Gateway console to disable a canary release deployment, use the following steps:
 
@@ -22,9 +22,9 @@ To use the API Gateway console to disable a canary release deployment, use the f
 
 1.  Confirm you want to delete the canary by choosing **Delete**\.
 
-As a result, the [https://docs.aws.amazon.com/apigateway/api-reference/resource/stage/#canarySettings](https://docs.aws.amazon.com/apigateway/api-reference/resource/stage/#canarySettings) property becomes `null` and is removed from the deployment [stage](https://docs.aws.amazon.com/apigateway/api-reference/resource/stage/)\. You can verify this using the AWS CLI\. For example, see [Disable a Canary Release Using the AWS CLI](#delete-canary-release-cli)\.
+As a result, the [https://docs.aws.amazon.com/apigateway/api-reference/resource/stage/#canarySettings](https://docs.aws.amazon.com/apigateway/api-reference/resource/stage/#canarySettings) property becomes `null` and is removed from the deployment [stage](https://docs.aws.amazon.com/apigateway/api-reference/resource/stage/)\. You can verify this using the AWS CLI\. For example, see [Disable a canary release using the AWS CLI](#delete-canary-release-cli)\.
 
-## Disable a Canary Release Using the AWS CLI<a name="delete-canary-release-cli"></a>
+## Disable a canary release using the AWS CLI<a name="delete-canary-release-cli"></a>
 
 To use the AWS CLI to disable a canary release deployment, call the `update-stage` command as follows:
 

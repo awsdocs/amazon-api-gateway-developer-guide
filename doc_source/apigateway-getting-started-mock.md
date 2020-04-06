@@ -1,27 +1,27 @@
-# Create a REST API with a Mock Integration in Amazon API Gateway<a name="apigateway-getting-started-mock"></a>
+# Create a REST API with a mock integration in Amazon API Gateway<a name="apigateway-getting-started-mock"></a>
 
 You can use this walkthrough to create and deploy an API with a mock integration in Amazon API Gateway\. A *mock integration* enables your API to return a response for a request directly, without ever sending the request to a backend\. This enables you to develop your API independently from your backend\.
 
 **Topics**
 + [Step 1: Create the API](#apigateway-getting-started-mock-step-1)
-+ [Step 2: Create the Mock Integration](#apigateway-getting-started-mock-step-2)
-+ [Step 3: Define the Successful Response](#apigateway-getting-started-mock-step-3)
-+ [Step 4: Add an HTTP 500 Status Code and Error Message](#apigateway-getting-started-mock-step-4)
-+ [Step 5: Test the Mock Integration](#apigateway-getting-started-mock-step-5)
-+ [Next Steps](#apigateway-getting-started-mock-next-steps)
++ [Step 2: Create the mock integration](#apigateway-getting-started-mock-step-2)
++ [Step 3: Define the successful response](#apigateway-getting-started-mock-step-3)
++ [Step 4: Add an HTTP 500 status code and error message](#apigateway-getting-started-mock-step-4)
++ [Step 5: Test the mock integration](#apigateway-getting-started-mock-step-5)
++ [Next steps](#apigateway-getting-started-mock-next-steps)
 
 ## Step 1: Create the API<a name="apigateway-getting-started-mock-step-1"></a>
 
 In this step, you create an API with a `GET` method and a query parameter in the API Gateway console\.
 
-1. If you haven't already done so, complete the steps in [Prerequisites: Get Ready to Build an API in API Gateway](setting-up.md)\.
+1. If you haven't already done so, complete the steps in [Prerequisites: Get ready to build an API in API Gateway](setting-up.md)\.
 
 1. Sign in to the API Gateway console at [https://console\.aws\.amazon\.com/apigateway](https://console.aws.amazon.com/apigateway)\.
 
 1. If this is your first time using API Gateway, you see a page that introduces you to the features of the service\. Choose **Get Started**\. When the **Create Example API** popup appears, choose **OK**\.
 
    If it isn't your first time, choose **Create API**\.  
-![\[API Gateway Getting Started\]](http://docs.aws.amazon.com/apigateway/latest/developerguide/images/apigateway-get-started-button.png)
+![\[API Gateway getting started\]](http://docs.aws.amazon.com/apigateway/latest/developerguide/images/apigateway-get-started-button.png)
 
 1. Under **Choose the protocol**, choose **REST**\.
 
@@ -39,10 +39,10 @@ In this step, you create an API with a `GET` method and a query parameter in the
 1. Under the resource name \(**/**\), you'll see a dropdown menu\. Choose **GET** and then choose the checkmark icon to save your choice\.
 
 1. You'll see a **/ – GET – Setup** pane\. For **Integration Type**, choose **Mock**\.  
-![\[API Gateway Method Setup pane\]](http://docs.aws.amazon.com/apigateway/latest/developerguide/images/apigateway-mock-choose-integration.png)
+![\[API Gateway method setup pane\]](http://docs.aws.amazon.com/apigateway/latest/developerguide/images/apigateway-mock-choose-integration.png)
 
 1. Choose **Save**\. Now you'll see a **/ – GET – Method Execution** pane:  
-![\[API Gateway Method Execution pane\]](http://docs.aws.amazon.com/apigateway/latest/developerguide/images/apigateway-mock-integration-boxes.png)
+![\[API Gateway method execution pane\]](http://docs.aws.amazon.com/apigateway/latest/developerguide/images/apigateway-mock-integration-boxes.png)
 
    The **Method Execution** pane contains these items, in clockwise order:
    + **Client**: This box represents the client \(browser or app\) that calls your API's `GET` method\. If you choose the **Test** link and then choose **Test**, this simulates a `GET` request from a client\.
@@ -54,7 +54,7 @@ In this step, you create an API with a `GET` method and a query parameter in the
 
    For this step, leave everything set to the default values\.
 
-## Step 2: Create the Mock Integration<a name="apigateway-getting-started-mock-step-2"></a>
+## Step 2: Create the mock integration<a name="apigateway-getting-started-mock-step-2"></a>
 
 In this step, instead of integrating with a backend, you add a query string parameter to your `GET` method, and then you specify the response codes and messages your API will return\.
 
@@ -94,7 +94,7 @@ Next, create a mapping template that maps the query string parameter values to t
 
 1. Choose **Save**\.
 
-## Step 3: Define the Successful Response<a name="apigateway-getting-started-mock-step-3"></a>
+## Step 3: Define the successful response<a name="apigateway-getting-started-mock-step-3"></a>
 
 Now you'll create a mapping template that maps the HTTP 200 status code value to a success message to be returned to the client\.
 
@@ -117,7 +117,7 @@ Now you'll create a mapping template that maps the HTTP 200 status code value to
 **Note**  
 There are two **Save** buttons in this pane\. Be sure to choose the one in the **Mapping Templates** section\.
 
-## Step 4: Add an HTTP 500 Status Code and Error Message<a name="apigateway-getting-started-mock-step-4"></a>
+## Step 4: Add an HTTP 500 status code and error message<a name="apigateway-getting-started-mock-step-4"></a>
 
 In this step you add an HTTP 500 status code that the frontend can return to the client, and then you map it to an error message\.
 
@@ -158,7 +158,7 @@ Now create a mapping template that maps the "returned" 500 status code value to 
 **Note**  
 There are two **Save** buttons in this pane\. Be sure to choose the one in the **Mapping Templates** section\.
 
-## Step 5: Test the Mock Integration<a name="apigateway-getting-started-mock-step-5"></a>
+## Step 5: Test the mock integration<a name="apigateway-getting-started-mock-step-5"></a>
 
 In this step, you test the mock integration\.
 
@@ -178,17 +178,17 @@ In this step, you test the mock integration\.
    You should see output like the following:  
 ![\[Test 500 mock value\]](http://docs.aws.amazon.com/apigateway/latest/developerguide/images/apigateway-mock-test-500.png)
 
-## Next Steps<a name="apigateway-getting-started-mock-next-steps"></a>
+## Next steps<a name="apigateway-getting-started-mock-next-steps"></a>
 
 Explore any or all of the following topics to continue getting familiar with Amazon API Gateway\.
 
 
-| To Learn More About | Go To | 
+| To learn more about | Go to | 
 | --- | --- | 
-| Defining method requests and responses | [Set up REST API Methods in API Gateway](how-to-method-settings.md) | 
-| Defining integration responses | [Set Up an Integration Response in API Gateway](api-gateway-integration-settings-integration-response.md) | 
-| Setting up a custom domain name for your API | [Setting Up Custom Domain Names for REST APIs](how-to-custom-domains.md) | 
-| Enabling CORS for your API | [Enabling CORS for a REST API Resource](how-to-cors.md) | 
+| Defining method requests and responses | [Set up REST API methods in API Gateway](how-to-method-settings.md) | 
+| Defining integration responses | [Set up an integration response in API Gateway](api-gateway-integration-settings-integration-response.md) | 
+| Setting up a custom domain name for your API | [Setting up custom domain names for REST APIs](how-to-custom-domains.md) | 
+| Enabling CORS for your API | [Enabling CORS for a REST API resource](how-to-cors.md) | 
 
 To get help with Amazon API Gateway from the community, see the [API Gateway Discussion Forum](http://forums.aws.amazon.com/forum.jspa?forumID=199)\. \(When you enter this forum, AWS might require you to sign in\.\)
 

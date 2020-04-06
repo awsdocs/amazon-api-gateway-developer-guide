@@ -1,4 +1,4 @@
-# Import an OpenAPI File to Update an Existing API Definition<a name="api-gateway-import-api-update"></a>
+# Import an OpenAPI file to update an existing API definition<a name="api-gateway-import-api-update"></a>
 
  You can import API definitions only to update an existing API, without changing its endpoint configuration, as well as stages and stage variables, or references to API keys\. 
 

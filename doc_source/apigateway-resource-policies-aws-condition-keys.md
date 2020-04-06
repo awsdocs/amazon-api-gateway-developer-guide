@@ -1,13 +1,13 @@
-# AWS Condition Keys that can be used in API Gateway Resource Policies<a name="apigateway-resource-policies-aws-condition-keys"></a>
+# AWS condition keys that can be used in API Gateway resource policies<a name="apigateway-resource-policies-aws-condition-keys"></a>
 
 The following table contains AWS condition keys that can be used in resource policies for APIs in API Gateway for each authorization type\.
 
 For more information about AWS condition keys, see [AWS Global Condition Context Keys](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_policies_condition-keys.html)\.
 
 
-**Table of Condition Keys**  
+**Table of condition keys**  
 
-| Condition Keys | Criteria | Needs `AuthN`? | Authorization Type | 
+| Condition keys | Criteria | Needs `AuthN`? | Authorization type | 
 | --- | --- | --- | --- | 
 | aws:CurrentTime | None | No | All | 
 | aws:EpochTime | None | No | All | 

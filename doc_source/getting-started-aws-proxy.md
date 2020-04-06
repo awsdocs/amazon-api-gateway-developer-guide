@@ -1,6 +1,6 @@
-# TUTORIAL: Build an API Gateway API with AWS Integration<a name="getting-started-aws-proxy"></a>
+# Tutorial: Build an API Gateway API with AWS integration<a name="getting-started-aws-proxy"></a>
 
- Both the [TUTORIAL: Build a Hello World API with Lambda Proxy Integration](api-gateway-create-api-as-simple-proxy-for-lambda.md) and [Build an API Gateway API with Lambda Integration](getting-started-with-lambda-integration.md) topics describe how to create an API Gateway API to expose the integrated Lambda function\. In addition, you can create an API Gateway API to expose other AWS services, such as Amazon SNS, Amazon S3, Amazon Kinesis, and even AWS Lambda\. This is made possible by the `AWS` integration\. The Lambda integration or the Lambda proxy integration is a special case, where the Lambda function invocation is exposed through the API Gateway API\. 
+ Both the [Tutorial: Build a Hello World API with Lambda proxy integration](api-gateway-create-api-as-simple-proxy-for-lambda.md) and [Build an API Gateway API with Lambda integration](getting-started-with-lambda-integration.md) topics describe how to create an API Gateway API to expose the integrated Lambda function\. In addition, you can create an API Gateway API to expose other AWS services, such as Amazon SNS, Amazon S3, Amazon Kinesis, and even AWS Lambda\. This is made possible by the `AWS` integration\. The Lambda integration or the Lambda proxy integration is a special case, where the Lambda function invocation is exposed through the API Gateway API\. 
 
  All AWS services support dedicated APIs to expose their features\. However, the application protocols or programming interfaces are likely to differ from service to service\. An API Gateway API with the `AWS` integration has the advantage of providing a consistent application protocol for your client to access different AWS services\. 
 
@@ -10,35 +10,35 @@
 
  API Gateway does not retry when the endpoint times out\. The API caller must implement retry logic to handle endpoint timeouts\. 
 
- This walkthrough builds on the instructions and concepts in [Build an API Gateway API with Lambda Integration](getting-started-with-lambda-integration.md)\.If you have not yet completed that walkthrough, we suggest that you do it first\. 
+ This walkthrough builds on the instructions and concepts in [Build an API Gateway API with Lambda integration](getting-started-with-lambda-integration.md)\.If you have not yet completed that walkthrough, we suggest that you do it first\. 
 
 **Topics**
 + [Prerequisites](#getting-started-aws-proxy-prerequisites)
-+ [Step 1: Create the Resource](#getting-started-aws-proxy-add-resources)
-+ [Step 2: Create the GET Method](#getting-started-aws-proxy-add-methods)
-+ [Step 3: Create the AWS Service Proxy Execution Role](#getting-started-aws-proxy-add-roles)
-+ [Step 4: Specify Method Settings and Test the Method](#getting-started-aws-proxy-set-methods)
++ [Step 1: Create the resource](#getting-started-aws-proxy-add-resources)
++ [Step 2: Create the GET method](#getting-started-aws-proxy-add-methods)
++ [Step 3: Create the AWS service proxy execution role](#getting-started-aws-proxy-add-roles)
++ [Step 4: Specify method settings and test the method](#getting-started-aws-proxy-set-methods)
 + [Step 5: Deploy the API](#getting-started-aws-proxy-deploy)
 + [Step 6: Test the API](#getting-started-aws-proxy-test)
-+ [Step 7: Clean Up](#getting-started-aws-proxy-clean-up)
++ [Step 7: Clean up](#getting-started-aws-proxy-clean-up)
 
 ## Prerequisites<a name="getting-started-aws-proxy-prerequisites"></a>
 
 Before you begin this walkthrough, do the following:
 
-1. Complete the steps in [Prerequisites: Get Ready to Build an API in API Gateway](setting-up.md)\.
+1. Complete the steps in [Prerequisites: Get ready to build an API in API Gateway](setting-up.md)\.
 
 1. Ensure that the IAM user has access to create policies and roles in IAM\. You need to create an IAM policy and role in this walkthrough\.
 
-1.  Create a new API named `MyDemoAPI`\. For more information, see [TUTORIAL: Build an API with HTTP Non\-Proxy Integration](api-gateway-create-api-step-by-step.md)\. 
+1.  Create a new API named `MyDemoAPI`\. For more information, see [Tutorial: Build an API with HTTP non\-proxy integration](api-gateway-create-api-step-by-step.md)\. 
 
-1. Deploy the API at least once to a stage named `test`\. For more information, see [Deploy the API](getting-started-lambda-non-proxy-integration.md#getting-started-deploy-api) in [Build an API Gateway API with Lambda Integration](getting-started-with-lambda-integration.md)\.
+1. Deploy the API at least once to a stage named `test`\. For more information, see [Deploy the API](getting-started-lambda-non-proxy-integration.md#getting-started-deploy-api) in [Build an API Gateway API with Lambda integration](getting-started-with-lambda-integration.md)\.
 
-1. Complete the rest of the steps in [Build an API Gateway API with Lambda Integration](getting-started-with-lambda-integration.md)\.
+1. Complete the rest of the steps in [Build an API Gateway API with Lambda integration](getting-started-with-lambda-integration.md)\.
 
 1. Create at least one topic in Amazon Simple Notification Service \(Amazon SNS\)\. You will use the deployed API to get a list of topics in Amazon SNS that are associated with your AWS account\. To learn how to create a topic in Amazon SNS, see [Create a Topic](https://docs.aws.amazon.com/sns/latest/dg/CreateTopic.html)\. \(You do not need to copy the topic ARN mentioned in step 5\.\)
 
-## Step 1: Create the Resource<a name="getting-started-aws-proxy-add-resources"></a>
+## Step 1: Create the resource<a name="getting-started-aws-proxy-add-resources"></a>
 
 In this step, you create a resource that enables the AWS service proxy to interact with the AWS service\.
 
@@ -52,7 +52,7 @@ In this step, you create a resource that enables the AWS service proxy to intera
 
 1. For **Resource Name**, type **MyDemoAWSProxy**, and then choose **Create Resource**\.
 
-## Step 2: Create the GET Method<a name="getting-started-aws-proxy-add-methods"></a>
+## Step 2: Create the GET method<a name="getting-started-aws-proxy-add-methods"></a>
 
 In this step, you create a GET method that enables the AWS service proxy to interact with the AWS service\.
 
@@ -62,7 +62,7 @@ In this step, you create a GET method that enables the AWS service proxy to inte
 
 1. For the HTTP method, choose **GET**, and then save your choice\.
 
-## Step 3: Create the AWS Service Proxy Execution Role<a name="getting-started-aws-proxy-add-roles"></a>
+## Step 3: Create the AWS service proxy execution role<a name="getting-started-aws-proxy-add-roles"></a>
 
 In this step, you create an IAM role that your AWS service proxy uses to interact with the AWS service\. We call this IAM role an AWS service proxy execution role\. Without this role, API Gateway cannot interact with the AWS service\. In later steps, you specify this role in the settings for the GET method you just created\.
 
@@ -141,7 +141,7 @@ In this step, you create an IAM role that your AWS service proxy uses to interac
 
    For **Role ARN**, note of the Amazon Resource Name \(ARN\) for the execution role\. You need it later\. The ARN should look similar to: `arn:aws:iam::123456789012:role/APIGatewayAWSProxyExecRole`, where `123456789012` is your AWS account ID\.
 
-## Step 4: Specify Method Settings and Test the Method<a name="getting-started-aws-proxy-set-methods"></a>
+## Step 4: Specify method settings and test the method<a name="getting-started-aws-proxy-set-methods"></a>
 
 In this step, you specify the settings for the GET method so that it can interact with an AWS service through an AWS service proxy\. You then test the method\.
 
@@ -230,7 +230,7 @@ In this step, you go outside of the API Gateway console and use your AWS service
    {"ListTopicsResponse":{"ListTopicsResult":{"NextToken": null,"Topics":[{"TopicArn": "arn:aws:sns:us-east-1:80398EXAMPLE:MySNSTopic-1"},{"TopicArn": "arn:aws:sns:us-east-1:80398EXAMPLE:MySNSTopic-2"},...{"TopicArn": "arn:aws:sns:us-east-1:80398EXAMPLE:MySNSTopic-N}]},"ResponseMetadata":{"RequestId":"abc1de23-45fa-6789-b0c1-d2e345fa6b78}}}
    ```
 
-## Step 7: Clean Up<a name="getting-started-aws-proxy-clean-up"></a>
+## Step 7: Clean up<a name="getting-started-aws-proxy-clean-up"></a>
 
 You can delete the IAM resources the AWS service proxy needs to work\.
 
@@ -249,4 +249,4 @@ If you delete an IAM resource an AWS service proxy relies on, that AWS service p
 
 1. Select **APIGatewayAWSProxyExecPolicy**, and then choose **Policy Actions**, **Delete**\. When prompted, choose **Delete**\.
 
- You have reached the end of this walkthrough\. For more detailed discussions about creating API as an AWS service proxy, see [TUTORIAL: Create a REST API as an Amazon S3 Proxy in API Gateway](integrating-api-with-aws-services-s3.md), [TUTORIAL: Create a `Calc` REST API with Two AWS Service Integrations and One Lambda Non\-Proxy Integration](integrating-api-with-aws-services-lambda.md), or [TUTORIAL: Create a REST API as an Amazon Kinesis Proxy in API Gateway](integrating-api-with-aws-services-kinesis.md)\. 
+ You have reached the end of this walkthrough\. For more detailed discussions about creating API as an AWS service proxy, see [Tutorial: Create a REST API as an Amazon S3 proxy in API Gateway](integrating-api-with-aws-services-s3.md), [Tutorial: Create a `Calc` REST API with two AWS service integrations and one Lambda non\-proxy integration](integrating-api-with-aws-services-lambda.md), or [Tutorial: Create a REST API as an Amazon Kinesis proxy in API Gateway](integrating-api-with-aws-services-kinesis.md)\. 

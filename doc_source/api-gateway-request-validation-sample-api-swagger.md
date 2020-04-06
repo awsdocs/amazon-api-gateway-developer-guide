@@ -1,4 +1,4 @@
-# OpenAPI Definitions of a Sample API with Basic Request Validation<a name="api-gateway-request-validation-sample-api-swagger"></a>
+# OpenAPI definitions of a sample API with basic request validation<a name="api-gateway-request-validation-sample-api-swagger"></a>
 
  The following OpenAPI definition defines a sample API with request validation enabled\. The API is a subset of the [PetStore API](http://petstore-demo-endpoint.execute-api.com/petstore/pets)\. It exposes a `POST` method to add a pet to the `pets` collection and a `GET` method to query pets by a specified type\. 
 
@@ -6,7 +6,7 @@
 
 This model requires that the input JSON object contains the `name`, `type`, and `price` properties\. The `name` property can be any string, `type` must be one of the specified enumeration fields \(`["dog", "cat", "fish"]`\), and `price` must range between 25 and 500\. The `id` parameter is not required\. 
 
- For more information about the behavior of this API, see [Enable Request Validation in API Gateway](api-gateway-method-request-validation.md)\. 
+ For more information about the behavior of this API, see [Enable request validation in API Gateway](api-gateway-method-request-validation.md)\. 
 
 ------
 #### [ OpenAPI 2\.0 ]

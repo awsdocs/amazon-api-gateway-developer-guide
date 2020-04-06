@@ -1,4 +1,4 @@
-# View API Gateway Log Events in the CloudWatch Console<a name="view-cloudwatch-log-events-in-cloudwatch-console"></a>
+# View API Gateway log events in the CloudWatch console<a name="view-cloudwatch-log-events-in-cloudwatch-console"></a>
 
 **To view logged API requests and responses using the CloudWatch console**
 

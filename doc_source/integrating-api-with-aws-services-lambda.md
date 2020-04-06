@@ -1,4 +1,4 @@
-# TUTORIAL: Create a `Calc` REST API with Two AWS Service Integrations and One Lambda Non\-Proxy Integration<a name="integrating-api-with-aws-services-lambda"></a>
+# Tutorial: Create a `Calc` REST API with two AWS service integrations and one Lambda non\-proxy integration<a name="integrating-api-with-aws-services-lambda"></a>
 
 The [Getting Started non\-proxy integration tutorial](getting-started-lambda-non-proxy-integration.md) uses `Lambda Function` integration exclusively\. `Lambda Function` integration is a special case of the `AWS Service` integration type that performs much of the integration setup for you, such as automatically adding the required resource\-based permissions for invoking the Lambda function\. Here, two of the three integrations use `AWS Service` integration\. In this integration type, you have more control, but you'll need to manually perform tasks like creating and specifying an IAM role containing appropriate permissions\.
 
@@ -10,20 +10,20 @@ In this tutorial, you'll create a `Calc` Lambda function that implements basic a
 
 1. By exposing a `GET` on nested `/calc/{operand1}/{operand2}/{operator}` resources to invoke the Lambda function, supplying the input as path parameters\. \(`Lambda Function` integration\)
 
-In addition to trying out this tutorial, you may wish to study the [OpenAPI definition file](api-as-lambda-proxy-export-swagger-with-extensions.md) for the `Calc` API, which you can import into API Gateway by following the instructions in [Configuring a REST API Using OpenAPI](api-gateway-import-api.md)\.
+In addition to trying out this tutorial, you may wish to study the [OpenAPI definition file](api-as-lambda-proxy-export-swagger-with-extensions.md) for the `Calc` API, which you can import into API Gateway by following the instructions in [Configuring a REST API using OpenAPI](api-gateway-import-api.md)\.
 
 **Topics**
-+ [Create an AWS Account](#w65aac11c17c15)
-+ [Create an Assumable IAM Role](#api-as-lambda-proxy-setup-iam-role-policies)
-+ [Create a `Calc` Lambda Function](#api-as-lambda-proxy-create-lambda-function)
-+ [Test the `Calc` Lambda Function](#api-as-lambda-proxy-create-lambda-function)
++ [Create an AWS account](#w90aac11c17c15)
++ [Create an assumable IAM role](#api-as-lambda-proxy-setup-iam-role-policies)
++ [Create a `Calc` Lambda function](#api-as-lambda-proxy-create-lambda-function)
++ [Test the `Calc` Lambda function](#api-as-lambda-proxy-create-lambda-function)
 + [Create a `Calc` API](#api-as-lambda-proxy-create-api-resources)
-+ [Integration 1: Create a `GET` Method with Query Parameters to Call the Lambda Function](#api-as-lambda-proxy-expose-get-method-with-query-strings-to-call-lambda-function)
-+ [Integration 2: Create a `POST` Method with a JSON Payload to Call the Lambda Function](#api-as-lambda-proxy-expose-post-method-with-json-body-to-call-lambda-function)
-+ [Integration 3: Create a `GET` Method with Path Parameters to Call the Lambda Function](#api-as-lambda-proxy-expose-get-method-with-path-parameters-to-call-lambda-function)
-+ [OpenAPI Definitions of Sample API Integrated with a Lambda Function](api-as-lambda-proxy-export-swagger-with-extensions.md)
++ [Integration 1: Create a `GET` method with query parameters to call the Lambda function](#api-as-lambda-proxy-expose-get-method-with-query-strings-to-call-lambda-function)
++ [Integration 2: Create a `POST` method with a JSON payload to call the Lambda function](#api-as-lambda-proxy-expose-post-method-with-json-body-to-call-lambda-function)
++ [Integration 3: Create a `GET` method with path parameters to call the Lambda function](#api-as-lambda-proxy-expose-get-method-with-path-parameters-to-call-lambda-function)
++ [OpenAPI definitions of sample API integrated with a Lambda function](api-as-lambda-proxy-export-swagger-with-extensions.md)
 
-## Create an AWS Account<a name="w65aac11c17c15"></a>
+## Create an AWS account<a name="w90aac11c17c15"></a>
 
 Before you begin this tutorial, you'll need an AWS account\. 
 
@@ -37,7 +37,7 @@ If you do not have an AWS account, complete the following steps to create one\.
 
    Part of the sign\-up procedure involves receiving a phone call and entering a verification code on the phone keypad\.
 
-## Create an Assumable IAM Role<a name="api-as-lambda-proxy-setup-iam-role-policies"></a>
+## Create an assumable IAM role<a name="api-as-lambda-proxy-setup-iam-role-policies"></a>
 
 In order for your API to invoke your `Calc` Lambda function, you'll need to have an API Gateway assumable IAM role, which is an IAM role with the following trusted relationship:
 
@@ -160,7 +160,7 @@ Here's how to accomplish all this:
 
 1. Make a note of the role ARN for the role you just created\. You'll need it later\.
 
-## Create a `Calc` Lambda Function<a name="api-as-lambda-proxy-create-lambda-function"></a>
+## Create a `Calc` Lambda function<a name="api-as-lambda-proxy-create-lambda-function"></a>
 
 Next you'll create a Lambda function using the Lambda console\.
 
@@ -249,7 +249,7 @@ This function returns the calculated result \(`c`\) and the input\. For an inval
 
 You should test the function in the Lambda console before integrating it with the API in the next step\. 
 
-## Test the `Calc` Lambda Function<a name="api-as-lambda-proxy-create-lambda-function"></a>
+## Test the `Calc` Lambda function<a name="api-as-lambda-proxy-create-lambda-function"></a>
 
 Here's how to test your `Calc` function in the Lambda console:
 
@@ -296,7 +296,7 @@ The following procedure shows how to create an API for the `Calc` Lambda functio
 
 1. Choose **Create API**\.
 
-## Integration 1: Create a `GET` Method with Query Parameters to Call the Lambda Function<a name="api-as-lambda-proxy-expose-get-method-with-query-strings-to-call-lambda-function"></a>
+## Integration 1: Create a `GET` method with query parameters to call the Lambda function<a name="api-as-lambda-proxy-expose-get-method-with-query-strings-to-call-lambda-function"></a>
 
 By creating a `GET` method that passes query string parameters to the Lambda function, you enable the API to be invoked from a browser\. This approach can be useful, especially for APIs that allow open access\.
 
@@ -399,7 +399,7 @@ By creating a `GET` method that passes query string parameters to the Lambda fun
       The results should look similar to this:  
 ![\[Create an API in API Gateway as a Lambda proxy\]](http://docs.aws.amazon.com/apigateway/latest/developerguide/images/aws_proxy_lambda_calc_get_method_test.png)
 
-## Integration 2: Create a `POST` Method with a JSON Payload to Call the Lambda Function<a name="api-as-lambda-proxy-expose-post-method-with-json-body-to-call-lambda-function"></a>
+## Integration 2: Create a `POST` method with a JSON payload to call the Lambda function<a name="api-as-lambda-proxy-expose-post-method-with-json-body-to-call-lambda-function"></a>
 
 By creating a `POST` method with a JSON payload to call the Lambda function, you make it so that the client must provide the necessary input to the backend function in the request body\. To ensure that the client uploads the correct input data, you'll enable request validation on the payload\.
 
@@ -549,7 +549,7 @@ By creating a `POST` method with a JSON payload to call the Lambda function, you
    }
    ```
 
-## Integration 3: Create a `GET` Method with Path Parameters to Call the Lambda Function<a name="api-as-lambda-proxy-expose-get-method-with-path-parameters-to-call-lambda-function"></a>
+## Integration 3: Create a `GET` method with path parameters to call the Lambda function<a name="api-as-lambda-proxy-expose-get-method-with-path-parameters-to-call-lambda-function"></a>
 
 Now you'll create a `GET` method on a resource specified by a sequence of path parameters to call the backend Lambda function\. The path parameter values specify the input data to the Lambda function\. You'll use a mapping template to map the incoming path parameter values to the required integration request payload\.
 

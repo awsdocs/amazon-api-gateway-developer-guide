@@ -1,4 +1,4 @@
-# Set Up a Gateway Response Using the API Gateway Console<a name="set-up-gateway-response-using-the-console"></a>
+# Set up a gateway response using the API Gateway console<a name="set-up-gateway-response-using-the-console"></a>
 
 **To customize a gateway response using the API Gateway console**
 

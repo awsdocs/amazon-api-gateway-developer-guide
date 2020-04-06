@@ -1,18 +1,18 @@
-# TUTORIAL: Build an API with HTTP Proxy Integration<a name="api-gateway-create-api-as-simple-proxy-for-http"></a>
+# Tutorial: Build an API with HTTP proxy integration<a name="api-gateway-create-api-as-simple-proxy-for-http"></a>
 
-HTTP proxy integration is a simple, powerful, and versatile mechanism to build an API that allows a web application to access multiple resources or features of the integrated HTTP endpoint, for example the entire website, with a streamlined setup of a single API method\. In HTTP proxy integration, API Gateway passes the client\-submitted method request to the backend\. The request data that is passed through includes the request headers, query string parameters, URL path variables, and payload\. The backend HTTP endpoint or the web server parses the incoming request data to determine the response that it returns\. HTTP proxy integration makes the client and backend interact directly with no intervention from API Gateway after the API method is set up, except for known issues such as unsupported characters, which are listed in [Amazon API Gateway Important Notes](api-gateway-known-issues.md)\.
+HTTP proxy integration is a simple, powerful, and versatile mechanism to build an API that allows a web application to access multiple resources or features of the integrated HTTP endpoint, for example the entire website, with a streamlined setup of a single API method\. In HTTP proxy integration, API Gateway passes the client\-submitted method request to the backend\. The request data that is passed through includes the request headers, query string parameters, URL path variables, and payload\. The backend HTTP endpoint or the web server parses the incoming request data to determine the response that it returns\. HTTP proxy integration makes the client and backend interact directly with no intervention from API Gateway after the API method is set up, except for known issues such as unsupported characters, which are listed in [Amazon API Gateway important notes](api-gateway-known-issues.md)\.
 
 With the all\-encompassing proxy resource `{proxy+}`, and the catch\-all `ANY` verb for the HTTP method, you can use an HTTP proxy integration to create an API of a single API method\. The method exposes the entire set of the publicly accessible HTTP resources and operations of a website\. When the backend web server opens more resources for public access, the client can use these new resources with the same API setup\. To enable this, the website developer must communicate clearly to the client developer what the new resources are and what operations are applicable for each of them\.
 
 As a quick introduction, the following tutorial demonstrates the HTTP proxy integration\. In the tutorial, we create an API using the API Gateway console to integrate with the PetStore website through a generic proxy resource `{proxy+}`, and create the HTTP method placeholder of `ANY`\. 
 
 **Topics**
-+ [Create an API with HTTP Proxy Integration Using the API Gateway Console](#api-gateway-create-api-as-simple-proxy-for-http-build)
-+ [Test an API with HTTP Proxy Integration](#api-gateway-create-api-as-simple-proxy-for-http-test)
++ [Create an API with HTTP proxy integration using the API Gateway console](#api-gateway-create-api-as-simple-proxy-for-http-build)
++ [Test an API with HTTP proxy integration](#api-gateway-create-api-as-simple-proxy-for-http-test)
 
-## Create an API with HTTP Proxy Integration Using the API Gateway Console<a name="api-gateway-create-api-as-simple-proxy-for-http-build"></a>
+## Create an API with HTTP proxy integration using the API Gateway console<a name="api-gateway-create-api-as-simple-proxy-for-http-build"></a>
 
- The following procedure walks you through the steps to create and test an API with a proxy resource for an HTTP backend using the API Gateway console\. The HTTP backend is the `PetStore` website \(`http://petstore-demo-endpoint.execute-api.com/petstore/pets`\) from [TUTORIAL: Build an API with HTTP Non\-Proxy Integration](api-gateway-create-api-step-by-step.md), in which screenshots are used as visual aids to illustrate the API Gateway UI elements\. If you are new to using the API Gateway console to create an API, you may want to follow that section first\. 
+ The following procedure walks you through the steps to create and test an API with a proxy resource for an HTTP backend using the API Gateway console\. The HTTP backend is the `PetStore` website \(`http://petstore-demo-endpoint.execute-api.com/petstore/pets`\) from [Tutorial: Build an API with HTTP non\-proxy integration](api-gateway-create-api-step-by-step.md), in which screenshots are used as visual aids to illustrate the API Gateway UI elements\. If you are new to using the API Gateway console to create an API, you may want to follow that section first\. 
 
 **To build an API with HTTP proxy integration with the PetStore website through a proxy resource**
 
@@ -64,7 +64,7 @@ As a quick introduction, the following tutorial demonstrates the HTTP proxy inte
 
  In the API just created, the API's proxy resource path of `{proxy+}` becomes the placeholder of any of the backend endpoints under `http://petstore-demo-endpoint.execute-api.com/`\. For example, it can be `petstore`, `petstore/pets`, and `petstore/pets/{petId}`\. The `ANY` method serves as a placeholder for any of the supported HTTP verbs at run time\. 
 
-## Test an API with HTTP Proxy Integration<a name="api-gateway-create-api-as-simple-proxy-for-http-test"></a>
+## Test an API with HTTP proxy integration<a name="api-gateway-create-api-as-simple-proxy-for-http-test"></a>
 
  Whether a particular client request succeeds depends on the following: 
 +  If the backend has made the corresponding backend endpoint available and, if so, has granted the required access permissions\. 

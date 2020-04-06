@@ -33,6 +33,6 @@ Stages enable robust version control of your API\. For example, you can deploy a
 
 **Topics**
 + [Deploy a REST API in API Gateway](set-up-deployments.md)
-+ [Setting Up a Stage for a REST API](set-up-stages.md)
-+ [Set up an API Gateway Canary Release Deployment](canary-release.md)
-+ [Updates to a REST API that Require Redeployment](updating-api.md)
++ [Setting up a stage for a REST API](set-up-stages.md)
++ [Set up an API Gateway canary release deployment](canary-release.md)
++ [Updates to a REST API that require redeployment](updating-api.md)

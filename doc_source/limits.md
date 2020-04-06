@@ -1,10 +1,10 @@
-# Amazon API Gateway Quotas and Important Notes<a name="limits"></a>
+# Amazon API Gateway quotas and important notes<a name="limits"></a>
 
 **Topics**
-+ [API Gateway Quotas](#api-gateway-limits)
-+ [Amazon API Gateway Important Notes](api-gateway-known-issues.md)
++ [API Gateway quotas](#api-gateway-limits)
++ [Amazon API Gateway important notes](api-gateway-known-issues.md)
 
-## API Gateway Quotas<a name="api-gateway-limits"></a>
+## API Gateway quotas<a name="api-gateway-limits"></a>
 
 Unless noted otherwise, the quotas can be increased upon request\. To request a quotas increase, you can use [Service Quotas](https://docs.aws.amazon.com/servicequotas/latest/userguide/) or contact the [AWS Support Center](https://console.aws.amazon.com/support/home#/)\.
 
@@ -13,25 +13,25 @@ Unless noted otherwise, the quotas can be increased upon request\. To request a 
 **Note**  
 This limits URI length when resource policies are used\. In the case of private APIs where a resource policy is required, this limits the URI length of all private APIs\.
 
-### API Gateway Account\-Level Quotas<a name="apigateway-account-level-limits-table"></a>
+### API Gateway account\-level quotas<a name="apigateway-account-level-limits-table"></a>
 
 The following quotas apply at the account level per Region in Amazon API Gateway\.
 
 
-| Resource or Operation | Default Quota | Can Be Increased | 
+| Resource or operation | Default quota | Can be increased | 
 | --- | --- | --- | 
 | Throttle quota per Region across HTTP APIs, REST APIs, WebSocket APIs, and WebSocket callback APIs | 10,000 requests per second \(RPS\) with an additional burst capacity provided by the [token bucket algorithm](https://en.wikipedia.org/wiki/Token_bucket), using a maximum bucket capacity of 5,000 requests\.  The burst quota is determined by the API Gateway service team based on the overall RPS quota for the account\. It is not a quota that a customer can control or request changes to\.  | Yes | 
 | Regional APIs | 600 | No | 
 | Edge\-optimized APIs | 120 | No | 
 
-### HTTP API Quotas<a name="http-api-quotas"></a>
+### HTTP API quotas<a name="http-api-quotas"></a>
 
 Unless noted otherwise, the following quotas can be increased upon request\. To request an increase, you can contact the [AWS Support Center](https://console.aws.amazon.com/support/home#/)\.
 
 #### <a name="http-api-quotas.table"></a>
 
 
-| Resource or Operation | Default Quota | Can Be Increased | 
+| Resource or operation | Default quota | Can be increased | 
 | --- | --- | --- | 
 | Routes per API  | 300 | Yes | 
 | Integrations per API | 300 | No | 
@@ -52,12 +52,12 @@ Unless noted otherwise, the following quotas can be increased upon request\. To 
 | Subnets per VPC link  | 10 | Yes | 
 | Stage variables per stage | 100 | No | 
 
-### API Gateway Quotas for Configuring and Running a WebSocket API<a name="apigateway-execution-service-websocket-limits-table"></a>
+### API Gateway quotas for configuring and running a WebSocket API<a name="apigateway-execution-service-websocket-limits-table"></a>
 
 The following quotas apply to configuring and running a WebSocket API in Amazon API Gateway\.
 
 
-| Resource or Operation | Default Quota | Can Be Increased | 
+| Resource or operation | Default quota | Can be increased | 
 | --- | --- | --- | 
 | New connections per second per account \(across all WebSocket APIs\) per Region | 500 | Yes | 
 | AWS Lambda authorizers per API | 10 | Yes | 
@@ -70,12 +70,12 @@ The following quotas apply to configuring and running a WebSocket API in Amazon 
 | Connection duration for WebSocket API | 2 hours | No | 
 | Idle Connection Timeout | 10 minutes | No | 
 
-### API Gateway Quotas for Configuring and Running a REST API<a name="api-gateway-execution-service-limits-table"></a>
+### API Gateway quotas for configuring and running a REST API<a name="api-gateway-execution-service-limits-table"></a>
 
 The following quotas apply to configuring and running a REST API in Amazon API Gateway\.
 
 
-| Resource or Operation | Default Quota | Can Be Increased | 
+| Resource or operation | Default quota | Can be increased | 
 | --- | --- | --- | 
 | Custom domain names per account per Region | 120 | Yes | 
 | Length, in characters, of the URL for an edge\-optimized API | 8192 | No | 
@@ -107,12 +107,12 @@ For [restapi:import](https://docs.aws.amazon.com/apigateway/api-reference/link-r
 
 All of the per\-API quotas can only be increased on specific APIs\.
 
-### API Gateway Quotas for Creating, Deploying and Managing an API<a name="api-gateway-control-service-limits-table"></a>
+### API Gateway quotas for creating, deploying and managing an API<a name="api-gateway-control-service-limits-table"></a>
 
 The following fixed quotas apply to creating, deploying, and managing an API in API Gateway, using the AWS CLI, the API Gateway console, or the API Gateway REST API and its SDKs\. These quotas can't be increased\.
 
 
-| Action | Default Quota | Can Be Increased | 
+| Action | Default quota | Can be increased | 
 | --- | --- | --- | 
 | [CreateApiKey](https://docs.aws.amazon.com/apigateway/api-reference/link-relation/apikey-create/) | 5 requests per second per account | No | 
 | [CreateDeployment](https://docs.aws.amazon.com/apigateway/api-reference/link-relation/deployment-create/) | 1 request every 5 seconds per account | No | 

@@ -1,20 +1,20 @@
-# TUTORIAL: Build an API Gateway API with Lambda Non\-Proxy Integration<a name="getting-started-lambda-non-proxy-integration"></a>
+# Tutorial: Build an API Gateway API with Lambda non\-proxy integration<a name="getting-started-lambda-non-proxy-integration"></a>
 
 In this walkthrough, we use the API Gateway console to build an API that enables a client to call Lambda functions through the Lambda non\-proxy integration \(also known as custom integration\)\. For more information about AWS Lambda and Lambda functions, see the [AWS Lambda Developer Guide](https://docs.aws.amazon.com/lambda/latest/dg/)\. 
 
-To facilitate learning, we chose a simple Lambda function with minimal API setup to walk you through the steps of building an API Gateway API with the Lambda custom integration\. When necessary, we describe some of the logic\. For a more detailed example of the Lambda custom integration, see [TUTORIAL: Create a `Calc` REST API with Two AWS Service Integrations and One Lambda Non\-Proxy Integration](integrating-api-with-aws-services-lambda.md)\. 
+To facilitate learning, we chose a simple Lambda function with minimal API setup to walk you through the steps of building an API Gateway API with the Lambda custom integration\. When necessary, we describe some of the logic\. For a more detailed example of the Lambda custom integration, see [Tutorial: Create a `Calc` REST API with two AWS service integrations and one Lambda non\-proxy integration](integrating-api-with-aws-services-lambda.md)\. 
 
 Before creating the API, set up the Lambda backend by creating a Lambda function in AWS Lambda, described next\.
 
 **Topics**
-+ [Create a Lambda Function for Lambda Non\-Proxy Integration](#getting-started-new-lambda)
-+ [Create an API with Lambda Non\-Proxy Integration](#getting-started-new-api)
-+ [Test Invoking the API Method](#getting-started-new-get)
++ [Create a Lambda function for Lambda non\-proxy integration](#getting-started-new-lambda)
++ [Create an API with Lambda non\-proxy integration](#getting-started-new-api)
++ [Test invoking the API method](#getting-started-new-get)
 + [Deploy the API](#getting-started-deploy-api)
-+ [Test the API in a Deployment Stage](#getting-started-test)
-+ [Clean Up](#getting-started-clean-up)
++ [Test the API in a deployment stage](#getting-started-test)
++ [Clean up](#getting-started-clean-up)
 
-## Create a Lambda Function for Lambda Non\-Proxy Integration<a name="getting-started-new-lambda"></a>
+## Create a Lambda function for Lambda non\-proxy integration<a name="getting-started-new-lambda"></a>
 
 **Note**  
 Creating Lambda functions may result in charges to your AWS account\.
@@ -68,7 +68,7 @@ For more information, see the [AWS Lambda Developer Guide](https://docs.aws.amaz
 
 In addition, the function logs its execution to Amazon CloudWatch by calling `console.log(...)`\. This is helpful for tracing calls when debugging the function\. To allow the `GetStartedLambdaIntegration` function to log the call, set an IAM role with appropriate policies for the Lambda function to create the CloudWatch streams and add log entries to the streams\. The Lambda console guides you through to create the required IAM roles and policies\.
 
-If you set up the API without using the API Gateway console, such as when [importing an API from an OpenAPI file](https://github.com/awslabs/api-gateway-secure-pet-store/blob/master/src/main/resources/swagger.yaml#L39), you must explicitly create, if necessary, and set up an invocation role and policy for API Gateway to invoke the Lambda functions\. For more information on how to set up Lambda invocation and execution roles for an API Gateway API, see [Control Access to an API with IAM Permissions](permissions.md)\. 
+If you set up the API without using the API Gateway console, such as when [importing an API from an OpenAPI file](https://github.com/awslabs/api-gateway-secure-pet-store/blob/master/src/main/resources/swagger.yaml#L39), you must explicitly create, if necessary, and set up an invocation role and policy for API Gateway to invoke the Lambda functions\. For more information on how to set up Lambda invocation and execution roles for an API Gateway API, see [Control access to an API with IAM permissions](permissions.md)\. 
 
  Compared to `GetStartedLambdaProxyIntegation`, the Lambda function for the Lambda proxy integration, the `GetStartedLambdaIntegration` Lambda function for the Lambda custom integration only takes input from the API Gateway API integration request body\. The function can return an output of any JSON object, a string, a number, a Boolean, or even a binary blob\. The Lambda function for the Lambda proxy integration, in contrast, can take the input from any request data, but must return an output of a particular JSON object\. The `GetStartedLambdaIntegration` function for the Lambda custom integration can have the API request parameters as input, provided that API Gateway maps the required API request parameters to the integration request body before forwarding the client request to the backend\. For this to happen, the API developer must create a mapping template and configure it on the API method when creating the API\. 
 
@@ -177,7 +177,7 @@ The other policy document applies to invoking another AWS service that is not us
 
 If you did not use the AWS Management Console to create the Lambda function, you need to follow these examples to create the required IAM role and policies and then manually attach the role to your function\.
 
-## Create an API with Lambda Non\-Proxy Integration<a name="getting-started-new-api"></a>
+## Create an API with Lambda non\-proxy integration<a name="getting-started-new-api"></a>
 
  With the Lambda function \(`GetStartedLambdaIntegration`\) created and tested, you are ready to expose the function through an API Gateway API\. For illustration purposes, we expose the Lambda function with a generic HTTP method\. We use the request body, a URL path variable, a query string, and a header to receive required input data from the client\. We turn on the API Gateway request validator for the API to ensure that all of the required data is properly defined and specified\. We configure a mapping template for API Gateway to transform the client\-supplied request data into the valid format as required by the backend Lambda function\.
 
@@ -289,7 +289,7 @@ If you did not use the AWS Management Console to create the Lambda function, you
 
    1. Choose **Save**\.
 
-## Test Invoking the API Method<a name="getting-started-new-get"></a>
+## Test invoking the API method<a name="getting-started-new-get"></a>
 
  The API Gateway console provides a testing facility for you to test invoking the API before it is deployed\. You use the Test feature of the console to test the API by submitting the following request: 
 
@@ -379,7 +379,7 @@ The input must be UTF\-8 encoded \(i\.e\., unlocalized\) text\.
 
 1.  Choose **Deploy**\. After the API is successfully deployed, you see the API's base URL \(the default host name plus the stage name\) displayed as **Invoke URL** at the top of the **Stage Editor**\. The general pattern of this base URL is `https://api-id.region.amazonaws.com/stageName`\. For example, the base URL of the API \(`beags1mnid`\) created in the `us-west-2` region and deployed to the `test` stage is `https://beags1mnid.execute-api.us-west-2.amazonaws.com/test`\.
 
-## Test the API in a Deployment Stage<a name="getting-started-test"></a>
+## Test the API in a deployment stage<a name="getting-started-test"></a>
 
 There are several ways you can test a deployed API\. For GET requests using only URL path variables or query string parameters, you can type the API resource URL in a browser\. For other methods, you must use more advanced REST API testing utilities, such as [POSTMAN](https://www.getpostman.com/) or [cURL](https://curl.haxx.se/)\.
 
@@ -433,7 +433,7 @@ There are several ways you can test a deployed API\. For GET requests using only
 
    This is because the `GET` request that you submitted cannot take a payload and fails the request validation\.
 
-## Clean Up<a name="getting-started-clean-up"></a>
+## Clean up<a name="getting-started-clean-up"></a>
 
 If you no longer need the Lambda functions you created for this walkthrough, you can delete them now\. You can also delete the accompanying IAM resources\.
 

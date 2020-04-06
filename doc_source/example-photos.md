@@ -1,16 +1,16 @@
-# Photos Example \(API Gateway Models and Mapping Templates\)<a name="example-photos"></a>
+# Photos example \(API Gateway models and mapping templates\)<a name="example-photos"></a>
 
-The following sections provide examples of models and mapping templates that could be used for a sample photo API in API Gateway\. For more information about models and mapping templates in API Gateway, see [Working with Models and Mapping Templates](models-mappings.md)\.
+The following sections provide examples of models and mapping templates that could be used for a sample photo API in API Gateway\. For more information about models and mapping templates in API Gateway, see [Working with models and mapping templates](models-mappings.md)\.
 
 **Topics**
-+ [Original Data \(Photos Example\)](#example-photos-original-data)
-+ [Input Model \(Photos Example\)](#example-photos-input-model)
-+ [Input Mapping Template \(Photos Example\)](#example-photos-input-mapping)
-+ [Transformed Data \(Photos Example\)](#example-photos-transformed-data)
-+ [Output Model \(Photos Example\)](#example-photos-output-model)
-+ [Output Mapping Template \(Photos Example\)](#example-photos-output-mapping)
++ [Original data \(photos example\)](#example-photos-original-data)
++ [Input model \(photos example\)](#example-photos-input-model)
++ [Input mapping template \(photos example\)](#example-photos-input-mapping)
++ [Transformed data \(photos example\)](#example-photos-transformed-data)
++ [Output model \(photos example\)](#example-photos-output-model)
++ [Output mapping template \(photos example\)](#example-photos-output-mapping)
 
-## Original Data \(Photos Example\)<a name="example-photos-original-data"></a>
+## Original data \(photos example\)<a name="example-photos-original-data"></a>
 
 The following is the original JSON data for the photos example:
 
@@ -49,7 +49,7 @@ The following is the original JSON data for the photos example:
 }
 ```
 
-## Input Model \(Photos Example\)<a name="example-photos-input-model"></a>
+## Input model \(photos example\)<a name="example-photos-input-model"></a>
 
 The following is the input model that corresponds to the original JSON data for the photos example:
 
@@ -89,7 +89,7 @@ The following is the input model that corresponds to the original JSON data for 
 }
 ```
 
-## Input Mapping Template \(Photos Example\)<a name="example-photos-input-mapping"></a>
+## Input mapping template \(photos example\)<a name="example-photos-input-mapping"></a>
 
 The following is the input mapping template that corresponds to the original JSON data for the photos example:
 
@@ -121,7 +121,7 @@ The following is the input mapping template that corresponds to the original JSO
 }
 ```
 
-## Transformed Data \(Photos Example\)<a name="example-photos-transformed-data"></a>
+## Transformed data \(photos example\)<a name="example-photos-transformed-data"></a>
 
 The following is one example of how the original photos example JSON data could be transformed for output:
 
@@ -148,7 +148,7 @@ The following is one example of how the original photos example JSON data could 
 }
 ```
 
-## Output Model \(Photos Example\)<a name="example-photos-output-model"></a>
+## Output model \(photos example\)<a name="example-photos-output-model"></a>
 
 The following is the output model that corresponds to the transformed JSON data format:
 
@@ -176,7 +176,7 @@ The following is the output model that corresponds to the transformed JSON data 
 }
 ```
 
-## Output Mapping Template \(Photos Example\)<a name="example-photos-output-mapping"></a>
+## Output mapping template \(photos example\)<a name="example-photos-output-mapping"></a>
 
 The following is the output mapping template that corresponds to the transformed JSON data format\. The template variables here are based on the original, not transformed, JSON data format:
 

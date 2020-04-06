@@ -1,4 +1,4 @@
-# Amazon API Gateway Concepts<a name="api-gateway-basic-concept"></a>
+# Amazon API Gateway concepts<a name="api-gateway-basic-concept"></a>
 
 **API Gateway**  <a name="apigateway-definition-apigateway"></a>
 API Gateway is an AWS service that supports the following:  
@@ -87,7 +87,7 @@ For HTTP proxy integration, API Gateway passes the entire request and response b
 In REST APIs, proxy integration is most commonly used with a proxy resource, which is represented by a greedy path variable \(for example, `{proxy+}`\) combined with a catch\-all `ANY` method\.
 
 **Quick create**  <a name="apigateway-definition-quick-create"></a>
-You can use quick create to simplify creating an HTTP API\. Quick create creates an API with a Lambda or HTTP integration, a default catch\-all route, and a default stage that is configured to automatically deploy changes\. For more information, see [Create an HTTP API by Using the AWS CLI](http-api-develop.md#http-api-examples.cli.quick-create)\.
+You can use quick create to simplify creating an HTTP API\. Quick create creates an API with a Lambda or HTTP integration, a default catch\-all route, and a default stage that is configured to automatically deploy changes\. For more information, see [Create an HTTP API by using the AWS CLI](http-api-develop.md#http-api-examples.cli.quick-create)\.
 
 **Regional API endpoint**  <a name="apigateway-definition-regional-api-endpoint"></a>
 The host name of an API that is deployed to the specified Region and intended to serve clients, such as EC2 instances, in the same AWS Region\. API requests are targeted directly to the Region\-specific API Gateway API without going through any CloudFront distribution\. For in\-Region requests, a Regional endpoint bypasses the unnecessary round trip to a CloudFront distribution\.   

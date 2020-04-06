@@ -1,12 +1,12 @@
-# Creating and Using Usage Plans with API Keys<a name="api-gateway-api-usage-plans"></a>
+# Creating and using usage plans with API keys<a name="api-gateway-api-usage-plans"></a>
 
 After you create, test, and deploy your APIs, you can use API Gateway usage plans to make them available as product offerings for your customers\. You can configure usage plans and API keys to allow customers to access selected APIs at agreed\-upon request rates and quotas that meet their business requirements and budget constraints\. If desired, you can set default method\-level throttling limits for an API or set throttling limits for individual API methods\.
 
-## What Are Usage Plans and API Keys?<a name="api-gateway-api-usage-plans-overview"></a>
+## What are usage plans and API keys?<a name="api-gateway-api-usage-plans-overview"></a>
 
 A *usage plan* specifies who can access one or more deployed API stages and methods—and also how much and how fast they can access them\. The plan uses API keys to identify API clients and meters access to the associated API stages for each key\. It also lets you configure throttling limits and quota limits that are enforced on individual client API keys\.
 
-*API keys* are alphanumeric string values that you distribute to application developer customers to grant access to your API\. You can use API keys together with [usage plans](#api-gateway-api-usage-plans) or [Lambda authorizers](apigateway-use-lambda-authorizer.md) to control access to your APIs\. API Gateway can generate API keys on your behalf, or you can import them from a [CSV file](api-key-file-format.md)\. You can generate an API key in API Gateway, or import it into API Gateway from an external source\. For more information, see [Set Up API Keys Using the API Gateway Console](api-gateway-setup-api-key-with-console.md)\. 
+*API keys* are alphanumeric string values that you distribute to application developer customers to grant access to your API\. You can use API keys together with [usage plans](#api-gateway-api-usage-plans) or [Lambda authorizers](apigateway-use-lambda-authorizer.md) to control access to your APIs\. API Gateway can generate API keys on your behalf, or you can import them from a [CSV file](api-key-file-format.md)\. You can generate an API key in API Gateway, or import it into API Gateway from an external source\. For more information, see [Set up API keys using the API Gateway console](api-gateway-setup-api-key-with-console.md)\. 
 
 An API key has a name and a value\. \(The terms "API key" and "API key value" are often used interchangeably\.\) The value is an alphanumeric string between 30 and 128 characters, for example, `apikey1234abcdefghij0123456789`\.
 
@@ -21,7 +21,7 @@ A *quota limit* is the maximum number of requests with a given API key that can 
 **Note**  
 Throttling and quota limits apply to requests for individual API keys that are aggregated across all API stages within a usage plan\.
 
-## Best Practices for API Keys and Usage Plans<a name="apigateway-usage-plans-best-practices"></a>
+## Best practices for API keys and usage plans<a name="apigateway-usage-plans-best-practices"></a>
 
 The following are suggested best practices to follow when using API keys and usage plans\.
 + Don't rely on API keys as your only means of authentication and authorization for your APIs\. For one thing, if you have multiple APIs in a usage plan, a user with a valid API key for one API in that usage plan can access *all* APIs in that usage plan\. Instead, use an IAM role, [a Lambda authorizer](apigateway-use-lambda-authorizer.md), or an [Amazon Cognito user pool](apigateway-integrate-with-cognito.md)\.

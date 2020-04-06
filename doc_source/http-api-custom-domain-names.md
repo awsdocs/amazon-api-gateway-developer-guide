@@ -1,4 +1,4 @@
-# Setting Up Custom Domain Names for HTTP APIs<a name="http-api-custom-domain-names"></a>
+# Setting up custom domain names for HTTP APIs<a name="http-api-custom-domain-names"></a>
 
 *Custom domain names* are simpler and more intuitive URLs that you can provide to your API users\.
 
@@ -24,17 +24,17 @@ https://api.example.com/myservice
 A custom domain can be associated with REST APIs and HTTP APIs\. You can use [API Gateway Version 2 APIs](https://docs.aws.amazon.com/apigatewayv2/latest/api-reference/operations.html) to create and manage Regional custom domain names for REST APIs and HTTP APIs\.  
 For HTTP APIs, TLS 1\.2 is the only supported TLS version\.
 
-## Register a Domain Name<a name="http-api-custom-domain-names-register"></a>
+## Register a domain name<a name="http-api-custom-domain-names-register"></a>
 
 You must have a registered internet domain name in order to set up custom domain names for your APIs\. If needed, you can register an internet domain using [Amazon Route 53](https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/) or using a third\-party domain registrar of your choice\. An API's custom domain name can be the name of a subdomain or the root domain \(also known as "zone apex"\) of a registered internet domain\. 
 
 After a custom domain name is created in API Gateway, you must create or update your DNS provider's resource record to map to your API endpoint\. Without such a mapping, API requests bound for the custom domain name cannot reach API Gateway\.
 
-## Regional Custom Domain Names<a name="http-api-regional-custom-domain-names"></a>
+## Regional custom domain names<a name="http-api-regional-custom-domain-names"></a>
 
 When you create a custom domain name for a Regional API, API Gateway creates a Regional domain name for the API\. You must set up a DNS record to map the custom domain name to the Regional domain name\. You must also provide a certificate for the custom domain name\.
 
-## Certificates for Custom Domain Names<a name="http-api-custom-domain-names-certificates"></a>
+## Certificates for custom domain names<a name="http-api-custom-domain-names-certificates"></a>
 
 To provide a certificate for a custom domain name in a Region where ACM is supported, you must request a certificate from ACM\. To provide a certificate for a Regional custom domain name in a Region where ACM is not supported, you must import a certificate to API Gateway in that Region\. 
 
@@ -42,4 +42,4 @@ To import an SSL/TLS certificate, you must provide the PEM\-formatted SSL/TLS ce
 
  ACM makes it straightforward to set up and use a custom domain name for an API\. You create a certificate for the given domain name \(or import a certificate\), set up the domain name in API Gateway with the ARN of the certificate provided by ACM, and map a base path under the custom domain name to a deployed stage of the API\. With certificates issued by ACM, you do not have to worry about exposing any sensitive certificate details, such as the private key\.
 
-For details on setting up a custom domain name, see [Getting Certificates Ready in AWS Certificate Manager](how-to-custom-domains-prerequisites.md) and [Setting Up a Regional Custom Domain Name in API Gateway](apigateway-regional-api-custom-domain-create.md)\.
+For details on setting up a custom domain name, see [Getting certificates ready in AWS Certificate Manager](how-to-custom-domains-prerequisites.md) and [Setting up a regional custom domain name in API Gateway](apigateway-regional-api-custom-domain-create.md)\.

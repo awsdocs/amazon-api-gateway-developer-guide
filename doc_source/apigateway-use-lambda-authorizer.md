@@ -1,4 +1,4 @@
-# Use API Gateway Lambda Authorizers<a name="apigateway-use-lambda-authorizer"></a>
+# Use API Gateway Lambda authorizers<a name="apigateway-use-lambda-authorizer"></a>
 
 A *Lambda authorizer* \(formerly known as a *custom authorizer*\) is an API Gateway feature that uses a Lambda function to control access to your API\.
 
@@ -12,21 +12,21 @@ There are two types of Lambda authorizers:
 
   For WebSocket APIs, only request parameter\-based authorizers are supported\.
 
-It is possible to use an AWS Lambda function from an AWS account that is different from the one in which you created your Lambda authorizer function\. For more information, see [Configure a Cross\-Account Lambda Authorizer](apigateway-lambda-authorizer-cross-account-lambda-authorizer.md)\.
+It is possible to use an AWS Lambda function from an AWS account that is different from the one in which you created your Lambda authorizer function\. For more information, see [Configure a cross\-account Lambda authorizer](apigateway-lambda-authorizer-cross-account-lambda-authorizer.md)\.
 
 To see an example of a \.NET Lambda authorizer, view the [Creating an API Gateway Custom Authorizer in \.NET Core 2\.0](http://www.youtube.com/watch?v=-0EG17oVxV0&feature=player_embedded) video\.
 
 **Topics**
-+ [Lambda Authorizer Auth Workflow](#api-gateway-lambda-authorizer-flow)
-+ [Steps to Create an API Gateway Lambda Authorizer](#api-gateway-lambda-authorizer-create)
-+ [Create an API Gateway Lambda Authorizer Function in the Lambda Console](#api-gateway-lambda-authorizer-lambda-function-create)
-+ [Configure a Lambda Authorizer Using the API Gateway Console](configure-api-gateway-lambda-authorization-with-console.md)
-+ [Input to an Amazon API Gateway Lambda Authorizer](api-gateway-lambda-authorizer-input.md)
-+ [Output from an Amazon API Gateway Lambda Authorizer](api-gateway-lambda-authorizer-output.md)
-+ [Call an API with API Gateway Lambda Authorizers](call-api-with-api-gateway-lambda-authorization.md)
-+ [Configure a Cross\-Account Lambda Authorizer](apigateway-lambda-authorizer-cross-account-lambda-authorizer.md)
++ [Lambda authorizer Auth workflow](#api-gateway-lambda-authorizer-flow)
++ [Steps to create an API Gateway Lambda authorizer](#api-gateway-lambda-authorizer-create)
++ [Create an API Gateway Lambda authorizer function in the Lambda console](#api-gateway-lambda-authorizer-lambda-function-create)
++ [Configure a Lambda authorizer using the API Gateway console](configure-api-gateway-lambda-authorization-with-console.md)
++ [Input to an Amazon API Gateway Lambda authorizer](api-gateway-lambda-authorizer-input.md)
++ [Output from an Amazon API Gateway Lambda authorizer](api-gateway-lambda-authorizer-output.md)
++ [Call an API with API Gateway Lambda authorizers](call-api-with-api-gateway-lambda-authorization.md)
++ [Configure a cross\-account Lambda authorizer](apigateway-lambda-authorizer-cross-account-lambda-authorizer.md)
 
-## Lambda Authorizer Auth Workflow<a name="api-gateway-lambda-authorizer-flow"></a>
+## Lambda authorizer Auth workflow<a name="api-gateway-lambda-authorizer-flow"></a>
 
 The following diagram illustrates the authorization workflow for Lambda authorizers\.
 
@@ -50,25 +50,25 @@ The following diagram illustrates the authorization workflow for Lambda authoriz
    + If access is denied, API Gateway returns a suitable HTTP status code, such as `403 ACCESS_DENIED`\.
    + If access is allowed, API Gateway executes the method\. If caching is enabled in the authorizer settings, API Gateway also caches the policy so that the Lambda authorizer function doesn't need to be invoked again\.
 
-## Steps to Create an API Gateway Lambda Authorizer<a name="api-gateway-lambda-authorizer-create"></a>
+## Steps to create an API Gateway Lambda authorizer<a name="api-gateway-lambda-authorizer-create"></a>
 
 To create a Lambda authorizer, you need to perform the following tasks:
 
-1. Create the Lambda authorizer function in the Lambda console as described in [Create an API Gateway Lambda Authorizer Function in the Lambda Console](#api-gateway-lambda-authorizer-lambda-function-create)\. You can use one of the blueprint examples as a starting point and customize the [input](api-gateway-lambda-authorizer-input.md) and [output](api-gateway-lambda-authorizer-output.md) as desired\.
+1. Create the Lambda authorizer function in the Lambda console as described in [Create an API Gateway Lambda authorizer function in the Lambda console](#api-gateway-lambda-authorizer-lambda-function-create)\. You can use one of the blueprint examples as a starting point and customize the [input](api-gateway-lambda-authorizer-input.md) and [output](api-gateway-lambda-authorizer-output.md) as desired\.
 
-1. Configure the Lambda function as an API Gateway authorizer and configure an API method to require it, as described in [Configure a Lambda Authorizer Using the API Gateway Console](configure-api-gateway-lambda-authorization-with-console.md)\. Alternatively, if you need a cross\-account Lambda authorizer, see [Configure a Cross\-Account Lambda Authorizer](apigateway-lambda-authorizer-cross-account-lambda-authorizer.md)\.
+1. Configure the Lambda function as an API Gateway authorizer and configure an API method to require it, as described in [Configure a Lambda authorizer using the API Gateway console](configure-api-gateway-lambda-authorization-with-console.md)\. Alternatively, if you need a cross\-account Lambda authorizer, see [Configure a cross\-account Lambda authorizer](apigateway-lambda-authorizer-cross-account-lambda-authorizer.md)\.
 **Note**  
 You can also configure an authorizer by using the AWS CLI or an AWS SDK\.
 
-1. Test your authorizer by using [Postman](https://www.getpostman.com/) as described in [Call an API with API Gateway Lambda Authorizers](call-api-with-api-gateway-lambda-authorization.md)\.
+1. Test your authorizer by using [Postman](https://www.getpostman.com/) as described in [Call an API with API Gateway Lambda authorizers](call-api-with-api-gateway-lambda-authorization.md)\.
 
-## Create an API Gateway Lambda Authorizer Function in the Lambda Console<a name="api-gateway-lambda-authorizer-lambda-function-create"></a>
+## Create an API Gateway Lambda authorizer function in the Lambda console<a name="api-gateway-lambda-authorizer-lambda-function-create"></a>
 
 Before configuring a Lambda authorizer, you must first create the Lambda function that implements the logic to authorize and, if necessary, to authenticate the caller\. The Lambda console provides a Python blueprint, which you can use by choosing **Use a blueprint** and choosing the **api\-gateway\-authorizer\-python** blueprint\. Otherwise, you'll want to use one of the blueprints in the [awslabs](https://github.com/awslabs/aws-apigateway-lambda-authorizer-blueprints) GitHub repository as a starting point\.
 
 For the example Lambda authorizer functions in this section, which don't call other services, you can use the built\-in [https://docs.aws.amazon.com/lambda/latest/dg/lambda-intro-execution-role.html](https://docs.aws.amazon.com/lambda/latest/dg/lambda-intro-execution-role.html)\. When creating the Lambda function for your own API Gateway Lambda authorizer, you'll need to assign an IAM execution role to the Lambda function if it calls other AWS services\. To create the role, follow the instructions in [AWS Lambda Execution Role](https://docs.aws.amazon.com/lambda/latest/dg/lambda-intro-execution-role.html)\.
 
-### EXAMPLE: Create a Token\-Based Lambda Authorizer Function<a name="api-gateway-lambda-authorizer-token-lambda-function-create"></a>
+### EXAMPLE: Create a token\-based Lambda authorizer function<a name="api-gateway-lambda-authorizer-token-lambda-function-create"></a>
 
 To create a token\-based Lambda authorizer function, enter the following Node\.js code in the Lambda console and test it in the API Gateway console as follows\.
 
@@ -200,9 +200,9 @@ In this example, when the API receives a method request, API Gateway passes the 
 **Note**  
 In production code, you may need to authenticate the user before granting authorization\. If so, you can add authentication logic in the Lambda function as well by calling an authentication provider as directed in the documentation for that provider\.
 
-In addition to returning an IAM policy, the Lambda authorizer function must also return the caller's principal identifier\. It can also optionally return a `context` object containing additional information that can be passed into the integration backend\. For more information, see [Output from an Amazon API Gateway Lambda Authorizer](api-gateway-lambda-authorizer-output.md)\. 
+In addition to returning an IAM policy, the Lambda authorizer function must also return the caller's principal identifier\. It can also optionally return a `context` object containing additional information that can be passed into the integration backend\. For more information, see [Output from an Amazon API Gateway Lambda authorizer](api-gateway-lambda-authorizer-output.md)\. 
 
-### EXAMPLE: Create a Request\-Based Lambda Authorizer Function<a name="api-gateway-lambda-authorizer-request-lambda-function-create"></a>
+### EXAMPLE: Create a request\-based Lambda authorizer function<a name="api-gateway-lambda-authorizer-request-lambda-function-create"></a>
 
 To create a request\-based Lambda authorizer function, enter the following Node\.js code in the Lambda console and test it in the API Gateway console as follows\.
 
@@ -345,4 +345,4 @@ In this example, the Lambda authorizer function checks the input parameters and 
 **Note**  
 In production code, you may need to authenticate the user before granting authorization\. If so, you can add authentication logic in the Lambda function as well by calling an authentication provider as directed in the documentation for that provider\.
 
-In addition to returning an IAM policy, the Lambda authorizer function must also return the caller's principal identifier\. It can also optionally return a `context` object containing additional information that can be passed into the integration backend\. For more information, see [Output from an Amazon API Gateway Lambda Authorizer](api-gateway-lambda-authorizer-output.md)\. 
+In addition to returning an IAM policy, the Lambda authorizer function must also return the caller's principal identifier\. It can also optionally return a `context` object containing additional information that can be passed into the integration backend\. For more information, see [Output from an Amazon API Gateway Lambda authorizer](api-gateway-lambda-authorizer-output.md)\. 

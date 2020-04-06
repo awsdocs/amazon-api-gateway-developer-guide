@@ -1,4 +1,4 @@
-# Set the OpenAPI `basePath` Property<a name="api-gateway-import-api-basePath"></a>
+# Set the OpenAPI `basePath` property<a name="api-gateway-import-api-basePath"></a>
 
 In [OpenAPI 2\.0](https://github.com/OAI/OpenAPI-Specification/blob/master/versions/2.0.md), you can use the `basePath` property to provide one or more path parts that precede each path defined in the `paths` property\. Because API Gateway has several ways to express a resource's path, the Import API feature provides the following options for interpreting the `basePath` property during import: ignore, prepend, and split\.
 
@@ -7,7 +7,7 @@ In [https://swagger.io/docs/specification/api-host-and-base-path/](https://swagg
 + If the API contains only one `basePath` variable, the Import API feature uses it as the base path, even if it's not referenced in the `server.url`\.
 + If the API contains multiple `basePath` variables, the Import API feature uses only the first one as the base path\.
 
-## ignore<a name="api-gateway-import-api-basePath-ignore"></a>
+## Ignore<a name="api-gateway-import-api-basePath-ignore"></a>
 
 If the OpenAPI file has a `basePath` value of `/a/b/c` and the `paths` property contains `/e` and `/f`, the following `POST` or `PUT` request: 
 
@@ -31,7 +31,7 @@ PUT /restapis/api_id?basepath=ignore
 
  When unspecified, `basePath` takes `ignore` by default\. 
 
-## prepend<a name="api-gateway-import-api-basePath-prepend"></a>
+## Prepend<a name="api-gateway-import-api-basePath-prepend"></a>
 
  If the OpenAPI file has a `basePath` value of `/a/b/c` and the `paths` property contains `/e` and `/f`, the following `POST` or `PUT` request: 
 
@@ -56,7 +56,7 @@ PUT /restapis/api_id?basepath=prepend
 **Note**  
  API Gateway automatically creates intermediate resources for you, even if they aren't explicitly declared in your definition\. 
 
-## split<a name="api-gateway-import-api-basePath-split"></a>
+## Split<a name="api-gateway-import-api-basePath-split"></a>
 
  If the OpenAPI file has a `basePath` value of `/a/b/c` and the `paths` property contains `/e` and `/f`, the following `POST` or `PUT` request: 
 

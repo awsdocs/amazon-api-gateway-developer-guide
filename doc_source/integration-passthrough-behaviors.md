@@ -1,4 +1,4 @@
-# Integration Passthrough Behaviors<a name="integration-passthrough-behaviors"></a>
+# Integration passthrough behaviors<a name="integration-passthrough-behaviors"></a>
 
  With non\-proxy integrations, when a method request carries a payload and either the `Content-Type` header does not match any specified mapping template or no mapping template is defined, you can choose to pass the client\-supplied request payload through the integration request to the backend without transformation\. The process is known as integration passthrough\. 
 
@@ -9,7 +9,7 @@
 Example 1: One mapping template is defined in the integration request for the `application/json` content type\.
 
 
-| Content\-Type header\\Selected passthrough option | `WHEN_NO_MATCH` | `WHEN_NO_TEMPLATES` | `NEVER` | 
+| Content\-type header\\Selected passthrough option | `WHEN_NO_MATCH` | `WHEN_NO_TEMPLATES` | `NEVER` | 
 | --- | --- | --- | --- | 
 | None \(default to application/json | The request payload is transformed using the template\. | The request payload is transformed using the template\. | The request payload is transformed using the template\. | 
 | application/json | The request payload is transformed using the template\. | The request payload is transformed using the template\. | The request payload is transformed using the template\. | 
@@ -18,7 +18,7 @@ Example 1: One mapping template is defined in the integration request for the `a
 Example 2: One mapping template is defined in the integration request for the `application/xml` content type\.
 
 
-| Content\-Type header\\Selected passthrough option | `WHEN_NO_MATCH` | `WHEN_NO_TEMPLATES` | `NEVER` | 
+| Content\-type header\\Selected passthrough option | `WHEN_NO_MATCH` | `WHEN_NO_TEMPLATES` | `NEVER` | 
 | --- | --- | --- | --- | 
 | None \(default to application/json | The request payload is not transformed and is sent to the backend as\-is\. | The request is rejected with an HTTP 415 Unsupported Media Type response\. | The request is rejected with an HTTP 415 Unsupported Media Type response\. | 
 | application/json | The request payload is not transformed and is sent to the backend as\-is\. | The request is rejected with an HTTP 415 Unsupported Media Type response\. | The request is rejected with an HTTP 415 Unsupported Media Type response\. | 

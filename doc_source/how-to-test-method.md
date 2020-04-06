@@ -1,15 +1,15 @@
-# Use the API Gateway Console to Test a REST API Method<a name="how-to-test-method"></a>
+# Use the API Gateway console to test a REST API method<a name="how-to-test-method"></a>
 
 Use the API Gateway console to test a REST API method\.
 
 **Topics**
 + [Prerequisites](#how-to-test-method-prerequisites)
-+ [Test a Method with the API Gateway Console](#how-to-test-method-console)
++ [Test a method with the API Gateway console](#how-to-test-method-console)
 
 ## Prerequisites<a name="how-to-test-method-prerequisites"></a>
-+ You must specify the settings for the methods you want to test\. Follow the instructions in [Set up REST API Methods in API Gateway](how-to-method-settings.md)\.
++ You must specify the settings for the methods you want to test\. Follow the instructions in [Set up REST API methods in API Gateway](how-to-method-settings.md)\.
 
-## Test a Method with the API Gateway Console<a name="how-to-test-method-console"></a>
+## Test a method with the API Gateway console<a name="how-to-test-method-console"></a>
 
 **Important**  
 Testing methods with the API Gateway console may result in changes to resources that cannot be undone\. Testing a method with the API Gateway console is the same as calling the method outside of the API Gateway console\. For example, if you use the API Gateway console to call a method that deletes an API's resources, if the method call is successful, the API's resources will be deleted\.

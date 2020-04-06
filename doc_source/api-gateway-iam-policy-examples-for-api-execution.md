@@ -1,6 +1,6 @@
-# IAM Policy Examples for API Execution Permissions<a name="api-gateway-iam-policy-examples-for-api-execution"></a>
+# IAM policy examples for API execution permissions<a name="api-gateway-iam-policy-examples-for-api-execution"></a>
 
-For permissions model and other background information, see [ Control Access for Invoking an API](api-gateway-control-access-using-iam-policies-to-invoke-api.md)\.
+For permissions model and other background information, see [ Control access for invoking an API](api-gateway-control-access-using-iam-policies-to-invoke-api.md)\.
 
 The following policy statement gives the user permission to call any POST method along the path of `mydemoresource`, in the stage of `test`, for the API with the identifier of `a123456789`, assuming the corresponding API has been deployed to the AWS region of us\-east\-1:
 

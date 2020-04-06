@@ -19,15 +19,15 @@ Using the API's default domain name, the URL of \(for example\) a WebSocket API 
 wss://{api-id}.execute-api.{region}.amazonaws.com/{stageName}
 ```
 
-To make the WebSocket API's URL more user\-friendly, you can create a custom domain name \(e\.g\., `api.example.com`\) to replace the default host name of the API\. The configuration process is the same as for REST APIs\. For more information, see [Setting Up Custom Domain Names for REST APIs](how-to-custom-domains.md)\.
+To make the WebSocket API's URL more user\-friendly, you can create a custom domain name \(e\.g\., `api.example.com`\) to replace the default host name of the API\. The configuration process is the same as for REST APIs\. For more information, see [Setting up custom domain names for REST APIs](how-to-custom-domains.md)\.
 
-Stages enable robust version control of your API\. For example, you can deploy an API to a `test` stage and a `prod` stage, and use the `test` stage as a test build and use the `prod` stage as a stable build\. After the updates pass the test, you can promote the `test` stage to the `prod` stage\. The promotion can be done by redeploying the API to the `prod` stage\. For more details about stages, see [Setting Up a Stage for a REST API](set-up-stages.md)\.
+Stages enable robust version control of your API\. For example, you can deploy an API to a `test` stage and a `prod` stage, and use the `test` stage as a test build and use the `prod` stage as a stable build\. After the updates pass the test, you can promote the `test` stage to the `prod` stage\. The promotion can be done by redeploying the API to the `prod` stage\. For more details about stages, see [Setting up a stage for a REST API](set-up-stages.md)\.
 
 **Topics**
-+ [Create a WebSocket API Deployment Using the AWS CLI](#apigateway-create-websocket-deployment-using-awscli)
-+ [Create a WebSocket API Deployment Using the API Gateway Console](#apigateway-create-websocket-deployment-using-console)
++ [Create a WebSocket API deployment using the AWS CLI](#apigateway-create-websocket-deployment-using-awscli)
++ [Create a WebSocket API deployment using the API Gateway console](#apigateway-create-websocket-deployment-using-console)
 
-## Create a WebSocket API Deployment Using the AWS CLI<a name="apigateway-create-websocket-deployment-using-awscli"></a>
+## Create a WebSocket API deployment using the AWS CLI<a name="apigateway-create-websocket-deployment-using-awscli"></a>
 
 To use AWS CLI to create a deployment, use the [https://docs.aws.amazon.com/goto/aws-cli/apigatewayv2-2018-11-29/CreateDeployment](https://docs.aws.amazon.com/goto/aws-cli/apigatewayv2-2018-11-29/CreateDeployment) command as shown in the following example:
 
@@ -81,7 +81,7 @@ To reuse an existing stage, update the stage's `deploymentId` property with the 
     --deployment-id {deployment-id}
 ```
 
-## Create a WebSocket API Deployment Using the API Gateway Console<a name="apigateway-create-websocket-deployment-using-console"></a>
+## Create a WebSocket API deployment using the API Gateway console<a name="apigateway-create-websocket-deployment-using-console"></a>
 
 To use the API Gateway console to create a deployment for a WebSocket API:
 

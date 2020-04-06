@@ -1,4 +1,4 @@
-# Integrate a REST API with an Amazon Cognito User Pool<a name="apigateway-enable-cognito-user-pool"></a>
+# Integrate a REST API with an Amazon Cognito user pool<a name="apigateway-enable-cognito-user-pool"></a>
 
 After creating an Amazon Cognito user pool, in API Gateway, you must then create a `COGNITO_USER_POOLS` authorizer that uses the user pool\. The following procedure walks you through the steps to do this using the API Gateway console\.
 
@@ -84,7 +84,7 @@ The preceding procedure creates a `COGNITO_USER_POOLS` authorizer that uses the 
 
    1. Choose the pencil icon next to **OAuth Scopes**\. 
 
-   1. Type one or more full names of a scope that has been configured when the Amazon Cognito user pool was created\. For example, following the example given in [Create an Amazon Cognito User Pool for a REST API](apigateway-create-cognito-user-pool.md), one of the scopes is `com.hamuta.movies/drama.view`\. Use a single space to separate multiple scopes\. 
+   1. Type one or more full names of a scope that has been configured when the Amazon Cognito user pool was created\. For example, following the example given in [Create an Amazon Cognito user pool for a REST API](apigateway-create-cognito-user-pool.md), one of the scopes is `com.hamuta.movies/drama.view`\. Use a single space to separate multiple scopes\. 
 
       At runtime, the method call succeeds if any scope that's specified on the method in this step matches a scope that's claimed in the incoming token\. Otherwise, the call fails with a `401 Unauthorized` response\.
 
@@ -236,4 +236,4 @@ Instead of using the API Gateway console, you can also enable an Amazon Cognito 
       }
    ```
 
-1. If needed, you can set other API configuration settings by using the appropriate OpenAPI definitions or extensions\. For more information, see [Working with API Gateway Extensions to OpenAPI](api-gateway-swagger-extensions.md)\.
+1. If needed, you can set other API configuration settings by using the appropriate OpenAPI definitions or extensions\. For more information, see [Working with API Gateway extensions to OpenAPI](api-gateway-swagger-extensions.md)\.

@@ -1,4 +1,4 @@
-# Set up REST API Methods in API Gateway<a name="how-to-method-settings"></a>
+# Set up REST API methods in API Gateway<a name="how-to-method-settings"></a>
 
  In API Gateway, an API method embodies a [method request](https://docs.aws.amazon.com/apigateway/api-reference/resource/method/) and a [method response](https://docs.aws.amazon.com/apigateway/api-reference/resource/method-response/)\. You set up an API method to define what a client should or must do to submit a request to access the service at the backend and to define the responses that the client receives in return\. For input, you can choose method request parameters, or an applicable payload, for the client to provide the required or optional data at run time\. For output, you determine the method response status code, headers, and applicable body as targets to map the backend response data into, before they are returned to the client\. To help the client developer understand the behaviors and the input and output formats of your API, you can [document your API](api-gateway-documenting-api.md) and [provide proper error messages](api-gateway-gatewayResponse-definition.md#customize-gateway-responses) for [invalid requests](api-gateway-method-request-validation.md)\. 
 
@@ -31,6 +31,6 @@ In principle, you can define a method response corresponding to a specific respo
  To support a strongly typed SDK, such as a Java SDK, for your API, you should define the data model for input for the method request, and define the data model for output of the method response\. 
 
 **Topics**
-+ [Set up a Method Request in API Gateway](api-gateway-method-settings-method-request.md)
-+ [Set up Method Responses in API Gateway](api-gateway-method-settings-method-response.md)
-+ [Set up a Method Using the API Gateway Console](how-to-set-up-method-using-console.md)
++ [Set up a method request in API Gateway](api-gateway-method-settings-method-request.md)
++ [Set up method responses in API Gateway](api-gateway-method-settings-method-response.md)
++ [Set up a method using the API Gateway console](how-to-set-up-method-using-console.md)

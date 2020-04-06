@@ -1,4 +1,4 @@
-# OpenAPI Definitions of a Sample API as a Kinesis Proxy<a name="api-as-kinesis-proxy-export-swagger-with-extensions"></a>
+# OpenAPI definitions of a sample API as a Kinesis proxy<a name="api-as-kinesis-proxy-export-swagger-with-extensions"></a>
 
 Following are OpenAPI definitions for the sample API as a Kinesis proxy used in this tutorial\. 
 

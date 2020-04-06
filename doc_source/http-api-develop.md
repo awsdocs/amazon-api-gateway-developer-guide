@@ -6,11 +6,11 @@ As you're developing your API Gateway API, you decide on a number of characteris
 
 **Topics**
 + [Creating an HTTP API](#http-api-examples)
-+ [Working with Routes for HTTP APIs](http-api-develop-routes.md)
-+ [Controlling Access to HTTP APIs with JWT Authorizers](http-api-jwt-authorizer.md)
-+ [Configuring Integrations for HTTP APIs](http-api-develop-integrations.md)
++ [Working with routes for HTTP APIs](http-api-develop-routes.md)
++ [Controlling access to HTTP APIs with JWT authorizers](http-api-jwt-authorizer.md)
++ [Configuring integrations for HTTP APIs](http-api-develop-integrations.md)
 + [Configuring CORS for an HTTP API](http-api-cors.md)
-+ [Working with OpenAPI Definitions for HTTP APIs](http-api-open-api.md)
++ [Working with OpenAPI definitions for HTTP APIs](http-api-open-api.md)
 
 ## Creating an HTTP API<a name="http-api-examples"></a>
 
@@ -19,10 +19,10 @@ To create a functional API, you must have at least one route, integration, stage
 The following examples show how to create an API with an AWS Lambda or HTTP integration, a route, and a default stage that is configured to automatically deploy changes\.
 
 **Topics**
-+ [Create an HTTP API by Using the AWS Management Console](#apigateway-http-api-create.console)
-+ [Create an HTTP API by Using the AWS CLI](#http-api-examples.cli.quick-create)
++ [Create an HTTP API by using the AWS Management Console](#apigateway-http-api-create.console)
++ [Create an HTTP API by using the AWS CLI](#http-api-examples.cli.quick-create)
 
-### Create an HTTP API by Using the AWS Management Console<a name="apigateway-http-api-create.console"></a>
+### Create an HTTP API by using the AWS Management Console<a name="apigateway-http-api-create.console"></a>
 
 1. Open the [API Gateway console](https://console.aws.amazon.com/apigateway)\.
 
@@ -44,7 +44,7 @@ Now your API is ready to invoke\. You can test your API by entering its invoke U
 curl https://api-id.execute-api.us-east-2.amazonaws.com
 ```
 
-### Create an HTTP API by Using the AWS CLI<a name="http-api-examples.cli.quick-create"></a>
+### Create an HTTP API by using the AWS CLI<a name="http-api-examples.cli.quick-create"></a>
 
 You can use [quick create](api-gateway-basic-concept.md#apigateway-definition-quick-create) to create an API with a Lambda or HTTP integration, a default catch\-all route, and a default stage that is configured to automatically deploy changes\. The following command uses quick create to create an API that integrates with a Lambda function on the backend\.
 

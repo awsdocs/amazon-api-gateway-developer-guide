@@ -1,6 +1,6 @@
-# Monitoring WebSocket API Execution with CloudWatch Metrics<a name="apigateway-websocket-api-logging"></a>
+# Monitoring WebSocket API execution with CloudWatch metrics<a name="apigateway-websocket-api-logging"></a>
 
-You can use [Amazon CloudWatch](https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/WhatIsCloudWatch.html) metrics to monitor WebSocket APIs\. The configuration is similar to that used for REST APIs\. For more information, see [Monitoring REST API Execution with Amazon CloudWatch Metrics](monitoring-cloudwatch.md)\.
+You can use [Amazon CloudWatch](https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/WhatIsCloudWatch.html) metrics to monitor WebSocket APIs\. The configuration is similar to that used for REST APIs\. For more information, see [Monitoring REST API execution with Amazon CloudWatch metrics](monitoring-cloudwatch.md)\.
 
 The following metrics are supported for WebSocket APIs:
 

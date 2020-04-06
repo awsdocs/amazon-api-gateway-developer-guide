@@ -1,4 +1,4 @@
-# Understanding AWS X\-Ray Traces for Amazon API Gateway APIs<a name="apigateway-understanding-xray-traces"></a>
+# Understanding AWS X\-Ray traces for Amazon API Gateway APIs<a name="apigateway-understanding-xray-traces"></a>
 
 This section discusses AWS X\-Ray trace segments, subsegments, and other trace fields for Amazon API Gateway APIs\.
 
@@ -8,10 +8,10 @@ Before you read this section, review the following topics in the X\-Ray Develope
 + [X\-Ray Concepts](https://docs.aws.amazon.com/xray/latest/devguide/xray-concepts.html)
 
 **Topics**
-+ [Examples of Trace Objects for an API Gateway API](#apigateway-understanding-xray-traces-example-segments)
-+ [Understanding the Trace](#apigateway-understanding-xray-traces-segments)
++ [Examples of trace objects for an API Gateway API](#apigateway-understanding-xray-traces-example-segments)
++ [Understanding the trace](#apigateway-understanding-xray-traces-segments)
 
-## Examples of Trace Objects for an API Gateway API<a name="apigateway-understanding-xray-traces-example-segments"></a>
+## Examples of trace objects for an API Gateway API<a name="apigateway-understanding-xray-traces-example-segments"></a>
 
 This section discusses some of the objects you may see in a trace for an API Gateway API\.
 
@@ -28,7 +28,7 @@ Following is an example of an [https://docs.aws.amazon.com/xray/latest/devguide/
 }
 ```
 
-**AWS Resource Data**
+**AWS resource data**
 
 The [https://docs.aws.amazon.com/xray/latest/devguide/xray-api-segmentdocuments.html#api-segmentdocuments-aws](https://docs.aws.amazon.com/xray/latest/devguide/xray-api-segmentdocuments.html#api-segmentdocuments-aws) object appears only in segments\. Following is an example of an `aws` object that matches the Default sampling rule\. For an in\-depth explanation of sampling rules, see [Configuring Sampling Rules in the AWS X\-Ray Console](https://docs.aws.amazon.com/xray/latest/devguide/xray-console-sampling.html)\.
 
@@ -46,7 +46,7 @@ The [https://docs.aws.amazon.com/xray/latest/devguide/xray-api-segmentdocuments.
 }
 ```
 
-## Understanding the Trace<a name="apigateway-understanding-xray-traces-segments"></a>
+## Understanding the trace<a name="apigateway-understanding-xray-traces-segments"></a>
 
 Following is a trace segment for an API Gateway stage\. For a detailed explanation of the fields that make up the trace segment, see [AWS X\-Ray Segment Documents](https://docs.aws.amazon.com/xray/latest/devguide/xray-api-segmentdocuments.html) in the AWS X\-Ray Developer Guide\.
 

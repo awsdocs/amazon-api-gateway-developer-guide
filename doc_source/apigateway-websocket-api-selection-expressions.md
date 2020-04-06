@@ -1,10 +1,10 @@
-# WebSocket Selection Expressions in API Gateway<a name="apigateway-websocket-api-selection-expressions"></a>
+# WebSocket selection expressions in API Gateway<a name="apigateway-websocket-api-selection-expressions"></a>
 
 **Topics**
-+ [Route Response Selection Expressions](#apigateway-websocket-api-route-response-selection-expressions)
-+ [API Key Selection Expressions](#apigateway-websocket-api-apikey-selection-expressions)
-+ [API Mapping Selection Expressions](#apigateway-websocket-api-mapping-selection-expressions)
-+ [WebSocket Selection Expression Summary](#apigateway-websocket-api-selection-expression-table)
++ [Route response selection expressions](#apigateway-websocket-api-route-response-selection-expressions)
++ [API key selection expressions](#apigateway-websocket-api-apikey-selection-expressions)
++ [API mapping selection expressions](#apigateway-websocket-api-mapping-selection-expressions)
++ [WebSocket selection expression summary](#apigateway-websocket-api-selection-expression-table)
 
 API Gateway uses selection expressions as a way to evaluate request and response context and produce a key\. The key is then used to select from a set of possible values, typically provided by you, the API developer\. The exact set of supported variables will vary depending on the particular expression\. Each expression is discussed in more detail below\.
 
@@ -15,30 +15,30 @@ For all of the expressions, the language follows the same set of rules:
 + A dollar sign \(`$`\) can be escaped with `"\"`\. This is most useful when defining an expression that maps to the reserved `$default` key, e\.g\., `"\$default"`\.
 + In some cases, a pattern format is required\. In this case, the expression should be wrapped with forward slashes \(`"/"`\), e\.g\. `"/2\d\d/"` to match `2XX` status codes\.
 
-## Route Response Selection Expressions<a name="apigateway-websocket-api-route-response-selection-expressions"></a>
+## Route response selection expressions<a name="apigateway-websocket-api-route-response-selection-expressions"></a>
 
 A [route response](apigateway-websocket-api-route-response.md) is used for modeling a response from the backend to the client\. For WebSocket APIs, a route response is optional\. When defined, it signals to API Gateway that it should return a response to a client upon receiving a WebSocket message\.
 
 Evaluation of the *route response selection expression* produces a route response key\. Eventually, this key will be used to choose from one of the [https://docs.aws.amazon.com/apigatewayv2/latest/api-reference/apis-apiid-routes-routeid-routeresponses.html](https://docs.aws.amazon.com/apigatewayv2/latest/api-reference/apis-apiid-routes-routeid-routeresponses.html) associated with the API\. However, currently only the `$default` key is supported\.
 
-## API Key Selection Expressions<a name="apigateway-websocket-api-apikey-selection-expressions"></a>
+## API key selection expressions<a name="apigateway-websocket-api-apikey-selection-expressions"></a>
 
 This expression is evaluated when the service determines the given request should proceed only if the client provides a valid [API key](api-gateway-basic-concept.md#apigateway-definition-api-key)\.
 
 Currently the only two supported values are `$request.header.x-api-key` and `$context.authorizer.usageIdentifierKey`\.
 
-## API Mapping Selection Expressions<a name="apigateway-websocket-api-mapping-selection-expressions"></a>
+## API mapping selection expressions<a name="apigateway-websocket-api-mapping-selection-expressions"></a>
 
 This expression is evaluated to determine which API stage is selected when a request is made using a custom domain\.
 
 Currently, the only supported value is `$request.basepath`\.
 
-## WebSocket Selection Expression Summary<a name="apigateway-websocket-api-selection-expression-table"></a>
+## WebSocket selection expression summary<a name="apigateway-websocket-api-selection-expression-table"></a>
 
 The following table summarizes the use cases for selection expressions in WebSocket APIs:
 
 
-| Selection Expression | Evaluates to Key For | Notes | Example Use Case | 
+| Selection expression | Evaluates to key for | Notes | Example use case | 
 | --- | --- | --- | --- | 
 | Api\.RouteSelectionExpression | Route\.RouteKey | $default is supported as a catch\-all route\. | Route WebSocket messages based on the context of a client request\. | 
 | Route\.ModelSelectionExpression | Key for Route\.RequestModels | Optional\. If provided for non\-proxy integration, model validation occurs\. `$default` is supported as a catch\-all\.  | Perform request validation dynamically within the same route\. | 

@@ -1,11 +1,11 @@
-# Amazon API Gateway Important Notes<a name="api-gateway-known-issues"></a>
+# Amazon API Gateway important notes<a name="api-gateway-known-issues"></a>
 
 **Topics**
-+ [Amazon API Gateway Important Notes for REST and WebSocket APIs](#api-gateway-known-issues-all-apis)
-+ [Amazon API Gateway Important Notes for WebSocket APIs](#api-gateway-known-issues-websocket-apis)
-+ [Amazon API Gateway Important Notes for REST APIs](#api-gateway-known-issues-rest-apis)
++ [Amazon API Gateway important notes for REST and WebSocket APIs](#api-gateway-known-issues-all-apis)
++ [Amazon API Gateway important notes for WebSocket APIs](#api-gateway-known-issues-websocket-apis)
++ [Amazon API Gateway important notes for REST APIs](#api-gateway-known-issues-rest-apis)
 
-## Amazon API Gateway Important Notes for REST and WebSocket APIs<a name="api-gateway-known-issues-all-apis"></a>
+## Amazon API Gateway important notes for REST and WebSocket APIs<a name="api-gateway-known-issues-all-apis"></a>
 + API Gateway does not support sharing a custom domain name across REST and WebSocket APIs\.
 + Stage names can only contain alphanumeric characters, hyphens, and underscores\. Maximum length is 128 characters\.
 + The `/ping` and `/sping` paths are reserved for the service health check\. Use of these for API root\-level resources with custom domains will fail to produce the expected result\.
@@ -13,10 +13,10 @@
 + CloudWatch Metrics currently limits dimension names and values to 255 valid XML characters\. \(For more information, see the [CloudWatch User Guide](https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/cloudwatch_concepts.html#Dimension)\.\) Dimension values are a function of user\-defined names, including API name, label \(stage\) name, and resource name\. When choosing these names, be careful not to exceed CloudWatch Metrics limits\.
 + The maximum size of a mapping template is 300 KB\.
 
-## Amazon API Gateway Important Notes for WebSocket APIs<a name="api-gateway-known-issues-websocket-apis"></a>
+## Amazon API Gateway important notes for WebSocket APIs<a name="api-gateway-known-issues-websocket-apis"></a>
 + API Gateway supports message payloads up to 128 KB with a maximum frame size of 32 KB\. If a message exceeds 32 KB, you must split it into multiple frames, each 32 KB or smaller\. If a larger message is received, the connection is closed with code 1009\.
 
-## Amazon API Gateway Important Notes for REST APIs<a name="api-gateway-known-issues-rest-apis"></a>
+## Amazon API Gateway important notes for REST APIs<a name="api-gateway-known-issues-rest-apis"></a>
 + The plain text pipe character \(`|`\) is not supported for any request URL query string and must be URL\-encoded\.
 + The semicolon character \(`;`\) is not supported for any request URL query string and results in the data being split\.
 + When using the API Gateway console to test an API, you may get an "unknown endpoint errors" response if a self\-signed certificate is presented to the backend, the intermediate certificate is missing from the certificate chain, or any other unrecognizable certificate\-related exceptions thrown by the backend\.

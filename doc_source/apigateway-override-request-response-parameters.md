@@ -1,4 +1,4 @@
-# Use a Mapping Template to Override an API's Request and Response Parameters and Status Codes<a name="apigateway-override-request-response-parameters"></a>
+# Use a mapping template to override an API's request and response parameters and status codes<a name="apigateway-override-request-response-parameters"></a>
 
 Standard API Gateway [parameter and response code mapping templates](models-mappings.md) allow you to map parameters one\-to\-one and map a family of integration response status codes \(matched by a regular expression\) to a single response status code\. Mapping template overrides provides you with the flexibility to perform many\-to\-one parameter mappings; override parameters after standard API Gateway mappings have been applied; conditionally map parameters based on body content or other parameter values; programmatically create new parameters on the fly; and override status codes returned by your integration endpoint\. Any type of request parameter, response header, or response status code may be overridden\.
 
@@ -11,27 +11,27 @@ Following are example uses for a mapping template override:
 To create a mapping template override, use one or more of the following [`$context` variables](api-gateway-mapping-template-reference.md#context-variable-reference) in a [mapping template](models-mappings.md):
 
 
-| Request Body Mapping Template | Response Body Mapping Template | 
+| Request body mapping template | Response body mapping template | 
 | --- | --- | 
 | $context\.requestOverride\.header\.header\_name | $context\.responseOverride\.header\.header\_name | 
 | $context\.requestOverride\.path\.path\_name | $context\.responseOverride\.status | 
 | $context\.requestOverride\.querystring\.querystring\_name |  | 
 
 **Note**  
-Mapping template overrides cannot be used with proxy integration endpoints, which lack data mappings\. For more information about integration types, see [Choose an API Gateway API Integration Type](api-gateway-api-integration-types.md)\.
+Mapping template overrides cannot be used with proxy integration endpoints, which lack data mappings\. For more information about integration types, see [Choose an API Gateway API integration type](api-gateway-api-integration-types.md)\.
 
 **Important**  
-Overrides are final\. An override may only be applied to each parameter once\. Trying to override the same parameter multiple times will result in `5XX` responses from Amazon API Gateway\. If you must override the same parameter multiple times throughout the template, we recommend creating a variable and applying the override at the end of the template\. Note that the template is applied only after the entire template is parsed\. See [Tutorial: Override an API's Request Parameters and Headers with the API Gateway Console](#apigateway-override-request-response-parameters-override-request)\.
+Overrides are final\. An override may only be applied to each parameter once\. Trying to override the same parameter multiple times will result in `5XX` responses from Amazon API Gateway\. If you must override the same parameter multiple times throughout the template, we recommend creating a variable and applying the override at the end of the template\. Note that the template is applied only after the entire template is parsed\. See [Tutorial: Override an API's request parameters and headers with the API Gateway console](#apigateway-override-request-response-parameters-override-request)\.
 
 The following tutorials show how to create and test a mapping template override in the API Gateway console\. These tutorials use the [PetStore sample API](api-gateway-create-api-from-example.md) as a starting point\. Both tutorials assume that you have already created the [PetStore sample API](api-gateway-create-api-from-example.md)\.
 
 **Topics**
-+ [Tutorial: Override an API's Response Status Code with the API Gateway Console](#apigateway-override-request-response-parameters-override-response)
-+ [Tutorial: Override an API's Request Parameters and Headers with the API Gateway Console](#apigateway-override-request-response-parameters-override-request)
-+ [Examples: Override an API's Request Parameters and Headers with the API Gateway CLI](#apigateway-override-request-response-parameters-cli)
-+ [Example: Override an API's Request Parameters and Headers Using the SDK for JavaScript](#apigateway-override-request-response-parameters-javascript-sdk)
++ [Tutorial: Override an API's response status code with the API Gateway console](#apigateway-override-request-response-parameters-override-response)
++ [Tutorial: Override an API's request parameters and headers with the API Gateway console](#apigateway-override-request-response-parameters-override-request)
++ [Examples: Override an API's request parameters and headers with the API Gateway CLI](#apigateway-override-request-response-parameters-cli)
++ [Example: Override an API's request parameters and headers using the SDK for JavaScript](#apigateway-override-request-response-parameters-javascript-sdk)
 
-## Tutorial: Override an API's Response Status Code with the API Gateway Console<a name="apigateway-override-request-response-parameters-override-response"></a>
+## Tutorial: Override an API's response status code with the API Gateway console<a name="apigateway-override-request-response-parameters-override-response"></a>
 
 To retrieve a pet using the PetStore sample API, you use the API method request of `GET /pets/{petId}`, where `{petId}` is a path parameter that can take a number at run time\.
 
@@ -103,7 +103,7 @@ In this tutorial, you'll override this `GET` method's response code by creating 
 
    However, the last line under **Logs** box now ends with: `Method completed with status: 400`\.
 
-## Tutorial: Override an API's Request Parameters and Headers with the API Gateway Console<a name="apigateway-override-request-response-parameters-override-request"></a>
+## Tutorial: Override an API's request parameters and headers with the API Gateway console<a name="apigateway-override-request-response-parameters-override-request"></a>
 
 In this tutorial, you'll override the `GET` method's request header code by creating a mapping template that maps `$context.requestOverride.header.header_name` to a new header that combines two other headers\.
 
@@ -177,7 +177,7 @@ In this tutorial, you'll override the `GET` method's request header code by crea
    Accept=application/json, multivalueheader=foo,header1Valheader2Val}
    ```
 
-## Examples: Override an API's Request Parameters and Headers with the API Gateway CLI<a name="apigateway-override-request-response-parameters-cli"></a>
+## Examples: Override an API's request parameters and headers with the API Gateway CLI<a name="apigateway-override-request-response-parameters-cli"></a>
 
 The following CLI example shows how to use the `put-integration` command to override a response code:
 
@@ -208,7 +208,7 @@ aws apigateway put-integration-response --rest-api-id <API_ID> --resource-id <PA
 
 where *<RESPONSE\_TEMPLATE\_MAP>* has the same format as *<REQUEST\_TEMPLATE\_MAP>* above\.
 
-## Example: Override an API's Request Parameters and Headers Using the SDK for JavaScript<a name="apigateway-override-request-response-parameters-javascript-sdk"></a>
+## Example: Override an API's request parameters and headers using the SDK for JavaScript<a name="apigateway-override-request-response-parameters-javascript-sdk"></a>
 
 The following example shows how to use the `put-integration` command to override a response code:
 

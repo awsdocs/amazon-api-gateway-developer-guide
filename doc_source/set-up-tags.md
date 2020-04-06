@@ -1,16 +1,16 @@
-# Setting Up Tags for an API Stage in API Gateway<a name="set-up-tags"></a>
+# Setting up tags for an API stage in API Gateway<a name="set-up-tags"></a>
 
 In API Gateway, you can add a tag to an API stage, remove the tag from the stage, or view the tag\. To do this, you can use the API Gateway console, the AWS CLI/SDK, or the API Gateway REST API\.
 
-A stage can also inherit tags from its parent REST API\. For more information, see [Tag Inheritance in the Amazon API Gateway V1 API](apigateway-tagging-supported-resources.md#apigateway-tagging-inheritance)\.
+A stage can also inherit tags from its parent REST API\. For more information, see [Tag inheritance in the Amazon API Gateway V1 API](apigateway-tagging-supported-resources.md#apigateway-tagging-inheritance)\.
 
-For more information about tagging API Gateway resources, see [Tagging Your API Gateway Resources](apigateway-tagging.md)\.
+For more information about tagging API Gateway resources, see [Tagging your API Gateway resources](apigateway-tagging.md)\.
 
 **Topics**
-+ [Set Up Tags for an API Stage Using the API Gateway Console](#set-up-tags-using-console)
-+ [Set Up Tags for an API Stage Using the API Gateway REST API](#set-up-tags-using-api)
++ [Set up tags for an API stage using the API Gateway console](#set-up-tags-using-console)
++ [Set up tags for an API stage using the API Gateway REST API](#set-up-tags-using-api)
 
-## Set Up Tags for an API Stage Using the API Gateway Console<a name="set-up-tags-using-console"></a>
+## Set up tags for an API stage using the API Gateway console<a name="set-up-tags-using-console"></a>
 
 The following procedure describes how to set up tags for an API stage\.
 
@@ -34,7 +34,7 @@ The following procedure describes how to set up tags for an API stage\.
 
    If the API has been deployed previously in the API Gateway console, you need to redeploy it for the changes to take effect\.
 
-## Set Up Tags for an API Stage Using the API Gateway REST API<a name="set-up-tags-using-api"></a>
+## Set up tags for an API stage using the API Gateway REST API<a name="set-up-tags-using-api"></a>
 
 You can set up tags for an API stage using the API Gateway REST API by doing one of the following:
 + Call [https://docs.aws.amazon.com/apigateway/api-reference/link-relation/tags-tag/](https://docs.aws.amazon.com/apigateway/api-reference/link-relation/tags-tag/) to tag an API stage\.
@@ -43,7 +43,7 @@ You can set up tags for an API stage using the API Gateway REST API by doing one
 
 You can also call [https://docs.aws.amazon.com/apigateway/api-reference/link-relation/tags-get/](https://docs.aws.amazon.com/apigateway/api-reference/link-relation/tags-get/) to describe tags in an API stage\.
 
-### Tag an API Stage<a name="tag-a-stage-using-api"></a>
+### Tag an API stage<a name="tag-a-stage-using-api"></a>
 
 After you deploy an API \(`m5zr3vnks7`\) to a stage \(`test`\), tag the stage by calling [https://docs.aws.amazon.com/apigateway/api-reference/link-relation/tags-tag/](https://docs.aws.amazon.com/apigateway/api-reference/link-relation/tags-tag/)\. The required stage Amazon Resource Name \(ARN\) \(`arn:aws:apigateway:us-east-1::/restapis/m5zr3vnks7/stages/test`\) must be URL encoded \(`arn%3Aaws%3Aapigateway%3Aus-east-1%3A%3A%2Frestapis%2Fm5zr3vnks7%2Fstages%2Ftest`\)\. 
 
@@ -82,7 +82,7 @@ POST /restapis/<restapi_id>/stages
 }
 ```
 
-### Untag an API Stage<a name="untag-a-stage-using-api"></a>
+### Untag an API stage<a name="untag-a-stage-using-api"></a>
 
  To remove the `Department` tag from the stage, call [https://docs.aws.amazon.com/apigateway/api-reference/link-relation/tags-untag/](https://docs.aws.amazon.com/apigateway/api-reference/link-relation/tags-untag/): 
 
@@ -94,7 +94,7 @@ Authorization: ...
 
  To remove more than one tag, use a comma\-separated list of tag keys in the query expression—for example, `?tagKeys=Department,Division,…`\. 
 
-### Describe Tags for an API Stage<a name="get-tags-using-api"></a>
+### Describe tags for an API stage<a name="get-tags-using-api"></a>
 
 To describe existing tags on a given stage, call [https://docs.aws.amazon.com/apigateway/api-reference/link-relation/tags-get/](https://docs.aws.amazon.com/apigateway/api-reference/link-relation/tags-get/):
 

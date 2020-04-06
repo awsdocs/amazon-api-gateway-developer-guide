@@ -1,4 +1,4 @@
-# Steps to Configure a Usage Plan<a name="api-gateway-create-usage-plans"></a>
+# Steps to configure a usage plan<a name="api-gateway-create-usage-plans"></a>
 
 The following steps outline how you, as the API owner, create and configure a usage plan for your customers\.
 

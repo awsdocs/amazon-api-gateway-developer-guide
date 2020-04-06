@@ -1,4 +1,4 @@
-# Using IAM Authorization<a name="apigateway-websocket-control-access-iam"></a>
+# Using IAM authorization<a name="apigateway-websocket-control-access-iam"></a>
 
 IAM authorization in WebSocket APIs is similar to that for [REST APIs](api-gateway-control-access-using-iam-policies-to-invoke-api.md), with the following exceptions:
 + The `execute-api` action supports `ManageConnections` in addition to existing actions \(`Invoke`, `InvalidateCache`\)\. `ManageConnections` controls access to the @connections API\.

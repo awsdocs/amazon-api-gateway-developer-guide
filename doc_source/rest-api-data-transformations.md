@@ -1,4 +1,4 @@
-# Setting Up Data Transformations for REST APIs<a name="rest-api-data-transformations"></a>
+# Setting up data transformations for REST APIs<a name="rest-api-data-transformations"></a>
 
  In API Gateway, an API's method request can take a payload in a different format from the corresponding integration request payload, as required in the backend\. Similarly, the backend may return an integration response payload different from the method response payload, as expected by the frontend\. API Gateway lets you use mapping templates to map the payload from a method request to the corresponding integration request and from an integration response to the corresponding method response\. 
 
@@ -180,14 +180,14 @@ The referencing and referenced models must be from the same API\.
 The examples don't use advanced JSON schema features, such as specifying required items, minimums and maximums \(for allowed string lengths, numeric values, and array item lengths\), and regular expressions\. For more information, see [Introducing JSON](http://json.org) and [JSON schema draft 4](https://tools.ietf.org/html/draft-zyp-json-schema-04)\.
 
 For more complex JSON data formats and their models, see the following examples:
-+ [Input Model \(Photos Example\)](example-photos.md#example-photos-input-model) and [Output Model \(Photos Example\)](example-photos.md#example-photos-output-model) in the [Photos Example](example-photos.md)
-+ [Input Model \(News Article Example\)](example-news-article.md#example-news-article-input-model) and [Output Model \(News Article Example\)](example-news-article.md#example-news-article-output-model) in the [News Article Example](example-news-article.md)
-+ [Input Model \(Sales Invoice Example\)](example-invoice.md#example-invoice-input-model) and [Output Model \(Sales Invoice Example\)](example-invoice.md#example-invoice-output-model) in the [Sales Invoice Example](example-invoice.md)
-+ [Input Model \(Employee Record Example\)](example-employee.md#example-employee-input-model) and [Output Model \(Employee Record Example\)](example-employee.md#example-employee-output-model) in the [Employee Record Example](example-employee.md)
++ [Input model \(photos example\)](example-photos.md#example-photos-input-model) and [Output model \(photos example\)](example-photos.md#example-photos-output-model) in the [Photos example](example-photos.md)
++ [Input model \(news article example\)](example-news-article.md#example-news-article-input-model) and [Output model \(news article example\)](example-news-article.md#example-news-article-output-model) in the [News article example](example-news-article.md)
++ [Input model \(sales invoice example\)](example-invoice.md#example-invoice-input-model) and [Output model \(sales invoice example\)](example-invoice.md#example-invoice-output-model) in the [Sales invoice example](example-invoice.md)
++ [Input model \(employee record example\)](example-employee.md#example-employee-input-model) and [Output model \(employee record example\)](example-employee.md#example-employee-output-model) in the [Employee record example](example-employee.md)
 
-To experiment with models in API Gateway, follow the instructions in [Map Response Payload](api-gateway-create-api-step-by-step.md#getting-started-models), specifically [Step 1: Create Models](api-gateway-create-api-step-by-step.md#getting-started-models-add-models)\.
+To experiment with models in API Gateway, follow the instructions in [Map response payload](api-gateway-create-api-step-by-step.md#getting-started-models), specifically [Step 1: Create models](api-gateway-create-api-step-by-step.md#getting-started-models-add-models)\.
 
-## Mapping Templates<a name="models-mappings-mappings"></a>
+## Mapping templates<a name="models-mappings-mappings"></a>
 
  When the backend returns the query results \(shown in the [Models](#models-mappings-models) section\), the manager of the produce department might be interested in reading them, as follows: 
 
@@ -275,16 +275,16 @@ In this model, the JSON schema is expressed as follows:
 With this model, you can call an SDK to retrieve the `kind`, `suggestedPrice`, and `available` property values by reading the `GroceryStoreOutputModel[i].kind`, `GroceryStoreOutputModel[i].suggestedPrice`, and `GroceryStoreOutputModel[i].available` properties, respectively\. If no model is provided, API Gateway uses the empty model to create a default UDT\. In this case, you aren't able to read these properties using a strongly\-typed SDK\.
 
 To explore more complex mapping templates, see the following examples:
-+ [Input Mapping Template \(Photos Example\)](example-photos.md#example-photos-input-mapping) and [Output Mapping Template \(Photos Example\)](example-photos.md#example-photos-output-mapping) in the [Photos Example](example-photos.md)
-+ [Input Mapping Template \(News Article Example\)](example-news-article.md#example-news-article-input-mapping) and [Output Mapping Template \(News Article Example\)](example-news-article.md#example-news-article-output-mapping) in the [News Article Example](example-news-article.md)
-+ [Input Mapping Template \(Sales Invoice Example\)](example-invoice.md#example-invoice-input-mapping) and [Output Mapping Template \(Sales Invoice Example\)](example-invoice.md#example-invoice-output-mapping) in the [Sales Invoice Example](example-invoice.md)
-+ [Input Mapping Template \(Employee Record Example\)](example-employee.md#example-employee-input-mapping) and [Output Mapping Template \(Employee Record Example\)](example-employee.md#example-employee-output-mapping) in the [Employee Record Example](example-employee.md)
++ [Input mapping template \(photos example\)](example-photos.md#example-photos-input-mapping) and [Output mapping template \(photos example\)](example-photos.md#example-photos-output-mapping) in the [Photos example](example-photos.md)
++ [Input mapping template \(news article example\)](example-news-article.md#example-news-article-input-mapping) and [Output mapping template \(news article example\)](example-news-article.md#example-news-article-output-mapping) in the [News article example](example-news-article.md)
++ [Input mapping template \(sales invoice example\)](example-invoice.md#example-invoice-input-mapping) and [Output mapping template \(sales invoice example\)](example-invoice.md#example-invoice-output-mapping) in the [Sales invoice example](example-invoice.md)
++ [Input mapping template \(employee record example\)](example-employee.md#example-employee-input-mapping) and [Output mapping template \(employee record example\)](example-employee.md#example-employee-output-mapping) in the [Employee record example](example-employee.md)
 
-To experiment with mapping templates in API Gateway, follow the instructions in [Map Response Payload](api-gateway-create-api-step-by-step.md#getting-started-models), specifically [Step 5: Set up and Test the Methods](api-gateway-create-api-step-by-step.md#getting-started-models-set-methods)\.
+To experiment with mapping templates in API Gateway, follow the instructions in [Map response payload](api-gateway-create-api-step-by-step.md#getting-started-models), specifically [Step 5: Set up and test the methods](api-gateway-create-api-step-by-step.md#getting-started-models-set-methods)\.
 
-## Next Steps<a name="models-mappings-tasks"></a>
+## Next steps<a name="models-mappings-tasks"></a>
 
 For additional things you can do with models and mapping templates, see the following:
-+ [Working with Models and Mapping Templates](models-mappings.md)
-+ [Models and Mapping Template Examples](rest-api-develop-models-mapping-examples.md)
-+ [Amazon API Gateway API Request and Response Data Mapping Reference](request-response-data-mappings.md)
++ [Working with models and mapping templates](models-mappings.md)
++ [Models and mapping template examples](rest-api-develop-models-mapping-examples.md)
++ [Amazon API Gateway API request and response data mapping reference](request-response-data-mappings.md)

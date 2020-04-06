@@ -1,16 +1,16 @@
-# Create, Configure, and Test Usage Plans with the API Gateway Console<a name="api-gateway-create-usage-plans-with-console"></a>
+# Create, configure, and test usage plans with the API Gateway console<a name="api-gateway-create-usage-plans-with-console"></a>
 
-Before creating a usage plan, make sure that you've set up the desired API keys\. For more information, see [Set Up API Keys Using the API Gateway Console](api-gateway-setup-api-key-with-console.md)\.
+Before creating a usage plan, make sure that you've set up the desired API keys\. For more information, see [Set up API keys using the API Gateway console](api-gateway-setup-api-key-with-console.md)\.
 
 This section describes how to create and use a usage plan by using the API Gateway console\.
 
 **Topics**
-+ [Migrate Your API to Default Usage Plans \(If Needed\)](#api-gateway-usage-plan-migrate-to-default)
-+ [Create a Usage Plan](#api-gateway-usage-plan-create)
-+ [Test a Usage Plan](#api-gateway-usage-plan-test-console)
-+ [Maintain a Usage Plan](#api-gateway-usage-plan-manage-usage)
++ [Migrate your API to default usage plans \(if needed\)](#api-gateway-usage-plan-migrate-to-default)
++ [Create a usage plan](#api-gateway-usage-plan-create)
++ [Test a usage plan](#api-gateway-usage-plan-test-console)
++ [Maintain a usage plan](#api-gateway-usage-plan-manage-usage)
 
-## Migrate Your API to Default Usage Plans \(If Needed\)<a name="api-gateway-usage-plan-migrate-to-default"></a>
+## Migrate your API to default usage plans \(if needed\)<a name="api-gateway-usage-plan-migrate-to-default"></a>
 
 If you started to use API Gateway *after* the usage plans feature was rolled out on August 11, 2016, you will automatically have usage plans enabled for you in all supported Regions\.
 
@@ -36,7 +36,7 @@ You can also migrate your APIs to default usage plans by using the AWS CLI as fo
    ]
    ```
 
-## Create a Usage Plan<a name="api-gateway-usage-plan-create"></a>
+## Create a usage plan<a name="api-gateway-usage-plan-create"></a>
 
 The following procedure describes how to create a usage plan\.
 
@@ -103,11 +103,11 @@ An API key can be associated with more than one usage plan\. A usage plan can be
 
 1. If you want to add more API stages to the usage plan, choose **Add API Stage** to repeat the preceding steps\.
 
-## Test a Usage Plan<a name="api-gateway-usage-plan-test-console"></a>
+## Test a usage plan<a name="api-gateway-usage-plan-test-console"></a>
 
-To test the usage plan, you can use an AWS SDK, AWS CLI, or a REST API client like Postman\. For an example of using [Postman](https://www.getpostman.com/) to test the usage plan, see [Test Usage Plans](api-gateway-create-usage-plans-with-rest-api.md#api-gateway-usage-plan-test-with-postman)\.
+To test the usage plan, you can use an AWS SDK, AWS CLI, or a REST API client like Postman\. For an example of using [Postman](https://www.getpostman.com/) to test the usage plan, see [Test usage plans](api-gateway-create-usage-plans-with-rest-api.md#api-gateway-usage-plan-test-with-postman)\.
 
-## Maintain a Usage Plan<a name="api-gateway-usage-plan-manage-usage"></a>
+## Maintain a usage plan<a name="api-gateway-usage-plan-manage-usage"></a>
 
 Maintaining a usage plan involves monitoring the used and remaining quotas over a given time period and, if needed, extending the remaining quotas by a specified amount\. The following procedures describe how to monitor and extend quotas\.
 

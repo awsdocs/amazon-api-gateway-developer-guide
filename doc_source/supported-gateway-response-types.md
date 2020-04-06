@@ -1,9 +1,9 @@
-# Gateway Response Types<a name="supported-gateway-response-types"></a>
+# Gateway response types<a name="supported-gateway-response-types"></a>
 
  API Gateway exposes the following gateway responses for customization by API developers\. 
 
 
-| Gateway Response Type | Default Status Code | Description | 
+| Gateway response type | Default status code | Description | 
 | --- | --- | --- | 
 | ACCESS\_DENIED | 403 | The gateway response for authorization failure—for example, when access is denied by a custom or Amazon Cognito authorizer\. If the response type is unspecified, this response defaults to the `DEFAULT_4XX` type\. | 
 | API\_CONFIGURATION\_ERROR | 500 | The gateway response for an invalid API configuration—including when an invalid endpoint address is submitted, when base64 decoding fails on binary data when binary support is enacted, or when integration response mapping can't match any template and no default template is configured\. If the response type is unspecified, this response defaults to the `DEFAULT_5XX` type\. | 

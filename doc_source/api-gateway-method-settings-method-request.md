@@ -1,4 +1,4 @@
-# Set up a Method Request in API Gateway<a name="api-gateway-method-settings-method-request"></a>
+# Set up a method request in API Gateway<a name="api-gateway-method-settings-method-request"></a>
 
 Setting up a method request involves performing the following tasks, after creating a [RestApi](https://docs.aws.amazon.com/apigateway/api-reference/resource/rest-api/) resource:
 
@@ -17,17 +17,17 @@ You can perform these tasks using the following methods:
 +  AWS SDK functions \(for example, in Node\.js, [createResource](http://docs.aws.amazon.com/AWSJavaScriptSDK/latest/AWS/APIGateway.html#createResource-property) and [putMethod](http://docs.aws.amazon.com/AWSJavaScriptSDK/latest/AWS/APIGateway.html#putMethod-property)\)
 +  API Gateway REST API \([resource:create](https://docs.aws.amazon.com/apigateway/api-reference/link-relation/resource-create/) and [method:put](https://docs.aws.amazon.com/apigateway/api-reference/link-relation/method-put/)\)\.
 
-For examples of using these tools, see [ Initialize REST API Setup in API Gateway](create-api-resources-methods.md)\.
+For examples of using these tools, see [ Initialize REST API setup in API Gateway](create-api-resources-methods.md)\.
 
 **Topics**
-+ [Set up API Resources](#setup-method-resources)
-+ [Set up an HTTP Method](#setup-method-add-http-method)
-+ [Set up Method Request Parameters](#setup-method-request-parameters)
-+ [Set up Method Request Model](#setup-method-request-model)
-+ [Set up Method Request Authorization](#setup-method-request-authorization)
-+ [Set up Method Request Validation](#setup-method-request-validation)
++ [Set up API resources](#setup-method-resources)
++ [Set up an HTTP method](#setup-method-add-http-method)
++ [Set up method request parameters](#setup-method-request-parameters)
++ [Set up method request model](#setup-method-request-model)
++ [Set up method request authorization](#setup-method-request-authorization)
++ [Set up method request validation](#setup-method-request-validation)
 
-## Set up API Resources<a name="setup-method-resources"></a>
+## Set up API resources<a name="setup-method-resources"></a>
 
 In an API Gateway API, you expose addressable resources as a tree of API [Resources](https://docs.aws.amazon.com/apigateway/api-reference/resource/resources/) entities, with the root resource \(`/`\) at the top of the hierarchy\. The root resource is relative to the API's base URL, which consists of the API endpoint and a stage name\. In the API Gateway console, this base URI is referred to as the **Invoke URI** and is displayed in the API's stage editor after the API is deployed\. 
 
@@ -101,7 +101,7 @@ For example, to add pet food for sale on the PetStore website, add a `food` reso
 }
 ```
 
-### Use a Proxy Resource to Streamline API Setup<a name="api-gateway-proxy-resource"></a>
+### Use a proxy resource to streamline API setup<a name="api-gateway-proxy-resource"></a>
 
 As business grows, the PetStore owner may decide to add food, toys, and other pet\-related items for sale\. To support this, you can add `/food`, `/toys`, and other resources under the root resource\. Under each sale category, you may also want to add more resources, such as `/food/{type}/{item}`, `/toys/{type}/{item}`, etc\. This can get tedious\. If you decide to add a middle layer `{subtype}` to the resource paths to change the path hierarchy into `/food/{type}/{subtype}/{item}`, `/toys/{type}/{subtype}/{item}`, etc\., the changes will break the existing API set up\. To avoid this, you can use an API Gateway [proxy resource](api-gateway-set-up-simple-proxy.md) to expose a set of API resources all at once\.
 
@@ -147,7 +147,7 @@ A proxy resource cannot have any child resource\. Any API resource after `{proxy
 /parent/{child}/{proxy+}/{grandchild+}
 ```
 
-## Set up an HTTP Method<a name="setup-method-add-http-method"></a>
+## Set up an HTTP method<a name="setup-method-add-http-method"></a>
 
 An API method request is encapsulated by the API Gateway [Method](https://docs.aws.amazon.com/apigateway/api-reference/resource/method/) resource\. To set up the method request, you must first instantiate the `Method` resource, setting at least an HTTP method and an authorization type on the method\. 
 
@@ -167,9 +167,9 @@ aws apigateway put-method --rest-api-id vaz7da96z6 \
        --region us-west-2
 ```
 
-To create an API method request with a different authorization type, see [Set up Method Request Authorization](#setup-method-request-authorization)\.
+To create an API method request with a different authorization type, see [Set up method request authorization](#setup-method-request-authorization)\.
 
-## Set up Method Request Parameters<a name="setup-method-request-parameters"></a>
+## Set up method request parameters<a name="setup-method-request-parameters"></a>
 
 Method request parameters are a way for a client to provide input data or execution context necessary to complete the method request\. A method parameter can be a path parameter, a header, or a query string parameter\. As part of method request setup, you must declare required request parameters to make them available for the client\. For non\-proxy integration, you can translate these request parameters to a form that is compatible with the backend requirement\. 
 
@@ -214,9 +214,9 @@ GET /pets?type=dog
 breed:poodle
 ```
 
-For information on how to map method request parameters to integration request parameters, see [Setting Up REST API Integrations](how-to-integration-settings.md)\.
+For information on how to map method request parameters to integration request parameters, see [Setting up REST API integrations](how-to-integration-settings.md)\.
 
-## Set up Method Request Model<a name="setup-method-request-model"></a>
+## Set up method request model<a name="setup-method-request-model"></a>
 
 For an API method that can take input data in a payload, you can use a model\. A model is expressed in a [JSON schema draft 4](https://tools.ietf.org/html/draft-zyp-json-schema-04) and describes the data structure of the request body\. With a model, a client can determine how to construct a method request payload as input\. More importantly, API Gateway uses the model to [validate a request](api-gateway-method-request-validation.md), [generate an SDK](how-to-generate-sdk.md), and initialize a mapping template for setting up the integration in the API Gateway console\. For information about how to create a [model](https://docs.aws.amazon.com/apigateway/api-reference/resource/model/), see [Models and Mapping Templates](models-mappings.md)\. 
 
@@ -238,7 +238,7 @@ Here, `petModel` is the `name` property value of a [https://docs.aws.amazon.com/
 
  In a Java, or other strongly typed SDK, of the API, the input data is cast as the `petModel` class derived from the schema definition\. With the request model, the input data in the generated SDK is cast into the `Empty` class, which is derived from the default `Empty` model\. In this case, the client cannot instantiate the correct data class to provide the required input\. 
 
-## Set up Method Request Authorization<a name="setup-method-request-authorization"></a>
+## Set up method request authorization<a name="setup-method-request-authorization"></a>
 
  To control who can call the API method, you can configure the [authorization type](https://docs.aws.amazon.com/apigateway/api-reference/resource/method/#authorizationType) on the method\. You can use this type to enact one of the supported authorizers, including IAM roles and policies \(`AWS_IAM`\), an Amazon Cognito user pool \(`COGNITO_USER_POOLS`\), or a Lambda authorizer \(`CUSTOM`\)\.
 
@@ -259,17 +259,17 @@ To use IAM permissions to authorize access to the API method, set the `authoriza
 }
 ```
 
-For more information, see [Control Access to an API with IAM Permissions](permissions.md)\.
+For more information, see [Control access to an API with IAM permissions](permissions.md)\.
 
  At present, such a policy can be granted to only the IAM users of the API owner's account\. Users from a different AWS account can call the API methods if they are allowed to assume a role of the API owner account and the assumed role has the proper permissions for the `execute-api:Invoke` action\. For information on cross\-account permissions, see [Using IAM Roles](http://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_use.html)\. 
 
 You can use AWS CLI, an AWS SDK, or a REST API client, such as [Postman](https://www.getpostman.com/), which implements [Signature Version 4 Signing](http://docs.aws.amazon.com/general/latest/gr/signature-version-4.html)\. 
 
-To use a Lambda authorizer to authorize access to the API method, set the `authorization-type` input property to `CUSTOM` and set the [https://docs.aws.amazon.com/apigateway/api-reference/resource/method/#authorizerId](https://docs.aws.amazon.com/apigateway/api-reference/resource/method/#authorizerId) input property to the [https://docs.aws.amazon.com/apigateway/api-reference/resource/authorizer/#id](https://docs.aws.amazon.com/apigateway/api-reference/resource/authorizer/#id) property value of a Lambda authorizer that already exists\. The referenced Lambda authorizer can be of the `TOKEN` or `REQUEST` type\. For information about creating a Lambda authorizer, see [Use API Gateway Lambda Authorizers](apigateway-use-lambda-authorizer.md)\.
+To use a Lambda authorizer to authorize access to the API method, set the `authorization-type` input property to `CUSTOM` and set the [https://docs.aws.amazon.com/apigateway/api-reference/resource/method/#authorizerId](https://docs.aws.amazon.com/apigateway/api-reference/resource/method/#authorizerId) input property to the [https://docs.aws.amazon.com/apigateway/api-reference/resource/authorizer/#id](https://docs.aws.amazon.com/apigateway/api-reference/resource/authorizer/#id) property value of a Lambda authorizer that already exists\. The referenced Lambda authorizer can be of the `TOKEN` or `REQUEST` type\. For information about creating a Lambda authorizer, see [Use API Gateway Lambda authorizers](apigateway-use-lambda-authorizer.md)\.
 
-To use an Amazon Cognito user pool to authorize access to the API method, set the `authorization-type` input property to `COGNITO_USER_POOLS` and set the [https://docs.aws.amazon.com/apigateway/api-reference/resource/method/#authorizerId](https://docs.aws.amazon.com/apigateway/api-reference/resource/method/#authorizerId) input property to the [https://docs.aws.amazon.com/apigateway/api-reference/resource/authorizer/#id](https://docs.aws.amazon.com/apigateway/api-reference/resource/authorizer/#id) property value of the `COGNITO_USER_POOLS` authorizer that was already created\. For information about creating an Amazon Cognito user pool authorizer, see [Control Access to a REST API Using Amazon Cognito User Pools as Authorizer](apigateway-integrate-with-cognito.md)\.
+To use an Amazon Cognito user pool to authorize access to the API method, set the `authorization-type` input property to `COGNITO_USER_POOLS` and set the [https://docs.aws.amazon.com/apigateway/api-reference/resource/method/#authorizerId](https://docs.aws.amazon.com/apigateway/api-reference/resource/method/#authorizerId) input property to the [https://docs.aws.amazon.com/apigateway/api-reference/resource/authorizer/#id](https://docs.aws.amazon.com/apigateway/api-reference/resource/authorizer/#id) property value of the `COGNITO_USER_POOLS` authorizer that was already created\. For information about creating an Amazon Cognito user pool authorizer, see [Control access to a REST API using Amazon Cognito User Pools as authorizer](apigateway-integrate-with-cognito.md)\.
 
-## Set up Method Request Validation<a name="setup-method-request-validation"></a>
+## Set up method request validation<a name="setup-method-request-validation"></a>
 
 You can enable request validation when setting up an API method request\. You need to first to create a [request validator](https://docs.aws.amazon.com/apigateway/api-reference/resource/request-validator/):
 

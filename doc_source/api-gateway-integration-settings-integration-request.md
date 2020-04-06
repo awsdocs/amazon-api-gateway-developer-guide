@@ -1,4 +1,4 @@
-# Set Up an Integration Request in API Gateway<a name="api-gateway-integration-settings-integration-request"></a>
+# Set up an integration request in API Gateway<a name="api-gateway-integration-settings-integration-request"></a>
 
 To set up an integration request, you perform the following required and optional tasks:
 
@@ -21,7 +21,7 @@ To set up an integration request, you perform the following required and optiona
  Performing these tasks involves creating an [Integration](https://docs.aws.amazon.com/apigateway/api-reference/resource/integration/) resource of API Gateway and setting appropriate property values\. You can do so using the API Gateway console, AWS CLI commands, an AWS SDK, or the API Gateway REST API\. 
 
 **Topics**
-+ [Basic Tasks of an API Integration Request](integration-request-basic-setup.md)
-+ [Choose an API Gateway API Integration Type](api-gateway-api-integration-types.md)
-+ [Set up a Proxy Integration with a Proxy Resource](api-gateway-set-up-simple-proxy.md)
-+ [Set up an API Integration Request Using the API Gateway Console](how-to-method-settings-console.md)
++ [Basic tasks of an API integration request](integration-request-basic-setup.md)
++ [Choose an API Gateway API integration type](api-gateway-api-integration-types.md)
++ [Set up a proxy integration with a proxy resource](api-gateway-set-up-simple-proxy.md)
++ [Set up an API integration request using the API Gateway console](how-to-method-settings-console.md)

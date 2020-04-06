@@ -1,13 +1,13 @@
-# TUTORIAL: Build an API with HTTP Non\-Proxy Integration<a name="api-gateway-create-api-step-by-step"></a>
+# Tutorial: Build an API with HTTP non\-proxy integration<a name="api-gateway-create-api-step-by-step"></a>
 
  In this tutorial, you create an API from scratch using the Amazon API Gateway console\. You can think of the console as an API design studio and use it to scope the API features, to experiment with its behaviors, to build the API, and to deploy your API in stages\. 
 
 **Topics**
-+ [Create an API with HTTP Custom Integration](#api-gateway-create-resource-and-methods)
-+ [Map Request Parameters for an API Gateway API](#getting-started-mappings)
-+ [Map Response Payload](#getting-started-models)
++ [Create an API with HTTP custom integration](#api-gateway-create-resource-and-methods)
++ [Map request parameters for an API Gateway API](#getting-started-mappings)
++ [Map response payload](#getting-started-models)
 
-## Create an API with HTTP Custom Integration<a name="api-gateway-create-resource-and-methods"></a>
+## Create an API with HTTP custom integration<a name="api-gateway-create-resource-and-methods"></a>
 
  This section walks you through the steps to create resources, expose methods on a resource, configure a method to achieve the desired API behaviors, and to test and deploy the API\.
 
@@ -28,7 +28,7 @@
 1.  To create the `/pets` resource, select the root, choose **Actions** and then choose **Create Resource**\. 
 
     Type `Pets` in **Resource Name**, leave the **Resource Path** value as given, choose **Enable API Gateway CORS**, and choose **Create Resource**\.   
-![\[Create a resource Part B\]](http://docs.aws.amazon.com/apigateway/latest/developerguide/images/api-gateway-create-api-step-by-step-create-resource-2.png)
+![\[Create a resource part b\]](http://docs.aws.amazon.com/apigateway/latest/developerguide/images/api-gateway-create-api-step-by-step-create-resource-2.png)
 
 1.  To expose a GET method on the `/pets` resource, choose **Actions** and then **Create Method**\.   
 ![\[Create method on a resource\]](http://docs.aws.amazon.com/apigateway/latest/developerguide/images/api-gateway-create-api-step-by-step-create-method.png)
@@ -49,27 +49,27 @@ Other options for an API method include:
 1.  In the method's **Setup** pane, select **HTTP** for **Integration type**, select **GET** from the **HTTP method** drop\-down list, type **http://petstore\-demo\-endpoint\.execute\-api\.com/petstore/pets** as the **Endpoint URL** value, leave all other settings as default, and then choose **Save**\. 
 **Note**  
  For the integration request's **HTTP method**, you must choose one supported by the backend\. For `HTTP` or `Mock integration`, it makes sense that the method request and the integration request use the same HTTP verb\. For other integration types the method request will likely use an HTTP verb different from the integration request\. For example, to call a Lambda function, the integration request must use `POST` to invoke the function, whereas the method request may use any HTTP verb depending on the logic of the Lambda function\.   
-![\[Integrate GET on Pets with PetStore site\]](http://docs.aws.amazon.com/apigateway/latest/developerguide/images/api-gateway-create-api-step-by-step-integrate-get-on-pets.png)
+![\[Integrate GET on pets with PetStore site\]](http://docs.aws.amazon.com/apigateway/latest/developerguide/images/api-gateway-create-api-step-by-step-integrate-get-on-pets.png)
 
     When the method setup finishes, you are presented with the **Method Execution** pane, where you can further configure the method request to add query string or custom header parameters\. You can also update the integration request to map input data from the method request to the format required by the back end\. 
 
     The PetStore website allows you to retrieve a list of `Pet` items by the pet type \(e\.g\., "Dog" or "Cat"\) on a given page\. It uses the `type` and `page` query string parameters to accept such input\. As such, we must add the query string parameters to the method request and map them into the corresponding query strings of the integration request\. 
 
 1.  In the GET method's **Method Execution** pane, choose **Method Request**, select `AWS_IAM` for **Authorization**, expand the **URL Query String Parameters** section, and choose **Add query string** to create two query string parameters named `type` and `page`\. Choose the check mark icon to save each query string parameter as you add it\.   
-![\[Add query strings to GET on Pets method request\]](http://docs.aws.amazon.com/apigateway/latest/developerguide/images/api-gateway-create-api-step-by-step-add-query-strings-for-get-on-pets.png)
+![\[Add query strings to GET on pets method request\]](http://docs.aws.amazon.com/apigateway/latest/developerguide/images/api-gateway-create-api-step-by-step-add-query-strings-for-get-on-pets.png)
 
     The client can now supply a pet type and a page number as query string parameters when submitting a request\. These input parameters must be mapped into the integration's query string parameters to forward the input values to our PetStore website in the backend\. Because the method uses `AWS_IAM`, you must sign the request to invoke the method\. 
 
 1.  From the method's **Integration Request** page, expand the **URL Query String Parameters** section\. By default, the method request query string parameters are mapped to the like\-named integration request query string parameters\. This default mapping works for our demo API\. We will leave them as given\. To map a different method request parameter to the corresponding integration request parameter, choose the pencil icon for the parameter to edit the mapping expression, shown in the **Mapped from** column\. To map a method request parameter to a different integration request parameter, first choose the delete icon to remove the existing integration request parameter, choose **Add query string** to specify a new name and the desired method request parameter mapping expression\.   
-![\[Map query strings to GET on Pets from method request to integration request\]](http://docs.aws.amazon.com/apigateway/latest/developerguide/images/api-gateway-create-api-step-by-step-map-query-strings-for-get-on-pets.png)
+![\[Map query strings to GET on pets from method request to integration request\]](http://docs.aws.amazon.com/apigateway/latest/developerguide/images/api-gateway-create-api-step-by-step-map-query-strings-for-get-on-pets.png)
 
     This completes building the simple demo API\. It's time to test the API\. 
 
 1.  To test the API using the API Gateway console, choose **Test** on the **Method Execution** pane for the `GET /pets` method\. In the **Method Test** pane, enter **Dog** and **2** for the **type** and **page** query strings, respectively, and then choose **Test**\.   
-![\[Test-invoke GET on Pets method\]](http://docs.aws.amazon.com/apigateway/latest/developerguide/images/api-gateway-create-api-step-by-step-test-invoke-get-on-pets.png)
+![\[Test-invoke GET on pets method\]](http://docs.aws.amazon.com/apigateway/latest/developerguide/images/api-gateway-create-api-step-by-step-test-invoke-get-on-pets.png)
 
     The result is shown as follows\. \(You may need to scroll down to see the test result\.\)   
-![\[Test-invoke GET on Pets method result\]](http://docs.aws.amazon.com/apigateway/latest/developerguide/images/api-gateway-create-api-step-by-step-test-invoke-get-on-pets-result.png)
+![\[Test-invoke GET on pets method result\]](http://docs.aws.amazon.com/apigateway/latest/developerguide/images/api-gateway-create-api-step-by-step-test-invoke-get-on-pets-result.png)
 
     Now that the test is successful, we can deploy the API to make it publicly available\. 
 
@@ -99,7 +99,7 @@ Other options for an API method include:
 **Note**  
  When changes are made to your API, you must redeploy the API to make the new or updated features available before invoking the request URL again\. 
 
-## Map Request Parameters for an API Gateway API<a name="getting-started-mappings"></a>
+## Map request parameters for an API Gateway API<a name="getting-started-mappings"></a>
 
  In this walkthrough, we describe how to map method request parameters to the corresponding integration request parameters for an API Gateway API\. We create an example API with the HTTP custom integration and use it to demonstrate how to use API Gateway to map a method request parameter to the corresponding integration request parameter\. We then access the following publicly accessible HTTP endpoint: 
 
@@ -208,8 +208,8 @@ You receive the following JSON object in the response body:
 
 **Topics**
 + [Prerequisites](#getting-started-mappings-prerequisites)
-+ [Step 1: Create Resources](#getting-started-mappings-add-resources)
-+ [Step 2: Create and Test the Methods](#getting-started-mappings-set-methods)
++ [Step 1: Create resources](#getting-started-mappings-add-resources)
++ [Step 2: Create and test the methods](#getting-started-mappings-set-methods)
 + [Step 3: Deploy the API](#getting-started-mappings-deploy)
 + [Step 4: Test the API](#getting-started-mappings-test)
 
@@ -220,11 +220,11 @@ You receive the following JSON object in the response body:
 
 Before you begin this walkthrough, you should do the following:
 
-1. Complete the steps in [Prerequisites: Get Ready to Build an API in API Gateway](setting-up.md), including assigning API Gateway access permission to the IAM user\.
+1. Complete the steps in [Prerequisites: Get ready to build an API in API Gateway](setting-up.md), including assigning API Gateway access permission to the IAM user\.
 
-1.  At a minimum, follow the steps in [TUTORIAL: Build an API with HTTP Non\-Proxy Integration](#api-gateway-create-api-step-by-step) to create a new API named `MyDemoAPI` in the API Gateway console\. 
+1.  At a minimum, follow the steps in [Tutorial: Build an API with HTTP non\-proxy integration](#api-gateway-create-api-step-by-step) to create a new API named `MyDemoAPI` in the API Gateway console\. 
 
-### Step 1: Create Resources<a name="getting-started-mappings-add-resources"></a>
+### Step 1: Create resources<a name="getting-started-mappings-add-resources"></a>
 
 In this step, you create three resources that enable the API to interact with the HTTP endpoint\.
 
@@ -254,7 +254,7 @@ In this step, you create three resources that enable the API to interact with th
 
    This maps to `/petstore/pets/my-item-id` in the HTTP endpoint\.
 
-### Step 2: Create and Test the Methods<a name="getting-started-mappings-set-methods"></a>
+### Step 2: Create and test the methods<a name="getting-started-mappings-set-methods"></a>
 
  In this step, you integrate the methods with the backend HTTP endpoints, map the GET method request parameters to the corresponding integration request parameters, and then test the methods\. 
 
@@ -552,9 +552,9 @@ In this step, you go outside of the API Gateway console and use your API to acce
 
 You have reached the end of this walkthrough\.
 
-## Map Response Payload<a name="getting-started-models"></a>
+## Map response payload<a name="getting-started-models"></a>
 
-In this walkthrough, we show how to use models and mapping templates in API Gateway to transform the output of an API call from one data schema to another\. This walkthrough builds on the instructions and concepts in the [Getting Started with Amazon API Gateway](getting-started.md) and the [Map Request Parameters for an API Gateway API](#getting-started-mappings)\. If you have not yet completed those walkthroughs, we suggest you do them first\.
+In this walkthrough, we show how to use models and mapping templates in API Gateway to transform the output of an API call from one data schema to another\. This walkthrough builds on the instructions and concepts in the [Getting started with Amazon API Gateway](getting-started.md) and the [Map request parameters for an API Gateway API](#getting-started-mappings)\. If you have not yet completed those walkthroughs, we suggest you do them first\.
 
 This walkthrough uses API Gateway to get example data from a publicly accessible HTTP endpoint and from an AWS Lambda function you create\. Both the HTTP endpoint and the Lambda function return the same example data:
 
@@ -578,7 +578,7 @@ This walkthrough uses API Gateway to get example data from a publicly accessible
 ]
 ```
 
-You will use models and mapping templates to transform this data to one or more output formats\. In API Gateway, a model defines the format, also known as the schema or shape, of some data\. In API Gateway, a mapping template is used to transform some data from one format to another\. For more information, see [Working with Models and Mapping Templates](models-mappings.md)\.
+You will use models and mapping templates to transform this data to one or more output formats\. In API Gateway, a model defines the format, also known as the schema or shape, of some data\. In API Gateway, a mapping template is used to transform some data from one format to another\. For more information, see [Working with models and mapping templates](models-mappings.md)\.
 
 The first model and mapping template is used to rename `id` to `number`, `type` to `class`, and `price` to `salesPrice`, as follows:
 
@@ -634,16 +634,16 @@ The third model and mapping template is used to combine `id`, `type`, and `price
 ```
 
 **Topics**
-+ [Step 1: Create Models](#getting-started-models-add-models)
-+ [Step 2: Create Resources](#getting-started-models-add-resources)
-+ [Step 3: Create GET Methods](#getting-started-models-add-methods)
-+ [Step 4: Create a Lambda Function](#getting-started-models-lambda)
-+ [Step 5: Set up and Test the Methods](#getting-started-models-set-methods)
++ [Step 1: Create models](#getting-started-models-add-models)
++ [Step 2: Create resources](#getting-started-models-add-resources)
++ [Step 3: Create GET methods](#getting-started-models-add-methods)
++ [Step 4: Create a Lambda function](#getting-started-models-lambda)
++ [Step 5: Set up and test the methods](#getting-started-models-set-methods)
 + [Step 6: Deploy the API](#getting-started-models-deploy)
 + [Step 7: Test the API](#getting-started-models-test)
-+ [Step 8: Clean Up](#getting-started-models-clean-up)
++ [Step 8: Clean up](#getting-started-models-clean-up)
 
-### Step 1: Create Models<a name="getting-started-models-add-models"></a>
+### Step 1: Create models<a name="getting-started-models-add-models"></a>
 
 In this step, you create four models\. The first three models represent the data output formats for use with the HTTP endpoint and the Lambda function\. The last model represents the data input schema for use with the Lambda function\.
 
@@ -770,7 +770,7 @@ In this step, you create four models\. The first three models represent the data
 
 1. Choose **Create model**\.
 
-### Step 2: Create Resources<a name="getting-started-models-add-resources"></a>
+### Step 2: Create resources<a name="getting-started-models-add-resources"></a>
 
 In this step, you create four resources\. The first three resources enable you to get the example data from the HTTP endpoint in the three output formats\. The last resource enables you to get the example data from the Lambda function in the output schema that combines `id` and `type` into `description` and renames `price` to `askingPrice`\.
 
@@ -808,7 +808,7 @@ In this step, you create four resources\. The first three resources enable you t
 
 1. For **Resource Path**, accept the default of **/petstorewalkthrough/lambdaflattensome**, and then choose **Create Resource**\.
 
-### Step 3: Create GET Methods<a name="getting-started-models-add-methods"></a>
+### Step 3: Create GET methods<a name="getting-started-models-add-methods"></a>
 
 In this step, you create a GET method for each of the resources you created in the previous step\.
 
@@ -844,7 +844,7 @@ In this step, you create a GET method for each of the resources you created in t
 
 1. In the Setup pane, choose **HTTP** for the **Integration type** and **GET** for **HTTP method**, type **http://petstore\-demo\-endpoint\.execute\-api\.com/petstore/pets** in **Endpoint URL**, and then choose **Save**\.
 
-### Step 4: Create a Lambda Function<a name="getting-started-models-lambda"></a>
+### Step 4: Create a Lambda function<a name="getting-started-models-lambda"></a>
 
 In this step, you create a Lambda function that returns the sample data\.
 
@@ -879,7 +879,7 @@ In the preceding code, written in Node\.js, `console.log` writes information to 
 
 1. For **Handler name**, leave the default of `index.handler`\.
 
-1. For **Role**, choose the Lambda execution role, **APIGatewayLambdaExecRole**, you created in the [Build an API Gateway API with Lambda Integration](getting-started-with-lambda-integration.md)\.
+1. For **Role**, choose the Lambda execution role, **APIGatewayLambdaExecRole**, you created in the [Build an API Gateway API with Lambda integration](getting-started-with-lambda-integration.md)\.
 
 1. Choose **Create Lambda function**\.
 
@@ -903,7 +903,7 @@ The empty curly braces mean that there are no input values for this Lambda funct
 
 1. Choose **Go to function list**\.
 
-### Step 5: Set up and Test the Methods<a name="getting-started-models-set-methods"></a>
+### Step 5: Set up and test the methods<a name="getting-started-models-set-methods"></a>
 
 In this step, you configure the method responses, integration requests, and integration responses to specify the input and output data schemas \(or models\) for the GET methods associated with the HTTP endpoint and the Lambda function\. You also learn to test calling these methods using the API Gateway console\.
 
@@ -1213,7 +1213,7 @@ In this step, you go outside of the API Gateway console to interact with both th
    ]
    ```
 
-### Step 8: Clean Up<a name="getting-started-models-clean-up"></a>
+### Step 8: Clean up<a name="getting-started-models-clean-up"></a>
 
 If you no longer need the Lambda function you created for this walkthrough, you can delete it now\. You can also delete the accompanying IAM resources\.
 

@@ -1,4 +1,4 @@
-# Set up Asynchronous Invocation of the Backend Lambda Function<a name="set-up-lambda-integration-async"></a>
+# Set up asynchronous invocation of the backend Lambda function<a name="set-up-lambda-integration-async"></a>
 
 In Lambda non\-proxy \(custom\) integration, the backend Lambda function is invoked synchronously by default\. This is the desired behavior for most REST API operations\. Some applications, however, require work to be performed asynchronously \(as a batch operation or a long\-latency operation\), typically by a separate backend component\. In this case, the backend Lambda function is invoked asynchronously, and the front\-end REST API method doesn't return the result\.
 
