@@ -135,7 +135,7 @@ To set up CloudWatch API logging, you must have deployed the API to a stage\. Yo
 
    1. Choose **Enable Access Logging** under **Custom Access Logging**\.
 
-   1. Enter the ARN of a log group in **Access Log Destination ARN**\. The ARN format is `arn:aws:logs:{region}:{account-id}:log-group:API-Gateway-Execution-Logs_{rest-api-id}/{stage-name}`\.
+   1. Enter the ARN of a log group in **Access Log Destination ARN**\. The ARN format is `arn:aws:logs:{region}:{account-id}:log-group:API-Gateway-Access-Logs_{rest-api-id}/{stage-name}`\.
 
    1. Enter a log format in **Log Format**\. You can choose **CLF**, **JSON**, **XML**, or **CSV** to use one of the provided examples as a guide\.
 
