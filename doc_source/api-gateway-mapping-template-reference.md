@@ -78,19 +78,24 @@ Note that one of the variables is an API key\. This example assumes that the met
 
 ```
 {
-    "stage" : "$context.stage",
-    "request_id" : "$context.requestId",
-    "api_id" : "$context.apiId",
-    "resource_path" : "$context.resourcePath",
-    "resource_id" : "$context.resourceId",
-    "http_method" : "$context.httpMethod",
-    "source_ip" : "$context.identity.sourceIp",
-    "user-agent" : "$context.identity.userAgent",
-    "account_id" : "$context.identity.accountId",
-    "api_key" : "$context.identity.apiKey",
+    "account-id" : "$context.identity.accountId",
+    "api-id" : "$context.apiId",
+    "api-key" : "$context.identity.apiKey",
+    "authorizer-principal-id" : "$context.authorizer.principalId",
     "caller" : "$context.identity.caller",
+    "cognito-authentication-provider" : "$context.identity.cognitoAuthenticationProvider",
+    "cognito-authentication-type" : "$context.identity.cognitoAuthenticationType",
+    "cognito-identity-id" : "$context.identity.cognitoIdentityId",
+    "cognito-identity-pool-id" : "$context.identity.cognitoIdentityPoolId",
+    "http-method" : "$context.httpMethod",
+    "stage" : "$context.stage",
+    "source-ip" : "$context.identity.sourceIp",
     "user" : "$context.identity.user",
-    "user_arn" : "$context.identity.userArn"
+    "user-agent" : "$context.identity.userAgent",
+    "user-arn" : "$context.identity.userArn",
+    "request-id" : "$context.requestId",
+    "resource-id" : "$context.resourceId",
+    "resource-path" : "$context.resourcePath"
 }
 ```
 
