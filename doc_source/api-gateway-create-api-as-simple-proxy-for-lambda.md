@@ -1,4 +1,4 @@
-# Tutorial: Build a Hello World API with Lambda proxy integration<a name="api-gateway-create-api-as-simple-proxy-for-lambda"></a>
+# Tutorial: Build a Hello World REST API with Lambda proxy integration<a name="api-gateway-create-api-as-simple-proxy-for-lambda"></a>
 
 [Lambda proxy integration](set-up-lambda-proxy-integrations.md) is a lightweight, flexible API Gateway API integration type that allows you to integrate an API method – or an entire API – with a Lambda function\. The Lambda function can be written in [any language that Lambda supports](https://docs.aws.amazon.com/lambda/latest/dg/lambda-runtimes.html)\. Because it's a proxy integration, you can change the Lambda function implementation at any time without needing to redeploy your API\.
 
@@ -120,13 +120,11 @@ Now create an API for your "Hello, World\!" Lambda function by using the API Gat
 
 1. Sign in to the API Gateway console at [https://console\.aws\.amazon\.com/apigateway](https://console.aws.amazon.com/apigateway)\.
 
-1. If this is your first time using API Gateway, you see a page that introduces you to the features of the service\. Choose **Get Started**\. When the **Create Example API** popup appears, choose **OK**\.
+1. If this is your first time using API Gateway, you see a page that introduces you to the features of the service\. Under **REST API**, choose **Build**\. When the **Create Example API** popup appears, choose **OK**\.
 
-   If this is not your first time using API Gateway, choose **Create API**\.
+   If this is not your first time using API Gateway, choose **Create API**\. Under **REST API**, choose **Build**\.
 
 1. Create an empty API as follows:
-
-   1. Under **Choose the protocol**, choose **REST**\.
 
    1. Under **Create new API**, choose **New API**\.
 

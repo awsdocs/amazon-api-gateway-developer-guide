@@ -1,4 +1,4 @@
-# Tutorial: Build an API Gateway API with Lambda non\-proxy integration<a name="getting-started-lambda-non-proxy-integration"></a>
+# Tutorial: Build an API Gateway REST API with Lambda non\-proxy integration<a name="getting-started-lambda-non-proxy-integration"></a>
 
 In this walkthrough, we use the API Gateway console to build an API that enables a client to call Lambda functions through the Lambda non\-proxy integration \(also known as custom integration\)\. For more information about AWS Lambda and Lambda functions, see the [AWS Lambda Developer Guide](https://docs.aws.amazon.com/lambda/latest/dg/)\. 
 
@@ -183,13 +183,17 @@ If you did not use the AWS Management Console to create the Lambda function, you
 
 **To create an API with Lambda custom integration with a Lambda function**
 
-1. Launch the API Gateway console\.
+1. Sign in to the API Gateway console at [https://console\.aws\.amazon\.com/apigateway](https://console.aws.amazon.com/apigateway)\.
 
-1.  Choose **Create new API**\.
+1. If this is your first time using API Gateway, you see a page that introduces you to the features of the service\. Under **REST API**, choose **Build**\. When the **Create Example API** popup appears, choose **OK**\.
 
-   1. Type **GetStartedLambdaNonProxyIntegration** for **API name**\. 
+   If this is not your first time using API Gateway, choose **Create API**\. Under **REST API**, choose **Build**\.
 
-   1. Type a description of the API for **Description** or leave it blank\.
+   1. Choose **New API**\.
+
+   1. Enter a name in **API Name**\.
+
+   1. Optionally, add a brief description in **Description**\.
 
    1. Choose **Create API**\.
 

@@ -32,7 +32,7 @@ To use the API Gateway console to create a canary release deployment, follow the
 
 1. To set stage variables, choose the **Stage Variables** tab in **Stage Editor** and follow the on\-screen instructions to add or modify stage variables\. For more information, see [Setting up stage variables for a REST API deployment](stage-variables.md)\.
 
-1.  To configure execution or access logging, choose the **Logs** tab in **Stage Editor** and follow the on\-screen instructions\. For more information, see [Setting up CloudWatch API logging in API Gateway](set-up-logging.md)\.
+1.  To configure execution or access logging, choose the **Logs** tab in **Stage Editor** and follow the on\-screen instructions\. For more information, see [Setting up CloudWatch logging for a REST API in API Gateway](set-up-logging.md)\.
 
 1.  In **Stage Editor**, choose the **Canary** tab and then choose **Create Canary**\.
 

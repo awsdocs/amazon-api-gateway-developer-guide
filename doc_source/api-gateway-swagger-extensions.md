@@ -3,7 +3,7 @@
  The API Gateway extensions support the AWS\-specific authorization and API Gateway\-specific API integrations for REST APIs and HTTP APIs\. In this section, we describe the API Gateway extensions to the OpenAPI specification\. 
 
 **Tip**  
- To understand how the API Gateway extensions are used in an application, you can use the API Gateway console to create a REST API and export it to an OpenAPI definition file\. For more information on how to export an API, see [Export a REST API](api-gateway-export-api.md)\. 
+To understand how the API Gateway extensions are used in an application, you can use the API Gateway console to create a REST API or HTTP API and export it to an OpenAPI definition file\. For more information on how to export an API, see [Export a REST API from API Gateway](api-gateway-export-api.md) and [Exporting an HTTP API from API Gateway](http-api-export.md)\. 
 
 **Topics**
 + [x\-amazon\-apigateway\-any\-method object](api-gateway-swagger-extensions-any-method.md)
@@ -19,6 +19,7 @@
 + [x\-amazon\-apigateway\-gateway\-responses\.gatewayResponse object](api-gateway-swagger-extensions-gateway-responses.gatewayResponse.md)
 + [x\-amazon\-apigateway\-gateway\-responses\.responseParameters object](api-gateway-swagger-extensions-gateway-responses.responseParameters.md)
 + [x\-amazon\-apigateway\-gateway\-responses\.responseTemplates object](api-gateway-swagger-extensions-gateway-responses.responseTemplates.md)
++ [x\-amazon\-apigateway\-importexport\-version](api-gateway-extensions-importexport-version.md)
 + [x\-amazon\-apigateway\-integration object](api-gateway-swagger-extensions-integration.md)
 + [x\-amazon\-apigateway\-integrations object](api-gateway-extensions-integrations.md)
 + [x\-amazon\-apigateway\-integration\.requestTemplates object](api-gateway-swagger-extensions-integration-requestTemplates.md)

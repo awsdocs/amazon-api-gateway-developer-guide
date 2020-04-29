@@ -37,16 +37,14 @@ Once you have created the API, you cannot change the protocol you have chosen fo
 
 1. Sign in to the API Gateway console and choose **Create API**\.
 
-1. Under **Choose the protocol**, choose **WebSocket**\.
+1. Under **WebSocket API**, choose **Build**\.
 
-1. Under **Create a new API**, choose **New API**\.
-
-1. Under **Settings**, in the **API name** field, type the name of your API, for example, **PetStore**\.
+1. Under **Settings**, in the **API name** field, enter the name of your API, for example, **PetStore**\.
 
 1. Enter a **Route Selection Expression** for your API, for example, `$request.body.action`\.
 
    For more information about route selection expressions, see [Route selection expressions](websocket-api-develop-routes.md#apigateway-websocket-api-route-selection-expressions)\.
 
-1. If desired, type a **Description** for your API\.
+1. If desired, enter a **Description** for your API\.
 
 1. Choose **Create API**\.

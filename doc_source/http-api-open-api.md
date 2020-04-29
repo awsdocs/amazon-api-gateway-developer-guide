@@ -8,7 +8,7 @@ You can define your HTTP API by using an OpenAPI 3\.0 definition file\. Then you
 
 You can create an HTTP API by importing an OpenAPI 3\.0 definition file\.
 
-To migrate from a REST API to an HTTP API, you can export your REST API as an OpenAPI 3\.0 definition file\. Then import the API definition as an HTTP API\. To learn more about exporting a REST API, see [Export a REST API](api-gateway-export-api.md)\. 
+To migrate from a REST API to an HTTP API, you can export your REST API as an OpenAPI 3\.0 definition file\. Then import the API definition as an HTTP API\. To learn more about exporting a REST API, see [Export a REST API from API Gateway](api-gateway-export-api.md)\. 
 
 **Note**  
 HTTP APIs support the same AWS variables as REST APIs\. To learn more, see [AWS variables for OpenAPI import](import-api-aws-variables.md)\.

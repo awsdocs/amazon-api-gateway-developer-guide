@@ -115,15 +115,19 @@ Use the following steps to create the API in the API Gateway console\.
 
 **To create an API as an AWS service proxy for Kinesis**
 
-1.  In the API Gateway console, choose **Create API**\. 
+1. Sign in to the API Gateway console at [https://console\.aws\.amazon\.com/apigateway](https://console.aws.amazon.com/apigateway)\.
 
-1.  Choose **New API**\. 
+1. If this is your first time using API Gateway, you see a page that introduces you to the features of the service\. Under **REST API**, choose **Build**\. When the **Create Example API** popup appears, choose **OK**\.
 
-1.  In **API name**, type **KinesisProxy**\. Leave the default values in the other fields\. 
+   If this is not your first time using API Gateway, choose **Create API**\. Under **REST API**, choose **Build**\.
 
-1.  Type a description in **Description**, if you like\. 
+1. Choose **New API**\. 
 
-1.  Choose **Create API**\. 
+1. In **API name**, enter **KinesisProxy**\. Leave the default values in the other fields\. 
+
+1. Enter a description in **Description**, if you like\. 
+
+1. Choose **Create API**\. 
 
  After the API is created, the API Gateway console displays the **Resources** page, which contains only the API's root \(`/`\) resource\. 
 

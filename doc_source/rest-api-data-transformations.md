@@ -2,7 +2,7 @@
 
  In API Gateway, an API's method request can take a payload in a different format from the corresponding integration request payload, as required in the backend\. Similarly, the backend may return an integration response payload different from the method response payload, as expected by the frontend\. API Gateway lets you use mapping templates to map the payload from a method request to the corresponding integration request and from an integration response to the corresponding method response\. 
 
- A *mapping template* is a script expressed in [Velocity Template Language \(VTL\)](http://velocity.apache.org/engine/devel/vtl-reference-guide.html) and applied to the payload using [JSONPath expressions](http://goessner.net/articles/JsonPath/)\. 
+ A *mapping template* is a script expressed in [Velocity Template Language \(VTL\)](https://velocity.apache.org/engine/devel/vtl-reference.html) and applied to the payload using [JSONPath expressions](http://goessner.net/articles/JsonPath/)\. 
 
 The payload can have a *data model* according to the [JSON schema draft 4](https://tools.ietf.org/html/draft-zyp-json-schema-04)\. You must define the model in order to have API Gateway to generate a SDK or to enable basic request validation for your API\. You don't have to define any model to create a mapping template\. However, a model can help you create a template because API Gateway will generate a template blueprint based on a provided model\. 
 
@@ -238,7 +238,7 @@ Let us now examine some details of the preceding output mapping template:
 + In the output mapping template, for each of objects in the `choices` object, the values of the `kind` and `available` objects \(represented by `$elem.type` and `$elem.quantity`\) are mapped from the corresponding values of the `type` and `value` objects in each of the objects in the original JSON data's `bins` array, respectively\. 
 + In the output mapping template, for each of objects in the `choices` object, the value of the `suggestedPrice` object is a concatenation of the corresponding value of the `price` and `unit` objects in each of the objects in the original JSON data, respectively, with each value separated by the word `per`\. 
 
-For more information about the Velocity Template Language, see [Apache Velocity \- VTL Reference](http://velocity.apache.org/engine/devel/vtl-reference-guide.html)\. For more information about JSONPath, see [JSONPath \- XPath for JSON](http://goessner.net/articles/JsonPath)\.
+For more information about the Velocity Template Language, see [Apache Velocity \- VTL Reference](https://velocity.apache.org/engine/devel/vtl-reference.html)\. For more information about JSONPath, see [JSONPath \- XPath for JSON](http://goessner.net/articles/JsonPath)\.
 
  The mapping template assumes that the underlying data is of a JSON object\. It does not require that a model be defined for the data\. As an API developer, you know the data formats at both the front and backends\. That knowledge can guide you to define the necessary mappings without ambiguity\. 
 

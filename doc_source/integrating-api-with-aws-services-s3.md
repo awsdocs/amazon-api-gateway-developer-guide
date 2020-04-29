@@ -292,13 +292,13 @@ As an illustration, the following screen shot shows the output when testing the 
 
 1.  Register the media types of the affected file to the API's binaryMediaTypes\. You can do this in the console: 
 
-   1.  Choose **Binary Support** for the API \(from the API Gateway primary navigation panel\), 
+   1. Choose **Settings** for the API\.
 
-   1. Choose **Edit**\.
+   1. Under **Binary Media Types**, choose **Add Binary Media Type**\.
 
-   1. Type the required media type \(e\.g\., `image/png` for **Binary media types**\.
+   1. Enter the required media type, for example, `image/png`\.
 
-   1. Choose **Add binary media type** to save the setting\.
+   1. Choose **Save Changes** to save the setting\.
 
 1. Add the `Content-Type` \(for upload\) and/or `Accept` \(for download\) header to the method request to require the client to specify the required binary media type and map them to the integration request\.
 

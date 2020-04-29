@@ -12,4 +12,4 @@ For example, the route `/pets/{petID}` catches requests to `/pets/6`\. You can r
 
 You can use greedy path variables to catch all child resources of a route\. To create a greedy path variable, add `+` to the variable name—for example, `{proxy+}`\. 
 
-To set up a route with an HTTP proxy integration that catches all requests, create an API route with a greedy path variable \(for example, `/parent/{proxy+}`\)\. Integrate the route with an HTTP endpoint \(for example, `https://petstore-demo-endpoint.execute-api.com/petstore/{proxy+}`\) on the `ANY` method\. The greedy path variable must be at the end of the resource path\.
+To set up a route with an HTTP proxy integration that catches all requests, create an API route with a greedy path variable \(for example, `/parent/{proxy+}`\)\. Integrate the route with an HTTP endpoint \(for example, `https://petstore-demo-endpoint.execute-api.com/petstore/{proxy}`\) on the `ANY` method\. The greedy path variable must be at the end of the resource path\.

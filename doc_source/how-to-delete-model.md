@@ -9,7 +9,9 @@ Deleting a model may cause part or all of the corresponding API to become unusab
 
 1. Sign in to the API Gateway console at [https://console\.aws\.amazon\.com/apigateway](https://console.aws.amazon.com/apigateway)\.
 
-1. In the box that contains the name of the API for the model, choose **Models**\.
+1. Choose a REST API\.
+
+1. Choose **Models**\.
 
 1. In the **Models** pane, choose the model you want to delete, and then choose **Delete Model**\.
 

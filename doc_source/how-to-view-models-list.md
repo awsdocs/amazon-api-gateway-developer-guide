@@ -13,4 +13,6 @@ Use the API Gateway console to view a list of models\.
 
 1. Sign in to the API Gateway console at [https://console\.aws\.amazon\.com/apigateway](https://console.aws.amazon.com/apigateway)\.
 
-1. In the box that contains the name of the API, choose **Models**\.
+1. Choose a REST API\.
+
+1. Choose **Models**\.

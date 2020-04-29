@@ -61,7 +61,7 @@ For `$context` variables that can be used only in CloudWatch access logging, see
 | $context\.requestTime | The [CLF](https://httpd.apache.org/docs/1.3/logs.html#common)\-formatted request time \(dd/MMM/yyyy:HH:mm:ss \+\-hhmm\)\. | 
 | $context\.requestTimeEpoch | The [Epoch](https://en.wikipedia.org/wiki/Unix_time)\-formatted request time\. | 
 | $context\.resourceId |  The identifier that API Gateway assigns to your resource\.  | 
-| $context\.resourcePath |  The path to your resource\. For example, for the non\-proxy request URI of `https://{rest-api-id.execute-api.{region}.amazonaws.com/{stage}/root/child`, The `$context.resourcePath` value is `/root/child`\. For more information, see [Tutorial: Build an API with HTTP non\-proxy integration](api-gateway-create-api-step-by-step.md)\.   | 
+| $context\.resourcePath |  The path to your resource\. For example, for the non\-proxy request URI of `https://{rest-api-id.execute-api.{region}.amazonaws.com/{stage}/root/child`, The `$context.resourcePath` value is `/root/child`\. For more information, see [Tutorial: Build a REST API with HTTP non\-proxy integration](api-gateway-create-api-step-by-step.md)\.   | 
 | $context\.stage |  The deployment stage of the API request \(for example, `Beta` or `Prod`\)\.  | 
 | $context\.wafResponseCode |  The response received from [AWS WAF](https://docs.aws.amazon.com/waf/latest/developerguide/waf-chapter.html): `WAF_ALLOW` or `WAF_BLOCK`\. Will not be set if the stage is not associated with a web ACL\. For more information, see [Using AWS WAF to protect your APIs](apigateway-control-access-aws-waf.md)\.  | 
 | $context\.webaclArn |  The complete ARN of the web ACL that is used to decide whether to allow or block the request\. Will not be set if the stage is not associated with a web ACL\. For more information, see [Using AWS WAF to protect your APIs](apigateway-control-access-aws-waf.md)\.  | 
@@ -78,30 +78,25 @@ Note that one of the variables is an API key\. This example assumes that the met
 
 ```
 {
-    "account-id" : "$context.identity.accountId",
-    "api-id" : "$context.apiId",
-    "api-key" : "$context.identity.apiKey",
-    "authorizer-principal-id" : "$context.authorizer.principalId",
-    "caller" : "$context.identity.caller",
-    "cognito-authentication-provider" : "$context.identity.cognitoAuthenticationProvider",
-    "cognito-authentication-type" : "$context.identity.cognitoAuthenticationType",
-    "cognito-identity-id" : "$context.identity.cognitoIdentityId",
-    "cognito-identity-pool-id" : "$context.identity.cognitoIdentityPoolId",
-    "http-method" : "$context.httpMethod",
     "stage" : "$context.stage",
-    "source-ip" : "$context.identity.sourceIp",
-    "user" : "$context.identity.user",
+    "request_id" : "$context.requestId",
+    "api_id" : "$context.apiId",
+    "resource_path" : "$context.resourcePath",
+    "resource_id" : "$context.resourceId",
+    "http_method" : "$context.httpMethod",
+    "source_ip" : "$context.identity.sourceIp",
     "user-agent" : "$context.identity.userAgent",
-    "user-arn" : "$context.identity.userArn",
-    "request-id" : "$context.requestId",
-    "resource-id" : "$context.resourceId",
-    "resource-path" : "$context.resourcePath"
+    "account_id" : "$context.identity.accountId",
+    "api_key" : "$context.identity.apiKey",
+    "caller" : "$context.identity.caller",
+    "user" : "$context.identity.user",
+    "user_arn" : "$context.identity.userArn"
 }
 ```
 
 ## `$context` Variables for CloudWatch access logging only<a name="context-variable-reference-access-logging-only"></a>
 
-The following `$context` variables are available only for CloudWatch access logging\. For more information, see [Setting up CloudWatch API logging in API Gateway](set-up-logging.md)\. \(For WebSocket APIs, see [Monitoring WebSocket API execution with CloudWatch metrics](apigateway-websocket-api-logging.md)\.\)
+The following `$context` variables are available only for CloudWatch access logging\. For more information, see [Setting up CloudWatch logging for a REST API in API Gateway](set-up-logging.md)\. \(For WebSocket APIs, see [Monitoring WebSocket API execution with CloudWatch metrics](apigateway-websocket-api-logging.md)\.\)
 
 
 | Parameter | Description | 
@@ -124,7 +119,7 @@ The `$input` variable represents the method request payload and parameters to be
 | $input\.json\(x\) | This function evaluates a JSONPath expression and returns the results as a JSON string\. For example, `$input.json('$.pets')` returns a JSON string representing the `pets` structure\. For more information about JSONPath, see [JSONPath](http://goessner.net/articles/JsonPath/) or [JSONPath for Java](https://github.com/jayway/JsonPath)\. | 
 | $input\.params\(\) | Returns a map of all the request parameters\. | 
 | $input\.params\(x\) | Returns the value of a method request parameter from the path, query string, or header value \(searched in that order\), given a parameter name string `x`\. | 
-| $input\.path\(x\) | Takes a JSONPath expression string \(`x`\) and returns a JSON object representation of the result\. This allows you to access and manipulate elements of the payload natively in [Apache Velocity Template Language \(VTL\)](http://velocity.apache.org/engine/devel/vtl-reference-guide.html)\. For example, if the expression `$input.path('$.pets')` returns an object like this: <pre>[<br />  { <br />    "id": 1, <br />    "type": "dog", <br />    "price": 249.99 <br />  }, <br />  { <br />    "id": 2, <br />    "type": "cat", <br />    "price": 124.99 <br />  }, <br />  { <br />    "id": 3, <br />    "type": "fish", <br />    "price": 0.99 <br />  } <br />]</pre> `$input.path('$.pets').count()` would return `"3"`\. For more information about JSONPath, see [JSONPath](http://goessner.net/articles/JsonPath/) or [JSONPath for Java](https://github.com/jayway/JsonPath)\. | 
+| $input\.path\(x\) | Takes a JSONPath expression string \(`x`\) and returns a JSON object representation of the result\. This allows you to access and manipulate elements of the payload natively in [Apache Velocity Template Language \(VTL\)](https://velocity.apache.org/engine/devel/vtl-reference.html)\. For example, if the expression `$input.path('$.pets')` returns an object like this: <pre>[<br />  { <br />    "id": 1, <br />    "type": "dog", <br />    "price": 249.99 <br />  }, <br />  { <br />    "id": 2, <br />    "type": "cat", <br />    "price": 124.99 <br />  }, <br />  { <br />    "id": 3, <br />    "type": "fish", <br />    "price": 0.99 <br />  } <br />]</pre> `$input.path('$.pets').count()` would return `"3"`\. For more information about JSONPath, see [JSONPath](http://goessner.net/articles/JsonPath/) or [JSONPath for Java](https://github.com/jayway/JsonPath)\. | 
 
 ## `$input` Variable template examples<a name="input-examples-mapping-templates"></a>
 

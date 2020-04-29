@@ -13,7 +13,7 @@ In this tutorial, you'll create a `Calc` Lambda function that implements basic a
 In addition to trying out this tutorial, you may wish to study the [OpenAPI definition file](api-as-lambda-proxy-export-swagger-with-extensions.md) for the `Calc` API, which you can import into API Gateway by following the instructions in [Configuring a REST API using OpenAPI](api-gateway-import-api.md)\.
 
 **Topics**
-+ [Create an AWS account](#w90aac11c17c15)
++ [Create an AWS account](#w92aac11c17c15)
 + [Create an assumable IAM role](#api-as-lambda-proxy-setup-iam-role-policies)
 + [Create a `Calc` Lambda function](#api-as-lambda-proxy-create-lambda-function)
 + [Test the `Calc` Lambda function](#api-as-lambda-proxy-create-lambda-function)
@@ -23,7 +23,7 @@ In addition to trying out this tutorial, you may wish to study the [OpenAPI defi
 + [Integration 3: Create a `GET` method with path parameters to call the Lambda function](#api-as-lambda-proxy-expose-get-method-with-path-parameters-to-call-lambda-function)
 + [OpenAPI definitions of sample API integrated with a Lambda function](api-as-lambda-proxy-export-swagger-with-extensions.md)
 
-## Create an AWS account<a name="w90aac11c17c15"></a>
+## Create an AWS account<a name="w92aac11c17c15"></a>
 
 Before you begin this tutorial, you'll need an AWS account\. 
 
@@ -288,9 +288,15 @@ The following procedure shows how to create an API for the `Calc` Lambda functio
 
 **Create the `Calc` API**
 
-1. In the API Gateway console, choose **Create API**\. 
+1. Sign in to the API Gateway console at [https://console\.aws\.amazon\.com/apigateway](https://console.aws.amazon.com/apigateway)\.
 
-1. For **API Name**, type **LambdaCalc**\.
+1. If this is your first time using API Gateway, you see a page that introduces you to the features of the service\. Under **REST API**, choose **Build**\. When the **Create Example API** popup appears, choose **OK**\.
+
+   If this is not your first time using API Gateway, choose **Create API**\. Under **REST API**, choose **Build**\.
+
+1. Under **Create new API**, choose **New API**\.
+
+1. For **API Name**, enter **LambdaCalc**\.
 
 1. Leave the **Description** blank, and leave the **Endpoint Type** set to **Regional**\.
 
@@ -647,7 +653,7 @@ The resulting API resource structure will look like this:
 
    1. Choose **Test**\.
 
-   1. Type **1**, **2** and **\+** in the **\{operand1\}**, **\{operand2\}** and **\{operator\}** fields, respectively\.
+   1. Type **1**, **1** and **\+** in the **\{operand1\}**, **\{operand2\}** and **\{operator\}** fields, respectively\.
 
    1. Choose **Test**\.
 

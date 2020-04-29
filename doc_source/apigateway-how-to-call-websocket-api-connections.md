@@ -44,7 +44,7 @@ You can dynamically build a callback URL by using the `$context` variables in yo
 
 ```
 exports.handler = function(event, context, callback) {
-var domain = event.requestContext.domain;
+var domain = event.requestContext.domainName;
 var stage = event.requestContext.stage;
 var connectionId = event.requestContext.connectionId;
 var callbackUrl = util.format(util.format('https://%s/%s/@connections/%s', domain, stage, connectionId));

@@ -21,25 +21,29 @@ To change the API endpoint type of your API, perform one of the following sets o
 
 **To convert a public endpoint from regional or edge\-optimized and vice versa**
 
-1.  Sign in to the API Gateway console and choose **APIs** in the primary navigation pane\.
+1. Sign in to the API Gateway console at [https://console\.aws\.amazon\.com/apigateway](https://console.aws.amazon.com/apigateway)\.
 
-1.  Choose the settings \(gear icon\) of an API under **\+ Create API**\.
+1. Choose a REST API\.
+
+1. Choose **Settings**\.
 
 1. Change the **Endpoint Type** option under **Endpoint Configuration** from `Edge Optimized` to `Regional` or from `Regional` to `Edge Optimized`\.
 
-1.  Choose **Save** to start the update\.
+1.  Choose **Save Changes** to start the update\.
 
 **To convert a private endpoint to a regional endpoint**
 
-1.  Sign in to the API Gateway console and choose **APIs** in the primary navigation pane\.
+1. Sign in to the API Gateway console at [https://console\.aws\.amazon\.com/apigateway](https://console.aws.amazon.com/apigateway)\.
 
-1.  Choose the settings \(gear icon\) of an API under **\+ Create API**\.
+1. Choose a REST API\.
 
 1. Edit the resource policy for your API to remove any mention of VPCs or VPC endpoints so that API calls from outside your VPC as well as inside your VPC will succeed\.
 
+1. Choose **Settings**\.
+
 1. Change the **Endpoint Type** to `Regional`\.
 
-1. Choose **Save** to start the update\.
+1. Choose **Save Changes** to start the update\.
 
 1. Remove the resource policy from your API\.
 

@@ -1,6 +1,6 @@
-# Tutorial: Build an API Gateway API with AWS integration<a name="getting-started-aws-proxy"></a>
+# Tutorial: Build an API Gateway REST API with AWS integration<a name="getting-started-aws-proxy"></a>
 
- Both the [Tutorial: Build a Hello World API with Lambda proxy integration](api-gateway-create-api-as-simple-proxy-for-lambda.md) and [Build an API Gateway API with Lambda integration](getting-started-with-lambda-integration.md) topics describe how to create an API Gateway API to expose the integrated Lambda function\. In addition, you can create an API Gateway API to expose other AWS services, such as Amazon SNS, Amazon S3, Amazon Kinesis, and even AWS Lambda\. This is made possible by the `AWS` integration\. The Lambda integration or the Lambda proxy integration is a special case, where the Lambda function invocation is exposed through the API Gateway API\. 
+ Both the [Tutorial: Build a Hello World REST API with Lambda proxy integration](api-gateway-create-api-as-simple-proxy-for-lambda.md) and [Build an API Gateway REST API with Lambda integration](getting-started-with-lambda-integration.md) topics describe how to create an API Gateway API to expose the integrated Lambda function\. In addition, you can create an API Gateway API to expose other AWS services, such as Amazon SNS, Amazon S3, Amazon Kinesis, and even AWS Lambda\. This is made possible by the `AWS` integration\. The Lambda integration or the Lambda proxy integration is a special case, where the Lambda function invocation is exposed through the API Gateway API\. 
 
  All AWS services support dedicated APIs to expose their features\. However, the application protocols or programming interfaces are likely to differ from service to service\. An API Gateway API with the `AWS` integration has the advantage of providing a consistent application protocol for your client to access different AWS services\. 
 
@@ -10,7 +10,7 @@
 
  API Gateway does not retry when the endpoint times out\. The API caller must implement retry logic to handle endpoint timeouts\. 
 
- This walkthrough builds on the instructions and concepts in [Build an API Gateway API with Lambda integration](getting-started-with-lambda-integration.md)\.If you have not yet completed that walkthrough, we suggest that you do it first\. 
+ This walkthrough builds on the instructions and concepts in [Build an API Gateway REST API with Lambda integration](getting-started-with-lambda-integration.md)\.If you have not yet completed that walkthrough, we suggest that you do it first\. 
 
 **Topics**
 + [Prerequisites](#getting-started-aws-proxy-prerequisites)
@@ -30,11 +30,11 @@ Before you begin this walkthrough, do the following:
 
 1. Ensure that the IAM user has access to create policies and roles in IAM\. You need to create an IAM policy and role in this walkthrough\.
 
-1.  Create a new API named `MyDemoAPI`\. For more information, see [Tutorial: Build an API with HTTP non\-proxy integration](api-gateway-create-api-step-by-step.md)\. 
+1.  Create a new API named `MyDemoAPI`\. For more information, see [Tutorial: Build a REST API with HTTP non\-proxy integration](api-gateway-create-api-step-by-step.md)\. 
 
-1. Deploy the API at least once to a stage named `test`\. For more information, see [Deploy the API](getting-started-lambda-non-proxy-integration.md#getting-started-deploy-api) in [Build an API Gateway API with Lambda integration](getting-started-with-lambda-integration.md)\.
+1. Deploy the API at least once to a stage named `test`\. For more information, see [Deploy the API](getting-started-lambda-non-proxy-integration.md#getting-started-deploy-api) in [Build an API Gateway REST API with Lambda integration](getting-started-with-lambda-integration.md)\.
 
-1. Complete the rest of the steps in [Build an API Gateway API with Lambda integration](getting-started-with-lambda-integration.md)\.
+1. Complete the rest of the steps in [Build an API Gateway REST API with Lambda integration](getting-started-with-lambda-integration.md)\.
 
 1. Create at least one topic in Amazon Simple Notification Service \(Amazon SNS\)\. You will use the deployed API to get a list of topics in Amazon SNS that are associated with your AWS account\. To learn how to create a topic in Amazon SNS, see [Create a Topic](https://docs.aws.amazon.com/sns/latest/dg/CreateTopic.html)\. \(You do not need to copy the topic ARN mentioned in step 5\.\)
 
@@ -46,7 +46,7 @@ In this step, you create a resource that enables the AWS service proxy to intera
 
 1. Sign in to the API Gateway console at [https://console\.aws\.amazon\.com/apigateway](https://console.aws.amazon.com/apigateway)\.
 
-1. If **MyDemoAPI** is displayed, choose **Resources**\.
+1. Choose **MyDemoAPI**\.
 
 1. In the **Resources** pane, choose the resource root, represented by a single forward slash \(`/`\), and then choose **Create Resource**\.
 
@@ -74,15 +74,9 @@ In this step, you create an IAM role that your AWS service proxy uses to interac
 
 1. Do one of the following:
    + If the **Welcome to Managed Policies** page appears, choose **Get Started**, and then choose **Create Policy**\.
-   + If a list of policies appears, choose **Create Policy**\.
+   + If a list of policies appears, choose **Create policy**\.
 
-1. Next to **Create Your Own Policy**, choose **Select**\.
-
-1. For **Policy Name**, type a name for the policy \(for example, **APIGatewayAWSProxyExecPolicy**\)\.
-
-1. For **Description**, type **Enables API Gateway to call AWS services**\.
-
-1. For **Policy Document**, type the following, and then choose **Create Policy**\.
+1. Choose **JSON** and then enter the following text\.
 
    ```
    {
@@ -101,23 +95,29 @@ In this step, you create an IAM role that your AWS service proxy uses to interac
    }
    ```
 
-   This policy document allows the caller to get a list of the Amazon SNS topics for the AWS account\.
+1. Choose **Review policy**\.
+
+1. Enter a name and description for the policy\.
+
+1. Choose **Create policy**\.
 
 1. Choose **Roles**\.
 
 1. Choose **Create Role**\.
 
-1.  Choose **AWS Service** under **Select role type** and then choose **API Gateway**\.
+1.  Choose **AWS Service** under **Select type of trusted entity** and then choose **API Gateway**\.
 
 1. Choose **Next: Permissions**\.
 
+1.  Choose **Next: Tags**\.
+
 1.  Choose **Next: Review**\.
 
-1. For **Role Name**, type a name for the execution role \(for example, **APIGatewayAWSProxyExecRole**\), optionally type a description for this role, and then choose **Create role**\.
+1. For **Role Name**, enter a name for the execution role \(for example, **APIGatewayAWSProxyExecRole**\), optionally enter a description for this role, and then choose **Create role**\.
 
 1. In the **Roles** list, choose the role you just created\. You may need to scroll down the list\.
 
-1. For the selected role, choose **Attach policy**\.
+1. For the selected role, choose **Attach policies**\.
 
 1.  Select the check box next to the policy you created earlier \(for example, **APIGatewayAWSProxyExecPolicy**\) and choose **Attach policy**\.
 

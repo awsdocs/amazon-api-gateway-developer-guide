@@ -29,7 +29,7 @@ You can use the AWS Management console to attach a resource policy to an API Gat
 
 1. Sign in to the API Gateway console at [https://console\.aws\.amazon\.com/apigateway](https://console.aws.amazon.com/apigateway)\.
 
-1. Choose the API name\.
+1. Choose a REST API\.
 
 1. In the left navigation pane, choose **Resource Policy**\.
 

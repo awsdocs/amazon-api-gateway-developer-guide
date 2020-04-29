@@ -1,4 +1,4 @@
-# Setting up CloudWatch API logging in API Gateway<a name="set-up-logging"></a>
+# Setting up CloudWatch logging for a REST API in API Gateway<a name="set-up-logging"></a>
 
  To help debug issues related to request execution or client access to your API, you can enable Amazon CloudWatch Logs to log API calls\. For more information about CloudWatch, see [Monitoring REST API execution with Amazon CloudWatch metrics](monitoring-cloudwatch.md)\.
 
@@ -111,6 +111,8 @@ To set up CloudWatch API logging, you must have deployed the API to a stage\. Yo
 
 1. Sign in to the API Gateway console at [https://console\.aws\.amazon\.com/apigateway](https://console.aws.amazon.com/apigateway)\.
 
+1. Choose a REST API\.
+
 1. Choose **Settings** from the primary navigation panel and enter an ARN of an IAM role with appropriate permissions in **CloudWatch log role ARN**\. You need to do this once\. 
 
 1.  Do one of the following:
@@ -135,7 +137,7 @@ To set up CloudWatch API logging, you must have deployed the API to a stage\. Yo
 
    1. Choose **Enable Access Logging** under **Custom Access Logging**\.
 
-   1. Enter the ARN of a log group in **Access Log Destination ARN**\. The ARN format is `arn:aws:logs:{region}:{account-id}:log-group:API-Gateway-Access-Logs_{rest-api-id}/{stage-name}`\.
+   1. Enter the ARN of a log group in **Access Log Destination ARN**\. The ARN format is `arn:aws:logs:{region}:{account-id}:log-group:log-group-name`\.
 
    1. Enter a log format in **Log Format**\. You can choose **CLF**, **JSON**, **XML**, or **CSV** to use one of the provided examples as a guide\.
 

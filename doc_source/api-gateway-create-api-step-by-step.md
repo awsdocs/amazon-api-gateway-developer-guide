@@ -1,4 +1,4 @@
-# Tutorial: Build an API with HTTP non\-proxy integration<a name="api-gateway-create-api-step-by-step"></a>
+# Tutorial: Build a REST API with HTTP non\-proxy integration<a name="api-gateway-create-api-step-by-step"></a>
 
  In this tutorial, you create an API from scratch using the Amazon API Gateway console\. You can think of the console as an API design studio and use it to scope the API features, to experiment with its behaviors, to build the API, and to deploy your API in stages\. 
 
@@ -13,11 +13,13 @@
 
 1. Sign in to the API Gateway console at [https://console\.aws\.amazon\.com/apigateway](https://console.aws.amazon.com/apigateway)\.
 
-1. To create an API, choose **Create new API** \(for creating the first API\) or **Create API** \(for creating any subsequent API\)\. Next, do the following:
+1. If this is your first time using API Gateway, you see a page that introduces you to the features of the service\. Under **REST API**, choose **Build**\. When the **Create Example API** popup appears, choose **OK**\.
+
+   If this is not your first time using API Gateway, choose **Create API**\. Under **REST API**, choose **Build**\.
 
    1. Choose **New API**\.
 
-   1. Type a name in **API Name**\.
+   1. Enter a name in **API Name**\.
 
    1. Optionally, add a brief description in **Description**\.
 
@@ -65,8 +67,7 @@ Other options for an API method include:
 
     This completes building the simple demo API\. It's time to test the API\. 
 
-1.  To test the API using the API Gateway console, choose **Test** on the **Method Execution** pane for the `GET /pets` method\. In the **Method Test** pane, enter **Dog** and **2** for the **type** and **page** query strings, respectively, and then choose **Test**\.   
-![\[Test-invoke GET on pets method\]](http://docs.aws.amazon.com/apigateway/latest/developerguide/images/api-gateway-create-api-step-by-step-test-invoke-get-on-pets.png)
+1.  To test the API using the API Gateway console, choose **Test** on the **Method Execution** pane for the `GET /pets` method\. In the **Method Test** pane, enter **Dog** and **2** for the **type** and **page** query strings, respectively, and then choose **Test**\. 
 
     The result is shown as follows\. \(You may need to scroll down to see the test result\.\)   
 ![\[Test-invoke GET on pets method result\]](http://docs.aws.amazon.com/apigateway/latest/developerguide/images/api-gateway-create-api-step-by-step-test-invoke-get-on-pets-result.png)
@@ -222,7 +223,7 @@ Before you begin this walkthrough, you should do the following:
 
 1. Complete the steps in [Prerequisites: Get ready to build an API in API Gateway](setting-up.md), including assigning API Gateway access permission to the IAM user\.
 
-1.  At a minimum, follow the steps in [Tutorial: Build an API with HTTP non\-proxy integration](#api-gateway-create-api-step-by-step) to create a new API named `MyDemoAPI` in the API Gateway console\. 
+1.  At a minimum, follow the steps in [Tutorial: Build a REST API with HTTP non\-proxy integration](#api-gateway-create-api-step-by-step) to create a new API named `MyDemoAPI` in the API Gateway console\. 
 
 ### Step 1: Create resources<a name="getting-started-mappings-add-resources"></a>
 
@@ -879,7 +880,7 @@ In the preceding code, written in Node\.js, `console.log` writes information to 
 
 1. For **Handler name**, leave the default of `index.handler`\.
 
-1. For **Role**, choose the Lambda execution role, **APIGatewayLambdaExecRole**, you created in the [Build an API Gateway API with Lambda integration](getting-started-with-lambda-integration.md)\.
+1. For **Role**, choose the Lambda execution role, **APIGatewayLambdaExecRole**, you created in the [Build an API Gateway REST API with Lambda integration](getting-started-with-lambda-integration.md)\.
 
 1. Choose **Create Lambda function**\.
 

@@ -1,4 +1,4 @@
-# Tutorial: Build an API with API Gateway private integration<a name="getting-started-with-private-integration"></a>
+# Tutorial: Build a REST API with API Gateway private integration<a name="getting-started-with-private-integration"></a>
 
  You can create an API Gateway API with private integration to provide your customers access to HTTP/HTTPS resources within your Amazon Virtual Private Cloud \(Amazon VPC\)\. Such VPC resources are HTTP/HTTPS endpoints on an EC2 instance behind a Network Load Balancer in the VPC\. The Network Load Balancer encapsulates the VPC resource and routes incoming requests to the targeted resource\. 
 
@@ -19,27 +19,25 @@ After creating your VPC resource and your Network Load Balancer with your VPC re
 
 **To create an API with private integration using the API Gateway console**
 
-1.  Sign in to the API Gateway console and choose a region; for example, `us-west-2`, on the navigation bar\. 
+1. Sign in to the API Gateway console at [https://console\.aws\.amazon\.com/apigateway](https://console.aws.amazon.com/apigateway)\.
 
 1. Create a VPC link, if you have not already done so:
 
-   1. Choose an API from the APIs list\.
+   1. From the primary navigation pane, choose **VPC links** and then choose **Create**\. 
 
-   1. From the primary navigation pane, choose **VPC Links** and then choose **\+ Create**\. 
+   1. Choose **VPC link for REST APIs**\. 
 
-   1.  Under **VPC Link**, type a name \(for example, `my-test-vpc-link`\) in the **Name** field\.
-
-   1.  Optionally, give a description of the VPC link in the **Description** text area\.
+   1. Enter a name, and optionally, a description for your VPC link\.
 
    1.  Choose a Network Load Balancer from the **Target NLB** drop\-down list\.
 
-      You must have the Network Load Balancer already created in the region you chose for the Network Load Balancer to be present in the list\.
+      You must have the Network Load Balancer already created in the same Region as your API for the Network Load Balancer to be present in the list\.
 
    1.  Choose **Create** to start creating the VPC link\.
 
     The initial response returns a `VpcLink` resource representation with the VPC link ID and a `PENDING` status\. This is because the operation is asynchronous and takes about 2\-4 minutes to complete\. Upon successful completion, the status is `AVAILABLE`\. In the meantime, you can proceed to create the API\. 
 
-1.  Choose **APIs** from the primary navigation pane and then choose **\+ Create API** to create a new API of either an edge\-optimized or regional endpoint type\. 
+1.  Choose **APIs** from the primary navigation pane and then choose **Create API** to create a new API of either an edge\-optimized or regional endpoint type\. 
 
 1.  For the root resource \(/\), choose **Create Method** from the **Actions** drop\-down menu, and then choose `GET`\.
 

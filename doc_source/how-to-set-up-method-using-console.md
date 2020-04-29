@@ -1,8 +1,8 @@
 # Set up a method using the API Gateway console<a name="how-to-set-up-method-using-console"></a>
 
 Before setting up an API method, verify the following:
-+ You must have the method available in API Gateway\. Follow the instructions in [Tutorial: Build an API with HTTP non\-proxy integration](api-gateway-create-api-step-by-step.md)\.
-+ If you want the method to communicate with a Lambda function, you must have already created the Lambda invocation role and Lambda execution role in IAM\. You must also have created the Lambda function with which your method will communicate in AWS Lambda\. To create the roles and function, use the instructions in [Create a Lambda function for Lambda non\-proxy integration](getting-started-lambda-non-proxy-integration.md#getting-started-new-lambda) of the [Build an API Gateway API with Lambda integration](getting-started-with-lambda-integration.md)\. 
++ You must have the method available in API Gateway\. Follow the instructions in [Tutorial: Build a REST API with HTTP non\-proxy integration](api-gateway-create-api-step-by-step.md)\.
++ If you want the method to communicate with a Lambda function, you must have already created the Lambda invocation role and Lambda execution role in IAM\. You must also have created the Lambda function with which your method will communicate in AWS Lambda\. To create the roles and function, use the instructions in [Create a Lambda function for Lambda non\-proxy integration](getting-started-lambda-non-proxy-integration.md#getting-started-new-lambda) of the [Build an API Gateway REST API with Lambda integration](getting-started-with-lambda-integration.md)\. 
 + If you want the method to communicate with an HTTP or HTTP proxy integration, you must have already created, and have access to, the HTTP endpoint URL with which your method will communicate\.
 +  Verify that your certificates for HTTP and HTTP proxy endpoints are supported by API Gateway\. For details see [API Gateway\-supported certificate authorities for HTTP and HTTP proxy integrations](api-gateway-supported-certificate-authorities-for-http-endpoints.md)\. 
 
@@ -15,7 +15,7 @@ Before setting up an API method, verify the following:
  To use the API Gateway console to specify an API's method request/response, and to configure how the method will authorize requests, follow these instructions\.
 
 **Note**  
- These instructions assume you have already completed the steps in [Set up an API integration request using the API Gateway console](how-to-method-settings-console.md)\. They are best used to supplement the discussions given in [Build an API Gateway API with Lambda integration](getting-started-with-lambda-integration.md)\. 
+ These instructions assume you have already completed the steps in [Set up an API integration request using the API Gateway console](how-to-method-settings-console.md)\. They are best used to supplement the discussions given in [Build an API Gateway REST API with Lambda integration](getting-started-with-lambda-integration.md)\. 
 
 1. With the method selected in the **Resources** pane, choose **Method Request** from the **Method Execution** pane\.
 
@@ -46,7 +46,7 @@ Before setting up an API method, verify the following:
 
       In this access policy, *resource\-statement* is the value of the **ARN** field in the **Authorization Settings** section\. For more information about setting the IAM permissions, see [Control access to an API with IAM permissions](permissions.md)\. 
 
-      To create the IAM role, you can adapt the instructions in "To create the Lambda invocation role and its policy" and "To create the Lambda execution role and its policy" in the [Create Lambda Functions](getting-started-lambda-non-proxy-integration.md#getting-started-new-lambda) section of the [Build an API Gateway API with Lambda integration](getting-started-with-lambda-integration.md)\. 
+      To create the IAM role, you can adapt the instructions in "To create the Lambda invocation role and its policy" and "To create the Lambda execution role and its policy" in the [Create Lambda Functions](getting-started-lambda-non-proxy-integration.md#getting-started-new-lambda) section of the [Build an API Gateway REST API with Lambda integration](getting-started-with-lambda-integration.md)\. 
 
       To save your choice, choose **Update**\. Otherwise, choose **Cancel**\.
 

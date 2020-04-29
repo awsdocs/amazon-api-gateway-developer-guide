@@ -1,4 +1,4 @@
-# Build an API Gateway API with Lambda integration<a name="getting-started-with-lambda-integration"></a>
+# Build an API Gateway REST API with Lambda integration<a name="getting-started-with-lambda-integration"></a>
 
  To build an API with Lambda integrations, you can use Lambda proxy integration or Lambda non\-proxy integration\. 
 
@@ -7,6 +7,6 @@ In Lambda proxy integration, the input to the integrated Lambda function can be 
 In Lambda non\-proxy integration, you must ensure that input to the Lambda function is supplied as the integration request payload\. This implies that you, as an API developer, must map any input data the client supplied as request parameters into the proper integration request body\. You may also need to translate the client\-supplied request body into a format recognized by the Lambda function\. 
 
 **Topics**
-+ [Tutorial: Build a Hello World API with Lambda proxy integration](api-gateway-create-api-as-simple-proxy-for-lambda.md)
-+ [Tutorial: Build an API Gateway API with cross\-account Lambda proxy integration](apigateway-cross-account-lambda-integrations.md)
-+ [Tutorial: Build an API Gateway API with Lambda non\-proxy integration](getting-started-lambda-non-proxy-integration.md)
++ [Tutorial: Build a Hello World REST API with Lambda proxy integration](api-gateway-create-api-as-simple-proxy-for-lambda.md)
++ [Tutorial: Build an API Gateway REST API with cross\-account Lambda proxy integration](apigateway-cross-account-lambda-integrations.md)
++ [Tutorial: Build an API Gateway REST API with Lambda non\-proxy integration](getting-started-lambda-non-proxy-integration.md)

@@ -129,7 +129,7 @@ where:
 + *account\-id* is the 12\-digit AWS account Id of the REST API owner\. 
 + *api\-id* is the identifier API Gateway has assigned to the API for the method\. \(**\*** can be used for all APIs, regardless of the API's identifier\.\)
 + *stage\-name* is the name of the stage associated with the method \(**\*** can be used for all stages, regardless of the stage's name\.\)
-+ *HTTP\-VERB* is the HTTP verb for the method\. It can be one of the following: GET, POST, PUT, DELETE, PATCH\.
++ *HTTP\-VERB* is the HTTP verb for the method\. It can be one of the following: GET, POST, PUT, DELETE, PATCH\. \(**\*** can be used for all HTTP verbs\)\.
 + *resource\-path\-specifier* is the path to the desired method\. \(**\*** can be used for all paths\)\.
 
 Some example resource expressions include:

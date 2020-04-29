@@ -107,7 +107,7 @@ The following example shows an OpenAPI snippet that maps:
 
 ### Select a VTL mapping template<a name="selecting-mapping-templates"></a>
 
- API Gateway uses the following logic to select a mapping template, in [Velocity Template Language \(VTL\)](http://velocity.apache.org/engine/devel/vtl-reference-guide.html), to map the payload from a method request to the corresponding integration request or to map the payload from an integration response to the corresponding method response\. 
+ API Gateway uses the following logic to select a mapping template, in [Velocity Template Language \(VTL\)](https://velocity.apache.org/engine/devel/vtl-reference.html), to map the payload from a method request to the corresponding integration request or to map the payload from an integration response to the corresponding method response\. 
 
  For a request payload, API Gateway uses the request’s `Content-Type` header value as the key to select the mapping template for the request payload\. For a response payload, API Gateway uses the incoming request’s `Accept` header value as the key to select the mapping template\. 
 

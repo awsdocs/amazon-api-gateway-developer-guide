@@ -16,7 +16,7 @@ Testing methods with the API Gateway console may result in changes to resources 
 
 1. Sign in to the API Gateway console at [https://console\.aws\.amazon\.com/apigateway](https://console.aws.amazon.com/apigateway)\.
 
-1. In the box that contains the name of the API for the method, choose **Resources**\.
+1. Choose a REST API\.
 
 1. In the **Resources** pane, choose the method you want to test\.
 

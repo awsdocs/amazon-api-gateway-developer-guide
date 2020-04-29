@@ -32,12 +32,9 @@ In this step, you create a simple REST API in the API Gateway console and attach
 
 1. From the **Services** menu, choose **API Gateway** to go to the API Gateway console\.
 
-1. If this is your first time using API Gateway, you see a page that introduces you to the features of the service\. Choose **Get Started**\. When the **Create Example API** popup appears, choose **OK**\.
+1. If this is your first time using API Gateway, you see a page that introduces you to the features of the service\. Under **REST API**, choose **Build**\. When the **Create Example API** popup appears, choose **OK**\.
 
-   If this isn't your first time using API Gateway, choose **Create API**\.  
-![\[API Gateway getting started\]](http://docs.aws.amazon.com/apigateway/latest/developerguide/images/apigateway-get-started-button.png)
-
-1. Under **Choose the protocol**, choose **REST**\.
+   If this is not your first time using API Gateway, choose **Create API**\. Under **REST API**, choose **Build**\.
 
 1. Under **Create new API**, choose **New API**\.
 

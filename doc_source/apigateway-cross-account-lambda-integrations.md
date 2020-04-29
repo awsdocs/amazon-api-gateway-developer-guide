@@ -1,4 +1,4 @@
-# Tutorial: Build an API Gateway API with cross\-account Lambda proxy integration<a name="apigateway-cross-account-lambda-integrations"></a>
+# Tutorial: Build an API Gateway REST API with cross\-account Lambda proxy integration<a name="apigateway-cross-account-lambda-integrations"></a>
 
 You can now use an AWS Lambda function from a different AWS account as your API integration backend\. Each account can be in any region where Amazon API Gateway is available\. This makes it easy to centrally manage and share Lambda backend functions across multiple APIs\.
 
@@ -12,13 +12,13 @@ First, you'll create the example API as described in [Tutorial: Create a REST AP
 
 **To create the example API**
 
-1.  Sign in to the API Gateway console\. 
+1. Sign in to the API Gateway console at [https://console\.aws\.amazon\.com/apigateway](https://console.aws.amazon.com/apigateway)\.
 
-1. Choose **Create API** from the API Gateway **APIs** home page: 
+1. If this is your first time using API Gateway, you see a page that introduces you to the features of the service\. Under **REST API**, choose **Build**\. When the **Create Example API** popup appears, choose **OK**\.
 
-1. Under **Create new API**, choose **Examples API**\.
+   If this is not your first time using API Gateway, choose **Create API**\. Under **REST API**, choose **Build**\.
 
-1. For **Endpoint Type**, choose **Edge optimized**\.
+1. Under **Create new API**, choose **Example API**\.
 
 1. Choose **Import** to create the example API\.
 
@@ -46,7 +46,7 @@ Now you'll create a Lambda function in a different account from the one in which
 
 1. Scroll down to the **Function code** pane\.
 
-1. Copy\-paste the Node\.js function implementation from [Tutorial: Build a Hello World API with Lambda proxy integration](api-gateway-create-api-as-simple-proxy-for-lambda.md)\.
+1. Copy\-paste the Node\.js function implementation from [Tutorial: Build a Hello World REST API with Lambda proxy integration](api-gateway-create-api-as-simple-proxy-for-lambda.md)\.
 
 1. Choose **Save**\.
 
@@ -87,6 +87,6 @@ If you are configuring a cross\-region, cross\-account authorizer, the `sourceAr
 
    1. Choose your integration function\.
 
-   1. In the **Designer** pane, choose the key icon\.
+   1. Choose **Permissions**\.
 
-   In the **Function policy** pane, you should now see an `Allow` policy with a `Condition` clause in which the in the `AWS:SourceArn` is the ARN for your API's `GET` method\.
+   You should see an `Allow` policy with a `Condition` clause in which the in the `AWS:SourceArn` is the ARN for your API's `GET` method\.

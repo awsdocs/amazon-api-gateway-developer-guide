@@ -6,7 +6,7 @@ API Gateway lets you use mapping templates to map the payload from a method requ
 
 ## Mapping templates and models<a name="apigateway-websocket-api-mapping-templats-and-models"></a>
 
- A *mapping template* is a script expressed in [Velocity Template Language \(VTL\)](http://velocity.apache.org/engine/devel/vtl-reference-guide.html) and applied to the payload using [JSONPath expressions](http://goessner.net/articles/JsonPath/)\. For more information about API Gateway mapping templates, see [Mapping templates](rest-api-data-transformations.md#models-mappings-mappings)\.
+ A *mapping template* is a script expressed in [Velocity Template Language \(VTL\)](https://velocity.apache.org/engine/devel/vtl-reference.html) and applied to the payload using [JSONPath expressions](http://goessner.net/articles/JsonPath/)\. For more information about API Gateway mapping templates, see [Mapping templates](rest-api-data-transformations.md#models-mappings-mappings)\.
 
 The payload can have a *data model* according to the [JSON schema draft 4](https://tools.ietf.org/html/draft-zyp-json-schema-04)\. You do not have to define a model to create a mapping template\. However, a model can help you create a template because API Gateway generates a template blueprint based on a provided model\. For more information about API Gateway models, see [Models](rest-api-data-transformations.md#models-mappings-models)\.
 

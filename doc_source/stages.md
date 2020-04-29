@@ -162,7 +162,9 @@ When you no longer need a stage, you can delete it to avoid paying for unused re
 
 1. Sign in to the API Gateway console at [https://console\.aws\.amazon\.com/apigateway](https://console.aws.amazon.com/apigateway)\.
 
-1. In the box that contains the name of the API for the stage, choose **Stages**\.
+1. Choose a REST API\.
+
+1. Choose **Stages**\.
 
 1. In the **Stages** pane, choose the stage you want to delete, and then choose **Delete Stage**\.
 

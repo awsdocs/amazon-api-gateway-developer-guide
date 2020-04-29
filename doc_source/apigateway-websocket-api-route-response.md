@@ -30,13 +30,13 @@ Currently only `$default` is supported in route responses for WebSocket APIs\.
 
 ## Set up a route response using the AWS CLI<a name="apigateway-websocket-api-route-response-using-awscli"></a>
 
-To set up a route response for a WebSocket API using the AWS CLI, call the [https://docs.aws.amazon.com/goto/aws-cli/apigatewayv2-2018-11-29/CreateRouteResponse](https://docs.aws.amazon.com/goto/aws-cli/apigatewayv2-2018-11-29/CreateRouteResponse) command as shown in the following example\.
-
-To find the route-id, select the route and check the browser address-bar
-Example if you see : /apis/axc23id/routes/asf34 the last part is the route-id and api-id is 1lo95d4jcj
+To set up a route response for a WebSocket API using the AWS CLI, call the [https://docs.aws.amazon.com/goto/aws-cli/apigatewayv2-2018-11-29/CreateRouteResponse](https://docs.aws.amazon.com/goto/aws-cli/apigatewayv2-2018-11-29/CreateRouteResponse) command as shown in the following example\. You can identify the API ID and route ID by calling [https://docs.aws.amazon.com/goto/aws-cli/apigatewayv2-2018-11-29/GetApis](https://docs.aws.amazon.com/goto/aws-cli/apigatewayv2-2018-11-29/GetApis) and [https://docs.aws.amazon.com/goto/aws-cli/apigatewayv2-2018-11-29/GetRoutes](https://docs.aws.amazon.com/goto/aws-cli/apigatewayv2-2018-11-29/GetRoutes)\.
 
 ```
-aws apigatewayv2 --region us-east-1 create-route-response --api-id axc23id --route-id asf34 --route-response-key '$default'
+aws apigatewayv2 create-route-response \
+    --api-id aabbccddee \
+    --route-id 1122334  \
+    --route-response-key '$default'
 ```
 
 Example output:

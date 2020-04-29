@@ -55,10 +55,11 @@ To set up a route integration response for a WebSocket API using the API Gateway
 
 ## Set up an integration response using the AWS CLI<a name="apigateway-websocket-api-integration-response-using-awscli"></a>
 
-To set up an integration response for a WebSocket API using the AWS CLI call the [https://docs.aws.amazon.com/goto/aws-cli/apigatewayv2-2018-11-29/CreateIntegrationResponse](https://docs.aws.amazon.com/goto/aws-cli/apigatewayv2-2018-11-29/CreateIntegrationResponse) command\. The following CLI command shows an example of setting a response of `200`:
+To set up an integration response for a WebSocket API using the AWS CLI call the [https://docs.aws.amazon.com/goto/aws-cli/apigatewayv2-2018-11-29/CreateIntegrationResponse](https://docs.aws.amazon.com/goto/aws-cli/apigatewayv2-2018-11-29/CreateIntegrationResponse) command\. The following CLI command shows an example of creating a `$default` integration response:
 
 ```
 aws apigatewayv2 create-integration-response \
---api-id vaz7da96z6 \
---integration-response-key 200
+    --api-id vaz7da96z6 \
+    --integration-id a1b2c3 \
+    --integration-response-key '$default'
 ```

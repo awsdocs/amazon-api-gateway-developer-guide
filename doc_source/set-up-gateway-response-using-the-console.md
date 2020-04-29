@@ -45,7 +45,7 @@
 1. Test it by calling the following CURL command, assuming the corresponding API method's invoke URL is `https://o81lxisefl.execute-api.us-east-1.amazonaws.com/custErr/pets/{petId}`:
 
    ```
-   curl -v -H 'x-amnz-RequestId:123344566' https://o81lxisefl.execute-api.us-east-1.amazonaws.com/custErr/pets/5/type?q=1
+   curl -v -H 'x-amzn-RequestId:123344566' https://o81lxisefl.execute-api.us-east-1.amazonaws.com/custErr/pets/5/type?q=1
    ```
 
    Because the extra query string parameter `q=1` isn't compatible with the API, an error is returned to trigger the specified gateway response\. You should get a gateway response similar to the following:
@@ -61,7 +61,7 @@
    Content-Length: 334
    Connection: keep-alive
    Date: Tue, 02 May 2017 03:15:47 GMT
-   x-amzn-RequestId: a2be05a4-2ee5-11e7-bbf2-df131ec50ae6
+   x-amzn-RequestId: 123344566
    Access-Control-Allow-Origin: a.b.c
    x-amzn-ErrorType: MissingAuthenticationTokenException
    header-1: static

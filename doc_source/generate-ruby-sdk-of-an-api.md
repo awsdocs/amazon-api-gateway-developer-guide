@@ -4,7 +4,9 @@
 
 1. Sign in to the API Gateway console at [https://console\.aws\.amazon\.com/apigateway](https://console.aws.amazon.com/apigateway)\.
 
-1. In the box that contains the name of the API for the stage, choose **Stages**\. 
+1. Choose a REST API\.
+
+1. Choose **Stages**\.
 
 1. In the **Stages** pane, choose the name of the stage\.
 

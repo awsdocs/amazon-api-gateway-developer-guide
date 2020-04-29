@@ -18,7 +18,7 @@ Before you can invoke an API, you must deploy it in API Gateway\. To do that, fo
 + [Use the API Gateway console to test a REST API method](how-to-test-method.md)
 + [Use Postman to call a REST API](how-to-use-postman-to-call-api.md)
 + [Call REST API through generated SDKs](how-to-call-api-using-generated-sdk.md)
-+ [Call REST API through AWS Amplify JavaScript library](how-to-call-api-using-aws-amplify-javascript-library.md)
++ [Call a REST API through AWS Amplify](how-to-call-api-using-aws-amplify-javascript-library.md)
 + [How to invoke a private API](apigateway-private-api-test-invoke-url.md)
 
 ## Obtain an API's invoke URL in the API Gateway console<a name="apigateway-how-to-call-rest-api"></a>

@@ -1,3 +1,3 @@
-# Call REST API through AWS Amplify JavaScript library<a name="how-to-call-api-using-aws-amplify-javascript-library"></a>
+# Call a REST API through AWS Amplify<a name="how-to-call-api-using-aws-amplify-javascript-library"></a>
 
- The AWS Amplify JavaScript Library can be used for making API requests to an API Gateway REST API\. For more information, see the instructions in the [AWS Amplify API Guide](https://aws.github.io/aws-amplify/media/api_guide)\. 
+You can use AWS Amplify to make API requests to an API Gateway REST API\. Amplify can use Amazon Cognito to get AWS credentials and call a REST API that uses AWS Identity and Access Management authorization\. For more information, see the instructions in the [AWS Amplify API Guide](https://docs.amplify.aws/lib/restapi/getting-started/q/platform/js)\. 

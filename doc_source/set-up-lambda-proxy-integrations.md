@@ -165,7 +165,7 @@ In Lambda proxy integration of a proxy resource through the `ANY` method, the si
 In this section, we show how to use AWS CLI to set up an API with the Lambda proxy integration\. 
 
 **Note**  
-For detailed instructions for using the API Gateway console to configure a proxy resource with the Lambda proxy integration, see [Tutorial: Build a Hello World API with Lambda proxy integration](api-gateway-create-api-as-simple-proxy-for-lambda.md)\.
+For detailed instructions for using the API Gateway console to configure a proxy resource with the Lambda proxy integration, see [Tutorial: Build a Hello World REST API with Lambda proxy integration](api-gateway-create-api-as-simple-proxy-for-lambda.md)\.
 
 As an example, we use the following sample Lambda function as the backend of the API:
 

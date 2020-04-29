@@ -57,7 +57,7 @@ The internal interface of a WebSocket API route or REST API method in API Gatewa
 The internal interface of a WebSocket API route or REST API method in API Gateway, in which you map the status codes, headers, and payload that are received from the backend to the response format that is returned to a client app\.
 
 **Mapping template**  <a name="apigateway-definition-mapping-template"></a>
-A script in [Velocity Template Language \(VTL\)](http://velocity.apache.org/engine/devel/vtl-reference.html) that transforms a request body from the frontend data format to the backend data format, or that transforms a response body from the backend data format to the frontend data format\. Mapping templates can be specified in the integration request or in the integration response\. They can reference data made available at runtime as context and stage variables\.   
+A script in [Velocity Template Language \(VTL\)](https://velocity.apache.org/engine/devel/vtl-reference.html) that transforms a request body from the frontend data format to the backend data format, or that transforms a response body from the backend data format to the frontend data format\. Mapping templates can be specified in the integration request or in the integration response\. They can reference data made available at runtime as context and stage variables\.   
 The mapping can be as simple as an [identity transform](https://en.wikipedia.org/wiki/Identity_transform) that passes the headers or body through the integration as\-is from the client to the backend for a request\. The same is true for a response, in which the payload is passed from the backend to the client\.
 
 **Method request**  <a name="apigateway-definition-method-request"></a>

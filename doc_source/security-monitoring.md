@@ -3,7 +3,7 @@
 Monitoring is an important part of maintaining the reliability, availability, and performance of API Gateway and your AWS solutions\. You should collect monitoring data from all of the parts of your AWS solution so that you can more easily debug a multi\-point failure if one occurs\. AWS provides several tools for monitoring your API Gateway resources and responding to potential incidents:
 
 **Amazon CloudWatch Logs**  
-To help debug issues related to request execution or client access to your API, you can enable CloudWatch Logs to log API calls\. For more information, see [Setting up CloudWatch API logging in API Gateway](set-up-logging.md)\.
+To help debug issues related to request execution or client access to your API, you can enable CloudWatch Logs to log API calls\. For more information, see [Setting up CloudWatch logging for a REST API in API Gateway](set-up-logging.md)\.
 
 **Amazon CloudWatch Alarms**  
 Using CloudWatch alarms, you watch a single metric over a time period that you specify\. If the metric exceeds a given threshold, a notification is sent to an Amazon Simple Notification Service topic or AWS Auto Scaling policy\. CloudWatch alarms do not invoke actions when a metric is in a particular state\. Rather the state must have changed and been maintained for a specified number of periods\. For more information, see [Monitoring REST API execution with Amazon CloudWatch metrics](monitoring-cloudwatch.md)\.

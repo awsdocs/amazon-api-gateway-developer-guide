@@ -13,7 +13,9 @@ Use the API Gateway console to create a model for an API\.
 
 1. Sign in to the API Gateway console at [https://console\.aws\.amazon\.com/apigateway](https://console.aws.amazon.com/apigateway)\.
 
-1. In the box that contains the name of the API where you want to create the model, choose **Models**\.
+1. Choose a REST API\.
+
+1. Choose **Models**\.
 
 1. Choose **Create**\.
 

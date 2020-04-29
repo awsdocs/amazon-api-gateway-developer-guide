@@ -18,14 +18,9 @@ The following procedure walks you through the steps to create and test an API fr
 
 1. Sign in to the API Gateway console at [https://console\.aws\.amazon\.com/apigateway](https://console.aws.amazon.com/apigateway)\.
 
-1. Do one of the following:
+1. If this is your first time using API Gateway, you see a page that introduces you to the features of the service\. Under **REST API**, choose **Build**\. When the **Create Example API** popup appears, choose **OK**\.
 
-   1.  If this is the first API in your account, choose **Get Started** from the API Gateway console welcome page\. 
-
-       If prompted with hints, choose **OK** to close them and continue\. 
-
-   1.  If this is not your first API, choose **Create API** from the API Gateway **APIs** home page:   
-![\[\]](http://docs.aws.amazon.com/apigateway/latest/developerguide/images/api-gateway-service-home-page.png)
+   If this is not your first time using API Gateway, choose **Create API**\. Under **REST API**, choose **Build**\.
 
 1.  Under **Create new API**, choose **Example API** and then choose **Import** to create the example API\. For your first API, the API Gateway console starts with this option as default\.   
 ![\[\]](http://docs.aws.amazon.com/apigateway/latest/developerguide/images/api-gateway-create-api-by-importing-example.png)
@@ -46,7 +41,7 @@ The following procedure walks you through the steps to create and test an API fr
 
    The `GET /` method request uses the `MOCK` integration type and is not tied to any real backend endpoint\. The corresponding **Integration Response** is set up to return a static HTML page\. When the method is called, the API Gateway simply accepts the request and immediately returns the configured integration response to the client by way of **Method Response**\. You can use the mock integration to test an API without requiring a backend endpoint\. You can also use it to serve a local response, generated from a response body\-mapping template\. 
 
-   As an API developer, you control the behaviors of your API's frontend interactions by configuring the method request and a method response\. You control the behaviors of your API's backend interactions by setting up the integration request and integration response\. These involve data mappings between a method and its corresponding integration\. We cover the method setup in [Tutorial: Build an API with HTTP non\-proxy integration](api-gateway-create-api-step-by-step.md)\. For now, we focus on testing the API to provide an end\-to\-end user experience\. 
+   As an API developer, you control the behaviors of your API's frontend interactions by configuring the method request and a method response\. You control the behaviors of your API's backend interactions by setting up the integration request and integration response\. These involve data mappings between a method and its corresponding integration\. We cover the method setup in [Tutorial: Build a REST API with HTTP non\-proxy integration](api-gateway-create-api-step-by-step.md)\. For now, we focus on testing the API to provide an end\-to\-end user experience\. 
 
 1.  Choose **Test** shown on **Client** \(as shown in the previous image\) to start testing\. For example, to test the `POST /pets` method, enter the following `{"type": "dog","price": 249.99}` payload into the **Request Body** before choosing the **Test** button\.   
 ![\[\]](http://docs.aws.amazon.com/apigateway/latest/developerguide/images/api-gateway-create-api-by-importing-example-post-method-test.png)
@@ -82,4 +77,4 @@ The following procedure walks you through the steps to create and test an API fr
    }
    ```
 
-    Invoking the API method as shown is possible because its **Authorization** type is set to `NONE`\. If the `AWS_IAM` authorization were used, you would sign the request using the [Signature Version 4](https://docs.aws.amazon.com/general/latest/gr/sigv4_signing.html) \(SigV4\) protocols\. For an example of such a request, see [Tutorial: Build an API with HTTP non\-proxy integration](api-gateway-create-api-step-by-step.md)\. 
+    Invoking the API method as shown is possible because its **Authorization** type is set to `NONE`\. If the `AWS_IAM` authorization were used, you would sign the request using the [Signature Version 4](https://docs.aws.amazon.com/general/latest/gr/sigv4_signing.html) \(SigV4\) protocols\. For an example of such a request, see [Tutorial: Build a REST API with HTTP non\-proxy integration](api-gateway-create-api-step-by-step.md)\. 
