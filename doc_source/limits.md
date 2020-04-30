@@ -21,8 +21,8 @@ The following quotas apply at the account level per Region in Amazon API Gateway
 | Resource or operation | Default quota | Can be increased | 
 | --- | --- | --- | 
 | Throttle quota per Region across HTTP APIs, REST APIs, WebSocket APIs, and WebSocket callback APIs | 10,000 requests per second \(RPS\) with an additional burst capacity provided by the [token bucket algorithm](https://en.wikipedia.org/wiki/Token_bucket), using a maximum bucket capacity of 5,000 requests\.  The burst quota is determined by the API Gateway service team based on the overall RPS quota for the account\. It is not a quota that a customer can control or request changes to\.  | Yes | 
-| Regional APIs | 600 | No | 
-| Edge\-optimized APIs | 120 | No | 
+| Number of Regional APIs | 600 | No | 
+| Number of Edge\-optimized APIs | 120 | No | 
 
 ### HTTP API quotas<a name="http-api-quotas"></a>
 
