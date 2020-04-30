@@ -49,7 +49,7 @@ The S3 bucket names and the Amazon Cognito domain prefix are required; the other
 If you don't supply an email address, the **Got an opinion?** doesn't appear in the developer portal\.
    + You can optionally enter a table name in the **DevPortalFeedbackTableName** box\. The default name is **DevPortalFeedback**\. When a customer submits feedback, it is stored in a DynamoDB table with this name\.
 
-1. Select the check box next to **I acknowledge that this app creates custom IAM roles**\.
+1. Select the check box next to **I acknowledge that this app creates custom IAM roles and resource policies**\.
 
 1. Choose **Deploy**\.
 
@@ -106,7 +106,7 @@ The deployment process creates a privately accessible Amazon S3 bucket where the
 This string is used with the Amazon Cognito hosted UI for user sign\-up and sign\-in\. Specify a unique domain name or prefix string\.
 
 **CognitoIdentityPoolName**  
-The deployment process creates an Amazon Cognito identity pool\. The default name for the identity pool is **DevPortalUserPool**\.
+The deployment process creates an Amazon Cognito identity pool\. The default name for the identity pool is **DevPortalIdentityPool**\.
 
 **CustomDomainNameAcmCertArn**  
 If you provided a domain name associated with an ACM certificate, then you must also specify here the ACM certificate's ARN\. Leave this blank to create a developer portal without a custom domain name\.

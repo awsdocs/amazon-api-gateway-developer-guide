@@ -50,7 +50,7 @@ In this step, you create a resource that enables the AWS service proxy to intera
 
 1. In the **Resources** pane, choose the resource root, represented by a single forward slash \(`/`\), and then choose **Create Resource**\.
 
-1. For **Resource Name**, type **MyDemoAWSProxy**, and then choose **Create Resource**\.
+1. For **Resource Name**, enter **MyDemoAWSProxy**, and then choose **Create Resource**\.
 
 ## Step 2: Create the GET method<a name="getting-started-aws-proxy-add-methods"></a>
 
@@ -149,7 +149,7 @@ In this step, you specify the settings for the GET method so that it can interac
 
 1. In the API Gateway console, in the **Resources** pane for the API named `MyDemoAPI`, in **/mydemoawsproxy**, choose **GET**\.
 
-1. In the **Setup** pane, for **Integration type**, choose **Show advanced**, and then choose **AWS Service Proxy**\.
+1. Choose **Integration Request**, and then choose **AWS Service**\.
 
 1. For **AWS Region**, choose the name of the AWS Region where you want to get the Amazon SNS topics\.
 
@@ -157,9 +157,9 @@ In this step, you specify the settings for the GET method so that it can interac
 
 1. For **HTTP method**, choose **GET**\.
 
-1. For **Action**, type **ListTopics**\.
+1. For **Action**, enter **ListTopics**\.
 
-1. For **Execution Role**, type the ARN for the execution role\.
+1. For **Execution Role**, enter the ARN for the execution role\.
 
 1. Leave **Path Override** blank\.
 
@@ -202,7 +202,7 @@ In this step, you deploy the API so that you can call it from outside of the API
 
 1. For **Deployment stage**, choose `test`\.
 
-1. For **Deployment description**, type **Calling AWS service proxy walkthrough**\.
+1. For **Deployment description**, enter **Calling AWS service proxy walkthrough**\.
 
 1. Choose **Deploy**\.
 
