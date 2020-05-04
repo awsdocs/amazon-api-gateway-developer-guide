@@ -35,7 +35,7 @@ Unless noted otherwise, the following quotas can be increased upon request\. To 
 | --- | --- | --- | 
 | Routes per API  | 300 | Yes | 
 | Integrations per API | 300 | No | 
-| Maximum integration timeout | 30 seconds | No | 
+| Maximum integration timeout | 29 seconds (50 milliseconds) | No | 
 | Stages per API | 10 | Yes | 
 | Tags per stage  | 50 | No | 
 | Total combined size of request line and header values | 10240 bytes | No | 
