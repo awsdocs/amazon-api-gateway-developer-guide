@@ -1,9 +1,10 @@
 # API Gateway resources that can be tagged<a name="apigateway-tagging-supported-resources"></a>
 
-Tags can be set on the following HTTP API and WebSocket API resources in the [Amazon API Gateway V2 API](https://docs.aws.amazon.com/apigatewayv2/latest/api-reference/):
+Tags can be set on the following HTTP API or WebSocket API resources in the [Amazon API Gateway V2 API](https://docs.aws.amazon.com/apigatewayv2/latest/api-reference/):
 + `Api`
 + `DomainName`
 + `Stage`
++ `VpcLink`
 
 In addition, tags can be set on the following REST API resources in the [Amazon API Gateway V1 API](https://docs.aws.amazon.com/apigateway/api-reference/):
 + `ApiKey`

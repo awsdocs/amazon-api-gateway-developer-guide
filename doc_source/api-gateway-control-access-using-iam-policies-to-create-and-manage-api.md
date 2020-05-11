@@ -124,3 +124,5 @@ Some example resource expressions include:
 + **arn:aws:apigateway:*region*::/restapis/*api\-id*/models/*model\-name*** for the model with the name of *model\-name*, which is in the API with the identifier of *api\-id* in the AWS region of *region*\.
 + **arn:aws:apigateway:*region*::/restapis/*api\-id*/stages/\*** for all of the stages in the API with the identifier of *api\-id* in the AWS region of *region*\.
 + **arn:aws:apigateway:*region*::/restapis/*api\-id*/stages/*stage\-name*** for just the stage with the name of *stage\-name* in the API with the identifier of *api\-id* in the AWS region of *region*\.
+
+To learn more, see [API Gateway Amazon Resource Name \(ARN\) reference](arn-format-reference.md)\.

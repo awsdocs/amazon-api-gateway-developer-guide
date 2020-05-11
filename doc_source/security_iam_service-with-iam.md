@@ -56,7 +56,7 @@ To specify all REST APIs that belong to a specific account, use the wildcard \(\
 "Resource": "arn:aws:apigateway:us-east-2::/restapis/*"
 ```
 
-To see a list of API Gateway resource types and their ARNs, see [Resources Defined by Amazon API Gateway](https://docs.aws.amazon.com/IAM/latest/UserGuide/list_amazonapigateway.html#amazonapigateway-resources-for-iam-policies) in the *IAM User Guide*\. To learn which actions you can specify the ARN of each resource, see [Actions Defined by Amazon API Gateway](https://docs.aws.amazon.com/IAM/latest/UserGuide/list_amazonapigateway.html#amazonapigateway-actions-as-permissions)\.
+To see a list of API Gateway resource types and their ARNs, see [API Gateway Amazon Resource Name \(ARN\) reference](arn-format-reference.md)\. To learn for which actions you can specify the ARN of each resource, see [Actions Defined by Amazon API Gateway](https://docs.aws.amazon.com/IAM/latest/UserGuide/list_amazonapigateway.html#amazonapigateway-actions-as-permissions)\.
 
 ### Condition keys<a name="security_iam_service-with-iam-id-based-policies-conditionkeys"></a>
 

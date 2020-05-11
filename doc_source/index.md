@@ -292,6 +292,7 @@ Amazon's trademarks and trade dress may not be used in
    + [Monitoring WebSocket APIs](websocket-api-monitor.md)
       + [Monitoring WebSocket API execution with CloudWatch metrics](apigateway-websocket-api-logging.md)
       + [Configuring logging for a WebSocket API](websocket-api-logging.md)
++ [API Gateway Amazon Resource Name (ARN) reference](arn-format-reference.md)
 + [Working with API Gateway extensions to OpenAPI](api-gateway-swagger-extensions.md)
    + [x-amazon-apigateway-any-method object](api-gateway-swagger-extensions-any-method.md)
    + [x-amazon-apigateway-cors object](api-gateway-swagger-extensions-cors-configuration.md)
@@ -344,4 +345,4 @@ Amazon's trademarks and trade dress may not be used in
 + [Amazon API Gateway quotas and important notes](limits.md)
    + [Amazon API Gateway important notes](api-gateway-known-issues.md)
 + [Document history](history.md)
-+ [AWS Glossary](glossary.md)
++ [AWS glossary](glossary.md)

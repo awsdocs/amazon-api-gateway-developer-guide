@@ -150,13 +150,13 @@ The following examples show the output of a Lambda function and API Gateway's in
 | Lambda function output | API Gateway interpretation | 
 | --- | --- | 
 |  <pre>"Hello from Lambda!"</pre>  |  <pre>{<br />  "isBase64Encoded": false,<br />  "statusCode": 200,<br />  "body": "Hello from Lambda!",<br />  "headers": {<br />    "Content-Type": "application/json"<br />  }<br />}</pre>  | 
-|  <pre>{ message: "Hello from Lambda!" }</pre>  |  <pre>{<br />  "isBase64Encoded": false,<br />  "statusCode": 200,<br />  "body": { message: "Hello from Lambda!" },<br />  "headers": {<br />    "Content-Type": "application/json"<br />  }<br />}</pre>  | 
+|  <pre>{ "message": "Hello from Lambda!" }</pre>  |  <pre>{<br />  "isBase64Encoded": false,<br />  "statusCode": 200,<br />  "body": "{ \"message\": \"Hello from Lambda!\" }",<br />  "headers": {<br />    "Content-Type": "application/json"<br />  }<br />}</pre>  | 
 
-To customize the response, your Lambda function should return a response the following format\.
+To customize the response, your Lambda function should return a response with the following format\.
 
 ```
 {
-    "cookies" : ["cookie1", "cookie2"]
+    "cookies" : ["cookie1", "cookie2"],
     "isBase64Encoded": true|false,
     "statusCode": httpStatusCode,
     "headers": { "headerName": "headerValue", ... },

@@ -139,3 +139,5 @@ Some example resource expressions include:
 + **arn:aws:execute\-api:us\-east\-1:\*:*api\-id*/`test`/\*** for resource path in the stage of `test`, for the API with the identifier of *api\-id* in the AWS region of us\-east\-1\.
 + **arn:aws:execute\-api:us\-east\-1:\*:*api\-id*/`test`/\*/mydemoresource/\*** for any resource path along the path of `mydemoresource`, for any HTTP method in the stage of `test`, for the API with the identifier of *api\-id* in the AWS region of us\-east\-1\.
 + **arn:aws:execute\-api:us\-east\-1:\*:*api\-id*/`test`/GET/mydemoresource/\*** for GET methods under any resource path along the path of `mydemoresource`, in the stage of `test`, for the API with the identifier of *api\-id* in the AWS region of us\-east\-1\. 
+
+To learn more, see [API Gateway Amazon Resource Name \(ARN\) reference](arn-format-reference.md)\.

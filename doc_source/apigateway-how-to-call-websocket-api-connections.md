@@ -37,9 +37,6 @@ To disconnect the client, use:
 DELETE https://{api-id}.execute-api.us-east-1.amazonaws.com/{stage}/@connections/{connection_id}
 ```
 
-**Note**  
-Postman doesn't encode the `@connections` URL, so you need to replace `=` and `@` characters in the encoded URL\.
-
 You can dynamically build a callback URL by using the `$context` variables in your integration\. For example, if you use Lambda proxy integration with a `Node.js` Lambda function, you can build the URL as follows:
 
 ```
