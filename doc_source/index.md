@@ -316,6 +316,7 @@ Amazon's trademarks and trade dress may not be used in
    + [x-amazon-apigateway-integration.response object](api-gateway-swagger-extensions-integration-response.md)
    + [x-amazon-apigateway-integration.responseTemplates object](api-gateway-swagger-extensions-integration-responseTemplates.md)
    + [x-amazon-apigateway-integration.responseParameters object](api-gateway-swagger-extensions-integration-responseParameters.md)
+   + [x-amazon-apigateway-policy](openapi-extensions-policy.md)
    + [x-amazon-apigateway-request-validator property](api-gateway-swagger-extensions-request-validator.md)
    + [x-amazon-apigateway-request-validators object](api-gateway-swagger-extensions-request-validators.md)
    + [x-amazon-apigateway-request-validators.requestValidator object](api-gateway-swagger-extensions-request-validators.requestValidator.md)

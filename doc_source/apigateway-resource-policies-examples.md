@@ -1,6 +1,8 @@
 # API Gateway resource policy examples<a name="apigateway-resource-policies-examples"></a>
 
-This page presents a few examples of typical use cases for API Gateway resource policies\. The policies use *account\-id* and *api\-id* strings in the resource value\. To test these policies, you need to replace these strings with your own account ID and API ID\. For information about access policy language, see [Access policy language overview for Amazon API Gateway](apigateway-control-access-policy-language-overview.md)\.
+This page presents a few examples of typical use cases for API Gateway resource policies\.
+
+The following example policies use a simplified syntax to specify the API resource\. This simplified syntax is an abbreviated way that you can refer to an API resource, instead of specifying the full Amazon Resource Name \(ARN\)\. API Gateway converts the abbreviated syntax to the full ARN when you save the policy\. For example, you can specify the resource `execute-api:/stage-name/GET/pets` in a resource policy\. API Gateway converts the resource to `arn:aws:execute-api:us-east-2:123456789012:aabbccddee/stage-name/GET/pets` when you save the resource policy\. API Gateway builds the full ARN by using the current Region, your AWS account ID, and the ID of the REST API that the resource policy is associated with\. You can use `execute-api:/*` to represent all stages, methods, and paths in the current API\. For information about access policy language, see [Access policy language overview for Amazon API Gateway](apigateway-control-access-policy-language-overview.md)\.
 
 **Topics**
 + [Example: Allow users in another AWS account to use an API](#apigateway-resource-policies-cross-account-example)
@@ -10,7 +12,7 @@ This page presents a few examples of typical use cases for API Gateway resource 
 
 ## Example: Allow users in another AWS account to use an API<a name="apigateway-resource-policies-cross-account-example"></a>
 
-The following example resource policy grants API access in one AWS account to two users in a different AWS account via [Signature Version 4](https://docs.aws.amazon.com/general/latest/gr/sigv4_signing.html) \(SigV4\) protocols\. Specifically, Alice and the root user for the AWS account identified by `account-id-2` are granted the `execute-api:Invoke` action to execute the `GET` action on the `pets` resource \(API\) in the AWS account identified by `account-id-1`\.
+The following example resource policy grants API access in one AWS account to two users in a different AWS account via [Signature Version 4](https://docs.aws.amazon.com/general/latest/gr/sigv4_signing.html) \(SigV4\) protocols\. Specifically, Alice and the root user for the AWS account identified by `account-id-2` are granted the `execute-api:Invoke` action to execute the `GET` action on the `pets` resource \(API\) in your AWS account\.
 
 ```
 {
@@ -26,7 +28,7 @@ The following example resource policy grants API access in one AWS account to tw
             },
             "Action": "execute-api:Invoke",
             "Resource": [
-                "arn:aws:execute-api:region:account-id-1:api-id/stage/GET/pets"
+                "execute-api:/stage/GET/pets"
             ]
         }
     ]
@@ -46,7 +48,7 @@ The following example resource policy is a "blacklist" policy that denies \(bloc
             "Principal": "*",
             "Action": "execute-api:Invoke",
             "Resource": [
-                "arn:aws:execute-api:region:account-id:api-id/*"
+                "execute-api:/*"
             ]
         },
         {
@@ -54,7 +56,7 @@ The following example resource policy is a "blacklist" policy that denies \(bloc
             "Principal": "*",
             "Action": "execute-api:Invoke",
             "Resource": [
-               "arn:aws:execute-api:region:account-id:api-id/*"
+               "execute-api:/*"
             ],
             "Condition" : {
                 "IpAddress": {
@@ -79,7 +81,7 @@ The following example resource policy denies \(blocks\) incoming traffic to a pr
             "Principal": "*",
             "Action": "execute-api:Invoke",
             "Resource": [
-                "arn:aws:execute-api:region:account-id:api-id/*"
+                "execute-api:/*"
             ]
         },
         {
@@ -87,7 +89,7 @@ The following example resource policy denies \(blocks\) incoming traffic to a pr
             "Principal": "*",
             "Action": "execute-api:Invoke",
             "Resource": [
-               "arn:aws:execute-api:region:account-id:api-id/*"
+               "execute-api:/*"
             ],
             "Condition" : {
                 "IpAddress": {
@@ -114,7 +116,7 @@ This example resource policy specifies a source VPC:
             "Principal": "*",
             "Action": "execute-api:Invoke",
             "Resource": [
-                "arn:aws:execute-api:region:account-id:api-id/*"
+                "execute-api:/*"
             ]
         },
         {
@@ -122,7 +124,7 @@ This example resource policy specifies a source VPC:
             "Principal": "*",
             "Action": "execute-api:Invoke",
             "Resource": [
-                "arn:aws:execute-api:region:account-id:api-id/*"
+                "execute-api:/*"
             ],
             "Condition" : {
                 "StringNotEquals": {
@@ -145,7 +147,7 @@ This example resource policy specifies a source VPC endpoint:
             "Principal": "*",
             "Action": "execute-api:Invoke",
             "Resource": [
-                "arn:aws:execute-api:region:account-id:api-id/*"
+                "execute-api:/*"
             ]
         },
         {
@@ -153,7 +155,7 @@ This example resource policy specifies a source VPC endpoint:
             "Principal": "*",
             "Action": "execute-api:Invoke",
             "Resource": [
-                "arn:aws:execute-api:region:account-id:api-id/*"
+                "execute-api:/*"
             ],
             "Condition" : {
                 "StringNotEquals": {

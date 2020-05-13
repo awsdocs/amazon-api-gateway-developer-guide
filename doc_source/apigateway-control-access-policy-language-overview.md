@@ -9,9 +9,9 @@ For information about how an AWS service decides whether a given request should 
 ## Common elements in an access policy<a name="apigateway-common-elements-in-an-access-policy"></a>
 
 In its most basic sense, a resource policy contains the following elements:
-+ **Resources** – APIs are the Amazon API Gateway resources for which you can allow or deny permissions\. In a policy, you use the Amazon Resource Name \(ARN\) to identify the resource\.
++ **Resources** – APIs are the Amazon API Gateway resources for which you can allow or deny permissions\. In a policy, you use the Amazon Resource Name \(ARN\) to identify the resource\. You can also use abbreviated syntax, which API Gateway automatically expands to the full ARN when you save a resource policy\. To learn more, see [API Gateway resource policy examples](apigateway-resource-policies-examples.md)\.
 
-  For the format of the `Resource` element, see [Resource format of permissions for executing API in API Gateway](api-gateway-control-access-using-iam-policies-to-invoke-api.md#api-gateway-iam-policy-resource-format-for-executing-api)\.
+  For the format of the full `Resource` element, see [Resource format of permissions for executing API in API Gateway](api-gateway-control-access-using-iam-policies-to-invoke-api.md#api-gateway-iam-policy-resource-format-for-executing-api)\.
 + **Actions** – For each resource, Amazon API Gateway supports a set of operations\. You identify resource operations that you will allow \(or deny\) by using action keywords\.
 
   For example, the `apigateway:invoke` permission will allow the user permission to invoke an API upon a client request\.
