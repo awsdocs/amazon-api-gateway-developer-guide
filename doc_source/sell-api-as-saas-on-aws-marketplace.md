@@ -4,8 +4,6 @@ After you build, test, and deploy your APIs, you can package them in an API Gate
 
 To sell your APIs on AWS Marketplace, you must set up the sales channel to integrate AWS Marketplace with API Gateway\. Generally speaking, this involves listing your product on AWS Marketplace, setting up an IAM role with appropriate policies to allow API Gateway to send usage metrics to AWS Marketplace, associating an AWS Marketplace product with an API Gateway usage plan, and associating an AWS Marketplace buyer with an API Gateway API key\. Details are discussed in the following sections\.
 
-For a sample developer portal application, see the [API Gateway Developer Portal](https://github.com/awslabs/aws-api-gateway-developer-portal)\.
-
 For more information about selling your API as a SaaS product on AWS Marketplace, see the [AWS Marketplace User Guide](https://docs.aws.amazon.com/marketplace/latest/userguide/)\.
 
 **Topics**
