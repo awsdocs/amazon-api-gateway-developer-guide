@@ -6,7 +6,7 @@ You can use HTTP APIs to send requests to AWS Lambda functions or to any routabl
 
 For example, you can create an HTTP API that integrates with a Lambda function on the backend\. When a client calls your API, API Gateway sends the request to the Lambda function and returns the function's response to the client\.
 
-HTTP APIs support [OpenID Connect](https://openid.net/connect/) and [OAuth 2\.0](https://oauth.net/2/) authorization\. They come with built\-in support for cross\-origin resource sharing \(CORS\) and automatic deployments\.
+HTTP APIs support [OpenID Connect](https://openid.net/connect/) and [OAuth 2\/-0](https://oauth.net/2/) authorization\. They come with built\-in support for cross\-origin resource sharing \(CORS\) and automatic deployments\.
 
 You can create HTTP APIs by using the AWS Management Console, the AWS CLI, APIs, AWS CloudFormation, or SDKs\. HTTP APIs use API Gateway [Version 2 APIs](https://docs.aws.amazon.com/apigatewayv2/latest/api-reference/api-reference.html), which previously supported only WebSocket APIs\.
 
