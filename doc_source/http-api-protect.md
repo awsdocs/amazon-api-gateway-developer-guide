@@ -30,3 +30,12 @@ The account\-level rate limit can be increased upon request\. To request an incr
 ### Route\-level throttling<a name="http-api-protect-throttling-route"></a>
 
 You can set route\-level throttling to override the account\-level request throttling limits for a specific stage or for individual routes in your API\. The default route throttling limits are bounded by the account\-level rate limits, even if you set the default route throttling limits higher than the account\-level limits\. 
+
+You can configure route\-level throttling by using the AWS CLI\. The following command configures custom throttling for the specified stage and route of an API\.
+
+```
+aws apigatewayv2 update-stage \
+    --api-id a1b2c3d4 \
+    --stage-name dev \
+    --route-settings '{"GET /pets":{"ThrottlingBurstLimit":100,"ThrottlingRateLimit":2000}}'
+```
