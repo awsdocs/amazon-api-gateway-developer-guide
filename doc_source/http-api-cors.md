@@ -21,6 +21,10 @@ You can specify the following parameters in a CORS configuration\.
 |  Access\-Control\-Allow\-Methods  |  allowMethods  |  GET, POST, DELETE, \*  | 
 |  Access\-Control\-Allow\-Headers  |  allowHeaders  |  Authorization, \*  | 
 
+## Configuring CORS for an HTTP API with a `$default` route and JWT authorizer<a name="http-api-cors-default-route"></a>
+
+You can enable CORS and configure authorization for any route of an HTTP API\. When you enable CORS and authorization for the [`$default` route](https://docs.aws.amazon.com/apigateway/latest/developerguide/http-api-develop-routes.html#http-api-develop-routes.default), there are some special considerations\. The `$default` route catches requests for all methods and routes that you haven't explicitly defined, including `OPTIONS` requests\. To support unauthorized `OPTIONS` requests, add an `OPTIONS /{proxy+}` route to your API that doesn't require authorization\. The `OPTIONS /{proxy+}` route has higher priority than the `$default` route\. As a result, it enables clients to submit `OPTIONS` requests to your API without authorization\. For more information about routing priorities, see [Routing API requests](http-api-develop-routes.md#http-api-develop-routes.evaluation)\.
+
 ## Configure CORS for an HTTP API by using the AWS CLI<a name="http-api-cors.example"></a>
 
 You can use the following command to enable CORS requests from `https://www.example.com`\.
