@@ -12,7 +12,7 @@ To enable logging for an HTTP API, you must do the following\.
 
 1. Provide the ARN of the CloudWatch Logs log group for a stage of your API\.
 
-### Permissions to enable logging<a name="http-api-logging.permissions"></a>
+## Permissions to enable logging<a name="http-api-logging.permissions"></a>
 
 To enable logging for an API, your IAM user must have the following permissions\.
 
@@ -50,7 +50,21 @@ To enable logging for an API, your IAM user must have the following permissions\
 }
 ```
 
-### <a name="http-api-logging.console"></a>
+## Creating a log group<a name="http-api-logging.create-log-group"></a>
+
+**To create a log group by using the AWS Management Console**
+
+1. Open the CloudWatch console at [https://console\.aws\.amazon\.com/cloudwatch/](https://console.aws.amazon.com/cloudwatch/)\.
+
+1. Choose **Log groups**\.
+
+1. Choose **Create log group**\.
+
+1. Enter a log group name, and then choose **Create**\.
+
+1. Note the Amazon Resource Name \(ARN\) for your log group\. The ARN format is arn:aws:logs:*region*: *account\-id*:log\-group:*log\-group\-name*\. You need the log group ARN to enable access logging for your HTTP API\.
+
+## Enabling logging for a stage<a name="http-api-enable-logging.console"></a>
 
 **To enable logging by using the AWS Management Console**
 

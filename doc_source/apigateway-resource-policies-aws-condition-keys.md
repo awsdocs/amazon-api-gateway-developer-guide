@@ -22,7 +22,6 @@ For more information about AWS condition keys, see [AWS Global Condition Context
 | aws:PrincipalType | None | Yes | IAM | 
 | aws:Referer | Key is present only if the value is provided by the caller in the HTTP header\. | No | All | 
 | aws:SecureTransport | None | No | All | 
-| aws:SourceArn | None | No | All | 
 | aws:SourceIp | None | No | All | 
 | aws:SourceVpc | This key can be used only for private APIs\. | No | All | 
 | aws:SourceVpce | This key can be used only for private APIs\. | No | All | 

@@ -103,7 +103,7 @@ The following quotas apply to configuring and running a REST API in Amazon API G
 | Number of iterations in a \#foreach \.\.\. \#end loop in mapping templates | 1000 | No | 
 | ARN length of a method with authorization | 1600 bytes | No | 
 
-For [restapi:import](https://docs.aws.amazon.com/apigateway/api-reference/link-relation/restapi-import/) or [restapi:put](https://docs.aws.amazon.com/apigateway/api-reference/link-relation/restapi-put/), the maximum size of the API definition file is 2 MB\. 
+For [restapi:import](https://docs.aws.amazon.com/apigateway/api-reference/link-relation/restapi-import/) or [restapi:put](https://docs.aws.amazon.com/apigateway/api-reference/link-relation/restapi-put/), the maximum size of the API definition file is 6 MB\. 
 
 All of the per\-API quotas can only be increased on specific APIs\.
 

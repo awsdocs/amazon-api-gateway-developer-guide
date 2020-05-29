@@ -45,70 +45,53 @@ For a mock integration, you enable CORS by creating an `OPTIONS` method to retur
 
 ### Enabling CORS support for Lambda or HTTP non\-proxy integrations and AWS service integrations<a name="apigateway-enable-cors-nonproxy"></a>
 
-For a Lambda custom \(non\-proxy\) integration, HTTP custom \(non\-proxy\) integration, or AWS service integration, you can set up the required headers by using API Gateway method response and integration response settings\. API Gateway creates an `OPTIONS` method and attempts to add the `Access-Control-Allow-Origin` header to your existing method integration responses\. This doesn’t always work, and sometimes you need to manually modify the integration response to properly enable CORS\. Usually this just means manually modifying the integration response to return the `Access-Control-Allow-Origin` header\.
+For a Lambda custom \(non\-proxy\) integration, HTTP custom \(non\-proxy\) integration, or AWS service integration, you can set up the required headers by using API Gateway method response and integration response settings\. When you enable CORS by using the AWS Management Console, API Gateway creates an `OPTIONS` method and attempts to add the `Access-Control-Allow-Origin` header to your existing method integration responses\. This doesn’t always work, and sometimes you need to manually modify the integration response to properly enable CORS\. Usually this just means manually modifying the integration response to return the `Access-Control-Allow-Origin` header\.
 
 ### Enabling CORS support for Lambda or HTTP proxy integrations<a name="apigateway-enable-cors-proxy"></a>
 
 For a Lambda proxy integration or HTTP proxy integration, you can still set up the required `OPTIONS` response headers in API Gateway\. However, your backend is responsible for returning the `Access-Control-Allow-Origin` and `Access-Control-Allow-Headers` headers, because a proxy integration doesn't return an integration response\.
 
-The following is an example of a Node\.js Lambda function that is configured to return the required CORS headers:
+The following example Lambda functions return the required CORS headers:
+
+------
+#### [ Node\.js ]
 
 ```
-'use strict';
-
-exports.handler = function(event, context) {
-    
-    var responseCode = 200;
-    
-    var response = {
-        statusCode: responseCode,
+exports.handler = async (event) => {
+    const response = {
+        statusCode: 200,
         headers: {
-            "x-custom-header" : "my custom header value",
-            "Access-Control-Allow-Origin": "my-origin.com"
+            "Access-Control-Allow-Headers" : "Content-Type",
+            "Access-Control-Allow-Origin": "https://www.example.com",
+            "Access-Control-Allow-Methods": "OPTIONS,POST,GET"
         },
-        body: JSON.stringify(event)
+        body: JSON.stringify('Hello from Lambda!),
     };
-    
-    context.succeed(response);
+    return response;
 };
 ```
 
-For a more complete Node\.js example, see [GitHub](https://github.com/awslabs/serverless-application-model/blob/master/examples/2016-10-31/api_swagger_cors/index.js)\.
-
-The following is an example of a Python code snippet that returns the required CORS headers:
-
-```
-response["headers"] = {
-    'Content-Type': 'application/json', 
-    'Access-Control-Allow-Origin': '*' 
-}
-```
-
-The following is an example that returns the required headers for CORS by using the AWS Serverless Application Model \(AWS SAM\), including `AllowHeaders`:
+------
+#### [ Python 3 ]
 
 ```
-Globals:
-  Api:
-    # Allows an application running locally on port 8080 to call this API
-    Cors:
-      AllowMethods: "'OPTIONS,POST,GET'"
-      AllowHeaders: "'Content-Type'"
-      AllowOrigin: "'http://localhost:8080'"
+import json
+
+def lambda_handler(event, context):
+    return {
+        'statusCode': 200,
+        'headers': {
+            'Access-Control-Allow-Headers': 'Content-Type',
+            'Access-Control-Allow-Origin': 'https://www.example.com,
+            'Access-Control-Allow-Methods': 'OPTIONS,POST,GET'
+        },
+        'body': json.dumps('Hello from Lambda!')
+    };
 ```
 
-The following is a Lambda proxy example that returns the same headers as the AWS SAM example:
+------
 
-```
-return {
-    'statusCode': 200,
-    'headers': {
-        "Access-Control-Allow-Origin": "http://localhost:8080",
-        "Access-Control-Allow-Headers": "Content-Type",
-        "Access-Control-Allow-Methods": "OPTIONS,POST,GET"
-    },
-    'body': json.dumps(response)
-}
-```
+For a Node\.js example that uses the AWS Serverless Application Model, see [GitHub](https://github.com/awslabs/serverless-application-model/blob/master/examples/2016-10-31/api_swagger_cors/index.js)\.
 
 **Topics**
 + [Determining whether to enable CORS support](#apigateway-cors-request-types)
