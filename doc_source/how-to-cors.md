@@ -65,7 +65,7 @@ exports.handler = async (event) => {
             "Access-Control-Allow-Origin": "https://www.example.com",
             "Access-Control-Allow-Methods": "OPTIONS,POST,GET"
         },
-        body: JSON.stringify('Hello from Lambda!),
+        body: JSON.stringify('Hello from Lambda!'),
     };
     return response;
 };
