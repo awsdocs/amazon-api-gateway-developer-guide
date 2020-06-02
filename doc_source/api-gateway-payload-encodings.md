@@ -10,7 +10,7 @@ Depending on the `contentHandling` value, and whether the `Content-Type` header 
 
 You must configure the API as follows to support binary payloads for your API in API Gateway: 
 + Add the desired binary media types to the `binaryMediaTypes` list on the [RestApi](https://docs.aws.amazon.com/apigateway/api-reference/resource/rest-api/) resource\. If this property and the `contentHandling` property are not defined, the payloads are handled as UTF\-8 encoded JSON strings\.
-+ Set the `contentHandling` property of the [Integration](https://docs.aws.amazon.com/apigateway/api-reference/resource/integration/) resource to `CONVERT_TO_BINARY` to have the request payload converted from a base64\-encoded string to its binary blob, or set the property to `CONVERT_TO_TEXT` to have the request payload converted from a binary blob to a base64\-encoded string\. If this property is not defined, API Gateway passes the payload through without modification\. This occurs when the `Content-Type` header value matches one of the `binaryMediaTypes` entries and the [passthrough behaviors](integration-passthrough-behaviors.md) are also enabled for the API\. 
++ Set the `contentHandling` property of the [IntegrationRequest](https://docs.aws.amazon.com/apigateway/api-reference/resource/integration/) resource to `CONVERT_TO_BINARY` to have the request payload converted from a base64\-encoded string to its binary blob, or set the property to `CONVERT_TO_TEXT` to have the request payload converted from a binary blob to a base64\-encoded string\. If this property is not defined, API Gateway passes the payload through without modification\. This occurs when the `Content-Type` header value matches one of the `binaryMediaTypes` entries and the [passthrough behaviors](integration-passthrough-behaviors.md) are also enabled for the API\. 
 + Set the `contentHandling` property of the [IntegrationResponse](https://docs.aws.amazon.com/apigateway/api-reference/resource/integration-response/) resource to `CONVERT_TO_BINARY` to have the response payload converted from a base64\-encoded string to its binary blob, or set the property to `CONVERT_TO_TEXT` to have the response payload converted from a binary blob to a base64\-encoded string\. 
 
   If `contentHandling` isn't defined, and if the `Content-Type` header of the response and the `Accept` header of the original request match an entry of the `binaryMediaTypes` list, API Gateway passes through the body\. This occurs when the `Content-Type` header and the `Accept` header are the same\. Otherwise, API Gateway converts the response body to the type specified in the `Accept` header\. 
@@ -18,6 +18,9 @@ You must configure the API as follows to support binary payloads for your API in
 **Tip**  
 When a request contains multiple media types in its `Accept` header, API Gateway only honors the first `Accept` media type\. In the situation where you can't control the order of the `Accept` media types and the media type of your binary content isn't the first in the list, you can add the first `Accept` media type in the `binaryMediaTypes` list of your API\. API Gateway returns your content as binary\.   
 For example, to send a JPEG file using an `<img>` element in a browser, the browser might send `Accept:image/webp,image/*,*/*;q=0.8` in a request\. By adding `image/webp` to the `binaryMediaTypes` list, the endpoint receives the JPEG file as binary\. 
+
+**Tip**
+If you are serving an image from S3, you will need to add `image/webp` to the `binaryMediaTypes` list, and set the `Content-Type` metadata attribute on the image in S3 to `image/webp`
 
 **Topics**
 + [Content type conversions in API Gateway](api-gateway-payload-encodings-workflow.md)
