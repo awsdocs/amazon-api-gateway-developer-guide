@@ -296,7 +296,7 @@ To test the `GET` method, copy the following `cURL` command and paste it into th
 
 ```
 curl -X GET \
-  'https://r275xc9bmd.execute-api.us-east-1.amazonaws.com/test/helloworld?Seattle?name=John' \
+  'https://r275xc9bmd.execute-api.us-east-1.amazonaws.com/test/helloworld?name=John&city=Seattle' \
   -H 'content-type: application/json' \
   -H 'day: Thursday'
 ```

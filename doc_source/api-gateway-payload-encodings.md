@@ -19,9 +19,6 @@ You must configure the API as follows to support binary payloads for your API in
 When a request contains multiple media types in its `Accept` header, API Gateway only honors the first `Accept` media type\. In the situation where you can't control the order of the `Accept` media types and the media type of your binary content isn't the first in the list, you can add the first `Accept` media type in the `binaryMediaTypes` list of your API\. API Gateway returns your content as binary\.   
 For example, to send a JPEG file using an `<img>` element in a browser, the browser might send `Accept:image/webp,image/*,*/*;q=0.8` in a request\. By adding `image/webp` to the `binaryMediaTypes` list, the endpoint receives the JPEG file as binary\. 
 
-**Tip**
-If you are serving an image from S3, you will need to add `image/webp` to the `binaryMediaTypes` list, and set the `Content-Type` metadata attribute on the image in S3 to `image/webp`
-
 **Topics**
 + [Content type conversions in API Gateway](api-gateway-payload-encodings-workflow.md)
 + [Enabling binary support using the API Gateway console](api-gateway-payload-encodings-configure-with-console.md)

@@ -1,6 +1,6 @@
-# Setting up AWS X\-Ray with API Gateway<a name="apigateway-enabling-xray"></a>
+# Setting up AWS X\-Ray with API Gateway REST APIs<a name="apigateway-enabling-xray"></a>
 
-In this section you can find detailed information on how to set up [AWS X\-Ray](https://docs.aws.amazon.com/xray/latest/devguide/xray-services-apigateway.html) with API Gateway\.
+In this section you can find detailed information on how to set up [AWS X\-Ray](https://docs.aws.amazon.com/xray/latest/devguide/xray-services-apigateway.html) with API Gateway REST APIs\.
 
 **Topics**
 + [X\-Ray tracing modes for API Gateway](#apigateway-tracing-modes)

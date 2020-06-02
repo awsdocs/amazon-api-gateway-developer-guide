@@ -16,7 +16,7 @@ The **Invoke URL** link points to the root resource of the API in its **beta** s
 
 1. In the **Stages** navigation pane, choose the **prod** stage\. From **prod Stage Editor** , choose the **Invoke URL** link\. This starts the **prod** stage `GET` request on the root resource of the API\. 
 
-1. The response you get from the **prod** stage `GET` request is shown next\. You can verify the result by using a browser to navigate to **http://petstore\-demo\-endpoint\-execute\-api\.com/petstore/pets**\. This value was assigned to the `url` variable in the **prod** stage\. The two responses are identical\. 
+1. The response you get from the **prod** stage `GET` request is shown next\. You can verify the result by using a browser to navigate to **http://petstore\-demo\-endpoint\.execute\-api\.com/petstore/pets**\. This value was assigned to the `url` variable in the **prod** stage\. The two responses are identical\. 
 
 ## Pass stage\-specific metadata to an HTTP backend through a stage variable in a query parameter expression<a name="call-api-http-backend-with-query-parameter-via-stage-variables"></a>
 

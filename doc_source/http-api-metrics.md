@@ -7,8 +7,8 @@ The following metrics are supported for HTTP APIs\. You can also enable detailed
 
 | Metric | Description | 
 | --- | --- | 
-| 4XXError | The number of client\-side errors captured in a given period\. | 
-| 5XXError | The number of server\-side errors captured in a given period\. | 
+| 4xx | The number of client\-side errors captured in a given period\. | 
+| 5xx | The number of server\-side errors captured in a given period\. | 
 | Count | The total number API requests in a given period\. | 
 | IntegrationLatency | The time between when API Gateway relays a request to the backend and when it receives a response from the backend\. | 
 | Latency | The time between when API Gateway receives a request from a client and when it returns a response to the client\. The latency includes the integration latency and other API Gateway overhead\. | 

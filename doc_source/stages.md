@@ -147,7 +147,7 @@ If needed, choose **Create Web ACL** to open the AWS WAF console in a new browse
 
    1. If desired, choose **Set X\-Ray Sampling Rules** and go to the X\-Ray console to [configure sampling rules](https://docs.aws.amazon.com/xray/latest/devguide/xray-console-sampling.html)\.
 
-   For more information, see [Tracing user requests using X\-Ray](apigateway-xray.md)\.
+   For more information, see [Tracing user requests to REST APIs using X\-Ray](apigateway-xray.md)\.
 
 1. Choose **Save Changes**\. The new settings take effect after you redeploy the API to the stage\.
 

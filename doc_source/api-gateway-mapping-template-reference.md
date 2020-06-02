@@ -65,7 +65,7 @@ For `$context` variables that can be used only in CloudWatch access logging, see
 | $context\.stage |  The deployment stage of the API request \(for example, `Beta` or `Prod`\)\.  | 
 | $context\.wafResponseCode |  The response received from [AWS WAF](https://docs.aws.amazon.com/waf/latest/developerguide/waf-chapter.html): `WAF_ALLOW` or `WAF_BLOCK`\. Will not be set if the stage is not associated with a web ACL\. For more information, see [Using AWS WAF to protect your APIs](apigateway-control-access-aws-waf.md)\.  | 
 | $context\.webaclArn |  The complete ARN of the web ACL that is used to decide whether to allow or block the request\. Will not be set if the stage is not associated with a web ACL\. For more information, see [Using AWS WAF to protect your APIs](apigateway-control-access-aws-waf.md)\.  | 
-| $context\.xrayTraceId |  The trace ID for the X\-Ray trace\. For more information, see [Setting up AWS X\-Ray with API Gateway](apigateway-enabling-xray.md)\.  | 
+| $context\.xrayTraceId |  The trace ID for the X\-Ray trace\. For more information, see [Setting up AWS X\-Ray with API Gateway REST APIs](apigateway-enabling-xray.md)\.  | 
 
 ## `$context` Variable template example<a name="context-variables-template-example"></a>
 

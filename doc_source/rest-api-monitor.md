@@ -13,4 +13,4 @@ Excessive 429 Too Many Requests errors
 + [Monitoring REST API execution with Amazon CloudWatch metrics](monitoring-cloudwatch.md)
 + [Setting up CloudWatch logging for a REST API in API Gateway](set-up-logging.md)
 + [Logging API calls to Kinesis Data Firehose](apigateway-logging-to-kinesis.md)
-+ [Tracing user requests using X\-Ray](apigateway-xray.md)
++ [Tracing user requests to REST APIs using X\-Ray](apigateway-xray.md)
