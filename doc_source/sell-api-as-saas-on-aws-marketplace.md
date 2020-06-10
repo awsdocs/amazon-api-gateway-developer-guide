@@ -75,6 +75,14 @@ Authorization: ...
 }
 ```
 
+The following is the same example using [AWS CLI for API Gateway](https://docs.aws.amazon.com/cli/latest/reference/apigateway/update-usage-plan.html):
+
+```
+$ aws apigateway update-usage-plan \
+--usage-plan-id "USAGE_PLAN_ID" \
+--patch-operations "op=replace,path=/productCode,value=MARKETPLACE_PRODUCT_CODE"
+```
+
 ## Handle customer subscription to usage plans<a name="sell-api-as-saas-on-aws-marketplace-subscription-unsubscription"></a>
 
 The following tasks are handled by your developer portal application\.
@@ -90,6 +98,8 @@ When a customer cancels a subscription to a usage plan, AWS Marketplace sends an
 ### Authorize a customer to access a usage plan<a name="sell-api-as-saas-on-aws-marketplace-subscription-unsubscription-authorize-access-to-usage-plan"></a>
 
 To authorize access to your usage plan for a given customer, use the API Gateway API to fetch or create an API key for the customer and add the API key to the usage plan\. 
+
+#### Create an API key
 
 The following example shows how to call the API Gateway REST API to create a new API key with a specific AWS Marketplace `customerId` value \(*MARKETPLACE\_CUSTOMER\_ID*\)\.
 
@@ -110,6 +120,18 @@ Authorization: ...
 }
 ```
 
+The following is the same example using [AWS CLI for API Gateway](https://docs.aws.amazon.com/cli/latest/reference/apigateway/create-api-key.html):
+
+```
+$ aws apigateway create-api-key \
+--name "my_api_key" \
+--description "My API key" \
+--no-enabled \
+--customer-id "MARKETPLACE_CUSTOMER_ID"
+```
+
+#### Fetch an API key
+
 The following example shows how to get an API key with a specific AWS Marketplace `customerId` value \(*MARKETPLACE\_CUSTOMER\_ID*\)\.
 
 ```
@@ -117,6 +139,14 @@ GET apikeys?customerId=MARKETPLACE_CUSTOMER_ID HTTP/1.1
 Host: apigateway.region.amazonaws.com
 Authorization: ...
 ```
+
+The following is the same example using [AWS CLI for API Gateway](https://docs.aws.amazon.com/cli/latest/reference/apigateway/get-api-keys.html):
+
+```
+$ aws apigateway get-api-keys --customer-id "MARKETPLACE_CUSTOMER_ID"
+```
+
+#### Add an API key to a usage plan
 
 To add an API key to a usage plan, create a [https://docs.aws.amazon.com/apigateway/api-reference/resource/usage-plan-key/](https://docs.aws.amazon.com/apigateway/api-reference/resource/usage-plan-key/) with the API key for the relevant usage plan\. The following example shows how to accomplish this using the API Gateway REST API, where `n371pt` is the usage plan ID and `q5ugs7qjjh` is an example API `keyId` returned from the preceding examples\.
 
@@ -129,6 +159,15 @@ Authorization: ...
     "keyId": "q5ugs7qjjh",
     "keyType": "API_KEY"
 }
+```
+
+The following is the same example using [AWS CLI for API Gateway](https://docs.aws.amazon.com/cli/latest/reference/apigateway/create-usage-plan-key.html):
+
+```
+$ aws apigateway create-usage-plan-key \
+--usage-plan-id "n371pt" \
+--key-id "q5ugs7qjjh" \
+--key-type "API_KEY"
 ```
 
 ### Associate a customer with an API key<a name="sell-api-as-saas-on-aws-marketplace-subscription-unsubscription-associate-marketplace"></a>
@@ -147,4 +186,12 @@ Authorization: ...
         "op" : "replace"
     }]
 }
+```
+
+The following is the same example using [AWS CLI for API Gateway](Reference https://docs.aws.amazon.com/cli/latest/reference/apigateway/update-api-key.html):
+
+```
+$ aws apigateway update-api-key \
+--api-key "q5ugs7qjjh" \
+--patch-operations "op=replace,path=/customerId,value=MARKETPLACE_CUSTOMER_ID"
 ```
