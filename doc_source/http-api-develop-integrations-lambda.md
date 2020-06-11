@@ -24,7 +24,7 @@ Format `2.0` includes a new `cookies` field\. All cookie headers in the request 
       cookies: [ 'cookie1', 'cookie2' ],
       headers: {
         'Header1': 'value1',
-        'Header2': 'value2'
+        'Header2': 'value1,value2'
       },
       queryStringParameters: { parameter1: 'value1,value2', parameter2: 'value' },
       requestContext: {
