@@ -44,7 +44,7 @@ You can simply use a static value, or you can use multiple variables\. The follo
 | $request\.body\.action | join | An unwrapped variable | 
 | $\{request\.body\.action\} | join | A wrapped variable | 
 | $\{request\.body\.service\}/$\{request\.body\.action\} | chat/join | Multiple variables with static values | 
-| $\{request\.body\.action\}\-$\{request\.body\.invalidPath\}  | join | If the JSONPath is not found, the variable is resolved as ""\. | 
+| $\{request\.body\.action\}\-$\{request\.body\.invalidPath\}  | join\- | If the JSONPath is not found, the variable is resolved as ""\. | 
 | action | action | Static value | 
 | \\$default | $default | Static value | 
 

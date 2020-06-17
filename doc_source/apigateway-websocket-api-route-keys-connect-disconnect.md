@@ -15,11 +15,12 @@ Until execution of the integration associated with the `$connect` route is compl
 **Note**  
 If authorization fails on `$connect`, the connection will not be established, and the client will receive a `401` or `403` response\.
 
-Setting up an integration for `$connect` is optional\. However, doing so can be useful, because the backend receives the user ID of clients that connect\. You should consider setting up a `$connect` integration if:
+Setting up an integration for `$connect` is optional\. You should consider setting up a `$connect` integration if:
++ You want to enable clients to specify subprotocols by using the `Sec-WebSocket-Protocol` field\. For example code, see [Setting up a `$connect` route that requires a WebSocket subprotocol](websocket-connect-route-subprotocol.md)\.
 + You want to be notified when clients connect and disconnect\.
 + You want to throttle connections or control who connects\.
 + You want your backend to send messages back to clients using a callback URL\.
-+ You want to store each connection ID and other information into a database \(e\.g\., Amazon DynamoDB\)\.
++ You want to store each connection ID and other information into a database \(for example, Amazon DynamoDB\)\.
 
 ## The `$disconnect` route<a name="apigateway-websocket-api-routes-about-disconnect"></a>
 

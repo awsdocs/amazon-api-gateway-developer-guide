@@ -275,6 +275,7 @@ Amazon's trademarks and trade dress may not be used in
       + [Create a WebSocket API in API Gateway](apigateway-websocket-api-create-empty-api.md)
       + [Working with routes for WebSocket APIs](websocket-api-develop-routes.md)
          + [Set up route responses for a WebSocket API in API Gateway](apigateway-websocket-api-route-response.md)
+         + [Setting up a $connect route that requires a WebSocket subprotocol](websocket-connect-route-subprotocol.md)
       + [Controlling and managing access to a WebSocket API in API Gateway](apigateway-websocket-api-control-access.md)
          + [Using IAM authorization](apigateway-websocket-control-access-iam.md)
          + [Creating a Lambda REQUEST authorizer function](apigateway-websocket-api-lambda-auth.md)
