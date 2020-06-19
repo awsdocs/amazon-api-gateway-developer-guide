@@ -108,7 +108,7 @@ Now, create the `GetStartedLambdaIntegration` Lambda function\.
 
 1. To test the newly created function, choose **Configure test events** from **Select a test event\.\.\.**\.
 
-   1. For **Create new event**, replace any default code statements with the following, type HellowWorldTest for the Event aname, and choose **Create**\.
+   1. For **Create new event**, replace any default code statements with the following, type HelloWorldTest for the Event name, and choose **Create**\.
 
       ```
       {
