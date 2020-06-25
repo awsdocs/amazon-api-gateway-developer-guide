@@ -1,0 +1,17 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Description: |
+  Example HTTP API with an HTTP integration.
+  Because the template species a Target in AWS::ApiGatewayV2::Api, API Gateway uses quick create to create the API.
+  Quick create produces an HTTP API with an integration, a default catch-all route, and a default stage which is configured to automatically deploy changes. 
+Resources:
+  MyAPI:
+    Type: AWS::ApiGatewayV2::Api
+    Properties:
+      Description: Example HTTP API
+      Name: api-with-http-integration
+      ProtocolType: HTTP
+      Target: http://petstore.execute-api.us-west-1.amazonaws.com/petstore/pets
+
+Outputs:
+  InvokeURL:
+    Value: !Sub https://${MyAPI}.execute-api.${AWS::Region}.amazonaws.com

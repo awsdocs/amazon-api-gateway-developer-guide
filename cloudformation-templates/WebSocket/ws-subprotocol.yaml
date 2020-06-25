@@ -1,0 +1,106 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Description: Example WebSocket API that uses the Sec-WebSocket-Protocol field to enforce a subprotocol.
+Resources:
+  MyAPI:
+    Type: AWS::ApiGatewayV2::Api
+    Properties:
+      Name: ws-subprotocol
+      ProtocolType: WEBSOCKET
+      RouteSelectionExpression: $request.body.action
+  ConnectRoute:
+    Type: AWS::ApiGatewayV2::Route
+    Properties:
+      ApiId: !Ref MyAPI
+      RouteKey: '$connect'
+      AuthorizationType: NONE
+      Target: !Join
+        - /
+        - - integrations
+          - !Ref MyIntegration
+  MyIntegration:
+    Type: AWS::ApiGatewayV2::Integration
+    Properties:
+      ApiId: !Ref MyAPI
+      IntegrationType: AWS_PROXY
+      IntegrationUri: !GetAtt MyLambdaFunction.Arn
+      IntegrationMethod: POST
+      ConnectionType: INTERNET
+  MyLambdaFunction:
+    Type: AWS::Lambda::Function
+    Properties:
+      Runtime: nodejs12.x
+      Role: !GetAtt FunctionExecutionRole.Arn
+      Handler: index.handler
+      Code:
+        ZipFile: |
+          exports.handler = async (event) => {
+                if (event.headers != undefined) {
+                    const headers = toLowerCaseProperties(event.headers);
+
+                    if (headers['sec-websocket-protocol'] != undefined) {
+                        const subprotocolHeader = headers['sec-websocket-protocol'];
+                        const subprotocols = subprotocolHeader.split(',');
+
+                        if (subprotocols.indexOf('myprotocol') >= 0) {
+                            const response = {
+                                statusCode: 200,
+                                headers: {
+                                    "Sec-WebSocket-Protocol" : "myprotocol"
+                                }
+                            };
+                            return response;
+                        }
+                    }
+                }
+
+                const response = {
+                    statusCode: 400
+                };
+
+                return response;
+            };
+
+            function toLowerCaseProperties(obj) {
+                var wrapper = {};
+                for (var key in obj) {
+                    wrapper[key.toLowerCase()] = obj[key];
+                }
+                return wrapper;
+            }
+  APIInvokeLambdaPermission:
+    Type: AWS::Lambda::Permission
+    Properties:
+      FunctionName: !Ref MyLambdaFunction
+      Action: lambda:InvokeFunction
+      Principal: apigateway.amazonaws.com
+      SourceArn: !Sub arn:${AWS::Partition}:execute-api:${AWS::Region}:${AWS::AccountId}:${MyAPI}/beta/$connect
+  FunctionExecutionRole:
+    Type: AWS::IAM::Role
+    Properties:
+      AssumeRolePolicyDocument:
+        Version: '2012-10-17'
+        Statement:
+          - Effect: Allow
+            Principal:
+              Service:
+              - lambda.amazonaws.com
+            Action:
+              - 'sts:AssumeRole'
+      ManagedPolicyArns:
+        - arn:aws:iam::aws:policy/service-role/AWSLambdaBasicExecutionRole
+  Deployment:
+    DependsOn: ConnectRoute
+    Type: AWS::ApiGatewayV2::Deployment
+    Properties:
+      ApiId: !Ref MyAPI
+  Stage:
+    Type: AWS::ApiGatewayV2::Stage
+    Properties:
+      StageName: beta
+      Description: beta stage
+      DeploymentId: !Ref Deployment
+      ApiId: !Ref MyAPI
+
+Outputs:
+  ConnectionURL:
+    Value: !Sub wss://${MyAPI}.execute-api.${AWS::Region}.amazonaws.com/beta

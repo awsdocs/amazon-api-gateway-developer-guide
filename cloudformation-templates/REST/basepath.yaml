@@ -1,0 +1,35 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Description: An example REST API with an empty base path mapping to a custom domain name.
+Resources:
+  MyAPI:
+    Type: AWS::ApiGateway::RestApi
+    Properties:
+      Name: example-with-basepath
+  Method:
+    Type: AWS::ApiGateway::Method
+    Properties:
+      HttpMethod: GET
+      ResourceId: !GetAtt MyAPI.RootResourceId
+      RestApiId: !Ref MyAPI
+      AuthorizationType: NONE
+      Integration:
+        Type: HTTP_PROXY
+        Uri: http://petstore.execute-api.us-west-1.amazonaws.com/petstore/pets
+        IntegrationHttpMethod: GET
+  Deployment:
+    DependsOn: Method
+    Type: AWS::ApiGateway::Deployment
+    Properties:
+      RestApiId: !Ref MyAPI
+      StageName: test
+  MyPathMapping:
+    DependsOn: Deployment
+    Type: AWS::ApiGateway::BasePathMapping
+    Properties:
+      BasePath: ""
+      DomainName: api.example.com
+      RestApiId: !Ref MyAPI
+      Stage: test
+Outputs:
+  InvokeURL:
+    Value: !Sub https://${MyAPI}.execute-api.${AWS::Region}.amazonaws.com/test

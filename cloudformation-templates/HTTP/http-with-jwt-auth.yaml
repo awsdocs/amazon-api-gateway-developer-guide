@@ -1,0 +1,116 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Description: |
+  Example HTTP API with a JWT authorizer. This template includes a Cognito user pool as the issuer for the JWT authorizer 
+  and a Cognito app client as the audience for the authorizer. The outputs include a URL for a Cognito hosted UI where clients can 
+  sign up and sign in to receive a JWT. After a client signs in, the client is redirected to your HTTP API with an access token 
+  in the URL. To invoke the API with the access token, change the '#' in the URL to a '?' to use the token as a query string parameter.
+
+Resources:
+  MyAPI:
+    Type: AWS::ApiGatewayV2::Api
+    Properties: 
+      Description: Example HTTP API
+      Name: api-with-auth
+      ProtocolType: HTTP
+      Target: !GetAtt MyLambdaFunction.Arn
+  DefaultRouteOverrides:
+    Type: AWS::ApiGatewayV2::ApiGatewayManagedOverrides
+    Properties: 
+      ApiId: !Ref MyAPI
+      Route: 
+        AuthorizationType: JWT
+        AuthorizerId: !Ref JWTAuthorizer
+  JWTAuthorizer:
+    Type: AWS::ApiGatewayV2::Authorizer
+    Properties: 
+      ApiId: !Ref MyAPI
+      AuthorizerType: JWT
+      IdentitySource: 
+        - '$request.querystring.access_token'
+      JwtConfiguration: 
+        Audience: 
+        - !Ref AppClient
+        Issuer: !Sub https://cognito-idp.${AWS::Region}.amazonaws.com/${UserPool}
+      Name: test-jwt-authorizer
+  MyLambdaFunction:
+    Type: AWS::Lambda::Function
+    Properties:
+      Runtime: nodejs12.x
+      Role: !GetAtt FunctionExecutionRole.Arn
+      Handler: index.handler
+      Code:
+        ZipFile: |
+          exports.handler = async (event) => {
+              const response = {
+                  statusCode: 200,
+                  body: JSON.stringify('Hello from the ' + event.routeKey + ' route!'),
+              };
+              return response;
+          };
+  APIInvokeLambdaPermission:
+    Type: AWS::Lambda::Permission
+    Properties:
+      FunctionName: !Ref MyLambdaFunction
+      Action: lambda:InvokeFunction
+      Principal: apigateway.amazonaws.com
+      SourceArn: !Sub arn:${AWS::Partition}:execute-api:${AWS::Region}:${AWS::AccountId}:${MyAPI}/$default/$default
+  FunctionExecutionRole:
+    Type: AWS::IAM::Role
+    Properties:
+      AssumeRolePolicyDocument:
+        Version: '2012-10-17'
+        Statement:
+          - Effect: Allow
+            Principal:
+              Service:
+              - lambda.amazonaws.com
+            Action:
+              - 'sts:AssumeRole'
+      ManagedPolicyArns: 
+        - arn:aws:iam::aws:policy/service-role/AWSLambdaBasicExecutionRole
+  UserPool:
+    Type: AWS::Cognito::UserPool
+    Properties:
+      UserPoolName: http-api-user-pool
+      AutoVerifiedAttributes:
+        - email
+      Schema:
+        - Name: name
+          AttributeDataType: String
+          Mutable: true
+          Required: true
+        - Name: email
+          AttributeDataType: String
+          Mutable: false
+          Required: true
+  AppClient:
+    Type: AWS::Cognito::UserPoolClient
+    Properties:
+      AllowedOAuthFlows: 
+        - implicit
+      AllowedOAuthScopes: 
+        - aws.cognito.signin.user.admin
+        - email
+        - openid
+        - profile
+      AllowedOAuthFlowsUserPoolClient: true
+      ClientName: api-app-client
+      CallbackURLs:
+        - !Sub https://${MyAPI}.execute-api.${AWS::Region}.amazonaws.com
+      ExplicitAuthFlows:
+        - ALLOW_USER_PASSWORD_AUTH
+        - ALLOW_REFRESH_TOKEN_AUTH
+      UserPoolId: !Ref UserPool
+      SupportedIdentityProviders:
+        - COGNITO 
+  HostedUI:
+    Type: AWS::Cognito::UserPoolDomain
+    Properties: 
+      Domain: !Join
+        - '-'
+        - - !Ref MyAPI
+          - !Ref AppClient
+      UserPoolId: !Ref UserPool
+Outputs:
+  SignupURL:
+    Value: !Sub https://${HostedUI}.auth.${AWS::Region}.amazoncognito.com/login?client_id=${AppClient}&response_type=token&scope=email+profile&redirect_uri=https://${MyAPI}.execute-api.${AWS::Region}.amazonaws.com

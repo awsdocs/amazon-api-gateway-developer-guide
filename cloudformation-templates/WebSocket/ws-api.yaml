@@ -1,0 +1,43 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Description: Example WebSocket API with an HTTP_PROXY integration
+Resources:
+  MyApi:
+    Type: AWS::ApiGatewayV2::Api
+    Properties:
+      Name: MyApi
+      ProtocolType: WEBSOCKET
+      RouteSelectionExpression: $request.body.action
+  MyRoute:
+    Type: AWS::ApiGatewayV2::Route
+    Properties:
+      ApiId: !Ref MyApi
+      RouteKey: '$connect'
+      AuthorizationType: NONE
+      Target: !Join
+        - /
+        - - integrations
+          - !Ref MyIntegration
+  MyIntegration:
+    Type: AWS::ApiGatewayV2::Integration
+    Properties:
+      ApiId: !Ref MyApi
+      IntegrationType: HTTP_PROXY
+      IntegrationUri: http://petstore.execute-api.us-west-1.amazonaws.com/petstore/pets
+      IntegrationMethod: GET
+      ConnectionType: INTERNET
+  Deployment:
+    DependsOn: MyRoute
+    Type: AWS::ApiGatewayV2::Deployment
+    Properties:
+      ApiId: !Ref MyApi
+  Stage:
+    Type: AWS::ApiGatewayV2::Stage
+    Properties:
+      StageName: dev
+      Description: dev stage
+      DeploymentId: !Ref Deployment
+      ApiId: !Ref MyApi
+
+Outputs:
+  ConnectionURL:
+    Value: !Sub wss://${MyApi}.execute-api.${AWS::Region}.amazonaws.com/dev
