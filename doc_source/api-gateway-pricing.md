@@ -4,7 +4,7 @@
 
 The following lists the exceptions to the general pricing scheme:
 + API caching in Amazon API Gateway is not eligible for the AWS Free Tier\.
-+ Calling methods with the [authorization type](https://docs.aws.amazon.com/apigateway/api-reference/resource/method/#authorizationType) of `AWS_IAM`, `CUSTOM`, and `COGNITO_USER_POOLS` are not charged for authorization and authentication failures\.
++ Requests are not charged for authorization and authentication failures\.
 + Calls to methods that require API keys are not charged when API keys are missing or invalid\.
 + API Gateway\-throttled requests are not charged when the request rate or burst rate exceeds the preconfigured limits\.
 + Usage plan\-throttled requests are not charged when rate limits or quota exceed the preconfigured limits\.

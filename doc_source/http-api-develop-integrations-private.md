@@ -26,7 +26,7 @@ aws apigatewayv2 create-integration --api-id api-id --integration-type HTTP_PROX
     --integration-method GET --connection-type VPC_LINK \
     --connection-id VPC-link-ID \
     --integration-uri arn:aws:elasticloadbalancing:us-east-2:123456789012:listener/app/my-load-balancer/50dc6c495c0c9188/0467ef3c8400ae65
-	--payload-format-version 1.0
+    --payload-format-version 1.0
 ```
 
 ## Create a private integration using AWS Cloud Map service discovery<a name="http-api-develop-integrations-private-Cloud-Map"></a>
@@ -47,5 +47,5 @@ aws apigatewayv2 create-integration --api-id api-id --integration-type HTTP_PROX
     --integration-method GET --connection-type VPC_LINK \
     --connection-id VPC-link-ID \
     --integration-uri arn:aws:servicediscovery:us-east-2:123456789012:service/srv-id?stage=prod&deployment=green_deployment
-	--payload-format-version 1.0
+    --payload-format-version 1.0
 ```

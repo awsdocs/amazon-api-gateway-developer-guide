@@ -18,6 +18,7 @@ If you'd like to try out an example developer portal, see [https://developer\.ex
 + [Create a developer portal](#apigateway-developer-portal-create)
 + [Developer portal settings](#apigateway-developer-portal-settings)
 + [Create an admin user for your developer portal](#apigateway-developer-portal-create-admin)
++ [Manage users for your developer portal](#apigateway-developer-portal-manage-users)
 + [Publish an API Gateway managed API to your developer portal](#apigateway-developer-portal-publish)
 + [Update or delete an API Gateway managed API](#apigateway-developer-portal-update)
 + [Remove a non\-API Gateway managed API](#apigateway-developer-portal-update-generic)
@@ -28,7 +29,7 @@ If you'd like to try out an example developer portal, see [https://developer\.ex
 ## Create a developer portal<a name="apigateway-developer-portal-create"></a>
 
 You can deploy the API Gateway Serverless Developer Portal as\-is or customize it to fit your branding\. There are two ways to deploy your developer portal:
-+ By using the AWS Serverless Application Repository\. Just choose the **Deploy** button to launch the API Gateway Serverless Developer Portal AWS CloudFormation stack and enter a handful of stack parameters in the Lambda console\.
++ By using the AWS Serverless Application Repository\. Choose the **Deploy** button to launch the API Gateway Serverless Developer Portal AWS CloudFormation stack and enter a handful of stack parameters in the Lambda console\.
 + By downloading the API Gateway Serverless Developer Portal from the AWS GitHub repository and launching the API Gateway Serverless Developer Portal AWS CloudFormation stack from the AWS SAM CLI\.
 
 **To deploy the serverless developer portal using the AWS Serverless Application Repository**
@@ -39,7 +40,7 @@ You can deploy the API Gateway Serverless Developer Portal as\-is or customize i
 **Note**  
 You might be prompted to sign into the AWS Lambda console\.
 
-1. In the Lambda console, you need to fill out the required [developer portal stack parameters](#apigateway-developer-portal-settings) under **Application settings**\.
+1. In the Lambda console, enter the required [developer portal stack parameters](#apigateway-developer-portal-settings) under **Application settings**\.
 **Note**  
 The S3 bucket names and the Amazon Cognito domain prefix are required; the other settings are optional\.
 
@@ -53,25 +54,27 @@ If you don't supply an email address, the **Got an opinion?** doesn't appear in 
 
 1. Choose **Deploy**\.
 
-1. If you entered an email address in the AdminEmail stack parameter, an Amazon SNS subscription email is sent to that email address to confirm that you'd like to subscribe to the Amazon SNS topic that you specified in the **MarketplaceSubscriptionTopicProductCode** setting\.
+1. If you entered an email address in the **AdminEmail** stack parameter, an Amazon SNS subscription email is sent to that email address\. This email confirms your subscription to the Amazon SNS topic that you specified in the **MarketplaceSubscriptionTopicProductCode** setting\.
 
 **To download and deploy the serverless developer portal using AWS SAM**
 
 1. Ensure that you have the latest [AWS CLI](https://docs.aws.amazon.com/cli/latest/userguide/) and [AWS SAM CLI](https://github.com/awslabs/aws-sam-cli) installed and configured\.
 
-1. Download or clone the [API Gateway Serverless Developer Portal](https://github.com/awslabs/aws-api-gateway-developer-portal) repository to a local directory\.
+1. Download or clone the [API Gateway Serverless Developer Portal](https://github.com/awslabs/aws-api-gateway-developer-portal) repository\.
 
-1. Ensure that you have a privately accessible Amazon S3 bucket to upload zipped Lambda functions into\. If you don't have one, you can create one using the Amazon S3 console or CLI\.
+1. Ensure that you have a private Amazon S3 bucket where you can upload the zipped Lambda functions\. If you don't have one, you can create one using the Amazon S3 console or CLI\.
 
    In the AWS SAM CLI, run the following command from the project root, replacing `{your-lambda-artifacts-bucket-name}` with the name of your Amazon S3 bucket:
 
    ```
-   sam package --template-file ./cloudformation/template.yaml --output-template-file ./cloudformation/packaged.yaml --s3-bucket {your-lambda-artifacts-bucket-name}
+   sam package --template-file ./cloudformation/template.yaml \
+       --output-template-file ./cloudformation/packaged.yaml \
+       --s3-bucket {your-lambda-artifacts-bucket-name}
    ```
 
 1. For this step, see [Developer portal settings](#apigateway-developer-portal-settings) for more information about parameters \(such as `CognitoDomainNameOrPrefix`\) that follow `--parameter-overrides`\.
 **Note**  
-Ensure that you have a privately accessible Amazon S3 bucket to upload the AWS SAM template into\. \(AWS CloudFormation reads the template from the bucket to deploy the developer portal\.\) This can be the same bucket that you specified in the previous step for uploading the zipped Lambda functions\.
+Ensure that you have a private Amazon S3 bucket where you can upload the AWS SAM template\. \(AWS CloudFormation reads the template from the bucket to deploy the developer portal\.\) This can be the same bucket that you specified in the previous step for uploading the zipped Lambda functions\.
 
    Run the following command from the project root, replacing:
    + `{your-template-bucket-name}` with the name of your Amazon S3 bucket\.
@@ -79,7 +82,11 @@ Ensure that you have a privately accessible Amazon S3 bucket to upload the AWS S
    + `{cognito-domain-or-prefix}` with a unique string\.
 
    ```
-   sam deploy --template-file ./cloudformation/packaged.yaml --s3-bucket {your-template-bucket-name} --stack-name "{custom-prefix}-dev-portal" --capabilities CAPABILITY_NAMED_IAM --parameter-overrides CognitoDomainNameOrPrefix= "{cognito-domain-or-prefix}" DevPortalSiteS3BucketName="{custom-prefix}-dev-portal-static-assets" ArtifactsS3BucketName="{custom-prefix}-dev-portal-artifacts"
+   sam deploy --template-file ./cloudformation/packaged.yaml \
+       --s3-bucket {your-template-bucket-name} \
+       --stack-name "{custom-prefix}-dev-portal" \
+       --capabilities CAPABILITY_NAMED_IAM \
+       --parameter-overrides CognitoDomainNameOrPrefix= "{cognito-domain-or-prefix}" DevPortalSiteS3BucketName="{custom-prefix}-dev-portal-static-assets" ArtifactsS3BucketName="{custom-prefix}-dev-portal-artifacts"
    ```
 
 After your developer portal has been fully deployed, you can get its URL as follows\.
@@ -90,7 +97,7 @@ After your developer portal has been fully deployed, you can get its URL as foll
 
 1. Choose the name of the stack \(`aws-serverless-repository-api-gateway-dev-portal` is the default stack name\)\.
 
-1. Open the `Outputs` section\. The URL for the developer portal is specified in the `WebSiteURL` property\.
+1. Open the `Outputs` section\. The URL for the developer portal is specified in the `WebsiteURL` property\.
 
 ## Developer portal settings<a name="apigateway-developer-portal-settings"></a>
 
@@ -139,7 +146,7 @@ Only applicable if you're creating a custom domain name for your developer porta
 
 ## Create an admin user for your developer portal<a name="apigateway-developer-portal-create-admin"></a>
 
-After you've deployed your developer portal, you'll want to create at least one Admin user\. You do that by creating a new user and adding that user to the administrator group for the Amazon Cognito user pool that AWS CloudFormation created when you deployed the developer portal\.
+After you deploy your developer portal, create at least one admin user\. You do that by creating a new user and adding that user to the administrator group for the Amazon Cognito user pool that AWS CloudFormation created when you deployed the developer portal\.
 
 **Create an admin user**
 
@@ -162,6 +169,10 @@ After you've deployed your developer portal, you'll want to create at least one 
 1. Choose **Add to group**\.
 
 1. In your developer portal, log out and log back in using the same credentials\. You should now see an **Admin Panel** link in the upper right corner, next to **My Dashboard**\.
+
+## Manage users for your developer portal<a name="apigateway-developer-portal-manage-users"></a>
+
+After you sign in as an admin user, you can use the **Accounts** section of the **Admin Panel** to manage users\. An admin user can invite new users, delete users, and promote existing users to admin status from the developer portal\.
 
 ## Publish an API Gateway managed API to your developer portal<a name="apigateway-developer-portal-publish"></a>
 
@@ -197,9 +208,7 @@ Now that the API Gateway managed API is displayed, you can enable SDK generation
 
 1. In the **Admin Panel** API list, choose the **Disabled** button\. Its value changes to **Enabled**, which indicates that SDK generation is now allowed\.
 
-1. Navigate to the **APIs** panel and choose your API in the left navigation column\. You should now see a **Download SDK** button for it\.
-
-   If you choose the **Download SDK** button, you should see a list of SDK types that you can download\.
+1. Navigate to the **APIs** panel and choose your API in the left navigation column\. You should now see **Download SDK** and **Export API** buttons\.
 
 ## Update or delete an API Gateway managed API<a name="apigateway-developer-portal-update"></a>
 
@@ -283,57 +292,14 @@ A customer can try out API methods in the developer portal UI without subscribin
 If any of the API's methods require an API key, an **Authorize** button will appear above the method list\. Methods that require an API key will have a black lock icon\. To try out methods that require an API key, choose the **Authorize** button and enter a valid API key that's associated with the usage plan for the API stage\.  
 You can safely ignore the **Authorize** button when it appears on APIs that you're already subscribed to\.
 
-**To try out an API without subscribing**
+Your customers can submit customer feedback through the developer portal\.
 
-1. Navigate to the API in the API list\.
-
-1. Choose an API method to expand it\.
-
-1. Choose **Try it out**\.
-
-1. Choose **Execute**\.
-
-Your customers can submit customer feedback to you as follows:
-
-**To submit feedback for an API**
-
-1. Choose **Got an opinion?**\.
-
-1. In the pop\-up window, enter comments\.
-
-1. Choose **Submit**\.
-
-The customer's feedback is stored in the DynamoDB table for the developer portal\. The default name of this table is **DevPortalFeedback**\. Also, email is sent to the email addresses that was specified in the **DevPortalAdminEmail** field\. If no email address was specified when the developer portal was deployed, the **Got an opinion?** does not appear\.
+The customer's feedback is stored in the DynamoDB table for the developer portal\. The default name of this table is **DevPortalFeedback**\. Also, email is sent to the email addresses that was specified in the **DevPortalAdminEmail** field\. If no email address was specified when the developer portal was deployed, the **Got an opinion?** button does not appear\.
 
 **Note**  
 If you change the name of this table, you must use a name that is unique within your account Region\.
 
-If you've enabled SDK generation for the API in the **Admin Panel**, the customer can download an SDK for it\.
-
-**To download an SDK for an API**
-
-1. Choose the **Download SDK** button for the desired API\.
-
-1. Choose the desired SDK platform or language as follows:
-   + For **Android**:
-
-     1. For **Group ID**, enter the unique identifier for the corresponding project\. This is used in the `pom.xml` file \(for example, **com\.mycompany**\)\.
-
-     1. For **Invoker package**, enter the namespace for the generated client classes \(for example, **com\.mycompany\.clientsdk**\)\.
-
-     1. For **Artifact ID**, enter the name of the compiled \.jar file without the version\. This is used in the `pom.xml` file \(for example, **aws\-apigateway\-api\-sdk**\)\.
-
-     1. For **Artifact version**, enter the artifact version number for the generated client\. This is used in the `pom.xml` file and should follow a *major*\.*minor*\.*patch* pattern \(for example, **1\.0\.0**\)\.
-   + For JavaScript, the SDK is downloaded immediately\.
-   + For **iOS \(Objective\-C\)** or **iOS \(Swift\)**, Type a unique prefix in the **Prefix** box\.
-
-     The effect of prefix is as follows: if you assign, for example, `SIMPLE_CALC` as the prefix for the SDK of the [SimpleCalc](simple-calc-lambda-api.md) API with `Input`, `Output`, and `Result` models, the generated SDK will contain the `SIMPLE_CALCSimpleCalcClient` class that encapsulates the API, including the method requests/responses\. In addition, the generated SDK will contain the `SIMPLE_CALCInput`, `SIMPLE_CALCOutput`, and `SIMPLE_CALCResult` classes to represent the input, output, and results, respectively, to represent the request input and response output\. For more information, see [Use iOS SDK generated by API Gateway for a REST API in Objective\-C or Swift](how-to-generate-sdk-ios.md)\.
-   + For **Java**:
-
-     1. For **Service Name**, specify the name of your SDK\. For example, **SimpleCalcSdk**\. This becomes the name of your SDK client class\. The name corresponds to the `<name>` tag under `<project>` in the `pom.xml` file, which is in the SDK's project folder\. Do not include hyphens\.
-
-     1. For **Java Package Name**, specify a package name for your SDK\. For example, **examples\.aws\.apig\.simpleCalc\.sdk**\. This package name is used as the namespace of your SDK library\. Do not include hyphens\.
-   + For Ruby, for **Service Name**, specify the name of your SDK\. For example, `SimpleCalc`\. This is used to generate the Ruby Gem namespace of your API\. The name must be all letters, \(`a-zA-Z`\), without any other special characters or numbers\.
+If you've enabled SDK generation for the API in the **Admin Panel**, the customer can download an SDK for it and export the API definition\. To learn more, see [Generating an SDK for a REST API in API Gateway](how-to-generate-sdk.md) and [Export a REST API from API Gateway](api-gateway-export-api.md)\.
 
 ## Best practices for developer portals<a name="apigateway-developer-portal-best-practices"></a>
 
