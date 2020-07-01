@@ -20,6 +20,7 @@
 | responses | [x\-amazon\-apigateway\-integration\.responses object](api-gateway-swagger-extensions-integration-responses.md) | Defines the method's responses and specifies desired parameter mappings or payload mappings from integration responses to method responses\.  | 
 | timeoutInMillis | integer | Integration timeouts between 50 ms and 29,000 ms\. | 
 | type | string |  The type of integration with the specified backend\. Valid values are: [\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/apigateway/latest/developerguide/api-gateway-swagger-extensions-integration.html) For more information about the integration types, see [integration:type](https://docs.aws.amazon.com/apigateway/api-reference/resource/integration/#type)\.  | 
+| tlsConfig | [x\-amazon\-apigateway\-integration\.tlsConfig object](api-gateway-extensions-integration-tls-config.md) | Specifies the TLS configuration for an integration\. | 
 | uri | string | The endpoint URI of the backend\. For integrations of the aws type, this is an ARN value\. For the HTTP integration, this is the URL of the HTTP endpoint including the https or http scheme\. | 
 
 ## x\-amazon\-apigateway\-integration examples<a name="api-gateway-swagger-extensions-integration-example"></a>
