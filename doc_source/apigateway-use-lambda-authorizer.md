@@ -60,7 +60,7 @@ To create a Lambda authorizer, you need to perform the following tasks:
 **Note**  
 You can also configure an authorizer by using the AWS CLI or an AWS SDK\.
 
-1. Test your authorizer by using [Postman](https://www.getpostman.com/) as described in [Call an API with API Gateway Lambda authorizers](call-api-with-api-gateway-lambda-authorization.md)\.
+1. Test your authorizer by using [Postman](https://www.postman.com/) as described in [Call an API with API Gateway Lambda authorizers](call-api-with-api-gateway-lambda-authorization.md)\.
 
 ## Create an API Gateway Lambda authorizer function in the Lambda console<a name="api-gateway-lambda-authorizer-lambda-function-create"></a>
 
