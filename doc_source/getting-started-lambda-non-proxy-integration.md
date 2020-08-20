@@ -385,7 +385,7 @@ The input must be UTF\-8 encoded \(i\.e\., unlocalized\) text\.
 
 ## Test the API in a deployment stage<a name="getting-started-test"></a>
 
-There are several ways you can test a deployed API\. For GET requests using only URL path variables or query string parameters, you can type the API resource URL in a browser\. For other methods, you must use more advanced REST API testing utilities, such as [POSTMAN](https://www.getpostman.com/) or [cURL](https://curl.haxx.se/)\.
+There are several ways you can test a deployed API\. For GET requests using only URL path variables or query string parameters, you can type the API resource URL in a browser\. For other methods, you must use more advanced REST API testing utilities, such as [POSTMAN](https://www.postman.com/) or [cURL](https://curl.haxx.se/)\.
 
 **To test the API using cURL**
 

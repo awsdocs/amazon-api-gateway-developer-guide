@@ -34,6 +34,20 @@ After a custom domain name is created in API Gateway, you must create or update 
 
 When you create a custom domain name for a Regional API, API Gateway creates a Regional domain name for the API\. You must set up a DNS record to map the custom domain name to the Regional domain name\. You must also provide a certificate for the custom domain name\.
 
+## Wildcard custom domain names<a name="http-wildcard-custom-domain-names"></a>
+
+API Gateway also supports wildcard custom domain names\. You can specify a wildcard \(`*`\) as the first subdomain of a custom domain that represents all possible subdomains of a root domain\.
+
+For example, the wildcard custom domain name `*.example.com` results in subdomains such as `a.example.com`, `b.example.com`, and `c.example.com`, which all route to the same domain\.
+
+Wildcard custom domain names support distinct configurations from API Gateway's standard custom domain names\. For example, in a single AWS account, you can configure `*.example.com` and `a.example.com` to behave differently\.
+
+To create a wildcard custom domain name, you must provide a certificate issued by ACM that has been validated using either the DNS or the email validation method\.
+
+**Note**  
+You can't create a wildcard custom domain name if a different AWS account has created a custom domain name that conflicts with the wildcard custom domain name\. For example, if account A has created `a.example.com`, then account B can't create the wildcard custom domain name `*.example.com`\.  
+If account A and account B share an owner, you can contact the [AWS Support Center](https://console.aws.amazon.com/support/home#/) to request an exception\.
+
 ## Certificates for custom domain names<a name="http-api-custom-domain-names-certificates"></a>
 
 To provide a certificate for a custom domain name in a Region where ACM is supported, you must request a certificate from ACM\. To provide a certificate for a Regional custom domain name in a Region where ACM is not supported, you must import a certificate to API Gateway in that Region\. 

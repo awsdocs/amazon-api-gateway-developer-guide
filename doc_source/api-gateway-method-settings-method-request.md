@@ -263,7 +263,7 @@ For more information, see [Control access to an API with IAM permissions](permis
 
  At present, such a policy can be granted to only the IAM users of the API owner's account\. Users from a different AWS account can call the API methods if they are allowed to assume a role of the API owner account and the assumed role has the proper permissions for the `execute-api:Invoke` action\. For information on cross\-account permissions, see [Using IAM Roles](http://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_use.html)\. 
 
-You can use AWS CLI, an AWS SDK, or a REST API client, such as [Postman](https://www.getpostman.com/), which implements [Signature Version 4 Signing](http://docs.aws.amazon.com/general/latest/gr/signature-version-4.html)\. 
+You can use AWS CLI, an AWS SDK, or a REST API client, such as [Postman](https://www.postman.com/), which implements [Signature Version 4 Signing](http://docs.aws.amazon.com/general/latest/gr/signature-version-4.html)\. 
 
 To use a Lambda authorizer to authorize access to the API method, set the `authorization-type` input property to `CUSTOM` and set the [https://docs.aws.amazon.com/apigateway/api-reference/resource/method/#authorizerId](https://docs.aws.amazon.com/apigateway/api-reference/resource/method/#authorizerId) input property to the [https://docs.aws.amazon.com/apigateway/api-reference/resource/authorizer/#id](https://docs.aws.amazon.com/apigateway/api-reference/resource/authorizer/#id) property value of a Lambda authorizer that already exists\. The referenced Lambda authorizer can be of the `TOKEN` or `REQUEST` type\. For information about creating a Lambda authorizer, see [Use API Gateway Lambda authorizers](apigateway-use-lambda-authorizer.md)\.
 

@@ -1,5 +1,7 @@
 # Content type conversions in API Gateway<a name="api-gateway-payload-encodings-workflow"></a>
 
+ The combination of your API's `binaryMediaTypes`, the headers in client requests, and the integration `contentHandling` property determine how API Gateway encodes payloads\.
+
 The following table shows how API Gateway converts the request payload for specific configurations of a request's `Content-Type` header, the `binaryMediaTypes` list of a [RestApi](https://docs.aws.amazon.com/apigateway/api-reference/resource/rest-api/) resource, and the `contentHandling` property value of the [Integration](https://docs.aws.amazon.com/apigateway/api-reference/resource/integration/) resource\.
 
 
@@ -18,6 +20,10 @@ The following table shows how API Gateway converts the request payload for speci
 | Binary data | A binary data type | Set with matching media types | CONVERT\_TO\_TEXT | Base64\-encoded string | 
 
 The following table shows how API Gateway converts the response payload for specific configurations of a request's `Accept` header, the `binaryMediaTypes` list of a [RestApi](https://docs.aws.amazon.com/apigateway/api-reference/resource/rest-api/) resource, and the `contentHandling` property value of the [IntegrationResponse](https://docs.aws.amazon.com/apigateway/api-reference/resource/integration-response/) resource\.
+
+**Important**  
+ When a request contains multiple media types in its `Accept` header, API Gateway honors only the first `Accept` media type\. If you can't control the order of the `Accept` media types and the media type of your binary content isn't the first in the list, add the first `Accept` media type in the `binaryMediaTypes` list of your API\. API Gateway handles all content types in this list as binary\.   
+For example, to send a JPEG file using an `<img>` element in a browser, the browser might send `Accept:image/webp,image/*,*/*;q=0.8` in a request\. By adding `image/webp` to the `binaryMediaTypes` list, the endpoint receives the JPEG file as binary\. 
 
 
 **API Gateway response content type conversions**  
@@ -39,10 +45,6 @@ The following table shows how API Gateway converts the response payload for spec
 | Binary data | A binary type | Set with matching media types | Undefined | Binary data | 
 | Binary data | A binary type | Set with matching media types | CONVERT\_TO\_BINARY | Binary data | 
 | Binary data | A binary type | Set with matching media types | CONVERT\_TO\_TEXT | Base64\-encoded string | 
-
-**Tip**  
- When a request contains multiple media types in its `Accept` header, API Gateway only honors the first `Accept` media type\. In the situation where you can't control the order of the `Accept` media types and the media type of your binary content isn't the first in the list, you can add the first `Accept` media type in the `binaryMediaTypes` list of your API\. API Gateway returns your content as binary\.   
-For example, to send a JPEG file using an `<img>` element in a browser, the browser might send `Accept:image/webp,image/*,*/*;q=0.8` in a request\. By adding `image/webp` to the `binaryMediaTypes` list, the endpoint receives the JPEG file as binary\. 
 
 When converting a text payload to a binary blob, API Gateway assumes that the text data is a base64\-encoded string and outputs the binary data as a base64\-decoded blob\. If the conversion fails, it returns a `500` response, which indicates an API configuration error\. You don't provide a mapping template for such a conversion, although you must enable the [passthrough behaviors](integration-passthrough-behaviors.md) on the API\.
 

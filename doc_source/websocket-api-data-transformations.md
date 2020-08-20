@@ -4,6 +4,8 @@ In API Gateway, a WebSocket API's method request can take a payload in a differe
 
 API Gateway lets you use mapping templates to map the payload from a method request to the corresponding integration request and from an integration response to the corresponding method response\. You specify a template selection expression to determine which template to use to perform the necessary data transformations\.
 
+You can use data mappings to map data from a [route request](api-gateway-basic-concept.md#apigateway-definition-route-request) to a backend integration\. To learn more, see [Setting up data mapping for WebSocket APIs](websocket-api-data-mapping.md)\.
+
 ## Mapping templates and models<a name="apigateway-websocket-api-mapping-templats-and-models"></a>
 
  A *mapping template* is a script expressed in [Velocity Template Language \(VTL\)](https://velocity.apache.org/engine/devel/vtl-reference.html) and applied to the payload using [JSONPath expressions](http://goessner.net/articles/JsonPath/)\. For more information about API Gateway mapping templates, see [Mapping templates](rest-api-data-transformations.md#models-mappings-mappings)\.

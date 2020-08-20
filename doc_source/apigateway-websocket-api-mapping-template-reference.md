@@ -22,7 +22,7 @@ This section summarizes the set of variables that are currently supported for We
 | $context\.identity\.apiKey |  The API owner key associated with key\-enabled API request\.  | 
 | $context\.identity\.apiKeyId | The API key ID associated with the key\-enabled API request | 
 | $context\.identity\.caller |  The principal identifier of the caller making the request\.  | 
-| $context\.identity\.cognitoAuthenticationProvider |  The Amazon Cognito authentication provider used by the caller making the request\. Available only if the request was signed with Amazon Cognito credentials\. For information related to this and the other Amazon Cognito `$context` variables, see [Using Federated Identities](https://docs.aws.amazon.com/cognito/latest/developerguide/cognito-identity.html) in the *Amazon Cognito Developer Guide*\.  | 
+| $context\.identity\.cognitoAuthenticationProvider |  A comma\-separated list of the Amazon Cognito authentication providers used by the caller making the request\. Available only if the request was signed with Amazon Cognito credentials\. For information related to this and the other Amazon Cognito `$context` variables, see [Using Federated Identities](https://docs.aws.amazon.com/cognito/latest/developerguide/cognito-identity.html) in the *Amazon Cognito Developer Guide*\.  | 
 | $context\.identity\.sourceIp |  The source IP address of the TCP connection making the request to API Gateway\.  | 
 | $context\.identity\.user |  The principal identifier of the user making the request\.  | 
 | $context\.identity\.userAgent |  The User Agent of the API caller\.  | 

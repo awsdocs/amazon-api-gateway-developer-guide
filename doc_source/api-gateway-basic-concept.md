@@ -61,7 +61,7 @@ A script in [Velocity Template Language \(VTL\)](https://velocity.apache.org/eng
 The mapping can be as simple as an [identity transform](https://en.wikipedia.org/wiki/Identity_transform) that passes the headers or body through the integration as\-is from the client to the backend for a request\. The same is true for a response, in which the payload is passed from the backend to the client\.
 
 **Method request**  <a name="apigateway-definition-method-request"></a>
-The public interface of a REST API method in API Gateway that defines the parameters and body that an app developer must send in requests to access the backend through the API\.
+The public interface of an API method in API Gateway that defines the parameters and body that an app developer must send in requests to access the backend through the API\.
 
 **Method response**  <a name="apigateway-definition-method-response"></a>
 The public interface of a REST API that defines the status codes, headers, and body models that an app developer should expect in responses from the API\. 

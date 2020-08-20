@@ -1,4 +1,4 @@
-# Requesting validation<a name="websocket-api-request-validation"></a>
+# Request validation<a name="websocket-api-request-validation"></a>
 
 You can configure API Gateway to perform validation on a route request before proceeding with the integration request\. If the validation fails, API Gateway fails the request without calling your backend, sends a "Bad request body" gateway response to the client, and publishes the validation results in CloudWatch Logs\. Using validation this way reduces unnecessary calls to your API backend\.
 

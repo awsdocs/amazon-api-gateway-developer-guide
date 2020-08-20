@@ -1,6 +1,6 @@
 # x\-amazon\-apigateway\-integration\.responseParameters object<a name="api-gateway-swagger-extensions-integration-responseParameters"></a>
 
- Specifies mappings from integration method response parameters to method response parameters\. Only the `header` and `body` types of the integration response parameters can be mapped to the `header` type of the method response\. 
+ Specifies mappings from integration method response parameters to method response parameters\. Only the `header` and `body` types of the integration response parameters can be mapped to the `header` type of the method response\. Supported only for REST APIs\.
 
 
 **Properties**  

@@ -13,7 +13,7 @@ To send a callback message to the client, use:
 POST https://{api-id}.execute-api.us-east-1.amazonaws.com/{stage}/@connections/{connection_id}
 ```
 
-You can test this request by using `[Postman](http://www.getpostman.com/)` or by calling `[awscurl](https://github.com/okigan/awscurl)` as in the following example:
+You can test this request by using `[Postman](http://www.postman.com/)` or by calling `[awscurl](https://github.com/okigan/awscurl)` as in the following example:
 
 ```
 awscurl --service execute-api -X POST -d "hello world" https://{prefix}.execute-api.us-east-1.amazonaws.com/{stage}/@connections/{connection_id}

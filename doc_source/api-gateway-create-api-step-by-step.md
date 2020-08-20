@@ -82,7 +82,7 @@ Other options for an API method include:
 
     Once deployed, you can obtain the invocation URLs \(**Invoke URL**\) of the API's endpoints\. 
 
-    If the GET method supported open access, \(i\.e\., if the method's authorization type were set to `NONE`\) you could double\-click the **Invoke URL** link to invoke the method in your default browser\. If needed, you could also append necessary query string parameters to the invocation URL\. With the `AWS_IAM` authorization type described here, you must sign the request with an [access key ID and the corresponding secret key](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_access-keys.html) of an IAM user of your AWS account\. To do this, you must use a client that supports the [Signature Version 4](https://docs.aws.amazon.com/general/latest/gr/sigv4_signing.html) \(SigV4\) protocols\. An example of such a client is an app that uses one of the AWS SDKs or the [Postman](https://www.getpostman.com/) application or cURL commands\. To call a POST, PUT, or PATCH method that take a payload, you also need to use such a client to handle the payload\. 
+    If the GET method supported open access, \(i\.e\., if the method's authorization type were set to `NONE`\) you could double\-click the **Invoke URL** link to invoke the method in your default browser\. If needed, you could also append necessary query string parameters to the invocation URL\. With the `AWS_IAM` authorization type described here, you must sign the request with an [access key ID and the corresponding secret key](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_access-keys.html) of an IAM user of your AWS account\. To do this, you must use a client that supports the [Signature Version 4](https://docs.aws.amazon.com/general/latest/gr/sigv4_signing.html) \(SigV4\) protocols\. An example of such a client is an app that uses one of the AWS SDKs or the [Postman](https://www.postman.com/) application or cURL commands\. To call a POST, PUT, or PATCH method that take a payload, you also need to use such a client to handle the payload\. 
 
     To invoke this API method in the Postman, append the query string parameters to the stage\-specific method invocation URL \(as shown in the previous image\) to create the complete method request URL: 
 
@@ -174,7 +174,7 @@ The following JSON\-formatted information about the item with an ID of 1 is disp
 }
 ```
 
-In addition to supporting GET operations, this endpoint takes POST requests with a payload\. For example, use [Postman](https://www.getpostman.com/) to send a POST method request to the following:
+In addition to supporting GET operations, this endpoint takes POST requests with a payload\. For example, use [Postman](https://www.postman.com/) to send a POST method request to the following:
 
 ```
 http://petstore-demo-endpoint.execute-api.com/petstore/pets
