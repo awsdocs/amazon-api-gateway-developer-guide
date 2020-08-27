@@ -197,7 +197,7 @@ Now create an API for your "Hello, World\!" Lambda function by using the API Gat
 
 You can use a browser or [cURL](https://curl.haxx.se/) to test your API\.
 
-To test `GET` requests using only query string parameters, you can type the URL for the API's `helloworld` resource into a browser address bar\. For example: https://*r275xc9bmd*\.execute\-api\.*us\-east\-1*\.amazonaws\.com/test/helloworld?name=John&city=Seattle
+To test `POST` requests using only query string parameters, you can type the URL for the API's `helloworld` resource into a browser address bar\. For example: https://*r275xc9bmd*\.execute\-api\.*us\-east\-1*\.amazonaws\.com/test/helloworld?name=John&city=Seattle
 
 For other methods, you must use more advanced REST API testing utilities, such as [POSTMAN](https://www.postman.com/) or [cURL](https://curl.haxx.se/)\. This tutorial uses cURL\. The cURL command examples below assume that cURL is installed on your computer\.
 
