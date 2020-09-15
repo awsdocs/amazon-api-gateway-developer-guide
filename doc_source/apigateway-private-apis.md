@@ -176,7 +176,7 @@ When you are ready to test your API, be sure to create a resource policy and att
 
 ## Set up a resource policy for a private API<a name="apigateway-private-api-set-up-resource-policy"></a>
 
-Before your private API can be accessed, you need to create a resource policy and attach it to the API This grants access to the API from your VPCs and VPC endpoints or from VPCs and VPC endpoints in other AWS accounts that you explicitly grant access\.
+Before your private API can be accessed, you need to create a resource policy and attach it to the API. This grants access to the API from your VPCs and VPC endpoints or from VPCs and VPC endpoints in other AWS accounts that you explicitly grant access\.
 
 To do this, follow the instructions in [Create and attach an API Gateway resource policy to an API](apigateway-resource-policies-create-attach.md)\. In step 4, choose the **Source VPC Whitelist** example\. Replace `{{vpceID}}` \(including the curly braces\) with your VPC endpoint ID, and then choose **Save** to save your resource policy\.
 
