@@ -51,7 +51,7 @@ After creating your VPC resource and your Network Load Balancer with your VPC re
 
    1.  From the **VPC Link** drop\-down list, choose `[Use Stage Variables]` and type `${stageVariables.vpcLinkId}` in the text box below\.
 
-      We will define the `vpcLinkId` stage variable after deploying the API to a stage and set its value to the ID of the `VpcLink` created in **Step 1**\.
+      We will define the `vpcLinkId` stage variable after deploying the API to a stage and set its value to the ID of the `VpcLink` created in **Step 2**\.
 
    1.  Type a URL, for example, `http://myApi.example.com`, for **Endpoint URL**\. 
 
