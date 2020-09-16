@@ -211,6 +211,11 @@ aws apigateway create-rest-api \
     --name Petstore \
     --endpoint-configuration '{ "types": ["PRIVATE"], "vpcEndpointIds" : ["vpce-0212a4ababd5b8c3e", "vpce-0393a628149c867ee"] }' \
     --region us-west-2
+```
+
+A successful call returns output similar to the following:
+
+```
 {
     "apiKeySource": "HEADER",
     "endpointConfiguration": {
