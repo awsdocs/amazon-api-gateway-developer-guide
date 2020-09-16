@@ -238,7 +238,7 @@ To associate VPC endpoints to an already created private API, use the following 
 ```
 aws apigateway update-rest-api \
     --rest-api-id u67n3ov968 \
-    --patch-operations "op='add',path='/endpointConfiguration/vpcEndpointIds',value='vpce-01d622316a7df47f9'"
+    --patch-operations "op='add',path='/endpointConfiguration/vpcEndpointIds',value='vpce-01d622316a7df47f9'" \
     --region us-west-2
 ```
 
@@ -271,7 +271,7 @@ To disassociate a VPC endpoint from a private API, use the following CLI command
 ```
 aws apigateway update-rest-api \
     --rest-api-id u67n3ov968 \
-    --patch-operations "op='remove',path='/endpointConfiguration/vpcEndpointIds',value='vpce-0393a628149c867ee'"
+    --patch-operations "op='remove',path='/endpointConfiguration/vpcEndpointIds',value='vpce-0393a628149c867ee'" \
     --region us-west-2
 ```
 
