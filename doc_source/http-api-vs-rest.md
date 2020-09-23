@@ -22,7 +22,7 @@ The following tables summarize core features that are available in HTTP APIs and
 |  HTTP proxy  |  ✓  |  ✓  | 
 |  Lambda proxy  |  ✓  |  ✓  | 
 |  HTTP  |   |  ✓  | 
-|  AWS services  |   |  ✓  | 
+|  AWS services  |  ✓  |  ✓  | 
 |  Private integration  |  ✓  |  ✓  | 
 |  Mock  |   |  ✓  | 
 
@@ -33,7 +33,7 @@ The following tables summarize core features that are available in HTTP APIs and
 |  API keys  |   |  ✓  | 
 |  Custom domain names  |  ✓ \*  |  ✓  | 
 
-\* HTTP APIs don't support TLS 1\.0 or wildcard custom domain names\.
+\* HTTP APIs don't support TLS 1\.0\.
 
 
 | Development | HTTP API | REST API | 

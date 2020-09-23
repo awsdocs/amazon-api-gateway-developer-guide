@@ -1,6 +1,6 @@
 # Call an API with API Gateway Lambda authorizers<a name="call-api-with-api-gateway-lambda-authorization"></a>
 
- Having configured the Lambda authorizer \(formerly known as the custom authorizer\) and deployed the API, you should test the API with the Lambda authorizer enabled\. For this, you need a REST client, such as cURL or [Postman](https://www.getpostman.com/)\. For the following examples, we use Postman\. 
+ Having configured the Lambda authorizer \(formerly known as the custom authorizer\) and deployed the API, you should test the API with the Lambda authorizer enabled\. For this, you need a REST client, such as cURL or [Postman](https://www.postman.com/)\. For the following examples, we use Postman\. 
 
 **Note**  
  When calling an authorizer\-enabled method, API Gateway does not log the call to CloudWatch if the required token for the `TOKEN` authorizer is not set, is null, or is invalidated by the specified **Token validation expression**\. Similarly, API Gateway does not log the call to CloudWatch if any of the required identity sources for the `REQUEST` authorizer are not set, are null, or are empty\.

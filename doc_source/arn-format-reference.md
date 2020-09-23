@@ -87,5 +87,5 @@ The following tables list the Amazon Resource Names \(ARNs\) for API Gateway res
 
 | Resource | ARN | 
 | --- | --- | 
-|  HTTP API and WebSocket API endpoint  |  `arn:partition:execute-api:region:account-id:api-id/stage/route-key`  | 
+|  WebSocket API endpoint  |  `arn:partition:execute-api:region:account-id:api-id/stage/route-key`  | 
 |  HTTP API and REST API endpoint  |  `arn:partition:execute-api:region:account-id:api-id/stage/http-method/resource-path`  | 

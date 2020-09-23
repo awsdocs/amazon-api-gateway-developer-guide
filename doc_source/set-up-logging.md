@@ -27,7 +27,7 @@ Examples of some commonly used access log formats are shown in the API Gateway c
   $context.status $context.responseLength $context.requestId
   ```
 
-  The continuation characters \(`\`\) are meant as a visual aid\. The log format cannot have any line breaks\.
+  The continuation characters \(`\`\) are meant as a visual aid\. The log format must be a single line\. You can add a newline character \(`\n`\) at the end of the log format to include a newline at the end of each log entry\.
 +  `JSON`: 
 
   ```
@@ -44,7 +44,7 @@ Examples of some commonly used access log formats are shown in the API Gateway c
   }
   ```
 
-  The continuation characters \(`\`\) are meant as a visual aid\. The log format cannot have any line breaks\.
+  The continuation characters \(`\`\) are meant as a visual aid\. The log format must be a single line\. You can add a newline character \(`\n`\) at the end of the log format to include a newline at the end of each log entry\.
 + `XML`: 
 
   ```
@@ -61,7 +61,7 @@ Examples of some commonly used access log formats are shown in the API Gateway c
   </request>
   ```
 
-  The continuation characters \(`\`\) are meant as a visual aid\. The log format cannot have any line breaks\.
+  The continuation characters \(`\`\) are meant as a visual aid\. The log format must be a single line\. You can add a newline character \(`\n`\) at the end of the log format to include a newline at the end of each log entry\.
 + `CSV` \(comma\-separated values\):
 
   ```
@@ -71,7 +71,7 @@ Examples of some commonly used access log formats are shown in the API Gateway c
   $context.responseLength,$context.requestId
   ```
 
-  The continuation characters \(`\`\) are meant as a visual aid\. The log format cannot have any line breaks\.
+  The continuation characters \(`\`\) are meant as a visual aid\. The log format must be a single line\. You can add a newline character \(`\n`\) at the end of the log format to include a newline at the end of each log entry\.
 
 ## Permissions for CloudWatch logging<a name="set-up-access-logging-permissions"></a>
 
@@ -128,6 +128,10 @@ To set up CloudWatch API logging, you must have deployed the API to a stage\. Yo
    1. Choose **Enable CloudWatch Logs** under **CloudWatch Settings**\.
 
    1. Choose **Error** or **Info** from the dropdown menu\.
+
+   1. If desired, choose **Log full requests/responses data** to log the full API requests and responses\.
+**Warning**  
+This can be useful to troubleshoot APIs, but can result in logging sensitive data\. We recommend that you don't enable `Log full requests/responses data` for production APIs\.
 
    1. If desired, choose **Enable Detailed CloudWatch Metrics**\.
 

@@ -27,7 +27,7 @@ You can find a REST API's root URL in the **Stage Editor** for the API in the AP
 
 If an API permits anonymous access, you can use any web browser to invoke any `GET` method calls by copying and pasting an appropriate invocation URL to the browser's address bar\. For other methods or any authentication\-required calls, the invocation are more involved because you must specify a payload or sign the requests\. You can handle these in a script behind an HTML page or in a client application using one of the AWS SDKs\.
 
-For testing, you can use the API Gateway console to call an API by using the API Gateway's `TestInvoke` feature, which bypasses the `Invoke` URL and allows API testing before the API is deployed\. Alternatively, you can use the [Postman](http://www.getpostman.com/) application to test a successfully deployed API, without writing a script or a client\.
+For testing, you can use the API Gateway console to call an API by using the API Gateway's `TestInvoke` feature, which bypasses the `Invoke` URL and allows API testing before the API is deployed\. Alternatively, you can use the [Postman](http://www.postman.com/) application to test a successfully deployed API, without writing a script or a client\.
 
 **Note**  
  Query string parameter values in an invocation URL cannot contain `%%`\. 

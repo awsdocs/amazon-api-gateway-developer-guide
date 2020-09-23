@@ -105,7 +105,7 @@ An API key can be associated with more than one usage plan\. A usage plan can be
 
 ## Test a usage plan<a name="api-gateway-usage-plan-test-console"></a>
 
-To test the usage plan, you can use an AWS SDK, AWS CLI, or a REST API client like Postman\. For an example of using [Postman](https://www.getpostman.com/) to test the usage plan, see [Test usage plans](api-gateway-create-usage-plans-with-rest-api.md#api-gateway-usage-plan-test-with-postman)\.
+To test the usage plan, you can use an AWS SDK, AWS CLI, or a REST API client like Postman\. For an example of using [Postman](https://www.postman.com/) to test the usage plan, see [Test usage plans](api-gateway-create-usage-plans-with-rest-api.md#api-gateway-usage-plan-test-with-postman)\.
 
 ## Maintain a usage plan<a name="api-gateway-usage-plan-manage-usage"></a>
 

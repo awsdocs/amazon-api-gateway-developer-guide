@@ -1,10 +1,14 @@
 # Document history<a name="history"></a>
 
 The following table describes the important changes to the documentation since the last release of Amazon API Gateway\. For notification about updates to this documentation, you can subscribe to an RSS feed by choosing the RSS button in the top menu panel\.
-+ **Latest documentation update: **April 20, 2020
++ **Latest documentation update: **August 20, 2020
 
 | Change | Description | Date | 
 | --- |--- |--- |
+| [HTTP API AWS service integrations](#history) | Added support for AWS service integrations for HTTP APIs\. For more information, see [Working with AWS service integrations for HTTP APIs](https://docs.aws.amazon.com/apigateway/latest/developerguide/http-api-develop-integrations-aws-services)\. | August 20, 2020 | 
+| [HTTP API wildcard custom domains](#history) | Added support for wildcard custom domain names for HTTP APIs\. For more information, see [Wildcard custom domain names](https://docs.aws.amazon.com/apigateway/latest/developerguide/http-api-custom-domain-names.html)\. | August 10, 2020 | 
+| [Serverless developer portal improvements](#history) | Added user management to the administrator panel and support for exporting API definitions\. For more information, see [Use the serverless developer portal to catalog your API Gateway APIs](https://docs.aws.amazon.com/apigateway/latest/developerguide/apigateway-developer-portal.html)\. | June 25, 2020 | 
+| [WebSocket API Sec\-WebSocket\-Protocol support](#history) | Added support for the `Sec-WebSocket-Protocol` field\. For more information, see [Setting up a $connect route that requires a WebSocket subprotocol](https://docs.aws.amazon.com/apigateway/latest/developerguide/websocket-connect-route-subprotocol.html)\. | June 16, 2020 | 
 | [HTTP API export](#history) | Added support for exporting OpenAPI 3\.0 definitions of HTTP APIs\. For more information, see [Exporting an HTTP API from API Gateway](https://docs.aws.amazon.com/apigateway/latest/developerguide/http-api-export.html)\. | April 20, 2020 | 
 | [Security documentation](#history) | Added security documentation\. For more information, see [Security in Amazon API Gateway](https://docs.aws.amazon.com/apigateway/latest/developerguide/security.html)\. | March 31, 2020 | 
 | [Reorganized documentation](#history) | Reorganized the developer guide\. | March 12, 2020 | 

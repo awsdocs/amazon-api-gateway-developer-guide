@@ -14,7 +14,7 @@ Any custom domain name that you use for an edge\-optimized API applies across al
 
 ## Regional API endpoints<a name="api-gateway-api-endpoint-types-regional"></a>
 
-A *[regional API endpoint](api-gateway-basic-concept.md#apigateway-definition-regional-api-endpoint)* is intended for clients in the same region\. When a client running on an EC2 instance calls an API in the same region, or when an API is intended to serve a small number of clients with high demands, a regional API reduces connection overhead\. \.
+A *[regional API endpoint](api-gateway-basic-concept.md#apigateway-definition-regional-api-endpoint)* is intended for clients in the same region\. When a client running on an EC2 instance calls an API in the same region, or when an API is intended to serve a small number of clients with high demands, a regional API reduces connection overhead\.
 
 For a regional API, any custom domain name that you use is specific to the region where the API is deployed\. If you deploy a regional API in multiple regions, it can have the same custom domain name in all regions\. You can use custom domains together with Amazon Route 53 to perform tasks such as [latency\-based routing](https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/routing-policy.html#routing-policy-latency)\. For more information, see [Setting up a regional custom domain name in API Gateway](apigateway-regional-api-custom-domain-create.md) and [Creating an edge\-optimized custom domain name](how-to-edge-optimized-custom-domain-name.md)\.
 

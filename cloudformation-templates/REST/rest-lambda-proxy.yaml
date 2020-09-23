@@ -1,0 +1,67 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Description: |
+  Example REST API with a Lambda proxy integration. The APIInvokeLambdaPermission resource updates 
+  MyLambdaFunction's resource policy to grant API Gateway permission to invoke the function.
+Resources:
+  MyAPI:
+    Type: AWS::ApiGateway::RestApi
+    Properties:
+      Name: example-lambda-proxy
+  Method:
+    Type: AWS::ApiGateway::Method
+    Properties:
+      HttpMethod: GET
+      ResourceId: !GetAtt MyAPI.RootResourceId
+      RestApiId: !Ref MyAPI
+      AuthorizationType: NONE
+      Integration:
+        Type: AWS_PROXY
+        Uri: !Sub arn:aws:apigateway:${AWS::Region}:lambda:path/2015-03-31/functions/${MyLambdaFunction.Arn}/invocations
+        IntegrationHttpMethod: POST
+  Deployment:
+    DependsOn: Method
+    Type: AWS::ApiGateway::Deployment
+    Properties:
+      RestApiId: !Ref MyAPI
+      StageName: test
+  MyLambdaFunction:
+    Type: AWS::Lambda::Function
+    Properties:
+      Runtime: nodejs12.x
+      Role: !GetAtt FunctionExecutionRole.Arn
+      Handler: index.handler
+      Code:
+        ZipFile: |
+          exports.handler = async (event) => {
+              const response = {
+                  statusCode: 200,
+                  body: JSON.stringify('Hello from Lambda!'),
+              };
+              return response;
+          };
+  APIInvokeLambdaPermission:
+    Type: AWS::Lambda::Permission
+    Properties:
+      FunctionName: !Ref MyLambdaFunction
+      Action: lambda:InvokeFunction
+      Principal: apigateway.amazonaws.com
+      SourceArn:
+        Fn::Sub: arn:${AWS::Partition}:execute-api:${AWS::Region}:${AWS::AccountId}:${MyAPI}/test/GET/
+  FunctionExecutionRole:
+    Type: AWS::IAM::Role
+    Properties:
+      AssumeRolePolicyDocument:
+        Version: '2012-10-17'
+        Statement:
+          - Effect: Allow
+            Principal:
+              Service:
+              - lambda.amazonaws.com
+            Action:
+              - 'sts:AssumeRole'
+      ManagedPolicyArns:
+        - arn:aws:iam::aws:policy/service-role/AWSLambdaBasicExecutionRole
+
+Outputs:
+  InvokeURL:
+    Value: !Sub https://${MyAPI}.execute-api.${AWS::Region}.amazonaws.com/test

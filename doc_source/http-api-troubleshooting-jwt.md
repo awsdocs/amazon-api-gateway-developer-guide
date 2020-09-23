@@ -27,7 +27,7 @@ The response from the API includes a `www-authenticate` header\.
 {"message":"Unauthorized"}}
 ```
 
-In this case, the `www-authenticate` header shows that the token wasn't issued for a valid audience\. For API Gateway to authorize a request, the JWT's `aud` claim must match one of the audience entries that's configured for the authorizer\.
+In this case, the `www-authenticate` header shows that the token wasn't issued for a valid audience\. For API Gateway to authorize a request, the JWT's `aud` or `client_id` claim must match one of the audience entries that's configured for the authorizer\.
 
 You can also decode a JWT and verify that it matches the issuer, audience, and scopes that your API requires\. The website [jwt\.io](https://jwt.io/) can debug JWTs in the browser\. The OpenID Foundation maintains a [list of libraries for working with JWTs](https://openid.net/developers/jwt/)\. 
 

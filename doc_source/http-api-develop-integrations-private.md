@@ -8,10 +8,12 @@ To create a private integration, you must first create a VPC link\. To learn mor
 
 After you’ve created a VPC link, you can set up private integrations that connect to an Application Load Balancer, Network Load Balancer, or resources registered with an AWS Cloud Map service\.
 
+To create a private integration, all resources must be owned by the same AWS account \(including the load balancer or AWS Cloud Map service, VPC link and HTTP API\)\.
+
 By default, private integration traffic uses the HTTP protocol\. You can specify a [https://docs.aws.amazon.com/apigatewayv2/latest/api-reference/apis-apiid-integrations-integrationid.html](https://docs.aws.amazon.com/apigatewayv2/latest/api-reference/apis-apiid-integrations-integrationid.html) if you require private integration traffic to use HTTPS\.
 
 **Note**  
-To create a private integration, all resources must be owned by the same AWS account \(including the load balancer or AWS Cloud Map service, VPC link and HTTP API\)\.
+For private integrations, API Gateway includes the [stage](http-api-stages.md) portion of the API endpoint in the request to your backend resources\. For example, a request to the `test` stage of an API includes `test/route-path` in the request to your private integration\.
 
 ## Create a private integration using an Application Load Balancer or Network Load Balancer<a name="http-api-develop-integrations-private-ELB"></a>
 
@@ -26,6 +28,7 @@ aws apigatewayv2 create-integration --api-id api-id --integration-type HTTP_PROX
     --integration-method GET --connection-type VPC_LINK \
     --connection-id VPC-link-ID \
     --integration-uri arn:aws:elasticloadbalancing:us-east-2:123456789012:listener/app/my-load-balancer/50dc6c495c0c9188/0467ef3c8400ae65
+    --payload-format-version 1.0
 ```
 
 ## Create a private integration using AWS Cloud Map service discovery<a name="http-api-develop-integrations-private-Cloud-Map"></a>
@@ -46,4 +49,5 @@ aws apigatewayv2 create-integration --api-id api-id --integration-type HTTP_PROX
     --integration-method GET --connection-type VPC_LINK \
     --connection-id VPC-link-ID \
     --integration-uri arn:aws:servicediscovery:us-east-2:123456789012:service/srv-id?stage=prod&deployment=green_deployment
+    --payload-format-version 1.0
 ```

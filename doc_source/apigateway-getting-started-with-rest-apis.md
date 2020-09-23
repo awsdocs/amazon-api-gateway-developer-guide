@@ -89,7 +89,7 @@ Once you complete Step 2, you've created an API, but you can't actually use it y
 
 1. In the `prod` **Stage Editor**, note the **Invoke URL** at the top\. It should be in this format: \(`https://b123abcde4.execute-api.us-west-2.amazonaws.com/prod`\)\. If you choose the **Invoke URL**, it will open a new browser tab with that URL\. If you refresh the new browser tab, you'll see the message body \(`"Hello from Lambda!"`\) returned\.
 
-For actual API testing, you would use a tool such as [cURL](https://curl.haxx.se/) or [POSTMAN](https://www.getpostman.com/) to test your API\. For example, if you have `cURL` installed on your computer, you can test your API as follows:
+For actual API testing, you would use a tool such as [cURL](https://curl.haxx.se/) or [POSTMAN](https://www.postman.com/) to test your API\. For example, if you have `cURL` installed on your computer, you can test your API as follows:
 
 1. Open a terminal window\.
 

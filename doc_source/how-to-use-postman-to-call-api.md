@@ -1,6 +1,6 @@
 # Use Postman to call a REST API<a name="how-to-use-postman-to-call-api"></a>
 
-The [Postman](http://www.getpostman.com) app is a convenient tool to test a REST API in API Gateway\. The following instructions walk you through the essential steps of using the Postman app to call an API\. For more information, see the Postman [help](https://www.getpostman.com/docs/)\.
+The [Postman](http://www.postman.com) app is a convenient tool to test a REST API in API Gateway\. The following instructions walk you through the essential steps of using the Postman app to call an API\. For more information, see the Postman [help](https://www.postman.com/docs/)\.
 
 1. Launch Postman\.
 

@@ -604,7 +604,7 @@ In the output:
 To enable CORS for the Lambda proxy integration, you must add `Access-Control-Allow-Origin:domain-name` to the output `headers`\. `domain-name` can be `*` for any domain name\. The output `body` is marshalled to the frontend as the method response payload\. If `body` is a binary blob, you can encode it as a Base64\-encoded string by setting `isBase64Encoded` to `true` and configuring `*/*` as a **Binary Media Type**\. Otherwise, you can set it to `false` or leave it unspecified\.
 
 **Note**  
-For more information about enabling binary support, see [Enabling binary support using the API Gateway console](api-gateway-payload-encodings-configure-with-console.md)\.
+For more information about enabling binary support, see [Enabling binary support using the API Gateway console](api-gateway-payload-encodings-configure-with-console.md)\. For an example Lambda function, see [Return binary media from a Lambda proxy integration](lambda-proxy-binary-media.md)\.
 
 If the function output is of a different format, API Gateway returns a `502 Bad Gateway` error response\. 
 

@@ -268,7 +268,7 @@ To work with an Amazon S3 bucket, we expose the GET, PUT, and DELETE methods on 
 
 1.  Repeat the preceding steps to create and configure the GET and DELETE method on the API's **/\{folder\}** resource\. 
 
-The above examples illustrate how to create a new bucket in the specified region, to view the list of objects in the bucket, and to delete the bucket\. Other Amazon S3 bucket operations allow you work with the metadata or properties of the bucket\. For example, you can set up your API to call the Amazon S3's [PUT /?notification](https://docs.aws.amazon.com/AmazonS3/latest/API/RESTBucketPUTnotification.html#RESTBucketPUTnotification-requests) action to set up notifications on the bucket, to call [PUT /?acl](https://docs.aws.amazon.com/AmazonS3/latest/API/RESTBucketPUTacl.html#RESTBucketPUTacl-requests) to set an access control list on the bucket, etc\. The API set up is similar, except for that you must append appropriate query parameters to the Amazon S3 endpoint URLs\. At run time, you must provide the appropriate XML payload to the method request\. The same can be said about supporting the other GET and DELETE operations on a Amazon S3 bucket\. For more information on possible &S3; actions on a bucket, see [Amazon S3 Operations on Buckets](https://docs.aws.amazon.com/AmazonS3/latest/API/RESTBucketOps.html)\.
+The above examples illustrate how to create a new bucket in the specified region, to view the list of objects in the bucket, and to delete the bucket\. Other Amazon S3 bucket operations allow you work with the metadata or properties of the bucket\. For example, you can set up your API to call the Amazon S3's [PUT /?notification](https://docs.aws.amazon.com/AmazonS3/latest/API/RESTBucketPUTnotification.html#RESTBucketPUTnotification-requests) action to set up notifications on the bucket, to call [PUT /?acl](https://docs.aws.amazon.com/AmazonS3/latest/API/RESTBucketPUTacl.html#RESTBucketPUTacl-requests) to set an access control list on the bucket, etc\. The API set up is similar, except for that you must append appropriate query parameters to the Amazon S3 endpoint URLs\. At run time, you must provide the appropriate XML payload to the method request\. The same can be said about supporting the other GET and DELETE operations on a Amazon S3 bucket\. For more information on possible Amazon S3 actions on a bucket, see [Amazon S3 Operations on Buckets](https://docs.aws.amazon.com/AmazonS3/latest/API/RESTBucketOps.html)\.
 
 ## Expose API methods to access an Amazon S3 object in a bucket<a name="api-items-in-folder-as-s3-objects-in-bucket"></a>
 
@@ -312,7 +312,7 @@ For more information about the binary support in API Gateway, see [Content type 
 
 ## Call the API using a REST API client<a name="api-as-s3-proxy-test-using-postman"></a>
 
-To provide an end\-to\-end tutorial, we now show how to call the API using [Postman](https://www.getpostman.com/), which supports the AWS IAM authorization\.<a name="api-as-s3-proxy-test-using-postman-steps"></a>
+To provide an end\-to\-end tutorial, we now show how to call the API using [Postman](https://www.postman.com/), which supports the AWS IAM authorization\.<a name="api-as-s3-proxy-test-using-postman-steps"></a>
 
 **To call our Amazon S3 proxy API using Postman**
 

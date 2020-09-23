@@ -1,0 +1,53 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Description: Example REST API with a stage, deployment, and access logging.
+Resources:
+  MyAPI:
+    Type: AWS::ApiGateway::RestApi
+    Properties:
+      Name: stage-example
+  PetsResource:
+    Type: AWS::ApiGateway::Resource
+    Properties:
+      ParentId: !GetAtt
+        - MyAPI
+        - RootResourceId
+      PathPart: pets
+      RestApiId: !Ref MyAPI
+  Method:
+    Type: AWS::ApiGateway::Method
+    Properties:
+      HttpMethod: GET
+      ResourceId: !Ref PetsResource
+      RestApiId: !Ref MyAPI
+      AuthorizationType: NONE
+      Integration:
+        Type: HTTP_PROXY
+        Uri: http://petstore.execute-api.us-west-1.amazonaws.com/petstore/pets
+        IntegrationHttpMethod: GET
+  Deployment:
+    DependsOn: Method
+    Type: AWS::ApiGateway::Deployment
+    Properties:
+      RestApiId: !Ref MyAPI
+      StageName: tempstage
+  TestStage:
+    Type: AWS::ApiGateway::Stage
+    Properties:
+      StageName: test
+      RestApiId: !Ref MyAPI
+      DeploymentId: !Ref Deployment
+      Description: "test stage description"
+      AccessLogSetting:
+        DestinationArn: !GetAtt MyLogGroup.Arn
+        Format: $context.identity.sourceIp $context.identity.caller $context.identity.user [$context.requestTime] "$context.httpMethod $context.resourcePath $context.protocol" $context.status $context.responseLength $context.requestId
+  MyLogGroup:
+    Type: AWS::Logs::LogGroup
+    Properties:
+      LogGroupName: !Join
+        - '-'
+        - - !Ref MyAPI
+          - access-logs
+
+Outputs:
+  InvokeURL:
+    Value: !Sub https://${MyAPI}.execute-api.${AWS::Region}.amazonaws.com/test/pets

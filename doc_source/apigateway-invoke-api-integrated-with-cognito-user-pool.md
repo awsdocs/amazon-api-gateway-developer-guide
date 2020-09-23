@@ -25,4 +25,4 @@ The following procedure outlines the steps to perform these tasks\. For more inf
 
 1. When the token expires, repeat steps 2–4\. Identity tokens provisioned by Amazon Cognito expire within an hour\. 
 
- For code examples, see an [Android Java sample](https://github.com/awslabs/aws-sdk-android-samples/tree/master/AmazonCognitoYourUserPoolsDemo) and an [iOS Objective\-C sample](https://github.com/awslabs/aws-sdk-ios-samples/tree/master/CognitoYourUserPools-Sample/Objective-C)\. 
+ For code examples, see an [Android Java sample](https://github.com/awslabs/aws-sdk-android-samples/tree/main/AmazonCognitoYourUserPoolsDemo) and an [iOS Objective\-C sample](https://github.com/awslabs/aws-sdk-ios-samples/tree/main/CognitoYourUserPools-Sample/Objective-C)\. 

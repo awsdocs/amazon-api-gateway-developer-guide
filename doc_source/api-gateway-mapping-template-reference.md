@@ -5,7 +5,7 @@ This section provides reference information for the variables and functions that
 **Topics**
 + [`$context` Variables for data models, authorizers, mapping templates, and CloudWatch access logging](#context-variable-reference)
 + [`$context` Variable template example](#context-variables-template-example)
-+ [`$context` Variables for CloudWatch access logging only](#context-variable-reference-access-logging-only)
++ [`$context` Variables for access logging only](#context-variable-reference-access-logging-only)
 + [`$input` Variables](#input-variable-reference)
 + [`$input` Variable template examples](#input-examples-mapping-templates)
 + [`$stageVariables`](#stagevariables-template-reference)
@@ -18,7 +18,7 @@ For `$method` and `$integration` variables, see [Amazon API Gateway API request 
 
 The following `$context` variables can be used in data models, authorizers, mapping templates, and CloudWatch access logging\.
 
-For `$context` variables that can be used only in CloudWatch access logging, see [`$context` Variables for CloudWatch access logging only](#context-variable-reference-access-logging-only)\.
+For `$context` variables that can be used only in CloudWatch access logging, see [`$context` Variables for access logging only](#context-variable-reference-access-logging-only)\.
 
 
 | Parameter | Description | 
@@ -41,7 +41,7 @@ For `$context` variables that can be used only in CloudWatch access logging, see
 | $context\.identity\.apiKey |  For API methods that require an API key, this variable is the API key associated with the method request\. For methods that don't require an API key, this variable is null\. For more information, see [Creating and using usage plans with API keys](api-gateway-api-usage-plans.md)\.  | 
 | $context\.identity\.apiKeyId | The API key ID associated with an API request that requires an API key\. | 
 | $context\.identity\.caller |  The principal identifier of the caller making the request\.  | 
-| $context\.identity\.cognitoAuthenticationProvider |  The Amazon Cognito authentication provider used by the caller making the request\. Available only if the request was signed with Amazon Cognito credentials\. For information, see [Using Federated Identities](https://docs.aws.amazon.com/cognito/latest/developerguide/cognito-identity.html) in the *Amazon Cognito Developer Guide*\.  | 
+| $context\.identity\.cognitoAuthenticationProvider |  A comma\-separated list of the Amazon Cognito authentication providers used by the caller making the request\. Available only if the request was signed with Amazon Cognito credentials\. For information, see [Using Federated Identities](https://docs.aws.amazon.com/cognito/latest/developerguide/cognito-identity.html) in the *Amazon Cognito Developer Guide*\.  | 
 | $context\.identity\.cognitoAuthenticationType |  The Amazon Cognito authentication type of the caller making the request\. Available only if the request was signed with Amazon Cognito credentials\.  | 
 | $context\.identity\.cognitoIdentityId |  The Amazon Cognito identity ID of the caller making the request\. Available only if the request was signed with Amazon Cognito credentials\.  | 
 | $context\.identity\.cognitoIdentityPoolId |  The Amazon Cognito identity pool ID of the caller making the request\. Available only if the request was signed with Amazon Cognito credentials\.  | 
@@ -94,19 +94,39 @@ Note that one of the variables is an API key\. This example assumes that the met
 }
 ```
 
-## `$context` Variables for CloudWatch access logging only<a name="context-variable-reference-access-logging-only"></a>
+## `$context` Variables for access logging only<a name="context-variable-reference-access-logging-only"></a>
 
-The following `$context` variables are available only for CloudWatch access logging\. For more information, see [Setting up CloudWatch logging for a REST API in API Gateway](set-up-logging.md)\. \(For WebSocket APIs, see [Monitoring WebSocket API execution with CloudWatch metrics](apigateway-websocket-api-logging.md)\.\)
+The following `$context` variables are available only for access logging\. For more information, see [Setting up CloudWatch logging for a REST API in API Gateway](set-up-logging.md)\. \(For WebSocket APIs, see [Monitoring WebSocket API execution with CloudWatch metrics](apigateway-websocket-api-logging.md)\.\)
 
 
 | Parameter | Description | 
 | --- | --- | 
+| $context\.authorize\.error | The authorization error message\. | 
+| $context\.authorize\.latency | The authorization latency in ms\. | 
+| $context\.authorize\.status | The status code returned from an authorization attempt\. | 
+| $context\.authorizer\.error | The error message returned from an authorizer\. | 
 | $context\.authorizer\.integrationLatency | The authorizer latency in ms\. | 
+| $context\.authorizer\.integrationStatus | The status code returned from a Lambda authorizer\. | 
+| $context\.authorizer\.latency | The authorizer latency in ms\. | 
+| $context\.authorizer\.requestId | The AWS endpoint's request ID\. | 
+| $context\.authorizer\.status | The status code returned from an authorizer\. | 
+| $context\.authenticate\.error | The error message returned from an authentication attempt\. | 
+| $context\.authenticate\.latency | The authentication latency in ms\. | 
+| $context\.authenticate\.status | The status code returned from an authentication attempt\. | 
+| $context\.integration\.error | The error message returned from an integration\. Equivalent to $context\.integrationErrorMessage\. | 
+| $context\.integration\.integrationStatus | For Lambda proxy integration, the status code returned from AWS Lambda, not from the backend Lambda function code\. | 
+| $context\.integration\.latency | The integration latency in ms\. Equivalent to $context\.integrationLatency\. | 
+| $context\.integration\.requestId | The AWS endpoint's request ID\. Equivalent to $context\.awsEndpointRequestId\. | 
+| $context\.integration\.status | The status code returned from an integration\. For Lambda proxy integrations, this is the status code that your Lambda function code returns\. Equivalent to $context\.integrationStatus\. | 
+| $context\.integrationErrorMessage |  A string that contains an integration error message\.  | 
 | $context\.integrationLatency | The integration latency in ms\. | 
-| $context\.integrationStatus | For Lambda proxy integration, this parameter represents the status code returned from AWS Lambda, not from the backend Lambda function\. | 
+| $context\.integrationStatus | For Lambda proxy integration, this parameter represents the status code returned from AWS Lambda, not from the backend Lambda function code\. | 
 | $context\.responseLatency | The response latency in ms\. | 
 | $context\.responseLength | The response payload length\. | 
 | $context\.status | The method response status\. | 
+| $context\.waf\.error | The error message returned from AWS WAF\. | 
+| $context\.waf\.latency | The AWS WAF latency in ms\. | 
+| $context\.waf\.status | The status code returned from AWS WAF\. | 
 
 ## `$input` Variables<a name="input-variable-reference"></a>
 

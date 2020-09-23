@@ -1,0 +1,83 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Description: Example HTTP API with access logs, a route, AWS Lambda integration, and a stage with automatic deployments.
+Resources:
+  MyAPI:
+    Type: AWS::ApiGatewayV2::Api
+    Properties:
+      Description: Example HTTP API
+      Name: http-api-with-logging
+      ProtocolType: HTTP
+  HTTPAPIRoute:
+    Type: AWS::ApiGatewayV2::Route
+    Properties:
+      ApiId: !Ref MyAPI
+      RouteKey: 'GET /lambda'
+      Target: !Join
+        - /
+        - - integrations
+          - !Ref LambdaIntegration
+  LambdaIntegration:
+    Type: AWS::ApiGatewayV2::Integration
+    Properties:
+      ApiId: !Ref MyAPI
+      IntegrationMethod: POST
+      IntegrationType: AWS_PROXY
+      IntegrationUri: !GetAtt MyLambdaFunction.Arn
+      PayloadFormatVersion: '2.0'
+  MyLambdaFunction:
+    Type: AWS::Lambda::Function
+    Properties:
+      Runtime: nodejs12.x
+      Role: !GetAtt FunctionExecutionRole.Arn
+      Handler: index.handler
+      Code:
+        ZipFile: |
+          exports.handler = async (event) => {
+              const response = {
+                  statusCode: 200,
+                  body: JSON.stringify('Hello from the ' + event.routeKey + ' route!'),
+              };
+              return response;
+          };
+  APIInvokeLambdaPermission:
+    Type: AWS::Lambda::Permission
+    Properties:
+      FunctionName: !Ref MyLambdaFunction
+      Action: lambda:InvokeFunction
+      Principal: apigateway.amazonaws.com
+      SourceArn: !Sub arn:${AWS::Partition}:execute-api:${AWS::Region}:${AWS::AccountId}:${MyAPI}/test/GET/lambda
+  FunctionExecutionRole:
+    Type: AWS::IAM::Role
+    Properties:
+      AssumeRolePolicyDocument:
+        Version: '2012-10-17'
+        Statement:
+          - Effect: Allow
+            Principal:
+              Service:
+              - lambda.amazonaws.com
+            Action:
+              - 'sts:AssumeRole'
+      ManagedPolicyArns:
+        - arn:aws:iam::aws:policy/service-role/AWSLambdaBasicExecutionRole
+  MyStage:
+    Type: AWS::ApiGatewayV2::Stage
+    Properties:
+      StageName: test
+      Description: test stage
+      AutoDeploy: true
+      ApiId: !Ref MyAPI
+      AccessLogSettings:
+        DestinationArn: !GetAtt MyLogGroup.Arn
+        Format: $context.identity.sourceIp - - [$context.requestTime] "$context.httpMethod $context.routeKey $context.protocol" $context.status $context.responseLength $context.requestId $context.integrationErrorMessage
+  MyLogGroup:
+    Type: AWS::Logs::LogGroup
+    Properties:
+      LogGroupName: !Join
+        - '-'
+        - - !Ref MyAPI
+          - access-logs
+
+Outputs:
+  InvokeURL:
+    Value: !Sub https://${MyAPI}.execute-api.${AWS::Region}.amazonaws.com/test/lambda

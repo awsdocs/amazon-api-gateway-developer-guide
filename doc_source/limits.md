@@ -6,7 +6,7 @@
 
 ## API Gateway quotas<a name="api-gateway-limits"></a>
 
-Unless noted otherwise, the quotas can be increased upon request\. To request a quotas increase, you can use [Service Quotas](https://docs.aws.amazon.com/servicequotas/latest/userguide/) or contact the [AWS Support Center](https://console.aws.amazon.com/support/home#/)\.
+Unless noted otherwise, the quotas can be increased upon request\. To request a quota increase, you can use [Service Quotas](https://docs.aws.amazon.com/servicequotas/latest/userguide/) or contact the [AWS Support Center](https://console.aws.amazon.com/support/home#/)\.
 
  When authorization is enabled on a method, the maximum length of the method's ARN \(for example, `arn:aws:execute-api:{region-id}:{account-id}:{api-id}/{stage-id}/{method}/{resource}/{path}`\) is 1600 bytes\. The path parameter values \(whose size is determined at runtime\) can cause the ARN length to exceed the limit\. When this happens, the API client receives a `414 Request URI too long` response\. 
 
@@ -26,7 +26,7 @@ The following quotas apply at the account level per Region in Amazon API Gateway
 
 ### HTTP API quotas<a name="http-api-quotas"></a>
 
-Unless noted otherwise, the following quotas can be increased upon request\. To request an increase, you can contact the [AWS Support Center](https://console.aws.amazon.com/support/home#/)\.
+The following quotas apply to configuring and running an HTTP API in API Gateway\.
 
 #### <a name="http-api-quotas.table"></a>
 
@@ -66,9 +66,11 @@ The following quotas apply to configuring and running a WebSocket API in Amazon 
 | Integrations per API | 300 | Yes | 
 | Stages per API | 10 | Yes | 
 | WebSocket frame size | 32 KB | No | 
-| Message payload size | 128 KB  Because of the WebSocket frame\-size quota of 32 KB, a message larger than 32 KB must be split into multiple frames, each 32 KB or smaller\. If a larger message \(or larger frame size\) is received, the connection is closed with code 1009\.  | No | 
+| Message payload size | 128 KB \* | No | 
 | Connection duration for WebSocket API | 2 hours | No | 
 | Idle Connection Timeout | 10 minutes | No | 
+
+\* Because of the WebSocket frame\-size quota of 32 KB, a message larger than 32 KB must be split into multiple frames, each 32 KB or smaller\. If a larger message \(or larger frame size\) is received, the connection is closed with code 1009\.
 
 ### API Gateway quotas for configuring and running a REST API<a name="api-gateway-execution-service-limits-table"></a>
 
