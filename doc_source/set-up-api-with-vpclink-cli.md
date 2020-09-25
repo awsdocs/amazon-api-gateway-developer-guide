@@ -21,12 +21,8 @@ After the Network Load Balancer is created, note its ARN\. You need it to create
    ```
    aws apigateway create-vpc-link \
        --name my-test-vpc-link \
-       --target-arns arn:aws:elasticloadbalancing:us-east-1:123456789012:loadbalancer/net/my-vpclink-test-nlb/1f8df693cd094a72 \
-       --endpoint-url https://apigateway.us-east-1.amazonaws.com   \
-       --region us-east-1
+       --target-arns arn:aws:elasticloadbalancing:us-east-1:123456789012:loadbalancer/net/my-vpclink-test-nlb/1f8df693cd094a72
    ```
-
-   If the AWS configuration uses `us-east-1` as the default region, you can skip the `endpoint-url` and `region` parameters in the preceding input\. 
 
    The preceding command immediately returns the following response, acknowledging the receipt of the request, and showing the `PENDING` status for the `VpcLink` being created\.
 

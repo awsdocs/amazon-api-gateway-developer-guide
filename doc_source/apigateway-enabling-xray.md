@@ -51,11 +51,11 @@ Once you've enabled X\-Ray for your API stage, you can use the X\-Ray management
 To use the AWS CLI to enable active X\-Ray tracing for an API stage when you create the stage, call the [https://docs.aws.amazon.com/cli/latest/reference/apigateway/create-stage.html](https://docs.aws.amazon.com/cli/latest/reference/apigateway/create-stage.html) command as in the following example: 
 
 ```
-aws apigateway --endpoint-url {endpoint-url} create-stage          \
-    --rest-api-id {rest-api-id}      \
-    --stage-name {stage-name}      \
-    --deployment-id {deployment-id}        \
-    --region {region}        \
+aws apigateway create-stage \
+    --rest-api-id {rest-api-id} \
+    --stage-name {stage-name} \
+    --deployment-id {deployment-id} \
+    --region {region} \
     --tracing-enabled=true
 ```
 
@@ -77,11 +77,11 @@ Following is example output for a successful invocation:
 To use the AWS CLI to disable active X\-Ray tracing for an API stage when you create the stage, call the [https://docs.aws.amazon.com/cli/latest/reference/apigateway/create-stage.html](https://docs.aws.amazon.com/cli/latest/reference/apigateway/create-stage.html) command as in the following example: 
 
 ```
-aws apigateway --endpoint-url {endpoint-url} create-stage          \
-    --rest-api-id {rest-api-id}      \
-    --stage-name {stage-name}      \
-    --deployment-id {deployment-id}        \
-    --region {region}        \
+aws apigateway create-stage \
+    --rest-api-id {rest-api-id} \
+    --stage-name {stage-name} \
+    --deployment-id {deployment-id} \
+    --region {region} \
     --tracing-enabled=false
 ```
 
@@ -103,20 +103,19 @@ Following is example output for a successful invocation:
  To use the AWS CLI to enable active X\-Ray tracing for an API that's already been deployed, call the [https://docs.aws.amazon.com/cli/latest/reference/apigateway/update-stage.html](https://docs.aws.amazon.com/cli/latest/reference/apigateway/update-stage.html) command as follows: 
 
 ```
-aws apigateway update-stage          \
-    --rest-api-id {rest-api-id}      \
-    --stage-name {stage-name}      \
+aws apigateway update-stage \
+    --rest-api-id {rest-api-id} \
+    --stage-name {stage-name} \
     --patch-operations op=replace,path=/tracingEnabled,value=true
 ```
 
  To use the AWS CLI to disable active X\-Ray tracing for an API that's already been deployed, call the [https://docs.aws.amazon.com/cli/latest/reference/apigateway/update-stage.html](https://docs.aws.amazon.com/cli/latest/reference/apigateway/update-stage.html) command as in the following example: 
 
 ```
-aws apigateway update-stage          \
-    --endpoint-url {endpoint-url}       \
-    --rest-api-id {rest-api-id}      \
-    --stage-name {stage-name}      \
-    --region {region}      \
+aws apigateway update-stage \
+    --rest-api-id {rest-api-id} \
+    --stage-name {stage-name} \
+    --region {region} \
     --patch-operations op=replace,path=/tracingEnabled,value=false
 ```
 

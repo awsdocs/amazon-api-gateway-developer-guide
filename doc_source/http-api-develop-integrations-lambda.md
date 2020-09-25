@@ -36,6 +36,18 @@ Format `2.0` includes a new `cookies` field\. All cookie headers in the request 
   "requestContext": {
     "accountId": "123456789012",
     "apiId": "api-id",
+    "authentication": {
+      "clientCert": {
+        "clientCertPem": "CERT_CONTENT",
+        "subjectDN": "www.example.com",
+        "issuerDN": "Example issuer",
+        "serialNumber": "a1:a1:a1:a1:a1:a1:a1:a1:a1:a1:a1:a1:a1:a1:a1:a1",
+        "validity": {
+          "notBefore": "May 28 12:30:02 2019 GMT",
+          "notAfter": "Aug  5 09:36:04 2021 GMT"
+      }
+    }
+  },
     "authorizer": {
       "jwt": {
         "claims": {
@@ -133,7 +145,17 @@ Format `2.0` includes a new `cookies` field\. All cookie headers in the request 
       "sourceIp": "IP",
       "user": null,
       "userAgent": "user-agent",
-      "userArn": null
+      "userArn": null,
+      "clientCert": {
+        "clientCertPem": "CERT_CONTENT",
+        "subjectDN": "www.example.com",
+        "issuerDN": "Example issuer",
+        "serialNumber": "a1:a1:a1:a1:a1:a1:a1:a1:a1:a1:a1:a1:a1:a1:a1:a1",
+        "validity": {
+          "notBefore": "May 28 12:30:02 2019 GMT",
+          "notAfter": "Aug  5 09:36:04 2021 GMT"
+        }
+      }
     },
     "path": "/my/path",
     "protocol": "HTTP/1.1",

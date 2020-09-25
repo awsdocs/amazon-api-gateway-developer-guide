@@ -36,9 +36,9 @@ After validating the JWT, API Gateway passes the claims in the token to the API 
 
 ## Create a JWT authorizer by using the AWS CLI<a name="http-api-jwt-authorizer.create"></a>
 
-Before you create a JWT authorizer, you must register a client application with an identity provider\. You must also have created an HTTP API\. For examples of creating an HTTP API, see [Creating an HTTP API](http-api-develop.md#http-api-examples)\.
+Before you create a JWT authorizer, you must register a client application with an identity provider\. You must also have created an HTTP API\. For examples of creating an HTTP API, see [Creating an HTTP API](http-api-develop.md#http-api-examples)\. For an example AWS CloudFormation template that creates an HTTP API with a JWT authorizer that uses Amazon Cognito as an identity provider, see [https://github.com/awsdocs/amazon-api-gateway-developer-guide/blob/master/cloudformation-templates/HTTP/http-with-jwt-auth.yaml](https://github.com/awsdocs/amazon-api-gateway-developer-guide/blob/master/cloudformation-templates/HTTP/http-with-jwt-auth.yaml)\.
 
-The following command creates a JWT authorizer that uses Amazon Cognito as an identity provider\.
+The following command creates a JWT authorizer that uses Amazon Cognito as an identity provider\. For `Audience`, specify the [ID of a client](https://docs.aws.amazon.com/cognito-user-identity-pools/latest/APIReference/API_UserPoolClientType.html#CognitoUserPools-Type-UserPoolClientType-ClientId) that's associated with the user pool that you specify for `Issuer`\.
 
 ```
 aws apigatewayv2 create-authorizer \

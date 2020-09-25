@@ -7,7 +7,7 @@ The following example policy documents shows various use cases to set access per
 + [Read\-only permissions on any APIs](#api-gateway-policy-example-apigateway-readonly)
 + [Full access permissions for any API Gateway resources](#api-gateway-policy-example-apigateway-full-access)
 + [Full\-access permissions for managing API stages](#api-gateway-policy-example-apigateway-stage-full-access)
-+ [Block specified users from deleting any API resources](#api-gateway-policy-example-apigateway-blacklist-user-for-delete)
++ [Block specified users from deleting any API resources](#api-gateway-policy-example-apigateway-block-user-for-delete)
 
 ## Simple read permissions<a name="api-gateway-policy-example-apigateway-general"></a>
 
@@ -167,7 +167,7 @@ Using the above policy, caller must find out the REST API's identifier beforehan
 
 To grant permissions for a specific API's stages, simply replace the `restapis/*` portion of the `Resource` specifications by `restapis/restapi_id`, where *restapi\_id* is the identifier of the API of interest\.
 
-## Block specified users from deleting any API resources<a name="api-gateway-policy-example-apigateway-blacklist-user-for-delete"></a>
+## Block specified users from deleting any API resources<a name="api-gateway-policy-example-apigateway-block-user-for-delete"></a>
 
 The following example IAM policy document blocks a specified user from deleting any API resources in API Gateway\.
 

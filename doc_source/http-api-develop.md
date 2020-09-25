@@ -7,7 +7,7 @@ As you're developing your API Gateway API, you decide on a number of characteris
 **Topics**
 + [Creating an HTTP API](#http-api-examples)
 + [Working with routes for HTTP APIs](http-api-develop-routes.md)
-+ [Controlling access to HTTP APIs with JWT authorizers](http-api-jwt-authorizer.md)
++ [Controlling and managing access to an HTTP API in API Gateway](http-api-access-control.md)
 + [Configuring integrations for HTTP APIs](http-api-develop-integrations.md)
 + [Configuring CORS for an HTTP API](http-api-cors.md)
 + [Working with OpenAPI definitions for HTTP APIs](http-api-open-api.md)

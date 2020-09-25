@@ -1,21 +1,23 @@
 # x\-amazon\-apigateway\-authorizer object<a name="api-gateway-swagger-extensions-authorizer"></a>
 
- Defines a Lambda authorizer \(formerly known as a custom authorizer\) for a REST API Or JWT authorizer for an HTTP API to be applied for authorization of method invocations in API Gateway\. This object is an extended property of the [OpenAPI Security Definitions](https://github.com/OAI/OpenAPI-Specification/blob/master/versions/2.0.md#security-definitions-object) object\. 
+ Defines a Lambda authorizer or JWT authorizer to be applied for authorization of method invocations in API Gateway\. This object is an extended property of the [OpenAPI Security Definitions](https://github.com/OAI/OpenAPI-Specification/blob/master/versions/2.0.md#security-definitions-object) object\.
 
 
 **Properties**  
 
 | Property name | Type | Description | 
 | --- | --- | --- | 
-| type | string |   The type of the authorizer\. This is a required property\. Specify `"token"` for an authorizer with the caller identity embedded in an authorization token\. Specify `"request"` for an authorizer with the caller identity contained in request parameters\. Specify `"jwt"` for a JWT authorizer for an HTTP API\.  | 
-| authorizerUri | string |   The Uniform Resource Identifier \(URI\) of the authorizer Lambda function\. The syntax is as follows:  <pre>"arn:aws:apigateway:us-east-1:lambda:path/2015-03-31/functions/arn:aws:lambda:us-east-1:account-id:function:auth_function_name/invocations"</pre> Supported only for REST APIs\.  | 
-| authorizerCredentials | string |   The credentials required for invoking the authorizer, if any, in the form of an ARN of an IAM execution role\. For example, "arn:aws:iam::*account\-id*:*IAM\_role*"\. Supported only for REST APIs\.   | 
-| identitySource | string |  A comma\-separated list of mapping expressions of the request parameters as the identity source\. Applicable for the authorizer of the "request" And "jwt" type only\.  | 
+| type | string |  The type of the authorizer\. This is a required property\. For REST APIs, specify specify `token` for an authorizer with the caller identity embedded in an authorization token\. Specify `request` for an authorizer with the caller identity contained in request parameters\. For HTTP APIs, specify `request` for a Lambda authorizer with the caller identity contained in request parameters\. Specify `jwt` for a JWT authorizer\.  | 
+| authorizerUri | string |   The Uniform Resource Identifier \(URI\) of the authorizer Lambda function\. The syntax is as follows:  <pre>"arn:aws:apigateway:us-east-1:lambda:path/2015-03-31/functions/arn:aws:lambda:us-east-1:account-id:function:auth_function_name/invocations"</pre>  | 
+| authorizerCredentials | string |  The credentials required for invoking the authorizer, if any, in the form of an ARN of an IAM execution role\. For example, "arn:aws:iam::*account\-id*:*IAM\_role*"\.   | 
+| authorizerPayloadFormatVersion | string |  For HTTP APIs, specifies the format of the data that API Gateway sends to a Lambda authorizer, and how API Gateway interprets the response from Lambda\. To learn more, see [Payload format version](http-api-lambda-authorizer.md#http-api-lambda-authorizer.payload-format)\.  | 
+| enableSimpleResponses | Boolean |  For HTTP APIs, specifies whether a `request` authorizer returns a Boolean value or an IAM policy\. Supported only for authorizers with an `authorizerPayloadFormatVersion` of `2.0`\. If enabled, the Lambda authorizer function returns a Boolean value\. To learn more, see [Lambda function response for format 2\.0](http-api-lambda-authorizer.md#http-api-lambda-authorizer.v2)\.  | 
+| identitySource | string |  A comma\-separated list of mapping expressions of the request parameters as the identity source\. Applicable for the authorizer of the `request` and `jwt` type only\.  | 
 | jwtConfiguration | Object |  Specifies the issuer and audiences for a JWT authorizer\. To learn more, see [JWTConfiguration](https://docs.aws.amazon.com/apigatewayv2/latest/api-reference/apis-apiid-authorizers-authorizerid.html#apis-apiid-authorizers-authorizerid-model-jwtconfiguration) in the API Gateway Version 2 API Reference\. Supported only for HTTP APIs\.  | 
 | identityValidationExpression | string |   A regular expression for validating the token as the incoming identity\. For example, "^x\-\[a\-z\]\+"\. Supported only for REST APIs\.  | 
-| authorizerResultTtlInSeconds | string |   The number of seconds during which the resulting IAM policy is cached\. Supported only for REST APIs\.  | 
+| authorizerResultTtlInSeconds | string |   The number of seconds during which authorizer result is cached\.  | 
 
-## x\-amazon\-apigateway\-authorizer examples<a name="api-gateway-swagger-extensions-authorizer-example"></a>
+## x\-amazon\-apigateway\-authorizer examples for REST APIs<a name="api-gateway-swagger-extensions-authorizer-example"></a>
 
 The following OpenAPI security definitions example specifies a Lambda authorizer of the "token" type and named `test-authorizer`\.
 
@@ -120,6 +122,8 @@ The following OpenAPI security definitions example specifies an API Gateway Lamb
 }
 ```
 
+## x\-amazon\-apigateway\-authorizer examples for HTTP APIs<a name="api-gateway-openapi-extensions-authorizer-examples-http"></a>
+
 The following OpenAPI 3\.0 example creates a JWT authorizer for an HTTP API that uses Amazon Cognito as an identity provider, with the `Authorization` header as an identity source\.
 
 ```
@@ -157,6 +161,26 @@ The following OpenAPI 3\.0 example produces the same JWT authorizer as the previ
         ]
       },
       "identitySource": "$request.header.Authorization"
+    }
+  }
+}
+```
+
+The following example creates a Lambda authorizer for an HTTP API\. This example authorizer uses the `Authorization` header as its identity source\. The authorizer uses the `2.0` payload format version, and returns Boolean value, because `enableSimpleResponses` is set to `true`\.
+
+```
+"securitySchemes" : {
+  "lambda-authorizer" : {
+    "type" : "apiKey",
+    "name" : "Authorization",
+    "in" : "header",
+    x-amazon-apigateway-authorizer" : {
+      "type" : "request",
+      "identitySource" : "$request.header.Authorization",
+      "authorizerUri" : "arn:aws:apigateway:us-west-2:lambda:path/2015-03-31/functions/arn:aws:lambda:us-west-2:123456789012:function:function-name/invocations",
+      "authorizerPayloadFormatVersion" : "2.0",
+      "authorizerResultTtlInSeconds" : 300,
+      "enableSimpleResponses" : true
     }
   }
 }

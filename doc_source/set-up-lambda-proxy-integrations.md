@@ -377,7 +377,7 @@ In Lambda proxy integration, API Gateway maps the entire client request to the i
     "stageVariables": {Applicable stage variables}
     "requestContext": {Request context, including authorizer-returned key-value pairs}
     "body": "A JSON string of the request payload."
-    "isBase64Encoded": "A boolean flag to indicate if the applicable request payload is Base64-encode"
+    "isBase64Encoded": "A boolean flag to indicate if the applicable request payload is Base64-encoded"
 }
 ```
 

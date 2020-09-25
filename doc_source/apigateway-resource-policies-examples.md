@@ -37,7 +37,7 @@ The following example resource policy grants API access in one AWS account to tw
 
 ## Example: Deny API traffic based on source IP address or range<a name="apigateway-resource-policies-source-ip-address-example"></a>
 
-The following example resource policy is a "blacklist" policy that denies \(blocks\) incoming traffic to an API from two specified source IP address blocks\.
+The following example resource policy denies \(blocks\) incoming traffic to an API from two specified source IP address blocks\.
 
 ```
 {

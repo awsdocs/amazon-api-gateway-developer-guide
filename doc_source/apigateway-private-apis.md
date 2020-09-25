@@ -4,6 +4,9 @@ Using Amazon API Gateway, you can create private REST APIs that can only be acce
 
 Using [ resource policies](#apigateway-private-api-set-up-resource-policy), you can allow or deny access to your API from selected VPCs and VPC endpoints, including across AWS accounts\. Each endpoint can be used to access multiple private APIs\. You can also use AWS Direct Connect to establish a connection from an on\-premises network to Amazon VPC and access your private API over that connection\. 
 
+**Important**  
+To restrict access to your private API to specific VPCs and VPC endpoints, you must add `aws:SourceVpc` and `aws:SourceVpce` conditions to your API's resource policy\. For example policies, see [Example: Allow private API traffic based on source VPC or VPC endpoint](apigateway-resource-policies-examples.md#apigateway-resource-policies-source-vpc-example)\.
+
 In all cases, traffic to your private API uses secure connections and does not leave the Amazon network—it is isolated from the public internet\. 
 
 You can [access](apigateway-private-api-test-invoke-url.md) your private APIs through interface VPC endpoints for API Gateway as shown in the following diagram\. If you have private DNS enabled, you can use private or public DNS names to access your APIs\. If you have private DNS disabled, you can only use public DNS names\.
@@ -176,9 +179,9 @@ When you are ready to test your API, be sure to create a resource policy and att
 
 ## Set up a resource policy for a private API<a name="apigateway-private-api-set-up-resource-policy"></a>
 
-Before your private API can be accessed, you need to create a resource policy and attach it to the API. This grants access to the API from your VPCs and VPC endpoints or from VPCs and VPC endpoints in other AWS accounts that you explicitly grant access\.
+Before your private API can be accessed, you need to create a resource policy and attach it to the API\. This grants access to the API from your VPCs and VPC endpoints or from VPCs and VPC endpoints in other AWS accounts that you explicitly grant access\.
 
-To do this, follow the instructions in [Create and attach an API Gateway resource policy to an API](apigateway-resource-policies-create-attach.md)\. In step 4, choose the **Source VPC Whitelist** example\. Replace `{{vpceID}}` \(including the curly braces\) with your VPC endpoint ID, and then choose **Save** to save your resource policy\.
+To do this, follow the instructions in [Create and attach an API Gateway resource policy to an API](apigateway-resource-policies-create-attach.md)\. In step 4, choose the **Source VPC** example\. Replace `{{vpceID}}` \(including the curly braces\) with your VPC endpoint ID, and then choose **Save** to save your resource policy\.
 
 You should also consider attaching an endpoint policy to the VPC endpoint to specify the access that's being granted\. For more information, see [Use VPC endpoint policies for private APIs in API Gateway](apigateway-vpc-endpoint-policies.md)\.
 
@@ -213,7 +216,7 @@ aws apigateway create-rest-api \
     --region us-west-2
 ```
 
-A successful call returns output similar to the following:
+The output will look like the following:
 
 ```
 {

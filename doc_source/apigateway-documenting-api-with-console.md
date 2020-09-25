@@ -18,4 +18,4 @@ The following procedure describes how to publish a documentation version\.
 
 1. Choose **Publish**\.
 
-You can now proceed to download the published documentation by exporting the documentation to an external OpenAPI file\.
+You can now proceed to download the published documentation by exporting the documentation to an external OpenAPI file\. To learn more, see [Export a REST API from API Gateway](api-gateway-export-api.md)\.

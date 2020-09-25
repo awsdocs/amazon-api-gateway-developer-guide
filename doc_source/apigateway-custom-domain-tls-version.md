@@ -34,13 +34,18 @@ The following table lists the protocols and ciphers that API Gateway can use for
 
 ****  
 
-|  | Security policy |  | TLS\-1\-0 | TLS\-1\-2 | SSL/TLS protocols supported | 
-| --- | --- | --- | --- | --- | --- | 
+|  | Security policy | 
+| --- |--- |
+|  | TLS\-1\-0 | TLS\-1\-2 | 
+| --- |--- |--- |
+| SSL/TLS protocols supported | 
+| --- |
 | TLSv1\.2 | ♦ | ♦ | 
 | TLSv1\.1 | ♦ |  | 
 | TLSv1 | ♦ |  | 
 | SSLv3 |  |  | 
 | Ciphers supported | 
+| --- |
 | ECDHE\-RSA\-AES128\-GCM\-SHA256 | ♦ | ♦ | 
 | ECDHE\-RSA\-AES128\-SHA256 | ♦ | ♦ | 
 | ECDHE\-RSA\-AES128\-SHA | ♦ |  | 
@@ -64,12 +69,14 @@ For private and WebSocket APIs, only `TLS-1-2` can be specified\.
 
 
 | Security policy | TLS\-1\-0 | TLS\-1\-2 | 
-| --- | --- | --- | 
-| TLS Protocols | 
+| --- |--- |--- |
+| **TLS Protocols** | 
+| --- |
 | Protocol\-TLSv1 | ♦ |  | 
 | Protocol\-TLSv1\.1 | ♦ |  | 
 | Protocol\-TLSv1\.2 | ♦ | ♦ | 
-| TLS Ciphers | 
+| **TLS Ciphers** | 
+| --- |
 | ECDHE\-ECDSA\-AES128\-GCM\-SHA256 | ♦ | ♦ | 
 | ECDHE\-RSA\-AES128\-GCM\-SHA256 | ♦ | ♦ | 
 | ECDHE\-ECDSA\-AES128\-SHA256 | ♦ | ♦ | 

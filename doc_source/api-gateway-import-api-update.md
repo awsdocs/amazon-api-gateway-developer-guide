@@ -45,7 +45,7 @@ Host:apigateway.<region>.amazonaws.com
 Content-Type: application/json
 Content-Length: ...
 
-[An OpenAPI API definition in JSON](api-as-lambda-proxy-export-swagger-with-extensions.md)
+An OpenAPI API definition in JSON
 ```
 
  The merging update operation takes two complete API definitions and merges them together\. For a small and incremental change, you can use the [resource update](https://docs.aws.amazon.com/apigateway/api-reference/link-relation/resource-update/) operation\. 
@@ -60,7 +60,7 @@ Host:apigateway.<region>.amazonaws.com
 Content-Type: application/json
 Content-Length: ...
 
-[An OpenAPI API definition in JSON](api-as-lambda-proxy-export-swagger-with-extensions.md)
+An OpenAPI API definition in JSON
 ```
 
  When the `mode` query parameter isn't specified, merge is assumed\.

@@ -211,7 +211,7 @@ The following steps describe how to enable basic request validation by importing
    X-Amz-Date: 20170306T234936Z
    Authorization: AWS4-HMAC-SHA256 Credential={access_key_ID}/20170306/us-east-1/apigateway/aws4_request, SignedHeaders=content-length;content-type;host;x-amz-date, Signature={sig4_hash}
    
-   Copy the JSON object from this [sample OpenAPI definition](api-gateway-request-validation-sample-api-swagger.md) and paste it here.
+   Copy the JSON object from this sample OpenAPI definition and paste it here.
    ```
 
 1.  Deploy the newly created API \(`fjd6crafxc`\) to a specified stage \(`testStage`\)\. 
