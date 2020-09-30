@@ -45,9 +45,9 @@ Format `2.0` includes a new `cookies` field\. All cookie headers in the request 
         "validity": {
           "notBefore": "May 28 12:30:02 2019 GMT",
           "notAfter": "Aug  5 09:36:04 2021 GMT"
+        }
       }
-    }
-  },
+    },
     "authorizer": {
       "jwt": {
         "claims": {
