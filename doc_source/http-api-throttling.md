@@ -8,7 +8,7 @@
 
 ### Account\-level throttling<a name="http-api-protect-throttling-account"></a>
 
- By default, API Gateway limits the steady\-state request rate to 10,000 requests per second \(rps\)\. It limits the burst \(that is, the maximum bucket size\) to 5,000 requests across all APIs within an AWS account\. In API Gateway, the burst limit corresponds to the maximum number of concurrent request submissions that API Gateway can fulfill at any moment without returning `429 Too Many Requests` error responses\. 
+ By default, API Gateway limits the steady\-state request rate to 10,000 requests per second \(rps\)\. It limits the burst \(that is, the maximum bucket size\) to 5,000 requests across all APIs within an AWS region\. In API Gateway, the burst limit corresponds to the maximum number of concurrent request submissions that API Gateway can fulfill at any moment without returning `429 Too Many Requests` error responses\. 
 
 To help understand these throttling limits, the following are a few examples, that use the default burst limit and the default account\-level rate limit:
 + If a caller submits 10,000 requests in a one\-second period evenly \(for example, 10 requests every millisecond\), API Gateway processes all requests without dropping any\. 
