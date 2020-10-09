@@ -91,8 +91,6 @@ def lambda_handler(event, context):
 
 ------
 
-For a Node\.js example that uses the AWS Serverless Application Model, see [GitHub](https://github.com/awslabs/serverless-application-model/blob/master/examples/2016-10-31/api_swagger_cors/index.js)\.
-
 **Topics**
 + [Determining whether to enable CORS support](#apigateway-cors-request-types)
 + [What it means to enable CORS support](#apigateway-responding-to-cors-preflight)

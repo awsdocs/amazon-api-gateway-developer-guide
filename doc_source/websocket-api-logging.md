@@ -53,7 +53,7 @@ When you specify the **Log Format**, you can choose which context variables to l
 | $context\.messageId |  A unique server\-side ID for a message\. Available only when the `$context.eventType` is `MESSAGE`\.  | 
 | $context\.requestId |  Same as `$context.extendedRequestId`\.  | 
 | $context\.requestTime | The [CLF](https://httpd.apache.org/docs/1.3/logs.html#common)\-formatted request time \(dd/MMM/yyyy:HH:mm:ss \+\-hhmm\)\. | 
-| $context\.requestTimeEpoch | The [Epoch](https://en.wikipedia.org/wiki/Unix_time)\-formatted request time\. | 
+| $context\.requestTimeEpoch | The [Epoch](https://en.wikipedia.org/wiki/Unix_time)\-formatted request time, in milliseconds\. | 
 | $context\.routeKey |  The selected route key\.  | 
 | $context\.stage |  The deployment stage of the API call \(for example, beta or prod\)\.  | 
 | $context\.status |  The response status\.  | 

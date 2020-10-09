@@ -48,7 +48,7 @@ Now you'll create a Lambda function in a different account from the one in which
 
 1. Copy\-paste the Node\.js function implementation from [Tutorial: Build a Hello World REST API with Lambda proxy integration](api-gateway-create-api-as-simple-proxy-for-lambda.md)\.
 
-1. Choose **Save**\.
+1. Choose **Deploy**\.
 
 1. Note the full ARN for your function \(in the upper right corner of the Lambda function pane\)\. You'll need it when you create your cross\-account Lambda integration\.
 

@@ -52,36 +52,44 @@ To enable logging for an API, your IAM user must have the following permissions\
 
 ## Creating a log group<a name="http-api-logging.create-log-group"></a>
 
-**To create a log group by using the AWS Management Console**
+The following AWS CLI command creates a log group\.
 
-1. Open the CloudWatch console at [https://console\.aws\.amazon\.com/cloudwatch/](https://console.aws.amazon.com/cloudwatch/)\.
+```
+aws logs create-log-group --log-group-name my-log-group
+```
 
-1. Choose **Log groups**\.
-
-1. Choose **Create log group**\.
-
-1. Enter a log group name, and then choose **Create**\.
-
-1. Note the Amazon Resource Name \(ARN\) for your log group\. The ARN format is arn:aws:logs:*region*: *account\-id*:log\-group:*log\-group\-name*\. You need the log group ARN to enable access logging for your HTTP API\.
+You need the Amazon Resource Name \(ARN\) for your log group to enable logging\. The ARN format is arn:aws:logs:*region*:*account\-id*:log\-group:*log\-group\-name*\.
 
 ## Enabling logging for a stage<a name="http-api-enable-logging.console"></a>
 
-**To enable logging by using the AWS Management Console**
+The following AWS CLI command enables logging for the `$default` stage of an HTTP API\.
 
-1. Open the [API Gateway console](https://console.aws.amazon.com/apigateway)\.
+```
+aws apigatewayv2 update-stage --api-id abcdef \
+    --stage-name '$default' \
+    --access-log-settings '{"DestinationArn": "arn:aws:logs:region:account-id:log-group:log-group-name", "Format": "$context.identity.sourceIp - - [$context.requestTime] \"$context.httpMethod $context.routeKey $context.protocol\" $context.status $context.responseLength $context.requestId"}'
+```
 
-1. Choose an API\.
+## Example log formats<a name="http-api-enable-logging.examples"></a>
 
-1. Under **Monitor**, choose **Logging**\.
+Examples of some common access log formats are available in the API Gateway console and are listed as follows\.
++ `CLF` \([Common Log Format](https://httpd.apache.org/docs/1.3/logs.html#common)\):
 
-1. Choose the stage for which you want to enable logging\.
+  ```
+  $context.identity.sourceIp - - [$context.requestTime] "$context.httpMethod $context.routeKey $context.protocol" $context.status $context.responseLength $context.requestId
+  ```
++  `JSON`: 
 
-1. Choose **Edit**\.
+  ```
+  { "requestId":"$context.requestId", "ip": "$context.identity.sourceIp", "requestTime":"$context.requestTime", "httpMethod":"$context.httpMethod","routeKey":"$context.routeKey", "status":"$context.status","protocol":"$context.protocol", "responseLength":"$context.responseLength" }
+  ```
++ `XML`: 
 
-1. Use the **Access logging** toggle to enable access logging\.
+  ```
+  <request id="$context.requestId"> <ip>$context.identity.sourceIp</ip> <requestTime>$context.requestTime</requestTime> <httpMethod>$context.httpMethod</httpMethod> <routeKey>$context.routeKey</routeKey> <status>$context.status</status> <protocol>$context.protocol</protocol> <responseLength>$context.responseLength</responseLength> </request>
+  ```
++ `CSV` \(comma\-separated values\):
 
-1. For **Log destination**, enter the ARN of a CloudWatch Logs log group\. The ARN format is `arn:aws:logs:region:account-id:log-group:log-group-name`\. 
-
-1. Enter a log format in **Log format**\. You can choose **CLF**, **JSON**, **XML**, or **CSV** to use one of the provided examples as a guide\.
-
-1. Choose **Save**\.
+  ```
+  $context.identity.sourceIp,$context.requestTime,$context.httpMethod,$context.routeKey,$context.protocol,$context.status,$context.responseLength,$context.requestId
+  ```

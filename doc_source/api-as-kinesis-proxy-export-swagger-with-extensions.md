@@ -7,456 +7,453 @@ Following are OpenAPI definitions for the sample API as a Kinesis proxy used in 
 
 ```
 {
-   "openapi": "3.0.0",
-   "info": {
-      "version": "2016-03-31T18:25:32Z",
-      "title": "KinesisProxy"
-   },
-   "paths": {
-      "/streams": {
-         "get": {
-            "responses": {
-               "200": {
-                  "description": "200 response",
-                  "content": {
-                     "application/json": {
-                        "schema": {
-                           "$ref": "#/components/schemas/Empty"
-                        }
-                     }
-                  }
-               }
-            },
-            "x-amazon-apigateway-integration": {
-               "credentials": "arn:aws:iam::123456789012:role/apigAwsProxyRole",
-               "responses": {
-                  "default": {
-                     "statusCode": "200"
-                  }
-               },
-               "requestTemplates": {
-                  "application/json": "{\n}"
-               },
-               "uri": "arn:aws:apigateway:us-east-1:kinesis:action/ListStreams",
-               "httpMethod": "POST",
-               "requestParameters": {
-                  "integration.request.header.Content-Type": "'application/x-amz-json-1.1'"
-               },
-               "type": "aws"
+  "openapi": "3.0.0",
+  "info": {
+    "title": "KinesisProxy",
+    "version": "2016-03-31T18:25:32Z"
+  },
+  "paths": {
+    "/streams/{stream-name}/sharditerator": {
+      "get": {
+        "parameters": [
+          {
+            "name": "stream-name",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
             }
-         }
-      },
-      "/streams/{stream-name}": {
-         "get": {
-            "parameters": [
-               {
-                  "name": "stream-name",
-                  "in": "path",
-                  "required": true,
-                  "schema": {
-                     "type": "string"
-                  }
-               }
-            ],
-            "responses": {
-               "200": {
-                  "description": "200 response",
-                  "content": {
-                     "application/json": {
-                        "schema": {
-                           "$ref": "#/components/schemas/Empty"
-                        }
-                     }
-                  }
-               }
-            },
-            "x-amazon-apigateway-integration": {
-               "credentials": "arn:aws:iam::123456789012:role/apigAwsProxyRole",
-               "responses": {
-                  "default": {
-                     "statusCode": "200"
-                  }
-               },
-               "requestTemplates": {
-                  "application/json": "{\n    \"StreamName\": \"$input.params('stream-name')\"\n}"
-               },
-               "uri": "arn:aws:apigateway:us-east-1:kinesis:action/DescribeStream",
-               "httpMethod": "POST",
-               "type": "aws"
+          },
+          {
+            "name": "shard-id",
+            "in": "query",
+            "schema": {
+              "type": "string"
             }
-         },
-         "post": {
-            "parameters": [
-               {
-                  "name": "stream-name",
-                  "in": "path",
-                  "required": true,
-                  "schema": {
-                     "type": "string"
-                  }
-               }
-            ],
-            "responses": {
-               "200": {
-                  "description": "200 response",
-                  "content": {
-                     "application/json": {
-                        "schema": {
-                           "$ref": "#/components/schemas/Empty"
-                        }
-                     }
-                  }
-               }
-            },
-            "x-amazon-apigateway-integration": {
-               "credentials": "arn:aws:iam::123456789012:role/apigAwsProxyRole",
-               "responses": {
-                  "default": {
-                     "statusCode": "200"
-                  }
-               },
-               "requestTemplates": {
-                  "application/json": "{\n    \"ShardCount\": 5,\n    \"StreamName\": \"$input.params('stream-name')\"\n}"
-               },
-               "uri": "arn:aws:apigateway:us-east-1:kinesis:action/CreateStream",
-               "httpMethod": "POST",
-               "requestParameters": {
-                  "integration.request.header.Content-Type": "'application/x-amz-json-1.1'"
-               },
-               "type": "aws"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "200 response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Empty"
+                }
+              }
             }
-         },
-         "delete": {
-            "parameters": [
-               {
-                  "name": "stream-name",
-                  "in": "path",
-                  "required": true,
-                  "schema": {
-                     "type": "string"
-                  }
-               }
-            ],
-            "responses": {
-               "200": {
-                  "description": "200 response",
-                  "headers": {
-                     "Content-Type": {
-                        "schema": {
-                           "type": "string"
-                        }
-                     }
-                  },
-                  "content": {
-                     "application/json": {
-                        "schema": {
-                           "$ref": "#/components/schemas/Empty"
-                        }
-                     }
-                  }
-               },
-               "400": {
-                  "description": "400 response",
-                  "headers": {
-                     "Content-Type": {
-                        "schema": {
-                           "type": "string"
-                        }
-                     }
-                  }
-               },
-               "500": {
-                  "description": "500 response",
-                  "headers": {
-                     "Content-Type": {
-                        "schema": {
-                           "type": "string"
-                        }
-                     }
-                  }
-               }
-            },
-            "x-amazon-apigateway-integration": {
-               "credentials": "arn:aws:iam::123456789012:role/apigAwsProxyRole",
-               "responses": {
-                  "4\\d{2}": {
-                     "statusCode": "400",
-                     "responseParameters": {
-                        "method.response.header.Content-Type": "integration.response.header.Content-Type"
-                     }
-                  },
-                  "default": {
-                     "statusCode": "200",
-                     "responseParameters": {
-                        "method.response.header.Content-Type": "integration.response.header.Content-Type"
-                     }
-                  },
-                  "5\\d{2}": {
-                     "statusCode": "500",
-                     "responseParameters": {
-                        "method.response.header.Content-Type": "integration.response.header.Content-Type"
-                     }
-                  }
-               },
-               "requestTemplates": {
-                  "application/json": "{\n    \"StreamName\": \"$input.params('stream-name')\"\n}"
-               },
-               "uri": "arn:aws:apigateway:us-east-1:kinesis:action/DeleteStream",
-               "httpMethod": "POST",
-               "requestParameters": {
-                  "integration.request.header.Content-Type": "'application/x-amz-json-1.1'"
-               },
-               "type": "aws"
+          }
+        },
+        "x-amazon-apigateway-integration": {
+          "type": "aws",
+          "credentials": "arn:aws:iam::123456789012:role/apigAwsProxyRole",
+          "uri": "arn:aws:apigateway:us-east-1:kinesis:action/GetShardIterator",
+          "responses": {
+            "default": {
+              "statusCode": "200"
             }
-         }
-      },
-      "/streams/{stream-name}/record": {
-         "put": {
-            "parameters": [
-               {
-                  "name": "stream-name",
-                  "in": "path",
-                  "required": true,
-                  "schema": {
-                     "type": "string"
-                  }
-               }
-            ],
-            "responses": {
-               "200": {
-                  "description": "200 response",
-                  "content": {
-                     "application/json": {
-                        "schema": {
-                           "$ref": "#/components/schemas/Empty"
-                        }
-                     }
-                  }
-               }
-            },
-            "x-amazon-apigateway-integration": {
-               "credentials": "arn:aws:iam::123456789012:role/apigAwsProxyRole",
-               "responses": {
-                  "default": {
-                     "statusCode": "200"
-                  }
-               },
-               "requestTemplates": {
-                 "application/json": "{\n    \"StreamName\": \"$input.params('stream-name')\",\n    \"Records\": [\n    #foreach($elem in $input.path('$.records'))\n    {\n    \"Data\": \"$util.base64Encode($elem.data)\",\n    \"PartitionKey\": \"$elem.partition-key\"\n}"    }#if($foreach.hasNext),#end\n    #end\n    ]\n
-               },
-               "uri": "arn:aws:apigateway:us-east-1:kinesis:action/PutRecord",
-               "httpMethod": "POST",
-               "requestParameters": {
-                  "integration.request.header.Content-Type": "'application/x-amz-json-1.1'"
-               },
-               "type": "aws"
-            }
-         }
-      },
-      "/streams/{stream-name}/records": {
-         "get": {
-            "parameters": [
-               {
-                  "name": "stream-name",
-                  "in": "path",
-                  "required": true,
-                  "schema": {
-                     "type": "string"
-                  }
-               },
-               {
-                  "name": "Shard-Iterator",
-                  "in": "header",
-                  "required": false,
-                  "schema": {
-                     "type": "string"
-                  }
-               }
-            ],
-            "responses": {
-               "200": {
-                  "description": "200 response",
-                  "content": {
-                     "application/json": {
-                        "schema": {
-                           "$ref": "#/components/schemas/Empty"
-                        }
-                     }
-                  }
-               }
-            },
-            "x-amazon-apigateway-integration": {
-               "credentials": "arn:aws:iam::123456789012:role/apigAwsProxyRole",
-               "responses": {
-                  "default": {
-                     "statusCode": "200"
-                  }
-               },
-               "requestTemplates": {
-                  "application/json": "{\n    \"ShardIterator\": \"$input.params('Shard-Iterator')\"\n}"
-               },
-               "uri": "arn:aws:apigateway:us-east-1:kinesis:action/GetRecords",
-               "httpMethod": "POST",
-               "requestParameters": {
-                  "integration.request.header.Content-Type": "'application/x-amz-json-1.1'"
-               },
-               "type": "aws"
-            }
-         },
-         "put": {
-            "parameters": [
-               {
-                  "name": "Content-Type",
-                  "in": "header",
-                  "required": false,
-                  "schema": {
-                     "type": "string"
-                  }
-               },
-               {
-                  "name": "stream-name",
-                  "in": "path",
-                  "required": true,
-                  "schema": {
-                     "type": "string"
-                  }
-               }
-            ],
-            "responses": {
-               "200": {
-                  "description": "200 response",
-                  "content": {
-                     "application/json": {
-                        "schema": {
-                           "$ref": "#/components/schemas/Empty"
-                        }
-                     }
-                  }
-               }
-            },
-            "x-amazon-apigateway-integration": {
-               "credentials": "arn:aws:iam::123456789012:role/apigAwsProxyRole",
-               "responses": {
-                  "default": {
-                     "statusCode": "200"
-                  }
-               },
-               "requestTemplates": {
-                  "application/json": "{\n    \"StreamName\": \"$input.params('stream-name')\",\n    \"Records\": [\n          {\n            \"Data\": \"$util.base64Encode($elem.data)\",\n            \"PartitionKey\": \"$elem.partition-key\"\n          }#if($foreach.hasNext),#end\n    ]\n}",
-                  "application/x-amz-json-1.1": "{\n  \"StreamName\": \"$input.params('stream-name')\",\n  \"records\" : [\n    {\n        \"Data\" : \"$elem.data\",\n        \"PartitionKey\" : \"$elem.partition-key\"\n    }#if($foreach.hasNext),#end\n  ]\n}"
-               },
-               "uri": "arn:aws:apigateway:us-east-1:kinesis:action/PutRecords",
-               "httpMethod": "POST",
-               "requestParameters": {
-                  "integration.request.header.Content-Type": "'application/x-amz-json-1.1'"
-               },
-               "type": "aws"
-            },
-            "requestBody": {
-               "content": {
-                  "application/json": {
-                     "schema": {
-                        "$ref": "#/components/schemas/PutRecordsMethodRequestPayload"
-                     }
-                  },
-                  "application/x-amz-json-1.1": {
-                     "schema": {
-                        "$ref": "#/components/schemas/PutRecordsMethodRequestPayload"
-                     }
-                  }
-               },
-               "required": true
-            }
-         }
-      },
-      "/streams/{stream-name}/sharditerator": {
-         "get": {
-            "parameters": [
-               {
-                  "name": "stream-name",
-                  "in": "path",
-                  "required": true,
-                  "schema": {
-                     "type": "string"
-                  }
-               },
-               {
-                  "name": "shard-id",
-                  "in": "query",
-                  "required": false,
-                  "schema": {
-                     "type": "string"
-                  }
-               }
-            ],
-            "responses": {
-               "200": {
-                  "description": "200 response",
-                  "content": {
-                     "application/json": {
-                        "schema": {
-                           "$ref": "#/components/schemas/Empty"
-                        }
-                     }
-                  }
-               }
-            },
-            "x-amazon-apigateway-integration": {
-               "credentials": "arn:aws:iam::123456789012:role/apigAwsProxyRole",
-               "responses": {
-                  "default": {
-                     "statusCode": "200"
-                  }
-               },
-               "requestTemplates": {
-                  "application/json": "{\n    \"ShardId\": \"$input.params('shard-id')\",\n    \"ShardIteratorType\": \"TRIM_HORIZON\",\n    \"StreamName\": \"$input.params('stream-name')\"\n}"
-               },
-               "uri": "arn:aws:apigateway:us-east-1:kinesis:action/GetShardIterator",
-               "httpMethod": "POST",
-               "requestParameters": {
-                  "integration.request.header.Content-Type": "'application/x-amz-json-1.1'"
-               },
-               "type": "aws"
-            }
-         }
+          },
+          "requestParameters": {
+            "integration.request.header.Content-Type": "'application/x-amz-json-1.1'"
+          },
+          "requestTemplates": {
+            "application/json": "{\n    \"ShardId\": \"$input.params('shard-id')\",\n    \"ShardIteratorType\": \"TRIM_HORIZON\",\n    \"StreamName\": \"$input.params('stream-name')\"\n}"
+          },
+          "passthroughBehavior": "when_no_match",
+          "httpMethod": "POST"
+        }
       }
-   },
-   "servers": [
-      {
-         "url": "https://wd4zclrobb.execute-api.us-east-1.amazonaws.com/{basePath}",
-         "variables": {
-            "basePath": {
-              "default": "/test"
+    },
+    "/streams/{stream-name}/records": {
+      "get": {
+        "parameters": [
+          {
+            "name": "stream-name",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
             }
-         }
-      }
-   ],
-   "components": {
-      "schemas": {
-         "PutRecordsMethodRequestPayload": {
-            "type": "object",
-            "properties": {
-               "records": {
-                  "type": "array",
-                  "items": {
-                     "type": "object",
-                     "properties": {
-                        "data": {
-                           "type": "string"
-                        },
-                        "partition-key": {
-                           "type": "string"
-                        }
-                     }
-                  }
-               }
+          },
+          {
+            "name": "Shard-Iterator",
+            "in": "header",
+            "schema": {
+              "type": "string"
             }
-         },
-         "Empty": {
-            "type": "object"
-         }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "200 response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Empty"
+                }
+              }
+            }
+          }
+        },
+        "x-amazon-apigateway-integration": {
+          "type": "aws",
+          "credentials": "arn:aws:iam::123456789012:role/apigAwsProxyRole",
+          "uri": "arn:aws:apigateway:us-east-1:kinesis:action/GetRecords",
+          "responses": {
+            "default": {
+              "statusCode": "200"
+            }
+          },
+          "requestParameters": {
+            "integration.request.header.Content-Type": "'application/x-amz-json-1.1'"
+          },
+          "requestTemplates": {
+            "application/json": "{\n    \"ShardIterator\": \"$input.params('Shard-Iterator')\"\n}"
+          },
+          "passthroughBehavior": "when_no_match",
+          "httpMethod": "POST"
+        }
+      },
+      "put": {
+        "parameters": [
+          {
+            "name": "Content-Type",
+            "in": "header",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "stream-name",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/PutRecordsMethodRequestPayload"
+              }
+            },
+            "application/x-amz-json-1.1": {
+              "schema": {
+                "$ref": "#/components/schemas/PutRecordsMethodRequestPayload"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "200 response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Empty"
+                }
+              }
+            }
+          }
+        },
+        "x-amazon-apigateway-integration": {
+          "type": "aws",
+          "credentials": "arn:aws:iam::123456789012:role/apigAwsProxyRole",
+          "uri": "arn:aws:apigateway:us-east-1:kinesis:action/PutRecords",
+          "responses": {
+            "default": {
+              "statusCode": "200"
+            }
+          },
+          "requestParameters": {
+            "integration.request.header.Content-Type": "'application/x-amz-json-1.1'"
+          },
+          "requestTemplates": {
+            "application/json": "{\n    \"StreamName\": \"$input.params('stream-name')\",\n    \"Records\": [\n          {\n            \"Data\": \"$util.base64Encode($elem.data)\",\n            \"PartitionKey\": \"$elem.partition-key\"\n          }#if($foreach.hasNext),#end\n    ]\n}",
+            "application/x-amz-json-1.1": "{\n  \"StreamName\": \"$input.params('stream-name')\",\n  \"records\" : [\n    {\n        \"Data\" : \"$elem.data\",\n        \"PartitionKey\" : \"$elem.partition-key\"\n    }#if($foreach.hasNext),#end\n  ]\n}"
+          },
+          "passthroughBehavior": "when_no_match",
+          "httpMethod": "POST"
+        }
       }
-   }
+    },
+    "/streams/{stream-name}": {
+      "get": {
+        "parameters": [
+          {
+            "name": "stream-name",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "200 response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Empty"
+                }
+              }
+            }
+          }
+        },
+        "x-amazon-apigateway-integration": {
+          "type": "aws",
+          "credentials": "arn:aws:iam::123456789012:role/apigAwsProxyRole",
+          "uri": "arn:aws:apigateway:us-east-1:kinesis:action/DescribeStream",
+          "responses": {
+            "default": {
+              "statusCode": "200"
+            }
+          },
+          "requestTemplates": {
+            "application/json": "{\n    \"StreamName\": \"$input.params('stream-name')\"\n}"
+          },
+          "passthroughBehavior": "when_no_match",
+          "httpMethod": "POST"
+        }
+      },
+      "post": {
+        "parameters": [
+          {
+            "name": "stream-name",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "200 response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Empty"
+                }
+              }
+            }
+          }
+        },
+        "x-amazon-apigateway-integration": {
+          "type": "aws",
+          "credentials": "arn:aws:iam::123456789012:role/apigAwsProxyRole",
+          "uri": "arn:aws:apigateway:us-east-1:kinesis:action/CreateStream",
+          "responses": {
+            "default": {
+              "statusCode": "200"
+            }
+          },
+          "requestParameters": {
+            "integration.request.header.Content-Type": "'application/x-amz-json-1.1'"
+          },
+          "requestTemplates": {
+            "application/json": "{\n    \"ShardCount\": 5,\n    \"StreamName\": \"$input.params('stream-name')\"\n}"
+          },
+          "passthroughBehavior": "when_no_match",
+          "httpMethod": "POST"
+        }
+      },
+      "delete": {
+        "parameters": [
+          {
+            "name": "stream-name",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "200 response",
+            "headers": {
+              "Content-Type": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Empty"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "400 response",
+            "headers": {
+              "Content-Type": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            },
+            "content": {}
+          },
+          "500": {
+            "description": "500 response",
+            "headers": {
+              "Content-Type": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            },
+            "content": {}
+          }
+        },
+        "x-amazon-apigateway-integration": {
+          "type": "aws",
+          "credentials": "arn:aws:iam::123456789012:role/apigAwsProxyRole",
+          "uri": "arn:aws:apigateway:us-east-1:kinesis:action/DeleteStream",
+          "responses": {
+            "4\\d{2}": {
+              "statusCode": "400",
+              "responseParameters": {
+                "method.response.header.Content-Type": "integration.response.header.Content-Type"
+              }
+            },
+            "default": {
+              "statusCode": "200",
+              "responseParameters": {
+                "method.response.header.Content-Type": "integration.response.header.Content-Type"
+              }
+            },
+            "5\\d{2}": {
+              "statusCode": "500",
+              "responseParameters": {
+                "method.response.header.Content-Type": "integration.response.header.Content-Type"
+              }
+            }
+          },
+          "requestParameters": {
+            "integration.request.header.Content-Type": "'application/x-amz-json-1.1'"
+          },
+          "requestTemplates": {
+            "application/json": "{\n    \"StreamName\": \"$input.params('stream-name')\"\n}"
+          },
+          "passthroughBehavior": "when_no_match",
+          "httpMethod": "POST"
+        }
+      }
+    },
+    "/streams/{stream-name}/record": {
+      "put": {
+        "parameters": [
+          {
+            "name": "stream-name",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "200 response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Empty"
+                }
+              }
+            }
+          }
+        },
+        "x-amazon-apigateway-integration": {
+          "type": "aws",
+          "credentials": "arn:aws:iam::123456789012:role/apigAwsProxyRole",
+          "uri": "arn:aws:apigateway:us-east-1:kinesis:action/PutRecord",
+          "responses": {
+            "default": {
+              "statusCode": "200"
+            }
+          },
+          "requestParameters": {
+            "integration.request.header.Content-Type": "'application/x-amz-json-1.1'"
+          },
+          "requestTemplates": {
+            "application/json": "{\n    \"StreamName\": \"$input.params('stream-name')\",\n    \"Data\": \"$util.base64Encode($input.json('$.Data'))\",\n    \"PartitionKey\": \"$input.path('$.PartitionKey')\"\n}"
+          },
+          "passthroughBehavior": "when_no_match",
+          "httpMethod": "POST"
+        }
+      }
+    },
+    "/streams": {
+      "get": {
+        "responses": {
+          "200": {
+            "description": "200 response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Empty"
+                }
+              }
+            }
+          }
+        },
+        "x-amazon-apigateway-integration": {
+          "type": "aws",
+          "credentials": "arn:aws:iam::123456789012:role/apigAwsProxyRole",
+          "uri": "arn:aws:apigateway:us-east-1:kinesis:action/ListStreams",
+          "responses": {
+            "default": {
+              "statusCode": "200"
+            }
+          },
+          "requestParameters": {
+            "integration.request.header.Content-Type": "'application/x-amz-json-1.1'"
+          },
+          "requestTemplates": {
+            "application/json": "{\n}"
+          },
+          "passthroughBehavior": "when_no_match",
+          "httpMethod": "POST"
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "Empty": {
+        "type": "object"
+      },
+      "PutRecordsMethodRequestPayload": {
+        "type": "object",
+        "properties": {
+          "records": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "data": {
+                  "type": "string"
+                },
+                "partition-key": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
 }
 ```
 
@@ -470,7 +467,6 @@ Following are OpenAPI definitions for the sample API as a Kinesis proxy used in 
     "version": "2016-03-31T18:25:32Z",
     "title": "KinesisProxy"
   },
-  "host": "wd4zclrobb.execute-api.us-east-1.amazonaws.com",
   "basePath": "/test",
   "schemes": [
     "https"
@@ -493,21 +489,22 @@ Following are OpenAPI definitions for the sample API as a Kinesis proxy used in 
           }
         },
         "x-amazon-apigateway-integration": {
+          "type": "aws",
           "credentials": "arn:aws:iam::123456789012:role/apigAwsProxyRole",
+          "uri": "arn:aws:apigateway:us-east-1:kinesis:action/ListStreams",
           "responses": {
             "default": {
               "statusCode": "200"
             }
           },
-          "requestTemplates": {
-            "application/json": "{\n}"
-          },
-          "uri": "arn:aws:apigateway:us-east-1:kinesis:action/ListStreams",
-          "httpMethod": "POST",
           "requestParameters": {
             "integration.request.header.Content-Type": "'application/x-amz-json-1.1'"
           },
-          "type": "aws"
+          "requestTemplates": {
+            "application/json": "{\n}"
+          },
+          "passthroughBehavior": "when_no_match",
+          "httpMethod": "POST"
         }
       }
     },
@@ -536,7 +533,9 @@ Following are OpenAPI definitions for the sample API as a Kinesis proxy used in 
           }
         },
         "x-amazon-apigateway-integration": {
+          "type": "aws",
           "credentials": "arn:aws:iam::123456789012:role/apigAwsProxyRole",
+          "uri": "arn:aws:apigateway:us-east-1:kinesis:action/DescribeStream",
           "responses": {
             "default": {
               "statusCode": "200"
@@ -545,9 +544,8 @@ Following are OpenAPI definitions for the sample API as a Kinesis proxy used in 
           "requestTemplates": {
             "application/json": "{\n    \"StreamName\": \"$input.params('stream-name')\"\n}"
           },
-          "uri": "arn:aws:apigateway:us-east-1:kinesis:action/DescribeStream",
-          "httpMethod": "POST",
-          "type": "aws"
+          "passthroughBehavior": "when_no_match",
+          "httpMethod": "POST"
         }
       },
       "post": {
@@ -574,21 +572,22 @@ Following are OpenAPI definitions for the sample API as a Kinesis proxy used in 
           }
         },
         "x-amazon-apigateway-integration": {
+          "type": "aws",
           "credentials": "arn:aws:iam::123456789012:role/apigAwsProxyRole",
+          "uri": "arn:aws:apigateway:us-east-1:kinesis:action/CreateStream",
           "responses": {
             "default": {
               "statusCode": "200"
             }
           },
-          "requestTemplates": {
-            "application/json": "{\n    \"ShardCount\": 5,\n    \"StreamName\": \"$input.params('stream-name')\"\n}"
-          },
-          "uri": "arn:aws:apigateway:us-east-1:kinesis:action/CreateStream",
-          "httpMethod": "POST",
           "requestParameters": {
             "integration.request.header.Content-Type": "'application/x-amz-json-1.1'"
           },
-          "type": "aws"
+          "requestTemplates": {
+            "application/json": "{\n    \"ShardCount\": 5,\n    \"StreamName\": \"$input.params('stream-name')\"\n}"
+          },
+          "passthroughBehavior": "when_no_match",
+          "httpMethod": "POST"
         }
       },
       "delete": {
@@ -636,7 +635,9 @@ Following are OpenAPI definitions for the sample API as a Kinesis proxy used in 
           }
         },
         "x-amazon-apigateway-integration": {
+          "type": "aws",
           "credentials": "arn:aws:iam::123456789012:role/apigAwsProxyRole",
+          "uri": "arn:aws:apigateway:us-east-1:kinesis:action/DeleteStream",
           "responses": {
             "4\\d{2}": {
               "statusCode": "400",
@@ -657,15 +658,14 @@ Following are OpenAPI definitions for the sample API as a Kinesis proxy used in 
               }
             }
           },
-          "requestTemplates": {
-            "application/json": "{\n    \"StreamName\": \"$input.params('stream-name')\"\n}"
-          },
-          "uri": "arn:aws:apigateway:us-east-1:kinesis:action/DeleteStream",
-          "httpMethod": "POST",
           "requestParameters": {
             "integration.request.header.Content-Type": "'application/x-amz-json-1.1'"
           },
-          "type": "aws"
+          "requestTemplates": {
+            "application/json": "{\n    \"StreamName\": \"$input.params('stream-name')\"\n}"
+          },
+          "passthroughBehavior": "when_no_match",
+          "httpMethod": "POST"
         }
       }
     },
@@ -694,21 +694,22 @@ Following are OpenAPI definitions for the sample API as a Kinesis proxy used in 
           }
         },
         "x-amazon-apigateway-integration": {
+          "type": "aws",
           "credentials": "arn:aws:iam::123456789012:role/apigAwsProxyRole",
+          "uri": "arn:aws:apigateway:us-east-1:kinesis:action/PutRecord",
           "responses": {
             "default": {
               "statusCode": "200"
             }
           },
-          "requestTemplates": {
-            "application/json": "{\n    \"StreamName\": \"$input.params('stream-name')\",\n    \"Records\": [\n    #foreach($elem in $input.path('$.records'))\n    {\n    \"Data\": \"$util.base64Encode($elem.data)\",\n    \"PartitionKey\": \"$elem.partition-key\"\n}"    }#if($foreach.hasNext),#end\n    #end\n    ]\n
-          },
-          "uri": "arn:aws:apigateway:us-east-1:kinesis:action/PutRecord",
-          "httpMethod": "POST",
           "requestParameters": {
             "integration.request.header.Content-Type": "'application/x-amz-json-1.1'"
           },
-          "type": "aws"
+          "requestTemplates": {
+            "application/json": "{\n    \"StreamName\": \"$input.params('stream-name')\",\n    \"Data\": \"$util.base64Encode($input.json('$.Data'))\",\n    \"PartitionKey\": \"$input.path('$.PartitionKey')\"\n}"
+          },
+          "passthroughBehavior": "when_no_match",
+          "httpMethod": "POST"
         }
       }
     },
@@ -743,21 +744,22 @@ Following are OpenAPI definitions for the sample API as a Kinesis proxy used in 
           }
         },
         "x-amazon-apigateway-integration": {
+          "type": "aws",
           "credentials": "arn:aws:iam::123456789012:role/apigAwsProxyRole",
+          "uri": "arn:aws:apigateway:us-east-1:kinesis:action/GetRecords",
           "responses": {
             "default": {
               "statusCode": "200"
             }
           },
-          "requestTemplates": {
-            "application/json": "{\n    \"ShardIterator\": \"$input.params('Shard-Iterator')\"\n}"
-          },
-          "uri": "arn:aws:apigateway:us-east-1:kinesis:action/GetRecords",
-          "httpMethod": "POST",
           "requestParameters": {
             "integration.request.header.Content-Type": "'application/x-amz-json-1.1'"
           },
-          "type": "aws"
+          "requestTemplates": {
+            "application/json": "{\n    \"ShardIterator\": \"$input.params('Shard-Iterator')\"\n}"
+          },
+          "passthroughBehavior": "when_no_match",
+          "httpMethod": "POST"
         }
       },
       "put": {
@@ -788,6 +790,14 @@ Following are OpenAPI definitions for the sample API as a Kinesis proxy used in 
             "schema": {
               "$ref": "#/definitions/PutRecordsMethodRequestPayload"
             }
+          },
+          {
+            "in": "body",
+            "name": "PutRecordsMethodRequestPayload",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/PutRecordsMethodRequestPayload"
+            }
           }
         ],
         "responses": {
@@ -799,22 +809,23 @@ Following are OpenAPI definitions for the sample API as a Kinesis proxy used in 
           }
         },
         "x-amazon-apigateway-integration": {
+          "type": "aws",
           "credentials": "arn:aws:iam::123456789012:role/apigAwsProxyRole",
+          "uri": "arn:aws:apigateway:us-east-1:kinesis:action/PutRecords",
           "responses": {
             "default": {
               "statusCode": "200"
             }
           },
-          "requestTemplates": {
-            "application/json": "{\n    \"StreamName\": \"$input.params('stream-name')\",\n    \"Records\": [\n       #foreach($elem in $input.path('$.records'))\n          {\n            \"Data\": \"$util.base64Encode($elem.data)\",\n            \"PartitionKey\": \"$elem.partition-key\"\n          }#if($foreach.hasNext),#end\n        #end\n    ]\n}",
-            "application/x-amz-json-1.1": "#set($inputRoot = $input.path('$'))\n{\n  \"StreamName\": \"$input.params('stream-name')\",\n  \"records\" : [\n    #foreach($elem in $inputRoot.records)\n    {\n        \"Data\" : \"$elem.data\",\n        \"PartitionKey\" : \"$elem.partition-key\"\n    }#if($foreach.hasNext),#end\n    #end\n  ]\n}"
-          },
-          "uri": "arn:aws:apigateway:us-east-1:kinesis:action/PutRecords",
-          "httpMethod": "POST",
           "requestParameters": {
             "integration.request.header.Content-Type": "'application/x-amz-json-1.1'"
           },
-          "type": "aws"
+          "requestTemplates": {
+            "application/json": "{\n    \"StreamName\": \"$input.params('stream-name')\",\n    \"Records\": [\n          {\n            \"Data\": \"$util.base64Encode($elem.data)\",\n            \"PartitionKey\": \"$elem.partition-key\"\n          }#if($foreach.hasNext),#end\n    ]\n}",
+            "application/x-amz-json-1.1": "{\n  \"StreamName\": \"$input.params('stream-name')\",\n  \"records\" : [\n    {\n        \"Data\" : \"$elem.data\",\n        \"PartitionKey\" : \"$elem.partition-key\"\n    }#if($foreach.hasNext),#end\n  ]\n}"
+          },
+          "passthroughBehavior": "when_no_match",
+          "httpMethod": "POST"
         }
       }
     },
@@ -849,26 +860,30 @@ Following are OpenAPI definitions for the sample API as a Kinesis proxy used in 
           }
         },
         "x-amazon-apigateway-integration": {
+          "type": "aws",
           "credentials": "arn:aws:iam::123456789012:role/apigAwsProxyRole",
+          "uri": "arn:aws:apigateway:us-east-1:kinesis:action/GetShardIterator",
           "responses": {
             "default": {
               "statusCode": "200"
             }
           },
-          "requestTemplates": {
-            "application/json": "{\n    \"ShardId\": \"$input.params('shard-id')\",\n    \"ShardIteratorType\": \"TRIM_HORIZON\",\n    \"StreamName\": \"$input.params('stream-name')\"\n}"
-          },
-          "uri": "arn:aws:apigateway:us-east-1:kinesis:action/GetShardIterator",
-          "httpMethod": "POST",
           "requestParameters": {
             "integration.request.header.Content-Type": "'application/x-amz-json-1.1'"
           },
-          "type": "aws"
+          "requestTemplates": {
+            "application/json": "{\n    \"ShardId\": \"$input.params('shard-id')\",\n    \"ShardIteratorType\": \"TRIM_HORIZON\",\n    \"StreamName\": \"$input.params('stream-name')\"\n}"
+          },
+          "passthroughBehavior": "when_no_match",
+          "httpMethod": "POST"
         }
       }
     }
   },
   "definitions": {
+    "Empty": {
+      "type": "object"
+    },
     "PutRecordsMethodRequestPayload": {
       "type": "object",
       "properties": {
@@ -887,9 +902,6 @@ Following are OpenAPI definitions for the sample API as a Kinesis proxy used in 
           }
         }
       }
-    },
-    "Empty": {
-      "type": "object"
     }
   }
 }

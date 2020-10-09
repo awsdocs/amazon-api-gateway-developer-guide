@@ -104,7 +104,7 @@ Now, create the `GetStartedLambdaIntegration` Lambda function\.
 
    1. Leave the default choices for all other fields in this section\.
 
-   1. Choose **Save**\.
+   1. Choose **Deploy**\.
 
 1. To test the newly created function, choose **Configure test events** from **Select a test event\.\.\.**\.
 

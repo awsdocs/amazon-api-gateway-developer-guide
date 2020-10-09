@@ -2,7 +2,9 @@
 
 **To view logged API requests and responses using the CloudWatch console**
 
-1. In the navigation pane, choose **Logs**\.
+1. Open the CloudWatch console at [https://console\.aws\.amazon\.com/cloudwatch/](https://console.aws.amazon.com/cloudwatch/)\.
+
+1. In the navigation pane, choose **Logs groups**\.
 
 1. Under the **Log Groups** table, choose a log group of the **API\-Gateway\-Execution\-Logs\_\{rest\-api\-id\}/\{stage\-name\}** name\. 
 

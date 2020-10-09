@@ -82,10 +82,13 @@ The following tables list the Amazon Resource Names \(ARNs\) for API Gateway res
 |  VpcLink  |  `arn:partition:apigateway:region::/vpclinks/vpclink-id`  | 
 |  VpcLinks  |  `arn:partition:apigateway:region::/vpclinks`  | 
 
-## `execute-api` \(HTTP API, WebSocket API, and REST API endpoints\)<a name="apigateway-execute-api-arns"></a>
+## `execute-api` \(HTTP APIs, WebSocket APIs, and REST APIs\)<a name="apigateway-execute-api-arns"></a>
 
 
 | Resource | ARN | 
 | --- | --- | 
 |  WebSocket API endpoint  |  `arn:partition:execute-api:region:account-id:api-id/stage/route-key`  | 
 |  HTTP API and REST API endpoint  |  `arn:partition:execute-api:region:account-id:api-id/stage/http-method/resource-path`  | 
+|  Lambda authorizer \*  |  `arn:partition:execute-api:region:account-id:api-id/authorizers/authorizer-id`  | 
+
+\* This ARN is applicable only when setting the `SourceArn` condition in the [resource policy](https://docs.aws.amazon.com/lambda/latest/dg/access-control-resource-based.html) for a Lambda authorizer function\. For an example, see [Create a Lambda authorizer](http-api-lambda-authorizer.md#http-api-lambda-authorizer.example-create)\.

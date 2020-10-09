@@ -110,7 +110,7 @@ Note the region where you create the Lambda function\. You'll need it when you c
    };
    ```
 
-1. Choose **Save**\.
+1. Choose **Deploy**\.
 
 ## Create a "Hello, World\!" API<a name="api-gateway-create-api-as-simple-proxy-for-lambda-build"></a>
 

@@ -162,7 +162,7 @@ In this step, you'll create a second backend Lambda function\. This one takes an
 
 ------
 
-1. Choose **Save**\.
+1. Choose **Deploy**\.
 
 ## Step 5: Add a resource, method, and parameter to the REST API in the API Gateway console<a name="apigateway-getting-started-rest-step-5"></a>
 

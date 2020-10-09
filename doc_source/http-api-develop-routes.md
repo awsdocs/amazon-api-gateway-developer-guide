@@ -40,6 +40,8 @@ If no routes match a request, API Gateway returns `{"message":"Not Found"}` to t
 
 For example, consider an API with a `$default` stage and the following example routes:
 
+1. `GET /pets/dog/1`
+
 1. `GET /pets/dog/{id}`
 
 1. `GET /pets/{proxy+}`
@@ -53,6 +55,7 @@ For example, consider an API with a `$default` stage and the following example r
 
 | Request | Selected route | Explanation | 
 | --- | --- | --- | 
-|  `GET https://api-id.execute-api.region.amazonaws.com/pets/dog/1`  |  `GET /pets/dog/{id}`  |  The request fully matches this route\.  | 
+|  `GET https://api-id.execute-api.region.amazonaws.com/pets/dog/1`  |  `GET /pets/dog/1`  |  The request fully matches this static route\.  | 
+|  `GET https://api-id.execute-api.region.amazonaws.com/pets/dog/2`  |  `GET /pets/dog/{id}`  |  The request fully matches this route\.  | 
 |  `GET https://api-id.execute-api.region.amazonaws.com/pets/cat/1`  |  `GET /pets/{proxy+}`  |  The request doesn't fully match a route\. The route with a `GET` method and a greedy path variable catches this request\.  | 
 | `POST https://api-id.execute-api.region.amazonaws.com/test/5` | `ANY /{proxy+}` |  The `ANY` method matches all methods that you haven't defined for a route\. Routes with greedy path variables have higher priority than the `$default` route\.  | 

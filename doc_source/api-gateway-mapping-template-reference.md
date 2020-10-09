@@ -65,13 +65,12 @@ For `$context` variables that can be used only in CloudWatch access logging, see
 | $context\.responseOverride\.header\.header\_name | The response header override\. If this parameter is defined, it contains the header to be returned instead of the Response header that is defined as the Default mapping in the Integration Response pane\. For more information, see [Use a mapping template to override an API's request and response parameters and status codes](apigateway-override-request-response-parameters.md)\. | 
 | $context\.responseOverride\.status | The response status code override\. If this parameter is defined, it contains the status code to be returned instead of the Method response status that is defined as the Default mapping in the Integration Response pane\. For more information, see [Use a mapping template to override an API's request and response parameters and status codes](apigateway-override-request-response-parameters.md)\. | 
 | $context\.requestTime | The [CLF](https://httpd.apache.org/docs/1.3/logs.html#common)\-formatted request time \(dd/MMM/yyyy:HH:mm:ss \+\-hhmm\)\. | 
-| $context\.requestTimeEpoch | The [Epoch](https://en.wikipedia.org/wiki/Unix_time)\-formatted request time\. | 
+| $context\.requestTimeEpoch | The [Epoch](https://en.wikipedia.org/wiki/Unix_time)\-formatted request time, in milliseconds\. | 
 | $context\.resourceId |  The identifier that API Gateway assigns to your resource\.  | 
 | $context\.resourcePath |  The path to your resource\. For example, for the non\-proxy request URI of `https://{rest-api-id.execute-api.{region}.amazonaws.com/{stage}/root/child`, The `$context.resourcePath` value is `/root/child`\. For more information, see [Tutorial: Build a REST API with HTTP non\-proxy integration](api-gateway-create-api-step-by-step.md)\.   | 
 | $context\.stage |  The deployment stage of the API request \(for example, `Beta` or `Prod`\)\.  | 
 | $context\.wafResponseCode |  The response received from [AWS WAF](https://docs.aws.amazon.com/waf/latest/developerguide/waf-chapter.html): `WAF_ALLOW` or `WAF_BLOCK`\. Will not be set if the stage is not associated with a web ACL\. For more information, see [Using AWS WAF to protect your APIs](apigateway-control-access-aws-waf.md)\.  | 
 | $context\.webaclArn |  The complete ARN of the web ACL that is used to decide whether to allow or block the request\. Will not be set if the stage is not associated with a web ACL\. For more information, see [Using AWS WAF to protect your APIs](apigateway-control-access-aws-waf.md)\.  | 
-| $context\.xrayTraceId |  The trace ID for the X\-Ray trace\. For more information, see [Setting up AWS X\-Ray with API Gateway REST APIs](apigateway-enabling-xray.md)\.  | 
 
 ## `$context` Variable template example<a name="context-variables-template-example"></a>
 
@@ -133,6 +132,7 @@ The following `$context` variables are available only for access logging\. For m
 | $context\.waf\.error | The error message returned from AWS WAF\. | 
 | $context\.waf\.latency | The AWS WAF latency in ms\. | 
 | $context\.waf\.status | The status code returned from AWS WAF\. | 
+| $context\.xrayTraceId |  The trace ID for the X\-Ray trace\. For more information, see [Setting up AWS X\-Ray with API Gateway REST APIs](apigateway-enabling-xray.md)\.  | 
 
 ## `$input` Variables<a name="input-variable-reference"></a>
 

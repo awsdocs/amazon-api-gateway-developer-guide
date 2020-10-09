@@ -50,6 +50,9 @@ After you've uploaded your truststore to Amazon S3, you can configure your custo
 
 When you create a custom domain name that has mutual TLS enabled, or update a custom domain to use a new truststore, API Gateway returns warnings if certificates in the truststore are invalid\. Mutual TLS is still enabled, but some clients might not be able to access your API\. To resolve warnings, upload a new truststore to S3, and then update your domain name to use the new version\. For more information, see [Troubleshooting certificate warnings](#http-api-mutual-tls-troubleshooting)\.
 
+**Note**  
+To enable mutual TLS, your domain name must use a publicly trusted server certificate issued by AWS Certificate Manager\.
+
 ```
 aws apigatewayv2 create-domain-name --region us-east-2 \
     --domain-name api.example.com \

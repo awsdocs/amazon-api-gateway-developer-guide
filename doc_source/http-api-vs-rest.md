@@ -19,9 +19,8 @@ The following tables summarize core features that are available in HTTP APIs and
 
 | Integration | HTTP API | REST API | 
 | --- | --- | --- | 
-|  HTTP proxy  |  ✓  |  ✓  | 
-|  Lambda proxy  |  ✓  |  ✓  | 
-|  HTTP  |   |  ✓  | 
+|  HTTP  |  ✓  |  ✓  | 
+|  Lambda  |  ✓  |  ✓  | 
 |  AWS services  |  ✓  |  ✓  | 
 |  Private integration  |  ✓  |  ✓  | 
 |  Mock  |   |  ✓  | 

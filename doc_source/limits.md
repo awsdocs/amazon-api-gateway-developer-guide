@@ -13,16 +13,18 @@ Unless noted otherwise, the quotas can be increased upon request\. To request a 
 **Note**  
 This limits URI length when resource policies are used\. In the case of private APIs where a resource policy is required, this limits the URI length of all private APIs\.
 
-### API Gateway account\-level quotas<a name="apigateway-account-level-limits-table"></a>
+### API Gateway account\-level quotas, per Region<a name="apigateway-account-level-limits-table"></a>
 
-The following quotas apply at the account level per Region in Amazon API Gateway\.
+The following quotas apply per account, per Region in Amazon API Gateway\.
 
 
 | Resource or operation | Default quota | Can be increased | 
 | --- | --- | --- | 
-| Throttle quota per Region across HTTP APIs, REST APIs, WebSocket APIs, and WebSocket callback APIs | 10,000 requests per second \(RPS\) with an additional burst capacity provided by the [token bucket algorithm](https://en.wikipedia.org/wiki/Token_bucket), using a maximum bucket capacity of 5,000 requests\.  The burst quota is determined by the API Gateway service team based on the overall RPS quota for the account\. It is not a quota that a customer can control or request changes to\.  | Yes | 
+| Throttle quota per account, per Region across HTTP APIs, REST APIs, WebSocket APIs, and WebSocket callback APIs | 10,000 requests per second \(RPS\) with an additional burst capacity provided by the [token bucket algorithm](https://en.wikipedia.org/wiki/Token_bucket), using a maximum bucket capacity of 5,000 requests\. \* The burst quota is determined by the API Gateway service team based on the overall RPS quota for the account in the Region\. It is not a quota that a customer can control or request changes to\.  | Yes | 
 | Regional APIs | 600 | No | 
 | Edge\-optimized APIs | 120 | No | 
+
+\* For the Africa \(Cape Town\) and Europe \(Milan\) Regions, the default throttle quota is 2500 RPS and the default burst quota is 1250 RPS\.
 
 ### HTTP API quotas<a name="http-api-quotas"></a>
 

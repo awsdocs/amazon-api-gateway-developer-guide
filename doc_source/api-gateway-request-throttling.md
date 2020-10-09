@@ -1,14 +1,14 @@
 # Throttle API requests for better throughput<a name="api-gateway-request-throttling"></a>
 
- To prevent your API from being overwhelmed by too many requests, Amazon API Gateway throttles requests to your API using the [token bucket algorithm](https://en.wikipedia.org/wiki/Token_bucket), where a token counts for a request\. Specifically, API Gateway sets a limit on a steady\-state rate and a burst of request submissions against all APIs in your account\. In the token bucket algorithm, the burst is the maximum bucket size\. 
+To prevent your API from being overwhelmed by too many requests, Amazon API Gateway throttles requests to your API using the [token bucket algorithm](https://en.wikipedia.org/wiki/Token_bucket), where a token counts for a request\. Specifically, API Gateway sets a limit on a steady\-state rate and a burst of request submissions against all APIs in your account, per Region\. In the token bucket algorithm, the burst is the maximum bucket size\. 
 
- When request submissions exceed the steady\-state request rate and burst limits, API Gateway fails the limit\-exceeding requests and returns `429 Too Many Requests` error responses to the client\. Upon catching such exceptions, the client can resubmit the failed requests in a way that is rate limiting, while complying with the API Gateway throttling limits\. 
+When request submissions exceed the steady\-state request rate and burst limits, API Gateway fails the limit\-exceeding requests and returns `429 Too Many Requests` error responses to the client\. Upon catching such exceptions, the client can resubmit the failed requests in a way that is rate limiting, while complying with the API Gateway throttling limits\. 
 
- As an API developer, you can set the limits for individual API stages or methods to improve overall performance across all APIs in your account\. Alternatively, you can enable [usage plans](api-gateway-api-usage-plans.md) to restrict client request submissions to within specified request rates and quotas\. This restricts the overall request submissions so that they don't go significantly past the account\-level throttling limits\. 
+As an API developer, you can set the limits for individual API stages or methods to improve overall performance across all APIs in your account\. Alternatively, you can enable [usage plans](api-gateway-api-usage-plans.md) to restrict client request submissions to within specified request rates and quotas\. This restricts the overall request submissions so that they don't go significantly past the account\-level throttling limits in a Region\.
 
 **Topics**
 + [How throttling limit settings are applied in API Gateway](#apigateway-how-throttling-limits-are-applied)
-+ [Account\-level throttling](#apig-request-throttling-account-level-limits)
++ [Account\-level throttling per Region](#apig-request-throttling-account-level-limits)
 + [Default method throttling and overriding default method throttling](#apig-request-throttling-stage-and-method-level-limits)
 + [Configuring API\-level and stage\-level throttling in a usage plan](#apigateway-api-level-throttling-in-usage-plan)
 + [Configuring method\-level throttling in a usage plan](#apigateway-method-level-throttling-in-usage-plan)
@@ -29,13 +29,13 @@ API Gateway throttling\-related settings are applied in the following order:
 
 1. [Default per\-method limits and individual per\-method limits](#apig-request-throttling-stage-and-method-level-limits) that you set in [API stage settings](stages.md#how-to-stage-settings)
 
-1. [Account\-level throttling](#apig-request-throttling-account-level-limits)
+1. [Account\-level throttling per Region](#apig-request-throttling-account-level-limits)
 
-## Account\-level throttling<a name="apig-request-throttling-account-level-limits"></a>
+## Account\-level throttling per Region<a name="apig-request-throttling-account-level-limits"></a>
 
- By default, API Gateway limits the steady\-state request rate to 10,000 requests per second \(rps\)\. It limits the burst \(that is, the maximum bucket size\) to 5,000 requests across all APIs within an AWS account\. In API Gateway, the burst limit corresponds to the maximum number of concurrent request submissions that API Gateway can fulfill at any moment without returning `429 Too Many Requests` error responses\. 
+By default, API Gateway limits the steady\-state request rate per second \(rps\) across all APIs within an AWS account, per Region\. It also limits the burst \(that is, the maximum bucket size\) across all APIs within an AWS account, per Region\. In API Gateway, the burst limit corresponds to the maximum number of concurrent request submissions that API Gateway can fulfill at any moment without returning `429 Too Many Requests` error responses\. For more information on throttling quotas, see [Amazon API Gateway quotas and important notes](limits.md)\.
 
-To help understand these throttling limits, here are a few examples, given the burst limit and the default account\-level rate limit:
+To help understand these throttling limits, here are a few examples, given a burst limit of 5,000 and an account\-level rate limit of 10,000 requests per second in the Region:
 + If a caller submits 10,000 requests in a one\-second period evenly \(for example, 10 requests every millisecond\), API Gateway processes all requests without dropping any\. 
 + If the caller sends 10,000 requests in the first millisecond, API Gateway serves 5,000 of those requests and throttles the rest in the one\-second period\.
 + If the caller submits 5,000 requests in the first millisecond and then evenly spreads another 5,000 requests through the remaining 999 milliseconds \(for example, about 5 requests every millisecond\), API Gateway processes all 10,000 requests in the one\-second period without returning `429 Too Many Requests` error responses\. 
@@ -48,11 +48,11 @@ To help understand these throttling limits, here are a few examples, given the b
 
 ![\[Burst as a function of time given the token bucket size and a combined burn rate\]](http://docs.aws.amazon.com/apigateway/latest/developerguide/images/tokenBucketBurst.png)
 
-The account\-level rate limit can be increased upon request\. To request an increase of account\-level throttling limits, contact the [AWS Support Center](https://console.aws.amazon.com/support/home#/)\. For more information, see [API Gateway quotas](limits.md#api-gateway-limits)\. 
+The account\-level rate limit can be increased upon request\. To request an increase of account\-level throttling limits per Region, contact the [AWS Support Center](https://console.aws.amazon.com/support/home#/)\. For more information, see [API Gateway quotas](limits.md#api-gateway-limits)\. 
 
 ## Default method throttling and overriding default method throttling<a name="apig-request-throttling-stage-and-method-level-limits"></a>
 
-You can set the default method throttling to override the account\-level request throttling limits for a specific stage or for individual methods in your API\. The default method throttling limits are bounded by the account\-level rate limits, even if you set the default method throttling limits higher than the account\-level limits\. 
+You can set the default method throttling to override the account\-level request throttling limits for a specific stage or for individual methods in your API\. The default method throttling limits are bounded by the account\-level rate limits per Region, even if you set the default method throttling limits higher than the account\-level limits\. 
 
 You can set the default method throttling limits in the API Gateway console by using the **Default Method Throttling** setting in **Stages**\. For instructions on using the console, see [Update stage settings](stages.md#how-to-stage-settings)\.
 
