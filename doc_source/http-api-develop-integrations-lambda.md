@@ -169,7 +169,7 @@ Format `2.0` includes a new `cookies` field\. All cookie headers in the request 
   "pathParameters": null,
   "stageVariables": null,
   "body": "Hello from Lambda!",
-  "isBase64Encoded": true
+  "isBase64Encoded": false
 }
 ```
 
