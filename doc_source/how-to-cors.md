@@ -86,7 +86,7 @@ def lambda_handler(event, context):
             'Access-Control-Allow-Methods': 'OPTIONS,POST,GET'
         },
         'body': json.dumps('Hello from Lambda!')
-    };
+    }
 ```
 
 ------

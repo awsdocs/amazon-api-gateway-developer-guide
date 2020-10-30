@@ -108,3 +108,4 @@ To import an SSL/TLS certificate, you must provide the PEM\-formatted SSL/TLS ce
 + [Creating an edge\-optimized custom domain name](how-to-edge-optimized-custom-domain-name.md)
 + [Setting up a regional custom domain name in API Gateway](apigateway-regional-api-custom-domain-create.md)
 + [Migrating a custom domain name to a different API endpoint](apigateway-regional-api-custom-domain-migrate.md)
++ [Disabling the default endpoint for a REST API](rest-api-disable-default-endpoint.md)

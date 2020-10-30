@@ -2,7 +2,7 @@
 
 The following provides troubleshooting advice for errors and issues that you might encounter when using JSON Web Token \(JWT\) authorizers with HTTP APIs\.
 
-## Issue: My API returns `401 {"message":"Unauthorized"}`<a name="http-api-troubleshooting-lambda-internal-server-error"></a>
+## Issue: My API returns `401 {"message":"Unauthorized"}`<a name="http-api-troubleshooting-jwt.unauthorized"></a>
 
 Check the `www-authenticate` header in the response from the API\.
 

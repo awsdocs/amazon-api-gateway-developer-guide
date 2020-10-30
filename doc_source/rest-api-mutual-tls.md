@@ -6,6 +6,9 @@ To enable mutual TLS for a REST API, you must configure a custom domain name for
 
 You can use mutual TLS along with other [authorization and authentication methods](apigateway-control-access-to-api.md) that API Gateway supports\. API Gateway forwards the certificates that clients provide to Lambda authorizers and to backend integrations\.
 
+**Important**  
+By default, clients can invoke your API by using the `execute-api` endpoint that API Gateway generates for your API\. To ensure that clients can access your API only by using a custom domain name with mutual TLS, disable the default `execute-api` endpoint\. To learn more, see [Disabling the default endpoint for a REST API](rest-api-disable-default-endpoint.md)\. 
+
 ## Configuring mutual TLS for a custom domain name<a name="rest-api-mutual-tls-configure"></a>
 
 To configure mutual TLS for a REST API, you must use a Regional custom domain name for your API, with a minimum TLS version of 1\.2\. To learn more about creating and configuring a custom domain name, see [Setting up a regional custom domain name in API Gateway](apigateway-regional-api-custom-domain-create.md)\.

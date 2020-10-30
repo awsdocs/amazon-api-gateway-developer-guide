@@ -6,6 +6,9 @@ To enable mutual TLS for an HTTP API, you must configure a custom domain name fo
 
 You can use mutual TLS along with other [authorization and authentication methods](http-api-access-control.md) that API Gateway supports\. API Gateway forwards the certificates that clients provide to Lambda authorizers and to backend Lambda integrations\.
 
+**Important**  
+By default, clients can invoke your API by using the `execute-api` endpoint that API Gateway generates for your API\. To ensure that clients can access your API only by using a custom domain name with mutual TLS, disable the default `execute-api` endpoint\. To learn more, see [Disabling the default endpoint for an HTTP API](http-api-disable-default-endpoint.md)\. 
+
 ## Configuring mutual TLS for a custom domain name<a name="http-api-mutual-tls-configure"></a>
 
 To use mutual TLS, create a truststore of X\.509 certificates that you trust to access your API\. The certificates can be from public or private certificate authorities\. Certificates can have a maximum chain length of four\. You can also provide self\-signed certificates\. The following are supported:
@@ -61,21 +64,6 @@ aws apigatewayv2 create-domain-name --region us-east-2 \
 ```
 
 After you create the domain name, you must configure DNS records and basepath mappings for APIs\. To learn more, see [Setting up a regional custom domain name in API Gateway](apigateway-regional-api-custom-domain-create.md)\.
-
-## Disable the default endpoint<a name="http-api-mutual-tls-disable-execute-endpoint"></a>
-
-By default, clients can invoke your API by using the `execute-api` endpoint that API Gateway generates for your API\. To ensure that clients can access your API only by using a custom domain name with mutual TLS, disable the default `execute-api` endpoint\.
-
-**Note**  
-When you disable the default endpoint, it affects all stages of an API\.
-
-The following AWS CLI command disables the default endpoint for an HTTP API\.
-
-```
-aws apigatewayv2 update-api \
-    --api-id abcdef123 \
-    --disable-execute-api-endpoint
-```
 
 ## Invoke an API by using a custom domain name that requires mutual TLS<a name="http-api-mutual-tls-invoke"></a>
 

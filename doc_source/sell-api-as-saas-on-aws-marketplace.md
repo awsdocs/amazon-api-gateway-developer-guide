@@ -7,10 +7,10 @@ To sell your APIs on AWS Marketplace, you must set up the sales channel to integ
 For more information about selling your API as a SaaS product on AWS Marketplace, see the [AWS Marketplace User Guide](https://docs.aws.amazon.com/marketplace/latest/userguide/)\.
 
 **Topics**
-+ [Initialize AWS Marketplace integration with API Gateway](#sell-api-as-saas-on-aws-marketplace-inital-setup)
++ [Initialize AWS Marketplace integration with API Gateway](#sell-api-as-saas-on-aws-marketplace-initial-setup)
 + [Handle customer subscription to usage plans](#sell-api-as-saas-on-aws-marketplace-subscription-unsubscription)
 
-## Initialize AWS Marketplace integration with API Gateway<a name="sell-api-as-saas-on-aws-marketplace-inital-setup"></a>
+## Initialize AWS Marketplace integration with API Gateway<a name="sell-api-as-saas-on-aws-marketplace-initial-setup"></a>
 
 The following tasks are for one\-time initialization of AWS Marketplace integration with API Gateway, which enables you to sell your APIs as a SaaS product\.
 
@@ -79,9 +79,9 @@ Authorization: ...
 
 The following tasks are handled by your developer portal application\.
 
-When a customer subscribes to your product through AWS Marketplace, AWS Marketplace forwards a `POST` request to the SaaS subscriptions URL  that you registered when listing your product on AWS Marketplace\. The `POST` request comes with an `x-amzn-marketplace-token` parameter containing buyer information\. Follow the instructions in [Configuring Your SaaS Product to Accept New Customers](https://docs.aws.amazon.com/marketplace/latest/userguide/saas-product-customer-setup.html#configuring-your-saas-application-to-accept-new-customers) to handle this redirect in your developer portal application\.
+When a customer subscribes to your product through AWS Marketplace, AWS Marketplace forwards a `POST` request to the SaaS subscriptions URL  that you registered when listing your product on AWS Marketplace\. The `POST` request comes with an `x-amzn-marketplace-token` parameter containing buyer information\. Follow the instructions in [SaaS customer onboarding](https://docs.aws.amazon.com/marketplace/latest/userguide/saas-product-customer-setup.html#in-your-application) to handle this redirect in your developer portal application\.
 
-Responding to a customer's subscribing request, AWS Marketplace sends a `subscribe-success` notification to an Amazon SNS topic that you can subscribe to\. \(See [Configuring Your SaaS Product to Accept New Customers](https://docs.aws.amazon.com/marketplace/latest/userguide/saas-product-customer-setup.html#configuring-your-saas-application-to-accept-new-customers)\)\. To accept the customer subscription request, you handle the `subscribe-success` notification by creating or retrieving an API Gateway API key for the customer, associating the customer's AWS Marketplace\-provisioned `customerId` with the API keys, and then adding the API key to your usage plan\.
+Responding to a customer's subscribing request, AWS Marketplace sends a `subscribe-success` notification to an Amazon SNS topic that you can subscribe to\. \(See [SaaS customer onboarding](https://docs.aws.amazon.com/marketplace/latest/userguide/saas-product-customer-setup.html#in-your-application)\)\. To accept the customer subscription request, you handle the `subscribe-success` notification by creating or retrieving an API Gateway API key for the customer, associating the customer's AWS Marketplace\-provisioned `customerId` with the API keys, and then adding the API key to your usage plan\.
 
 When the customer's subscription request completes, the developer portal application should present the customer with the associated API key and inform the customer that the API key must be included in the `x-api-key` header in requests to the APIs\.
 

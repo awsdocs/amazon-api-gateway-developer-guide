@@ -132,7 +132,7 @@ The deployment process creates a DynamoDB table where customer accounts are stor
 The deployment process creates a privately accessible Amazon S3 bucket where the web application code is stored\. Specify a name to assign to this bucket\. This name must be globally unique\.
 
 **MarketplaceSubscriptionTopicProductCode**  
-This is the Amazon SNS topic suffix for subscribe/unsubscribe events\. Enter the desired value\. The default value is **DevPortalMarketplaceSubscriptionTopic**\. This setting is only relevant if you're using AWS Marketplace integration\. For more information, see [Configuring Your SaaS Product to Accept New Customers](https://docs.aws.amazon.com/marketplace/latest/userguide/configuring-your-saas-application-to-accept-new-customers.html#in-your-application)\.
+This is the Amazon SNS topic suffix for subscribe/unsubscribe events\. Enter the desired value\. The default value is **DevPortalMarketplaceSubscriptionTopic**\. This setting is only relevant if you're using AWS Marketplace integration\. For more information, see [SaaS customer onboarding](https://docs.aws.amazon.com/marketplace/latest/userguide/saas-product-customer-setup.html#in-your-application)\.
 
 **StaticAssetRebuildMode**  
 By default, a static asset rebuild doesn't overwrite custom content\. Specify **overwrite\-content** to replace the custom content with your local version\.  
