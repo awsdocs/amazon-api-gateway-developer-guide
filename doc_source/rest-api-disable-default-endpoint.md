@@ -9,7 +9,7 @@ The following AWS CLI command disables the default endpoint for a REST API\.
 
 ```
 aws apigateway update-rest-api \
-    --api-id abcdef123 \
+    --rest-api-id abcdef123 \
     --patch-operations op=replace,path=/disableExecuteApiEndpoint,value='True'
 ```
 
@@ -19,6 +19,6 @@ The following AWS CLI command creates a deployment\.
 
 ```
 aws apigateway create-deployment \
-    --api-id abcdef123 \
+    --rest-api-id abcdef123 \
     --stage-name dev
 ```
