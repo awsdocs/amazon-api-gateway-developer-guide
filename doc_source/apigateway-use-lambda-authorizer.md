@@ -254,7 +254,7 @@ To create a request\-based Lambda authorizer function, enter the following Node\
        var condition = {};
        condition.IpAddress = {};
         
-       if (headers.HeaderAuth1 === "headerValue1"
+       if (headers.headerauth1 === "headerValue1"
            && queryStringParameters.QueryString1 === "queryValue1"
            && stageVariables.StageVar1 === "stageValue1") {
            callback(null, generateAllow('me', event.methodArn));
