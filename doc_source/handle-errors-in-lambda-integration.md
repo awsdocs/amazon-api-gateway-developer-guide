@@ -170,7 +170,7 @@ For example, the following OpenAPI extension defines a mapping from the `errorMe
         "default": {
           "statusCode": "200",
           "responseParameters": {
-          "method.response.header.error_trace_function": "integration.response.body.errorMessage.trace.function",
+            "method.response.header.error_trace_function": "integration.response.body.errorMessage.trace.function",
             "method.response.header.error_status": "integration.response.body.errorMessage.httpStatus",
             "method.response.header.error_type": "integration.response.body.errorMessage.errorType",
             "method.response.header.error_trace": "integration.response.body.errorMessage.trace"
