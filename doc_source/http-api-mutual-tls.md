@@ -57,10 +57,10 @@ When you create a custom domain name that has mutual TLS enabled, or update a cu
 To enable mutual TLS, your domain name must use a publicly trusted server certificate issued by AWS Certificate Manager\.
 
 ```
-aws apigatewayv2 create-domain-name --region us-east-2 \
+aws apigatewayv2 create-domain-name \
     --domain-name api.example.com \
-    --domain-name-configurations CertificateArn=arn:aws:acm:us-west-2:123456789012:certificate/123456789012-1234-1234-1234-12345678
-    --mutual-tls-authentication truststoreUri=s3://bucket-name/key-name
+    --domain-name-configurations CertificateArn=arn:aws:acm:us-west-2:123456789012:certificate/123456789012-1234-1234-1234-12345678 \
+    --mutual-tls-authentication TruststoreUri=s3://bucket-name/key-name
 ```
 
 After you create the domain name, you must configure DNS records and basepath mappings for APIs\. To learn more, see [Setting up a regional custom domain name in API Gateway](apigateway-regional-api-custom-domain-create.md)\.

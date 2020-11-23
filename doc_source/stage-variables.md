@@ -8,6 +8,9 @@ You can also access stage variables in the mapping templates, or pass configurat
 
 For more information about mapping templates, see [API Gateway mapping template and access logging variable reference](api-gateway-mapping-template-reference.md)\.
 
+**Note**  
+Stage variables are not intended to be used for sensitive data, such as credentials\. To pass sensitive data to integrations, use an AWS Lambda authorizer\. You can pass sensitive data to integrations in the output of the Lambda authorizer\. To learn more, see [Output from an Amazon API Gateway Lambda authorizer](api-gateway-lambda-authorizer-output.md)\.
+
 ## Use cases<a name="stage-variables-use-cases"></a>
 
 With deployment stages in API Gateway, you can manage multiple release stages for each API, such as alpha, beta, and production\. Using stage variables you can configure an API deployment stage to interact with different backend endpoints\. 

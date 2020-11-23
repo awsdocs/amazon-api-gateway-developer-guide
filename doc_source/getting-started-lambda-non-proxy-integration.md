@@ -414,29 +414,6 @@ There are several ways you can test a deployed API\. For GET requests using only
 
    If you change `POST` to `PUT` in this method request, you get the same response\.
 
-1. To test `GET /Boston?time=morning`:
-
-   Copy the following cURL command and paste it into the terminal window\.
-
-   ```
-   curl -X GET \
-     'https://beags1mnid.execute-api.us-west-2.amazonaws.com/test/Boston?time=morning' \
-     -H 'content-type: application/json' \
-     -H 'day: Thursday' \
-     -H 'x-amz-docs-region: us-west-2' \
-     -d '{
-   	"callerName": "John"
-   }'
-   ```
-
-   You get a `400 Bad Request` response with the following error message:
-
-   ```
-   {"message": "Invalid request body"}
-   ```
-
-   This is because the `GET` request that you submitted cannot take a payload and fails the request validation\.
-
 ## Clean up<a name="getting-started-clean-up"></a>
 
 If you no longer need the Lambda functions you created for this walkthrough, you can delete them now\. You can also delete the accompanying IAM resources\.

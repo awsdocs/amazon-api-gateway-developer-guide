@@ -2,7 +2,7 @@
 
 Private integrations enable you to create API integrations with private resources in a VPC, such as Application Load Balancers or Amazon ECS container\-based applications\. 
 
-You can expose your resources in a VPC for access by clients outside of the VPC by using private integrations\. You can control access to your API by using [JWT authorizers](http-api-jwt-authorizer.md)\.
+You can expose your resources in a VPC for access by clients outside of the VPC by using private integrations\. You can control access to your API by using any of the [ authorization methods](http-api-access-control.md) that API Gateway supports\.
 
 To create a private integration, you must first create a VPC link\. To learn more about VPC links, see [Working with VPC links for HTTP APIs](http-api-vpc-links.md)\.
 

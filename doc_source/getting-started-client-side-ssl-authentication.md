@@ -17,6 +17,10 @@
 
 ## Generate a client certificate using the API Gateway console<a name="generate-client-certificate"></a>
 
+1. Open the API Gateway console at [https://console\.aws\.amazon\.com/apigateway/](https://console.aws.amazon.com/apigateway/)\. 
+
+1. Choose a REST API\.
+
 1. In the main navigation pane, choose **Client Certificates**\.
 
 1. From the **Client Certificates** pane, choose **Generate Client Certificate**\.

@@ -39,7 +39,7 @@ Path parameters can be passed as request parameters to the Lambda authorizer fun
     "headers": {
         "X-AMZ-Date": "20170718T062915Z",
         "Accept": "*/*",
-        "HeaderAuth1": "headerValue1",
+        "headerauth1": "headerValue1",
         "CloudFront-Viewer-Country": "US",
         "CloudFront-Forwarded-Proto": "https",
         "CloudFront-Is-Tablet-Viewer": "false",

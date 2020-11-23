@@ -12,6 +12,9 @@ Stage variables are key\-value pairs that you can define for a stage of an HTTP 
 
 For example, you can define a stage variable, and then set its value as an HTTP endpoint for an HTTP proxy integration\. Later, you can reference the endpoint by using the associated stage variable name\. By doing this, you can use the same API setup with a different endpoint at each stage\. Similarly, you can use stage variables to specify a different AWS Lambda function integration for each stage of your API\. 
 
+**Note**  
+Stage variables are not intended to be used for sensitive data, such as credentials\. To pass sensitive data to integrations, use an AWS Lambda authorizer\. You can pass sensitive data to integrations in the output of the Lambda authorizer\. To learn more, see [Lambda authorizer response format](http-api-lambda-authorizer.md#http-api-lambda-authorizer.payload-format-response)\.
+
 ### Examples<a name="http-api-stages.stage-variables-examples"></a>
 
 To use a stage variable to customize the HTTP integration endpoint, you must first set the name and value of the stage variable \(for example, `url`\) with a value of `example.com`\. Next, set up an HTTP proxy integration\. Instead of entering the endpoint's URL, you can tell API Gateway to use the stage variable value, **http://$\{stageVariables\.url\}**\. This value tells API Gateway to substitute your stage variable `${}` at runtime, depending on the stage of your API\. 
@@ -40,6 +43,9 @@ You can use a stage variable as part of an HTTP integration URI, as shown in the
  You can use a stage variable in place of a Lambda function name or alias, as shown in the following examples\. 
 + `arn:aws:apigateway:<region>:lambda:path/2015-03-31/functions/arn:aws:lambda:<region>:<account_id>:function:${stageVariables.<function_variable_name>}/invocations`
 + `arn:aws:apigateway:<region>:lambda:path/2015-03-31/functions/arn:aws:lambda:<region>:<account_id>:function:<function_name>:${stageVariables.<version_variable_name>}/invocations`
+
+**Note**  
+To use a stage variable for a Lambda function, the function must be in the same account as the API\. Stage variables don't support cross\-account Lambda functions\.
 
 ### AWS integration credentials<a name="http-api-stages.stage-variables-in-integration-aws-credentials"></a>
 

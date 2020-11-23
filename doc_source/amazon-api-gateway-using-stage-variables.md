@@ -75,7 +75,7 @@ This procedure describes how to use a stage variable to pass stage\-specific con
 
 1. In the **Resources** pane, choose the **/lambdasv1** child resource\. Create a `POST ` method on the child resource, set the **Integration type** to **Lambda Function**, and enter **`${stageVariables.function}`** in **Lambda Function**\. Choose **Save**\. 
 **Tip**  
-``This step is similar to the step we used to create the `GET` method\. For more information, see [Call a Lambda function through an API with a stage variable](#call-api-lambda-backend-with-stage-variable)\. 
+This step is similar to the step we used to create the `GET` method\. For more information, see [Call a Lambda function through an API with a stage variable](#call-api-lambda-backend-with-stage-variable)\. 
 
 1.  From the **/Method Execution** pane, choose **Integration Request**\. In the **Integration Request** pane, expand **Mapping Templates**, and then choose **Add mapping template** to add a template for the `application/json` content\-type, as shown in the following\.   
 ![\[Generate a POST method payload, containing stage-specific configuration metadata represented by the version stage variable value, as an input to the backend Lambda function.\]](http://docs.aws.amazon.com/apigateway/latest/developerguide/images/stageVariables-generate-post-payload-with-mapping-template-as-input-to-function.png)

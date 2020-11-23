@@ -224,7 +224,7 @@ To create a request\-based Lambda authorizer function, enter the following Node\
    
        // A simple request-based authorizer example to demonstrate how to use request 
        // parameters to allow or deny a request. In this example, a request is  
-       // authorized if the client-supplied HeaderAuth1 header, QueryString1 
+       // authorized if the client-supplied headerauth1 header, QueryString1
        // query parameter, and stage variable of StageVar1 all match
        // specified values of 'headerValue1', 'queryValue1', and 'stageValue1',
        // respectively.
@@ -317,13 +317,13 @@ To create a request\-based Lambda authorizer function, enter the following Node\
 
 1. For **Lambda Event Payload**, choose **Request**\.
 
-1. Under **Identity Sources**, add a **Header** named **HeaderAuth1**, a **Query String** named **QueryString1**, and a **Stage Variable** named **StageVar1**\.
+1. Under **Identity Sources**, add a **Header** named **headerauth1**, a **Query String** named **QueryString1**, and a **Stage Variable** named **StageVar1**\.
 
 1. Choose **Create**, and then choose **Grant & Create**\.
 
 1. Choose **Test**\.
 
-1. For **HeaderAuth1**, enter **headerValue1**\. For **QueryString1**, enter **queryValue1**\. For **StageVar1**, enter **stageValue1**\.
+1. For **headerauth1**, enter **headerValue1**\. For **QueryString1**, enter **queryValue1**\. For **StageVar1**, enter **stageValue1**\.
 
 1. Choose **Test**\.
 

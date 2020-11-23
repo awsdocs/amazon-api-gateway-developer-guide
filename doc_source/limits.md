@@ -62,17 +62,20 @@ The following quotas apply to configuring and running a WebSocket API in Amazon 
 | Resource or operation | Default quota | Can be increased | 
 | --- | --- | --- | 
 | New connections per second per account \(across all WebSocket APIs\) per Region | 500 | Yes | 
+| Concurrent connections | Not applicable \* | Not applicable | 
 | AWS Lambda authorizers per API | 10 | Yes | 
 | AWS Lambda authorizer result size | 8 KB | No | 
 | Routes per API | 300 | Yes | 
 | Integrations per API | 300 | Yes | 
 | Stages per API | 10 | Yes | 
 | WebSocket frame size | 32 KB | No | 
-| Message payload size | 128 KB \* | No | 
+| Message payload size | 128 KB \*\* | No | 
 | Connection duration for WebSocket API | 2 hours | No | 
 | Idle Connection Timeout | 10 minutes | No | 
 
-\* Because of the WebSocket frame\-size quota of 32 KB, a message larger than 32 KB must be split into multiple frames, each 32 KB or smaller\. If a larger message \(or larger frame size\) is received, the connection is closed with code 1009\.
+\* API Gateway doesn't enforce a quota on concurrent connections\. The maximum number of concurrent connections is determined by the rate of new connections per second and maximum connection duration of two hours\. For example, with the default quota of 500 new connections per second, if clients connect at the maximum rate over two hours, API Gateway can serve up to 3,600,000 concurrent connections\.
+
+\*\* Because of the WebSocket frame\-size quota of 32 KB, a message larger than 32 KB must be split into multiple frames, each 32 KB or smaller\. If a larger message \(or larger frame size\) is received, the connection is closed with code 1009\.
 
 ### API Gateway quotas for configuring and running a REST API<a name="api-gateway-execution-service-limits-table"></a>
 

@@ -11,7 +11,7 @@ For [private APIs](https://docs.aws.amazon.com/apigateway/latest/developerguide/
 
 You can attach a resource policy to an API by using the AWS Management Console, AWS CLI, or AWS SDKs\.
 
-API Gateway resource policies are different from identity policies\. identity policies are attached to an IAM user, group, or role and define what actions those identities are capable of doing on which resources\. API Gateway resource policies are attached to resources\. For a more detailed discussion of the differences between identity\-based policies and resource policies, see [Identity\-Based Policies and Resource\-Based Policies](https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_identity-vs-resource.html)\.
+API Gateway resource policies are different from IAM identity\-based policies\. IAM identity\-based policies are attached to IAM users, groups, or roles and define what actions those identities are capable of doing on which resources\. API Gateway resource policies are attached to resources\. For a more detailed discussion of the differences between identity\-based policies and resource policies, see [Identity\-Based Policies and Resource\-Based Policies](https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_identity-vs-resource.html)\.
 
 You can use API Gateway resource policies together with IAM policies\.
 

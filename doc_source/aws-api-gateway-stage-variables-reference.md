@@ -33,6 +33,9 @@ A stage variable can be used as part of an HTTP integration URL, as shown in the
 + `arn:aws:apigateway:<region>:lambda:path/2015-03-31/functions/arn:aws:lambda:<region>:<account_id>:function:${stageVariables.<function_variable_name>}/invocations`
 + `arn:aws:apigateway:<region>:lambda:path/2015-03-31/functions/arn:aws:lambda:<region>:<account_id>:function:<function_name>:${stageVariables.<version_variable_name>}/invocations`
 
+**Note**  
+To use a stage variable for a Lambda function, the function must be in the same account as the API\. Stage variables don't support cross\-account Lambda functions\.
+
 ## AWS integration credentials<a name="stage-variables-in-integration-aws-credentials"></a>
 
  A stage variable can be used as part of AWS user/role credential ARN, as shown in the following example\. 
