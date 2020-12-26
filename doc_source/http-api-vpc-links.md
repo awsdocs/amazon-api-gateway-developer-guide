@@ -15,7 +15,7 @@ Use the following command to create a VPC link\. To create a VPC link, all resou
 
 ```
 aws apigatewayv2 create-vpc-link --name MyVpcLink \
-    --subnet-ids subnet-aaaa subnet-bbbb \
+    --subnet-ids private-subnet-aaaa private-subnet-bbbb \
     --security-group-ids sg1234 sg5678
 ```
 
