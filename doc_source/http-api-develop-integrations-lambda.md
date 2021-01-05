@@ -59,7 +59,7 @@ Format `2.0` includes a new `cookies` field\. All cookie headers in the request 
           "scope2"
         ]
       },
-      "lambda: {
+      "lambda": {
         "exampleKey1": "exampleValue1",
         "exampleKey2": "exampleValue2"
       }
