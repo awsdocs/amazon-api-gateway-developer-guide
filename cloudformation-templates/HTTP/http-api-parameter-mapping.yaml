@@ -1,0 +1,43 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Description: Basic HTTP API with request and response parameter mapping
+Resources:
+  HTTPApi:
+    Type: AWS::ApiGatewayV2::Api
+    Properties:
+      Name: example-parameter-mapping
+      ProtocolType: HTTP
+  Integration:
+    Type: AWS::ApiGatewayV2::Integration
+    Properties:
+      ApiId: !Ref HTTPApi
+      Description: HTTP proxy integration
+      IntegrationType: HTTP_PROXY
+      IntegrationMethod: ANY
+      IntegrationUri: http://petstore.execute-api.us-west-1.amazonaws.com/petstore/pets
+      PayloadFormatVersion: 1.0
+      RequestParameters:
+        "append:header.header1": "$context.requestId"
+      ResponseParameters:
+        "200":
+          ResponseParameters:
+            - Source: "value2"
+              Destination: "append:header.header2"
+  Route:
+    Type: AWS::ApiGatewayV2::Route
+    Properties:
+      ApiId: !Ref HTTPApi
+      RouteKey: '$default'
+      Target: !Join
+        - /
+        - - integrations
+          - !Ref Integration
+  Stage:
+    Type: AWS::ApiGatewayV2::Stage
+    Properties:
+      ApiId: !Ref HTTPApi
+      AutoDeploy: true
+      StageName: '$default'
+
+Outputs:
+  InvokeURL:
+    Value: !Sub https://${HTTPApi}.execute-api.${AWS::Region}.amazonaws.com
