@@ -10,6 +10,7 @@ As you're developing your API Gateway API, you decide on a number of characteris
 + [Controlling and managing access to an HTTP API in API Gateway](http-api-access-control.md)
 + [Configuring integrations for HTTP APIs](http-api-develop-integrations.md)
 + [Configuring CORS for an HTTP API](http-api-cors.md)
++ [Transforming API requests and responses](http-api-parameter-mapping.md)
 + [Working with OpenAPI definitions for HTTP APIs](http-api-open-api.md)
 
 ## Creating an HTTP API<a name="http-api-examples"></a>

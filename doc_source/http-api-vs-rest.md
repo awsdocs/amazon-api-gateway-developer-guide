@@ -2,7 +2,7 @@
 
 ## <a name="http-api-vs-rest.differences"></a>
 
-HTTP APIs are designed for low\-latency, cost\-effective integrations with AWS services, including AWS Lambda, and HTTP endpoints\. HTTP APIs support OIDC and OAuth 2\.0 authorization, and come with built\-in support for CORS and automatic deployments\. Previous\-generation REST APIs currently offer more features, and full control over API requests and responses\.
+HTTP APIs are designed for low\-latency, cost\-effective integrations with AWS services, including AWS Lambda, and HTTP endpoints\. HTTP APIs support OIDC and OAuth 2\.0 authorization, and come with built\-in support for CORS and automatic deployments\. Previous\-generation REST APIs currently offer more features\.
 
 The following tables summarize core features that are available in HTTP APIs and REST APIs\.
 
@@ -38,7 +38,7 @@ The following tables summarize core features that are available in HTTP APIs and
 | Development | HTTP API | REST API | 
 | --- | --- | --- | 
 |  API caching  |   |  ✓  | 
-|  Request transformation  |   |  ✓  | 
+|  Request transformation  |  ✓  |  ✓  | 
 |  Request / response validation  |   |  ✓  | 
 |  Test invocation  |   |  ✓  | 
 |  CORS configuration  |  ✓  |  ✓ \*  | 

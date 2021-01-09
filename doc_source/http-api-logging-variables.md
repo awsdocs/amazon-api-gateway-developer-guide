@@ -11,10 +11,8 @@ You can use the following variables to customize HTTP API access logs\. To learn
 | $context\.apiId |  The identifier API Gateway assigns to your API\.  | 
 | $context\.authorizer\.claims\.property |  A property of the claims returned from the JSON Web Token \(JWT\) after the method caller is successfully authenticated\. For more information, see [Controlling access to HTTP APIs with JWT authorizers](http-api-jwt-authorizer.md)\.  Calling `$context.authorizer.claims` returns null\.   | 
 | $context\.authorizer\.error | The error message returned from an authorizer\. | 
-| $context\.authorizer\.latency | The authorizer latency in ms\. | 
 | $context\.authorizer\.principalId |  The principal user identification that a Lambda authorizer returns\.  | 
 | $context\.authorizer\.property |  The value of the specified key\-value pair of the `context` map returned from an API Gateway Lambda authorizer function\. For example, if the authorizer returns the following `context` map:  <pre>"context" : {<br />  "key": "value",<br />  "numKey": 1,<br />  "boolKey": true<br />}</pre> calling `$context.authorizer.key` returns the `"value"` string, calling `$context.authorizer.numKey` returns the `1`, and calling `$context.authorizer.boolKey` returns `true`\.  | 
-| $context\.authorizer\.status | The status code returned from an authorizer\. | 
 | $context\.awsEndpointRequestId |  The AWS endpoint's request ID from the `x-amz-request-id` or `x-amzn-requestId` header\.  | 
 | $context\.awsEndpointRequestId2 |  The AWS endpoint's request ID from the `x-amz-id-2` header\.  | 
 | $context\.dataProcessed | The amount of data processed in bytes\. | 

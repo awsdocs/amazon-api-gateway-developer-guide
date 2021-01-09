@@ -1,10 +1,11 @@
 # Document history<a name="history"></a>
 
 The following table describes the important changes to the documentation since the last release of Amazon API Gateway\. For notification about updates to this documentation, you can subscribe to an RSS feed by choosing the RSS button in the top menu panel\.
-+ **Latest documentation update: **October 29, 2020
++ **Latest documentation update: **January 7, 2021
 
 | Change | Description | Date | 
 | --- |--- |--- |
+| [Parameter mapping for HTTP APIs](#history) | Added support for parameter mapping for HTTP APIs\. For more information, see [Transforming API requests and responses](https://docs.aws.amazon.com/apigateway/latest/developerguide/http-api-parameter-mapping.html)\. | January 7, 2021 | 
 | [Disable the default endpoint for a REST API](#history) | Added support for disabling the default endpoint for REST APIs\. For more information, see [Disabling the default endpoint for a REST API](https://docs.aws.amazon.com/apigateway/latest/developerguide/rest-api-disable-default-endpoint.html)\. | October 29, 2020 | 
 | [Mutual TLS authentication](#history) | Added support for mutual TLS authentication for REST APIs and HTTP APIs\. For more information, see [Configuring mutual TLS authentication for a REST API ](https://docs.aws.amazon.com/apigateway/latest/developerguide/rest-api-mutual-tls.html) and [Configuring mutual TLS authentication for an HTTP API](https://docs.aws.amazon.com/apigateway/latest/developerguide/http-api-mutual-tls.html)\. | September 17, 2020 | 
 | [HTTP API AWS Lambda authorizers](#history) | Added support for AWS Lambda authorizers for HTTP APIs\. For more information, see [Working with AWS Lambda authorizers for HTTP APIs](https://docs.aws.amazon.com/apigateway/latest/developerguide/http-api-lambda-authorizer)\. | September 9, 2020 | 

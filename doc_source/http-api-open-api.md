@@ -88,6 +88,7 @@ The following API definition produces errors on import because HTTP APIs support
   ...
 }
 ```
+As another example, while OpenAPI allows users to define an API with multiple security requirements attached to a particular operation, API Gateway does not support this\. Each operation can have only one of IAM authorization, a Lambda authorizer, or a JWT authorizer\. Attempting to model multiple security requirements results in an error\.
 
 ### Import an API by using the AWS CLI<a name="http-api-import.example"></a>
 

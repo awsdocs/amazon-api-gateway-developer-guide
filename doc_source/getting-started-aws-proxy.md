@@ -26,7 +26,7 @@
 
 Before you begin this walkthrough, do the following:
 
-1. Complete the steps in [Prerequisites: Get ready to build an API in API Gateway](setting-up.md)\.
+1. Complete the steps in [Prerequisites for getting started with API Gateway](setting-up.md)\.
 
 1. Ensure that the IAM user has access to create policies and roles in IAM\. You need to create an IAM policy and role in this walkthrough\.
 

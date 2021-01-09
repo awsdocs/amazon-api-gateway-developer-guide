@@ -280,7 +280,6 @@ exports.handler = async(event) => {
     };
   }
 };
-}
 ```
 
 ------

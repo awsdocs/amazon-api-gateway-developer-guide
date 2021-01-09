@@ -35,7 +35,7 @@ For HTTP APIs, you can define integrations in the components section of your Ope
 }
 ```
 
- The following example integrates an API's `POST` method with a Lambda function in the backend\. For demonstration purposes, the sample mapping templates shown in `requestTemplates` and `responseTemplates` of the examples below are assumed to apply to the following JSON\-formatted payload: `{ "name":"value_1", "key":"value_2", "redirect": {"url" :"..."} }` to generate a JSON output of `{ "stage":"value_1", "user-id":"value_2" }` or an XML output of `<stage>value_1</stage>`\. 
+ The following example creates an integration with a Lambda function\. For demonstration purposes, the sample mapping templates shown in `requestTemplates` and `responseTemplates` of the examples below are assumed to apply to the following JSON\-formatted payload: `{ "name":"value_1", "key":"value_2", "redirect": {"url" :"..."} }` to generate a JSON output of `{ "stage":"value_1", "user-id":"value_2" }` or an XML output of `<stage>value_1</stage>`\. 
 
 ```
 "x-amazon-apigateway-integration" : {

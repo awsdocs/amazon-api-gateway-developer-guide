@@ -33,7 +33,6 @@ The following example integrates the `ANY` method on a proxy resource, `{proxy+}
         "responses": {},
         "x-amazon-apigateway-integration": {
           "uri": "arn:aws:apigateway:us-east-1:lambda:path/2015-03-31/functions/arn:aws:lambda:us-east-1:123456789012:function:TestSimpleProxy/invocations",
-          "passthroughBehavior": "when_no_match",
           "httpMethod": "POST",
           "type": "aws_proxy"
         }

@@ -64,7 +64,7 @@ The app developer is the customer of the API developer\. The app developer doesn
 
 An API developer works with the API Gateway service component for API management, named `apigateway`, to create, configure, and deploy an API\.
 
-As an API developer, you can create and manage an API by using the API Gateway console, described in [Getting started with Amazon API Gateway](getting-started.md), or by calling the [API references](api-ref.md)\. There are several ways to call this API\. They include using the AWS Command Line Interface \(AWS CLI\), or by using an AWS SDK\. In addition, you can enable API creation with [AWS CloudFormation templates](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/template-reference.html) or \(in the case of REST APIs and HTTP APIs\) [Working with API Gateway extensions to OpenAPI](api-gateway-swagger-extensions.md)\. 
+As an API developer, you can create and manage an API by using the API Gateway console, described in [Getting started with API Gateway](getting-started.md), or by calling the [API references](api-ref.md)\. There are several ways to call this API\. They include using the AWS Command Line Interface \(AWS CLI\), or by using an AWS SDK\. In addition, you can enable API creation with [AWS CloudFormation templates](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/template-reference.html) or \(in the case of REST APIs and HTTP APIs\) [Working with API Gateway extensions to OpenAPI](api-gateway-swagger-extensions.md)\. 
 
 For a list of Regions where API Gateway is available, as well as the associated control service endpoints, see [Amazon API Gateway Endpoints and Quotas](https://docs.aws.amazon.com/general/latest/gr/apigateway.html)\.
 

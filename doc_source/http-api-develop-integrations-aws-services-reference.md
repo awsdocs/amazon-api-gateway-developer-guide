@@ -11,6 +11,7 @@ The following [integration subtypes](https://docs.aws.amazon.com/apigatewayv2/la
 + [AppConfig\-GetConfiguration](#AppConfig-GetConfiguration)
 + [Kinesis\-PutRecord](#Kinesis-PutRecord)
 + [StepFunctions\-StartExecution](#StepFunctions-StartExecution)
++ [StepFunctions\-StartSyncExecution](#StepFunctions-StartSyncExecution)
 + [StepFunctions\-StopExecution](#StepFunctions-StopExecution)
 
 ## EventBridge\-PutEvents<a name="EventBridge-PutEvents"></a>
@@ -152,6 +153,23 @@ Starts a state machine execution\.
 | Region | False | 
 
 To learn more, see [StartExecution](https://docs.aws.amazon.com/step-functions/latest/apireference/API_StartExecution.html) in the *AWS Step Functions API Reference*\.
+
+## StepFunctions\-StartSyncExecution<a name="StepFunctions-StartSyncExecution"></a>
+
+Starts a synchronous state machine execution\.
+
+
+**StepFunctions\-StartSyncExecution 1\.0**  
+
+| Parameter | Required | 
+| --- | --- | 
+| StateMachineArn | True | 
+| Name | False | 
+| Input | False | 
+| Region | False | 
+| TraceHeader | False | 
+
+To learn more, see [StartSyncExecution](https://docs.aws.amazon.com/step-functions/latest/apireference/API_StartSyncExecution.html) in the *AWS Step Functions API Reference*\.
 
 ## StepFunctions\-StopExecution<a name="StepFunctions-StopExecution"></a>
 

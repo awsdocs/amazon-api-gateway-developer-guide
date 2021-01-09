@@ -36,7 +36,9 @@ When you create a custom domain name for a Regional API, API Gateway creates a R
 
 ## Wildcard custom domain names<a name="http-wildcard-custom-domain-names"></a>
 
-API Gateway also supports wildcard custom domain names\. You can specify a wildcard \(`*`\) as the first subdomain of a custom domain that represents all possible subdomains of a root domain\.
+With wildcard custom domain names, you can support an almost infinite number of domain names without exceeding the [default quota](limits.md)\. For example, you could give each of your customers their own domain name, `customername.api.example.com`\.
+
+To create a wildcard custom domain name, specify a wildcard \(`*`\) as the first subdomain of a custom domain that represents all possible subdomains of a root domain\.
 
 For example, the wildcard custom domain name `*.example.com` results in subdomains such as `a.example.com`, `b.example.com`, and `c.example.com`, which all route to the same domain\.
 

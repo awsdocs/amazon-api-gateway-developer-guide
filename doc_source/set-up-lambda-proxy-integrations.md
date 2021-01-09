@@ -290,7 +290,7 @@ Comparing this to [the Lambda custom integration setup](set-up-lambda-custom-int
 
    ```
    aws apigateway put-integration \
-           --region us-west-2
+           --region us-west-2 \
            --rest-api-id vaz7da96z6 \
            --resource-id 2jf6xt \
            --http-method ANY \
@@ -349,7 +349,7 @@ For Lambda integrations, you must use the HTTP method of `POST` for the integrat
    ```
    curl -X POST https://te6si5ach7.execute-api.us-west-2.amazonaws.com/test \
      -H 'authorization: AWS4-HMAC-SHA256 Credential={access_key}/20171020/us-west-2/execute-api/aws4_request, \
-         SignedHeaders=content-type;host;x-amz-date, Signature=f327...5751' 
+         SignedHeaders=content-type;host;x-amz-date, Signature=f327...5751' \
      -H 'content-type: application/json' \
      -d '{ "greeter": "jane" }'
    ```

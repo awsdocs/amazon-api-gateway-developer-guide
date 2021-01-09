@@ -24,7 +24,7 @@ For more information about `$context` variables, see [`$context` Variables for d
 
 **Topics**
 + [Setting up gateway responses to customize error responses](#customize-gateway-responses)
-+ [Set up a gateway response using the API Gateway console](set-up-gateway-response-using-the-console.md)
++ [Set up a gateway response for a REST API using the API Gateway console](set-up-gateway-response-using-the-console.md)
 + [Set up a gateway response using the API Gateway REST API](set-up-gateway-response-using-the-api.md)
 + [Set up gateway response customization in OpenAPI](set-up-gateway-responses-in-swagger.md)
 + [Gateway response types](supported-gateway-response-types.md)

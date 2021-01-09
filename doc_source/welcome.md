@@ -69,6 +69,6 @@ For an app to call publicly available AWS services, you can use Lambda to intera
 
 ## How to get started with Amazon API Gateway<a name="welcome-how-to-get-started"></a>
 
-For a quick introduction to Amazon API Gateway, see the following topics:
-+ [Getting started with Amazon API Gateway](getting-started.md), which provides walkthroughs and videos that tell how to create APIs using Amazon API Gateway\.
-+ [Announcing WebSocket APIs in Amazon API Gateway](https://aws.amazon.com/blogs/compute/announcing-websocket-apis-in-amazon-api-gateway/), which tells how to create a WebSocket API\.
+For an introduction to Amazon API Gateway, see the following:
++ [Getting started with API Gateway](getting-started.md), which provides a walkthrough for creating an HTTP API\.
++ [Serverless land](https://serverlessland.com/video?tag=Amazon%20API%20Gateway), which provides instructional videos\.

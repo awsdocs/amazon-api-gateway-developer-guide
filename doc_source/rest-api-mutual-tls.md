@@ -14,7 +14,7 @@ By default, clients can invoke your API by using the `execute-api` endpoint that
 To configure mutual TLS for a REST API, you must use a Regional custom domain name for your API, with a minimum TLS version of 1\.2\. To learn more about creating and configuring a custom domain name, see [Setting up a regional custom domain name in API Gateway](apigateway-regional-api-custom-domain-create.md)\.
 
 **Note**  
-Mutual TLS isn't supported for private or edge\-optimized APIs\.
+Mutual TLS isn't supported for private APIs\.
 
 To use mutual TLS, create a truststore of X\.509 certificates that you trust to access your API\. The certificates can be from public or private certificate authorities\. Certificates can have a maximum chain length of four\. You can also provide self\-signed certificates\. The following are supported:
 + SHA\-256 or stronger

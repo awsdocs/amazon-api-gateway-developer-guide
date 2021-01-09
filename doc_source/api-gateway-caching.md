@@ -24,6 +24,9 @@ In API Gateway, you can enable caching for a specified stage\.
 
 API Gateway changes caching capacity by removing the existing cache instance and creating a new one with a modified capacity\. All existing cached data is deleted\. 
 
+**Note**  
+The cache capacity affects the CPU and network bandwidth of the cache instance\. Cache performance can vary due to the CPU and network bandwidth of the cache instance\. 
+
  In the API Gateway console, you configure caching in the **Settings** tab of a named **Stage Editor**\. 
 
 **To configure API caching for a given stage:**

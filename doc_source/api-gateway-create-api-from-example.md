@@ -14,7 +14,7 @@ The following procedure walks you through the steps to create and test an API fr
 
 **To import, build, and test the example API**
 
-1. If you haven't already done so, complete the steps in [Prerequisites: Get ready to build an API in API Gateway](setting-up.md)\.
+1. If you haven't already done so, complete the steps in [Prerequisites for getting started with API Gateway](setting-up.md)\.
 
 1. Sign in to the API Gateway console at [https://console\.aws\.amazon\.com/apigateway](https://console.aws.amazon.com/apigateway)\.
 

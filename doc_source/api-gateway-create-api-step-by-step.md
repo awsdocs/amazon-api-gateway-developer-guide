@@ -221,7 +221,7 @@ You receive the following JSON object in the response body:
 
 Before you begin this walkthrough, you should do the following:
 
-1. Complete the steps in [Prerequisites: Get ready to build an API in API Gateway](setting-up.md), including assigning API Gateway access permission to the IAM user\.
+1. Complete the steps in [Prerequisites for getting started with API Gateway](setting-up.md), including assigning API Gateway access permission to the IAM user\.
 
 1.  At a minimum, follow the steps in [Tutorial: Build a REST API with HTTP non\-proxy integration](#api-gateway-create-api-step-by-step) to create a new API named `MyDemoAPI` in the API Gateway console\. 
 
@@ -555,7 +555,7 @@ You have reached the end of this walkthrough\.
 
 ## Map response payload<a name="getting-started-models"></a>
 
-In this walkthrough, we show how to use models and mapping templates in API Gateway to transform the output of an API call from one data schema to another\. This walkthrough builds on the instructions and concepts in the [Getting started with Amazon API Gateway](getting-started.md) and the [Map request parameters for an API Gateway API](#getting-started-mappings)\. If you have not yet completed those walkthroughs, we suggest you do them first\.
+In this walkthrough, we show how to use models and mapping templates in API Gateway to transform the output of an API call from one data schema to another\. This walkthrough builds on the instructions and concepts in the [Getting started with API Gateway](getting-started.md) and the [Map request parameters for an API Gateway API](#getting-started-mappings)\. If you have not yet completed those walkthroughs, we suggest you do them first\.
 
 This walkthrough uses API Gateway to get example data from a publicly accessible HTTP endpoint and from an AWS Lambda function you create\. Both the HTTP endpoint and the Lambda function return the same example data:
 

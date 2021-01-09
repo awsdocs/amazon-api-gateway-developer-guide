@@ -1,6 +1,6 @@
 # x\-amazon\-apigateway\-authorizer object<a name="api-gateway-swagger-extensions-authorizer"></a>
 
- Defines a Lambda authorizer or JWT authorizer to be applied for authorization of method invocations in API Gateway\. This object is an extended property of the [OpenAPI Security Definitions](https://github.com/OAI/OpenAPI-Specification/blob/master/versions/2.0.md#security-definitions-object) object\.
+ Defines a Lambda authorizer or JWT authorizer to be applied for authorization of method invocations in API Gateway\. This extension applies to the security definition in [OpenAPI 2](https://github.com/OAI/OpenAPI-Specification/blob/master/versions/2.0.md#securitySchemeObject) and [OpenAPI 3](https://github.com/OAI/OpenAPI-Specification/blob/master/versions/3.0.1.md#securitySchemeObject)\.
 
 
 **Properties**  

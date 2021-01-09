@@ -1,12 +1,12 @@
-# Set up a gateway response using the API Gateway console<a name="set-up-gateway-response-using-the-console"></a>
+# Set up a gateway response for a REST API using the API Gateway console<a name="set-up-gateway-response-using-the-console"></a>
 
 **To customize a gateway response using the API Gateway console**
 
 1. Sign in to the API Gateway console\.
 
-1. Choose your existing API or create a new one\.
+1. Choose a REST API\.
 
-1. Expand the API in the primary navigation pane and choose **Gateway Responses** under the API\. 
+1. In the primary navigation pane, choose **Gateway Responses** under the API\. 
 
 1. In the **Gateway Responses** pane, choose a response type\. In this walkthrough, we use **Missing Authentication Token \(403\)** as an example\. 
 
