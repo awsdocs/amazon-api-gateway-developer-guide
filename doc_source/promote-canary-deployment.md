@@ -13,6 +13,8 @@ Promoting a canary release does not disable the canary on the stage\. To disable
 
 ## Promote a canary release using the API Gateway console<a name="promote-canary-release-deployment-console"></a>
 
+
+
 To use the API Gateway console to promote a canary release deployment, do the following:
 
 1.  Sign in to the API Gateway console and choose an existing API in the primary navigation pane\.

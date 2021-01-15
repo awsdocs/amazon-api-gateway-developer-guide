@@ -4,6 +4,8 @@ HTTP proxy integration is a simple, powerful, and versatile mechanism to build a
 
 With the all\-encompassing proxy resource `{proxy+}`, and the catch\-all `ANY` verb for the HTTP method, you can use an HTTP proxy integration to create an API of a single API method\. The method exposes the entire set of the publicly accessible HTTP resources and operations of a website\. When the backend web server opens more resources for public access, the client can use these new resources with the same API setup\. To enable this, the website developer must communicate clearly to the client developer what the new resources are and what operations are applicable for each of them\.
 
+
+
 As a quick introduction, the following tutorial demonstrates the HTTP proxy integration\. In the tutorial, we create an API using the API Gateway console to integrate with the PetStore website through a generic proxy resource `{proxy+}`, and create the HTTP method placeholder of `ANY`\. 
 
 **Topics**
@@ -44,7 +46,9 @@ As a quick introduction, the following tutorial demonstrates the HTTP proxy inte
 
    1. Select **Enable API Gateway CORS**, if required\.
 
-   For this tutorial, select **Configure as proxy resource**\. For **Resource Name**, use the default, `proxy`\. For **Resource Path**, use `/{proxy+}`\. Select **Enable API Gateway CORS**\.  
+   For this tutorial, select **Configure as proxy resource**\. For **Resource Name**, use the default, `proxy`\. For **Resource Path**, use `/{proxy+}`\. Select **Enable API Gateway CORS**\.
+
+      
 ![\[Create a child resource.\]](http://docs.aws.amazon.com/apigateway/latest/developerguide/images/api-gateway-simple-proxy-create-proxy-resource.png)
 
 1. To set up the `ANY` method for integration with the HTTP backend, do the following:
@@ -61,7 +65,9 @@ As a quick introduction, the following tutorial demonstrates the HTTP proxy inte
 
    1. Choose **Save** to finish configuring the `ANY` method\.
 
-   For this tutorial, use `http://petstore-demo-endpoint.execute-api.com/{proxy}` for the **Endpoint URL**\.  
+   For this tutorial, use `http://petstore-demo-endpoint.execute-api.com/{proxy}` for the **Endpoint URL**\.
+
+      
 ![\[Set up the ANY method.\]](http://docs.aws.amazon.com/apigateway/latest/developerguide/images/api-gateway-simple-proxy-petstore-integrate-proxy-resource.png)
 
  In the API just created, the API's proxy resource path of `{proxy+}` becomes the placeholder of any of the backend endpoints under `http://petstore-demo-endpoint.execute-api.com/`\. For example, it can be `petstore`, `petstore/pets`, and `petstore/pets/{petId}`\. The `ANY` method serves as a placeholder for any of the supported HTTP verbs at run time\. 
@@ -100,7 +106,9 @@ In addition, the client must be able to handle the output format of the backend 
 
    1. Choose **Test** to test invoking the method\.
 
-   For this tutorial, use `GET` for **Method** in place of `ANY`, use `petstore/pets` for **Path** in place of the proxy resource path \(**\{proxy\}**\), and `type=fish` for **Query Strings**\.  
+   For this tutorial, use `GET` for **Method** in place of `ANY`, use `petstore/pets` for **Path** in place of the proxy resource path \(**\{proxy\}**\), and `type=fish` for **Query Strings**\.
+
+      
 ![\[Test a method.\]](http://docs.aws.amazon.com/apigateway/latest/developerguide/images/api-gateway-simple-proxy-petstore-call-proxy-resource.png)
 
    Because the backend website supports the `GET /petstore/pets?type=fish` request, it returns a successful response similar to the following:

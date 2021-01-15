@@ -34,6 +34,8 @@ The following procedure describes how to set up tags for an API stage\.
 
    If the API has been deployed previously in the API Gateway console, you need to redeploy it for the changes to take effect\.
 
+ 
+
 ## Set up tags for an API stage using the API Gateway REST API<a name="set-up-tags-using-api"></a>
 
 You can set up tags for an API stage using the API Gateway REST API by doing one of the following:

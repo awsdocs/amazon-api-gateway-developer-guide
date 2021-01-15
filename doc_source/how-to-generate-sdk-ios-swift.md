@@ -14,7 +14,9 @@ The following procedure describes how to install the SDK\.
 
 1. Extract the contents of the API Gateway\-generated \.zip file you downloaded earlier\. Using the [SimpleCalc API](simple-calc-lambda-api.md), you may want to rename the unzipped SDK folder to something like **sdk\_swift\_simple\_calc**\. In this SDK folder there is a `README.md` file and a `Podfile` file\. The `README.md` file contains the instructions to install and use the SDK\. This tutorial provides details about these instructions\. The installation leverages [CocoaPods](https://cocoapods.org) to import required AWS Mobile SDK components\. You must update the `Podfile` to import the SDKs into your Swift app's Xcode project\. The unarchived SDK folder also contains a `generated-src` folder that contains the source code of the generated SDK of your API\.
 
-1. Launch Xcode and create a new iOS Swift project\. Make a note of the project's target\. You will need to set it in the `Podfile`\.  
+1. Launch Xcode and create a new iOS Swift project\. Make a note of the project's target\. You will need to set it in the `Podfile`\.
+
+      
 ![\[\]](http://docs.aws.amazon.com/apigateway/latest/developerguide/images/use-sdk-in-ios-swift-project-find-target.png)
 
 1. To import the required AWS Mobile SDK components into the Xcode project by using CocoaPods, do the following:
@@ -58,15 +60,21 @@ The following procedure describes how to install the SDK\.
 
    1. Close the Xcode project and then open the `*.xcworkspace` file to relaunch Xcode\.
 
-   1. Add all of the SDK's header files \(`.h`\) and Swift source code files \(`.swift`\) from the extracted `generated-src` directory to your Xcode project\.  
+   1. Add all of the SDK's header files \(`.h`\) and Swift source code files \(`.swift`\) from the extracted `generated-src` directory to your Xcode project\.
+
+         
 ![\[\]](http://docs.aws.amazon.com/apigateway/latest/developerguide/images/use-sdk-in-ios-swift-project-add-sdk-src.png)
 
-   1. To enable calling the Objective\-C libraries of the AWS Mobile SDK from your Swift code project, set the `Bridging_Header.h` file path on the **Objective\-C Bridging Header** property under the **Swift Compiler \- General** setting of your Xcode project configuration:   
+   1. To enable calling the Objective\-C libraries of the AWS Mobile SDK from your Swift code project, set the `Bridging_Header.h` file path on the **Objective\-C Bridging Header** property under the **Swift Compiler \- General** setting of your Xcode project configuration: 
+
+         
 ![\[\]](http://docs.aws.amazon.com/apigateway/latest/developerguide/images/use-sdk-in-ios-swift-project-set-bridging-header.png)
 **Tip**  
 You can type **bridging** in the search box of Xcode to locate the **Objective\-C Bridging Header** property\.
 
-   1. Build the Xcode project to verify that it is properly configured before proceeding further\. If your Xcode uses a more recent version of Swift than the one supported for the AWS Mobile SDK, you will get Swift compiler errors\. In this case, set the **Use Legacy Swift Language Version** property to **Yes** under the **Swift Compiler \- Version** setting:  
+   1. Build the Xcode project to verify that it is properly configured before proceeding further\. If your Xcode uses a more recent version of Swift than the one supported for the AWS Mobile SDK, you will get Swift compiler errors\. In this case, set the **Use Legacy Swift Language Version** property to **Yes** under the **Swift Compiler \- Version** setting:
+
+         
 ![\[\]](http://docs.aws.amazon.com/apigateway/latest/developerguide/images/use-sdk-in-ios-swift-project-set-legacy-swift-version.png)
 
    To import the AWS Mobile SDK for iOS in Swift into your project by explicitly downloading the AWS Mobile SDK or using [Carthage](https://github.com/Carthage/Carthage#installing-carthage), follow the instructions in the `README.md` file that comes with the SDK package\. Be sure to use only one of these options to import the AWS Mobile SDK\.

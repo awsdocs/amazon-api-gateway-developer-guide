@@ -22,6 +22,8 @@ A prerequisite for creating and editing the documentation of an API is that you 
 
  To add a documentation part for the `API` entity, choose **Resources** from the **PetStore** API\. Choose the **Actions → Edit API Documentation** menu item\. 
 
+ 
+
 ![\[Edit documentation for the API entity in the API Gateway console\]](http://docs.aws.amazon.com/apigateway/latest/developerguide/images/document-api-entity-using-console.png)
 
 If a documentation part was not created for the `API`, you get the documentation part's `properties` map editor\. Type the following `properties` map in the text editor and then choose **Save** to create the documentation part\. 
@@ -41,9 +43,13 @@ If a documentation part was not created for the `API`, you get the documentation
 **Note**  
  You do not need to encode the `properties` map into a JSON string\. The API Gateway console stringifies the JSON object for you\. 
 
+ 
+
 ![\[Edit documentation properties map for the API entity in the API Gateway console\]](http://docs.aws.amazon.com/apigateway/latest/developerguide/images/document-api-entity-edit-properties-map-using-console.png)
 
 If a documentation part has already been created, you first get the `properties` map viewer, as shown in the following\. 
+
+ 
 
 ![\[View documentation properties map for the API entity in the API Gateway console\]](http://docs.aws.amazon.com/apigateway/latest/developerguide/images/document-api-entity-view-properties-map-using-console.png)
 
@@ -88,9 +94,13 @@ If necessary, repeat these steps to add a documentation part to other methods\.
 
  To add or edit a documentation part for a request query parameter, using the `GET /pets?type=...&page=...` method as an example, choose **GET** under **/pets** from the **Resources** tree\. Choose **Method Request** in the **Method Execution** window\. Expand the **URL Query String Parameters** section\. Choose the **page** query parameter, for example, and choose the book icon to open the **Documentation** viewer or editor\. 
 
+ 
+
 ![\[Edit documentation for the API entity on the API Gateway console\]](http://docs.aws.amazon.com/apigateway/latest/developerguide/images/document-query-parameter-via-method-request-using-console.png)
 
  Alternatively, you can choose **Documentation** under the **PetStore** API from the main navigation pane\. Then choose `Query Parameter` for **Type**\. For the PetStore example API, this shows the documentation parts for the `page` and `type` query parameters\. 
+
+ 
 
 ![\[Edit documentation for the API entity in the API Gateway console\]](http://docs.aws.amazon.com/apigateway/latest/developerguide/images/document-request-query-entity-using-console.png)
 
@@ -131,6 +141,8 @@ Alternatively, choose **Documentation** under the API from the main navigation p
 ## Document a `RESPONSE` entity<a name="api-gateway-document-api-add-document-part-for-response-with-console"></a>
 
  To add or edit documentation for a response, go to **Method Response** of a method\. Choose the book icon for **Method Response** to open the **Documentation** viewer and then editor\. Add or modify the properties of the documentation part\. 
+
+ 
 
 ![\[Edit documentation for the RESPONSE entity on the API Gateway console\]](http://docs.aws.amazon.com/apigateway/latest/developerguide/images/document-response-via-method-response-using-console.png)
 

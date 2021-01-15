@@ -14,7 +14,7 @@ In its most basic sense, a resource policy contains the following elements:
   For the format of the full `Resource` element, see [Resource format of permissions for executing API in API Gateway](api-gateway-control-access-using-iam-policies-to-invoke-api.md#api-gateway-iam-policy-resource-format-for-executing-api)\.
 + **Actions** – For each resource, Amazon API Gateway supports a set of operations\. You identify resource operations that you will allow \(or deny\) by using action keywords\.
 
-  For example, the `apigateway:invoke` permission will allow the user permission to invoke an API upon a client request\.
+  For example, the `execute-api:Invoke` permission will allow the user permission to invoke an API upon a client request\.
 
   For the format of the `Action` element, see [Action format of permissions for executing API in API Gateway](api-gateway-control-access-using-iam-policies-to-invoke-api.md#api-gateway-iam-policy-action-format-for-executing-api)\.
 + **Effect** – What the effect is when the user requests the specific action—this can be either `Allow` or `Deny`\. You can also explicitly deny access to a resource, which you might do in order to make sure that a user cannot access it, even if a different policy grants access\. 

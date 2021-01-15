@@ -86,6 +86,8 @@ This is the same as the following `DocumentationPart` instance:
 }
 ```
 
+
+
 ### Inherit content from an API entity of more general specifications<a name="api-gateway-documenting-api-content-inheritance"></a>
 
 The default value of an optional `location` field provides a patterned description of an API entity\. Using the default value in the `location` object, you can add a general description in the `properties` map to a `DocumentationPart` instance with this type of `location` pattern\. API Gateway extracts the applicable OpenAPI documentation attributes from the `DocumentationPart` of the generic API entity and injects them into a specific API entity with the `location` fields matching the general `location` pattern, or matching the exact value, unless the specific entity already has a `DocumentationPart` instance associated with it\. This behavior is also known as content inheritance from an API entity of more general specifications\. 

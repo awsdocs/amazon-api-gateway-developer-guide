@@ -129,7 +129,9 @@ When accessing objects whose object key includes `/` or any other special charac
 
 1.  Under the API's root resource, create a child resource named **Folder** and set the required **Resource Path** as **/\{folder\}**\. 
 
-1.  For the API's **Folder** resource, create an **Item** child resource\. Set the required **Resource Path** as **/\{item\}**\.   
+1.  For the API's **Folder** resource, create an **Item** child resource\. Set the required **Resource Path** as **/\{item\}**\. 
+
+      
 ![\[Create an API in API Gateway as an Amazon S3 proxy\]](http://docs.aws.amazon.com/apigateway/latest/developerguide/images/aws_proxy_s3_create_api-resources.png)
 
 ## Expose an API method to list the caller's Amazon S3 buckets<a name="api-root-get-as-s3-get-service"></a>
@@ -140,7 +142,9 @@ Getting the list of Amazon S3 buckets of the caller involves invoking the [GET S
 
 1. Choose **Create method** on the root node \(`/`\) from the **Actions** drop\-down menu at the top\-right corner of the **Resources** panel\.
 
-1. Choose the `GET` from the drop\-down list of HTTP verbs, and choose the check\-mark icon to start creating the method\.  
+1. Choose the `GET` from the drop\-down list of HTTP verbs, and choose the check\-mark icon to start creating the method\.
+
+      
 ![\[Create a method for integration with Amazon S3\]](http://docs.aws.amazon.com/apigateway/latest/developerguide/images/aws_proxy_apig_method_create.png)
 
 1. In the **/ \- GET \- Setup** pane, choose **AWS Service** for **Integration type**\.
@@ -178,7 +182,9 @@ To control who can call this method of our API, we turn on the method authorizat
 
 1. Choose `AWS_IAM` from the drop\-down list\.
 
-1. Choose the check\-mark icon to save the setting\.  
+1. Choose the check\-mark icon to save the setting\.
+
+      
 ![\[Declare method response types\]](http://docs.aws.amazon.com/apigateway/latest/developerguide/images/aws_proxy_s3_setup_method_request_authorization.png)
 
  For our API to return successful responses and exceptions properly to the caller, let us declare the 200, 400 and 500 responses in **Method Response**\. We use the default mapping for 200 responses so that backend responses of the status code not declared here will be returned to the caller as 200 ones\. 
@@ -189,22 +195,30 @@ To control who can call this method of our API, we turn on the method authorizat
 
 1. Choose **Add response**, enter **400** in the input text box, and choose the check\-mark to finish the declaration\.
 
-1. Repeat the above step to declare the 500 response type\. The final setting is shown as follows:  
+1. Repeat the above step to declare the 500 response type\. The final setting is shown as follows:
+
+      
 ![\[Declare method response types\]](http://docs.aws.amazon.com/apigateway/latest/developerguide/images/aws_proxy_s3_setup_method_response_types.png)
 
 Because the successful integration response from Amazon S3 returns the bucket list as an XML payload and the default method response from API Gateway returns a JSON payload, we must map the backend Content\-Type header parameter value to the frontend counterpart\. Otherwise, the client will receive `application/json` for the content type when the response body is actually an XML string\. The following procedure shows how to set this up\. In addition, we also want to display to the client other header parameters, such as Date and Content\-Length\. 
 
 **To set up response header mappings for the GET / method**
 
-1.  In the API Gateway console, choose **Method Response**\. Add the **Content\-Type** header for the 200 response type\.   
+1.  In the API Gateway console, choose **Method Response**\. Add the **Content\-Type** header for the 200 response type\. 
+
+      
 ![\[Declare method response headers\]](http://docs.aws.amazon.com/apigateway/latest/developerguide/images/aws_proxy_s3_setup_method_response_headers.png)
 
-1.  In **Integration Response**, for **Content\-Type**, type `integration.response.header.Content-Type` for the method response\.   
+1.  In **Integration Response**, for **Content\-Type**, type `integration.response.header.Content-Type` for the method response\. 
+
+      
 ![\[Map integration response headers to method response headers\]](http://docs.aws.amazon.com/apigateway/latest/developerguide/images/aws_proxy_s3_setup_integration_response_headers.png)
 
    With the above header mappings, API Gateway will translate the `Date` header from the backend to the `Timestamp` header for the client\. 
 
-1. Still in **Integration Response**, choose **Add integration response**, type an appropriate regular expression in the **HTTP status regex** text box for a remaining method response status\. Repeat until all the method response status are covered\.  
+1. Still in **Integration Response**, choose **Add integration response**, type an appropriate regular expression in the **HTTP status regex** text box for a remaining method response status\. Repeat until all the method response status are covered\.
+
+      
 ![\[Set up integration response status codes\]](http://docs.aws.amazon.com/apigateway/latest/developerguide/images/aws_proxy_s3_setup_integration_response_status.png)
 
 As a good practice, let us test our API we have configured so far\.
@@ -213,7 +227,9 @@ As a good practice, let us test our API we have configured so far\.
 
 1. Go back to **Method Execution**, choose **Test** from the **Client** box\.
 
-1. Choose **Test** in the **GET / \- Method Test** pane\. An example result is shown as follows\.   
+1. Choose **Test** in the **GET / \- Method Test** pane\. An example result is shown as follows\. 
+
+      
 ![\[Test API root GET bucket result\]](http://docs.aws.amazon.com/apigateway/latest/developerguide/images/aws_proxy_s3_test_root_get_result.png)
 
 **Note**  
@@ -227,7 +243,9 @@ To work with an Amazon S3 bucket, we expose the GET, PUT, and DELETE methods on 
 
 1.  On the **/\{folder\}** node from the **Resources** tree, create the DELETE, GET and PUT methods, one at a time\. 
 
-1. Set up the initial integration of each created method with its corresponding Amazon S3 endpoints\. The following screen shot illustrates this setting for the `PUT /{folder}` method\. For the `DELETE /{folder}` and `GET /{folder}` method, replace the `PUT` value of **HTTP method** by `DELETE` and `GET`, respectively\.  
+1. Set up the initial integration of each created method with its corresponding Amazon S3 endpoints\. The following screen shot illustrates this setting for the `PUT /{folder}` method\. For the `DELETE /{folder}` and `GET /{folder}` method, replace the `PUT` value of **HTTP method** by `DELETE` and `GET`, respectively\.
+
+      
 ![\[Set up PUT /{folder} method\]](http://docs.aws.amazon.com/apigateway/latest/developerguide/images/aws_proxy_s3_create_methods_on_folder.png)
 
    Notice that we used the `{bucket}` path parameter in the Amazon S3 endpoint URLs to specify the bucket\. We will need to map the `{folder}` path parameter of the method requests to the `{bucket}` path parameter of the integration requests\.
@@ -238,15 +256,21 @@ To work with an Amazon S3 bucket, we expose the GET, PUT, and DELETE methods on 
 
    1. Expand **URL Path Parameters** and choose **Add path**
 
-   1. Type `bucket` in the **Name** column and `method.request.path.folder` in the **Mapped from** column\. Choose the check\-mark icon to save the mapping\.  
+   1. Type `bucket` in the **Name** column and `method.request.path.folder` in the **Mapped from** column\. Choose the check\-mark icon to save the mapping\.
+
+         
 ![\[Set up PUT /{folder} method\]](http://docs.aws.amazon.com/apigateway/latest/developerguide/images/aws_proxy_s3_create_methods_on_folder_map_path_parameter.png)
 
-1. In **Method Request**, add the `Content-Type` to the **HTTP Request Headers** section\.  
+1. In **Method Request**, add the `Content-Type` to the **HTTP Request Headers** section\.
+
+      
 ![\[Set up PUT /{folder} method\]](http://docs.aws.amazon.com/apigateway/latest/developerguide/images/aws_proxy_s3_create_methods_on_folder_setup_request_header.png)
 
     This is mostly needed for testing, when using the API Gateway console, when you must specify **application/xml** for an XML payload\.
 
-1. In **Integration Request**, set up the following header mappings, following the instructions described in [Expose an API method to list the caller's Amazon S3 buckets](#api-root-get-as-s3-get-service)\.  
+1. In **Integration Request**, set up the following header mappings, following the instructions described in [Expose an API method to list the caller's Amazon S3 buckets](#api-root-get-as-s3-get-service)\.
+
+      
 ![\[Set up header mappings for the PUT /{folder} method\]](http://docs.aws.amazon.com/apigateway/latest/developerguide/images/aws_proxy_s3_create_methods_on_folder_header_mappings.png)
 
     The `x-amz-acl` header is for specifying access control on the folder \(or the corresponding Amazon S3 bucket\)\. For more information, see [Amazon S3 PUT Bucket Request](https://docs.aws.amazon.com/AmazonS3/latest/API/RESTBucketPUT.html#RESTBucketPUT-requests)\. 
@@ -263,7 +287,9 @@ To work with an Amazon S3 bucket, we expose the GET, PUT, and DELETE methods on 
       <CreateBucketConfiguration xmlns="http://s3.amazonaws.com/doc/2006-03-01/"> 
          <LocationConstraint>{region}</LocationConstraint> 
       </CreateBucketConfiguration>
-      ```  
+      ```
+
+         
 ![\[Test the PUT method to create an Amazon S3 bucket.\]](http://docs.aws.amazon.com/apigateway/latest/developerguide/images/aws_proxy_s3_test_api_folder_put.png)
 
 1.  Repeat the preceding steps to create and configure the GET and DELETE method on the API's **/\{folder\}** resource\. 
@@ -283,6 +309,8 @@ The API setups for the PUT, GET and DELETE methods on `/{folder}/{item}` are the
 The same is true for the GET and DELETE methods\.
 
 As an illustration, the following screen shot shows the output when testing the GET method on a `{folder}/{item}` resource using the API Gateway console\. The request correctly returns the plain text of \("Welcome to README\.txt"\) as the content of the specified file \(README\.txt\) in the given Amazon S3 bucket \(apig\-demo\)\. 
+
+ 
 
 ![\[Test API Folder/Item GET bucket result\]](http://docs.aws.amazon.com/apigateway/latest/developerguide/images/aws_proxy_s3_test_folder_item_get_result.png)
 

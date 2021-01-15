@@ -5,6 +5,8 @@
 + You must have deployed the API at least once\. Follow the instructions in [Deploying a REST API in Amazon API Gateway](how-to-deploy-api.md)\.
 + You must have created the first stage for a deployed API\. Follow the instructions in [Create a new stage](stages.md#how-to-create-stage-console)\.
 
+  
+
 **To declare stage variables using the API Gateway console**
 
 1. Sign in to the API Gateway console at [https://console\.aws\.amazon\.com/apigateway](https://console.aws.amazon.com/apigateway)\.

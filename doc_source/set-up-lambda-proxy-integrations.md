@@ -34,6 +34,8 @@ Amazon API Gateway Lambda proxy integration is a simple, powerful, and nimble me
 
  To let customers search for any available product, its produce category, and the associated store department, you can expose a single method of `GET /{proxy+}` with read\-only permissions\. Similarly, to allow a supervisor to update the `produce` department's inventory, you can set up another single method of `PUT /produce/{proxy+}` with read/write permissions\. To allow a cashier to update the running total of a vegetable, you can set up a `POST /produce/vegetables/{proxy+}` method with read/write permissions\. To let a store manager perform any possible action on any available product, the online store developer can expose the `ANY /{proxy+}` method with read/write permissions\. In any case, at run time, the customer or the employee must select a particular product of a given type in a chosen department, a specific produce category in a chosen department, or a specific department\. 
 
+
+
 For more information about setting up API Gateway proxy integrations, see [Set up a proxy integration with a proxy resource](api-gateway-set-up-simple-proxy.md)\. 
 
  Proxy integration requires that the client have more detailed knowledge of the backend requirements\. Therefore, to ensure optimal app performance and user experience, the backend developer must communicate clearly to the client developer the requirements of the backend, and provide a robust error feedback mechanism when the requirements are not met\. 

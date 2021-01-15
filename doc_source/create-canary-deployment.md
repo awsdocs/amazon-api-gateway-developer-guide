@@ -48,6 +48,8 @@ If needed, choose **Create Web ACL** to open the AWS WAF console in a new browse
 
 1. If desired, choose **Enable use of stage cache** to enable caching for the canary release and save your choice\. The cache is not available for the canary release until API caching is enabled\.
 
+ 
+
 After the canary release is initialized on the deployment stage, you change the API and want to test the changes\. You can redeploy the API to the same stage so that both the updated version and the base version are accessible through the same stage\. The following steps describe how to do that\. <a name="to-deploy-latest-api-to-canary-release"></a>
 
 **To deploy the latest API version to a canary**
@@ -101,6 +103,8 @@ aws apigateway create-deployment
     --rest-api-id 4wk1k4onj3 \
     --stage-name prod
 ```
+
+
 
 If the specified stage \(`prod`\) does not exist, the preceding command returns an error\. Otherwise, it returns the newly created [deployment](https://docs.aws.amazon.com/apigateway/api-reference/resource/deployment/) resource representation similar to the following:
 

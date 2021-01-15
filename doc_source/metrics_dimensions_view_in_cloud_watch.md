@@ -29,3 +29,5 @@ Metrics are grouped first by the service namespace, and then by the various dime
    ```
    aws cloudwatch get-metric-statistics --namespace AWS/ApiGateway --metric-name Count --start-time 2011-10-03T23:00:00Z --end-time 2017-10-05T23:00:00Z --period 300 --statistics Average
    ```
+
+    

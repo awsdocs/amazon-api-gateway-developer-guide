@@ -40,3 +40,4 @@ aws apigateway import-rest-api \
     --fail-on-warnings \
     --body 'file://path/to/API_OpenAPI_template.json'
 ```
+

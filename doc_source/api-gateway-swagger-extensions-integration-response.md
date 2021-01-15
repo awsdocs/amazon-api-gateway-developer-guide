@@ -28,3 +28,4 @@ The following example defines a `302` response for the method that derives a pay
     }
 }
 ```
+

@@ -30,3 +30,4 @@ The following example shows a list of responses from `2xx` and `302` responses\.
     }
 }
 ```
+

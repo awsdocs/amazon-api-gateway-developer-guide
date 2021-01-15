@@ -15,6 +15,8 @@ If the OpenAPI file has a `basePath` value of `/a/b/c` and the `paths` property 
 POST /restapis?mode=import&basepath=ignore
 ```
 
+
+
 ```
 PUT /restapis/api_id?basepath=ignore
 ```
@@ -38,6 +40,8 @@ PUT /restapis/api_id?basepath=ignore
 ```
 POST /restapis?mode=import&basepath=prepend
 ```
+
+
 
 ```
 PUT /restapis/api_id?basepath=prepend
@@ -63,6 +67,8 @@ PUT /restapis/api_id?basepath=prepend
 ```
 POST /restapis?mode=import&basepath=split
 ```
+
+
 
 ```
 PUT /restapis/api_id?basepath=split

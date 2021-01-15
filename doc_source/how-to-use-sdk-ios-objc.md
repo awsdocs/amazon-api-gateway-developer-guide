@@ -10,7 +10,9 @@ The following procedure describes how to install the SDK\.
 
 1. Extract the contents of the API Gateway\-generated \.zip file you downloaded earlier\. Using the [SimpleCalc API](simple-calc-lambda-api.md), you may want to rename the unzipped SDK folder to something like **sdk\_objc\_simple\_calc**\. In this SDK folder there is a `README.md` file and a `Podfile` file\. The `README.md` file contains the instructions to install and use the SDK\. This tutorial provides details about these instructions\. The installation leverages [CocoaPods](https://cocoapods.org) to import required API Gateway libraries and other dependent AWS Mobile SDK components\. You must update the `Podfile` to import the SDKs into your app's Xcode project\. The unarchived SDK folder also contains a `generated-src` folder that contains the source code of the generated SDK of your API\.
 
-1. Launch Xcode and create a new iOS Objective\-C project\. Make a note of the project's target\. You will need to set it in the `Podfile`\.  
+1. Launch Xcode and create a new iOS Objective\-C project\. Make a note of the project's target\. You will need to set it in the `Podfile`\.
+
+      
 ![\[\]](http://docs.aws.amazon.com/apigateway/latest/developerguide/images/use-sdk-in-ios-objc-project-find-target.png)
 
 1. To import the AWS Mobile SDK for iOS into the Xcode project by using CocoaPods, do the following:
@@ -54,7 +56,9 @@ The following procedure describes how to install the SDK\.
 
    1. Close the Xcode project and then open the `.xcworkspace` file to relaunch Xcode\.
 
-   1. Add all of the `.h` and `.m` files from the extracted SDK's `generated-src` directory into your Xcode project\.  
+   1. Add all of the `.h` and `.m` files from the extracted SDK's `generated-src` directory into your Xcode project\.
+
+         
 ![\[\]](http://docs.aws.amazon.com/apigateway/latest/developerguide/images/use-sdk-in-ios-objc-project-add-sdk-src.png)
 
    To import the AWS Mobile SDK for iOS Objective\-C into your project by explicitly downloading AWS Mobile SDK or using [Carthage](https://github.com/Carthage/Carthage#installing-carthage), follow the instructions in the *README\.md* file\. Be sure to use only one of these options to import the AWS Mobile SDK\.

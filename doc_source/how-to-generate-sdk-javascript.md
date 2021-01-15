@@ -51,6 +51,8 @@ If your API only has ANY methods defined, the generated SDK package will not con
    });
    ```
 
+   
+
 1. Call the API methods in API Gateway by using code similar to the following\. Each call returns a promise with a success and failure callbacks\.
 
    ```
@@ -103,3 +105,5 @@ If your API only has ANY methods defined, the generated SDK package will not con
    2. rootPost(null, body); // where body={"a": ..., "b": ..., "op": ...}
    3. aBOpGet(params);      // where params={"a": ..., "b": ..., "op": ...} is resolved to the path parameters
    ```
+
+   

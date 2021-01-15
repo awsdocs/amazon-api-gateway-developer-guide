@@ -27,3 +27,4 @@ To add this value from the console, enter `application/json` in the box, without
     "integration.request.path.op" : "method.request.path.service"
 },
 ```
+

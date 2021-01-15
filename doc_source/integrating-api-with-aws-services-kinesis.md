@@ -201,7 +201,9 @@ We chose `POST` here because Kinesis requires that the `ListStreams` action be i
 
    1. Leave the default of **Passthrough** for **Content Handling**\.
 
-   1. Choose **Save** to finish the initial setup of the method\.  
+   1. Choose **Save** to finish the initial setup of the method\.
+
+      
 ![\[Set up the Streams:GET method for Kinesis ListStreams action.\]](http://docs.aws.amazon.com/apigateway/latest/developerguide/images/api-gateway-kinesis-proxy-setup-streams-get-method.png)
 
 1.  Still in the **Integration Request** pane, expand the **HTTP Headers** section:
@@ -237,7 +239,9 @@ We chose `POST` here because Kinesis requires that the `ListStreams` action be i
    }
    ```
 
-   However, the properties are optional\. To use the default values, we opted for an empty JSON payload here\.  
+   However, the properties are optional\. To use the default values, we opted for an empty JSON payload here\.
+
+      
 ![\[Set up data mapping for the Streams:GET method for the Kinesis ListStreams action.\]](http://docs.aws.amazon.com/apigateway/latest/developerguide/images/api-gateway-kinesis-proxy-setup-streams-get-method-data-mapping.png)
 
 1. Test the GET method on the Streams resource to invoke the `ListStreams` action in Kinesis:
@@ -305,15 +309,21 @@ Content-Length: PayloadSizeBytes
 
 **To configure and test the GET method on a stream resource**
 
-1.  Create a child resource with the `{stream-name}` path variable under the previously created `/streams` resource\.   
+1.  Create a child resource with the `{stream-name}` path variable under the previously created `/streams` resource\. 
+
+      
 ![\[Create {stream-name} resource\]](http://docs.aws.amazon.com/apigateway/latest/developerguide/images/api-gateway-kinesis-proxy-setup-streams-stream-resource.png)
 
 1.  Add the `POST`, `GET`, and `DELETE` HTTP verbs to this resource\.
 
-    After the methods are created on the resource, the structure of the API looks like the following:   
+    After the methods are created on the resource, the structure of the API looks like the following: 
+
+      
 ![\[Create POST, GET, and DELETE methods on a stream resource\]](http://docs.aws.amazon.com/apigateway/latest/developerguide/images/api-gateway-kinesis-proxy-setup-streams-stream-methods.png)
 
-1. Set up the `GET /streams/{stream-name}` method to call the `POST /?Action=DescribeStream` action in Kinesis, as shown in the following\.   
+1. Set up the `GET /streams/{stream-name}` method to call the `POST /?Action=DescribeStream` action in Kinesis, as shown in the following\. 
+
+      
 ![\[Set up the GET-on-stream method to invoke the DescribeStream action in Kinesis\]](http://docs.aws.amazon.com/apigateway/latest/developerguide/images/api-gateway-kinesis-proxy-setup-streams-stream-get-method.png)
 
 1. Add the following `Content-Type` header mapping to the integration request:
@@ -547,13 +557,17 @@ Content-Length: PayloadSizeBytes
 
 The following figure shows the API structure of resources after the methods are created:
 
+ 
+
 ![\[Create Records:GET|PUT|PUT|GET method for the API.\]](http://docs.aws.amazon.com/apigateway/latest/developerguide/images/api-gateway-kinesis-proxy-setup-streams-stream-records-methods.png)
 
  The following four procedures describe how to set up each of the methods, how to map data from the method requests to the integration requests, and how to test the methods\. 
 
 **To set up and test the `PUT /streams/{stream-name}/record` method to invoke `PutRecord` in Kinesis:**
 
-1. Set up the PUT method, as shown in the following:  
+1. Set up the PUT method, as shown in the following:
+
+      
 ![\[Set up the PUT method to call the PutRecord action in Kinesis.\]](http://docs.aws.amazon.com/apigateway/latest/developerguide/images/api-gateway-kinesis-proxy-setup-streams-stream-record-put-method.png)
 
 1. Add the following request parameter mapping to set the `Content-Type` header to an AWS\-compliant version of JSON in the integration request:
@@ -610,7 +624,9 @@ The following figure shows the API structure of resources after the methods are 
 
 **To set up and test the `PUT /streams/{stream-name}/records` method to invoke `PutRecords` in Kinesis**
 
-1. Set up the `PUT /streams/{stream-name}/records` method, as shown in the following:  
+1. Set up the `PUT /streams/{stream-name}/records` method, as shown in the following:
+
+      
 ![\[Set up the PUT /streams/{stream-name}/records method for the Kinesis PutRecords action.\]](http://docs.aws.amazon.com/apigateway/latest/developerguide/images/api-gateway-kinesis-proxy-setup-streams-stream-records-put-method.png)
 
 1. Add the following request parameter mapping to set the `Content-Type` header to an AWS\-compliant version of JSON in the integration request:
@@ -663,7 +679,9 @@ The following figure shows the API structure of resources after the methods are 
 
    In this tutorial, we used two slightly different payload formats to illustrate that an API developer can choose to expose the backend data format to the client or hide it from the client\. One format is for the `PUT /streams/{stream-name}/records` method \(above\)\. Another format is used for the `PUT /streams/{stream-name}/record` method \(in the previous procedure\)\. In production environment, you should keep both formats consistent\. 
 
-1.  To test the `PUT /streams/{stream-name}/records` method, set the `stream-name` path variable to an existing stream, supply the following payload, and submit the method request\. 
+1. 
+
+    To test the `PUT /streams/{stream-name}/records` method, set the `stream-name` path variable to an existing stream, supply the following payload, and submit the method request\. 
 
    ```
    {
@@ -702,10 +720,16 @@ The following figure shows the API structure of resources after the methods are 
 
 The `GET /streams/{stream-name}/sharditerator` method is a helper method to acquire a required shard iterator before calling the `GET /streams/{stream-name}/records` method\.
 
-1. Set up integration for the `GET /streams/{stream-name}/sharditerator` method, as shown in the following:  
+1. Set up integration for the `GET /streams/{stream-name}/sharditerator` method, as shown in the following:
+
+      
 ![\[Set up the GET /streams/{stream-name}/sharditerator method.\]](http://docs.aws.amazon.com/apigateway/latest/developerguide/images/api-gateway-kinesis-proxy-setup-streams-stream-sharditerator-get-method.png)
 
-1.  The `GetShardIterator` action requires an input of a ShardId value\. To pass a client\-supplied `ShardId` value, we add a `shard-id` query parameter to the method request, as shown in the following:   
+1. 
+
+    The `GetShardIterator` action requires an input of a ShardId value\. To pass a client\-supplied `ShardId` value, we add a `shard-id` query parameter to the method request, as shown in the following: 
+
+      
 ![\[Add the shard-id query parameter to the GET-on-ShardIterator method request.\]](http://docs.aws.amazon.com/apigateway/latest/developerguide/images/api-gateway-kinesis-proxy-setup-streams-stream-sharditerator-get-method-shardid-query-string.png)
 
     In the following body\-mapping template, we set the `shard-id` query parameter value to the `ShardId` property value of the JSON payload as the input to the `GetShardIterator` action in Kinesis\. 
@@ -734,10 +758,16 @@ The `GET /streams/{stream-name}/sharditerator` method is a helper method to acqu
 
 **To configure and test the `GET /streams/{stream-name}/records` method to invoke the `GetRecords` action in Kinesis**
 
-1. Set up the `GET /streams/{stream-name}/records` method, as shown in the following:  
+1. Set up the `GET /streams/{stream-name}/records` method, as shown in the following:
+
+      
 ![\[Set up the GET /streams/{stream-name}/records method.\]](http://docs.aws.amazon.com/apigateway/latest/developerguide/images/api-gateway-kinesis-proxy-setup-streams-stream-records-get-method.png)
 
-1.  The `GetRecords` action requires an input of a `ShardIterator` value\. To pass a client\-supplied `ShardIterator` value, we add a `Shard-Iterator` header parameter to the method request, as shown in the following:   
+1. 
+
+    The `GetRecords` action requires an input of a `ShardIterator` value\. To pass a client\-supplied `ShardIterator` value, we add a `Shard-Iterator` header parameter to the method request, as shown in the following: 
+
+      
 ![\[Add the Shard-Iterator header parameter to the GET-on-records method request.\]](http://docs.aws.amazon.com/apigateway/latest/developerguide/images/api-gateway-kinesis-proxy-setup-streams-stream-records-get-method-shard-iterator-header.png)
 
 1.  Set up the following mapping template to map the `Shard-Iterator` header parameter value to the `ShardIterator` property value of the JSON payload for the `GetRecords` action in Kinesis\. 

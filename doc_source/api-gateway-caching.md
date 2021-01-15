@@ -114,6 +114,8 @@ host: example.com
 
  To include a method or integration request parameter as part of a cache key in the API Gateway console, select **Caching** after you add the parameter\. 
 
+ 
+
 ![\[Include method or integration parameters as cache keys to index cached response\]](http://docs.aws.amazon.com/apigateway/latest/developerguide/images/api-caching-including-parameter-as-cache-key.png)
 
 ## Flush the API stage cache in API Gateway<a name="flush-api-caching"></a>
@@ -153,6 +155,8 @@ A client of your API can invalidate an existing cache entry and reload it from t
  If you don't impose an `InvalidateCache` policy \(or choose the **Require authorization** check box in the console\), any client can invalidate the API cache\. If most or all of the clients invalidate the API cache, this could significantly increase the latency of your API\. 
 
  When the policy is in place, caching is enabled and authorization is required\. You can control how unauthorized requests are handled by choosing an option from **Handle unauthorized requests** in the API Gateway console\. 
+
+ 
 
 ![\[Configure cache invalidation\]](http://docs.aws.amazon.com/apigateway/latest/developerguide/images/apig-cache-invalidation.png)
 

@@ -15,7 +15,9 @@ Resources can contain child resources\. Enabling CORS support for a resource and
 
    Alternatively, you could choose a method under the resource to enable CORS for just this method\.
 
-1. Choose **Enable CORS** from the **Actions** drop\-down menu\.  
+1. Choose **Enable CORS** from the **Actions** drop\-down menu\.
+
+      
 ![\[Choose enable CORS\]](http://docs.aws.amazon.com/apigateway/latest/developerguide/images/amazon-api-gateway-enable-cors.png)
 
 1.  In the **Enable CORS** form, do the following: 

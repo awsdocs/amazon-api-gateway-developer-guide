@@ -202,6 +202,8 @@ The following steps describe how to enable basic request validation by importing
 
 ------
 
+   
+
 1.  In API Gateway, create the API with request validators enabled by importing this [sample OpenAPI definition](api-gateway-request-validation-sample-api-swagger.md): 
 
    ```
@@ -314,7 +316,9 @@ The following steps describe how to enable basic request validation by importing
 
 1. Choose the pencil icon of **Request Validator** under **Settings**\.
 
-1. Choose `Validate body`, `Validate query string parameters and headers`, or `Validate body, query string parameters, and headers` from the **Request Validator** drop\-down list\. Then choose the check mark icon to save your choice\.   
+1. Choose `Validate body`, `Validate query string parameters and headers`, or `Validate body, query string parameters, and headers` from the **Request Validator** drop\-down list\. Then choose the check mark icon to save your choice\. 
+
+      
 ![\[\]](http://docs.aws.amazon.com/apigateway/latest/developerguide/images/request-validator-choose-to-enable.png)
 
 To test and use the request validator in the console, follow the instructions in [Test basic request validation using the API Gateway console](api-gateway-request-validation-test.md#api-gateway-request-validation-test-in-console)\.

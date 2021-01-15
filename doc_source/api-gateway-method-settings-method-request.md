@@ -238,7 +238,11 @@ Here, `petModel` is the `name` property value of a [https://docs.aws.amazon.com/
 
  In a Java, or other strongly typed SDK, of the API, the input data is cast as the `petModel` class derived from the schema definition\. With the request model, the input data in the generated SDK is cast into the `Empty` class, which is derived from the default `Empty` model\. In this case, the client cannot instantiate the correct data class to provide the required input\. 
 
+
+
 ## Set up method request authorization<a name="setup-method-request-authorization"></a>
+
+
 
  To control who can call the API method, you can configure the [authorization type](https://docs.aws.amazon.com/apigateway/api-reference/resource/method/#authorizationType) on the method\. You can use this type to enact one of the supported authorizers, including IAM roles and policies \(`AWS_IAM`\), an Amazon Cognito user pool \(`COGNITO_USER_POOLS`\), or a Lambda authorizer \(`CUSTOM`\)\.
 

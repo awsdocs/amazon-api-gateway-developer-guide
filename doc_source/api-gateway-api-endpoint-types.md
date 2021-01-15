@@ -1,5 +1,7 @@
 # Choose an endpoint type to set up for an API Gateway API<a name="api-gateway-api-endpoint-types"></a>
 
+
+
 An *[API endpoint](api-gateway-basic-concept.md#apigateway-definition-api-endpoints)* type refers to the hostname of the API\. The API endpoint type can be *edge\-optimized*, *regional*, or *private*, depending on where the majority of your API traffic originates from\.
 
 ## Edge\-optimized API endpoints<a name="api-gateway-api-endpoint-types-edge-optimized"></a>

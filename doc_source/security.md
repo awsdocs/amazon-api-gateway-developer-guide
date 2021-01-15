@@ -8,6 +8,8 @@ Security is a shared responsibility between AWS and you\. The [shared responsibi
 
 This documentation helps you understand how to apply the shared responsibility model when using API Gateway\. The following topics show you how to configure API Gateway to meet your security and compliance objectives\. You also learn how to use other AWS services that help you to monitor and secure your API Gateway resources\. 
 
+For more information, see [Security Overview of Amazon API Gateway](https://d1.awsstatic.com/whitepapers/api-gateway-security.pdf)\.
+
 **Topics**
 + [Data protection in Amazon API Gateway](data-protection.md)
 + [Identity and access management for Amazon API Gateway](security-iam.md)

@@ -22,17 +22,23 @@ The following procedure walks you through the steps to create and test an API fr
 
    If this is not your first time using API Gateway, choose **Create API**\. Under **REST API**, choose **Build**\.
 
-1.  Under **Create new API**, choose **Example API** and then choose **Import** to create the example API\. For your first API, the API Gateway console starts with this option as default\.   
+1.  Under **Create new API**, choose **Example API** and then choose **Import** to create the example API\. For your first API, the API Gateway console starts with this option as default\. 
+
+      
 ![\[\]](http://docs.aws.amazon.com/apigateway/latest/developerguide/images/api-gateway-create-api-by-importing-example.png)
 
     You can scroll down the OpenAPI definition for details of this example API before choosing **Import**\. 
 
-1. The newly created API is shown as follows:  
+1. The newly created API is shown as follows:
+
+      
 ![\[\]](http://docs.aws.amazon.com/apigateway/latest/developerguide/images/api-gateway-create-api-by-importing-example-result.png)
 
     The **Resources** pane shows the structure of the created API as a tree of nodes\. API methods defined on each resource are edges of the tree\. When a resource is selected, all of its methods are listed in the **Methods** pane on the right\. Displayed under each method is a brief summary of the method, including its endpoint URL, authorization type, and API Key requirement\. 
 
-1.  To view the details of a method, to modify its set\-up, or to test the method invocation, choose the method name from either the method list or the resource tree\. Here, we choose the `POST /pets` method as an illustration:   
+1.  To view the details of a method, to modify its set\-up, or to test the method invocation, choose the method name from either the method list or the resource tree\. Here, we choose the `POST /pets` method as an illustration: 
+
+      
 ![\[\]](http://docs.aws.amazon.com/apigateway/latest/developerguide/images/api-gateway-create-api-by-importing-example-post-method-execution.png)
 
     The resulting **Method Execution** pane presents a logical view of the chosen \(`POST /pets`\) method's structure and behaviors: **Method Request** and **Method Response** are the API's interface with the API's frontend \(a client\), whereas **Integration Request** and **Integration Response** are the API's interface with the backend \(`http://petstore-demo-endpoint.execute-api.com/petstore/pets`\)\. A client uses the API to access a backend feature through the **Method Request**\. API Gateway translates the client request, if necessary, into the form acceptable to the backend in **Integration Request** before forwarding the incoming request to the backend\. The transformed request is known as the integration request\. Similarly, the backend returns the response to API Gateway in **Integration Response**\. API Gateway then routes it to **Method Response** before sending it to the client\. Again, if necessary, API Gateway can map the backend response data to a form expected by the client\. 
@@ -43,22 +49,30 @@ The following procedure walks you through the steps to create and test an API fr
 
    As an API developer, you control the behaviors of your API's frontend interactions by configuring the method request and a method response\. You control the behaviors of your API's backend interactions by setting up the integration request and integration response\. These involve data mappings between a method and its corresponding integration\. We cover the method setup in [Tutorial: Build a REST API with HTTP non\-proxy integration](api-gateway-create-api-step-by-step.md)\. For now, we focus on testing the API to provide an end\-to\-end user experience\. 
 
-1.  Choose **Test** shown on **Client** \(as shown in the previous image\) to start testing\. For example, to test the `POST /pets` method, enter the following `{"type": "dog","price": 249.99}` payload into the **Request Body** before choosing the **Test** button\.   
+1.  Choose **Test** shown on **Client** \(as shown in the previous image\) to start testing\. For example, to test the `POST /pets` method, enter the following `{"type": "dog","price": 249.99}` payload into the **Request Body** before choosing the **Test** button\. 
+
+      
 ![\[\]](http://docs.aws.amazon.com/apigateway/latest/developerguide/images/api-gateway-create-api-by-importing-example-post-method-test.png)
 
     The input specifies the attributes of the pet that we want to add to the list of pets on the PetStore website\. 
 
-1. The results display as follows:  
+1. The results display as follows:
+
+      
 ![\[\]](http://docs.aws.amazon.com/apigateway/latest/developerguide/images/api-gateway-create-api-by-importing-example-post-method-test-result.png)
 
     The **Logs** entry of the output shows the state changes from the method request to the integration request, and from the integration response to the method response\. This can be useful for troubleshooting any mapping errors that cause the request to fail\. In this example, no mapping is applied: the method request payload is passed through the integration request to the backend and, similarly, the backend response is passed through the integration response to the method response\. 
 
     To test the API using a client other than the API Gateway test\-invoke\-request feature, you must first deploy the API to a stage\. 
 
-1.  To deploy the sample API, select the **PetStore** API, and then choose **Deploy API** from the **Actions** menu\.   
+1.  To deploy the sample API, select the **PetStore** API, and then choose **Deploy API** from the **Actions** menu\. 
+
+      
 ![\[\]](http://docs.aws.amazon.com/apigateway/latest/developerguide/images/api-gateway-create-api-by-importing-example-deploy-api.png)
 
-    In **Deploy API**, for **Deployment stage**, choose **\[New Stage\]** because this is the first deployment of the API\. Type a name \(e\.g\., **test**\) in **Stage name** and, optionally, type descriptions in **Stage description** and **Deployment description**\. Choose **Deploy**\.   
+    In **Deploy API**, for **Deployment stage**, choose **\[New Stage\]** because this is the first deployment of the API\. Type a name \(e\.g\., **test**\) in **Stage name** and, optionally, type descriptions in **Stage description** and **Deployment description**\. Choose **Deploy**\. 
+
+      
 ![\[\]](http://docs.aws.amazon.com/apigateway/latest/developerguide/images/api-gateway-create-api-by-importing-example-deploy-create.png)
 
     In the resulting **Stage Editor** pane, **Invoke URL** displays the URL to invoke the API's `GET /` method request\. 

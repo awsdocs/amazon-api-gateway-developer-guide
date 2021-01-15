@@ -17,6 +17,8 @@ In cases where API clients are geographically dispersed, it may still make sense
 
 ## Create a regional API using the API Gateway console<a name="create-regional-endpoint-api-using-console"></a>
 
+
+
 **To create a regional API using the API Gateway console**
 
 1.  Sign in to the API Gateway console and choose **\+ Create API**\.

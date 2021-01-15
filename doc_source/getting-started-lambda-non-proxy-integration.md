@@ -293,6 +293,8 @@ If you did not use the AWS Management Console to create the Lambda function, you
 
    1. Choose **Save**\.
 
+
+
 ## Test invoking the API method<a name="getting-started-new-get"></a>
 
  The API Gateway console provides a testing facility for you to test invoking the API before it is deployed\. You use the Test feature of the console to test the API by submitting the following request: 

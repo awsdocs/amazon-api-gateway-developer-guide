@@ -32,10 +32,14 @@
     Type `Pets` in **Resource Name**, leave the **Resource Path** value as given, choose **Enable API Gateway CORS**, and choose **Create Resource**\.   
 ![\[Create a resource part b\]](http://docs.aws.amazon.com/apigateway/latest/developerguide/images/api-gateway-create-api-step-by-step-create-resource-2.png)
 
-1.  To expose a GET method on the `/pets` resource, choose **Actions** and then **Create Method**\.   
+1.  To expose a GET method on the `/pets` resource, choose **Actions** and then **Create Method**\. 
+
+      
 ![\[Create method on a resource\]](http://docs.aws.amazon.com/apigateway/latest/developerguide/images/api-gateway-create-api-step-by-step-create-method.png)
 
-    Choose **GET** from the list under the **/pets** resource node and choose the check mark icon to finish creating the method\.   
+    Choose **GET** from the list under the **/pets** resource node and choose the check mark icon to finish creating the method\. 
+
+      
 ![\[Create method on a resource\]](http://docs.aws.amazon.com/apigateway/latest/developerguide/images/api-gateway-create-api-step-by-step-create-get-method.png)
 **Note**  
 Other options for an API method include:  
@@ -50,7 +54,9 @@ Other options for an API method include:
 
 1.  In the method's **Setup** pane, select **HTTP** for **Integration type**, select **GET** from the **HTTP method** drop\-down list, type **http://petstore\-demo\-endpoint\.execute\-api\.com/petstore/pets** as the **Endpoint URL** value, leave all other settings as default, and then choose **Save**\. 
 **Note**  
- For the integration request's **HTTP method**, you must choose one supported by the backend\. For `HTTP` or `Mock integration`, it makes sense that the method request and the integration request use the same HTTP verb\. For other integration types the method request will likely use an HTTP verb different from the integration request\. For example, to call a Lambda function, the integration request must use `POST` to invoke the function, whereas the method request may use any HTTP verb depending on the logic of the Lambda function\.   
+ For the integration request's **HTTP method**, you must choose one supported by the backend\. For `HTTP` or `Mock integration`, it makes sense that the method request and the integration request use the same HTTP verb\. For other integration types the method request will likely use an HTTP verb different from the integration request\. For example, to call a Lambda function, the integration request must use `POST` to invoke the function, whereas the method request may use any HTTP verb depending on the logic of the Lambda function\. 
+
+      
 ![\[Integrate GET on pets with PetStore site\]](http://docs.aws.amazon.com/apigateway/latest/developerguide/images/api-gateway-create-api-step-by-step-integrate-get-on-pets.png)
 
     When the method setup finishes, you are presented with the **Method Execution** pane, where you can further configure the method request to add query string or custom header parameters\. You can also update the integration request to map input data from the method request to the format required by the back end\. 
@@ -62,22 +68,30 @@ Other options for an API method include:
 
     The client can now supply a pet type and a page number as query string parameters when submitting a request\. These input parameters must be mapped into the integration's query string parameters to forward the input values to our PetStore website in the backend\. Because the method uses `AWS_IAM`, you must sign the request to invoke the method\. 
 
-1.  From the method's **Integration Request** page, expand the **URL Query String Parameters** section\. By default, the method request query string parameters are mapped to the like\-named integration request query string parameters\. This default mapping works for our demo API\. We will leave them as given\. To map a different method request parameter to the corresponding integration request parameter, choose the pencil icon for the parameter to edit the mapping expression, shown in the **Mapped from** column\. To map a method request parameter to a different integration request parameter, first choose the delete icon to remove the existing integration request parameter, choose **Add query string** to specify a new name and the desired method request parameter mapping expression\.   
+1.  From the method's **Integration Request** page, expand the **URL Query String Parameters** section\. By default, the method request query string parameters are mapped to the like\-named integration request query string parameters\. This default mapping works for our demo API\. We will leave them as given\. To map a different method request parameter to the corresponding integration request parameter, choose the pencil icon for the parameter to edit the mapping expression, shown in the **Mapped from** column\. To map a method request parameter to a different integration request parameter, first choose the delete icon to remove the existing integration request parameter, choose **Add query string** to specify a new name and the desired method request parameter mapping expression\. 
+
+      
 ![\[Map query strings to GET on pets from method request to integration request\]](http://docs.aws.amazon.com/apigateway/latest/developerguide/images/api-gateway-create-api-step-by-step-map-query-strings-for-get-on-pets.png)
 
     This completes building the simple demo API\. It's time to test the API\. 
 
 1.  To test the API using the API Gateway console, choose **Test** on the **Method Execution** pane for the `GET /pets` method\. In the **Method Test** pane, enter **Dog** and **2** for the **type** and **page** query strings, respectively, and then choose **Test**\. 
 
-    The result is shown as follows\. \(You may need to scroll down to see the test result\.\)   
+    The result is shown as follows\. \(You may need to scroll down to see the test result\.\) 
+
+      
 ![\[Test-invoke GET on pets method result\]](http://docs.aws.amazon.com/apigateway/latest/developerguide/images/api-gateway-create-api-step-by-step-test-invoke-get-on-pets-result.png)
 
     Now that the test is successful, we can deploy the API to make it publicly available\. 
 
-1.  To deploy the API, select the API and then choose **Deploy API** from the **Actions** drop\-down menu\.   
+1.  To deploy the API, select the API and then choose **Deploy API** from the **Actions** drop\-down menu\. 
+
+      
 ![\[Deploy API\]](http://docs.aws.amazon.com/apigateway/latest/developerguide/images/api-gateway-create-api-step-by-step-deploy-api.png)
 
-    In the **Deploy API** dialog, choose a stage \(or `[New Stage]` for the API's first deployment\); enter a name \(e\.g\., "test", "prod", "dev", etc\.\) in the **Stage name** input field; optionally, provide a description in **Stage description** and/or **Deployment description**; and then choose **Deploy**\.   
+    In the **Deploy API** dialog, choose a stage \(or `[New Stage]` for the API's first deployment\); enter a name \(e\.g\., "test", "prod", "dev", etc\.\) in the **Stage name** input field; optionally, provide a description in **Stage description** and/or **Deployment description**; and then choose **Deploy**\. 
+
+      
 ![\[Deploy API part 2\]](http://docs.aws.amazon.com/apigateway/latest/developerguide/images/api-gateway-create-api-step-by-step-deploy-api-2.png)
 
     Once deployed, you can obtain the invocation URLs \(**Invoke URL**\) of the API's endpoints\. 

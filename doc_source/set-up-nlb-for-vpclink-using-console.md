@@ -16,3 +16,5 @@ The Network Load Balancer and API must be owned by the same AWS account\.
 1. Create a Network Load Balancer, register the EC2 instance with a target group, and add the target group to a listener of the Network Load Balancer\. For details, follow the instructions in [Getting Started with Network Load Balancers](https://docs.aws.amazon.com/elasticloadbalancing/latest/network/network-load-balancer-getting-started.html)\. 
 
    After the Network Load Balancer is created, note its ARN\. You will need it to create a VPC link in API Gateway for integrating the API with the VPC resources behind the Network Load Balancer\.
+
+   

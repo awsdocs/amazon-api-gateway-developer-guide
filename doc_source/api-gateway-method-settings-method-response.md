@@ -45,6 +45,8 @@ aws apigateway put-method-response \
 
 ## Set up method response models<a name="setup-method-response-models"></a>
 
+ 
+
  A method response model defines a format of the method response body\. Before setting up the response model, you must first create the model in API Gateway\. To do so, you can call the `[create\-model](https://docs.aws.amazon.com/cli/latest/reference/apigateway/create-model.html)` command\. The following example shows how to create a `PetStorePet` model to describe the body of the response to the `GET /pets/{petId}` method request\.
 
 ```
@@ -76,8 +78,9 @@ aws apigateway put-method-response \
         --resource-id 6sxz2j \
         --http-method GET \
         --status-code 200  \
-        --request-parameters method.request.header.my-header=false,method.request.path.petId=true,method.request.querystring.query=false
-        --request-models '{"application/json":"PetStorePet"}'
+        --response-parameters method.request.header.my-header=false,method.request.path.petId=true,method.request.querystring.query=false \
+        --response-models '{"application/json":"PetStorePet"}'
 ```
 
 Setting up a method response model is necessary when you generate a strongly typed SDK for the API\. It ensures that the output is cast into an appropriate class in Java or Objective\-C\. In other cases, setting a model is optional\.
+

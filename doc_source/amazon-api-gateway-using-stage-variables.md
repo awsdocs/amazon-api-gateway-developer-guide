@@ -30,14 +30,18 @@ This procedure describes how to use a stage variable value in a query parameter 
 **Note**  
  We use the beta stage here because the HTTP endpoint \(as specified by the `url` variable "http://httpbin\.org/get"\) accepts query parameter expressions and returns them as the `args` object in its response\. 
 
-1. The response is shown next\. Notice that `v-beta`, assigned to the `version` stage variable, is passed in the backend as the `version` argument\.   
+1. The response is shown next\. Notice that `v-beta`, assigned to the `version` stage variable, is passed in the backend as the `version` argument\. 
+
+      
 ![\[Response from the API's GET method using a proxy for an HTTP endpoint with the url stage variable in the beta stage\]](http://docs.aws.amazon.com/apigateway/latest/developerguide/images/stageVariables-invoke-beta-stage-with-url-and-version-variables-response.png)
 
 ## Call a Lambda function through an API with a stage variable<a name="call-api-lambda-backend-with-stage-variable"></a>
 
 This procedure describes how to use a stage variable to call a Lambda function as a backend of your API\. We will use the `function` stage variable declared earlier\. For more information, see [Setting stage variables using the Amazon API Gateway console](how-to-set-stage-variables-aws-console.md)\.
 
-1. In the **Resources** pane, create a **/lambdasv1** child resource under the root directory, and then create a `GET` method on the child resource\. Set the **Integration type** to **Lambda Function**, and in **Lambda Function**, enter `${stageVariables.function}`\. Choose **Save**\.   
+1. In the **Resources** pane, create a **/lambdasv1** child resource under the root directory, and then create a `GET` method on the child resource\. Set the **Integration type** to **Lambda Function**, and in **Lambda Function**, enter `${stageVariables.function}`\. Choose **Save**\. 
+
+      
 ![\[Create a GET method integrated with a Lambda function as specified by the function stage variable.\]](http://docs.aws.amazon.com/apigateway/latest/developerguide/images/stageVariables-create-lambda-get-method.png)
 **Tip**  
 When prompted with **Add Permission to Lambda Function**, make a note of the AWS CLI command before choosing **OK**\. You must run the command on each Lambda function that is or will be assigned to the `function` stage variable for each of the newly created API methods\. For example, if the `$stageVariables.function` value is `HelloWorld` and you have not added permission to this function yet, you must run the following AWS CLI command:   
@@ -46,6 +50,7 @@ When prompted with **Add Permission to Lambda Function**, make a note of the AWS
    aws lambda add-permission --function-name arn:aws:lambda:us-east-1:account-id:function:HelloWorld --source-arn arn:aws:execute-api:us-east-1:account-id:api-id/*/GET/lambdasv1 --principal apigateway.amazonaws.com --statement-id statement-id-guid --action lambda:InvokeFunction
    ```
  Failing to do so results in a `500 Internal Server Error` response when invoking the method\. Make sure to replace `${stageVariables.function}` with the Lambda function name that is assigned to the stage variable\.   
+   
 
 ![\[Run the AWS CLI command to add permission to the Lambda function to be invoked by method you just created.\]](http://docs.aws.amazon.com/apigateway/latest/developerguide/images/stageVariables-add-permission-to-lambda-function.png)
 
@@ -77,7 +82,9 @@ This procedure describes how to use a stage variable to pass stage\-specific con
 **Tip**  
 This step is similar to the step we used to create the `GET` method\. For more information, see [Call a Lambda function through an API with a stage variable](#call-api-lambda-backend-with-stage-variable)\. 
 
-1.  From the **/Method Execution** pane, choose **Integration Request**\. In the **Integration Request** pane, expand **Mapping Templates**, and then choose **Add mapping template** to add a template for the `application/json` content\-type, as shown in the following\.   
+1.  From the **/Method Execution** pane, choose **Integration Request**\. In the **Integration Request** pane, expand **Mapping Templates**, and then choose **Add mapping template** to add a template for the `application/json` content\-type, as shown in the following\. 
+
+      
 ![\[Generate a POST method payload, containing stage-specific configuration metadata represented by the version stage variable value, as an input to the backend Lambda function.\]](http://docs.aws.amazon.com/apigateway/latest/developerguide/images/stageVariables-generate-post-payload-with-mapping-template-as-input-to-function.png)
 **Note**  
  In a mapping template, a stage variable must be referenced within quotes \(as in `"$stageVariables.version"` or `"${stageVariables.version}"`\)\. In other places, it must be referenced without quotes \(as in `${stageVariables.function}`\)\. 

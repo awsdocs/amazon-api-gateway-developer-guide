@@ -30,6 +30,8 @@ The following procedure describes how to enable payload compression for an API\.
 
 ## Enable payload compression for an API using AWS CLI<a name="api-gateway-enable-compression-cli"></a>
 
+
+
 To use the AWS CLI to create a new API and enable compression, call the [https://docs.aws.amazon.com/cli/latest/reference/apigateway/create-rest-api.html](https://docs.aws.amazon.com/cli/latest/reference/apigateway/create-rest-api.html) command as follows:
 
 ```

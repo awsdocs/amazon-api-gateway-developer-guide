@@ -54,7 +54,9 @@ The following procedure describes how to create a usage plan\.
 
    1. Choose **Enable quota**, and set its limit \(for example, **5000**\) for a selected time interval \(for example, **Month**\)\.
 
-   1.  Choose **Next**\.  
+   1.  Choose **Next**\.
+
+      
 ![\[API usage plan entities\]](http://docs.aws.amazon.com/apigateway/latest/developerguide/images/api-gateway-usage-plan-keys-create-setup.png)
 
 1. To add a stage to the plan, do the following in the **Associated API Stages** pane: 
@@ -65,7 +67,9 @@ The following procedure describes how to create a usage plan\.
 
    1. Choose a stage \(for example, **Stage\_1**\) from the **Stage** drop\-down list\. 
 
-   1. Choose the checkmark icon to save\.  
+   1. Choose the checkmark icon to save\.
+
+      
 ![\[Adding an API stage\]](http://docs.aws.amazon.com/apigateway/latest/developerguide/images/api-gateway-usage-plan-keys-create-add-stage.png)
 
 1. To configure [method throttling](api-gateway-request-throttling.md#apig-request-throttling-stage-and-method-level-limits), do the following:
@@ -92,7 +96,9 @@ The following procedure describes how to create a usage plan\.
 
    1. Choose the checkmark icon to save\.
 
-   1. As needed, repeat the preceding steps to add other existing API keys to this usage plan\.  
+   1. As needed, repeat the preceding steps to add other existing API keys to this usage plan\.
+
+      
 ![\[API usage plan entities\]](http://docs.aws.amazon.com/apigateway/latest/developerguide/images/api-gateway-usage-plan-keys-create-add-key.png)
 **Note**  
 Alternatively, to create a new API key and add it to the usage plan, choose **Create API Key and add to Usage Plan** and follow the instructions\.

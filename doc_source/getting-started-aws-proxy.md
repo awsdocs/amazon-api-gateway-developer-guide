@@ -12,6 +12,8 @@
 
  This walkthrough builds on the instructions and concepts in [Build an API Gateway REST API with Lambda integration](getting-started-with-lambda-integration.md)\.If you have not yet completed that walkthrough, we suggest that you do it first\. 
 
+
+
 **Topics**
 + [Prerequisites](#getting-started-aws-proxy-prerequisites)
 + [Step 1: Create the resource](#getting-started-aws-proxy-add-resources)

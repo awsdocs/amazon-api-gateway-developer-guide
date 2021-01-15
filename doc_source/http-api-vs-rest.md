@@ -12,7 +12,7 @@ The following tables summarize core features that are available in HTTP APIs and
 |  AWS Lambda  |  ✓  |  ✓  | 
 |  IAM  |  ✓  |  ✓  | 
 |  Amazon Cognito  |  ✓ \*  |  ✓  | 
-|  Native OpenID Connect / OAuth 2\.0  |  ✓  |   | 
+|  Native OpenID Connect / OAuth 2\.0  |  ✓  |    | 
 
 \* You can use Amazon Cognito as a JWT issuer\.
 
@@ -23,13 +23,13 @@ The following tables summarize core features that are available in HTTP APIs and
 |  Lambda  |  ✓  |  ✓  | 
 |  AWS services  |  ✓  |  ✓  | 
 |  Private integration  |  ✓  |  ✓  | 
-|  Mock  |   |  ✓  | 
+|  Mock  |    |  ✓  | 
 
 
 | API management | HTTP API | REST API | 
 | --- | --- | --- | 
-|  Usage plans  |   |  ✓  | 
-|  API keys  |   |  ✓  | 
+|  Usage plans  |    |  ✓  | 
+|  API keys  |    |  ✓  | 
 |  Custom domain names  |  ✓ \*  |  ✓  | 
 
 \* HTTP APIs don't support TLS 1\.0\.
@@ -37,36 +37,36 @@ The following tables summarize core features that are available in HTTP APIs and
 
 | Development | HTTP API | REST API | 
 | --- | --- | --- | 
-|  API caching  |   |  ✓  | 
+|  API caching  |    |  ✓  | 
 |  Request transformation  |  ✓  |  ✓  | 
-|  Request / response validation  |   |  ✓  | 
-|  Test invocation  |   |  ✓  | 
+|  Request / response validation  |    |  ✓  | 
+|  Test invocation  |    |  ✓  | 
 |  CORS configuration  |  ✓  |  ✓ \*  | 
-|  Automatic deployments  |  ✓  |   | 
-|  Default stage  |  ✓  |   | 
-|  Default route  |  ✓  |   | 
+|  Automatic deployments  |  ✓  |    | 
+|  Default stage  |  ✓  |    | 
+|  Default route  |  ✓  |    | 
 
 \* You can combine different features of REST APIs to support CORS\. To learn more, see [Enabling CORS for a REST API resource](how-to-cors.md)\.
 
 
 | Security | HTTP API | REST API | 
 | --- | --- | --- | 
-|  Client certificates  |   |  ✓  | 
-|  AWS WAF  |   |  ✓  | 
-|  Resource policies  |   |  ✓  | 
+|  Client certificates  |    |  ✓  | 
+|  AWS WAF  |    |  ✓  | 
+|  Resource policies  |    |  ✓  | 
 
 
 | API type | HTTP API | REST API | 
 | --- | --- | --- | 
 |  Regional  |  ✓  |  ✓  | 
-|  Edge\-optimized  |   |  ✓  | 
-|  Private  |   |  ✓  | 
+|  Edge\-optimized  |    |  ✓  | 
+|  Private  |    |  ✓  | 
 
 
 | Monitoring | HTTP API | REST API | 
 | --- | --- | --- | 
 |  Access logs to Amazon CloudWatch Logs  |  ✓  |  ✓  | 
-|  Access logs to Amazon Kinesis Data Firehose  |   |  ✓  | 
-|  Execution logs  |   |  ✓  | 
+|  Access logs to Amazon Kinesis Data Firehose  |    |  ✓  | 
+|  Execution logs  |    |  ✓  | 
 |  Amazon CloudWatch metrics  |  ✓  |  ✓  | 
-|  AWS X\-Ray  |   |  ✓  | 
+|  AWS X\-Ray  |    |  ✓  | 

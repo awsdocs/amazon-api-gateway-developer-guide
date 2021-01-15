@@ -55,6 +55,8 @@ Next, you create an HTTP API\. API Gateway also supports REST APIs and WebSocket
 
 The HTTP API provides an HTTP endpoint for your Lambda function\. API Gateway routes requests to your Lambda function, and then returns the function's response to clients\.
 
+
+
 **To create an HTTP API**
 
 1. Sign in to the API Gateway console at [https://console\.aws\.amazon\.com/apigateway](https://console.aws.amazon.com/apigateway)\.

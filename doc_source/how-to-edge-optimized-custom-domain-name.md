@@ -41,7 +41,9 @@ To use an ACM certificate with an API Gateway edge\-optimized custom domain name
 
    1. Create an `A-IPv4 address` record set for your custom domain \(e\.g\., `api.example.com`\)\. An A\-record maps a custom domain name to an IP4 address\.
 
-   1. Choose **Yes** for **Alias**, enter the CloudFront domain name \(e\.g\., `d3boq9ikothtgw.cloudfront.net`\) in **Alias Target**, and then choose **Create**\. The A\-record alias here maps your custom domain name to the specified CloudFront domain name that is itself mapped to an IP4 address\.   
+   1. Choose **Yes** for **Alias**, enter the CloudFront domain name \(e\.g\., `d3boq9ikothtgw.cloudfront.net`\) in **Alias Target**, and then choose **Create**\. The A\-record alias here maps your custom domain name to the specified CloudFront domain name that is itself mapped to an IP4 address\. 
+
+         
 ![\[Set a DNS record alias for a custom domain name for an API in API Gateway\]](http://docs.aws.amazon.com/apigateway/latest/developerguide/images/api-gateway-custom-domain-dns-alias-set.png)
 **Tip**  
  The **Alias Hosted Zone ID** identifies the hosted zone of the specified **Alias Target**\. The Route 53 console automatically fills in the value when you enter a valid domain name for **Alias Target**\. To create an A\-record alias without using the Route 53 console, such as when you use the AWS CLI, you must specify the required hosted zone Id\. For any CloudFront distribution domain name, the hosted zone Id value is always `Z2FDTNDATAQYW2`, as documented in [AWS Regions and Endpoints for CloudFront](https://docs.aws.amazon.com/general/latest/gr/rande.html#cf_region)\. 
@@ -154,6 +156,8 @@ It takes about 40 minutes for the process to finish\. After the rotation is done
 To illustrate how to programmatically rotate an imported certificate for a custom domain name, we outline the steps using the API Gateway REST API\.
 
 **Rotate an imported certificate using the API Gateway REST API**
+
+
 +  Call [domainname:update](https://docs.aws.amazon.com/apigateway/api-reference/link-relation/domainname-update/) action, specifying the ARN of the new ACM certificate for the specified domain name\. 
 
 ## Call your API with custom domain names<a name="how-to-custom-domains-call-api-with-sni"></a>

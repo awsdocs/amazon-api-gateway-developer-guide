@@ -46,6 +46,8 @@ To help understand these throttling limits, here are a few examples, given a bur
 
  The following schematic shows the general behaviors of `Δ`, the maximum additional concurrent requests, as a function of time\. The schematic assumes that the tokens in the bucket decrease at a combined rate of `r`, starting from an empty bucket\. 
 
+ 
+
 ![\[Burst as a function of time given the token bucket size and a combined burn rate\]](http://docs.aws.amazon.com/apigateway/latest/developerguide/images/tokenBucketBurst.png)
 
 The account\-level rate limit can be increased upon request\. To request an increase of account\-level throttling limits per Region, contact the [AWS Support Center](https://console.aws.amazon.com/support/home#/)\. For more information, see [API Gateway quotas](limits.md#api-gateway-limits)\. 

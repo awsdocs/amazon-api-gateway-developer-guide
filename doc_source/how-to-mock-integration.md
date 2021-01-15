@@ -51,6 +51,8 @@ Using an integration request mapping template, you can inject application logic 
 
 This way, the method of the mock integration lets internal calls to go through while rejecting other types of calls with an error response\. 
 
+
+
 In this section, we describe how to use the API Gateway console to enable the mock integration for an API method\.
 
 **Topics**

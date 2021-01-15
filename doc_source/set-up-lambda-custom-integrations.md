@@ -132,6 +132,8 @@ With the Lambda function set in the backend, proceed to set up the API\.<a name=
            --status-code 200
    ```
 
+   
+
 1.  Call `put-integration` to set up the integration of the `GET /greeting?greeter={name}` method with a Lambda function, named `HelloWorld`\. The function responds to the request with a message of `"Hello, {name}!"`, if the `greeter` parameter is provided, or `"Hello, World!"`, if the query string parameter is not set\.
 
    ```

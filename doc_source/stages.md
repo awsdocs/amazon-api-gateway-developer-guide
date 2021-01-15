@@ -107,6 +107,7 @@ The IAM role must also contain the following trust relationship statement:
         ]
       }
       ```
+  
 For more information about CloudWatch, see the *[Amazon CloudWatch User Guide](https://docs.aws.amazon.com/AmazonCloudWatch/latest/DeveloperGuide/)*\.
 
 1. To enable access logging to a Kinesis Data Firehose delivery stream:

@@ -19,3 +19,4 @@ The following example maps `body` and `header` parameters of the integration res
     "method.response.header.x-user-id" : "integration.response.header.x-userid"
 }
 ```
+

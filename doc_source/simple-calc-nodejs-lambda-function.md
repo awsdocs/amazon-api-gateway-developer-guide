@@ -80,4 +80,6 @@ exports.handler = function(event, context, callback) {
 
 You can use the AWS Lambda console at [https://console\.aws\.amazon\.com/lambda/](https://console.aws.amazon.com/lambda/) to create the function, pasting the above code listing into the online code editor as follows\.
 
+ 
+
 ![\[Create the SimpleCalc Lambda function in Node.js\]](http://docs.aws.amazon.com/apigateway/latest/developerguide/images/simple-calc-nodejs-lambda-function-create.png)

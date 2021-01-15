@@ -2,6 +2,8 @@
 
 The [Getting Started non\-proxy integration tutorial](getting-started-lambda-non-proxy-integration.md) uses `Lambda Function` integration exclusively\. `Lambda Function` integration is a special case of the `AWS Service` integration type that performs much of the integration setup for you, such as automatically adding the required resource\-based permissions for invoking the Lambda function\. Here, two of the three integrations use `AWS Service` integration\. In this integration type, you have more control, but you'll need to manually perform tasks like creating and specifying an IAM role containing appropriate permissions\.
 
+
+
 In this tutorial, you'll create a `Calc` Lambda function that implements basic arithmetic operations, accepting and returning JSON\-formatted input and output\. Then you'll create a REST API and integrate it with the Lambda function in the following ways:
 
 1. By exposing a `GET` method on the `/calc` resource to invoke the Lambda function, supplying the input as query string parameters\. \(`AWS Service` integration\)

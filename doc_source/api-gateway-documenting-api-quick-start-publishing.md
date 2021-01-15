@@ -340,6 +340,8 @@ If a documentation\-rendering tool \(e\.g\., [OpenAPI UI](http://swagger.io/swag
 
 To export the documentation with API entity definitions containing integration details to a JSON OpenAPI file, submit the following `GET` request:
 
+ 
+
 ```
 GET /restapis/restapi_id/stages/stage_name/exports/swagger?extensions=integrations,documentation HTTP/1.1
 Accept: application/json
@@ -350,6 +352,8 @@ Authorization: AWS4-HMAC-SHA256 Credential=access_key_id/YYYYMMDD/region/apigate
 ```
 
 To export the documentation with API entity definitions containing details of integrations and authorizers to a YAML OpenAPI file, submit the following `GET` request:
+
+ 
 
 ```
 GET /restapis/restapi_id/stages/stage_name/exports/swagger?extensions=integrations,authorizers,documentation HTTP/1.1
