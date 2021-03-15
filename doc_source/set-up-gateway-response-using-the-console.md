@@ -25,7 +25,7 @@
 
    In the preceding header mappings, a static domain name \(`'a.b.c'`\) is mapped to the `Allow-Control-Allow-Origin` header to allow CORS access to the API; the input request header of `x-amzn-RequestId` is mapped to `request-id` in the response; the `petId` path variable of the incoming request is mapped to the `request-path` header in the response; and the `q` query parameter of the original request is mapped to the `request-query` header of the response\.
 
-1. Under **Body Mapping Templates**, keep `application/json` for **Content Type** and enter the following body mapping template in the **Body Mapping Template** editor:
+1. Under **Mapping Templates**, keep `application/json` for **Content Type** and enter the following body mapping template in the **Body Mapping Template** editor:
 
    ```
    {

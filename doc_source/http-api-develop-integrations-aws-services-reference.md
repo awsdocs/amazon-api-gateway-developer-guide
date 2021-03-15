@@ -30,6 +30,7 @@ Sends custom events to Amazon EventBridge so that they can be matched to rules\.
 | EventBusName | False | 
 | Resources | False | 
 | Region | False | 
+| TraceHeader | False | 
 
 To learn more, see [PutEvents](https://docs.aws.amazon.com/eventbridge/latest/APIReference/API_PutEvents.html) in the *Amazon EventBridge API Reference*\.
 
@@ -63,7 +64,7 @@ Retrieves one or more messages \(up to 10\), from the specified queue\.
 | Parameter | Required | 
 | --- | --- | 
 | QueueUrl | True | 
-| AttributeName | False | 
+| AttributeNames | False | 
 | MaxNumberOfMessages | False | 
 | MessageAttributeNames | False | 
 | ReceiveRequestAttemptId | False | 

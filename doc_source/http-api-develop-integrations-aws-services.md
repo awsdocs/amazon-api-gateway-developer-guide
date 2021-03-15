@@ -15,7 +15,7 @@ First\-class integrations have required and optional parameters\. You must confi
 | Query string value | $request\.querystring\.name | Query string names are case\-sensitive\. API Gateway combines multiple values with commas, for example "querystring1": "Value1,Value2"\. | 
 | Path parameter | $request\.path\.name | The value of a path parameter in the request\. For example if the route is /pets/\{petId\}, you can map the petId parameter from the request with $request\.path\.petId\. | 
 | Request body passthrough | $request\.body | API Gateway passes the entire request body through\. | 
-| Request body | $request\.body\.name | A [JSON path expression](https://goessner.net/articles/JsonPath/index.html#e2)\. Recursive descent \($request\.body\.\.name\) and filter expressions \(?\(expression\)\) aren't supported\. | 
+| Request body | $request\.body\.name | A [JSON path expression](https://goessner.net/articles/JsonPath/index.html#e2)\. Recursive descent \($request\.body\.\.name\) and filter expressions \(?\(expression\)\) aren't supported\.  When you specify a JSON path, API Gateway truncates the request body at 100 KB and then applies the selection expression\. To send payloads larger than 100 KB, specify `$request.body`\.   | 
 | Context variable | $context\.variableName | The value of a supported [context variable](http-api-logging-variables.md)\. | 
 | Stage variable | $stageVariables\.variableName | The value of a [stage variable](http-api-stages.md#http-api-stages.stage-variables)\. | 
 | Static value | string | A constant value\. | 

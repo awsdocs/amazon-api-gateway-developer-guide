@@ -218,7 +218,7 @@ We chose `POST` here because Kinesis requires that the `ListStreams` action be i
 
     We used a request parameter mapping to set the `Content-Type` header to the static value of `'application/x-amz-json-1.1'` to inform Kinesis that the input is of a specific version of JSON\. 
 
-1. Expand the **Body Mapping Templates** section: 
+1. Expand the **Mapping Templates** section: 
 
    1. Choose **Add mapping template**\.
 
@@ -418,7 +418,7 @@ Content-Length: PayloadSizeBytes
 
 1. Test the `POST /streams/{stream-name}` method to create a named stream in Kinesis:
 
-   From the API Gateway console, select **/streams/\{stream\-name\}/POST** in the **Resources** pane, choose **Test** to start testing, type the name of an existing Kinesis stream in **Path** for `stream-name`, and choose **Test**\. If the test is successful, a 200 OK response is returned with no data\. 
+   From the API Gateway console, select **/streams/\{stream\-name\}/POST** in the **Resources** pane, choose **Test** to start testing, enter the name of a new Kinesis stream in **Path** for `stream-name`, and choose **Test**\. If the test is successful, a 200 OK response is returned with no data\. 
 
     After you deploy the API, you can also make a REST API request against the POST method on a Stream resource to invoke the `CreateStream` action in Kinesis: 
 

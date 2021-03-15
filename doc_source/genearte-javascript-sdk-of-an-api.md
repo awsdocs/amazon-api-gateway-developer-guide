@@ -1,4 +1,4 @@
-# Generate the JavaScript SDK of an API<a name="genearte-javascript-sdk-of-an-api"></a>
+# Generate the JavaScript SDK of a REST API<a name="genearte-javascript-sdk-of-an-api"></a>
 
 **To generate the JavaScript SDK of an API in API Gateway**
 

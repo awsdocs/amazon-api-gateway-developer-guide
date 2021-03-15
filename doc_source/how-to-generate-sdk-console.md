@@ -6,5 +6,5 @@
 + [Generate the Java SDK of an API](generate-java-sdk-of-an-api.md)
 + [Generate the Android SDK of an API](genearte-android-sdk-of-an-api.md)
 + [Generate the iOS SDK of an API](genearte-ios-sdk-of-an-api.md)
-+ [Generate the JavaScript SDK of an API](genearte-javascript-sdk-of-an-api.md)
++ [Generate the JavaScript SDK of a REST API](genearte-javascript-sdk-of-an-api.md)
 + [Generate the Ruby SDK of an API](generate-ruby-sdk-of-an-api.md)

@@ -3,7 +3,7 @@
 Before integrating your API with a user pool, you must create the user pool in Amazon Cognito\. For instructions on how to create a user pool, see [Setting up User Pools](https://docs.aws.amazon.com/cognito/latest/developerguide/setting-up-cognito-user-identity-pools.html) in the *Amazon Cognito Developer Guide*\.
 
 **Note**  
-If you create [groups](https://docs.aws.amazon.com/cognito/latest/developerguide/cognito-user-pools-user-groups.html) for your user pool, ensure that group names use only alphanumeric characters\.
+Ensure that user\-defined Amazon Cognito variables such as groups, users, and roles use only alphanumeric characters\.
 
 Note the user pool ID, client ID, and any client secret\. The client must provide them to Amazon Cognito for the user to register with the user pool, to sign in to the user pool, and to obtain an identity or access token to be included in requests to call API methods that are configured with the user pool\. Also, you must specify the user pool name when you configure the user pool as an authorizer in API Gateway, as described next\.
 

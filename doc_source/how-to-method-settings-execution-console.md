@@ -24,7 +24,7 @@ These instructions assume you have already completed the steps in [Set up an API
 
    1. Choose **Create**\. \(To delete a path parameter, query string parameter, or header parameter, choose **Cancel** or **Remove** next to the parameter you want to delete\.\)
 
-1. In the **Body Mapping Templates** area, choose an option for **Request body passthrough** to configure how the method request body of an unmapped content type will be passed through the integration request without transformation to the Lambda function, HTTP proxy, or AWS service proxy\. There are three options: 
+1. In the **Mapping Templates** area, choose an option for **Request body passthrough** to configure how the method request body of an unmapped content type will be passed through the integration request without transformation to the Lambda function, HTTP proxy, or AWS service proxy\. There are three options: 
    + Choose **When no template matches the request Content\-Type header** if you want the method request body to pass through the integration request to the backend without transformation when the method request content type does not match any content types associated with the mapping templates, as defined in the next step\.
 **Note**  
 When calling the API Gateway API, you choose this option by setting `WHEN_NO_MATCH` as the `passthroughBehavior` property value on the [Integration](https://docs.aws.amazon.com/apigateway/api-reference/resource/integration/) resource\.

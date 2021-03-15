@@ -932,7 +932,7 @@ In this step, you configure the method responses, integration requests, and inte
 
 1. Choose **Method Execution**, choose **Integration Response**, and then choose the arrow next to **200**\.
 
-1. Expand the **Body Mapping Templates** section, choose **application/json** under **Content\-Type**\.
+1. Expand the **Mapping Templates** section, choose **application/json** under **Content\-Type**\.
 
 1.  For **Generate template from model**, choose **PetsModelFlattenAll** to display a mapping template after the `PetsModelFlattenAll` model as a starting point\.
 
@@ -974,7 +974,7 @@ In this step, you configure the method responses, integration requests, and inte
 
 1. Go back to **Method Execution**\. Choose **Integration Response**, and then choose the arrow next to **200**\.
 
-1. In the **Body Mapping Templates** section, choose **application/json** under **Content\-Type**\.
+1. In the **Mapping Templates** section, choose **application/json** under **Content\-Type**\.
 
 1. For **Generate template**, choose **PetsModelFlattenSome** to display the mapping script template for the output of this method\.
 
@@ -1026,7 +1026,7 @@ In this step, you configure the method responses, integration requests, and inte
 
 1. Choose the arrow next to **200** to expand the section\.
 
-1. Expand the **Body Mapping Templates** area\. Choose **application/json** for **Content\-Type**\. For **Generate template**, choose **PetsModelFlattenSome** to display a mapping script template for the output of this method\.
+1. Expand the **Mapping Templates** area\. Choose **application/json** for **Content\-Type**\. For **Generate template**, choose **PetsModelFlattenSome** to display a mapping script template for the output of this method\.
 
 1. Modify the code as follows:
 

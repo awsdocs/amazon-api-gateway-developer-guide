@@ -4,7 +4,7 @@
 
  All AWS services support dedicated APIs to expose their features\. However, the application protocols or programming interfaces are likely to differ from service to service\. An API Gateway API with the `AWS` integration has the advantage of providing a consistent application protocol for your client to access different AWS services\. 
 
- In this walkthrough, we create an API to expose Amazon SNS\. For more examples of integrating an API with other AWS services, see [Tutorials](api-gateway-tutorials.md)\. 
+ In this walkthrough, we create an API to expose Amazon SNS\. For more examples of integrating an API with other AWS services, see [Amazon API Gateway tutorials and workshopsAmazon API Gateway REST API tutorials](api-gateway-tutorials.md)\. 
 
  Unlike the Lambda proxy integration, there is no corresponding proxy integration for other AWS services\. Hence, an API method is integrated with a single AWS action\. For more flexibility, similar to the proxy integration, you can set up a Lambda proxy integration\. The Lambda function then parses and processes requests for other AWS actions\. 
 

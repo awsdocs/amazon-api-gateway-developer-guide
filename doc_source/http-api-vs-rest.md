@@ -45,13 +45,15 @@ The following tables summarize core features that are available in HTTP APIs and
 |  Automatic deployments  |  ✓  |    | 
 |  Default stage  |  ✓  |    | 
 |  Default route  |  ✓  |    | 
+|  [Custom gateway responses](api-gateway-gatewayResponse-definition.md)  |    |  ✓  | 
 
 \* You can combine different features of REST APIs to support CORS\. To learn more, see [Enabling CORS for a REST API resource](how-to-cors.md)\.
 
 
 | Security | HTTP API | REST API | 
 | --- | --- | --- | 
-|  Client certificates  |    |  ✓  | 
+|  Mutual TLS authentication  |  ✓  |  ✓  | 
+|  [Certificates for backend authentication](getting-started-client-side-ssl-authentication.md)  |    |  ✓  | 
 |  AWS WAF  |    |  ✓  | 
 |  Resource policies  |    |  ✓  | 
 

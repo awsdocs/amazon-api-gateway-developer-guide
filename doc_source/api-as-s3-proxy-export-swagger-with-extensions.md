@@ -54,7 +54,7 @@ The following OpenAPI definitions describe the sample API, referenced in this tu
           }
         ],
         "x-amazon-apigateway-integration": {
-          "credentials": "arn:aws:iam::<replaceable>123456789012</replaceable>:role/apigAwsProxyRole",
+          "credentials": "arn:aws:iam::123456789012:role/apigAwsProxyRole",
           "responses": {
             "4\\d{2}": {
               "statusCode": "400"
@@ -122,7 +122,7 @@ The following OpenAPI definitions describe the sample API, referenced in this tu
           }
         ],
         "x-amazon-apigateway-integration": {
-          "credentials": "arn:aws:iam::<replaceable>123456789012</replaceable>:role/apigAwsProxyRole",
+          "credentials": "arn:aws:iam::123456789012:role/apigAwsProxyRole",
           "responses": {
             "4\\d{2}": {
               "statusCode": "400"
@@ -194,7 +194,7 @@ The following OpenAPI definitions describe the sample API, referenced in this tu
           }
         ],
         "x-amazon-apigateway-integration": {
-          "credentials": "arn:aws:iam::<replaceable>123456789012</replaceable>:role/apigAwsProxyRole",
+          "credentials": "arn:aws:iam::123456789012:role/apigAwsProxyRole",
           "responses": {
             "4\\d{2}": {
               "statusCode": "400"
@@ -261,7 +261,7 @@ The following OpenAPI definitions describe the sample API, referenced in this tu
           }
         ],
         "x-amazon-apigateway-integration": {
-          "credentials": "arn:aws:iam::<replaceable>123456789012</replaceable>:role/apigAwsProxyRole",
+          "credentials": "arn:aws:iam::123456789012:role/apigAwsProxyRole",
           "responses": {
             "4\\d{2}": {
               "statusCode": "400"
@@ -334,7 +334,7 @@ The following OpenAPI definitions describe the sample API, referenced in this tu
           }
         ],
         "x-amazon-apigateway-integration": {
-          "credentials": "arn:aws:iam::<replaceable>123456789012</replaceable>:role/apigAwsProxyRole",
+          "credentials": "arn:aws:iam::123456789012:role/apigAwsProxyRole",
           "responses": {
             "4\\d{2}": {
               "statusCode": "400"
@@ -406,7 +406,7 @@ The following OpenAPI definitions describe the sample API, referenced in this tu
           }
         ],
         "x-amazon-apigateway-integration": {
-          "credentials": "arn:aws:iam::<replaceable>123456789012</replaceable>:role/apigAwsProxyRole",
+          "credentials": "arn:aws:iam::123456789012:role/apigAwsProxyRole",
           "responses": {
             "4\\d{2}": {
               "statusCode": "400"
@@ -484,7 +484,7 @@ The following OpenAPI definitions describe the sample API, referenced in this tu
           }
         ],
         "x-amazon-apigateway-integration": {
-          "credentials": "arn:aws:iam::<replaceable>123456789012</replaceable>:role/apigAwsProxyRole",
+          "credentials": "arn:aws:iam::123456789012:role/apigAwsProxyRole",
           "responses": {
             "4\\d{2}": {
               "statusCode": "400"
@@ -558,7 +558,7 @@ The following OpenAPI definitions describe the sample API, referenced in this tu
           }
         ],
         "x-amazon-apigateway-integration": {
-          "credentials": "arn:aws:iam::<replaceable>123456789012</replaceable>:role/apigAwsProxyRole",
+          "credentials": "arn:aws:iam::123456789012:role/apigAwsProxyRole",
           "responses": {
             "4\\d{2}": {
               "statusCode": "400"

@@ -1,10 +1,12 @@
 # Amazon API Gateway quotas and important notes<a name="limits"></a>
 
 **Topics**
-+ [API Gateway quotas](#api-gateway-limits)
++ [API Gateway account\-level quotas, per Region](#apigateway-account-level-limits-table)
++ [HTTP API quotas](#http-api-quotas)
++ [API Gateway quotas for configuring and running a WebSocket API](#apigateway-execution-service-websocket-limits-table)
++ [API Gateway quotas for configuring and running a REST API](#api-gateway-execution-service-limits-table)
++ [API Gateway quotas for creating, deploying and managing an API](#api-gateway-control-service-limits-table)
 + [Amazon API Gateway important notes](api-gateway-known-issues.md)
-
-## API Gateway quotas<a name="api-gateway-limits"></a>
 
 Unless noted otherwise, the quotas can be increased upon request\. To request a quota increase, you can use [Service Quotas](https://docs.aws.amazon.com/servicequotas/latest/userguide/) or contact the [AWS Support Center](https://console.aws.amazon.com/support/home#/)\.
 
@@ -13,7 +15,7 @@ Unless noted otherwise, the quotas can be increased upon request\. To request a 
 **Note**  
 This limits URI length when resource policies are used\. In the case of private APIs where a resource policy is required, this limits the URI length of all private APIs\.
 
-### API Gateway account\-level quotas, per Region<a name="apigateway-account-level-limits-table"></a>
+## API Gateway account\-level quotas, per Region<a name="apigateway-account-level-limits-table"></a>
 
 The following quotas apply per account, per Region in Amazon API Gateway\.
 
@@ -26,11 +28,11 @@ The following quotas apply per account, per Region in Amazon API Gateway\.
 
 \* For the Africa \(Cape Town\) and Europe \(Milan\) Regions, the default throttle quota is 2500 RPS and the default burst quota is 1250 RPS\.
 
-### HTTP API quotas<a name="http-api-quotas"></a>
+## HTTP API quotas<a name="http-api-quotas"></a>
 
 The following quotas apply to configuring and running an HTTP API in API Gateway\.
 
-#### <a name="http-api-quotas.table"></a>
+### <a name="http-api-quotas.table"></a>
 
 
 | Resource or operation | Default quota | Can be increased | 
@@ -49,12 +51,13 @@ The following quotas apply to configuring and running an HTTP API in API Gateway
 | Audiences per authorizer  | 50 | No | 
 | Scopes per route  | 10 | No | 
 | Timeout for JSON Web Key Set endpoint  | 1500 ms | No | 
+| Response size from JSON Web Key Set endpoint | 150000 bytes | No | 
 | Timeout for OpenID Connect discovery endpoint  | 1500 ms | No | 
 | VPC links per account per Region | 10 | Yes | 
 | Subnets per VPC link  | 10 | Yes | 
 | Stage variables per stage | 100 | No | 
 
-### API Gateway quotas for configuring and running a WebSocket API<a name="apigateway-execution-service-websocket-limits-table"></a>
+## API Gateway quotas for configuring and running a WebSocket API<a name="apigateway-execution-service-websocket-limits-table"></a>
 
 The following quotas apply to configuring and running a WebSocket API in Amazon API Gateway\.
 
@@ -77,7 +80,7 @@ The following quotas apply to configuring and running a WebSocket API in Amazon 
 
 \*\* Because of the WebSocket frame\-size quota of 32 KB, a message larger than 32 KB must be split into multiple frames, each 32 KB or smaller\. If a larger message \(or larger frame size\) is received, the connection is closed with code 1009\.
 
-### API Gateway quotas for configuring and running a REST API<a name="api-gateway-execution-service-limits-table"></a>
+## API Gateway quotas for configuring and running a REST API<a name="api-gateway-execution-service-limits-table"></a>
 
 The following quotas apply to configuring and running a REST API in Amazon API Gateway\.
 
@@ -114,7 +117,7 @@ For [restapi:import](https://docs.aws.amazon.com/apigateway/api-reference/link-r
 
 All of the per\-API quotas can only be increased on specific APIs\.
 
-### API Gateway quotas for creating, deploying and managing an API<a name="api-gateway-control-service-limits-table"></a>
+## API Gateway quotas for creating, deploying and managing an API<a name="api-gateway-control-service-limits-table"></a>
 
 The following fixed quotas apply to creating, deploying, and managing an API in API Gateway, using the AWS CLI, the API Gateway console, or the API Gateway REST API and its SDKs\. These quotas can't be increased\.
 

@@ -8,7 +8,7 @@ When you invoke your HTTP API, API Gateway routes the request to your Lambda fun
 
 ![\[Architectural overview of the API that you create in this getting started guide. Clients use an API Gateway HTTP API to invoke a Lambda function. API Gateway returns the Lambda function's response to clients.\]](http://docs.aws.amazon.com/apigateway/latest/developerguide/images/getting-started-overview.png)
 
-To complete this exercise, you need an AWS account and an AWS Identity and Access Management user with console access\. More more information, see [Prerequisites for getting started with API Gateway](setting-up.md)\.
+To complete this exercise, you need an AWS account and an AWS Identity and Access Management user with console access\. For more information, see [Prerequisites for getting started with API Gateway](setting-up.md)\.
 
 **Topics**
 + [Step 1: Create a Lambda function](#getting-started-create-function)

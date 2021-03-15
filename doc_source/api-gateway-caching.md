@@ -25,7 +25,8 @@ In API Gateway, you can enable caching for a specified stage\.
 API Gateway changes caching capacity by removing the existing cache instance and creating a new one with a modified capacity\. All existing cached data is deleted\. 
 
 **Note**  
-The cache capacity affects the CPU and network bandwidth of the cache instance\. Cache performance can vary due to the CPU and network bandwidth of the cache instance\. 
+The cache capacity affects the CPU, memory, and network bandwidth of the cache instance\. As a result, the cache capacity can affect the performance of your cache\.   
+API Gateway recommends that you run a 10\-minute load test to verify that your cache capacity is appropriate for your workload\. Ensure that traffic during the load test mirrors production traffic\. For example, include ramp up, constant traffic, and traffic spikes\. The load test should include responses that can be served from the cache, as well as unique responses that add items to the cache\. Monitor the latency, 4xx, 5xx, cache hit, and cache miss metrics during the load test\. Adjust your cache capacity as needed based on these metrics\.
 
  In the API Gateway console, you configure caching in the **Settings** tab of a named **Stage Editor**\. 
 

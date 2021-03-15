@@ -23,7 +23,7 @@ In general, `Δ` varies in time\. The value ranges from zero when the bucket is 
 
 ![\[Burst as a function of time given the token bucket size and a combined burn rate\]](http://docs.aws.amazon.com/apigateway/latest/developerguide/images/tokenBucketBurst.png)
 
-The account\-level rate limit per Region can be increased upon request\. To request an increase of account\-level throttling limits, contact the [AWS Support Center](https://console.aws.amazon.com/support/home#/)\. For more information, see [API Gateway quotas](limits.md#api-gateway-limits)\. 
+The account\-level rate limit per Region can be increased upon request\. To request an increase of account\-level throttling limits, contact the [AWS Support Center](https://console.aws.amazon.com/support/home#/)\. For more information, see [Amazon API Gateway quotas and important notes](limits.md)\. 
 
 ## Route\-level throttling<a name="websocket-api-protect-throttling-route"></a>
 

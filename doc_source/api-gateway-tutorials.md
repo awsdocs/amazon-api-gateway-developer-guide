@@ -1,8 +1,11 @@
-# Amazon API Gateway tutorials<a name="api-gateway-tutorials"></a>
+# Amazon API Gateway tutorials and workshops<a name="api-gateway-tutorials"></a>
 
-The following tutorials provide hands\-on exercises to help you learn about API Gateway\.
+The following tutorials and workshops provide hands\-on exercises to help you learn about API Gateway\.
 
-**Topics**
+**HTTP API tutorials**
++ [Tutorial: Build a CRUD API with Lambda and DynamoDB ](http-api-dynamo-db.md)
+
+**REST API tutorials**
 + [Build an API Gateway REST API with Lambda integration](getting-started-with-lambda-integration.md)
 + [Tutorial: Create a REST API by importing an example](api-gateway-create-api-from-example.md)
 + [Build an API Gateway REST API with HTTP integration](getting-started-http-integrations.md)
@@ -11,3 +14,9 @@ The following tutorials provide hands\-on exercises to help you learn about API 
 + [Tutorial: Create a `Calc` REST API with two AWS service integrations and one Lambda non\-proxy integration](integrating-api-with-aws-services-lambda.md)
 + [Tutorial: Create a REST API as an Amazon S3 proxy in API Gateway](integrating-api-with-aws-services-s3.md)
 + [Tutorial: Create a REST API as an Amazon Kinesis proxy in API Gateway](integrating-api-with-aws-services-kinesis.md)
+
+**Workshops**
++ [Build a serverless web application]( https://webapp.serverlessworkshops.io)
++ [CI/CD for serverless applications](https://cicd.serverlessworkshops.io)
++ [Serverless security workshop](https://github.com/aws-samples/aws-serverless-security-workshop)
++ [Serverless identity management, authentication and authorization](https://auth.serverlessworkshops.io)

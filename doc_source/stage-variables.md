@@ -19,8 +19,6 @@ For example, your API can pass a GET request as an HTTP proxy to the backend web
 
 You can also use stage variables to pass configuration parameters to a Lambda function through your mapping templates\. For example, you might want to reuse the same Lambda function for multiple stages in your API, but the function should read data from a different Amazon DynamoDB table depending on which stage is being called\. In the mapping templates that generate the request for the Lambda function, you can use stage variables to pass the table name to Lambda\.
 
-Stage variables are not applied to the security definitions section of the API specification\. For example, you cannot use different Amazon Cognito user pools for different stages\.
-
 ## Examples<a name="stage-variables-examples"></a>
 
 To use a stage variable to customize the HTTP integration endpoint, you must first configure a stage variable of a specified name \(for example, **url**\), and then assign it a value, \(for example, **example\.com**\)\. Next, from your method configuration, set up an HTTP proxy integration\. Instead of entering the endpoint's URL, you can tell API Gateway to use the stage variable value, **http://$\{stageVariables\.url\}**\. This value tells API Gateway to substitute your stage variable `${}` at runtime, depending on which stage your API is running\. 

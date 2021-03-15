@@ -43,6 +43,7 @@ The following tables list the Amazon Resource Names \(ARNs\) for API Gateway res
 
 | Resource | ARN | 
 | --- | --- | 
+|  Account  |  `arn:partition:apigateway:region::/account`  | 
 |  ApiKey  |  `arn:partition:apigateway:region::/apikeys/id`  | 
 |  ApiKeys  |  `arn:partition:apigateway:region::/apikeys`  | 
 |  Authorizer  |  `arn:partition:apigateway:region::/restapis/api-id/authorizers/id`  | 
@@ -79,6 +80,7 @@ The following tables list the Amazon Resource Names \(ARNs\) for API Gateway res
 |  UsagePlan  |  `arn:partition:apigateway:region::/usageplans/usageplan-id`  | 
 |  UsagePlans  |  `arn:partition:apigateway:region::/usageplans`  | 
 |  UsagePlanKey  |  `arn:partition:apigateway:region::/usageplans/usageplan-id/keys/id`  | 
+|  UsagePlanKeys  |  `arn:partition:apigateway:region::/usageplans/usageplan-id/keys`  | 
 |  VpcLink  |  `arn:partition:apigateway:region::/vpclinks/vpclink-id`  | 
 |  VpcLinks  |  `arn:partition:apigateway:region::/vpclinks`  | 
 

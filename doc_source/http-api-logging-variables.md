@@ -36,7 +36,7 @@ You can use the following variables to customize HTTP API access logs\. To learn
 | $context\.identity\.clientCert\.serialNumber |  The serial number of the certificate\. Present when a client accesses an API by using a custom domain name that has mutual TLS enabled\.  | 
 | $context\.identity\.clientCert\.validity\.notBefore |  The date before which the certificate is invalid\. Present when a client accesses an API by using a custom domain name that has mutual TLS enabled\.  | 
 | $context\.identity\.clientCert\.validity\.notAfter |  The date after which the certificate is invalid\. Present when a client accesses an API by using a custom domain name that has mutual TLS enabled\.  | 
-| $context\.identity\.sourceIp |  The source IP address of the TCP connection making the request to API Gateway\.  You should not trust this value if there is any chance that the `X-Forwarded-For` header could be forged\.   | 
+| $context\.identity\.sourceIp |  The source IP address of the immediate TCP connection making the request to API Gateway endpoint\.  | 
 | $context\.identity\.user |  The principal identifier of the user making the request\. Supported for routes that use IAM authorization\.  | 
 | $context\.identity\.userAgent |  The [https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/User-Agent](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/User-Agent) header of the API caller\.  | 
 | $context\.identity\.userArn |  The Amazon Resource Name \(ARN\) of the effective user identified after authentication\. Supported for routes that use IAM authorization\. For more information, see [https://docs.aws.amazon.com/IAM/latest/UserGuide/id_users.html](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_users.html)\.  | 

@@ -52,7 +52,7 @@ Before setting up an API method, verify the following:
 
    1.  To use a Lambda authorizer, choose one under **Token authorizer**\. You must have created a Lambda authorizer to have this choice displayed in the drop\-down menu\. For information on how to create a Lambda authorizer, see [Use API Gateway Lambda authorizers](apigateway-use-lambda-authorizer.md)\. 
 
-   1.  To use an Amazon Cognito user pool, choose an available user pool under **Cognito user pool authorizers**\. You must have created a user pool in Amazon Cognito and an Amazon Cognito user pool authorizer in API Gateway to have this choice displayed in the drop\-down menu\. For information on how to create an Amazon Cognito user pool authorizer, see [Control access to a REST API using Amazon Cognito User Pools as authorizer](apigateway-integrate-with-cognito.md)\. 
+   1.  To use an Amazon Cognito user pool, choose an available user pool under **Cognito user pool authorizers**\. You must have created a user pool in Amazon Cognito and an Amazon Cognito user pool authorizer in API Gateway to have this choice displayed in the drop\-down menu\. For information on how to create an Amazon Cognito user pool authorizer, see [Control access to a REST API using Amazon Cognito user pools as authorizer](apigateway-integrate-with-cognito.md)\. 
 
 1.  To enable or disable request validation, choose the pencil icon from the **Request Validator** drop\-down menu and choose one of the listed options\. For more information about each option, see [Enable request validation in API Gateway](api-gateway-method-request-validation.md)\. 
 

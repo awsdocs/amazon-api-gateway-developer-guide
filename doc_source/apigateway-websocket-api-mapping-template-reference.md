@@ -26,7 +26,7 @@ This section summarizes the set of variables that are currently supported for We
 | $context\.identity\.cognitoAuthenticationType |  The Amazon Cognito authentication type of the caller making the request\. Available only if the request was signed with Amazon Cognito credentials\. Possible values include `authenticated` for authenticated identities and `unauthenticated` for unauthenticated identities\. | 
 | $context\.identity\.cognitoIdentityId |  The Amazon Cognito identity ID of the caller making the request\. Available only if the request was signed with Amazon Cognito credentials\.  | 
 | $context\.identity\.cognitoIdentityPoolId |  The Amazon Cognito identity pool ID of the caller making the request\. Available only if the request was signed with Amazon Cognito credentials\.  | 
-| $context\.identity\.sourceIp |  The source IP address of the TCP connection making the request to API Gateway\.  | 
+| $context\.identity\.sourceIp |  The source IP address of the immediate TCP connection making the request to API Gateway endpoint\.  | 
 | $context\.identity\.user |  The principal identifier of the user making the request\.  | 
 | $context\.identity\.userAgent |  The User Agent of the API caller\.  | 
 | $context\.identity\.userArn |  The Amazon Resource Name \(ARN\) of the effective user identified after authentication\.  | 

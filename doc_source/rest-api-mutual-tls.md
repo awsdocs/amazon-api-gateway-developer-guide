@@ -80,7 +80,7 @@ To invoke an API with mutual TLS enabled, clients must present a trusted certifi
 curl -v --key ./my-key.key --cert ./my-cert.pem api.example.com
 ```
 
-Your API is invoked only if your truststore trusts the certificate\. If the certificate isn't trusted, is expired, or doesn't use a supported algorithm, the request is denied with a `403` status code\.
+Your API is invoked only if your truststore trusts the certificate\. If the certificate isn't trusted, is expired, or doesn't use a supported algorithm, API Gateway doesn't fail the TLS handshake and denies the request with a `403` status code\.
 
 **Note**  
 API Gateway doesn't verify if a certificate has been revoked\.

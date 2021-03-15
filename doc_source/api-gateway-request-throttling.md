@@ -50,7 +50,7 @@ To help understand these throttling limits, here are a few examples, given a bur
 
 ![\[Burst as a function of time given the token bucket size and a combined burn rate\]](http://docs.aws.amazon.com/apigateway/latest/developerguide/images/tokenBucketBurst.png)
 
-The account\-level rate limit can be increased upon request\. To request an increase of account\-level throttling limits per Region, contact the [AWS Support Center](https://console.aws.amazon.com/support/home#/)\. For more information, see [API Gateway quotas](limits.md#api-gateway-limits)\. 
+The account\-level rate limit can be increased upon request\. To request an increase of account\-level throttling limits per Region, contact the [AWS Support Center](https://console.aws.amazon.com/support/home#/)\. For more information, see [Amazon API Gateway quotas and important notes](limits.md)\. 
 
 ## Default method throttling and overriding default method throttling<a name="apig-request-throttling-stage-and-method-level-limits"></a>
 
