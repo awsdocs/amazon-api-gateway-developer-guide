@@ -10,9 +10,7 @@
 
  To allow an API developer to create and manage an API in API Gateway, you must [create IAM permissions policies](https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_create.html) that allow a specified API developer to create, update, deploy, view, or delete required [API entities](https://docs.aws.amazon.com/apigateway/api-reference/resource/)\. You attach the permissions policy to an [IAM user](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_users.html) representing the developer, to an [IAM group](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_groups.html) containing the user, or to an [IAM role](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles.html) assumed by the user\. 
 
-In this IAM policy document, the IAM `Resource` element contains a list of API Gateway API entities, including [API Gateway resources](https://docs.aws.amazon.com/apigateway/api-reference/resource/) and [API Gateway link\-relations](https://docs.aws.amazon.com/apigateway/api-reference/link-relation/)\. The IAM `Action` element contains the required API Gateway API\-managing actions\. These actions are declared in the `apigateway:HTTP_VERB` format, where `apigateway` designates the underlying API management component of API Gateway, and `HTTP_VERB` represents HTTP verbs supported by API Gateway\. 
-
-For more information on how to use this permissions model, see [ Control access for managing an API](api-gateway-control-access-using-iam-policies-to-create-and-manage-api.md)\. 
+For more information on how to use this permissions model, see [API Gateway identity\-based policies](security_iam_service-with-iam.md#security_iam_service-with-iam-id-based-policies)\. 
 
 ## API Gateway permissions model for invoking an API<a name="api-gateway-control-access-iam-permissions-model-for-calling-api"></a>
 

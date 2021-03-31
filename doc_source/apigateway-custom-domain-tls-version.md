@@ -40,6 +40,7 @@ The following table lists the protocols and ciphers that API Gateway can use for
 | --- |--- |--- |
 | SSL/TLS protocols supported | 
 | --- |
+| TLSv1\.3 | ♦ | ♦ | 
 | TLSv1\.2 | ♦ | ♦ | 
 | TLSv1\.1 | ♦ |  | 
 | TLSv1 | ♦ |  | 

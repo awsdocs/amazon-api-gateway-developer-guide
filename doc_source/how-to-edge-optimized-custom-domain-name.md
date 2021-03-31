@@ -9,7 +9,7 @@
 
 ## Set up an edge\-optimized custom domain name for an API Gateway API<a name="how-to-custom-domains-console"></a>
 
-The following procedure describes how to set create a custom domain name for an API using the API Gateway console\.
+The following procedure describes how to create a custom domain name for an API using the API Gateway console\.
 
 **To create a custom domain name using the API Gateway console**
 
@@ -29,28 +29,17 @@ The following procedure describes how to set create a custom domain name for an 
 **Note**  
 To use an ACM certificate with an API Gateway edge\-optimized custom domain name, you must request or import the certificate in the `us-east-1` Region \(US East \(N\. Virginia\)\)\.
 
-1. Choose **Create**\.
+1. Choose **Create domain name**\.
 
 1.  After the custom domain name is created, the console displays the associated CloudFront distribution domain name, in the form of `distribution-id.cloudfront.net`, along with the certificate ARN\. Note the CloudFront distribution domain name shown in the output\. You need it in the next step to set the custom domain's CNAME value or A\-record alias target in your DNS\. 
 **Note**  
  The newly created custom domain name takes about 40 minutes to be ready\. In the meantime, you can configure the DNS record alias to map the custom domain name to the associated CloudFront distribution domain name and to set up the base path mapping for the custom domain name while the custom domain name is being initialized\. 
 
-1.  In this step, we use Amazon Route 53 as an example DNS provider to show how to set up an A\-record alias for your internet domain to map the custom domain name to the associated CloudFront distribution name\. The instructions can be adapted to other DNS providers\. 
-
-   1. Sign in to the Route 53 console\.
-
-   1. Create an `A-IPv4 address` record set for your custom domain \(e\.g\., `api.example.com`\)\. An A\-record maps a custom domain name to an IP4 address\.
-
-   1. Choose **Yes** for **Alias**, enter the CloudFront domain name \(e\.g\., `d3boq9ikothtgw.cloudfront.net`\) in **Alias Target**, and then choose **Create**\. The A\-record alias here maps your custom domain name to the specified CloudFront domain name that is itself mapped to an IP4 address\. 
-
-         
-![\[Set a DNS record alias for a custom domain name for an API in API Gateway\]](http://docs.aws.amazon.com/apigateway/latest/developerguide/images/api-gateway-custom-domain-dns-alias-set.png)
-**Tip**  
- The **Alias Hosted Zone ID** identifies the hosted zone of the specified **Alias Target**\. The Route 53 console automatically fills in the value when you enter a valid domain name for **Alias Target**\. To create an A\-record alias without using the Route 53 console, such as when you use the AWS CLI, you must specify the required hosted zone Id\. For any CloudFront distribution domain name, the hosted zone Id value is always `Z2FDTNDATAQYW2`, as documented in [AWS Regions and Endpoints for CloudFront](https://docs.aws.amazon.com/general/latest/gr/rande.html#cf_region)\. 
+1. Next, you configure DNS records with your DNS provider to map the custom domain name to the associated CloudFront distribution\. For instructions for Amazon Route 53, see [Routing traffic to an Amazon API Gateway API by using your domain name](https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/routing-to-api-gateway.html) in the *Amazon Route 53 Developer Guide*\.
 
     For most DNS providers, a custom domain name is added to the hosted zone as a CNAME resource record set\. The CNAME record name specifies the custom domain name you entered earlier in **Domain Name** \(for example, `api.example.com`\)\. The CNAME record value specifies the domain name for the CloudFront distribution\. However, use of a CNAME record will not work if your custom domain is a zone apex \(i\.e\., `example.com` instead of `api.example.com`\)\. A zone apex is also commonly known as the root domain of your organization\. For a zone apex you need to use an A\-record alias, provided that is supported by your DNS provider\. 
 
-   With Route 53 you can create an A record alias for your custom domain name and specify the CloudFront distribution domain name as the alias target, as shown above\. This means that Route 53 can route your custom domain name even if it is a zone apex\. For more information, see [Choosing Between Alias and Non\-Alias Resource Record Sets](https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/resource-record-sets-choosing-alias-non-alias.html) in the *Amazon Route 53 Developer Guide*\. 
+   With Route 53 you can create an A record alias for your custom domain name and specify the CloudFront distribution domain name as the alias target\. This means that Route 53 can route your custom domain name even if it is a zone apex\. For more information, see [Choosing Between Alias and Non\-Alias Resource Record Sets](https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/resource-record-sets-choosing-alias-non-alias.html) in the *Amazon Route 53 Developer Guide*\. 
 
    Use of A\-record aliases also eliminates exposure of the underlying CloudFront distribution domain name because the domain name mapping takes place solely within Route 53\. For these reasons, we recommend that you use Route 53 A\-record alias whenever possible\. 
 

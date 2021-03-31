@@ -168,7 +168,7 @@ You can then reference it from the `GroceryStoreInputModel` from the same API, a
     "bins": {
       "type": "array",
       "items": {
-        "$ref": "https://apigateway.amazonaws.com/restapis/fugvjdxtri/models/Bin2"
+        "$ref": "https://apigateway.amazonaws.com/restapis/fugvjdxtri/models/Bin"
       }
     }
   }

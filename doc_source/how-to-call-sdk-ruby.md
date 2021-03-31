@@ -49,8 +49,8 @@ These instructions assume you already completed the instructions in [Generate SD
        http_wire_trace: true,
        retry_limit: 5,
        http_read_timeout: 50,
-       access_key: 'ACCESS_KEY',
-       secret_key: 'SECRET_KEY'
+       access_key_id: 'ACCESS_KEY',
+       secret_access_key: 'SECRET_KEY'
    )
    ```
 

@@ -19,10 +19,12 @@ The following tables summarize core features that are available in HTTP APIs and
 
 | Integration | HTTP API | REST API | 
 | --- | --- | --- | 
-|  HTTP  |  ✓  |  ✓  | 
+|  Public HTTP endpoints  |  ✓  |  ✓  | 
 |  Lambda  |  ✓  |  ✓  | 
 |  AWS services  |  ✓  |  ✓  | 
-|  Private integration  |  ✓  |  ✓  | 
+|  Private integrations with Application Load Balancers  |  ✓  |    | 
+|  Private integrations with Network Load Balancers  |  ✓  |  ✓  | 
+|  Private integrations with AWS Cloud Map  |  ✓  |    | 
 |  Mock  |    |  ✓  | 
 
 

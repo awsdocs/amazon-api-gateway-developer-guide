@@ -9,6 +9,7 @@ The payload format version specifies the format of the data that API Gateway sen
 The following examples show the structure of each payload format version\.
 
 **Note**  
+Header names are lowercased\.  
 Format `2.0` doesn't have `multiValueHeaders` or `multiValueQueryStringParameters` fields\. Duplicate headers are combined with commas and included in the `headers` field\. Duplicate query strings are combined with commas and included in the `queryStringParameters` field\.  
 Format `2.0` includes a new `cookies` field\. All cookie headers in the request are combined with commas and added to the `cookies` field\. In the response to the client, each cookie becomes a `set-cookie` header\.
 
@@ -26,8 +27,8 @@ Format `2.0` includes a new `cookies` field\. All cookie headers in the request 
     "cookie2"
   ],
   "headers": {
-    "Header1": "value1",
-    "Header2": "value1,value2"
+    "header1": "value1",
+    "header2": "value1,value2"
   },
   "queryStringParameters": {
     "parameter1": "value1,value2",
@@ -58,10 +59,6 @@ Format `2.0` includes a new `cookies` field\. All cookie headers in the request 
           "scope1",
           "scope2"
         ]
-      },
-      "lambda": {
-        "exampleKey1": "exampleValue1",
-        "exampleKey2": "exampleValue2"
       }
     },
     "domainName": "id.execute-api.us-east-1.amazonaws.com",
@@ -101,14 +98,14 @@ Format `2.0` includes a new `cookies` field\. All cookie headers in the request 
   "path": "/my/path",
   "httpMethod": "GET",
   "headers": {
-    "Header1": "value1",
-    "Header2": "value2"
+    "header1": "value1",
+    "header2": "value2"
   },
   "multiValueHeaders": {
-    "Header1": [
+    "header1": [
       "value1"
     ],
-    "Header2": [
+    "header2": [
       "value1",
       "value2"
     ]
@@ -193,8 +190,8 @@ With the `1.0` format version, Lambda integrations must return a response in the
 {
     "isBase64Encoded": true|false,
     "statusCode": httpStatusCode,
-    "headers": { "headerName": "headerValue", ... },
-    "multiValueHeaders": { "headerName": ["headerValue", "headerValue2", ...], ... },
+    "headers": { "headername": "headervalue", ... },
+    "multiValueHeaders": { "headername": ["headervalue", "headervalue2", ...], ... },
     "body": "..."
 }
 ```
@@ -212,8 +209,8 @@ The following examples show the output of a Lambda function and API Gateway's in
 
 | Lambda function output | API Gateway interpretation | 
 | --- | --- | 
-|  <pre>"Hello from Lambda!"</pre>  |  <pre>{<br />  "isBase64Encoded": false,<br />  "statusCode": 200,<br />  "body": "Hello from Lambda!",<br />  "headers": {<br />    "Content-Type": "application/json"<br />  }<br />}</pre>  | 
-|  <pre>{ "message": "Hello from Lambda!" }</pre>  |  <pre>{<br />  "isBase64Encoded": false,<br />  "statusCode": 200,<br />  "body": "{ \"message\": \"Hello from Lambda!\" }",<br />  "headers": {<br />    "Content-Type": "application/json"<br />  }<br />}</pre>  | 
+|  <pre>"Hello from Lambda!"</pre>  |  <pre>{<br />  "isBase64Encoded": false,<br />  "statusCode": 200,<br />  "body": "Hello from Lambda!",<br />  "headers": {<br />    "content-type": "application/json"<br />  }<br />}</pre>  | 
+|  <pre>{ "message": "Hello from Lambda!" }</pre>  |  <pre>{<br />  "isBase64Encoded": false,<br />  "statusCode": 200,<br />  "body": "{ \"message\": \"Hello from Lambda!\" }",<br />  "headers": {<br />    "content-type": "application/json"<br />  }<br />}</pre>  | 
 
 To customize the response, your Lambda function should return a response with the following format\.
 
@@ -222,7 +219,7 @@ To customize the response, your Lambda function should return a response with th
     "cookies" : ["cookie1", "cookie2"],
     "isBase64Encoded": true|false,
     "statusCode": httpStatusCode,
-    "headers": { "headerName": "headerValue", ... },
+    "headers": { "headername": "headervalue", ... },
     "body": "Hello from Lambda!"
 }
 ```
