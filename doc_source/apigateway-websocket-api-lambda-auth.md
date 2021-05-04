@@ -94,7 +94,7 @@ To configure the `$connect` route to use this Lambda authorizer in the console, 
 To test the authorizer, you need to create a new connection\. Changing authorizer in `$connect` doesn't affect the already connected client\. When you connect to your WebSocket API, you need to provide values for any configured identity sources\. For example, you can connect by sending a valid query string and header using `wscat` as in the following example:
 
 ```
-wscat -c 'wss://myapi.execute-api.us-east-1.amazonaws.com/beta?QueryAuth1=queryValue1' -H HeaderAuth1:headerValue1
+wscat -c 'wss://myapi.execute-api.us-east-1.amazonaws.com/beta?QueryString1=queryValue1' -H HeaderAuth1:headerValue1
 ```
 
 If you attempt to connect without a valid identity value, you'll receive a `401` response:
