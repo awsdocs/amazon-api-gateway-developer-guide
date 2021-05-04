@@ -7,7 +7,7 @@
 
 | Property name | Type | Description | 
 | --- | --- | --- | 
-| MIME type | string |   An example of the MIME type is `application/json`\. For information about creating a mapping template, see [Mapping templates](rest-api-data-transformations.md#models-mappings-mappings)\.   | 
+| MIME type | string |   An example of the MIME type is `application/json`\. For information about creating a mapping template, see [Mapping templates](models-mappings.md#models-mappings-mappings)\.   | 
 
 ## x\-amazon\-apigateway\-integration\.requestTemplates example<a name="api-gateway-swagger-extensions-request-template-example"></a>
 

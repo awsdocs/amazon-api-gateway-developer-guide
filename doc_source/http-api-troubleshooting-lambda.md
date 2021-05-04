@@ -61,7 +61,7 @@ To troubleshoot the internal server error, add the `$context.integrationErrorMes
 
 Because we added `$context.integrationErrorMessage` to the log format, we see an error message in our logs that summarizes the problem\. 
 
-Your logs might include a different error message that indicates that there's a problem with your Lambda function code\. In that case, check your Lambda function code, and verify that your Lambda function returns a response in the [required format](http-api-develop-integrations-lambda.md#http-api-develop-integrations-lambda.response)\.
+Your logs might include a different error message that indicates that there's a problem with your Lambda function code\. In that case, check your Lambda function code, and verify that your Lambda function returns a response in the [required format](http-api-develop-integrations-lambda.md#http-api-develop-integrations-lambda.response)\. If your logs don't include an error message, add `$context.error.message` and `$context.error.responseType` to your log format for more information to help troubleshoot\.
 
 In this case, the logs show that API Gateway didn't have the required permissions to invoke the Lambda function\.
 

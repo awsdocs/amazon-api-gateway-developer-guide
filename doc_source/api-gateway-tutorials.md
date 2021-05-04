@@ -4,6 +4,7 @@ The following tutorials and workshops provide hands\-on exercises to help you le
 
 **HTTP API tutorials**
 + [Tutorial: Build a CRUD API with Lambda and DynamoDB ](http-api-dynamo-db.md)
++ [Tutorial: Building an HTTP API with a private integration to an Amazon ECS service](http-api-private-integration.md)
 
 **REST API tutorials**
 + [Build an API Gateway REST API with Lambda integration](getting-started-with-lambda-integration.md)
@@ -16,7 +17,7 @@ The following tutorials and workshops provide hands\-on exercises to help you le
 + [Tutorial: Create a REST API as an Amazon Kinesis proxy in API Gateway](integrating-api-with-aws-services-kinesis.md)
 
 **Workshops**
-+ [Build a serverless web application]( https://webapp.serverlessworkshops.io)
++ [Build a serverless web application](https://webapp.serverlessworkshops.io)
 + [CI/CD for serverless applications](https://cicd.serverlessworkshops.io)
 + [Serverless security workshop](https://github.com/aws-samples/aws-serverless-security-workshop)
 + [Serverless identity management, authentication and authorization](https://auth.serverlessworkshops.io)

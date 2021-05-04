@@ -7,7 +7,7 @@
 
 | Property name | Type | Description | 
 | --- | --- | --- | 
-| type | string |  The type of the authorizer\. This is a required property\. For REST APIs, specify specify `token` for an authorizer with the caller identity embedded in an authorization token\. Specify `request` for an authorizer with the caller identity contained in request parameters\. For HTTP APIs, specify `request` for a Lambda authorizer with the caller identity contained in request parameters\. Specify `jwt` for a JWT authorizer\.  | 
+| type | string |  The type of the authorizer\. This is a required property\. For REST APIs, specify `token` for an authorizer with the caller identity embedded in an authorization token\. Specify `request` for an authorizer with the caller identity contained in request parameters\. For HTTP APIs, specify `request` for a Lambda authorizer with the caller identity contained in request parameters\. Specify `jwt` for a JWT authorizer\.  | 
 | authorizerUri | string |   The Uniform Resource Identifier \(URI\) of the authorizer Lambda function\. The syntax is as follows:  <pre>"arn:aws:apigateway:us-east-1:lambda:path/2015-03-31/functions/arn:aws:lambda:us-east-1:account-id:function:auth_function_name/invocations"</pre>  | 
 | authorizerCredentials | string |  The credentials required for invoking the authorizer, if any, in the form of an ARN of an IAM execution role\. For example, "arn:aws:iam::*account\-id*:*IAM\_role*"\.   | 
 | authorizerPayloadFormatVersion | string |  For HTTP APIs, specifies the format of the data that API Gateway sends to a Lambda authorizer, and how API Gateway interprets the response from Lambda\. To learn more, see [Payload format version](http-api-lambda-authorizer.md#http-api-lambda-authorizer.payload-format)\.  | 
@@ -174,7 +174,7 @@ The following example creates a Lambda authorizer for an HTTP API\. This example
     "type" : "apiKey",
     "name" : "Authorization",
     "in" : "header",
-    x-amazon-apigateway-authorizer" : {
+    "x-amazon-apigateway-authorizer" : {
       "type" : "request",
       "identitySource" : "$request.header.Authorization",
       "authorizerUri" : "arn:aws:apigateway:us-west-2:lambda:path/2015-03-31/functions/arn:aws:lambda:us-west-2:123456789012:function:function-name/invocations",

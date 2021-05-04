@@ -4,6 +4,9 @@ You can enable IAM authorization for HTTP API routes\. When IAM authorization is
 
 IAM authorization for HTTP APIs is similar to that for [REST APIs](api-gateway-control-access-using-iam-policies-to-invoke-api.md)\.
 
+**Note**  
+Resource policies aren't currently supported for HTTP APIs\.
+
 For examples of IAM policies that grant clients the permission to invoke APIs, see [ Control access for invoking an API](api-gateway-control-access-using-iam-policies-to-invoke-api.md)\.
 
 ## Enable IAM authorization for a route<a name="http-api-access-control-iam-example"></a>

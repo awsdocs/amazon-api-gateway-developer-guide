@@ -56,5 +56,5 @@ To use the AWS CLI to attach a resource policy to an existing API, call the [htt
 ```
 aws apigateway update-rest-api \
     --rest-api-id api-id \
-    --patch-operations op=replace,path=/policy,value='{\"jsonEscapedPolicyDocument\"}'
+    --patch-operations op=replace,path=/policy,value='"{\"jsonEscapedPolicyDocument\"}"'
 ```

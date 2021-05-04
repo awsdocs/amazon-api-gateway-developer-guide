@@ -34,11 +34,11 @@ If any of these steps fail, API Gateway denies the API request\.
 
 After validating the JWT, API Gateway passes the claims in the token to the API route’s integration\. Backend resources, such as Lambda functions, can access the JWT claims in `$context.authorizer.claims`\. For example, if the JWT included an identity claim `emailID`, it's available in `$context.authorizer.claims.emailID`\.
 
-## Create a JWT authorizer by using the AWS CLI<a name="http-api-jwt-authorizer.create"></a>
+## Create a JWT authorizer<a name="http-api-jwt-authorizer.create"></a>
 
 Before you create a JWT authorizer, you must register a client application with an identity provider\. You must also have created an HTTP API\. For examples of creating an HTTP API, see [Creating an HTTP API](http-api-develop.md#http-api-examples)\. For an example AWS CloudFormation template that creates an HTTP API with a JWT authorizer that uses Amazon Cognito as an identity provider, see [https://github.com/awsdocs/amazon-api-gateway-developer-guide/blob/master/cloudformation-templates/HTTP/http-with-jwt-auth.yaml](https://github.com/awsdocs/amazon-api-gateway-developer-guide/blob/master/cloudformation-templates/HTTP/http-with-jwt-auth.yaml)\.
 
-The following command creates a JWT authorizer that uses Amazon Cognito as an identity provider\. For `Audience`, specify the [ID of a client](https://docs.aws.amazon.com/cognito-user-identity-pools/latest/APIReference/API_UserPoolClientType.html#CognitoUserPools-Type-UserPoolClientType-ClientId) that's associated with the user pool that you specify for `Issuer`\.
+The following AWS CLI command creates a JWT authorizer that uses Amazon Cognito as an identity provider\. For `Audience`, specify the [ID of a client](https://docs.aws.amazon.com/cognito-user-identity-pools/latest/APIReference/API_UserPoolClientType.html#CognitoUserPools-Type-UserPoolClientType-ClientId) that's associated with the user pool that you specify for `Issuer`\.
 
 ```
 aws apigatewayv2 create-authorizer \

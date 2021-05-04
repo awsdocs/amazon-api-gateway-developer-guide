@@ -285,8 +285,6 @@ Content-Type: application/x-amz-json-1.1
 Content-Length: PayloadSizeBytes
 
 {
-    "ExclusiveStartShardId": "string",
-    "Limit": number,
     "StreamName": "string"
 }
 ```

@@ -79,26 +79,6 @@ To grant a user permission to view a specific pet exposed by an API that is conf
 }
 ```
 
- For a developer team testing APIs, you can include the following statement in the IAM policy to allow the team to call any method on any resource of any API by any developer in the `test` stage\. 
-
-```
-{
-  "Version": "2012-10-17",
-  "Statement": [
-    {
-      "Effect": "Allow",
-      "Action": [
-        "execute-api:Invoke",
-        "execute-api:InvalidateCache"
-      ],
-      "Resource": [
-        "arn:aws:execute-api:*:*:*/test/*"
-      ]
-    }
-  ]
-}
-```
-
 ## Statement reference of IAM policies for executing API in API Gateway<a name="api-gateway-calling-api-permissions"></a>
 
 The following information describes the Action and Resource format of IAM policy statements of access permissions for executing an API\.
@@ -127,17 +107,15 @@ arn:aws:execute-api:region:account-id:api-id/stage-name/HTTP-VERB/resource-path-
 where:
 + *region* is the AWS region \(such as **us\-east\-1** or **\*** for all AWS regions\) that corresponds to the deployed API for the method\.
 + *account\-id* is the 12\-digit AWS account Id of the REST API owner\. 
-+ *api\-id* is the identifier API Gateway has assigned to the API for the method\. \(**\*** can be used for all APIs, regardless of the API's identifier\.\)
-+ *stage\-name* is the name of the stage associated with the method \(**\*** can be used for all stages, regardless of the stage's name\.\)
-+ *HTTP\-VERB* is the HTTP verb for the method\. It can be one of the following: GET, POST, PUT, DELETE, PATCH\. \(**\*** can be used for all HTTP verbs\)\.
-+ *resource\-path\-specifier* is the path to the desired method\. \(**\*** can be used for all paths\)\.
++ *api\-id* is the identifier API Gateway has assigned to the API for the method\.
++ *stage\-name* is the name of the stage associated with the method\.
++ *HTTP\-VERB* is the HTTP verb for the method\. It can be one of the following: GET, POST, PUT, DELETE, PATCH\.
++ *resource\-path\-specifier* is the path to the desired method\.
 
 Some example resource expressions include:
-+ **arn:aws:execute\-api:\*:\*:\*** for any resource path in any stage, for any API in any AWS region\. \(This is equivalent to `*`\)\.
++ **arn:aws:execute\-api:\*:\*:\*** for any resource path in any stage, for any API in any AWS region\.
 + **arn:aws:execute\-api:us\-east\-1:\*:\*** for any resource path in any stage, for any API in the AWS region of `us-east-1`\.
 + **arn:aws:execute\-api:us\-east\-1:\*:*api\-id*/\*** for any resource path in any stage, for the API with the identifier of *api\-id* in the AWS region of us\-east\-1\.
 + **arn:aws:execute\-api:us\-east\-1:\*:*api\-id*/`test`/\*** for resource path in the stage of `test`, for the API with the identifier of *api\-id* in the AWS region of us\-east\-1\.
-+ **arn:aws:execute\-api:us\-east\-1:\*:*api\-id*/`test`/\*/mydemoresource/\*** for any resource path along the path of `mydemoresource`, for any HTTP method in the stage of `test`, for the API with the identifier of *api\-id* in the AWS region of us\-east\-1\.
-+ **arn:aws:execute\-api:us\-east\-1:\*:*api\-id*/`test`/GET/mydemoresource/\*** for GET methods under any resource path along the path of `mydemoresource`, in the stage of `test`, for the API with the identifier of *api\-id* in the AWS region of us\-east\-1\. 
 
 To learn more, see [API Gateway Amazon Resource Name \(ARN\) reference](arn-format-reference.md)\.

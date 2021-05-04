@@ -1,7 +1,7 @@
 # Amazon API Gateway Developer Guide
 
 -----
-*****Copyright &copy; 2021 Amazon Web Services, Inc. and/or its affiliates. All rights reserved.*****
+*****Copyright &copy;  Amazon Web Services, Inc. and/or its affiliates. All rights reserved.*****
 
 -----
 Amazon's trademarks and trade dress may not be used in 
@@ -24,6 +24,7 @@ Amazon's trademarks and trade dress may not be used in
 + [Amazon API Gateway tutorials and workshops](api-gateway-tutorials.md)
    + [Amazon API Gateway HTTP API tutorials](api-gateway-http-tutorials.md)
       + [Tutorial: Build a CRUD API with Lambda and DynamoDB](http-api-dynamo-db.md)
+      + [Tutorial: Building an HTTP API with a private integration to an Amazon ECS service](http-api-private-integration.md)
    + [Amazon API Gateway REST API tutorials](api-gateway-rest-tutorials.md)
       + [Build an API Gateway REST API with Lambda integration](getting-started-with-lambda-integration.md)
          + [Tutorial: Build a Hello World REST API with Lambda proxy integration](api-gateway-create-api-as-simple-proxy-for-lambda.md)
@@ -143,8 +144,6 @@ Amazon's trademarks and trade dress may not be used in
       + [Setting up data transformations for REST APIs](rest-api-data-transformations.md)
          + [Working with models and mapping templates](models-mappings.md)
             + [Create a model in API Gateway](how-to-create-model.md)
-            + [View a list of models in API Gateway](how-to-view-models-list.md)
-            + [Delete a model in API Gateway](how-to-delete-model.md)
             + [Use a mapping template to override an API's request and response parameters and status codes](apigateway-override-request-response-parameters.md)
          + [Set up request and response data mappings using the API Gateway console](how-to-method-settings-execution-console.md)
          + [Models and mapping template examples](rest-api-develop-models-mapping-examples.md)

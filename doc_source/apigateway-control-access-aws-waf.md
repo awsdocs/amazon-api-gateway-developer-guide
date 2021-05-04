@@ -54,7 +54,7 @@ To use the AWS WAF REST API to associate an AWS WAF Regional web ACL with an exi
 ```
 import boto3
  
-waf = boto3.client('wafregional')
+waf = boto3.client('waf-regional')
  
 waf.associate_web_acl(
     WebACLId='aabc123a-fb4f-4fc6-becb-2b00831cadcf',

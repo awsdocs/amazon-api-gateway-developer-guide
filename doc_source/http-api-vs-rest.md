@@ -40,7 +40,8 @@ The following tables summarize core features that are available in HTTP APIs and
 | Development | HTTP API | REST API | 
 | --- | --- | --- | 
 |  API caching  |    |  ✓  | 
-|  Request transformation  |  ✓  |  ✓  | 
+|  Request parameter transformation  |  ✓  |  ✓  | 
+|  Request body transformation  |    |  ✓  | 
 |  Request / response validation  |    |  ✓  | 
 |  Test invocation  |    |  ✓  | 
 |  CORS configuration  |  ✓  |  ✓ \*  | 
@@ -48,6 +49,7 @@ The following tables summarize core features that are available in HTTP APIs and
 |  Default stage  |  ✓  |    | 
 |  Default route  |  ✓  |    | 
 |  [Custom gateway responses](api-gateway-gatewayResponse-definition.md)  |    |  ✓  | 
+|  [Canary release deployment](canary-release.md)  |    |  ✓  | 
 
 \* You can combine different features of REST APIs to support CORS\. To learn more, see [Enabling CORS for a REST API resource](how-to-cors.md)\.
 

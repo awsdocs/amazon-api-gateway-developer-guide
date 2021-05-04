@@ -66,4 +66,4 @@ An OpenAPI API definition in JSON
  When the `mode` query parameter isn't specified, merge is assumed\.
 
 **Note**  
- The `PUT` operations are idempotent, but not atomic\. That means if a system error occurs part way through processing, the API can end up in a bad state\. However, repeating the operation puts the API into the same final state as if the first operation had succeeded\.  
+ The `PUT` operations are idempotent, but not atomic\. That means if a system error occurs part way through processing, the API can end up in a bad state\. However, repeating the operation successfully puts the API into the same final state as if the first operation had succeeded\.  

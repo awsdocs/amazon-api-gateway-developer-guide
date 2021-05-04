@@ -42,7 +42,7 @@ In addition, the Resource ARN, as shown in the policy statement output by the au
 
 `{api-key}` stands for an API key in the API stage's usage plan\. For more information, see [Creating and using usage plans with API keys](api-gateway-api-usage-plans.md)\.
 
- The following shows example output from the example Lambda authorizer\. The example output contains a policy statement to block \(`Deny`\) calls to the `GET` method in an API \(`ymy8tbxw7b`\) of an AWS account \(`123456789012`\) in any stage \(`*`\)\. 
+ The following shows example output from the example Lambda authorizer\. The example output contains a policy statement to block \(`Deny`\) calls to the `GET` method for the `dev` stage of an API \(`ymy8tbxw7b`\) of an AWS account \(`123456789012`\)\.
 
 ```
 {
@@ -53,7 +53,7 @@ In addition, the Resource ARN, as shown in the policy statement output by the au
       {
         "Action": "execute-api:Invoke",
         "Effect": "Deny",
-        "Resource": "arn:aws:execute-api:us-west-2:123456789012:ymy8tbxw7b/*/GET/"
+        "Resource": "arn:aws:execute-api:us-west-2:123456789012:ymy8tbxw7b/dev/GET/"
       }
     ]
   }
