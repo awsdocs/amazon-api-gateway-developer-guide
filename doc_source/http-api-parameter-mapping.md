@@ -37,7 +37,7 @@ The following table shows supported values that you can map to parameters\.
 | Stage variable | $stageVariables\.variableName | The value of a [stage variable](http-api-stages.md#http-api-stages.stage-variables)\. | 
 | Static value | string | A constant value\. | 
 
-## Transforming API responses<a name="http-api-mapping-request-parameters"></a>
+## Transforming API responses<a name="http-api-mapping-response-parameters"></a>
 
 You use response parameters to transform the HTTP response from a backend integration before returning the response to clients\. You can modify headers or the status code of a response before API Gateway returns the response to clients\.
 

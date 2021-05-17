@@ -24,11 +24,13 @@ To troubleshoot the internal server error, add the `$context.integrationErrorMes
 
 1. Choose your HTTP API\.
 
-1. Under **Metrics**, choose **Logging**\.
+1. Under **Monitor**, choose **Logging**\.
 
 1. Select a stage of your API\.
 
 1. Choose **Edit**, and then enable access logging\.
+
+1. For **Log destination**, enter the ARN of the log group that you created in the previous step\.
 
 1. For **Log format**, choose **CLF**\.
 

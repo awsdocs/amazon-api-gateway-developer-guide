@@ -15,7 +15,7 @@ As you're developing your API Gateway API, you decide on a number of characteris
 
 ## Creating an HTTP API<a name="http-api-examples"></a>
 
-To create a functional API, you must have at least one route, integration, stage, and deployment\. 
+To create a functional API, you must have at least one route, integration, stage, and deployment\.
 
 The following examples show how to create an API with an AWS Lambda or HTTP integration, a route, and a default stage that is configured to automatically deploy changes\.
 
@@ -47,7 +47,7 @@ curl https://api-id.execute-api.us-east-2.amazonaws.com
 
 ### Create an HTTP API by using the AWS CLI<a name="http-api-examples.cli.quick-create"></a>
 
-You can use [quick create](api-gateway-basic-concept.md#apigateway-definition-quick-create) to create an API with a Lambda or HTTP integration, a default catch\-all route, and a default stage that is configured to automatically deploy changes\. The following command uses quick create to create an API that integrates with a Lambda function on the backend\.
+You can use quick create to create an API with a Lambda or HTTP integration, a default catch\-all route, and a default stage that is configured to automatically deploy changes\. The following command uses quick create to create an API that integrates with a Lambda function on the backend\.
 
 **Note**  
 To invoke a Lambda integration, API Gateway must have the required permissions\. You can use a resource\-based policy or an IAM role to grant API Gateway permissions to invoke a Lambda function\. To learn more, see [AWS Lambda Permissions](https://docs.aws.amazon.com/lambda/latest/dg/lambda-permissions) in the * AWS Lambda Developer Guide*\.

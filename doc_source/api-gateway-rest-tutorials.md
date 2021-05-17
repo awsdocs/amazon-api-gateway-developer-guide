@@ -11,3 +11,4 @@ The following tutorials provide hands\-on exercises to help you learn about API 
 + [Tutorial: Create a `Calc` REST API with two AWS service integrations and one Lambda non\-proxy integration](integrating-api-with-aws-services-lambda.md)
 + [Tutorial: Create a REST API as an Amazon S3 proxy in API Gateway](integrating-api-with-aws-services-s3.md)
 + [Tutorial: Create a REST API as an Amazon Kinesis proxy in API Gateway](integrating-api-with-aws-services-kinesis.md)
++ [Tutorial: Building a private REST API](private-api-tutorial.md)
