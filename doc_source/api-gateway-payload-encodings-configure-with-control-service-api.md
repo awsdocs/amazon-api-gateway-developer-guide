@@ -182,7 +182,7 @@ Suppose a Lambda function returns an image file as a base64\-encoded string\. To
        },
        {
          "op" : "replace",
-         "path" : "/passthroughBehaviors",
+         "path" : "/passthroughBehavior",
          "value" : "WHEN_NO_MATCH"
        }
      ]
