@@ -97,10 +97,10 @@ To create a token\-based Lambda authorizer function, enter the following Node\.j
        var token = event.authorizationToken;
        switch (token) {
            case 'allow':
-               callback(null, generatePolicy('user', 'Allow', event.methodArn));
+               callback(null, generatePolicy('user', 'Allow', event.routeArn));
                break;
            case 'deny':
-               callback(null, generatePolicy('user', 'Deny', event.methodArn));
+               callback(null, generatePolicy('user', 'Deny', event.routeArn));
                break;
            case 'unauthorized':
                callback("Unauthorized");   // Return a 401 Unauthorized response
@@ -236,7 +236,7 @@ To create a request\-based Lambda authorizer function, enter the following Node\
        var stageVariables = event.stageVariables;
            
        // Parse the input for the parameter values
-       var tmp = event.methodArn.split(':');
+       var tmp = event.routeArn.split(':');
        var apiGatewayArnTmp = tmp[5].split('/');
        var awsAccountId = tmp[4];
        var region = tmp[3];
@@ -257,7 +257,7 @@ To create a request\-based Lambda authorizer function, enter the following Node\
        if (headers.headerauth1 === "headerValue1"
            && queryStringParameters.QueryString1 === "queryValue1"
            && stageVariables.StageVar1 === "stageValue1") {
-           callback(null, generateAllow('me', event.methodArn));
+           callback(null, generateAllow('me', event.routeArn));
        }  else {
            callback("Unauthorized");
        }
