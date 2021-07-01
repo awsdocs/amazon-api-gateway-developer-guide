@@ -142,7 +142,7 @@ If you specify **overwrite\-content**, all custom changes in your Amazon S3 buck
 Provide a token different from the last deployment's token to re\-upload the developer portal site's static assets\. You can provide a timestamp or GUID on each deployment to always re\-upload the assets\.
 
 **UseRoute53Nameservers**  
-Only applicable if you're creating a custom domain name for your developer portal\. Specify **true** to skip creating a Route 53 HostedZone and RecordSet\. You'll need to provide your own name server hosting in place of Route 53\. Otherwise, leave this field set to **false**\.
+Only applicable if you're creating a custom domain name for your developer portal\. If set to **true**, a Route 53 HostedZone and RecordSet are created for you\. Otherwise, leave this field set to **false** and provide your own name server hosting in place of Route 53\.
 
 ## Create an admin user for your developer portal<a name="apigateway-developer-portal-create-admin"></a>
 
