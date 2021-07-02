@@ -20,7 +20,7 @@ The following X\-Ray sampling options are relevant for API Gateway\. String valu
 + **Service name** \(string\) — API stage name, in the form ***\{api\-name\}*/*\{stage\-name\}***\. For example, if you were to deploy the [PetStore](api-gateway-create-api-from-example.md) sample API to a stage named `test`, the **Service name** value to specify in your sampling rule would be **pets/test**\.
 + **Service type** \(string\) — For an API Gateway API, either **AWS::ApiGateway::Stage** or **AWS::ApiGateway::\*** can be specified\.
 + **Host** \(string\) — The hostname from the HTTP host header\. Set this to **\*** to match against all hostnames\. Or you can specify a full or partial hostname to match, for example, **api\.example\.com** or **\*\.example\.com**\.
-+ **Resource ARN** \(string\) — The ARN of the API stage, in the format **arn:aws:execute\-api:*\{region\}*:*\{account\-id\}*:*\{api\-id\}*/*\{stage\-name\}***, for example, **arn:aws:execute\-api:us\-east\-1:123456789012:qsxrty/test**\.
++ **Resource ARN** \(string\) — The ARN of the API stage, for example, **arn:aws:apigateway:*region*::/restapis/*api\-id*/stages/*stage\-name***\.
 
   The stage name can be obtained from the console or the API Gateway CLI or API\. For more information about ARN formats, see the [Amazon Web Services General Reference](https://docs.aws.amazon.com/general/latest/gr/)\.
 + **HTTP method** \(string\) — The method to be sampled, for example, **GET**\.

@@ -364,22 +364,87 @@ For Lambda integrations, you must use the HTTP method of `POST` for the integrat
 
 ## Input format of a Lambda function for proxy integration<a name="api-gateway-simple-proxy-for-lambda-input-format"></a>
 
-In Lambda proxy integration, API Gateway maps the entire client request to the input `event` parameter of the backend Lambda function as follows: 
+In Lambda proxy integration, API Gateway maps the entire client request to the input `event` parameter of the backend Lambda function\. The following example shows the structure of an event that API Gateway sends to a Lambda proxy integration\.
 
 ```
 {
-    "resource": "Resource path",
-    "path": "Path parameter",
-    "httpMethod": "Incoming request's method name"
-    "headers": {String containing incoming request headers}
-    "multiValueHeaders": {List of strings containing incoming request headers}
-    "queryStringParameters": {query string parameters }
-    "multiValueQueryStringParameters": {List of query string parameters}
-    "pathParameters":  {path parameters}
-    "stageVariables": {Applicable stage variables}
-    "requestContext": {Request context, including authorizer-returned key-value pairs}
-    "body": "A JSON string of the request payload."
-    "isBase64Encoded": "A boolean flag to indicate if the applicable request payload is Base64-encoded"
+  "resource": "/my/path",
+  "path": "/my/path",
+  "httpMethod": "GET",
+  "headers": {
+    "header1": "value1",
+    "header2": "value2"
+  },
+  "multiValueHeaders": {
+    "header1": [
+      "value1"
+    ],
+    "header2": [
+      "value1",
+      "value2"
+    ]
+  },
+  "queryStringParameters": {
+    "parameter1": "value1",
+    "parameter2": "value"
+  },
+  "multiValueQueryStringParameters": {
+    "parameter1": [
+      "value1",
+      "value2"
+    ],
+    "parameter2": [
+      "value"
+    ]
+  },
+  "requestContext": {
+    "accountId": "123456789012",
+    "apiId": "id",
+    "authorizer": {
+      "claims": null,
+      "scopes": null
+    },
+    "domainName": "id.execute-api.us-east-1.amazonaws.com",
+    "domainPrefix": "id",
+    "extendedRequestId": "request-id",
+    "httpMethod": "GET",
+    "identity": {
+      "accessKey": null,
+      "accountId": null,
+      "caller": null,
+      "cognitoAuthenticationProvider": null,
+      "cognitoAuthenticationType": null,
+      "cognitoIdentityId": null,
+      "cognitoIdentityPoolId": null,
+      "principalOrgId": null,
+      "sourceIp": "IP",
+      "user": null,
+      "userAgent": "user-agent",
+      "userArn": null,
+      "clientCert": {
+        "clientCertPem": "CERT_CONTENT",
+        "subjectDN": "www.example.com",
+        "issuerDN": "Example issuer",
+        "serialNumber": "a1:a1:a1:a1:a1:a1:a1:a1:a1:a1:a1:a1:a1:a1:a1:a1",
+        "validity": {
+          "notBefore": "May 28 12:30:02 2019 GMT",
+          "notAfter": "Aug  5 09:36:04 2021 GMT"
+        }
+      }
+    },
+    "path": "/my/path",
+    "protocol": "HTTP/1.1",
+    "requestId": "id=",
+    "requestTime": "04/Mar/2020:19:15:17 +0000",
+    "requestTimeEpoch": 1583349317135,
+    "resourceId": null,
+    "resourcePath": "/my/path",
+    "stage": "$default"
+  },
+  "pathParameters": null,
+  "stageVariables": null,
+  "body": "Hello from Lambda!",
+  "isBase64Encoded": false
 }
 ```
 
@@ -389,199 +454,12 @@ The `headers` key can only contain single\-value headers\.
 The `multiValueHeaders` key can contain multi\-value headers as well as single\-value headers\.
 If you specify values for both `headers` and `multiValueHeaders`, API Gateway merges them into a single list\. If the same key\-value pair is specified in both, only the values from `multiValueHeaders` will appear in the merged list\.
 
-The following `POST` request shows an API deployed to `testStage` with a stage variable of `stageVariableName=stageVariableValue`:
-
-```
-POST /testStage/hello/world?name=me HTTP/1.1
-Host: gy415nuibc.execute-api.us-east-1.amazonaws.com
-Content-Type: application/json
-headerName: headerValue
-
-{
-    "a": 1
-}
-```
-
-This request produces the following response payload, which contains the output returned from the backend Lambda function, where `input` was set to the `event` parameter to the Lambda function\.
-
-```
-{
-  "message": "Hello me!",
-  "input": {
-    "resource": "/{proxy+}",
-    "path": "/hello/world",
-    "httpMethod": "POST",
-    "headers": {
-      "Accept": "*/*",
-      "Accept-Encoding": "gzip, deflate",
-      "cache-control": "no-cache",
-      "CloudFront-Forwarded-Proto": "https",
-      "CloudFront-Is-Desktop-Viewer": "true",
-      "CloudFront-Is-Mobile-Viewer": "false",
-      "CloudFront-Is-SmartTV-Viewer": "false",
-      "CloudFront-Is-Tablet-Viewer": "false",
-      "CloudFront-Viewer-Country": "US",
-      "Content-Type": "application/json",
-      "headerName": "headerValue",
-      "Host": "gy415nuibc.execute-api.us-east-1.amazonaws.com",
-      "Postman-Token": "9f583ef0-ed83-4a38-aef3-eb9ce3f7a57f",
-      "User-Agent": "PostmanRuntime/2.4.5",
-      "Via": "1.1 d98420743a69852491bbdea73f7680bd.cloudfront.net (CloudFront)",
-      "X-Amz-Cf-Id": "pn-PWIJc6thYnZm5P0NMgOUglL1DYtl0gdeJky8tqsg8iS_sgsKD1A==",
-      "X-Forwarded-For": "54.240.196.186, 54.182.214.83",
-      "X-Forwarded-Port": "443",
-      "X-Forwarded-Proto": "https"
-    },
-    "multiValueHeaders":{
-      'Accept':[
-        "*/*"
-      ],
-      'Accept-Encoding':[
-        "gzip, deflate"
-      ],
-      'cache-control':[
-        "no-cache"
-      ],
-      'CloudFront-Forwarded-Proto':[
-        "https"
-      ],
-      'CloudFront-Is-Desktop-Viewer':[
-        "true"
-      ],
-      'CloudFront-Is-Mobile-Viewer':[
-        "false"
-      ],
-      'CloudFront-Is-SmartTV-Viewer':[
-        "false"
-      ],
-      'CloudFront-Is-Tablet-Viewer':[
-        "false"
-      ],
-      'CloudFront-Viewer-Country':[
-        "US"
-      ],
-      '':[
-        ""
-      ],
-      'Content-Type':[
-        "application/json"
-      ],
-      'headerName':[
-        "headerValue"
-      ],
-      'Host':[
-        "gy415nuibc.execute-api.us-east-1.amazonaws.com"
-      ],
-      'Postman-Token':[
-        "9f583ef0-ed83-4a38-aef3-eb9ce3f7a57f"
-      ],
-      'User-Agent':[
-        "PostmanRuntime/2.4.5"
-      ],
-      'Via':[
-        "1.1 d98420743a69852491bbdea73f7680bd.cloudfront.net (CloudFront)"
-      ],
-      'X-Amz-Cf-Id':[
-        "pn-PWIJc6thYnZm5P0NMgOUglL1DYtl0gdeJky8tqsg8iS_sgsKD1A=="
-      ],
-      'X-Forwarded-For':[
-        "54.240.196.186, 54.182.214.83"
-      ],
-      'X-Forwarded-Port':[
-        "443"
-      ],
-      'X-Forwarded-Proto':[
-        "https"
-      ]
-    },
-    "queryStringParameters": {
-      "name": "me",
-      "multivalueName": "me"
-    },
-    "multiValueQueryStringParameters":{
-      "name":[
-        "me"
-      ],
-      "multivalueName":[
-        "you",
-        "me"
-      ]
-    },
-    "pathParameters": {
-      "proxy": "hello/world"
-    },
-    "stageVariables": {
-      "stageVariableName": "stageVariableValue"
-    },
-    "requestContext": {
-      "accountId": "12345678912",
-      "resourceId": "roq9wj",
-      "stage": "testStage",
-      "requestId": "deef4878-7910-11e6-8f14-25afc3e9ae33",
-      "identity": {
-        "cognitoIdentityPoolId": null,
-        "accountId": null,
-        "cognitoIdentityId": null,
-        "caller": null,
-        "apiKey": null,
-        "sourceIp": "192.168.196.186",
-        "cognitoAuthenticationType": null,
-        "cognitoAuthenticationProvider": null,
-        "userArn": null,
-        "userAgent": "PostmanRuntime/2.4.5",
-        "user": null
-      },
-      "resourcePath": "/{proxy+}",
-      "httpMethod": "POST",
-      "apiId": "gy415nuibc"
-    },
-    "body": "{\r\n\t\"a\": 1\r\n}",
-    "isBase64Encoded": false
-  }
-}
-```
-
 In the input to the backend Lambda function, the `requestContext` object is a map of key\-value pairs\. In each pair, the key is the name of a [$context](api-gateway-mapping-template-reference.md#context-variable-reference) variable property, and the value is the value of that property\. API Gateway may add new keys to the map\.
 
 Depending on the features that are enabled, the `requestContext` map may vary from API to API\. For example, in the preceding example, no authorization type is specified, so no `$context.authorizer.*` or `$context.identity.*` properties are present\. When an authorization type is specified, this causes API Gateway to pass authorized user information to the integration endpoint in a `requestContext.identity` object as follows:
 + When the authorization type is `AWS_IAM`, the authorized user information includes `$context.identity.*` properties\.
 + When the authorization type is `COGNITO_USER_POOLS` \(Amazon Cognito authorizer\), the authorized user information includes `$context.identity.cognito*` and `$context.authorizer.claims.*` properties\.
 + When the authorization type is `CUSTOM` \(Lambda authorizer\), the authorized user information includes `$context.authorizer.principalId` and other applicable `$context.authorizer.*` properties\.
-
-The following shows an example of a `requestContext` that is passed to a Lambda proxy integration endpoint when the authorization type is set to `AWS_IAM`\.
-
-```
-{
-    ...,
-    "requestContext": {
-        "requestTime": "20/Feb/2018:22:48:57 +0000",
-        "path": "/test/",
-        "accountId": "123456789012",
-        "protocol": "HTTP/1.1",
-        "resourceId": "yx5mhem7ye",
-        "stage": "test",
-        "requestTimeEpoch": 1519166937665,
-        "requestId": "3c3ecbaa-1690-11e8-ae31-8f39f1d24afd",
-        "identity": {
-            "cognitoIdentityPoolId": null,
-            "accountId": "123456789012",
-            "cognitoIdentityId": null,
-            "caller": "AIDAJ........4HCKVJZG",
-            "sourceIp": "51.240.196.104",
-            "accessKey": "IAM_user_access_key",
-            "cognitoAuthenticationType": null,
-            "cognitoAuthenticationProvider": null,
-            "userArn": "arn:aws:iam::123456789012:user/alice",
-            "userAgent": "PostmanRuntime/7.1.1",
-            "user": "AIDAJ........4HCKVJZG"
-        },
-        "resourcePath": "/",
-        "httpMethod": "GET",
-        "apiId": "qr2gd9cfmf"
-    },
-    ...
-}
-```
 
 ## Output format of a Lambda function for proxy integration<a name="api-gateway-simple-proxy-for-lambda-output-format"></a>
 

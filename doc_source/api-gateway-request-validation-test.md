@@ -11,7 +11,7 @@ Choose one of the following topics for instructions on testing the basic request
  To see the invocation URL of the deployed API, you can export the API from the stage, making sure to include the `Accept: application/json` or `Accept: application/yaml` header: 
 
 ```
-GET /restapis/fjd6crafxc/stages/testStage/exports/swagger?extensions=validators HTTP/1.1
+GET /restapis/abcdef123/stages/testStage/exports/swagger?extensions=validators HTTP/1.1
 Accept: application/json
 Content-Type: application/json
 Host: apigateway.us-east-1.amazonaws.com
@@ -27,7 +27,7 @@ Authorization: AWS4-HMAC-SHA256 Credential={access_key_ID}/20170306/us-east-1/ap
 
    ```
    GET /testStage/validation?q1=cat HTTP/1.1
-   Host: fjd6crafxc.execute-api.us-east-1.amazonaws.com
+   Host: abcdef123.execute-api.us-east-1.amazonaws.com
    Content-Type: application/json
    Accept: application/json
    ```
@@ -58,7 +58,7 @@ Authorization: AWS4-HMAC-SHA256 Credential={access_key_ID}/20170306/us-east-1/ap
 
    ```
    GET /testStage/validation HTTP/1.1
-   Host: fjd6crafxc.beta.execute-api.us-east-1.amazonaws.com
+   Host: abcdef123.execute-api.us-east-1.amazonaws.com
    Content-Type: application/json
    Accept: application/json
    ```
@@ -75,7 +75,7 @@ Authorization: AWS4-HMAC-SHA256 Credential={access_key_ID}/20170306/us-east-1/ap
 
    ```
    GET /testStage/validation?q1= HTTP/1.1
-   Host: fjd6crafxc.beta.execute-api.us-east-1.amazonaws.com
+   Host: abcdef123.execute-api.us-east-1.amazonaws.com
    Content-Type: application/json
    Accept: application/json
    ```
@@ -86,7 +86,7 @@ Authorization: AWS4-HMAC-SHA256 Credential={access_key_ID}/20170306/us-east-1/ap
 
    ```
    POST /testStage/validation HTTP/1.1
-   Host: fjd6crafxc.beta.execute-api.us-east-1.amazonaws.com
+   Host: abcdef123.execute-api.us-east-1.amazonaws.com
    Content-Type: application/json
    Accept: application/json
    h1: v1
@@ -115,7 +115,7 @@ Authorization: AWS4-HMAC-SHA256 Credential={access_key_ID}/20170306/us-east-1/ap
 
    ```
    POST /testStage/validation HTTP/1.1
-   Host: fjd6crafxc.execute-api.us-east-1.amazonaws.com
+   Host: abcdef123.execute-api.us-east-1.amazonaws.com
    Content-Type: application/json
    Accept: application/json
    
@@ -138,7 +138,7 @@ Authorization: AWS4-HMAC-SHA256 Credential={access_key_ID}/20170306/us-east-1/ap
 
    ```
    POST /testStage/validation HTTP/1.1
-   Host: fjd6crafxc.execute-api.us-east-1.amazonaws.com
+   Host: abcdef123.execute-api.us-east-1.amazonaws.com
    Content-Type: application/json
    Accept: application/json
    X-Amz-Date: 20170309T000215Z

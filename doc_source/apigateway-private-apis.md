@@ -60,7 +60,7 @@ After you've created your VPC endpoint, you can use it to access multiple privat
 
 **To create an interface VPC endpoint for API Gateway `execute-api`**
 
-1. Log in to the Amazon VPC console at [https://console\.aws\.amazon\.com/vpc/](https://console.aws.amazon.com/vpc/)\.
+1. Sign in to the AWS Management Console and open the Amazon VPC console at [https://console\.aws\.amazon\.com/vpc/](https://console.aws.amazon.com/vpc/)\.
 
 1. In the navigation pane, choose **Endpoints**, **Create Endpoint**\.
 
@@ -181,7 +181,7 @@ When you are ready to test your API, be sure to create a resource policy and att
 
 Before your private API can be accessed, you need to create a resource policy and attach it to the API\. This grants access to the API from your VPCs and VPC endpoints or from VPCs and VPC endpoints in other AWS accounts that you explicitly grant access\.
 
-To do this, follow the instructions in [Create and attach an API Gateway resource policy to an API](apigateway-resource-policies-create-attach.md)\. In step 4, choose the **Source VPC** example\. Replace `{{vpceID}}` \(including the curly braces\) with your VPC ID, and then choose **Save** to save your resource policy\.
+To do this, follow the instructions in [Create and attach an API Gateway resource policy to an API](apigateway-resource-policies-create-attach.md)\. In step 4, choose the **Source VPC** example\. Replace `{{vpceID}}` \(including the curly braces\) with your VPC endpoint ID, and then choose **Save** to save your resource policy\.
 
 You should also consider attaching an endpoint policy to the VPC endpoint to specify the access that's being granted\. For more information, see [Use VPC endpoint policies for private APIs in API Gateway](apigateway-vpc-endpoint-policies.md)\.
 

@@ -132,7 +132,10 @@ After the cache is flushed, responses are serviced from the integration endpoint
 
 A client of your API can invalidate an existing cache entry and reload it from the integration endpoint for individual requests\. The client must send a request that contains the `Cache-Control: max-age=0` header\. The client receives the response directly from the integration endpoint instead of the cache, provided that the client is authorized to do so\. This replaces the existing cache entry with the new response, which is fetched from the integration endpoint\. 
 
- To grant permission for a client, attach a policy of the following format to an IAM execution role for the user\. 
+ To grant permission for a client, attach a policy of the following format to an IAM execution role for the user\.
+
+**Note**  
+Cross\-account cache invalidation is not supported\.
 
 ```
 {

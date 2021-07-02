@@ -268,12 +268,7 @@ To work with an Amazon S3 bucket, we expose the GET, PUT, and DELETE methods on 
 
     This is mostly needed for testing, when using the API Gateway console, when you must specify **application/xml** for an XML payload\.
 
-1. In **Integration Request**, set up the following header mappings, following the instructions described in [Expose an API method to list the caller's Amazon S3 buckets](#api-root-get-as-s3-get-service)\.
-
-      
-![\[Set up header mappings for the PUT /{folder} method\]](http://docs.aws.amazon.com/apigateway/latest/developerguide/images/aws_proxy_s3_create_methods_on_folder_header_mappings.png)
-
-    The `x-amz-acl` header is for specifying access control on the folder \(or the corresponding Amazon S3 bucket\)\. For more information, see [Amazon S3 PUT Bucket Request](https://docs.aws.amazon.com/AmazonS3/latest/API/RESTBucketPUT.html#RESTBucketPUT-requests)\. 
+1. In **Integration Request**, set up a mapping for the `Content-Type` header to `method.request.header.Content-Type`, following the instructions in [Expose an API method to list the caller's Amazon S3 buckets](#api-root-get-as-s3-get-service)\.
 
 1. To test the `PUT` method, choose **Test** in the **Client** box from **Method Execution**, and enter the following as input to the testing: 
 

@@ -55,7 +55,7 @@ For a complete list of API Gateway feature releases, see [Document history](hist
 ## Accessing API Gateway<a name="introduction-accessing-apigateway"></a>
 
 You can access Amazon API Gateway in the following ways:
-+ **AWS Management Console** – The procedures throughout this guide explain how to use the AWS Management Console to perform tasks\.
++ **AWS Management Console** – The AWS Management Console provides a web interface for creating and managing APIs\. After you complete the steps in [Prerequisites for getting started with API Gateway](setting-up.md), you can access the API Gateway console at [https://console.aws.amazon.com/apigateway](https://console.aws.amazon.com/apigateway)\.
 + **AWS SDKs** – If you're using a programming language that AWS provides an SDK for, you can use an SDK to access API Gateway\. SDKs simplify authentication, integrate easily with your development environment, and provide access to API Gateway commands\. For more information, see [Tools for Amazon Web Services](https://aws.amazon.com/tools)\.
 + **API Gateway V1 and V2 APIs** – If you're using a programming language that an SDK isn't available for, see the [Amazon API Gateway Version 1 API Reference](https://docs.aws.amazon.com/apigateway/api-reference/) and [Amazon API Gateway Version 2 API Reference](https://docs.aws.amazon.com/apigatewayv2/latest/api-reference/api-reference.html)\.
 + **AWS Command Line Interface** – For more information, see [Getting Set Up with the AWS Command Line Interface](https://docs.aws.amazon.com/cli/latest/userguide/) in the *AWS Command Line Interface User Guide*\.

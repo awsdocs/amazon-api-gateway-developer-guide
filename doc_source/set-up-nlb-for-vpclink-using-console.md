@@ -9,7 +9,7 @@ The Network Load Balancer and API must be owned by the same AWS account\.
 
 **To create a Network Load Balancer for private integration using the API Gateway console**
 
-1. Sign in to the Amazon EC2 console at [https://console\.aws\.amazon\.com/ec2/](https://console.aws.amazon.com/ec2/) and choose a region; for example, `us-east-1`, on the navigation bar\.
+1. Sign in to the AWS Management Console and open the Amazon EC2 console at [https://console\.aws\.amazon\.com/ec2/](https://console.aws.amazon.com/ec2/)\.
 
 1. Set up a web server on an Amazon EC2 instance\. For an example setup, see [Installing a LAMP Web Server on Amazon Linux](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/install-LAMP.html)\. 
 

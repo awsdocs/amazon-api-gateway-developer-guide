@@ -21,18 +21,17 @@ The following procedure describes how to configure an API method to require an A
 
 1. Sign in to the AWS Management Console and open the API Gateway console at [https://console\.aws\.amazon\.com/apigateway/](https://console.aws.amazon.com/apigateway/)\. 
 
+1. Choose a REST API\.
+
 1. In the API Gateway main navigation pane, choose **Resources**\.
 
 1. Under **Resources**, create a new method or choose an existing one\.
 
 1. Choose **Method Request**\.
 
-1. Under the **Authorization Settings** section, choose **true** for **API Key Required**\.
+1. Under the **Settings** section, choose **true** for **API Key Required**\.
 
 1. Select the checkmark icon to save the settings\.
-
-      
-![\[\]](http://docs.aws.amazon.com/apigateway/latest/developerguide/images/how-to-api-key-set-requirement-on-method.png)
 
 1. Deploy or redeploy the API for the requirement to take effect\.
 
@@ -45,6 +44,8 @@ If you've already created or imported API keys for use with usage plans, you can
 **To create an API key**
 
 1. Sign in to the AWS Management Console and open the API Gateway console at [https://console\.aws\.amazon\.com/apigateway/](https://console.aws.amazon.com/apigateway/)\. 
+
+1. Choose a REST API\.
 
 1. In the API Gateway main navigation pane, choose **API Keys**\.
 
@@ -71,6 +72,10 @@ If you've already created or imported API keys for use with usage plans, you can
 The following procedure describes how to import API keys to use with usage plans\.
 
 **To import API keys**
+
+1. Sign in to the AWS Management Console and open the API Gateway console at [https://console\.aws\.amazon\.com/apigateway/](https://console.aws.amazon.com/apigateway/)\. 
+
+1. Choose a REST API\.
 
 1. In the main navigation pane, choose **API Keys**\.
 

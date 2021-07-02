@@ -164,7 +164,11 @@ Because the `apis/*` resource also captures sub resources such as authorizers or
 
 ## Allow users to create or update only private REST APIs<a name="security_iam_id-based-policy-examples-private-api"></a>
 
-This example policy uses a request condition key to require that a user creates only `PRIVATE` APIs, and to prevent updates that might change an API from `PRIVATE` to another type, such as `REGIONAL`\. We use a resource condition key to allow any update to an API as long as it's `PRIVATE`\. We use the non\-greedy matcher \(`?`\) to explicitly match against API IDs to prevent allowing non\-API resources such as authorizers\.
+This example policy uses condition keys to require that a user creates only `PRIVATE` APIs, and to prevent updates that might change an API from `PRIVATE` to another type, such as `REGIONAL`\.
+
+We use `ForAllValues` to require that every `EndpointType` added to an API is `PRIVATE`\. We use a resource condition key to allow any update to an API as long as it's `PRIVATE`\. `ForAllValues` applies only if a condition key is present\. For create operations, a Resource condition key is not present\. For delete operations, a Request key is not present\.
+
+We use the non\-greedy matcher \(`?`\) to explicitly match against API IDs to prevent allowing non\-API resources such as authorizers\.
 
 ```
 {
@@ -184,7 +188,7 @@ This example policy uses a request condition key to require that a user creates 
         "arn:aws:apigateway:us-east-1::/restapis/??????????"
       ],
       "Condition": {
-        "ForAnyValue:StringEqualsIfExists": {
+        "ForAllValues:StringEqualsIfExists": {
           "apigateway:Request/EndpointType": "PRIVATE",
           "apigateway:Resource/EndpointType": "PRIVATE"
         }

@@ -260,7 +260,7 @@ You should get a successful response with a payload similar to the following:
   "requestContext":{
     "resourceId":"3htbry",
     "resourcePath":"/helloworld",
-    "htt* Connection #0 to host r275xc9bmd.execute-api.us-east-1.amazonaws.com left intact pMethod":"POST",
+    "httpMethod":"POST",
     "extendedRequestId":"a1b2c3d4e5f6g7h=",
     "requestTime":"20/Mar/2019:20:38:30 +0000",
     "path":"/test/helloworld",

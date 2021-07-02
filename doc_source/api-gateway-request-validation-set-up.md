@@ -216,10 +216,10 @@ The following steps describe how to enable basic request validation by importing
    Copy the JSON object from this sample OpenAPI definition and paste it here.
    ```
 
-1.  Deploy the newly created API \(`fjd6crafxc`\) to a specified stage \(`testStage`\)\. 
+1.  Deploy the newly created API \(`abcdef123`\) to a specified stage \(`testStage`\)\. 
 
    ```
-   POST /restapis/fjd6crafxc/deployments HTTP/1.1
+   POST /restapis/abcdef123/deployments HTTP/1.1
    Content-Type: application/json
    Host: apigateway.us-east-1.amazonaws.com
    X-Amz-Date: 20170306T234936Z

@@ -32,7 +32,7 @@ API Gateway uses the following general workflow to authorize requests to routes 
 
 If any of these steps fail, API Gateway denies the API request\.
 
-After validating the JWT, API Gateway passes the claims in the token to the API route’s integration\. Backend resources, such as Lambda functions, can access the JWT claims in `$context.authorizer.claims`\. For example, if the JWT included an identity claim `emailID`, it's available in `$context.authorizer.claims.emailID`\.
+After validating the JWT, API Gateway passes the claims in the token to the API route’s integration\. Backend resources, such as Lambda functions, can access the JWT claims\. For example, if the JWT includes an identity claim `emailID`, it's available to a Lambda integration in `$event.requestContext.authorizer.jwt.claims.emailID`\. For more information about the payload that API Gateway sends to Lambda integrations, see [Working with AWS Lambda proxy integrations for HTTP APIs](http-api-develop-integrations-lambda.md)\.
 
 ## Create a JWT authorizer<a name="http-api-jwt-authorizer.create"></a>
 

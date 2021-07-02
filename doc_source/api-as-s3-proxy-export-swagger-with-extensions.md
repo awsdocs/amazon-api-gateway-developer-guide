@@ -211,7 +211,6 @@ The following OpenAPI definitions describe the sample API, referenced in this tu
             }
           },
           "requestParameters": {
-            "integration.request.header.x-amz-acl": "'authenticated-read'",
             "integration.request.path.bucket": "method.request.path.folder",
             "integration.request.header.Content-Type": "method.request.header.Content-Type"
           },
@@ -502,7 +501,6 @@ The following OpenAPI definitions describe the sample API, referenced in this tu
           },
           "requestParameters": {
             "integration.request.path.object": "method.request.path.item",
-            "integration.request.header.x-amz-acl": "'authenticated-read'",
             "integration.request.path.bucket": "method.request.path.folder",
             "integration.request.header.Content-Type": "method.request.header.Content-Type"
           },

@@ -112,6 +112,7 @@ The following quotas apply to configuring and running a REST API in Amazon API G
 | Tags per stage | 50 | No | 
 | Number of iterations in a \#foreach \.\.\. \#end loop in mapping templates | 1000 | No | 
 | ARN length of a method with authorization | 1600 bytes | No | 
+| Method\-level throttling settings for a stage in a usage plan | 20 | Yes | 
 
 For [restapi:import](https://docs.aws.amazon.com/apigateway/api-reference/link-relation/restapi-import/) or [restapi:put](https://docs.aws.amazon.com/apigateway/api-reference/link-relation/restapi-put/), the maximum size of the API definition file is 6 MB\. 
 

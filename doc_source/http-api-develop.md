@@ -19,6 +19,8 @@ To create a functional API, you must have at least one route, integration, stage
 
 The following examples show how to create an API with an AWS Lambda or HTTP integration, a route, and a default stage that is configured to automatically deploy changes\.
 
+This guide assumes that you're already familiar with API Gateway and Lambda\. For a more detailed guide, see [Getting started with API Gateway](getting-started.md)\.
+
 **Topics**
 + [Create an HTTP API by using the AWS Management Console](#apigateway-http-api-create.console)
 + [Create an HTTP API by using the AWS CLI](#http-api-examples.cli.quick-create)

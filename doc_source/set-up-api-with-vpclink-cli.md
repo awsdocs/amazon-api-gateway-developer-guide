@@ -61,14 +61,14 @@ After the Network Load Balancer is created, note its ARN\. You need it to create
 
    We have dropped the input parameters of `endpoint-url` and `region` to use the default region as specified in the AWS configuration\.
 
-   Note the `RestApi`'s `id` value in the returned result\. In this example, we assume it is `6j4m3244we`\. You need this value to perform further operations on the API, including setting up methods and integrations\. 
+   Note the `RestApi`'s `id` value in the returned result\. In this example, we assume it is `abcdef123`\. You need this value to perform further operations on the API, including setting up methods and integrations\. 
 
    For illustration purposes, we will create an API with only a `GET` method on the root resource \(`/`\) and integrate the method with the `VpcLink`\.
 
 1.  Set up the `GET /` method\. First get the identifier of the root resource \(`/`\):
 
    ```
-   aws apigateway get-resources --rest-api-id 6j4m3244we
+   aws apigateway get-resources --rest-api-id abcdef123
    ```
 
    In the output, note the `id` value of the `/` path\. In this example, we assume it to be `skpp60rab7`\.
@@ -77,7 +77,7 @@ After the Network Load Balancer is created, note its ARN\. You need it to create
 
    ```
    aws apigateway put-method \
-          --rest-api-id 6j4m3244we \
+          --rest-api-id abcdef123 \
           --resource-id skpp60rab7 \
           --http-method GET \
           --authorization-type "NONE"
@@ -91,7 +91,7 @@ After the Network Load Balancer is created, note its ARN\. You need it to create
 
    ```
    aws apigateway put-integration \
-       --rest-api-id 6j4m3244we \
+       --rest-api-id abcdef123 \
        --resource-id skpp60rab7 \
        --uri 'http://myApi.example.com' \
        --http-method GET \
@@ -123,7 +123,7 @@ After the Network Load Balancer is created, note its ARN\. You need it to create
 
    ```
    aws apigateway put-integration \
-       --rest-api-id 6j4m3244we \
+       --rest-api-id abcdef123 \
        --resource-id skpp60rab7 \
        --uri 'http://myApi.example.com' \
        --http-method GET \
@@ -139,7 +139,7 @@ After the Network Load Balancer is created, note its ARN\. You need it to create
 
    ```
     aws apigateway update-integration \
-       --rest-api-id 6j4m3244we \
+       --rest-api-id abcdef123 \
        --resource-id skpp60rab7 \
        --http-method GET \
        --patch-operations '[{"op":"replace","path":"/connectionId","value":"${stageVariables.vpcLinkId}"}]'
@@ -155,7 +155,7 @@ After the Network Load Balancer is created, note its ARN\. You need it to create
 
    ```
    aws apigateway create-deployment \
-       --rest-api-id 6j4m3244we \
+       --rest-api-id abcdef123 \
        --stage-name test \
        --variables vpcLinkId=gim7c3
    ```
@@ -164,7 +164,7 @@ After the Network Load Balancer is created, note its ARN\. You need it to create
 
    ```
    aws apigateway update-stage \
-       --rest-api-id 6j4m3244we \
+       --rest-api-id abcdef123 \
        --stage-name test \
        --patch-operations op=replace,path='/variables/vpcLinkId',value='asf9d7'
    ```
@@ -172,7 +172,7 @@ After the Network Load Balancer is created, note its ARN\. You need it to create
    To test the API, invoke it using the following cURL command:
 
    ```
-   curl -X GET https://6j4m3244we.beta.execute-api.us-east-1.amazonaws.com/test
+   curl -X GET https://abcdef123.execute-api.us-east-1.amazonaws.com/test
    ```
 
    Alternatively, you can type the API's invoke\-URL in a web browser to view the result\.

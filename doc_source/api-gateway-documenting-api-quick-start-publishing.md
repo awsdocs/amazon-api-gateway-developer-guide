@@ -220,7 +220,7 @@ As an example, we will look at an API that exposes a simple `GET` method on the 
    "x-bar": "API x-bar",
    "servers": [
       {
-         "url": "https://rznaap68yi.execute-api.ap-southeast-1.amazonaws.com/{basePath}"
+         "url": "https://rznaap68yi.execute-api.ap-southeast-1.amazonaws.com/{basePath}",
          "variables": {
             "basePath": {
               "default": "/test"

@@ -31,7 +31,7 @@ The following example shows an identity\-based policy that allows a user to crea
         "arn:aws:apigateway:us-east-1::/restapis/??????????"
       ],
       "Condition": {
-        "ForAnyValue:StringEqualsIfExists": {
+        "ForAllValues:StringEqualsIfExists": {
           "apigateway:Request/EndpointType": "PRIVATE",
           "apigateway:Resource/EndpointType": "PRIVATE"
         }

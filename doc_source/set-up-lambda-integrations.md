@@ -2,7 +2,7 @@
 
  You can integrate an API method with a Lambda function using Lambda proxy integration or Lambda non\-proxy \(custom\) integration\. 
 
-In Lambda proxy integration, the setup is simple\. If your API does not require content encoding or caching, you only need to set the integration's HTTP method to POST, the integration endpoint URI to the ARN of the Lambda function invocation action of a specific Lambda function, and the credential to an IAM role with permissions to allow API Gateway to call the Lambda function on your behalf\. 
+In Lambda proxy integration, the required setup is simple\. Set the integration's HTTP method to POST, the integration endpoint URI to the ARN of the Lambda function invocation action of a specific Lambda function, and grant API Gateway permission to call the Lambda function on your behalf\.
 
 In Lambda non\-proxy integration, in addition to the proxy integration setup steps, you also specify how the incoming request data is mapped to the integration request and how the resulting integration response data is mapped to the method response\. 
 
