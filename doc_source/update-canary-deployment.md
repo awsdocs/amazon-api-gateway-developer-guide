@@ -56,15 +56,15 @@ aws apigateway update-stage                                     \
     --stage-name '{stage-name}'                                 \
     --patch-operations '[{                                      \
         "op": "replace",                                        \
-        "path": "/canarySettings/stageVariableOverides/newVar"  \
+        "path": "/canarySettings/stageVariableOverrides/newVar"  \
         "value": "newVal",                                      \
       }, {                                                      \
         "op": "replace",                                        \
-        "path": "/canarySettings/stageVariableOverides/var2"    \
+        "path": "/canarySettings/stageVariableOverrides/var2"    \
         "value": "val4",                                        \
       }, {                                                      \
         "op": "remove",                                         \
-        "path": "/canarySettings/stageVariableOverides/var1"    \
+        "path": "/canarySettings/stageVariableOverrides/var1"    \
       }]'
 ```
 
