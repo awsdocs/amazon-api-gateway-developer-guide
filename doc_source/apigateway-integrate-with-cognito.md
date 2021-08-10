@@ -12,7 +12,7 @@ To create and configure an Amazon Cognito user pool for your API, you perform th
 + Use the API Gateway console, CLI/SDK, or API to enable the authorizer on selected API methods\.
 
  To call any API methods with a user pool enabled, your API clients perform the following tasks:
-+  Use the Amazon Cognito CLI/[SDK](https://github.com/aws/amazon-cognito-identity-js/) or API to sign a user in to the chosen user pool, and obtain an identity token or access token\.
++  Use the Amazon Cognito CLI/[SDK](https://github.com/aws-amplify/amplify-js/tree/master/packages/amazon-cognito-identity-js) or API to sign a user in to the chosen user pool, and obtain an identity token or access token\.
 +  Use a client\-specific framework to call the deployed API Gateway API and supply the appropriate token in the `Authorization` header\.
 
 As the API developer, you must provide your client developers with the user pool ID, a client ID, and possibly the associated client secrets that are defined as part of the user pool\. 
