@@ -92,11 +92,13 @@ Leaving private DNS enabled is the recommended choice\. If you choose not to ena
 
 **To create a private API using the API Gateway console**
 
-1.  Sign in to the API Gateway console and choose **\+ Create API**\.
+1. Sign in to the API Gateway console at [https://console\.aws\.amazon\.com/apigateway](https://console.aws.amazon.com/apigateway)\.
 
-1.  Under **Create new API**, choose the **New API** option\.
+1. Choose **Create API**\.
 
-1. Type a name \(for example, `Simple PetStore (Console, Private)`\) for **API name**\.
+1. Under **REST API**, choose **Build**\.
+
+1. Enter a name for **API Name**\.
 
 1. For **Endpoint Type**, choose `Private`\.
 

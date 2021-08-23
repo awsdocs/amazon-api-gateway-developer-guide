@@ -52,7 +52,7 @@ You can use the following variables to customize HTTP API access logs\. To learn
 | $context\.path | The request path\. For example, /\{stage\}/root/child\.  | 
 | $context\.protocol | The request protocol, for example, HTTP/1\.1\. | 
 | $context\.requestId |  The ID that API Gateway assigns to the API request\.  | 
-| $context\.requestTime | The [CLF](https://httpd.apache.org/docs/1.3/logs.html#common)\-formatted request time \(dd/MMM/yyyy:HH:mm:ss \+\-hhmm\)\. | 
+| $context\.requestTime | The [CLF](https://httpd.apache.org/docs/current/logs.html#common)\-formatted request time \(dd/MMM/yyyy:HH:mm:ss \+\-hhmm\)\. | 
 | $context\.requestTimeEpoch | The [Epoch](https://en.wikipedia.org/wiki/Unix_time)\-formatted request time\. | 
 | $context\.responseLatency | The response latency in ms\. | 
 | $context\.responseLength | The response payload length\. | 

@@ -30,7 +30,7 @@ To import an API from an OpenAPI definition file using the AWS CLI, use the `imp
 
 ```
 aws apigateway import-rest-api \
-    --endpointConfigurationTypes 'REGIONAL' \
+    --parameters endpointConfigurationTypes=REGIONAL \
     --fail-on-warnings \
     --body 'file://path/to/API_OpenAPI_template.json'
 ```

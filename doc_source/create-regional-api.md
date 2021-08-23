@@ -21,15 +21,19 @@ In cases where API clients are geographically dispersed, it may still make sense
 
 **To create a regional API using the API Gateway console**
 
-1.  Sign in to the API Gateway console and choose **\+ Create API**\.
+1. Sign in to the API Gateway console at [https://console\.aws\.amazon\.com/apigateway](https://console.aws.amazon.com/apigateway)\.
 
-1.  Under **Create new API**, choose the **New API** option\. 
+1. If this is your first time using API Gateway, you see a page that introduces you to the features of the service\. Under **REST API**, choose **Build**\. When the **Create Example API** popup appears, choose **OK**\.
 
-1.  Type a name \(for example, `Simple PetStore (Console, Regional)`\) for **API name**\. 
+   If this is not your first time using API Gateway, choose **Create API**\. Under **REST API**, choose **Build**\.
 
-1.  Choose `Regional` for **Endpoint Type**\. 
+   1. Choose **New API**\.
 
-1.  Choose **Create API**\.
+   1. Enter a name in **API Name**\.
+
+   1. Optionally, add a brief description in **Description**\.
+
+   1. Choose **Create API**\.
 
 From here on, you can proceed to set up API methods and their associated integrations as described in [creating an edge optimized API](create-api-using-console.md)\. 
 

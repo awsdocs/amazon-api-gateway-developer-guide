@@ -17,10 +17,9 @@ exports.handler = function(event, context, callback) {
 
    // A simple REQUEST authorizer example to demonstrate how to use request 
    // parameters to allow or deny a request. In this example, a request is  
-   // authorized if the client-supplied HeaderAuth1 header, QueryString1 query parameter,
-   // stage variable of StageVar1 and the accountId in the request context all match
-   // specified values of 'headerValue1', 'queryValue1', 'stageValue1', and
-   // '123456789012', respectively.
+   // authorized if the client-supplied HeaderAuth1 header and QueryString1 query parameter
+   // in the request context match the specified values of
+   // of 'headerValue1' and 'queryValue1' respectively.
 
    // Retrieve request parameters from the Lambda function input:
    var headers = event.headers;
@@ -33,7 +32,7 @@ exports.handler = function(event, context, callback) {
    var apiGatewayArnTmp = tmp[5].split('/');
    var awsAccountId = tmp[4];
    var region = tmp[3];
-   var restApiId = apiGatewayArnTmp[0];
+   var ApiId = apiGatewayArnTmp[0];
    var stage = apiGatewayArnTmp[1];
    var route = apiGatewayArnTmp[2];
        
@@ -44,16 +43,14 @@ exports.handler = function(event, context, callback) {
     condition.IpAddress = {};
     
    if (headers.HeaderAuth1 === "headerValue1"
-       && queryStringParameters.QueryString1 === "queryValue1"
-       && stageVariables.StageVar1 === "stageValue1"
-       && requestContext.accountId === "123456789012") {
+       && queryStringParameters.QueryString1 === "queryValue1") {
         callback(null, generateAllow('me', event.methodArn));
     }  else {
         callback("Unauthorized");
     }
 }
     
-// Help function to generate an IAM policy
+// Helper function to generate an IAM policy
 var generatePolicy = function(principalId, effect, resource) {
    // Required output:
    var authResponse = {};

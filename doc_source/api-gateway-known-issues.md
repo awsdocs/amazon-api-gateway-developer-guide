@@ -25,7 +25,7 @@
   + [NGINX](https://nginx.org/en/)
   +  [Heroku](https://www.heroku.com/)
 + API Gateway supports most of the [OpenAPI 2\.0 specification](https://github.com/OAI/OpenAPI-Specification/blob/master/versions/2.0.md) and the [OpenAPI 3\.0 specification](https://github.com/OAI/OpenAPI-Specification/blob/master/versions/3.0.1.md), with the following exceptions:
-  + Path segments can only contain alphanumeric characters, hyphens, periods, commas, and curly braces\. Path parameters must be separate path segments\. For example, "resource/\{path\_parameter\_name\}" is valid; "resource\{path\_parameter\_name\}" is not\.
+  + Path segments can only contain alphanumeric characters, hyphens, periods, commas, colons, and curly braces\. Path parameters must be separate path segments\. For example, "resource/\{path\_parameter\_name\}" is valid; "resource\{path\_parameter\_name\}" is not\.
   + Model names can only contain alphanumeric characters\.
   + For input parameters, only the following attributes are supported: `name`, `in`, `required`, `type`, `description`\. Other attributes are ignored\.
   + The `securitySchemes` type, if used, must be `apiKey`\. However, OAuth 2 and HTTP Basic authentication are supported via [Lambda authorizers](apigateway-use-lambda-authorizer.md); the OpenAPI configuration is achieved via [vendor extensions](api-gateway-swagger-extensions-authorizer.md)\. 

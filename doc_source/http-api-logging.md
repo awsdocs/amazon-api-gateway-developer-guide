@@ -73,7 +73,7 @@ aws apigatewayv2 update-stage --api-id abcdef \
 ## Example log formats<a name="http-api-enable-logging.examples"></a>
 
 Examples of some common access log formats are available in the API Gateway console and are listed as follows\.
-+ `CLF` \([Common Log Format](https://httpd.apache.org/docs/1.3/logs.html#common)\):
++ `CLF` \([Common Log Format](https://httpd.apache.org/docs/current/logs.html#common)\):
 
   ```
   $context.identity.sourceIp - - [$context.requestTime] "$context.httpMethod $context.routeKey $context.protocol" $context.status $context.responseLength $context.requestId

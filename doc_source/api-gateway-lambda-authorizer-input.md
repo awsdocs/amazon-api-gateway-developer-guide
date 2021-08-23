@@ -22,7 +22,7 @@
 }
 ```
 
- For a Lambda authorizer of the `REQUEST` type, API Gateway passes the required request parameters to the authorizer Lambda function as part of the `event` object\. The affected request parameters include headers, path parameters, query string parameters, stage variables, and some of request context variables\. The API caller can set the path parameters, headers, and query string parameters\. The API developer must set the stage variables during the API deployment and API Gateway provides the request context at run time\. 
+For a Lambda authorizer of the `REQUEST` type, API Gateway passes request parameters to the authorizer Lambda function as part of the `event` object\. The request parameters include headers, path parameters, query string parameters, stage variables, and some of request context variables\. The API caller can set the path parameters, headers, and query string parameters\. The API developer must set the stage variables during the API deployment and API Gateway provides the request context at run time\. 
 
 **Note**  
 Path parameters can be passed as request parameters to the Lambda authorizer function, but they cannot be used as identity sources\.
@@ -33,7 +33,6 @@ Path parameters can be passed as request parameters to the Lambda authorizer fun
 {
   "type": "REQUEST",
   "methodArn": "arn:aws:execute-api:us-east-1:123456789012:abcdef123/test/GET/request",
-  "authorizationToken": "user1,123",
   "resource": "/request",
   "path": "/request",
   "httpMethod": "GET",

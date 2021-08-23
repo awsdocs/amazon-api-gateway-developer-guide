@@ -50,7 +50,7 @@ To troubleshoot the internal server error, add the `$context.integrationErrorMes
 
 1. Choose your HTTP API\.
 
-1. Under **Metrics**, choose **Logging**\.
+1. Under **Monitor**, choose **Logging**\.
 
 1. Select the stage of your API for which you enabled logging\.
 

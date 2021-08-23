@@ -6,7 +6,7 @@ You can modify API requests from clients before they reach your backend integrat
 
 ## Transforming API requests<a name="http-api-mapping-request-parameters"></a>
 
-You use request parameters to change requests before they reach your backend integrations\. You can modify headers, query strings, the request path, or the request body\.
+You use request parameters to change requests before they reach your backend integrations\. You can modify headers, query strings, or the request path\.
 
 Request parameters are a key\-value map\. The key identifies the location of the request parameter to change, and how to change it\. The value specifies the new data for the parameter\.
 

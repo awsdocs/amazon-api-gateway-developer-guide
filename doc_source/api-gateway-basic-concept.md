@@ -7,10 +7,10 @@ API Gateway is an AWS service that supports the following:
 + Invoking exposed API methods through the frontend HTTP and WebSocket endpoints\.
 
 **API Gateway REST API**  <a name="apigateway-definition-apigateway-api"></a>
-A collection of HTTP resources and methods that are integrated with backend HTTP endpoints, Lambda functions, or other AWS services\. You can deploy this collection in one or more stages\. Typically, API resources are organized in a resource tree according to the application logic\. Each API resource can expose one or more API methods that have unique HTTP verbs supported by API Gateway\.
+A collection of HTTP resources and methods that are integrated with backend HTTP endpoints, Lambda functions, or other AWS services\. You can deploy this collection in one or more stages\. Typically, API resources are organized in a resource tree according to the application logic\. Each API resource can expose one or more API methods that have unique HTTP verbs supported by API Gateway\. For more information, see [Choosing between HTTP APIs and REST APIs](http-api-vs-rest.md)\.
 
 **API Gateway HTTP API**  <a name="apigateway-definition-http-api"></a>
-A collection of routes and methods that are integrated with backend HTTP endpoints or Lambda functions\. You can deploy this collection in one or more stages\. Each route can expose one or more API methods that have unique HTTP verbs supported by API Gateway\.
+A collection of routes and methods that are integrated with backend HTTP endpoints or Lambda functions\. You can deploy this collection in one or more stages\. Each route can expose one or more API methods that have unique HTTP verbs supported by API Gateway\. For more information, see [Choosing between HTTP APIs and REST APIs](http-api-vs-rest.md)\.
 
 **API Gateway WebSocket API**  <a name="apigateway-definition-apigateway-websocket-api"></a>
 A collection of WebSocket routes and route keys that are integrated with backend HTTP endpoints, Lambda functions, or other AWS services\. You can deploy this collection in one or more stages\. API methods are invoked through frontend WebSocket connections that you can associate with a registered custom domain name\.

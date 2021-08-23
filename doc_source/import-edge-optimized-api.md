@@ -12,9 +12,11 @@ For a tutorial on using the Import API feature from the API Gateway console, see
 
 To import an edge\-optimized API using the API Gateway console, do the following:
 
-1.  Sign in to the API Gateway console and choose **\+ Create API**\. 
+1. Sign in to the API Gateway console at [https://console\.aws\.amazon\.com/apigateway](https://console.aws.amazon.com/apigateway)\.
 
-1.  Select the **Import from OpenAPI** option under **Create new API**\.
+1. Choose **Create API**\.
+
+1. Under **REST API**, choose **Import**\.
 
 1.  Copy an API's OpenAPI definition and paste it into the code editor, or choose **Select OpenAPI File** to load an OpenAPI file from a local drive\.
 
@@ -36,7 +38,7 @@ or with an explicit specification of the `endpointConfigurationTypes` query stri
 
 ```
 aws apigateway import-rest-api \
-    --endpointConfigurationTypes=EDGE \
+    --parameters endpointConfigurationTypes=EDGE \
     --fail-on-warnings \
     --body 'file://path/to/API_OpenAPI_template.json'
 ```

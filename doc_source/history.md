@@ -1,10 +1,11 @@
 # Document history<a name="history"></a>
 
 The following table describes the important changes to the documentation since the last release of Amazon API Gateway\. For notification about updates to this documentation, you can subscribe to an RSS feed by choosing the RSS button in the top menu panel\.
-+ **Latest documentation update: **January 7, 2021
++ **Latest documentation update: **July 12, 2021
 
 | Change | Description | Date | 
 | --- |--- |--- |
+| [Managed policy update](#history) | Added `acm:GetCertificate` support to the `AWSServiceRoleForAPIGateway` policy\. For more information, see [Using service\-linked roles for API Gateway](https://docs.aws.amazon.com/apigateway/latest/developerguide/using-service-linked-roles.html)\. | July 12, 2021 | 
 | [Parameter mapping for HTTP APIs](#history) | Added support for parameter mapping for HTTP APIs\. For more information, see [Transforming API requests and responses](https://docs.aws.amazon.com/apigateway/latest/developerguide/http-api-parameter-mapping.html)\. | January 7, 2021 | 
 | [Disable the default endpoint for a REST API](#history) | Added support for disabling the default endpoint for REST APIs\. For more information, see [Disabling the default endpoint for a REST API](https://docs.aws.amazon.com/apigateway/latest/developerguide/rest-api-disable-default-endpoint.html)\. | October 29, 2020 | 
 | [Mutual TLS authentication](#history) | Added support for mutual TLS authentication for REST APIs and HTTP APIs\. For more information, see [Configuring mutual TLS authentication for a REST API ](https://docs.aws.amazon.com/apigateway/latest/developerguide/rest-api-mutual-tls.html) and [Configuring mutual TLS authentication for an HTTP API](https://docs.aws.amazon.com/apigateway/latest/developerguide/http-api-mutual-tls.html)\. | September 17, 2020 | 

@@ -293,7 +293,7 @@ Comparing this to [the Lambda custom integration setup](set-up-lambda-custom-int
    ```
    aws apigateway put-integration \
            --region us-west-2 \
-           --rest-api-id vaz7da96z6 \
+           --rest-api-id te6si5ach7 \
            --resource-id 2jf6xt \
            --http-method ANY \
            --type AWS_PROXY \

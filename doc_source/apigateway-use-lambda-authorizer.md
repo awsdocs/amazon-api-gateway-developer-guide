@@ -12,7 +12,7 @@ There are two types of Lambda authorizers:
 
   For WebSocket APIs, only request parameter\-based authorizers are supported\.
 
-It is possible to use an AWS Lambda function from an AWS account that is different from the one in which you created your Lambda authorizer function\. For more information, see [Configure a cross\-account Lambda authorizer](apigateway-lambda-authorizer-cross-account-lambda-authorizer.md)\.
+It is possible to use an AWS Lambda function from an AWS account that is different from the one in which you created your API\. For more information, see [Configure a cross\-account Lambda authorizer](apigateway-lambda-authorizer-cross-account-lambda-authorizer.md)\.
 
 For example Lambda functions, see [ aws\-apigateway\-lambda\-authorizer\-blueprints](https://github.com/awslabs/aws-apigateway-lambda-authorizer-blueprints) on GitHub\.
 

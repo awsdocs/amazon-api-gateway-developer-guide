@@ -1,6 +1,6 @@
 # x\-amazon\-apigateway\-gateway\-responses object<a name="api-gateway-swagger-extensions-gateway-responses"></a>
 
-Defines the gateway responses for an API as a string\-to\-[GatewayResponse](https://docs.aws.amazon.com/apigateway/api-reference/resource/gateway-response/) map of key\-value pairs\.
+Defines the gateway responses for an API as a string\-to\-[GatewayResponse](https://docs.aws.amazon.com/apigateway/api-reference/resource/gateway-response/) map of key\-value pairs\. The extension applies to the root\-level OpenAPI structure\.
 
 
 **Properties**  

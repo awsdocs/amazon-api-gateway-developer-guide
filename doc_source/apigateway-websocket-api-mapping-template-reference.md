@@ -30,7 +30,7 @@ This section summarizes the set of variables that are currently supported for We
 | $context\.identity\.user |  The principal identifier of the user making the request\.  | 
 | $context\.identity\.userAgent |  The User Agent of the API caller\.  | 
 | $context\.identity\.userArn |  The Amazon Resource Name \(ARN\) of the effective user identified after authentication\.  | 
-| $context\.requestTime | The [CLF](https://httpd.apache.org/docs/1.3/logs.html#common)\-formatted request time \(dd/MMM/yyyy:HH:mm:ss \+\-hhmm\)\. | 
+| $context\.requestTime | The [CLF](https://httpd.apache.org/docs/current/logs.html#common)\-formatted request time \(dd/MMM/yyyy:HH:mm:ss \+\-hhmm\)\. | 
 | $context\.requestTimeEpoch | The [Epoch](https://en.wikipedia.org/wiki/Unix_time)\-formatted request time, in milliseconds\. | 
 | $context\.stage |  The deployment stage of the API call \(for example, Beta or Prod\)\.  | 
 | $context\.status |  The response status\.  | 

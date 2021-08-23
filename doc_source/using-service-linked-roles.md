@@ -56,7 +56,8 @@ The role permissions policy allows API Gateway to complete the following actions
         {
             "Effect": "Allow",
             "Action": [
-                "acm:DescribeCertificate"
+                "acm:DescribeCertificate",
+                "acm:GetCertificate"
             ],
             "Resource": "arn:aws:acm:*:*:certificate/*"
         },
@@ -148,3 +149,15 @@ Use the IAM console, the AWS CLI, or the AWS API to delete the AWSServiceRoleFor
 ## Supported Regions for API Gateway service\-linked roles<a name="slr-regions"></a>
 
 API Gateway supports using service\-linked roles in all of the Regions where the service is available\. For more information, see [AWS Service Endpoints](https://docs.aws.amazon.com/general/latest/gr/rande.html)\.
+
+## API Gateway updates to AWS managed policies<a name="security-iam-awsmanpol-updates"></a>
+
+
+
+View details about updates to AWS managed policies for API Gateway since this service began tracking these changes\. For automatic alerts about changes to this page, subscribe to the RSS feed on the API Gateway [Document history](history.md) page\.
+
+
+| Change | Description | Date | 
+| --- | --- | --- | 
+|  Added `acm:GetCertificate` support to the `AWSServiceRoleForAPIGateway` policy\.  |  The `AWSServiceRoleForAPIGateway` policy now includes permission to call the ACM `GetCertificate` API action\.  | July 12, 2021 | 
+|  API Gateway started tracking changes  |  API Gateway started tracking changes for its AWS managed policies\.  | July 12, 2021 | 
