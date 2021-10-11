@@ -9,7 +9,7 @@ Defines a string\-to\-string map of key\-value pairs to generate gateway respons
 | --- | --- | --- | 
 | gatewayresponse\.param\-position\.param\-name | string |  `param-position` can be `header`, `path`, or `querystring`\. For more information, see [Map method request data to integration request parameters](request-response-data-mappings.md#mapping-request-parameters)\.  | 
 
-## x\-amazon\-apigateway\-gateway\-responses\.repsonseParameters example<a name="api-gateway-swagger-extensions-gateway-responses.repsonseParameters-example"></a>
+## x\-amazon\-apigateway\-gateway\-responses\.responseParameters example<a name="api-gateway-swagger-extensions-gateway-responses.responseParameters-example"></a>
 
  The following OpenAPI extensions example shows a [GatewayResponse](https://docs.aws.amazon.com/apigateway/api-reference/resource/gateway-response/) response parameter mapping expression to enable CORS support for resources on the `*.example.domain` domains\. 
 
