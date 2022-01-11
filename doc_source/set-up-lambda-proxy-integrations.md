@@ -452,7 +452,6 @@ In Lambda proxy integration, API Gateway maps the entire client request to the i
 In the input:  
 The `headers` key can only contain single\-value headers\.
 The `multiValueHeaders` key can contain multi\-value headers as well as single\-value headers\.
-If you specify values for both `headers` and `multiValueHeaders`, API Gateway merges them into a single list\. If the same key\-value pair is specified in both, only the values from `multiValueHeaders` will appear in the merged list\.
 
 In the input to the backend Lambda function, the `requestContext` object is a map of key\-value pairs\. In each pair, the key is the name of a [$context](api-gateway-mapping-template-reference.md#context-variable-reference) variable property, and the value is the value of that property\. API Gateway may add new keys to the map\.
 
