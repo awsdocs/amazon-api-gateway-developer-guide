@@ -13,7 +13,7 @@ To create a private integration, all resources must be owned by the same AWS acc
 By default, private integration traffic uses the HTTP protocol\. You can specify a [https://docs.aws.amazon.com/apigatewayv2/latest/api-reference/apis-apiid-integrations-integrationid.html](https://docs.aws.amazon.com/apigatewayv2/latest/api-reference/apis-apiid-integrations-integrationid.html) if you require private integration traffic to use HTTPS\.
 
 **Note**  
-For private integrations, API Gateway includes the [stage](http-api-stages.md) portion of the API endpoint in the request to your backend resources\. For example, a request to the `test` stage of an API includes `test/route-path` in the request to your private integration\.
+For private integrations, API Gateway includes the [stage](http-api-stages.md) portion of the API endpoint in the request to your backend resources\. For example, a request to the `test` stage of an API includes `test/route-path` in the request to your private integration\. To remove the stage name from the request to your backend resources, use [parameter mapping](http-api-parameter-mapping.md) to overwrite the request path to `$request.path`\.
 
 ## Create a private integration using an Application Load Balancer or Network Load Balancer<a name="http-api-develop-integrations-private-ELB"></a>
 

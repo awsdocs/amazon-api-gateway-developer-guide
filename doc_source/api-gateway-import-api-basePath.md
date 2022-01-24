@@ -1,4 +1,4 @@
-# Set the OpenAPI `basePath` property<a name="api-gateway-import-api-basePath"></a>
+# Set the OpenAPI`basePath` property<a name="api-gateway-import-api-basePath"></a>
 
 In [OpenAPI 2\.0](https://github.com/OAI/OpenAPI-Specification/blob/master/versions/2.0.md), you can use the `basePath` property to provide one or more path parts that precede each path defined in the `paths` property\. Because API Gateway has several ways to express a resource's path, the Import API feature provides the following options for interpreting the `basePath` property during import: ignore, prepend, and split\.
 

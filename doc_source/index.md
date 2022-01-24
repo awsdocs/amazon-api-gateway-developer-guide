@@ -1,7 +1,7 @@
 # Amazon API Gateway Developer Guide
 
 -----
-*****Copyright &copy;  Amazon Web Services, Inc. and/or its affiliates. All rights reserved.*****
+*****Copyright &copy; Amazon Web Services, Inc. and/or its affiliates. All rights reserved.*****
 
 -----
 Amazon's trademarks and trade dress may not be used in 
@@ -18,7 +18,6 @@ Amazon's trademarks and trade dress may not be used in
    + [API Gateway use cases](api-gateway-overview-developer-experience.md)
    + [Amazon API Gateway concepts](api-gateway-basic-concept.md)
    + [Choosing between HTTP APIs and REST APIs](http-api-vs-rest.md)
-   + [API Gateway pricing](api-gateway-pricing.md)
 + [Prerequisites for getting started with API Gateway](setting-up.md)
 + [Getting started with API Gateway](getting-started.md)
 + [Amazon API Gateway tutorials and workshops](api-gateway-tutorials.md)
@@ -188,7 +187,7 @@ Amazon's trademarks and trade dress may not be used in
          + [Import an edge-optimized API into API Gateway](import-edge-optimized-api.md)
          + [Import a regional API into API Gateway](import-export-api-endpoints.md)
          + [Import an OpenAPI file to update an existing API definition](api-gateway-import-api-update.md)
-         + [Set the OpenAPI basePath property](api-gateway-import-api-basePath.md)
+         + [Set the OpenAPIbasePath property](api-gateway-import-api-basePath.md)
          + [AWS variables for OpenAPI import](import-api-aws-variables.md)
          + [Errors and warnings during import](api-gateway-import-api-errors-warnings.md)
          + [Export a REST API from API Gateway](api-gateway-export-api.md)

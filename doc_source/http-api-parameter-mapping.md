@@ -28,14 +28,17 @@ The following table shows supported values that you can map to parameters\.
 
 | Type | Syntax | Notes | 
 | --- | --- | --- | 
-| Header value | $request\.header\.name | Header names are case\-insensitive\. API Gateway combines multiple header values with commas, for example "header1": "value1,value2"\. Some headers are reserved\. To learn more, see [Reserved headers](#http-api-mapping-reserved-headers)\. | 
-| Query string value | $request\.querystring\.name | Query string names are case\-sensitive\. API Gateway combines multiple values with commas, for example "querystring1" "Value1,Value2"\. | 
-| Request body | $request\.body\.name | A JSON path expression\. Recursive descent \($request\.body\.\.name\) and filter expressions \(?\(expression\)\) aren't supported\.  When you specify a JSON path, API Gateway truncates the request body at 100 KB and then applies the selection expression\. To send payloads larger than 100 KB, specify `$request.body`\.   | 
-| Request path | $request\.path | The request path, without the stage name\. | 
-| Path parameter | $request\.path\.name | The value of a path parameter in the request\. For example if the route is /pets/\{petId\}, you can map the petId parameter from the request with $request\.path\.petId\. | 
-| Context variable | $context\.variableName | The value of a [context variable](http-api-logging-variables.md)\. | 
-| Stage variable | $stageVariables\.variableName | The value of a [stage variable](http-api-stages.md#http-api-stages.stage-variables)\. | 
+| Header value | $request\.header\.name or $\{request\.header\.name\} | Header names are case\-insensitive\. API Gateway combines multiple header values with commas, for example "header1": "value1,value2"\. Some headers are reserved\. To learn more, see [Reserved headers](#http-api-mapping-reserved-headers)\. | 
+| Query string value | $request\.querystring\.name or $\{request\.querystring\.name\} | Query string names are case\-sensitive\. API Gateway combines multiple values with commas, for example "querystring1" "Value1,Value2"\. | 
+| Request body | $request\.body\.name or $\{request\.body\.name\} | A JSON path expression\. Recursive descent \($request\.body\.\.name\) and filter expressions \(?\(expression\)\) aren't supported\.  When you specify a JSON path, API Gateway truncates the request body at 100 KB and then applies the selection expression\. To send payloads larger than 100 KB, specify `$request.body`\.   | 
+| Request path | $request\.path or $\{request\.path\} | The request path, without the stage name\. | 
+| Path parameter | $request\.path\.name or $\{request\.path\.name\} | The value of a path parameter in the request\. For example if the route is /pets/\{petId\}, you can map the petId parameter from the request with $request\.path\.petId\. | 
+| Context variable | $context\.variableName or $\{context\.variableName\} | The value of a [context variable](http-api-logging-variables.md)\. | 
+| Stage variable | $stageVariables\.variableName or $\{stageVariables\.variableName\} | The value of a [stage variable](http-api-stages.md#http-api-stages.stage-variables)\. | 
 | Static value | string | A constant value\. | 
+
+**Note**  
+To use multiple variables in a selection expression, enclose the variable in brackets\. For example, `${request.path.name} ${request.path.id}`\.
 
 ## Transforming API responses<a name="http-api-mapping-response-parameters"></a>
 
@@ -60,11 +63,14 @@ The following table shows supported values that you can map to parameters\.
 
 | Type | Syntax | Notes | 
 | --- | --- | --- | 
-| Header value | $request\.header\.name | Header names are case\-insensitive\. API Gateway combines multiple header values with commas, for example "header1": "value1,value2"\. Some headers are reserved\. To learn more, see [Reserved headers](#http-api-mapping-reserved-headers)\. | 
-| Response body | $response\.body\.name | A JSON path expression\. Recursive descent \($response\.body\.\.name\) and filter expressions \(?\(expression\)\) aren't supported\.  When you specify a JSON path, API Gateway truncates the response body at 100 KB and then applies the selection expression\. To send payloads larger than 100 KB, specify `$response.body`\.   | 
-| Context variable | $context\.variableName | The value of a supported [context variable](http-api-logging-variables.md)\. | 
-| Stage variable | $stageVariables\.variableName | The value of a [stage variable](http-api-stages.md#http-api-stages.stage-variables)\. | 
+| Header value | $request\.header\.name or $\{request\.header\.name\} | Header names are case\-insensitive\. API Gateway combines multiple header values with commas, for example "header1": "value1,value2"\. Some headers are reserved\. To learn more, see [Reserved headers](#http-api-mapping-reserved-headers)\. | 
+| Response body | $response\.body\.name or $\{response\.body\.name\} | A JSON path expression\. Recursive descent \($response\.body\.\.name\) and filter expressions \(?\(expression\)\) aren't supported\.  When you specify a JSON path, API Gateway truncates the response body at 100 KB and then applies the selection expression\. To send payloads larger than 100 KB, specify `$response.body`\.   | 
+| Context variable | $context\.variableName or $\{context\.variableName\} | The value of a supported [context variable](http-api-logging-variables.md)\. | 
+| Stage variable | $stageVariables\.variableName or $\{stageVariables\.variableName\} | The value of a [stage variable](http-api-stages.md#http-api-stages.stage-variables)\. | 
 | Static value | string | A constant value\. | 
+
+**Note**  
+To use multiple variables in a selection expression, enclose the variable in brackets\. For example, `${request.path.name} ${request.path.id}`\.
 
 ## Reserved headers<a name="http-api-mapping-reserved-headers"></a>
 

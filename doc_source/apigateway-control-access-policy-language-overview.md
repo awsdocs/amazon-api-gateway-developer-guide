@@ -2,7 +2,7 @@
 
 This page describes the basic elements used in Amazon API Gateway resource policies\.
 
-Resource policies are specified using the same syntax as IAM policies\. For complete policy language information, see [ Overview of IAM Policies](https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies.html) and [ AWS Identity and Access Management Policy Reference](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_policies.html) in the *IAM User Guide*\.
+Resource policies are specified using the same syntax as IAM policies\. For complete policy language information, see [ Overview of IAM Policies](https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies.html) and [AWS Identity and Access Management Policy Reference](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_policies.html) in the *IAM User Guide*\.
 
 For information about how an AWS service decides whether a given request should be allowed or denied, see [Determining Whether a Request is Allowed or Denied](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_policies_evaluation-logic.html#policy-eval-denyallow)\.
 

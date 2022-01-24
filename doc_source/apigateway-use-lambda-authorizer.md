@@ -7,7 +7,7 @@ A Lambda authorizer is useful if you want to implement a custom authorization sc
 When a client makes a request to one of your API's methods, API Gateway calls your Lambda authorizer, which takes the caller's identity as input and returns an IAM policy as output\.
 
 There are two types of Lambda authorizers:
-+ A *token\-based* Lambda authorizer \(also called a `TOKEN` authorizer\) receives the caller's identity in a bearer token, such as a JSON Web Token \(JWT\) or an OAuth token\.
++ A *token\-based* Lambda authorizer \(also called a `TOKEN` authorizer\) receives the caller's identity in a bearer token, such as a JSON Web Token \(JWT\) or an OAuth token\. For an example application, see [Open Banking Brazil \- Authorization Samples](https://github.com/aws-samples/openbanking-brazilian-auth-samples) on GitHub\.
 + A *request parameter\-based* Lambda authorizer \(also called a `REQUEST` authorizer\) receives the caller's identity in a combination of headers, query string parameters, [`stageVariables`](api-gateway-mapping-template-reference.md#stagevariables-template-reference), and [`$context`](api-gateway-mapping-template-reference.md#context-variable-reference) variables\.
 
   For WebSocket APIs, only request parameter\-based authorizers are supported\.
@@ -68,7 +68,7 @@ Before configuring a Lambda authorizer, you must first create the Lambda functio
 
 For the example Lambda authorizer functions in this section, which don't call other services, you can use the built\-in [https://docs.aws.amazon.com/lambda/latest/dg/lambda-intro-execution-role.html](https://docs.aws.amazon.com/lambda/latest/dg/lambda-intro-execution-role.html)\. When creating the Lambda function for your own API Gateway Lambda authorizer, you'll need to assign an IAM execution role to the Lambda function if it calls other AWS services\. To create the role, follow the instructions in [AWS Lambda Execution Role](https://docs.aws.amazon.com/lambda/latest/dg/lambda-intro-execution-role.html)\.
 
-For more example Lambda functions, see [ aws\-apigateway\-lambda\-authorizer\-blueprints](https://github.com/awslabs/aws-apigateway-lambda-authorizer-blueprints) on GitHub\.
+For more example Lambda functions, see [ aws\-apigateway\-lambda\-authorizer\-blueprints](https://github.com/awslabs/aws-apigateway-lambda-authorizer-blueprints) on GitHub\. For an example application, see [Open Banking Brazil \- Authorization Samples](https://github.com/aws-samples/openbanking-brazilian-auth-samples) on GitHub\.
 
 ### EXAMPLE: Create a token\-based Lambda authorizer function<a name="api-gateway-lambda-authorizer-token-lambda-function-create"></a>
 

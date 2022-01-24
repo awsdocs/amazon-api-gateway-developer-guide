@@ -122,15 +122,17 @@ The name of your Kinesis Data Firehose delivery stream must be `amazon-apigatewa
 
    1. Choose **Save Changes**\.
 
-1. To set stage\-level throttling limits for all of the methods associated with this API, do the following in the **Default Method Throttling** section: 
+1. To set stage\-level throttling targets for all of the methods associated with this API, do the following in the **Default Method Throttling** section: 
+**Note**  
+Throttling rates are not hard limits, and are applied on a best\-effort basis\. In some cases, clients can exceed the targets that you set\. Don’t rely on throttling to control costs or block access to an API\. Consider using [AWS Budgets](https://docs.aws.amazon.com/cost-management/latest/userguide/budgets-managing-costs.html) to monitor costs and [AWS WAF](https://docs.aws.amazon.com/waf/latest/developerguide/waf-chapter.html) to manage API requests\.
 
    1. Choose **Enable throttling**\.
 
-   1. For **Rate**, enter the maximum number of stage\-level steady\-state requests per second that API Gateway can serve without returning a `429 Too Many Requests` response\. This stage\-level rate limit must not be more than the [account\-level](api-gateway-request-throttling.md#apig-request-throttling-account-level-limits) rate limit as specified in [API Gateway quotas for configuring and running a REST API](limits.md#api-gateway-execution-service-limits-table)\. 
+   1. For **Rate**, enter a target rate\. This stage\-level rate must not be more than the [account\-level](api-gateway-request-throttling.md#apig-request-throttling-account-level-limits) rate as specified in [API Gateway quotas for configuring and running a REST API](limits.md#api-gateway-execution-service-limits-table)\. 
 
-   1. For **Burst**, enter the maximum number of stage\-level concurrent requests that API Gateway can serve without returning a `429 Too Many Requests` response\. This stage\-level burst must not be more than the [account\-level](api-gateway-request-throttling.md#apig-request-throttling-account-level-limits) burst limit as specified in [API Gateway quotas for configuring and running a REST API](limits.md#api-gateway-execution-service-limits-table)\. 
+   1. For **Burst**, enter a target burst rate\. This allows more requests through for a period of time than the target rate\. This stage\-level burst rate must not be more than the [account\-level](api-gateway-request-throttling.md#apig-request-throttling-account-level-limits) burst rate as specified in [API Gateway quotas for configuring and running a REST API](limits.md#api-gateway-execution-service-limits-table)\. 
 
-1.  To override the stage\-level throttling for an individual method, expand the stage in the **Stages** secondary navigation pane, choose a method, and choose **Override for this method** for **Settings**\. In the **Method Throttling** section, select the appropriate options\. 
+1.  To set stage\-level throttling targets for an individual method, expand the stage in the **Stages** secondary navigation pane, choose a method, and choose **Override for this method** for **Settings**\. In the **Method Throttling** section, select the appropriate options\. To learn more about throttling, see [Throttle API requests for better throughput](api-gateway-request-throttling.md)\.
 
 1. To associate an AWS WAF web ACL with the stage, choose a web ACL from the **Web ACL** dropdown list\.
 **Note**  

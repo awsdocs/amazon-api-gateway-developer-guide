@@ -89,7 +89,7 @@ The following AWS CloudFormation example creates an API mapping\.
 MyApiMapping:
   Type: 'AWS::ApiGatewayV2::ApiMapping'
   Properties:
-    DomainName: api.example.com.com
+    DomainName: api.example.com
     ApiMappingKey: 'orders/v2/items'
     ApiId: !Ref MyApi
     Stage: !Ref MyStage

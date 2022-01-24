@@ -34,7 +34,7 @@ When you specify the **Log Format**, you can choose which context variables to l
 | $context\.error\.responseType |  The error response type\.  | 
 | $context\.error\.validationErrorString |  A string that contains a detailed validation error message\.  | 
 | $context\.eventType |  The event type: `CONNECT`, `MESSAGE`, or `DISCONNECT`\.  | 
-| $context\.extendedRequestId | An automatically generated ID for the API call, which contains more useful information for debugging/troubleshooting\. | 
+| $context\.extendedRequestId | Equivalent to $context\.requestId\. | 
 | $context\.identity\.accountId |  The AWS account ID associated with the request\.  | 
 | $context\.identity\.apiKey |  The API owner key associated with key\-enabled API request\.  | 
 | $context\.identity\.apiKeyId | The API key ID associated with the key\-enabled API request | 

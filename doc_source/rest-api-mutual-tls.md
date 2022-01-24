@@ -7,7 +7,7 @@ You can use mutual TLS along with other [authorization and authentication operat
 **Important**  
 By default, clients can invoke your API by using the `execute-api` endpoint that API Gateway generates for your API\. To ensure that clients can access your API only by using a custom domain name with mutual TLS, disable the default `execute-api` endpoint\. To learn more, see [Disabling the default endpoint for a REST API](rest-api-disable-default-endpoint.md)\. 
 
-## Prerequisities for mutual TLS<a name="rest-api-mutual-tls-prerequisites"></a>
+## Prerequisites for mutual TLS<a name="rest-api-mutual-tls-prerequisites"></a>
 
 To configure mutual TLS you need:
 + A custom domain name
@@ -32,7 +32,9 @@ You will need to keep this certificate valid for the lifetime of your domain nam
 
 ### Configuring your truststore<a name="rest-api-mutual-tls-create-trust-store"></a>
 
-Truststores are text files with a `.pem` file extension\. They are a trusted list of certificates from Certificate Authorities\. To use mutual TLS, create a truststore of X\.509 certificates that you trust to access your API\. The certificates can be from public or private certificate authorities\. Certificates can have a maximum chain length of four\. You can also provide self\-signed certificates\. The following hashing algorithms are supported in the truststore:
+Truststores are text files with a `.pem` file extension\. They are a trusted list of certificates from Certificate Authorities\. To use mutual TLS, create a truststore of X\.509 certificates that you trust to access your API\.
+
+You must include the complete chain of trust, starting from the issuing CA certificate, up to the root CA certificate, in your truststore\. API Gateway accepts client certificates issued by any CA present in the chain of trust\. The certificates can be from public or private certificate authorities\. Certificates can have a maximum chain length of four\. You can also provide self\-signed certificates\. The following hashing algorithms are supported in the truststore:
 + SHA\-256 or stronger
 + RSA\-2048 or stronger
 + ECDSA\-256 or stronger
@@ -47,7 +49,7 @@ API Gateway validates a number of certificate properties\. You can use Lambda au
 |  Validity  |  The certificate's validity period must be current\.  | 
 |  Name chaining / key chaining  |  The names and subjects of certificates must form an unbroken chain\. Certificates can have a maximum chain length of four\.  | 
 
-### Upload the truststore to an Amazon S3 bucket in a single file<a name="w117aac17c21b7b9c13"></a>
+### Upload the truststore to an Amazon S3 bucket in a single file<a name="w124aac17c21b7b9c13"></a>
 
 The following is an example of what a \.pem file might look like\.
 
@@ -94,7 +96,9 @@ After you create the domain name, you must configure DNS records and basepath ma
 
 ## Invoke an API by using a custom domain name that requires mutual TLS<a name="rest-api-mutual-tls-invoke"></a>
 
-To invoke an API with mutual TLS enabled, clients must present a trusted certificate in the API request\. The following example `curl` command sends a request to `api.example.com,` that includes `my-cert.pem` in the request\. `my-key.key` is the private key for the certificate\.
+To invoke an API with mutual TLS enabled, clients must present a trusted certificate in the API request\. When a client attempts to invoke your API, API Gateway looks for the client certificate's issuer in your truststore\. For API Gateway to proceed with the request, the certificate's issuer and the complete chain of trust up to the root CA certificate must be in your truststore\.
+
+The following example `curl` command sends a request to `api.example.com,` that includes `my-cert.pem` in the request\. `my-key.key` is the private key for the certificate\.
 
 ```
 curl -v --key ./my-key.key --cert ./my-cert.pem api.example.com
@@ -148,11 +152,11 @@ openssl x509 -in certificate.crt -text -noout
 
 Update or remove the certificates that produced warnings, and then upload a new truststore to Amazon S3\. After uploading the new truststore, update your custom domain name to use the new truststore\.
 
-## Troubleshooting domain name conflicts<a name="w117aac17c21b7c21"></a>
+## Troubleshooting domain name conflicts<a name="w124aac17c21b7c21"></a>
 
 The error `"The certificate subject <certSubject> conflicts with an existing certificate from a different issuer."` means multiple Certificate Authorities have issued a certificate for this domain\. For each subject in the certificate, there can only be one issuer in API Gateway for mutual TLS domains\. You will need to get all of your certificates for that subject through a single issuer\. If the problem is with a certificate you don't have control of but you can prove ownership of the domain name, [contact AWS Support](https://console.aws.amazon.com/support/cases#/create) to open a ticket\.
 
-## Troubleshooting domain name status messages<a name="w117aac17c21b7c23"></a>
+## Troubleshooting domain name status messages<a name="w124aac17c21b7c23"></a>
 
 `PENDING_CERTIFICATE_REIMPORT`: This means you reimported a certificate to ACM and it failed validation because the new certificate has a SAN \(subject alternative name\) that is not covered by the `ownershipVerificationCertificate` or the subject or SANs in the certificate don't cover the domain name\. Something might be configured incorrectly or an invalid certificate was imported\. You need to reimport a valid certificate into ACM\. For more information about validation see [Validating domain ownership](https://docs.aws.amazon.com/acm/latest/userguide/domain-ownership-validation.html)\.
 

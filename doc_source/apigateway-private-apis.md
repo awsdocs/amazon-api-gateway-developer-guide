@@ -72,7 +72,7 @@ After you've created your VPC endpoint, you can use it to access multiple privat
 
 1. Complete the following information:
    + For **VPC**, choose the VPC that you want to create the endpoint in\.
-   + For **Subnets**, choose the subnets \(Availability Zones\) in which to create the endpoint network interfaces\. 
+   + For **Subnets**, choose the subnets \(Availability Zones\) in which to create the endpoint network interfaces\. To improve the availability of your API, choose multiple subnets\.
 **Note**  
 Not all Availability Zones may be supported for all AWS services\.
    + For **Enable Private DNS Name**, leave the check box selected\. Private DNS is enabled by default\.

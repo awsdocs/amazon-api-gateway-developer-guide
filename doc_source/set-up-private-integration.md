@@ -2,7 +2,7 @@
 
  The API Gateway private integration makes it simple to expose your HTTP/HTTPS resources within an Amazon VPC for access by clients outside of the VPC\. To extend access to your private VPC resources beyond the VPC boundaries, you can create an API with private integration\. You can control access to your API by using any of the [authorization methods](apigateway-control-access-to-api.md) that API Gateway supports\.
 
-To create a private integration, you must first create a Network Load Balancer\. Your Network Load Balancer must have a [listener](https://docs.aws.amazon.com/elasticloadbalancing/latest/network/load-balancer-listeners.html) that routes requests to resources in your VPC\. Then, you create a VPC link that you use to connect your API and your Network Load Balancer\. After you create a VPC link, you create private integrations to route traffic from your API to resources in your VPC through your VPC link and Network Load Balancer\.
+To create a private integration, you must first create a Network Load Balancer\. Your Network Load Balancer must have a [listener](https://docs.aws.amazon.com/elasticloadbalancing/latest/network/load-balancer-listeners.html) that routes requests to resources in your VPC\. To improve the availability of your API, ensure that your Network Load Balancer routes traffic to resources in more than one Availability Zone in the AWS Region\. Then, you create a VPC link that you use to connect your API and your Network Load Balancer\. After you create a VPC link, you create private integrations to route traffic from your API to resources in your VPC through your VPC link and Network Load Balancer\.
 
 **Note**  
 The Network Load Balancer and API must be owned by the same AWS account\.

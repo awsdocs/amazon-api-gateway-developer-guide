@@ -12,6 +12,7 @@ For information about how to create IAM policies, see [Creating Policies on the 
 + [Require that the default `execute-api` endpoint is disabled](#security_iam_id-based-policy-examples-v2-endpoint-status)
 + [Allow users to create or update only private REST APIs](#security_iam_id-based-policy-examples-private-api)
 + [Require that API routes have authorization](#security_iam_id-based-policy-examples-require-authorization)
++ [Prevent a user from creating or updating a VPC link](#security_iam_id-based-policy-examples-deny-vpc-link)
 
 ## Policy best practices<a name="security_iam_service-with-iam-policy-best-practices"></a>
 
@@ -248,6 +249,31 @@ This policy causes attempts to create or update a route \(including through [imp
           "apigateway:Request/RouteAuthorizationType": "NONE"
         }
       }
+    }
+  ]
+}
+```
+
+## Prevent a user from creating or updating a VPC link<a name="security_iam_id-based-policy-examples-deny-vpc-link"></a>
+
+This policy prevents a user from creating or updating a VPC link\. A VPC link enables you to expose resources within an Amazon VPC to clients outside of the VPC\.
+
+```
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Sid": "DenyVPCLink",
+      "Effect": "Deny",
+      "Action": [
+        "apigateway:POST",
+        "apigateway:PUT",
+        "apigateway:PATCH"
+      ],
+      "Resource": [
+        "arn:aws:apigateway:us-east-1::/vpclinks",
+        "arn:aws:apigateway:us-east-1::/vpclinks/*"
+      ]
     }
   ]
 }

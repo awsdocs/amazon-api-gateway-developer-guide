@@ -10,7 +10,7 @@ The logged data includes errors or execution traces \(such as request or respons
 
 When you deploy an API, API Gateway creates a log group and log streams under the log group\. The log group is named following the `API-Gateway-Execution-Logs_{rest-api-id}/{stage_name}` format\. Within each log group, the logs are further divided into log streams, which are ordered by **Last Event Time** as logged data is reported\. 
 
-In access logging, you, as an API developer, want to log who has accessed your API and how the caller accessed the API\. You can create your own log group or choose an existing log group that could be managed by API Gateway\. To specify the access details, you select [`$context`](api-gateway-mapping-template-reference.md#context-variable-reference) variables \(expressed in a format of your choosing\) and choose a log group as the destination\. To preserve the uniqueness of each log, the access log format must include `$context.requestId`\. 
+In access logging, you, as an API developer, want to log who has accessed your API and how the caller accessed the API\. You can create your own log group or choose an existing log group that could be managed by API Gateway\. To specify the access details, you select [`$context`](api-gateway-mapping-template-reference.md#context-variable-reference) variables \(expressed in a format of your choosing\) and choose a log group as the destination\. The access log format must include at least `$context.requestId`\. As a best practice, include `$context.requestId` and `$context.extendedRequestId` in your log format\. `$context.requestId` logs the value in the `x-amzn-RequestId` header\. Clients can override the value in the `x-amzn-RequestId` header\. API Gateway returns this request ID in the `x-amzn-RequestId` response header\. `$context.extendedRequestId` is a unique ID that API Gateway generates\. API Gateway returns this request ID in the `x-amz-apigw-id` response header\. An API caller can't provide or override this request ID\. For more information, see [`$context` Variables for data models, authorizers, mapping templates, and CloudWatch access logging](api-gateway-mapping-template-reference.md#context-variable-reference)\.
 
 **Note**  
 Only `$context` variables are supported \(not `$input`, and so on\)\.
@@ -24,7 +24,7 @@ Examples of some commonly used access log formats are shown in the API Gateway c
   $context.identity.sourceIp $context.identity.caller  \
   $context.identity.user [$context.requestTime] \
   "$context.httpMethod $context.resourcePath $context.protocol" \
-  $context.status $context.responseLength $context.requestId
+  $context.status $context.responseLength $context.requestId $context.extendedRequestId
   ```
 
   The continuation characters \(`\`\) are meant as a visual aid\. The log format must be a single line\. You can add a newline character \(`\n`\) at the end of the log format to include a newline at the end of each log entry\.
@@ -32,6 +32,7 @@ Examples of some commonly used access log formats are shown in the API Gateway c
 
   ```
   { "requestId":"$context.requestId", \
+    "extendedRequestId":"$context.extendedRequestId", \
     "ip": "$context.identity.sourceIp", \
     "caller":"$context.identity.caller", \
     "user":"$context.identity.user", \
@@ -49,6 +50,7 @@ Examples of some commonly used access log formats are shown in the API Gateway c
 
   ```
   <request id="$context.requestId"> \
+      <extendedRequestId>$context.extendedRequestId</extendedRequestId>
       <ip>$context.identity.sourceIp</ip> \
       <caller>$context.identity.caller</caller> \
       <user>$context.identity.user</user> \
@@ -68,7 +70,7 @@ Examples of some commonly used access log formats are shown in the API Gateway c
   $context.identity.sourceIp,$context.identity.caller,\
   $context.identity.user,$context.requestTime,$context.httpMethod,\
   $context.resourcePath,$context.protocol,$context.status,\
-  $context.responseLength,$context.requestId
+  $context.responseLength,$context.requestId,$context.extendedRequestId
   ```
 
   The continuation characters \(`\`\) are meant as a visual aid\. The log format must be a single line\. You can add a newline character \(`\n`\) at the end of the log format to include a newline at the end of each log entry\.

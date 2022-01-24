@@ -98,7 +98,7 @@ To create API mappings with multiple levels, you must use `AWS::ApiGatewayV2`\.
 MyApiMapping:
   Type: 'AWS::ApiGatewayV2::ApiMapping'
   Properties:
-    DomainName: api.example.com.com
+    DomainName: api.example.com
     ApiMappingKey: 'orders/v2/items'
     ApiId: !Ref MyApi
     Stage: !Ref MyStage

@@ -52,7 +52,7 @@ The following procedure describes how to create a usage plan\.
 
    1. Select **Enable throttling**, and set **Rate** \(for example, **100**\) and **Burst** \(for example, **200**\)\. 
 
-   1. Choose **Enable quota**, and set its limit \(for example, **5000**\) for a selected time interval \(for example, **Month**\)\.
+   1. Choose **Enable quota**, and set specify a value \(for example, **5000**\) for a selected time interval \(for example, **Month**\)\.
 
    1.  Choose **Next**\.
 
@@ -72,7 +72,7 @@ The following procedure describes how to create a usage plan\.
       
 ![\[Adding an API stage\]](http://docs.aws.amazon.com/apigateway/latest/developerguide/images/api-gateway-usage-plan-keys-create-add-stage.png)
 
-1. To configure [method throttling](api-gateway-request-throttling.md#apig-request-throttling-stage-and-method-level-limits), do the following:
+1. To configure method throttling, do the following:
 
    1. Choose **Configure Method Throttling**\.
 

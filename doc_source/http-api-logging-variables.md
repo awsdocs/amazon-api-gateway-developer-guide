@@ -22,7 +22,7 @@ You can use the following variables to customize HTTP API access logs\. To learn
 | $context\.error\.message |  A string that contains an API Gateway error message\.  | 
 | $context\.error\.messageString | The quoted value of $context\.error\.message, namely "$context\.error\.message"\. | 
 | $context\.error\.responseType |  A type of `GatewayResponse`\. For more information, see [Monitoring WebSocket API execution with CloudWatch metrics](apigateway-websocket-api-logging.md) and [Setting up gateway responses to customize error responses](api-gateway-gatewayResponse-definition.md#customize-gateway-responses)\.  | 
-| $context\.extendedRequestId | The extended ID that API Gateway assigns to the API request, which contains more useful information for debugging/troubleshooting\. | 
+| $context\.extendedRequestId | Equivalent to $context\.requestId\. | 
 | $context\.httpMethod |  The HTTP method used\. Valid values include: `DELETE`, `GET`, `HEAD`, `OPTIONS`, `PATCH`, `POST`, and `PUT`\.  | 
 | $context\.identity\.accountId |  The AWS account ID associated with the request\. Supported for routes that use IAM authorization\.  | 
 | $context\.identity\.caller |  The principal identifier of the caller that signed the request\. Supported for routes that use IAM authorization\.  | 

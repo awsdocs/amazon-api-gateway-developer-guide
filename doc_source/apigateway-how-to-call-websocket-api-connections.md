@@ -2,7 +2,7 @@
 
 Your backend service can use the following WebSocket connection HTTP requests to send a callback message to a connected client, get connection information, or disconnect the client\.
 
-**Important**
+**Important**  
 These requests use [IAM authorization](apigateway-websocket-control-access-iam.md), so you must sign them with [Signature Version 4 \(SigV4\)](https://docs.aws.amazon.com/general/latest/gr/sigv4_signing.html)\. To do this, you can use the API Gateway Management API\. For more information, see [ApiGatewayManagementApi](https://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/apigatewaymanagementapi.html)\.
 
 In the following command, you need to replace `{api-id}` with the actual API ID, which is displayed in the API Gateway console or returned by the AWS CLI [https://docs.aws.amazon.com/goto/aws-cli/apigatewayv2-2018-11-29/CreateApi](https://docs.aws.amazon.com/goto/aws-cli/apigatewayv2-2018-11-29/CreateApi) command\. In addition, if your API is in a Region other than `us-east-1`, you need to substitute the correct Region\.
@@ -41,10 +41,10 @@ You can dynamically build a callback URL by using the `$context` variables in yo
 
 ```
 exports.handler = function(event, context, callback) {
-  var domain = event.requestContext.domainName;
-  var stage = event.requestContext.stage;
-  var connectionId = event.requestContext.connectionId;
-  var callbackUrl = util.format(util.format('https://%s/%s/@connections/%s', domain, stage, connectionId));
-  // Do a SigV4 and then make the call
+var domain = event.requestContext.domainName;
+var stage = event.requestContext.stage;
+var connectionId = event.requestContext.connectionId;
+var callbackUrl = util.format(util.format('https://%s/%s/@connections/%s', domain, stage, connectionId));
+// Do a SigV4 and then make the call
 }
 ```

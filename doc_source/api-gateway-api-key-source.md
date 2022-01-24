@@ -1,6 +1,6 @@
 # Choose an API key source<a name="api-gateway-api-key-source"></a>
 
-When you associate a usage plan with an API and enable API keys on API methods, every incoming request to the API must contain an [API key](api-gateway-basic-concept.md#apigateway-definition-api-key)\. API Gateway reads the key and compares it against the keys in the usage plan\. If there is a match, API Gateway throttles the requests according to the plan's request limit and quota\. Otherwise, it throws an `InvalidKeyParameter` exception\. As a result, the caller receives a `403 Forbidden` response\.
+When you associate a usage plan with an API and enable API keys on API methods, every incoming request to the API must contain an [API key](api-gateway-basic-concept.md#apigateway-definition-api-key)\. API Gateway reads the key and compares it against the keys in the usage plan\. If there is a match, API Gateway throttles the requests based on the plan's request limit and quota\. Otherwise, it throws an `InvalidKeyParameter` exception\. As a result, the caller receives a `403 Forbidden` response\.
 
 Your API Gateway API can receive API keys from one of two sources:
 

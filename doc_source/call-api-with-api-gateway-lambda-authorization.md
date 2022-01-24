@@ -5,7 +5,7 @@
 **Note**  
  When calling an authorizer\-enabled method, API Gateway does not log the call to CloudWatch if the required token for the `TOKEN` authorizer is not set, is null, or is invalidated by the specified **Token validation expression**\. Similarly, API Gateway does not log the call to CloudWatch if any of the required identity sources for the `REQUEST` authorizer are not set, are null, or are empty\.
 
- In the following, we show how to use Postman to call or test the API with the previously described Lambda `TOKEN` authorizer enabled\. The method can be applied to calling an API with a Lambda `REQUEST` authorizer, if you specify the required path, header, or query string parameters explicitly\. 
+ In the following, we show how to use Postman to call or test an API with a Lambda `TOKEN` authorizer\. The method can be applied to calling an API with a Lambda `REQUEST` authorizer, if you specify the required path, header, or query string parameters explicitly\. 
 
 **To call an API with the custom `TOKEN` authorizer**
 

@@ -13,16 +13,15 @@ To complete this exercise, you need an AWS account and an AWS Identity and Acces
 In this tutorial, you use the AWS Management Console\. For an AWS SAM template that creates this API and all related resources, see [samples/http-dynamo-tutorial.zip](samples/http-dynamo-tutorial.zip)\.
 
 **Topics**
-- [Tutorial: Build a CRUD API with Lambda and DynamoDB<a name="http-api-dynamo-db"></a>](#tutorial-build-a-crud-api-with-lambda-and-dynamodb)
-  - [Step 1: Create a DynamoDB table<a name="http-api-dynamo-db-create-table"></a>](#step-1-create-a-dynamodb-table)
-  - [Step 2: Create a Lambda function<a name="http-api-dynamo-db-create-function"></a>](#step-2-create-a-lambda-function)
-  - [Step 3: Create an HTTP API<a name="http-api-dynamo-db-create-api"></a>](#step-3-create-an-http-api)
-  - [Step 4: Create routes<a name="http-api-dynamo-db-create-routes"></a>](#step-4-create-routes)
-  - [Step 5: Create an integration<a name="http-api-dynamo-db-create-integration"></a>](#step-5-create-an-integration)
-  - [Step 6: Attach your integration to routes<a name="http-api-dynamo-db-attach-integrations"></a>](#step-6-attach-your-integration-to-routes)
-  - [Step 7: Test your API<a name="http-api-dynamo-db-invoke-api"></a>](#step-7-test-your-api)
-  - [Step 8: Clean up<a name="http-api-dynamo-db-cleanup"></a>](#step-8-clean-up)
-  - [Next steps: Automate with AWS SAM or AWS CloudFormation<a name="http-api-dynamo-db-next-steps"></a>](#next-steps-automate-with-aws-sam-or-aws-cloudformation)
++ [Step 1: Create a DynamoDB table](#http-api-dynamo-db-create-table)
++ [Step 2: Create a Lambda function](#http-api-dynamo-db-create-function)
++ [Step 3: Create an HTTP API](#http-api-dynamo-db-create-api)
++ [Step 4: Create routes](#http-api-dynamo-db-create-routes)
++ [Step 5: Create an integration](#http-api-dynamo-db-create-integration)
++ [Step 6: Attach your integration to routes](#http-api-dynamo-db-attach-integrations)
++ [Step 7: Test your API](#http-api-dynamo-db-invoke-api)
++ [Step 8: Clean up](#http-api-dynamo-db-cleanup)
++ [Next steps: Automate with AWS SAM or AWS CloudFormation](#http-api-dynamo-db-next-steps)
 
 ## Step 1: Create a DynamoDB table<a name="http-api-dynamo-db-create-table"></a>
 

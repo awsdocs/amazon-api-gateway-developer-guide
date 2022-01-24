@@ -24,7 +24,6 @@ For more information about API Gateway WebSocket APIs, see [Use API Gateway to c
 + [How to get started with Amazon API Gateway](#welcome-how-to-get-started)
 + [Amazon API Gateway concepts](api-gateway-basic-concept.md)
 + [Choosing between HTTP APIs and REST APIs](http-api-vs-rest.md)
-+ [API Gateway pricing](api-gateway-pricing.md)
 
 ## Architecture of API Gateway<a name="api-gateway-overview-aws-backbone"></a>
 
@@ -45,7 +44,7 @@ Amazon API Gateway offers features such as the following:
 + [Canary release deployments](canary-release.md) for safely rolling out changes\.
 + [CloudTrail](cloudtrail.md) logging and monitoring of API usage and API changes\.
 + CloudWatch access logging and execution logging, including the ability to set alarms\. For more information, see [Monitoring REST API execution with Amazon CloudWatch metrics](monitoring-cloudwatch.md) and [Monitoring WebSocket API execution with CloudWatch metrics](apigateway-websocket-api-logging.md)\.
-+ Ability to use AWS CloudFormation templates to enable API creation\. For more information, see [Amazon API Gateway Resource Types Reference](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/cfn-reference-apigateway.html) and [Amazon API Gateway V2 Resource Types Reference](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/cfn-reference-apigatewayv2.html)\.
++ Ability to use AWS CloudFormation templates to enable API creation\. For more information, see [Amazon API Gateway Resource Types Reference](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/AWS_ApiGateway.html) and [Amazon API Gateway V2 Resource Types Reference](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/AWS_ApiGatewayV2.html)\.
 + Support for [custom domain names](how-to-custom-domains.md)\.
 + Integration with [AWS WAF](apigateway-control-access-aws-waf.md) for protecting your APIs against common web exploits\.
 + Integration with [AWS X\-Ray](apigateway-xray.md) for understanding and triaging performance latencies\.
