@@ -18,7 +18,7 @@ Per\-account limits are applied to all APIs in an account in a specified Region\
 
 ### Route\-level throttling<a name="http-api-protect-throttling-route"></a>
 
-You can set route\-level throttling to override the account\-level request throttling limits for a specific stage or for individual routes in your API\. The default route throttling limits can' exceed account\-level rate limits\.
+You can set route\-level throttling to override the account\-level request throttling limits for a specific stage or for individual routes in your API\. The default route throttling limits can't exceed account\-level rate limits\.
 
 You can configure route\-level throttling by using the AWS CLI\. The following command configures custom throttling for the specified stage and route of an API\.
 
