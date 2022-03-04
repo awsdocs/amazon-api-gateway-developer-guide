@@ -16,6 +16,7 @@
         "application/json": "{\n     \"message\": $context.error.messageString,\n     \"type\":  \"$context.error.responseType\",\n     \"stage\":  \"$context.stage\",\n     \"resourcePath\":  \"$context.resourcePath\",\n     \"stageVariables.a\":  \"$stageVariables.a\",\n     \"statusCode\": \"'404'\"\n}"
       }
     }
+  }
 ```
 
 In this example, the customization changes the status code from the default \(`403`\) to `404`\. It also adds to the gateway response four header parameters and one body mapping template for the `application/json` media type\.
