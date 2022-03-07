@@ -121,7 +121,7 @@ This example policy allows a user to create APIs with only `REQUEST` or `JWT` au
 
  This example policy allows users to create, update or import an API, with the requirement that `DisableExecuteApiEndpoint` is `true`\. When `DisableExecuteApiEndpoint` is `true`, clients can't use the default `execute-api` endpoint to invoke an API\.
 
-We use the `BoolIfExisits` condition to handle a call to update an API that doesn't have the `DisableExecuteApiEndpoint` condition key populated\. When a user attempts to create or import an API, the `DisableExecuteApiEndpoint` condition key is always populated\.
+We use the `BoolIfExists` condition to handle a call to update an API that doesn't have the `DisableExecuteApiEndpoint` condition key populated\. When a user attempts to create or import an API, the `DisableExecuteApiEndpoint` condition key is always populated\.
 
 Because the `apis/*` resource also captures sub resources such as authorizers or methods, we explicitly scope it to just APIs with a `Deny` statement\.
 
