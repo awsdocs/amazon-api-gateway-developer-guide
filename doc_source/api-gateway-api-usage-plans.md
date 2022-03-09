@@ -4,7 +4,7 @@ After you create, test, and deploy your APIs, you can use API Gateway usage plan
 
 ## What are usage plans and API keys?<a name="api-gateway-api-usage-plans-overview"></a>
 
-A *usage plan* specifies who can access one or more deployed API stages and methods—and optionally sets the target request rate to start throttling requests\. The plan uses API keys to identify API clients and who can access the associated API stages for each key\. 
+A *usage plan* specifies who can access one or more deployed API stages and methods—and optionally sets a throttling and quota limit on each API key\. Throttling limits define the maximum number of requests per second available to each key\. Quota limits define the number of requests each API key is allowed to make over a period\. The plan uses API keys to identify API clients and who can access the associated API stages for each key.
 
 *API keys* are alphanumeric string values that you distribute to application developer customers to grant access to your API\. You can use API keys together with [Lambda authorizers](apigateway-use-lambda-authorizer.md), [IAM roles](permissions.md), or [Amazon Cognito](apigateway-integrate-with-cognito.md) to control access to your APIs\. API Gateway can generate API keys on your behalf, or you can import them from a [CSV file](api-key-file-format.md)\. You can generate an API key in API Gateway, or import it into API Gateway from an external source\. For more information, see [Set up API keys using the API Gateway console](api-gateway-setup-api-key-with-console.md)\. 
 
