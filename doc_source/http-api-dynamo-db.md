@@ -181,7 +181,7 @@ Routes are a way to send incoming API requests to backend resources\. Routes con
 
 1. For the path, enter **/items/\{id\}**\. The `{id}` at the end of the path is a path parameter that API Gateway retrieves from the request path when a client makes a request\.
 
-1. Choose **Create**\.
+1. Choose **Create table**\.
 
 1. Repeat steps 4\-7 for `GET /items`, `DELETE /items/{id}`, and `PUT /items`\.
 
