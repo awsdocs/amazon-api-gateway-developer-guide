@@ -5,7 +5,7 @@ Conditions in AWS Identity and Access Management policies are part of the syntax
 + Which tags can be passed in an action's request\.
 + Whether specific tag keys can be used in a request\.
 
-Using tag\-based access control can allow for finer control than API\-level control, as well as more dynamic control than resource\-based access control\. IAM policies can be created that allow or disallow an operation based on tags provided in the request \(request tags\), or tags on the resource that is being operated on \(resource tags\)\. In general, resource tags are for resources that already exist\. Request tags are for when you're creating new resources\.
+Using tags for attribute\-based access control can allow for finer control than API\-level control, as well as more dynamic control than resource\-based access control\. IAM policies can be created that allow or disallow an operation based on tags provided in the request \(request tags\), or tags on the resource that is being operated on \(resource tags\)\. In general, resource tags are for resources that already exist\. Request tags are for when you're creating new resources\.
 
 For the complete syntax and semantics of tag condition keys, see [Controlling Access Using Tags](https://docs.aws.amazon.com/IAM/latest/UserGuide/access_tags.html) in the *IAM User Guide*\.
 

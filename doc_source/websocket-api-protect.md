@@ -16,4 +16,4 @@ Per\-account limits are applied to all APIs in an account in a specified Region\
 
 ## Route\-level throttling<a name="websocket-api-protect-throttling-route"></a>
 
-You can set route\-level throttling to override the account\-level request throttling limits for a specific stage or for individual routes in your API\. The default route throttling limits can' exceed account\-level rate limits\.
+You can set route\-level throttling to override the account\-level request throttling limits for a specific stage or for individual routes in your API\. The default route throttling limits can't exceed account\-level rate limits\.

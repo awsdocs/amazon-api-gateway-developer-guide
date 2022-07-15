@@ -277,7 +277,7 @@ To use an Amazon Cognito user pool to authorize access to the API method, set th
 
 ## Set up method request validation<a name="setup-method-request-validation"></a>
 
-You can enable request validation when setting up an API method request\. You need to first to create a [request validator](https://docs.aws.amazon.com/apigateway/api-reference/resource/request-validator/):
+You can enable request validation when setting up an API method request\. You need to first create a [request validator](https://docs.aws.amazon.com/apigateway/api-reference/resource/request-validator/):
 
 ```
 aws apigateway create-request-validator \

@@ -1,22 +1,10 @@
 # API Gateway use cases<a name="api-gateway-overview-developer-experience"></a>
 
 **Topics**
-+ [Use API Gateway to create HTTP APIs](#api-gateway-overview-http)
 + [Use API Gateway to create REST APIs](#api-gateway-overview-rest)
++ [Use API Gateway to create HTTP APIs](#api-gateway-overview-http)
 + [Use API Gateway to create WebSocket APIs](#api-gateway-overview-websocket)
 + [Who uses API Gateway?](#apigateway-who-uses-api-gateway)
-
-## Use API Gateway to create HTTP APIs<a name="api-gateway-overview-http"></a>
-
-HTTP APIs enable you to create RESTful APIs with lower latency and lower cost than REST APIs\.
-
-You can use HTTP APIs to send requests to AWS Lambda functions or to any publicly routable HTTP endpoint\.
-
-For example, you can create an HTTP API that integrates with a Lambda function on the backend\. When a client calls your API, API Gateway sends the request to the Lambda function and returns the function's response to the client\.
-
-HTTP APIs support [OpenID Connect](https://openid.net/connect/) and [OAuth 2\.0](https://oauth.net/2/) authorization\. They come with built\-in support for cross\-origin resource sharing \(CORS\) and automatic deployments\.
-
-To learn more, see [Choosing between HTTP APIs and REST APIs](http-api-vs-rest.md)\.
 
 ## Use API Gateway to create REST APIs<a name="api-gateway-overview-rest"></a>
 
@@ -33,6 +21,18 @@ To route the integration response to an appropriate method response \(of a given
 API Gateway provides REST API management functionality such as the following:
 + Support for generating SDKs and creating API documentation using API Gateway extensions to OpenAPI
 + Throttling of HTTP requests
+
+## Use API Gateway to create HTTP APIs<a name="api-gateway-overview-http"></a>
+
+HTTP APIs enable you to create RESTful APIs with lower latency and lower cost than REST APIs\.
+
+You can use HTTP APIs to send requests to AWS Lambda functions or to any publicly routable HTTP endpoint\.
+
+For example, you can create an HTTP API that integrates with a Lambda function on the backend\. When a client calls your API, API Gateway sends the request to the Lambda function and returns the function's response to the client\.
+
+HTTP APIs support [OpenID Connect](https://openid.net/connect/) and [OAuth 2\.0](https://oauth.net/2/) authorization\. They come with built\-in support for cross\-origin resource sharing \(CORS\) and automatic deployments\.
+
+To learn more, see [Choosing between REST APIs and HTTP APIs](http-api-vs-rest.md)\.
 
 ## Use API Gateway to create WebSocket APIs<a name="api-gateway-overview-websocket"></a>
 

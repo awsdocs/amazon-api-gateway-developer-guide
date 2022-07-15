@@ -24,7 +24,7 @@ The following X\-Ray sampling options are relevant for API Gateway\. String valu
 
   The stage name can be obtained from the console or the API Gateway CLI or API\. For more information about ARN formats, see the [Amazon Web Services General Reference](https://docs.aws.amazon.com/general/latest/gr/)\.
 + **HTTP method** \(string\) — The method to be sampled, for example, **GET**\.
-+ **URL path** \(string\) — This option is not supported for API Gateway\.
++ **URL path** \(string\) — The URL path of the request\.
 + \(optional\) **Attributes** \(key and value\) — Headers from the original HTTP request, for example, **Connection**, **Content\-Length**, or **Content\-Type**\. Each attribute value can be up to 32 characters long\.
 
 ## X\-Ray sampling rule examples<a name="apigateway-xray-sampling-rules-examples"></a>

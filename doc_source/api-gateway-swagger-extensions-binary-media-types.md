@@ -7,5 +7,5 @@ Specifies the list of binary media types to be supported by API Gateway, such as
 The following example shows the encoding lookup order of an API\.
 
 ```
-"x-amazon-apigateway-binary-media-types: [ "application/octet", "image/jpeg" ]
+"x-amazon-apigateway-binary-media-types": [ "application/octet", "image/jpeg" ]
 ```

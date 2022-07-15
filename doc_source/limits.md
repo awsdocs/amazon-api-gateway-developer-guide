@@ -92,7 +92,7 @@ The following quotas apply to configuring and running a REST API in Amazon API G
 | Length, in characters, of the URL for a regional API | 10240 | No | 
 | Private APIs per account per Region | 600 | No | 
 | Length, in characters, of API Gateway resource policy | 8192 | Yes | 
-| API keys per account per Region | 500 | Yes | 
+| API keys per account per Region | 10000 | No | 
 | Client certificates per account per Region | 60 | Yes | 
 | Authorizers per API \(AWS Lambda and Amazon Cognito\) | 10 | Yes | 
 | Documentation parts per API | 2000 | Yes | 

@@ -10,7 +10,7 @@ Before you use IAM to manage access to API Gateway, you should understand what I
 
 ## API Gateway identity\-based policies<a name="security_iam_service-with-iam-id-based-policies"></a>
 
-With IAM identity\-based policies, you can specify which actions and resources are allowed or denied as well as the conditions under which actions are allowed or denied\. API Gateway [supports specific actions, resources, and condition keys](https://docs.aws.amazon.com/service-authorization/latest/reference/list_manageamazonapigateway.html#manageamazonapigateway-policy-keys)\. For information about all of the elements that you use in a JSON policy, see [IAM JSON Policy Elements Reference](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_policies_elements.html) in the *IAM User Guide*\.
+With IAM identity\-based policies, you can specify which actions and resources are allowed or denied as well as the conditions under which actions are allowed or denied\. API Gateway supports specific actions, resources, and condition keys\. For more information about the API Gateway\-specific actions, resources, and condition keys, see [Actions, resources, and condition keys for Amazon API Gateway Management](https://docs.aws.amazon.com/service-authorization/latest/reference/list_amazonapigatewaymanagement.html) and [Actions, resources, and condition keys for Amazon API Gateway Management V2](https://docs.aws.amazon.com/service-authorization/latest/reference/list_amazonapigatewaymanagementv2.html)\. For information about all of the elements that you use in a JSON policy, see [IAM JSON Policy Elements Reference](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_policies_elements.html) in the *IAM User Guide*\.
 
 The following example shows an identity\-based policy that allows a user to create or update only private REST APIs\. For more examples, see [Amazon API Gateway identity\-based policy examples](security_iam_id-based-policy-examples.md)\.
 
@@ -125,7 +125,7 @@ AWS supports global condition keys and service\-specific condition keys\. To see
 
 API Gateway defines its own set of condition keys and also supports using some global condition keys\. For a list of API Gateway condition keys, see [Condition Keys for Amazon API Gateway](https://docs.aws.amazon.com/IAM/latest/UserGuide/list_manageamazonapigateway.html#manageamazonapigateway-policy-keys) in the *IAM User Guide*\. For information about which actions and resources you can use with a condition key, see [Actions Defined by Amazon API Gateway](https://docs.aws.amazon.com/IAM/latest/UserGuide/list_manageamazonapigateway.html#amazonapigateway-actions-as-permissions)\.
 
-For information about tagging, including tag\-based access control, see [Tagging your API Gateway resources](apigateway-tagging.md)\.
+For information about tagging, including attribute\-based access control, see [Tagging your API Gateway resources](apigateway-tagging.md)\.
 
 ### Examples<a name="security_iam_service-with-iam-id-based-policies-examples"></a>
 

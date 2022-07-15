@@ -2,7 +2,7 @@
 
 By default, IAM users and roles don't have permission to create or modify API Gateway resources\. They also can't perform tasks using the AWS Management Console, AWS CLI, or AWS SDKs\. An IAM administrator must create IAM policies that grant users and roles permission to perform specific API operations on the specified resources they need\. The administrator must then attach those policies to the IAM users or groups that require those permissions\.
 
-For information about how to create IAM policies, see [Creating Policies on the JSON Tab](https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_create.html#access_policies_create-json-editor) in the *IAM User Guide*\.
+For information about how to create IAM policies, see [Creating Policies on the JSON Tab](https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_create.html#access_policies_create-json-editor) in the *IAM User Guide*\. For information about the actions, resources, and conditions specific to API Gateway, see [Actions, resources, and condition keys for Amazon API Gateway Management](https://docs.aws.amazon.com/service-authorization/latest/reference/list_amazonapigatewaymanagement.html) and [Actions, resources, and condition keys for Amazon API Gateway Management V2](https://docs.aws.amazon.com/service-authorization/latest/reference/list_amazonapigatewaymanagementv2.html)\.
 
 **Topics**
 + [Policy best practices](#security_iam_service-with-iam-policy-best-practices)

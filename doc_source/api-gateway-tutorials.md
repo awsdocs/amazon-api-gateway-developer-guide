@@ -2,10 +2,6 @@
 
 The following tutorials and workshops provide hands\-on exercises to help you learn about API Gateway\.
 
-**HTTP API tutorials**
-+ [Tutorial: Build a CRUD API with Lambda and DynamoDB ](http-api-dynamo-db.md)
-+ [Tutorial: Building an HTTP API with a private integration to an Amazon ECS service](http-api-private-integration.md)
-
 **REST API tutorials**
 + [Build an API Gateway REST API with Lambda integration](getting-started-with-lambda-integration.md)
 + [Tutorial: Create a REST API by importing an example](api-gateway-create-api-from-example.md)
@@ -16,6 +12,13 @@ The following tutorials and workshops provide hands\-on exercises to help you le
 + [Tutorial: Create a REST API as an Amazon S3 proxy in API Gateway](integrating-api-with-aws-services-s3.md)
 + [Tutorial: Create a REST API as an Amazon Kinesis proxy in API Gateway](integrating-api-with-aws-services-kinesis.md)
 + [Tutorial: Building a private REST API](private-api-tutorial.md)
+
+**HTTP API tutorials**
++ [Tutorial: Build a CRUD API with Lambda and DynamoDB ](http-api-dynamo-db.md)
++ [Tutorial: Building an HTTP API with a private integration to an Amazon ECS service](http-api-private-integration.md)
+
+**WebSocket API tutorials**
++ [Tutorial: Building a serverless chat app with a WebSocket API, Lambda and DynamoDB](websocket-api-chat-app.md)
 
 **Workshops**
 + [Build a serverless web application](https://webapp.serverlessworkshops.io)

@@ -24,7 +24,7 @@ To configure mutual TLS you need:
 
 You can request a publicly trusted certificate directly from ACM or import public or self\-signed certificates\. To setup a certificate in ACM, go to [ACM](https://console.aws.amazon.com/acm/)\. If you would like to import a certificate, continue reading in the following section\.
 
-#### Using an imported or AWS Certificate Manager PCA certificate<a name="http-api-mutual-tls-non-acm-certs"></a>
+#### Using an imported or AWS Certificate Manager Private Certificate Authority certificate<a name="http-api-mutual-tls-non-acm-certs"></a>
 
 To use a certificate imported into ACM or a certificate from AWS Certificate Manager Private Certificate Authority with mutual TLS, API Gateway needs an `ownershipVerificationCertificate` issued by ACM\. This ownership certificate is only used to verify that you have permissions to use the domain name\. It is not used for the TLS handshake\. If you don't already have a `ownershipVerificationCertificate`, go to [https://console\.aws\.amazon\.com/acm/](https://console.aws.amazon.com/acm/) to set one up\.
 
@@ -49,7 +49,7 @@ API Gateway validates a number of certificate properties\. You can use Lambda au
 |  Validity  |  The certificate's validity period must be current\.  | 
 |  Name chaining / key chaining  |  The names and subjects of certificates must form an unbroken chain\. Certificates can have a maximum chain length of four\.  | 
 
-### Upload the truststore to an Amazon S3 bucket in a single file<a name="w124aac15c19b9b9c13"></a>
+### Upload the truststore to an Amazon S3 bucket in a single file<a name="w124aac17c17b9b9c13"></a>
 
 **Example certificates\.pem**  
 
@@ -148,11 +148,11 @@ openssl x509 -in certificate.crt -text -noout
 
 Update or remove the certificates that produced warnings, and then upload a new truststore to Amazon S3\. After uploading the new truststore, update your custom domain name to use the new truststore\.
 
-## Troubleshooting domain name conflicts<a name="w124aac15c19b9c21"></a>
+## Troubleshooting domain name conflicts<a name="w124aac17c17b9c21"></a>
 
 The error `"The certificate subject <certSubject> conflicts with an existing certificate from a different issuer."` means multiple Certificate Authorities have issued a certificate for this domain\. For each subject in the certificate, there can only be one issuer in API Gateway for mutual TLS domains\. You will need to get all of your certificates for that subject through a single issuer\. If the problem is with a certificate you don't have control of but you can prove ownership of the domain name, [contact AWS Support](https://console.aws.amazon.com/support/cases#/create) to open a ticket\.
 
-## Troubleshooting domain name status messages<a name="w124aac15c19b9c23"></a>
+## Troubleshooting domain name status messages<a name="w124aac17c17b9c23"></a>
 
 `PENDING_CERTIFICATE_REIMPORT`: This means you reimported a certificate to ACM and it failed validation because the new certificate has a SAN \(subject alternative name\) that is not covered by the `ownershipVerificationCertificate` or the subject or SANs in the certificate don't cover the domain name\. Something might be configured incorrectly or an invalid certificate was imported\. You need to reimport a valid certificate into ACM\. For more information about validation see [Validating domain ownership](https://docs.aws.amazon.com/acm/latest/userguide/domain-ownership-validation.html)\.
 

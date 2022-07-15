@@ -141,7 +141,7 @@ The following procedures walk you through the essential steps to use these SDK c
    ```
    apig.putMethod({
    	restApiId: 'iuo308uaq7',
-   	resourceId: '8sxa2j,
+   	resourceId: '8sxa2j',
    	httpMethod: 'GET',
    	authorizationType: 'NONE'
    }, function(err, data){

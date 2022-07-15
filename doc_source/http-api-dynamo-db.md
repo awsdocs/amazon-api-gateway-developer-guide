@@ -37,7 +37,7 @@ Each item has a unique ID, which we use as the [partition key](https://docs.aws.
 
 1. For **Table name**, enter **http\-crud\-tutorial\-items**\.
 
-1. For **Primary key**, enter **id**\.
+1. For **Partition key**, enter **id**\.
 
 1. Choose **Create**\. 
 
@@ -258,7 +258,7 @@ To make sure that your API is working, you use [curl](https://curl.se)\.
 + Use the following command to create or update an item\. The command includes a request body with the item's ID, price, and name\.
 
   ```
-  curl -v -X "PUT" -H "Content-Type: application/json" -d "{\"id\": \"abcdef234\", \"price\": 12345, \"name\": \"myitem\"}" https://abcdef123.execute-api.us-west-2.amazonaws.com/items
+  curl -v -X "PUT" -H "Content-Type: application/json" -d "{\"id\": \"123\", \"price\": 12345, \"name\": \"myitem\"}" https://abcdef123.execute-api.us-west-2.amazonaws.com/items
   ```
 
 **To get all items**
@@ -272,7 +272,7 @@ To make sure that your API is working, you use [curl](https://curl.se)\.
 + Use the following command to get an item by its ID\.
 
   ```
-  curl -v https://abcdef123.execute-api.us-west-2.amazonaws.com/items/abcdef234
+  curl -v https://abcdef123.execute-api.us-west-2.amazonaws.com/items/123
   ```
 
 **To delete an item**
@@ -280,7 +280,7 @@ To make sure that your API is working, you use [curl](https://curl.se)\.
 1. Use the following command to delete an item\.
 
    ```
-   curl -v -X "DELETE" https://abcdef123.execute-api.us-west-2.amazonaws.com/items/abcdef234
+   curl -v -X "DELETE" https://abcdef123.execute-api.us-west-2.amazonaws.com/items/123
    ```
 
 1. Get all items to verify that the item was deleted\.

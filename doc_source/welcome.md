@@ -7,7 +7,7 @@ API Gateway creates RESTful APIs that:
 + Enable stateless client\-server communication\.
 + Implement standard HTTP methods such as GET, POST, PUT, PATCH, and DELETE\.
 
-For more information about API Gateway REST APIs and HTTP APIs, see [Choosing between HTTP APIs and REST APIs](http-api-vs-rest.md), [Working with HTTP APIs](http-api.md), [Use API Gateway to create REST APIs](api-gateway-overview-developer-experience.md#api-gateway-overview-rest), and [Creating a REST API in Amazon API Gateway](how-to-create-api.md)\.
+For more information about API Gateway REST APIs and HTTP APIs, see [Choosing between REST APIs and HTTP APIs](http-api-vs-rest.md), [Working with HTTP APIs](http-api.md), [Use API Gateway to create REST APIs](api-gateway-overview-developer-experience.md#api-gateway-overview-rest), and [Creating a REST API in Amazon API Gateway](how-to-create-api.md)\.
 
 API Gateway creates WebSocket APIs that:
 + Adhere to the [WebSocket](https://tools.ietf.org/html/rfc6455) protocol, which enables stateful, full\-duplex communication between client and server\.
@@ -23,7 +23,7 @@ For more information about API Gateway WebSocket APIs, see [Use API Gateway to c
 + [Part of AWS serverless infrastructure](#api-gateway-overview-a-serverless-pillar)
 + [How to get started with Amazon API Gateway](#welcome-how-to-get-started)
 + [Amazon API Gateway concepts](api-gateway-basic-concept.md)
-+ [Choosing between HTTP APIs and REST APIs](http-api-vs-rest.md)
++ [Choosing between REST APIs and HTTP APIs](http-api-vs-rest.md)
 
 ## Architecture of API Gateway<a name="api-gateway-overview-aws-backbone"></a>
 

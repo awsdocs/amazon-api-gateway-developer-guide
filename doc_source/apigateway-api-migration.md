@@ -55,7 +55,7 @@ To change the API endpoint type of your API, perform one of the following sets o
 
 ```
 aws apigateway update-rest-api \
-    --rest-api-id {api-id} 
+    --rest-api-id {api-id} \
     --patch-operations op=replace,path=/endpointConfiguration/types/EDGE,value=REGIONAL
 ```
 
@@ -78,7 +78,7 @@ Conversely, update a regional API to an edge\-optimized API as follows:
 
 ```
 aws apigateway update-rest-api \
-    --rest-api-id {api-id} 
+    --rest-api-id {api-id} \
     --patch-operations op=replace,path=/endpointConfiguration/types/REGIONAL,value=EDGE
 ```
 

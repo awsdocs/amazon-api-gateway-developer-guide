@@ -4,6 +4,9 @@ In this getting started exercise, you create a serverless API\. Serverless APIs 
 
 First, you create a Lambda function using the AWS Lambda console\. Next, you create an HTTP API using the API Gateway console\. Then, you invoke your API\.
 
+**Note**  
+This exercise uses an HTTP API for simplicity\. API Gateway also supports REST APIs, which include more features\. To learn more, see [Choosing between REST APIs and HTTP APIs](http-api-vs-rest.md)\.
+
 When you invoke your HTTP API, API Gateway routes the request to your Lambda function\. Lambda runs the Lambda function and returns a response to API Gateway\. API Gateway then returns a response to you\.
 
 ![\[Architectural overview of the API that you create in this getting started guide. Clients use an API Gateway HTTP API to invoke a Lambda function. API Gateway returns the Lambda function's response to clients.\]](http://docs.aws.amazon.com/apigateway/latest/developerguide/images/getting-started-overview.png)
@@ -51,7 +54,7 @@ exports.handler = async (event) => {
 
 ## Step 2: Create an HTTP API<a name="getting-started-create-api"></a>
 
-Next, you create an HTTP API\. API Gateway also supports REST APIs and WebSocket APIs, but an HTTP API is the best choice for this exercise\. HTTP APIs have lower latency and lower cost than REST APIs\. WebSocket APIs maintain persistent connections with clients for full\-duplex communication, which isn't required for this example\.
+Next, you create an HTTP API\. API Gateway also supports REST APIs and WebSocket APIs, but an HTTP API is the best choice for this exercise\. REST APIs support more features than HTTP APIs, but we don't need those features for this exercise\. HTTP APIs are designed with minimal features so that they can be offered at a lower price\. WebSocket APIs maintain persistent connections with clients for full\-duplex communication, which isn't required for this example\.
 
 The HTTP API provides an HTTP endpoint for your Lambda function\. API Gateway routes requests to your Lambda function, and then returns the function's response to clients\.
 

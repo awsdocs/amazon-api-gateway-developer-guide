@@ -29,3 +29,9 @@ Use the following command to delete a VPC link\.
 ```
 aws apigatewayv2 delete-vpc-link --vpc-link-id abcd123
 ```
+
+## Availability by Region<a name="http-api-vpc-link-availability"></a>
+
+VPC links for HTTP APIs are supported in the following Regions and Availability Zones:
+
+[\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/apigateway/latest/developerguide/http-api-vpc-links.html)

@@ -16,7 +16,7 @@ In addition, tags can be set on the following REST API resources in the [Amazon 
 + `VpcLink`
 
 Tags cannot be set directly on other resources\. However, in the [Amazon API Gateway V1 API](https://docs.aws.amazon.com/apigateway/api-reference/), child resources inherit the tags that are set on parent resources\. For example:
-+ If a tag is set on a `RestApi` resource, that tag is inherited by the following child resources of that `RestApi`:
++ If a tag is set on a `RestApi` resource, that tag is inherited by the following child resources of that `RestApi` for [Attribute\-based access control](https://docs.aws.amazon.com/IAM/latest/UserGuide/introduction_attribute-based-access-control.html):
   + `Authorizer`
   + `Deployment`
   + `Documentation`
@@ -30,6 +30,9 @@ Tags cannot be set directly on other resources\. However, in the [Amazon API Gat
   + `Stage`
 + If a tag is set on a `DomainName`, that tag is inherited by any `BasePathMapping` resources under it\.
 + If a tag is set on a `UsagePlan`, that tag is inherited by any `UsagePlanKey` resources under it\.
+
+**Note**  
+Tag inheritance applies only to [attribute\-based access control](https://docs.aws.amazon.com/IAM/latest/UserGuide/introduction_attribute-based-access-control.html)\. For example, you can't use inherited tags to monitor costs in AWS Cost Explorer\. API Gateway doesn't return inherited tags when you call [GetTags](https://docs.aws.amazon.com/cli/latest/reference/apigateway/get-tags.html) for a resource\.
 
 ## Tag inheritance in the Amazon API Gateway V1 API<a name="apigateway-tagging-inheritance"></a>
 

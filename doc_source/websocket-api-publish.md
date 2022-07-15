@@ -5,5 +5,6 @@ Simply creating and developing an API Gateway API doesn't automatically make it 
 In this section, you can learn how to deploy your API and customize the URL that you provide to users to access it\. 
 
 **Topics**
++ [Working with stages for WebSocket APIs](websocket-api-stages.md)
 + [Deploy a WebSocket API in API Gateway](apigateway-set-up-websocket-deployment.md)
 + [Setting up custom domain names for WebSocket APIs](websocket-api-custom-domain-names.md)
