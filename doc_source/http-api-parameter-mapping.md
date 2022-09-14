@@ -132,7 +132,7 @@ aws apigatewayv2 create-integration \
 
 ### Change the response from an integration<a name="http-api-parameter-mapping-examples-response"></a>
 
-The following example configures response parameters for an integration\. When the integrations returns a 500 status code, API Gateway changes the status code to 403, and adds `header1`1 to the response\. When the integration returns a 404 status code, API Gateway adds an `error` header to the response\.
+The following example configures response parameters for an integration\. When the integration returns a 500 status code, API Gateway changes the status code to 403, and adds `header1` to the response\. When the integration returns a 404 status code, API Gateway adds an `error` header to the response\.
 
 ```
 aws apigatewayv2 create-integration \
