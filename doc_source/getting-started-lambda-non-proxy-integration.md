@@ -238,9 +238,9 @@ If you did not use the AWS Management Console to create the Lambda function, you
 
    1. In the **Method Execution** pane, choose **Method Request**\.
 
-   1. Expand the **URL Query String Parameters** section\. Choose **Add query string**\. Type `time` for **Name**\. Select the **Required** option and choose the check\-mark icon to save the setting\. Leave **Caching** cleared to avoid an unnecessary charge for this exercise\.
+   1. Expand the **URL Query String Parameters** section\. Choose **Add query string**\. Type `time` for **Name**\.  Press the check\-mark icon to save the parameter\. Select the **Required** option and leave **Caching** cleared to avoid an unnecessary charge for this exercise\.
 
-   1. Expand the **HTTP Request Headers** section\. Choose **Add header**\. Type `day` for **Name**\. Select the **Required** option and choose the check\-mark icon to save the setting\. Leave **Caching** cleared to avoid an unnecessary charge for this exercise\. 
+   1. Expand the **HTTP Request Headers** section\. Choose **Add header**\. Type `day` for **Name**\. Press the check\-mark icon to save the header\. Select the **Required** option and leave **Caching** cleared to avoid an unnecessary charge for this exercise\. 
 
    1. To define the method request payload, do the following: 
 
