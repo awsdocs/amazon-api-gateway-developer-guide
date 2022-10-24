@@ -353,3 +353,5 @@ To troubleshoot errors, [enable access logging](http-api-logging.md) for your AP
 If the logs indicate that API Gateway doesn't have permission to invoke your function, update your function's resource policy or provide an IAM role to grant API Gateway permission to invoke your authorizer\.
 
 If the logs indicate that your Lambda function returns an invalid response, verify that your Lambda function returns a response in the [required format](#http-api-lambda-authorizer.payload-format-response)\.
+
+Ensure that the request being made to API Gateway includes the identity source header, otherwise API Gateway will directly return a 401. In this case there is no authorizer error logged, because the authorizer was not invoked. 
