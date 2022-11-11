@@ -1,6 +1,6 @@
 # Updates to a REST API that require redeployment<a name="updating-api"></a>
 
-Maintaining an API amounts to viewing, updating and deleting the existing API setups\. You can maintain an API using the API Gateway console, AWS CLI, an SDK or the API Gateway REST API\. Updating an API involves modifying certain resource properties or configuration settings of the API\. Resource updates require redeploying the API, whereas configuration updates do not\. 
+Maintaining an API amounts to viewing, updating and deleting the existing API setups\. You can maintain an API using the API Gateway console, AWS CLI, an SDK or the API Gateway REST API\. Updating an API involves modifying certain resource properties or configuration settings of the API\. Resource updates require redeploying the API, whereas configuration updates do not, except by enabling or disabling the default endpoint\. 
 
 API resources that can be updated are detailed in the following table\.
 
@@ -38,5 +38,3 @@ API resources that can be updated are detailed in the following table\.
 | [Stage](https://docs.aws.amazon.com/apigateway/api-reference/resource/stage/) |  For applicable properties and supported operations, see [stage:update](https://docs.aws.amazon.com/apigateway/api-reference/link-relation/stage-update/#remarks)\. The update does not require redeploying the API\.  | 
 | [Usage](https://docs.aws.amazon.com/apigateway/api-reference/resource/usage/) |  For applicable properties and supported operations, see [usage:update](https://docs.aws.amazon.com/apigateway/api-reference/link-relation/usage-update/#remarks)\. The update does not require redeploying the API\.  | 
 | [UsagePlan](https://docs.aws.amazon.com/apigateway/api-reference/resource/usage-plan/) | For applicable properties and supported operations, see [usageplan:update](https://docs.aws.amazon.com/apigateway/api-reference/link-relation/usageplan-update/#remarks)\. The update does not require redeploying the API\. | 
-
-**Topics**
