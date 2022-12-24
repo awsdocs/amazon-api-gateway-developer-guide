@@ -3,7 +3,7 @@
 If you are using the [API Gateway Import API](api-gateway-import-api.md), you can set up CORS support using an OpenAPI file\. You must first define an `OPTIONS` method in your resource that returns the required headers\.
 
 **Note**  
-Web browsers expect Access\-Control\-Allow\-Headers, and Access\-Control\-Allow\-Origin headers to be set up in each API method that accepts CORS requests\. In addition, some browsers first make an HTTP request to an `OPTIONS` method in the same resource, and then expect to receive the same headers\.
+Web browsers expect the Access\-Control\-Allow\-Origin header to be set up in each API method that accepts CORS requests\. In addition, some browsers first make an HTTP request to an `OPTIONS` method in the same resource, and then expect to receive the Access\-Control\-Allow\-Headers, Access\-Control\-Allow\-Methods, and Access\-Control\-Allow\-Origin headers\.
 
 The following example creates an `OPTIONS` method for a mock integration\.
 
@@ -112,12 +112,6 @@ Once you have configured the `OPTIONS` method for your resource, you can add the
              Access-Control-Allow-Origin:
                schema:
                  type: string
-             Access-Control-Allow-Methods:
-               schema:
-                 type: string
-             Access-Control-Allow-Headers:
-               schema:
-                 type: string
            content: {}
    ```
 
@@ -129,10 +123,6 @@ Once you have configured the `OPTIONS` method for your resource, you can add the
            200:
              description: Default response for CORS method
              headers:
-               Access-Control-Allow-Headers:
-                 type: "string"
-               Access-Control-Allow-Methods:
-                 type: "string"
                Access-Control-Allow-Origin:
                  type: "string"
    ```
@@ -149,8 +139,6 @@ Once you have configured the `OPTIONS` method for your resource, you can add the
            default:
              statusCode: "200"
              responseParameters:
-               method.response.header.Access-Control-Allow-Headers: '''Content-Type,X-Amz-Date,Authorization,X-Api-Key'''
-               method.response.header.Access-Control-Allow-Methods: '''*'''
                method.response.header.Access-Control-Allow-Origin: '''*'''
              responseTemplates:
                application/json: |
@@ -165,8 +153,6 @@ Once you have configured the `OPTIONS` method for your resource, you can add the
              "default":
                statusCode: "200"
                responseParameters:
-                 method.response.header.Access-Control-Allow-Headers : "'Content-Type,X-Amz-Date,Authorization,X-Api-Key'"
-                 method.response.header.Access-Control-Allow-Methods : "'*'"
                  method.response.header.Access-Control-Allow-Origin : "'*'"
    ```
 
