@@ -76,7 +76,7 @@ Format `2.0` includes a new `cookies` field\. All cookie headers in the request 
     "time": "12/Mar/2020:19:03:58 +0000",
     "timeEpoch": 1583348638390
   },
-  "body": "Hello from Lambda",
+  "body": "Hello to Lambda",
   "pathParameters": {
     "parameter1": "value1"
   },
