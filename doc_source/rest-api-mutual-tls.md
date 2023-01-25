@@ -114,7 +114,7 @@ API Gateway doesn't verify if a certificate has been revoked\.
 
 ## Updating your truststore<a name="rest-api-mutual-tls-update-truststore"></a>
 
-To update the certificates in your truststore, upload a new certificate bundle to Amazon S3\. Then, you can update your custom domain name to use the updated certificate\.
+To update the certificates in your truststore, upload a new certificate bundle to Amazon S3\. Then, you can update your custom domain name to use the updated certificate\. After the update you can expect a short propagation time, during which a few failures can be expected. Propagation is the amount of time that it takes for the changes to be updated across the internet. The propagation time for the update should be no longer than a few seconds.
 
 Use [Amazon S3 versioning](https://docs.aws.amazon.com/AmazonS3/latest/dev/Versioning.html) to maintain multiple versions of your truststore\. When you update your custom domain name to use a new truststore version, API Gateway returns warnings if certificates are invalid\.
 
