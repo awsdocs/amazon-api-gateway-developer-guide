@@ -48,6 +48,7 @@
     }
     ```
   + Decimal number format type \(`"format": "decimal"`\) is not supported in a schema definition\.
+  + String type supports an unpublished list of formats based on [JSON Schema Validation](https://json-schema.org/draft/2019-09/json-schema-validation.html#rfc.section.7.3), for example \(`"format": "email"`\) and \(`"format": "date-time"`\) are supported however \(`"format": "uuid"`\) is not\.
   + In method responses, schema definition must be of an object type and cannot be of primitive types\. For example, `"schema": { "type": "string"}` is not supported\. However, you can work around this using the following object type:
 
     ```
