@@ -19,7 +19,7 @@
 
 ## x\-amazon\-apigateway\-authorizer examples for REST APIs<a name="api-gateway-swagger-extensions-authorizer-example"></a>
 
-The following OpenAPI security definitions example specifies a Lambda authorizer of the "token" type and named `test-authorizer`\.
+The following OpenAPI 2\.0 security definitions example specifies a Lambda authorizer of the "token" type and named `test-authorizer`\.
 
 ```
   "securityDefinitions" : {
@@ -42,83 +42,83 @@ The following OpenAPI security definitions example specifies a Lambda authorizer
 The following OpenAPI operation object snippet sets the `GET /http` to use the preceding Lambda authorizer\.
 
 ```
-   "/http" : {
-      "get" : {
-        "responses" : { },
-        "security" : [ {
-          "test-authorizer" : [ ]
-        } ],
-        "x-amazon-apigateway-integration" : {
-          "type" : "http",
-          "responses" : {
-            "default" : {
-              "statusCode" : "200"
-            }
-          },
-          "httpMethod" : "GET",
-          "uri" : "http://api.example.com"
-        }
+  "/http" : {
+    "get" : {
+      "responses" : { },
+      "security" : [ {
+        "test-authorizer" : [ ]
+      } ],
+      "x-amazon-apigateway-integration" : {
+        "type" : "http",
+        "responses" : {
+          "default" : {
+            "statusCode" : "200"
+          }
+        },
+        "httpMethod" : "GET",
+        "uri" : "http://api.example.com"
       }
     }
+  }
 ```
 
-The following OpenAPI security definitions example specifies a Lambda authorizer of the "request" type, with a single header parameter \(`auth`\) as the identity source\. The `securityDefinitions` is named `request_authorizer_single_header`\.
+The following OpenAPI 2\.0 security definitions example specifies a Lambda authorizer of the "request" type, with a single header parameter \(`auth`\) as the identity source\. The `securityDefinitions` is named `request_authorizer_single_header`\.
 
 ```
 "securityDefinitions": {
-    "request_authorizer_single_header" : {
-      "type" : "apiKey",
-      "name" : "auth",               // The name of a single header or query parameter as the identity source.
-      "in" : "header",               // The location of the single identity source request parameter. The valid value is "header" or "query"
-      "x-amazon-apigateway-authtype" : "custom",
-      "x-amazon-apigateway-authorizer" : {
-        "type" : "request",
-        "identitySource" : "method.request.header.auth",   // Request parameter mapping expression of the identity source. In this example, it is the 'auth' header.
-        "authorizerCredentials" : "arn:aws:iam::123456789012:role/AWSepIntegTest-CS-LambdaRole",
-        "authorizerUri" : "arn:aws:apigateway:us-east-1:lambda:path/2015-03-31/functions/arn:aws:lambda:us-east-1:123456789012:function:APIGateway-Request-Authorizer:vtwo/invocations",
-        "authorizerResultTtlInSeconds" : 300
-      }
+  "request_authorizer_single_header" : {
+    "type" : "apiKey",
+    "name" : "auth",               // The name of a single header or query parameter as the identity source.
+    "in" : "header",               // The location of the single identity source request parameter. The valid value is "header" or "query"
+    "x-amazon-apigateway-authtype" : "custom",
+    "x-amazon-apigateway-authorizer" : {
+      "type" : "request",
+      "identitySource" : "method.request.header.auth",   // Request parameter mapping expression of the identity source. In this example, it is the 'auth' header.
+      "authorizerCredentials" : "arn:aws:iam::123456789012:role/AWSepIntegTest-CS-LambdaRole",
+      "authorizerUri" : "arn:aws:apigateway:us-east-1:lambda:path/2015-03-31/functions/arn:aws:lambda:us-east-1:123456789012:function:APIGateway-Request-Authorizer:vtwo/invocations",
+      "authorizerResultTtlInSeconds" : 300
     }
+  }
 }
 ```
 
-The following OpenAPI security definitions example specifies a Lambda authorizer of the "request" type, with one header \(`HeaderAuth1`\) and one query string parameter `QueryString1` as the identity sources\.
+The following OpenAPI 2\.0 security definitions example specifies a Lambda authorizer of the "request" type, with one header \(`HeaderAuth1`\) and one query string parameter `QueryString1` as the identity sources\.
 
 ```
 "securityDefinitions": {
-    "request_authorizer_header_query" : {
-      "type" : "apiKey",
-      "name" : "Unused",             // Must be "Unused" for multiple identity sources or non header or query type of request parameters.
-      "in" : "header",               // Must be "header" for multiple identity sources or non header or query type of request parameters.
-      "x-amazon-apigateway-authtype" : "custom",
-      "x-amazon-apigateway-authorizer" : {
-        "type" : "request",
-        "identitySource" : "method.request.header.HeaderAuth1, method.request.querystring.QueryString1",   // Request parameter mapping expressions of the identity sources.
-        "authorizerCredentials" : "arn:aws:iam::123456789012:role/AWSepIntegTest-CS-LambdaRole",
-        "authorizerUri" : "arn:aws:apigateway:us-east-1:lambda:path/2015-03-31/functions/arn:aws:lambda:us-east-1:123456789012:function:APIGateway-Request-Authorizer:vtwo/invocations",
-        "authorizerResultTtlInSeconds" : 300
-      }
+  "request_authorizer_header_query" : {
+    "type" : "apiKey",
+    "name" : "Unused",             // Must be "Unused" for multiple identity sources or non header or query type of request parameters.
+    "in" : "header",               // Must be "header" for multiple identity sources or non header or query type of request parameters.
+    "x-amazon-apigateway-authtype" : "custom",
+    "x-amazon-apigateway-authorizer" : {
+      "type" : "request",
+      "identitySource" : "method.request.header.HeaderAuth1, method.request.querystring.QueryString1",   // Request parameter mapping expressions of the identity sources.
+      "authorizerCredentials" : "arn:aws:iam::123456789012:role/AWSepIntegTest-CS-LambdaRole",
+      "authorizerUri" : "arn:aws:apigateway:us-east-1:lambda:path/2015-03-31/functions/arn:aws:lambda:us-east-1:123456789012:function:APIGateway-Request-Authorizer:vtwo/invocations",
+      "authorizerResultTtlInSeconds" : 300
     }
+  }
 }
 ```
 
-The following OpenAPI security definitions example specifies an API Gateway Lambda authorizer of the "request" type, with a single stage variable \(`stage`\) as the identity source\. 
+The following OpenAPI 2\.0 security definitions example specifies an API Gateway Lambda authorizer of the "request" type, with a single stage variable \(`stage`\) as the identity source\.
 
 ```
 "securityDefinitions": {
-    "request_authorizer_single_stagevar" : {
-      "type" : "apiKey",
-      "name" : "Unused",             // Must be "Unused", for multiple identity sources or non header or query type of request parameters.
-      "in" : "header",               // Must be "header", for multiple identity sources or non header or query type of request parameters.
-      "x-amazon-apigateway-authtype" : "custom",
-      "x-amazon-apigateway-authorizer" : {
-        "type" : "request",
-        "identitySource" : "stageVariables.stage",   // Request parameter mapping expression of the identity source. In this example, it is the stage variable.
-        "authorizerCredentials" : "arn:aws:iam::123456789012:role/AWSepIntegTest-CS-LambdaRole",
-        "authorizerUri" : "arn:aws:apigateway:us-east-1:lambda:path/2015-03-31/functions/arn:aws:lambda:us-east-1:123456789012:function:APIGateway-Request-Authorizer:vtwo/invocations",
-        "authorizerResultTtlInSeconds" : 300
-      }
+  "request_authorizer_single_stagevar" : {
+    "type" : "apiKey",
+    "name" : "Unused",             // Must be "Unused", for multiple identity sources or non header or query type of request parameters.
+    "in" : "header",               // Must be "header", for multiple identity sources or non header or query type of request parameters.
+    "x-amazon-apigateway-authtype" : "custom",
+    "x-amazon-apigateway-authorizer" : {
+      "type" : "request",
+      "identitySource" : "stageVariables.stage",   // Request parameter mapping expression of the identity source. In this example, it is the stage variable.
+      "authorizerCredentials" : "arn:aws:iam::123456789012:role/AWSepIntegTest-CS-LambdaRole",
+      "authorizerUri" : "arn:aws:apigateway:us-east-1:lambda:path/2015-03-31/functions/arn:aws:lambda:us-east-1:123456789012:function:APIGateway-Request-Authorizer:vtwo/invocations",
+      "authorizerResultTtlInSeconds" : 300
     }
+  }
 }
 ```
 
@@ -130,16 +130,16 @@ The following OpenAPI 3\.0 example creates a JWT authorizer for an HTTP API that
 "securitySchemes": {
   "jwt-authorizer-oauth": {
     "type": "oauth2",
-     "x-amazon-apigateway-authorizer": {
-       "type": "jwt",
-       "jwtConfiguration": {
-          "issuer": "https://cognito-idp.region.amazonaws.com/userPoolId",
-          "audience": [
-            "audience1",
-            "audience2"
-          ]
-        },
-        "identitySource": "$request.header.Authorization"
+    "x-amazon-apigateway-authorizer": {
+      "type": "jwt",
+      "jwtConfiguration": {
+        "issuer": "https://cognito-idp.region.amazonaws.com/userPoolId",
+        "audience": [
+          "audience1",
+          "audience2"
+        ]
+      },
+      "identitySource": "$request.header.Authorization"
     }
   }
 }
