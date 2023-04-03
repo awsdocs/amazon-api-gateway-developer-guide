@@ -30,11 +30,11 @@ Authorization: AWS4-HMAC-SHA256 Credential=access_key_id/YYYYMMDD/region/apigate
 
 If successful, the operation returns a `200 OK` response, containing the newly created `DocumentationVersion` instance as the payload\.
 
-Alternatively, you can create a documentation snapshot without associating it with an API stage first and then call [restapi:update](https://docs.aws.amazon.com/apigateway/api-reference/link-relation/restapi-update/) to associate the snapshot with a specified API stage\. You can also update or query an existing documentation snapshot and then update its stage association\. We show the steps in the next four sections\.
+Alternatively, you can create a documentation snapshot without associating it with an API stage first and then call [restapi:update](https://docs.aws.amazon.com/apigateway/latest/api/API_UpdateRestApi.html/) to associate the snapshot with a specified API stage\. You can also update or query an existing documentation snapshot and then update its stage association\. We show the steps in the next four sections\.
 
 ## Create a documentation snapshot<a name="api-gateway-documenting-api-publishing-create-documentation-version"></a>
 
-To create a snapshot of an API's documentation parts, create a new [DocumentationVersion](https://docs.aws.amazon.com/apigateway/api-reference/resource/documentation-version/) resource and add it to the [DocumentationVersions](https://docs.aws.amazon.com/apigateway/api-reference/resource/documentation-versions/) collection of the API:
+To create a snapshot of an API's documentation parts, create a new [DocumentationVersion](https://docs.aws.amazon.com/apigateway/latest/api/API_DocumentationVersion.html) resource and add it to the [DocumentationVersions](https://docs.aws.amazon.com/apigateway/latest/api/API_DocumentationVersion.html) collection of the API:
 
 ```
 POST /restapis/restapi_id/documentation/versions HTTP/1.1
@@ -53,7 +53,7 @@ If successful, the operation returns a `200 OK` response, containing the newly c
 
 ## Update a documentation snapshot<a name="api-gateway-documenting-api-publishing-update-documentation-version"></a>
 
-You can only update a documentation snapshot by modifying the `description` property of the corresponding [DocumentationVersion](https://docs.aws.amazon.com/apigateway/api-reference/resource/documentation-version/) resource\. The following example shows how to update the description of the documentation snapshot as identified by its version identifier, `version`, e\.g\., `1.0.0`\.
+You can only update a documentation snapshot by modifying the `description` property of the corresponding [DocumentationVersion](https://docs.aws.amazon.com/apigateway/latest/api/API_DocumentationVersion.html) resource\. The following example shows how to update the description of the documentation snapshot as identified by its version identifier, `version`, e\.g\., `1.0.0`\.
 
 ```
 PATCH /restapis/restapi_id/documentation/versions/version HTTP/1.1
@@ -75,7 +75,7 @@ If successful, the operation returns a `200 OK` response, containing the updated
 
 ## Get a documentation snapshot<a name="api-gateway-documenting-api-publishing-get-documentation-version"></a>
 
-To get a documentation snapshot, submit a `GET` request against the specified [DocumentationVersion](https://docs.aws.amazon.com/apigateway/api-reference/resource/documentation-version/) resource\. The following example shows how to get a documentation snapshot of a given version identifier, 1\.0\.0\.
+To get a documentation snapshot, submit a `GET` request against the specified [DocumentationVersion](https://docs.aws.amazon.com/apigateway/latest/api/API_DocumentationVersion.html) resource\. The following example shows how to get a documentation snapshot of a given version identifier, 1\.0\.0\.
 
 ```
 GET /restapis/<restapi_id>/documentation/versions/1.0.0 HTTP/1.1
@@ -89,7 +89,7 @@ Authorization: AWS4-HMAC-SHA256 Credential=access_key_id/YYYYMMDD/region/apigate
 
 To publish the API documentation, associate a documentation snapshot with an API stage\. You must have already created an API stage before associating the documentation version with the stage\.
 
-To associate a documentation snapshot with an API stage using the [API Gateway REST API](https://docs.aws.amazon.com/apigateway/api-reference/), call the [stage:update](https://docs.aws.amazon.com/apigateway/api-reference/link-relation/stage-update/) operation to set the desired documentation version on the `stage.documentationVersion` property:
+To associate a documentation snapshot with an API stage using the [API Gateway REST API](https://docs.aws.amazon.com/apigateway/latest/api/), call the [stage:update](https://docs.aws.amazon.com/apigateway/latest/api/API_UpdateStage.html) operation to set the desired documentation version on the `stage.documentationVersion` property:
 
 ```
 PATCH /restapis/RESTAPI_ID/stages/STAGE_NAME
@@ -336,7 +336,7 @@ As an example, we will look at an API that exposes a simple `GET` method on the 
 
 For an OpenAPI\-compliant attribute defined in the `properties` map of a documentation part, API Gateway inserts the attribute into the associated API entity definition\. An attribute of `x-something` is a standard OpenAPI extension\. This extension gets propagated into the API entity definition\. For example, see the `x-example` attribute for the `GET` method\. An attribute like `foo` is not part of the OpenAPI specification and is not injected into its associated API entity definitions\. 
 
-If a documentation\-rendering tool \(e\.g\., [OpenAPI UI](http://swagger.io/swagger-ui/)\) parses the API entity definitions to extract documentation attributes, any non OpenAPI\-compliant `properties` attributes of a `DocumentationPart`' instance are not available for the tool\. However, if a documentation\-rendering tool parses the `x-amazon-apigateway-documentation` object to get content, or if the tool calls [restapi:documentation\-parts](https://docs.aws.amazon.com/apigateway/api-reference/link-relation/restapi-documentation-parts/) and [documenationpart:by\-id](https://docs.aws.amazon.com/apigateway/api-reference/link-relation/documentationpart-by-id/) to retrieve documentation parts from API Gateway, all the documentation attributes are available for the tool to display\.
+If a documentation\-rendering tool \(e\.g\., [OpenAPI UI](http://swagger.io/swagger-ui/)\) parses the API entity definitions to extract documentation attributes, any non OpenAPI\-compliant `properties` attributes of a `DocumentationPart`' instance are not available for the tool\. However, if a documentation\-rendering tool parses the `x-amazon-apigateway-documentation` object to get content, or if the tool calls [restapi:documentation\-parts](https://docs.aws.amazon.com/apigateway/latest/api/API_DocumentationPart.html) and [documenationpart:by\-id](https://docs.aws.amazon.com/apigateway/latest/api/API_GetDocumentationPart.html) to retrieve documentation parts from API Gateway, all the documentation attributes are available for the tool to display\.
 
 To export the documentation with API entity definitions containing integration details to a JSON OpenAPI file, submit the following `GET` request:
 

@@ -18,8 +18,6 @@ With custom domain names, you can set up your API's hostname, and choose a base 
 https://api.example.com/myservice
 ```
 
- If you don't set any base mapping under a custom domain name, the resulting API's base URL is the same as the custom domain \(for example, `https://api.example.com`\)\. In this case, the custom domain name can't support more than one API\. 
-
 **Note**  
 A custom domain can be associated with REST APIs and HTTP APIs\. You can use [API Gateway Version 2 APIs](https://docs.aws.amazon.com/apigatewayv2/latest/api-reference/operations.html) to create and manage Regional custom domain names for REST APIs and HTTP APIs\.  
 For HTTP APIs, TLS 1\.2 is the only supported TLS version\.

@@ -39,7 +39,7 @@ Each item has a unique ID, which we use as the [partition key](https://docs.aws.
 
 1. For **Partition key**, enter **id**\.
 
-1. Choose **Create**\. 
+1. Choose **Create table**\.
 
 ## Step 2: Create a Lambda function<a name="http-api-dynamo-db-create-function"></a>
 
@@ -65,58 +65,73 @@ This tutorial uses a managed policy for simplicity\. As a best practice, you sho
 
 1. Choose **Create function**\.
 
-1. Open `index.js` in the console's code editor, and replace its contents with the following code\. Choose **Deploy** to update your function\.
+1. Open `index.mjs` in the console's code editor, and replace its contents with the following code\. Choose **Deploy** to update your function\.
 
 ```
-const AWS = require("aws-sdk");
+import { DynamoDBClient } from "@aws-sdk/client-dynamodb";
+import {
+  DynamoDBDocumentClient,
+  ScanCommand,
+  PutCommand,
+  GetCommand,
+  DeleteCommand,
+} from "@aws-sdk/lib-dynamodb";
 
-const dynamo = new AWS.DynamoDB.DocumentClient();
+const client = new DynamoDBClient({});
 
-exports.handler = async (event, context) => {
+const dynamo = DynamoDBDocumentClient.from(client);
+
+const tableName = "http-crud-tutorial-items";
+
+export const handler = async (event, context) => {
   let body;
   let statusCode = 200;
   const headers = {
-    "Content-Type": "application/json"
+    "Content-Type": "application/json",
   };
 
   try {
     switch (event.routeKey) {
       case "DELETE /items/{id}":
-        await dynamo
-          .delete({
-            TableName: "http-crud-tutorial-items",
+        await dynamo.send(
+          new DeleteCommand({
+            TableName: tableName,
             Key: {
-              id: event.pathParameters.id
-            }
+              id: event.pathParameters.id,
+            },
           })
-          .promise();
+        );
         body = `Deleted item ${event.pathParameters.id}`;
         break;
       case "GET /items/{id}":
-        body = await dynamo
-          .get({
-            TableName: "http-crud-tutorial-items",
+        body = await dynamo.send(
+          new GetCommand({
+            TableName: tableName,
             Key: {
-              id: event.pathParameters.id
-            }
+              id: event.pathParameters.id,
+            },
           })
-          .promise();
+        );
+        body = body.Item;
         break;
       case "GET /items":
-        body = await dynamo.scan({ TableName: "http-crud-tutorial-items" }).promise();
+        body = await dynamo.send(
+          new ScanCommand({ TableName: tableName })
+        );
+        body = body.Items;
         break;
       case "PUT /items":
         let requestJSON = JSON.parse(event.body);
-        await dynamo
-          .put({
-            TableName: "http-crud-tutorial-items",
+        await dynamo.send(
+          new PutCommand({
+            TableName: tableName,
             Item: {
               id: requestJSON.id,
               price: requestJSON.price,
-              name: requestJSON.name
-            }
+              name: requestJSON.name,
+            },
           })
-          .promise();
+        );
         body = `Put item ${requestJSON.id}`;
         break;
       default:
@@ -132,7 +147,7 @@ exports.handler = async (event, context) => {
   return {
     statusCode,
     body,
-    headers
+    headers,
   };
 };
 ```
@@ -258,21 +273,21 @@ To make sure that your API is working, you use [curl](https://curl.se)\.
 + Use the following command to create or update an item\. The command includes a request body with the item's ID, price, and name\.
 
   ```
-  curl -v -X "PUT" -H "Content-Type: application/json" -d "{\"id\": \"123\", \"price\": 12345, \"name\": \"myitem\"}" https://abcdef123.execute-api.us-west-2.amazonaws.com/items
+  curl -X "PUT" -H "Content-Type: application/json" -d "{\"id\": \"123\", \"price\": 12345, \"name\": \"myitem\"}" https://abcdef123.execute-api.us-west-2.amazonaws.com/items
   ```
 
 **To get all items**
 + Use the following command to list all items\.
 
   ```
-  curl -v https://abcdef123.execute-api.us-west-2.amazonaws.com/items
+  curl https://abcdef123.execute-api.us-west-2.amazonaws.com/items
   ```
 
 **To get an item**
 + Use the following command to get an item by its ID\.
 
   ```
-  curl -v https://abcdef123.execute-api.us-west-2.amazonaws.com/items/123
+  curl https://abcdef123.execute-api.us-west-2.amazonaws.com/items/123
   ```
 
 **To delete an item**
@@ -280,13 +295,13 @@ To make sure that your API is working, you use [curl](https://curl.se)\.
 1. Use the following command to delete an item\.
 
    ```
-   curl -v -X "DELETE" https://abcdef123.execute-api.us-west-2.amazonaws.com/items/123
+   curl -X "DELETE" https://abcdef123.execute-api.us-west-2.amazonaws.com/items/123
    ```
 
 1. Get all items to verify that the item was deleted\.
 
    ```
-   curl -v https://abcdef123.execute-api.us-west-2.amazonaws.com/items
+   curl https://abcdef123.execute-api.us-west-2.amazonaws.com/items
    ```
 
 ## Step 8: Clean up<a name="http-api-dynamo-db-cleanup"></a>

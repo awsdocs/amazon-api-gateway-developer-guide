@@ -1,6 +1,6 @@
 # Set up gateway response customization in OpenAPI<a name="set-up-gateway-responses-in-swagger"></a>
 
- You can use the `x-amazon-apigateway-gateway-responses` extension at the API root level to customize gateway responses in OpenAPI\. The following OpenAPI definition shows an example for customizing the [GatewayResponse](https://docs.aws.amazon.com/apigateway/api-reference/resource/gateway-response/) of the `MISSING_AUTHENTICATION_TOKEN` type\. 
+ You can use the `x-amazon-apigateway-gateway-responses` extension at the API root level to customize gateway responses in OpenAPI\. The following OpenAPI definition shows an example for customizing the [GatewayResponse](https://docs.aws.amazon.com/apigateway/latest/api/API_GatewayResponse.html) of the `MISSING_AUTHENTICATION_TOKEN` type\. 
 
 ```
   "x-amazon-apigateway-gateway-responses": {

@@ -15,17 +15,7 @@ As an example to showcase using a REST API in API Gateway to proxy Amazon S3, th
 
  You may want to import the sample API as an Amazon S3 proxy, as shown in [OpenAPI definitions of the sample API as an Amazon S3 proxy](api-as-s3-proxy-export-swagger-with-extensions.md)\. For instructions on how to import an API using the OpenAPI definition, see [Configuring a REST API using OpenAPI](api-gateway-import-api.md)\. 
 
- To use the API Gateway console to create the API, you must first sign up for an AWS account\. 
-
-If you do not have an AWS account, complete the following steps to create one\.
-
-**To sign up for an AWS account**
-
-1. Open [https://portal\.aws\.amazon\.com/billing/signup](https://portal.aws.amazon.com/billing/signup)\.
-
-1. Follow the online instructions\.
-
-   Part of the sign\-up procedure involves receiving a phone call and entering a verification code on the phone keypad\.
+ To use the API Gateway console to create the API, you must first sign up for an AWS account\. Complete the steps in [Prerequisites for getting started with API Gateway](setting-up.md)\.
 
 **Topics**
 + [Set up IAM permissions for the API to invoke Amazon S3 actions](#api-as-s3-proxy-iam-permissions)
@@ -295,7 +285,7 @@ The above examples illustrate how to create a new bucket in the specified region
 
 Amazon S3 supports GET, DELETE, HEAD, OPTIONS, POST and PUT actions to access and manage objects in a given bucket\. For the complete list of supported actions, see [Amazon S3 Operations on Objects](https://docs.aws.amazon.com/AmazonS3/latest/API/RESTObjectOps.html)\.
 
-In this tutorial, we expose the [PUT Object](https://docs.aws.amazon.com/AmazonS3/latest/API/RESTObjectPUT.html) operation, the [GET Object](https://docs.aws.amazon.com/AmazonS3/latest/API/RESTObjectGET.html) operation, [HEAD Object](https://docs.aws.amazon.com/AmazonS3/latest/API/RESTObjectHEAD.html) operation, and the [DELETE Object](https://docs.aws.amazon.com/AmazonS3/latest/API/RESTObjectDELETE.html) operation through the API methods of `PUT /{folder}/{item}`, `GET /{folder}/{item}`, `HEAD /{folder}/{item}` and `DELETE /{folder}/{item}`, respectively\.
+In this tutorial, we expose the [PUT Object](https://docs.aws.amazon.com/AmazonS3/latest/API/RESTObjectPUT.html) operation, the [GET Object](https://docs.aws.amazon.com/AmazonS3/latest/API/RESTObjectGET.html)operation, [HEAD Object](https://docs.aws.amazon.com/AmazonS3/latest/API/RESTObjectHEAD.html) operation, and the [DELETE Object](https://docs.aws.amazon.com/AmazonS3/latest/API/RESTObjectDELETE.html) operation through the API methods of `PUT /{folder}/{item}`, `GET /{folder}/{item}`, `HEAD /{folder}/{item}` and `DELETE /{folder}/{item}`, respectively\.
 
 The API setups for the PUT, GET and DELETE methods on `/{folder}/{item}` are the similar to those on `/{folder}`, as prescribed in [Expose API methods to access an Amazon S3 bucket](#api-folder-operations-as-s3-bucket-actions)\. One major difference is that the object\-related request path has an additional path parameter of `{item}` and this path parameter must be mapped to the integration request path parameter of `{object}`\. 
 

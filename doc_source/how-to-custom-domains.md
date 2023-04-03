@@ -18,8 +18,6 @@ With custom domain names, you can set up your API's hostname, and choose a base 
 https://api.example.com/myservice
 ```
 
- If you don't set any base mapping under a custom domain name, the resulting API's base URL is the same as the custom domain \(for example, `https://api.example.com`\)\. In this case, the custom domain name can't support more than one API\. 
-
 **Note**  
 A Regional custom domain can be associated with REST APIs and HTTP APIs\. You can use [API Gateway Version 2 APIs](https://docs.aws.amazon.com/apigatewayv2/latest/api-reference/operations.html) to create and manage Regional custom domain names for REST APIs\.  
 Custom domain names are not supported for [private APIs](apigateway-private-apis.md)\.  
@@ -43,7 +41,9 @@ When you create a custom domain name for an edge\-optimized API, API Gateway set
 **Note**  
  The CloudFront distribution created by API Gateway is owned by a Region\-specific account affiliated with API Gateway\. When tracing operations to create and update such a CloudFront distribution in CloudWatch Logs, you must use this API Gateway account ID\. For more information, see [Log custom domain name creation in CloudTrail](how-to-edge-optimized-custom-domain-name.md#how-to-custom-domain-log-cloudfront-distribution-update-in-cloudtrail)\. 
 
- To set up an edge\-optimized custom domain name or to update its certificate, you must have a permission to update CloudFront distributions\. You can do so by attaching the following IAM policy statement to an IAM user, group, or role in your account: 
+ To set up an edge\-optimized custom domain name or to update its certificate, you must have a permission to update CloudFront distributions\. 
+
+The following permissions are required to update CloudFront distributions\. 
 
 ```
 {
@@ -63,7 +63,7 @@ When you create a custom domain name for an edge\-optimized API, API Gateway set
 }
 ```
 
- API Gateway supports edge\-optimized custom domain names by leveraging Server Name Indication \(SNI\) on the CloudFront distribution\. For more information on using custom domain names on a CloudFront distribution, including the required certificate format and the maximum size of a certificate key length, see [ Using Alternate Domain Names and HTTPS](https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/SecureConnections.html#CNAMEsAndHTTPS) in the *Amazon CloudFront Developer Guide*\. 
+ API Gateway supports edge\-optimized custom domain names by leveraging Server Name Indication \(SNI\) on the CloudFront distribution\. For more information on using custom domain names on a CloudFront distribution, including the required certificate format and the maximum size of a certificate key length, see [ Using Alternate Domain Names and HTTPS](https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/using-https-alternate-domain-names.html) in the *Amazon CloudFront Developer Guide*\. 
 
  To set up a custom domain name as your API's hostname, you, as the API owner, must provide an SSL/TLS certificate for the custom domain name\. 
 
@@ -112,3 +112,4 @@ To import an SSL/TLS certificate, you must provide the PEM\-formatted SSL/TLS ce
 + [Migrating a custom domain name to a different API endpoint](apigateway-regional-api-custom-domain-migrate.md)
 + [Working with API mappings for REST APIs](rest-api-mappings.md)
 + [Disabling the default endpoint for a REST API](rest-api-disable-default-endpoint.md)
++ [Configure custom health checks for DNS failover](dns-failover.md)

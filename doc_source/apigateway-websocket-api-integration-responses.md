@@ -2,6 +2,7 @@
 
 **Topics**
 + [Overview of integration responses](#apigateway-websocket-api-integration-response-overview)
++ [Integration responses for two\-way communication](#apigateway-websocket-api-integration-response-for-two-way-communication)
 + [Set up an integration response using the API Gateway console](#apigateway-websocket-api-integration-response-using-console)
 + [Set up an integration response using the AWS CLI](#apigateway-websocket-api-integration-response-using-awscli)
 
@@ -9,11 +10,13 @@
 
 API Gateway's integration response is a way of modeling and manipulating the response from a backend service\. There are some differences in setup of a REST API versus a WebSocket API integration response, but conceptually the behavior is the same\.
 
-WebSocket routes can be configured for two\-way or one\-way communication\. If a route has a route response, it is configured for two\-way communication\. Otherwise, it is configured for one\-way communication\.
+WebSocket routes can be configured for two\-way or one\-way communication\.
 + When a route is configured for two\-way communication, an integration response allows you to configure transformations on the returned message payload, similar to integration responses for REST APIs\.
 + If a route is configured for one\-way communication, then regardless of any integration response configuration, no response will be returned over the WebSocket channel after the message is processed\.
 
-The remainder of this document assumes you have chosen to configure a route with two\-way communication\.
+ API Gateway will not pass the backend response through to the route response, unless you set up a route response\. To learn about setting up a route response, see [Set up route responses for a WebSocket API in API Gateway](apigateway-websocket-api-route-response.md)\.
+
+## Integration responses for two\-way communication<a name="apigateway-websocket-api-integration-response-for-two-way-communication"></a>
 
 Integrations can be divided into *proxy* integrations and *non\-proxy* integrations\.
 
@@ -31,27 +34,49 @@ For non\-proxy HTTP integrations:
   + `/4\d\d/`: Receive and transform bad request errors
   + `$default`: Receive and transform all unexpected responses
 
-For current limitations of template selection expressions, see [Template selection expressions](websocket-api-data-transformations.md#apigateway-websocket-api-template-selection-expressions)\.
+For more information about template selection expressions, see [Template selection expressions](websocket-api-data-transformations.md#apigateway-websocket-api-template-selection-expressions)\.
 
 ## Set up an integration response using the API Gateway console<a name="apigateway-websocket-api-integration-response-using-console"></a>
 
 To set up a route integration response for a WebSocket API using the API Gateway console:
 
-1. Sign in to the API Gateway console, choose the API, and choose **Routes**\.
+1. Sign in to the API Gateway console at [https://console\.aws\.amazon\.com/apigateway](https://console.aws.amazon.com/apigateway)\.
 
-1. Choose the route\.
+1.  Choose your WebSocket API and choose your route\.
 
-1. Choose **Integration Response**\.
+1. Choose **Integration Request** in the route overview pane\.
 
-1. Under **Integration Responses**, enter a value in the **Response Selection Expression** text box\.
+1. Under **Request Templates**, enter **default** as the template selection expression\. This will receive and transform all responses\. You can use other integration response key functions for your API, for example, you can enter `/4\d\d/` to receive and transform bad request errors\. 
 
-1. Under **Response Key**, choose **Add Response**\.
+1.  Choose **Route Overview**\.
 
-   1. To define an integration response key, enter a key name in the **New Response Key** text box and choose the checkmark icon\.
+1. Choose **Add Integration Response**\.
 
-   1. Choose the pencil icon next to **Template Selection Expression** and enter an expression for API Gateway to look for in your outgoing message\. This expression should evaluate to an integration response key value that maps to one of your response templates\.
+1. Under **Integration Responses**, choose **Add Response**\.
 
-      For information about template selection expressions, see [Template selection expressions](websocket-api-data-transformations.md#apigateway-websocket-api-template-selection-expressions)\.
+1. Under **Response Key**, enter **$default** and choose the checkmark icon\.
+
+1. You can also define a mapping template to configure transformations of your returned message payload\. Choose the pencil icon next to **Template Selection Expression**\. 
+
+1. Enter a key name\. If you are choosing the default template selection expression, enter **\\$default**\. Choose the checkmark icon\. 
+
+1. Under **Template Key**, choose **Add response template**\.
+
+1. Enter a Template Key name and choose the checkmark icon\.
+
+1. Enter your mapping template in the code editor\.
+
+1.  Choose **Save**\.
+
+1. Under the **Actions** tab, choose **Deploy API**\.
+
+1.  Use the following [ wscat](https://www.npmjs.com/package/wscat) command to connect to your API\. For more information about `wscat`, see [Use `wscat` to connect to a WebSocket API and send messages to it](apigateway-how-to-call-websocket-api-wscat.md)\. 
+
+   ```
+   wscat -c wss://api-id.execute-api.us-east-2.amazonaws.com/test
+   ```
+
+    When you call your route, the returned message payload should return\. 
 
 ## Set up an integration response using the AWS CLI<a name="apigateway-websocket-api-integration-response-using-awscli"></a>
 

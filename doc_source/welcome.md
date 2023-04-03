@@ -40,7 +40,6 @@ API Gateway acts as a "front door" for applications to access data, business log
 Amazon API Gateway offers features such as the following:
 + Support for stateful \([WebSocket](apigateway-websocket-api.md)\) and stateless \([HTTP](http-api.md) and [REST](apigateway-rest-api.md)\) APIs\.
 + Powerful, flexible [authentication](apigateway-control-access-to-api.md) mechanisms, such as AWS Identity and Access Management policies, Lambda authorizer functions, and Amazon Cognito user pools\.
-+ [Developer portal](apigateway-developer-portal.md) for publishing your APIs\.
 + [Canary release deployments](canary-release.md) for safely rolling out changes\.
 + [CloudTrail](cloudtrail.md) logging and monitoring of API usage and API changes\.
 + CloudWatch access logging and execution logging, including the ability to set alarms\. For more information, see [Monitoring REST API execution with Amazon CloudWatch metrics](monitoring-cloudwatch.md) and [Monitoring WebSocket API execution with CloudWatch metrics](apigateway-websocket-api-logging.md)\.

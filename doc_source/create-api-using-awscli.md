@@ -14,9 +14,16 @@ Setting up an API using the AWS CLI requires working with the `[create\-rest\-ap
 
    ```
    {
-       "name": "Simple PetStore (AWS CLI)", 
        "id": "vaz7da96z6", 
-       "createdDate": 1494572809
+       "name": "Simple PetStore (AWS CLI)", 
+       "createdDate": "2022-12-15T08:07:04-08:00",
+       "apiKeySource": "HEADER",
+       "endpointConfiguration": {
+           "types": [
+               "EDGE"
+           ]
+       },
+       "disableExecuteApiEndpoint": false
    }
    ```
 
@@ -34,8 +41,8 @@ Setting up an API using the AWS CLI requires working with the `[create\-rest\-ap
    {
        "items": [
            {
-               "path": "/", 
-               "id": "begaltmsm8"
+               "id": "begaltmsm8",
+               "path": "/" 
            }
        ]
    }
@@ -56,10 +63,10 @@ Setting up an API using the AWS CLI requires working with the `[create\-rest\-ap
 
    ```
    {
-       "path": "/pets", 
-       "pathPart": "pets", 
        "id": "6sxz2j", 
-       "parentId": "begaltmsm8"
+       "parentId": "begaltmsm8",
+       "pathPart": "pets",
+       "path": "/pets"
    }
    ```
 
@@ -76,10 +83,10 @@ Setting up an API using the AWS CLI requires working with the `[create\-rest\-ap
 
    ```
    {
+       "id": "rjkmth",
+       "parentId": "6sxz2j",
        "path": "/pets/{petId}", 
-       "pathPart": "{petId}", 
-       "id": "rjkmth", 
-       "parentId": "6sxz2j"
+       "pathPart": "{petId}"
    }
    ```
 
@@ -99,9 +106,9 @@ Setting up an API using the AWS CLI requires working with the `[create\-rest\-ap
 
    ```
    {
-       "apiKeyRequired": false, 
        "httpMethod": "GET", 
-       "authorizationType": "NONE"
+       "authorizationType": "NONE",
+       "apiKeyRequired": false
    }
    ```
 
@@ -121,9 +128,9 @@ Setting up an API using the AWS CLI requires working with the `[create\-rest\-ap
 
    ```
    {
-       "apiKeyRequired": false, 
        "httpMethod": "GET", 
        "authorizationType": "NONE", 
+       "apiKeyRequired": false, 
        "requestParameters": {
            "method.request.path.petId": true
        }
@@ -172,12 +179,14 @@ Setting up an API using the AWS CLI requires working with the `[create\-rest\-ap
 
    ```
    {
-       "httpMethod": "GET", 
-       "passthroughBehavior": "WHEN_NO_MATCH", 
-       "cacheKeyParameters": [], 
-       "type": "HTTP", 
-       "uri": "http://petstore-demo-endpoint.execute-api.com/petstore/pets", 
-       "cacheNamespace": "6sxz2j"
+       "type": "HTTP",
+       "httpMethod": "GET",
+       "uri": "http://petstore-demo-endpoint.execute-api.com/petstore/pets",
+       "connectionType": "INTERNET",
+       "passthroughBehavior": "WHEN_NO_MATCH",
+       "timeoutInMillis": 29000,
+       "cacheNamespace": "6sxz2j",
+       "cacheKeyParameters": []
    }
    ```
 
@@ -203,15 +212,17 @@ Setting up an API using the AWS CLI requires working with the `[create\-rest\-ap
 
    ```
    {
-       "passthroughBehavior": "WHEN_NO_MATCH", 
-       "cacheKeyParameters": [], 
-       "uri": "http://petstore-demo-endpoint.execute-api.com/petstore/pets/{id}", 
-       "httpMethod": "GET", 
-       "cacheNamespace": "rjkmth", 
-       "type": "HTTP", 
+       "type": "HTTP",
+       "httpMethod": "GET",
+       "uri": "http://petstore-demo-endpoint.execute-api.com/petstore/pets/{id}",
+       "connectionType": "INTERNET",
        "requestParameters": {
            "integration.request.path.id": "method.request.path.petId"
-       }
+       },
+       "passthroughBehavior": "WHEN_NO_MATCH",
+       "timeoutInMillis": 29000,
+       "cacheNamespace": "rjkmth",
+       "cacheKeyParameters": []
    }
    ```
 
@@ -228,8 +239,8 @@ Setting up an API using the AWS CLI requires working with the `[create\-rest\-ap
 
    ```
    {
-       "selectionPattern": "", 
-       "statusCode": "200"
+       "statusCode": "200",
+       "selectionPattern": "" 
    }
    ```
 
@@ -252,6 +263,16 @@ Setting up an API using the AWS CLI requires working with the `[create\-rest\-ap
           --stage-name test \
           --stage-description 'Test stage' \
           --description 'First deployment'
+   ```
+
+   The following is the output of this command:
+
+   ```
+   {
+       "id": "ab1c1d",
+       "description": "First deployment",
+       "createdDate": "2022-12-15T08:44:13-08:00"
+   }
    ```
 
 You can test this API by typing the `https://vaz7da96z6.execute-api.us-west-2.amazonaws.com/test/pets` URL in a browser, and substituting `vaz7da96z6` with the identifier of your API\. The expected output should be as follows: 

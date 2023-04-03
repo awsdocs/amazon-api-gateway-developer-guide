@@ -11,7 +11,7 @@ The Network Load Balancer and API must be owned by the same AWS account\.
 
 1. Sign in to the AWS Management Console and open the Amazon EC2 console at [https://console\.aws\.amazon\.com/ec2/](https://console.aws.amazon.com/ec2/)\.
 
-1. Set up a web server on an Amazon EC2 instance\. For an example setup, see [Installing a LAMP Web Server on Amazon Linux](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/install-LAMP.html)\. 
+1. Set up a web server on an Amazon EC2 instance\. For an example setup, see [Installing a LAMP Web Server on Amazon Linux 2](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-lamp-amazon-linux-2.html)\. 
 
 1. Create a Network Load Balancer, register the EC2 instance with a target group, and add the target group to a listener of the Network Load Balancer\. For details, follow the instructions in [Getting Started with Network Load Balancers](https://docs.aws.amazon.com/elasticloadbalancing/latest/network/network-load-balancer-getting-started.html)\. 
 

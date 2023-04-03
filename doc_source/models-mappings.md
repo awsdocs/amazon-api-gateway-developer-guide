@@ -189,7 +189,7 @@ For more complex JSON data formats and their models, see the following examples:
 + [Input model \(sales invoice example\)](example-invoice.md#example-invoice-input-model) and [Output model \(sales invoice example\)](example-invoice.md#example-invoice-output-model) in the [Sales invoice example](example-invoice.md)
 + [Input model \(employee record example\)](example-employee.md#example-employee-input-model) and [Output model \(employee record example\)](example-employee.md#example-employee-output-model) in the [Employee record example](example-employee.md)
 
-To experiment with models in API Gateway, follow the instructions in [Map response payload](api-gateway-create-api-step-by-step.md#getting-started-models), specifically [Step 1: Create models](api-gateway-create-api-step-by-step.md#getting-started-models-add-models)\.
+To experiment with models in API Gateway, follow the instructions in [Map response payload](api-gateway-create-api-step-by-step.md#getting-started-models), specifically [Step 2: Create models](api-gateway-create-api-step-by-step.md#getting-started-models-add-models)\.
 
 ## Mapping templates<a name="models-mappings-mappings"></a>
 

@@ -85,10 +85,8 @@ If you are configuring a cross\-region, cross\-account authorizer, the `sourceAr
 
 1. To see the updated policy for your function in the Lambda console, 
 
-   1. Choose your integration function\. 
-   2. Choose **Configuration** from the horizontal navigation panel\.
-   3. Choose **Permissions** from the vertical navigation panel\.
-   4. Choose **View policy** in the Resource-based policy statements section\.
+   1. Choose your integration function\.
 
+   1. Choose **Permissions**\.
 
    You should see an `Allow` policy with a `Condition` clause in which the in the `AWS:SourceArn` is the ARN for your API's `GET` method\.

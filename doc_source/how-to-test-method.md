@@ -36,4 +36,6 @@ Depending on the mapping, the HTTP status code, response body, and response head
 **Note**  
 Although the CloudWatch Logs entries are simulated, the results of the method call are real\.
 
+ For an additional tutorial with console images, see [Tutorial: Build a REST API with HTTP proxy integration](api-gateway-create-api-as-simple-proxy-for-http.md) in the tutorials and workshops section\. 
+
  In addition to using the API Gateway console, you can use AWS CLI or an AWS SDK for API Gateway to test invoking a method\. To do so using AWS CLI, see [test\-invoke\-method](https://docs.aws.amazon.com/cli/latest/reference/apigateway/test-invoke-method.html)\. 

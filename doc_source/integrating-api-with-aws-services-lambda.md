@@ -15,7 +15,6 @@ In this tutorial, you'll create a `Calc` Lambda function that implements basic a
 In addition to trying out this tutorial, you may wish to study the [OpenAPI definition file](api-as-lambda-proxy-export-swagger-with-extensions.md) for the `Calc` API, which you can import into API Gateway by following the instructions in [Configuring a REST API using OpenAPI](api-gateway-import-api.md)\.
 
 **Topics**
-+ [Create an AWS account](#w124aac13c13c17c15)
 + [Create an assumable IAM role](#api-as-lambda-proxy-setup-iam-role-policies)
 + [Create a `Calc` Lambda function](#api-as-lambda-proxy-create-lambda-function)
 + [Test the `Calc` Lambda function](#api-as-lambda-proxy-create-lambda-function)
@@ -24,20 +23,6 @@ In addition to trying out this tutorial, you may wish to study the [OpenAPI defi
 + [Integration 2: Create a `POST` method with a JSON payload to call the Lambda function](#api-as-lambda-proxy-expose-post-method-with-json-body-to-call-lambda-function)
 + [Integration 3: Create a `GET` method with path parameters to call the Lambda function](#api-as-lambda-proxy-expose-get-method-with-path-parameters-to-call-lambda-function)
 + [OpenAPI definitions of sample API integrated with a Lambda function](api-as-lambda-proxy-export-swagger-with-extensions.md)
-
-## Create an AWS account<a name="w124aac13c13c17c15"></a>
-
-Before you begin this tutorial, you'll need an AWS account\. 
-
-If you do not have an AWS account, complete the following steps to create one\.
-
-**To sign up for an AWS account**
-
-1. Open [https://portal\.aws\.amazon\.com/billing/signup](https://portal.aws.amazon.com/billing/signup)\.
-
-1. Follow the online instructions\.
-
-   Part of the sign\-up procedure involves receiving a phone call and entering a verification code on the phone keypad\.
 
 ## Create an assumable IAM role<a name="api-as-lambda-proxy-setup-iam-role-policies"></a>
 
@@ -172,53 +157,55 @@ Next you'll create a Lambda function using the Lambda console\.
 
 1. For **Name**, enter **Calc**\.
 
-1. Set the **Runtime** to a supported Node\.js runtime\.
-
 1. Choose **Create function**\.
 
 1.  Copy the following Lambda function and paste it into the code editor in the Lambda console\. 
 
    ```
-   console.log('Loading the Calc function');
+   export const handler = async function (event, context) {
+     console.log("Received event:", JSON.stringify(event));
    
-   exports.handler = function(event, context, callback) {
-       console.log('Received event:', JSON.stringify(event, null, 2));
-       if (event.a === undefined || event.b === undefined || event.op === undefined) {
-           callback("400 Invalid Input");
-       }
-       
-       var res = {};
-       res.a = Number(event.a);
-       res.b = Number(event.b);
-       res.op = event.op;
-       
-       if (isNaN(event.a) || isNaN(event.b)) {
-           callback("400 Invalid Operand");
-       }
+     if (
+       event.a === undefined ||
+       event.b === undefined ||
+       event.op === undefined
+     ) {
+       return "400 Invalid Input";
+     }
    
-       switch(event.op)
-       {
-           case "+":
-           case "add":
-               res.c = res.a + res.b;
-               break;
-           case "-":
-           case "sub":
-               res.c = res.a - res.b;
-               break;
-           case "*":
-           case "mul":
-               res.c = res.a * res.b;
-               break;
-           case "/":
-           case "div":
-               res.c = res.b===0 ? NaN : Number(event.a) / Number(event.b);
-               break;
-           default:
-               callback("400 Invalid Operator");
-               break;
-       }
-       callback(null, res);
+     const res = {};
+     res.a = Number(event.a);
+     res.b = Number(event.b);
+     res.op = event.op;
+     if (isNaN(event.a) || isNaN(event.b)) {
+       return "400 Invalid Operand";
+     }
+     switch (event.op) {
+       case "+":
+       case "add":
+         res.c = res.a + res.b;
+         break;
+       case "-":
+       case "sub":
+         res.c = res.a - res.b;
+         break;
+       case "*":
+       case "mul":
+         res.c = res.a * res.b;
+         break;
+       case "/":
+       case "div":
+         if (res.b == 0) {
+           return "400 Divide by Zero";
+         } else {
+           res.c = res.a / res.b;
+         }
+         break;
+       default:
+         return "400 Invalid Operator";
+     }
+   
+     return res;
    };
    ```
 

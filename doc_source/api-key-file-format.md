@@ -7,7 +7,7 @@ Key,name
 apikey1234abcdefghij0123456789,MyFirstApiKey
 ```
 
-A `Key` value must be between 30 and 128 characters\. 
+A `Key` value must be between 30 and 128 characters\. A `Name` value cannot exceed 1024 characters\. 
 
 An API key file can also have the `Description`, `Enabled`, or `UsagePlanIds` column, as shown in the following example: 
 
@@ -26,3 +26,6 @@ true,MyFirstApiKey,apikey1234abcdefghij0123456789,"c7y23b,glvrsr"
 Unrecognized columns are permitted, but are ignored\. The default value is an empty string or a `true` Boolean value\. 
 
 The same API key can be imported multiple times, with the most recent version overwriting the previous one\. Two API keys are identical if they have the same `key` value\. 
+
+**Note**  
+For best practices to consider, see [Best practices for API keys and usage plans](api-gateway-api-usage-plans.md#apigateway-usage-plans-best-practices)\.

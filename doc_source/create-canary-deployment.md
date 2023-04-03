@@ -1,8 +1,8 @@
 # Create a canary release deployment<a name="create-canary-deployment"></a>
 
-You create a canary release deployment when deploying the API with [canary settings](https://docs.aws.amazon.com/apigateway/api-reference/link-relation/deployment-create/#canarySettings) as an additional input to the [deployment creation](https://docs.aws.amazon.com/apigateway/api-reference/link-relation/deployment-create/) operation\. 
+You create a canary release deployment when deploying the API with [canary settings](https://docs.aws.amazon.com/apigateway/latest/api/API_CreateDeployment.html#canarySettings) as an additional input to the [deployment creation](https://docs.aws.amazon.com/apigateway/latest/api/API_CreateDeployment.html) operation\. 
 
-You can also create a canary release deployment from an existing non\-canary deployment by making a [https://docs.aws.amazon.com/apigateway/api-reference/link-relation/stage-update/](https://docs.aws.amazon.com/apigateway/api-reference/link-relation/stage-update/) request to add the canary settings on the stage\.
+You can also create a canary release deployment from an existing non\-canary deployment by making a [https://docs.aws.amazon.com/apigateway/latest/api/API_UpdateStage.html](https://docs.aws.amazon.com/apigateway/latest/api/API_UpdateStage.html) request to add the canary settings on the stage\.
 
 When creating a non\-canary release deployment, you can specify a non\-existing stage name\. API Gateway creates one if the specified stage does not exist\. However, you cannot specify any non\-existing stage name when creating a canary release deployment\. You will get an error and API Gateway will not create any canary release deployment\. 
 
@@ -64,7 +64,7 @@ After the canary release is initialized on the deployment stage, you change the 
 
 1.  If desired, reconfigure the stage settings, logs, or canary settings, as describe in [To create the initial canary release deployment](#to-create-canary-release-on-new-deployment)\.
 
- As a result, the canary release points to the latest version while the production release still points to the initial version of the API\. The [https://docs.aws.amazon.com/apigateway/api-reference/resource/stage/#canarySettings](https://docs.aws.amazon.com/apigateway/api-reference/resource/stage/#canarySettings) now has a new **deploymentId** value, whereas the stage still has the initial [https://docs.aws.amazon.com/apigateway/api-reference/resource/stage/#deploymentId](https://docs.aws.amazon.com/apigateway/api-reference/resource/stage/#deploymentId) value\. Behind the scenes, the console calls [https://docs.aws.amazon.com/apigateway/api-reference/link-relation/stage-update/](https://docs.aws.amazon.com/apigateway/api-reference/link-relation/stage-update/)\.
+ As a result, the canary release points to the latest version while the production release still points to the initial version of the API\. The [https://docs.aws.amazon.com/apigateway/latest/api/API_Stage.html#canarySettings](https://docs.aws.amazon.com/apigateway/latest/api/API_Stage.html#canarySettings) now has a new **deploymentId** value, whereas the stage still has the initial [https://docs.aws.amazon.com/apigateway/latest/api/API_Stage.html#deploymentId](https://docs.aws.amazon.com/apigateway/latest/api/API_Stage.html#deploymentId) value\. Behind the scenes, the console calls [https://docs.aws.amazon.com/apigateway/latest/api/API_UpdateStage.html](https://docs.aws.amazon.com/apigateway/latest/api/API_UpdateStage.html)\.
 
 ## Create a canary deployment using the AWS CLI<a name="create-canary-deployment-using-cli"></a>
 
@@ -77,7 +77,7 @@ aws apigateway create-deployment
     --stage-name prod
 ```
 
-The command returns a representation of the resulting [https://docs.aws.amazon.com/apigateway/api-reference/resource/deployment/](https://docs.aws.amazon.com/apigateway/api-reference/resource/deployment/), similar to the following:
+The command returns a representation of the resulting [https://docs.aws.amazon.com/apigateway/latest/api/API_Deployment.html](https://docs.aws.amazon.com/apigateway/latest/api/API_Deployment.html), similar to the following:
 
 ```
 {
@@ -106,7 +106,7 @@ aws apigateway create-deployment
 
 
 
-If the specified stage \(`prod`\) does not exist, the preceding command returns an error\. Otherwise, it returns the newly created [deployment](https://docs.aws.amazon.com/apigateway/api-reference/resource/deployment/) resource representation similar to the following:
+If the specified stage \(`prod`\) does not exist, the preceding command returns an error\. Otherwise, it returns the newly created [deployment](https://docs.aws.amazon.com/apigateway/latest/api/API_Deployment.html) resource representation similar to the following:
 
 ```
 {

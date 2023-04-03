@@ -10,7 +10,7 @@
 
  API Gateway does not retry when the endpoint times out\. The API caller must implement retry logic to handle endpoint timeouts\. 
 
- This walkthrough builds on the instructions and concepts in [Build an API Gateway REST API with Lambda integration](getting-started-with-lambda-integration.md)\.If you have not yet completed that walkthrough, we suggest that you do it first\. 
+ This walkthrough builds on the instructions and concepts in [Build an API Gateway REST API with Lambda integration](getting-started-with-lambda-integration.md)\. If you have not yet completed that walkthrough, we suggest that you do it first\. 
 
 
 
@@ -29,8 +29,6 @@
 Before you begin this walkthrough, do the following:
 
 1. Complete the steps in [Prerequisites for getting started with API Gateway](setting-up.md)\.
-
-1. Ensure that the IAM user has access to create policies and roles in IAM\. You need to create an IAM policy and role in this walkthrough\.
 
 1.  Create a new API named `MyDemoAPI`\. For more information, see [Tutorial: Build a REST API with HTTP non\-proxy integration](api-gateway-create-api-step-by-step.md)\. 
 

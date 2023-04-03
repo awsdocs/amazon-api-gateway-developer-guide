@@ -1,7 +1,7 @@
 # Promote a canary release<a name="promote-canary-deployment"></a>
 
 To promote a canary release makes it available in the production stage the API version under testing\. The operation involves the following tasks:
-+  Reset the [deployment ID](https://docs.aws.amazon.com/apigateway/api-reference/resource/stage/#deploymentId) of the stage with the [deployment ID](https://docs.aws.amazon.com/apigateway/api-reference/resource/stage/#canarySettings) settings of the canary\. This updates the API snapshot of the stage with the snapshot of the canary, making the test version the production release as well\.
++  Reset the [deployment ID](https://docs.aws.amazon.com/apigateway/latest/api/API_Stage.html#deploymentId) of the stage with the [deployment ID](https://docs.aws.amazon.com/apigateway/latest/api/API_Stage.html#canarySettings) settings of the canary\. This updates the API snapshot of the stage with the snapshot of the canary, making the test version the production release as well\.
 +  Update stage variables with canary stage variables, if any\. This updates the API execution context of the stage with that of the canary\. Without this update, the new API version may produce unexpected results if the test version uses different stage variables or different values of existing stage variables\.
 +  Set the percentage of canary traffic to 0\.0%\.
 

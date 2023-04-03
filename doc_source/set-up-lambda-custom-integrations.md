@@ -5,7 +5,7 @@
 For reference, a Node\.js version of the Lambda function is shown as follows:
 
 ```
-exports.handler = function(event, context, callback) {
+export const handler = function(event, context, callback) {
     var res ={
         "statusCode": 200,
         "headers": {
@@ -73,7 +73,7 @@ With the Lambda function set in the backend, proceed to set up the API\.<a name=
 
    Note the root resource `id` value \(`krznpq9xpg`\)\. You need it in the next step and later\.
 
-1.  Call `create-resource` to create an API Gateway [Resource](https://docs.aws.amazon.com/apigateway/api-reference/resource/resource/) of `/greeting`:
+1.  Call `create-resource` to create an API Gateway [Resource](https://docs.aws.amazon.com/apigateway/latest/api/API_Resource.html) of `/greeting`:
 
    ```
    aws apigateway create-resource --rest-api-id te6si5ach7 \
@@ -145,14 +145,8 @@ With the Lambda function set in the backend, proceed to set up the API\.<a name=
            --type AWS \
            --integration-http-method POST \
            --uri arn:aws:apigateway:us-east-1:lambda:path/2015-03-31/functions/arn:aws:lambda:us-east-1:123456789012:function:HelloWorld/invocations \
-           --request-templates file://path/to/integration-request-template.json \
+           --request-templates '{"application/json":"{\"greeter\":\"$input.params('greeter')\"}"}' \
            --credentials arn:aws:iam::123456789012:role/apigAwsProxyRole
-   ```
-
-   Here, the `request-template` parameter value, `file://path/to/integration-request-template.json`, points to a JSON file, named `integration-request-template.json` in the `path/to` directory, which contains a key\-value map as a JSON object\. The key is a media type of the request payload and the value is a mapping template for the body of the specified content type\. In this example, the JSON file contains the following JSON object:
-
-   ```
-   {"application/json":"{\"greeter\":\"$input.params('greeter')\"}"}
    ```
 
    The mapping template supplied here translates the `greeter` query string parameter to the `greeter` property of the JSON payload\. This is necessary because input to a Lambda function in the Lambda function must be expressed in the body\. You could use JSON string of the map \(for example, `"{\"greeter"\: \"'john'\"}"`\) as the `request-template` input value to the `put-integration` command\. However, using the file input avoids the difficult, and sometimes impossible, quote\-escaping that is required to stringify a JSON object\.
@@ -203,7 +197,7 @@ Successful output is similar to the following:
 1.  Call `create-deployment` to deploy the API to a `test` stage:
 
    ```
-   aws apigateway create-deployment --rest-api-id te6si5ach7 --stage-name test
+   aws apigateway create-deployment --rest-api-id te6si5ach7 --stage-name test --region us-west-2 
    ```
 
 1.  Test the API using the following cURL command in a terminal:

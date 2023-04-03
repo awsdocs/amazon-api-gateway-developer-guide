@@ -1,6 +1,6 @@
 # Update a canary release<a name="update-canary-deployment"></a>
 
- After a canary release is deployed, you may want to adjust the percentage of the canary traffic or enable or disable the use of a stage cache to optimize the test performance\. You can also modify stage variables used in the canary release when the execution context is updated\. To make such updates, call the [https://docs.aws.amazon.com/apigateway/api-reference/link-relation/stage-update/](https://docs.aws.amazon.com/apigateway/api-reference/link-relation/stage-update/) operation with new values on [canarySettings](https://docs.aws.amazon.com/apigateway/api-reference/resource/stage/#canarySettings)\. 
+ After a canary release is deployed, you may want to adjust the percentage of the canary traffic or enable or disable the use of a stage cache to optimize the test performance\. You can also modify stage variables used in the canary release when the execution context is updated\. To make such updates, call the [https://docs.aws.amazon.com/apigateway/latest/api/API_UpdateStage.html](https://docs.aws.amazon.com/apigateway/latest/api/API_UpdateStage.html) operation with new values on [canarySettings](https://docs.aws.amazon.com/apigateway/latest/api/API_Stage.html#canarySettings)\. 
 
 You can update a canary release using the API Gateway console, the AWS CLI [update\-stage](https://docs.aws.amazon.com/cli/latest/reference/apigateway/update-stage.html) command or an AWS SDK\.
 
@@ -39,7 +39,7 @@ aws apigateway update-stage          \
     --patch-operations op=replace,path=/canarySettings/useStageCache,value=true
 ```
 
-To adjust the canary traffic percentage, call `update-stage` to replace the `/canarySettings/percentTraffic` value on the [stage](https://docs.aws.amazon.com/apigateway/api-reference/resource/stage/)\.
+To adjust the canary traffic percentage, call `update-stage` to replace the `/canarySettings/percentTraffic` value on the [stage](https://docs.aws.amazon.com/apigateway/latest/api/API_Stage.html)\.
 
 ```
 aws apigateway update-stage          \

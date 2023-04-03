@@ -18,7 +18,7 @@ To set up an integration request, you perform the following required and optiona
 
 1.  Optionally, declare a cache namespace name and cache key parameters to enable API caching\. 
 
- Performing these tasks involves creating an [Integration](https://docs.aws.amazon.com/apigateway/api-reference/resource/integration/) resource of API Gateway and setting appropriate property values\. You can do so using the API Gateway console, AWS CLI commands, an AWS SDK, or the API Gateway REST API\. 
+ Performing these tasks involves creating an [Integration](https://docs.aws.amazon.com/apigateway/latest/api/API_Integration.html) resource of API Gateway and setting appropriate property values\. You can do so using the API Gateway console, AWS CLI commands, an AWS SDK, or the API Gateway REST API\. 
 
 **Topics**
 + [Basic tasks of an API integration request](integration-request-basic-setup.md)

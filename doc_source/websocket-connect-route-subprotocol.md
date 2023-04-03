@@ -7,7 +7,7 @@ The following example Lambda function returns the `Sec-WebSocket-Protocol` heade
 For an AWS CloudFormation template that creates this example API and Lambda proxy integration, see [samples/ws-subprotocol.zip](samples/ws-subprotocol.zip)\.
 
 ```
-exports.handler = async (event) => {
+export const handler = async (event) => {
     if (event.headers != undefined) {
         const headers = toLowerCaseProperties(event.headers);
         

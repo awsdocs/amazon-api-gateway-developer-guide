@@ -17,7 +17,7 @@ For HTTP APIs, specifies parameters that are passed to `AWS_PROXY` integrations 
 The following request parameter mappings example translates a method request's query \(`version`\), header \(`x-user-id`\), and path \(`service`\) parameters to the integration request's query \(`stage`\), header \(`x-userid`\), and path parameters \(`op`\), respectively\.
 
 **Note**  
-If you're creating resources through OpenAPI or AWS CloudFormation, static values should be enclosed in single quotes as well as double quotes (e.g. `"integration.request.header.x-user-id" : "'static-user-id'"`)\.  
+If you're creating resources through OpenAPI or AWS CloudFormation, static values should be enclosed in single quotes\.  
 To add this value from the console, enter `application/json` in the box, without quotation marks\.
 
 ```

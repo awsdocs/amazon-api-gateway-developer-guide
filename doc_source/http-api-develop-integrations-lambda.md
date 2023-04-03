@@ -67,7 +67,7 @@ Format `2.0` includes a new `cookies` field\. All cookie headers in the request 
       "method": "POST",
       "path": "/my/path",
       "protocol": "HTTP/1.1",
-      "sourceIp": "IP",
+      "sourceIp": "192.0.2.1",
       "userAgent": "agent"
     },
     "requestId": "id",
@@ -76,7 +76,7 @@ Format `2.0` includes a new `cookies` field\. All cookie headers in the request 
     "time": "12/Mar/2020:19:03:58 +0000",
     "timeEpoch": 1583348638390
   },
-  "body": "Hello to Lambda",
+  "body": "Hello from Lambda",
   "pathParameters": {
     "parameter1": "value1"
   },
@@ -143,7 +143,7 @@ Format `2.0` includes a new `cookies` field\. All cookie headers in the request 
       "cognitoIdentityId": null,
       "cognitoIdentityPoolId": null,
       "principalOrgId": null,
-      "sourceIp": "IP",
+      "sourceIp": "192.0.2.1",
       "user": null,
       "userAgent": "user-agent",
       "userArn": null,

@@ -1,8 +1,11 @@
 # Enabling API caching to enhance responsiveness<a name="api-gateway-caching"></a>
 
-You can enable API caching in Amazon API Gateway to cache your endpoint's responses\. With caching, you can reduce the number of calls made to your endpoint and also improve the latency of requests to your API\. 
+You can enable API caching in Amazon API Gateway to cache your endpoint's responses\. With caching, you can reduce the number of calls made to your endpoint and also improve the latency of requests to your API\.
 
 When you enable caching for a stage, API Gateway caches responses from your endpoint for a specified time\-to\-live \(TTL\) period, in seconds\. API Gateway then responds to the request by looking up the endpoint response from the cache instead of making a request to your endpoint\. The default TTL value for API caching is 300 seconds\. The maximum TTL value is 3600 seconds\. TTL=0 means caching is disabled\.
+
+**Note**  
+Caching is best\-effort\. You can use the `CacheHitCount` and `CacheMissCount` metrics in Amazon CloudWatch to monitor requests that API Gateway serves from the API cache\.
 
 The maximum size of a response that can be cached is 1048576 bytes\. Cache data encryption may increase the size of the response when it is being cached\.
 
@@ -12,13 +15,13 @@ This is a HIPAA Eligible Service\. For more information about AWS, U\.S\. Health
 When you enable caching for a stage, only `GET` methods have caching enabled by default\. This helps to ensure the safety and availability of your API\. You can enable caching for other methods by [overriding method settings](#override-api-gateway-stage-cache-for-method-cache)\.
 
 **Important**  
-Caching is charged by the hour and is not eligible for the AWS Free Tier\. 
+Caching is charged by the hour based on the cache size that you select\. Caching is not eligible for the AWS Free Tier\. For more information, see [API Gateway Pricing](http://aws.amazon.com/api-gateway/pricing/)\.
 
 ## Enable Amazon API Gateway caching<a name="enable-api-gateway-caching"></a>
 
 In API Gateway, you can enable caching for a specified stage\.
 
- When you enable caching, you must choose a cache capacity\. In general, a larger capacity gives a better performance, but also costs more\. 
+ When you enable caching, you must choose a cache capacity\. In general, a larger capacity gives a better performance, but also costs more\. For supported cache sizes, see [cacheClusterSize](https://docs.aws.amazon.com/apigateway/latest/api/API_CreateStage.html#apigw-CreateStage-request-cacheClusterSize) in the *API Gateway API Reference*\.
 
  API Gateway enables caching by creating a dedicated cache instance\. This process can take up to 4 minutes\. 
 
@@ -26,7 +29,7 @@ API Gateway changes caching capacity by removing the existing cache instance and
 
 **Note**  
 The cache capacity affects the CPU, memory, and network bandwidth of the cache instance\. As a result, the cache capacity can affect the performance of your cache\.   
-API Gateway recommends that you run a 10\-minute load test to verify that your cache capacity is appropriate for your workload\. Ensure that traffic during the load test mirrors production traffic\. For example, include ramp up, constant traffic, and traffic spikes\. The load test should include responses that can be served from the cache, as well as unique responses that add items to the cache\. Monitor the latency, 4xx, 5xx, cache hit, and cache miss metrics during the load test\. Adjust your cache capacity as needed based on these metrics\.
+API Gateway recommends that you run a 10\-minute load test to verify that your cache capacity is appropriate for your workload\. Ensure that traffic during the load test mirrors production traffic\. For example, include ramp up, constant traffic, and traffic spikes\. The load test should include responses that can be served from the cache, as well as unique responses that add items to the cache\. Monitor the latency, 4xx, 5xx, cache hit, and cache miss metrics during the load test\. Adjust your cache capacity as needed based on these metrics\. For more information about load testing, see [How do I select the best API Gateway cache capacity to avoid hitting a rate limit?](http://aws.amazon.com/premiumsupport/knowledge-center/api-gateway-cache-capacity/)\.
 
  In the API Gateway console, you configure caching in the **Settings** tab of a named **Stage Editor**\. 
 
@@ -52,7 +55,7 @@ API Gateway recommends that you run a 10\-minute load test to verify that your c
 When you enable caching within a stage's **Cache Settings**, only `GET` methods are cached\. To ensure the safety and availability of your API, we recommend that you don't change this setting\. However, you can enable caching for other methods by [overriding method settings](#override-api-gateway-stage-cache-for-method-cache)\.
 
  If you would like to verify if caching is functioning as expected, you have two general options: 
-+  Inspect the CloudWatch metrics of **CacheHitCount** and **CacheMissCount** for your API and stage\.  
++  Inspect the CloudWatch metrics of **CacheHitCount** and **CacheMissCount** for your API and stage\. 
 +  Put a timestamp in the response\. 
 
 **Note**  
@@ -121,9 +124,9 @@ host: example.com
 
 ## Flush the API stage cache in API Gateway<a name="flush-api-caching"></a>
 
- When API caching is enabled, you can flush your API stage's entire cache to ensure your API's clients get the most recent responses from your integration endpoints\. 
+When API caching is enabled, you can flush your API stage's cache to ensure that your API's clients get the most recent responses from your integration endpoints\.
 
- To flush the API stage cache, you can choose the **Flush entire cache** button under the **Cache Settings** section in the **Settings** tab in a stage editor of the API Gateway console\. The cache\-flushing operation takes a couple of minutes, after which the cache status is `AVAILABLE` immediately after flushing\. 
+ To flush the API stage cache, you choose the **Flush entire cache** button under the **Cache Settings** section in the **Settings** tab in a stage editor of the API Gateway console\. 
 
 **Note**  
 After the cache is flushed, responses are serviced from the integration endpoint until the cache is built up again\. During this period, the number of requests sent to the integration endpoint may increase\. This may temporarily increase the overall latency of your API\. 

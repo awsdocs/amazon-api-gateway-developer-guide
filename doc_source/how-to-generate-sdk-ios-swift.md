@@ -131,10 +131,10 @@ The following procedure describes how to call the API methods in Swift app sourc
 1. Instantiate the API client class:
 
    ```
-   let client = SIMPLE_CALCSimpleCalcClient.defaultClient()
+   let client = SIMPLE_CALCSimpleCalcClient.default()
    ```
 
-   To use Amazon Cognito with the API, set a default AWS service configuration \(shown following\) before getting the `defaultClient` method \(shown previously\):
+   To use Amazon Cognito with the API, set a default AWS service configuration \(shown following\) before getting the `default` method \(shown previously\):
 
    ```
    let credentialsProvider = AWSCognitoCredentialsProvider(regionType: AWSRegionType.USEast1, identityPoolId: "my_pool_id")        

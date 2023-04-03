@@ -1,6 +1,6 @@
 # Using AWS WAF to protect your APIs<a name="apigateway-control-access-aws-waf"></a>
 
-AWS WAF is a web application firewall that helps protect web applications and APIs from attacks\. It enables you to configure a set of rules \(called a web access control list \(web ACL\)\) that allow, block, or count web requests based on customizable web security rules and conditions that you define\. For more information, see [How AWS WAF Works](https://docs.aws.amazon.com/waf/latest/developerguide/how-aws-waf-works.html)\.
+AWS WAF is a web application firewall that helps protect web applications and APIs from attacks\. It enables you to configure a set of rules called a web access control list \(web ACL\) that allow, block, or count web requests based on customizable web security rules and conditions that you define\. For more information, see [How AWS WAF Works](https://docs.aws.amazon.com/waf/latest/developerguide/how-aws-waf-works.html)\.
 
 You can use AWS WAF to protect your API Gateway API from common web exploits, such as SQL injection and cross\-site scripting \(XSS\) attacks\. These could affect API availability and performance, compromise security, or consume excessive resources\. For example, you can create rules to allow or block requests from specified IP address ranges, requests from CIDR blocks, requests that originate from a specific country or region, requests that contain malicious SQL code, or requests that contain malicious script\. 
 

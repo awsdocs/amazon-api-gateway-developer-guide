@@ -72,7 +72,7 @@ The following example policy specifies that:
       "Action": "apigateway:POST",
       "Resource": "arn:aws:apigateway:*::/restapis/*/stages",
       "Condition": {
-        "ForAnyValue:StringNotEquals": {
+        "StringNotEquals": {
           "aws:RequestTag/stage": [
             "beta",
             "gamma",

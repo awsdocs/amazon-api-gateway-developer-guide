@@ -67,13 +67,13 @@ The following example resource policy allows calls only from the VPC endpoint wh
 
 ## IAM authentication and resource policy<a name="apigateway-authorization-flow-iam"></a>
 
-In this workflow, IAM authentication is configured for the API in addition to a resource policy\. After authenticating the user with the IAM service, the policies attached to the IAM user in addition to the resource policy are evaluated together\. The outcome varies based on whether the caller is in the same account, or a separate AWS account, from the API owner\. 
+In this workflow, you configure IAM authentication for the API in addition to a resource policy\. After you authenticate the user with the IAM service, the API evaluates both the policies attached to the user and the resource policy\. The outcome varies based on whether the caller is in the same AWS account or a separate AWS account, from the API owner\. 
 
-If the caller and API owner are from separate accounts, both the IAM user policies and the resource policy explicitly allow the caller to proceed\. \(See [Table B](#apigateway-resource-policies-iam-policies-interaction) at the end of this topic\.\) In contrast, if the caller and the API owner are in the same account, then either the user policies or the resource policy must explicitly allow the caller to proceed\. \(See [Table A](#apigateway-resource-policies-iam-policies-interaction) below\.\)
+If the caller and API owner are from separate accounts, both the IAM policies and the resource policy explicitly allow the caller to proceed\. \(See [Table B](#apigateway-resource-policies-iam-policies-interaction) at the end of this topic\.\) However, if the caller and the API owner are in the same AWS account, then either the IAM user policies or the resource policy must explicitly allow the caller to proceed\. \(See [Table A](#apigateway-resource-policies-iam-policies-interaction) below\.\)
 
 ![\[\]](http://docs.aws.amazon.com/apigateway/latest/developerguide/images/apigateway-auth-iam-resource-policy.png)
 
-The following is an example of a cross\-account resource policy\. Assuming the IAM user policy contains an allow, this resource policy allows calls only from the VPC whose VPC ID is `vpc-2f09a348`\. \(See [Table B](#apigateway-resource-policies-iam-policies-interaction) at the end of this topic\.\)
+The following is an example of a cross\-account resource policy\. Assuming the IAM policy contains an allow effect, this resource policy allows calls only from the VPC whose VPC ID is `vpc-2f09a348`\. \(See [Table B](#apigateway-resource-policies-iam-policies-interaction) at the end of this topic\.\)
 
 ```
 {
@@ -81,7 +81,7 @@ The following is an example of a cross\-account resource policy\. Assuming the I
     "Statement": [
         {
             "Effect": "Allow",
-            "Principal": "",
+            "Principal": "*",
             "Action": "execute-api:Invoke",
             "Resource": [
                 "arn:aws:execute-api:region:account-id:api-id/"
@@ -130,7 +130,7 @@ Table A lists the resulting behavior when access to an API Gateway API is contro
 
 **Table A: Account A Calls API Owned by Account A**  
 
-| IAM user policy \(or Lambda or Amazon Cognito user pools authorizer\) | API Gateway resource policy | Resulting behavior | 
+| IAM policy \(or Lambda or Amazon Cognito user pools authorizer\) | API Gateway resource policy | Resulting behavior | 
 | --- | --- | --- | 
 | Allow | Allow | Allow | 
 | Allow | Neither Allow nor Deny | Allow | 
@@ -147,7 +147,7 @@ Table B lists the resulting behavior when access to an API Gateway API is contro
 
 **Table B: Account B Calls API Owned by Account A**  
 
-| IAM user policy \(or Lambda or Amazon Cognito user pools authorizer\) | API Gateway resource policy | Resulting behavior | 
+| IAM policy \(or Lambda or Amazon Cognito user pools authorizer\) | API Gateway resource policy | Resulting behavior | 
 | --- | --- | --- | 
 | Allow | Allow | Allow | 
 | Allow | Neither Allow nor Deny | Implicit Deny | 

@@ -48,7 +48,7 @@ Content-Length: ...
 An OpenAPI API definition in JSON
 ```
 
- The merging update operation takes two complete API definitions and merges them together\. For a small and incremental change, you can use the [resource update](https://docs.aws.amazon.com/apigateway/api-reference/link-relation/resource-update/) operation\. 
+ The merging update operation takes two complete API definitions and merges them together\. For a small and incremental change, you can use the [resource update](https://docs.aws.amazon.com/apigateway/latest/api/API_UpdateResource.html) operation\. 
 
  To overwrite an API, submit a `PUT` request to `https://apigateway.<region>.amazonaws.com/restapis/<restapi_id>?mode=overwrite`\. The `restapi_id` path parameter specifies the API that will be overwritten with the supplied API definitions\. 
 

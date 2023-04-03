@@ -1,6 +1,6 @@
 # Protecting your WebSocket API<a name="websocket-api-protect"></a>
 
-You can configure throttling and quotas for your APIs to help protect them from being overwhelmed by too many requests\. Both throttles and quotas are applied on a best\-effort basis and should be thought of as targets rather than guaranteed request ceilings\.
+You can configure throttling for your APIs to help protect them from being overwhelmed by too many requests\. Throttles are applied on a best\-effort basis and should be thought of as targets rather than guaranteed request ceilings\.
 
 API Gateway throttles requests to your API using the token bucket algorithm, where a token counts for a request\. Specifically, API Gateway examines the rate and a burst of request submissions against all APIs in your account, per Region\. In the token bucket algorithm, a burst can allow pre\-defined overrun of those limits, but other factors can also cause limits to be overrun in some cases\.
 
@@ -17,3 +17,12 @@ Per\-account limits are applied to all APIs in an account in a specified Region\
 ## Route\-level throttling<a name="websocket-api-protect-throttling-route"></a>
 
 You can set route\-level throttling to override the account\-level request throttling limits for a specific stage or for individual routes in your API\. The default route throttling limits can't exceed account\-level rate limits\.
+
+You can configure route\-level throttling by using the AWS CLI\. The following command configures custom throttling for the specified stage and route of an API\.
+
+```
+aws apigatewayv2 update-stage \
+    --api-id a1b2c3d4 \
+    --stage-name dev \
+    --route-settings '{"messages":{"ThrottlingBurstLimit":100,"ThrottlingRateLimit":2000}}'
+```

@@ -6,7 +6,7 @@ With non\-proxy integrations, the specified response parameters and body can be 
 
 With a proxy integration, API Gateway passes the backend response through to the method response automatically\. There is no need for you to set up the API method response\. However, with the Lambda proxy integration, the Lambda function must return a result of [this output format](set-up-lambda-proxy-integrations.md#api-gateway-simple-proxy-for-lambda-output-format) for API Gateway to successfully map the integration response to a method response\. 
 
-Programmatically, the method response setup amounts to creating a [MethodResponse](https://docs.aws.amazon.com/apigateway/api-reference/resource/method-response/) resource of API Gateway and setting the properties of [statusCode](https://docs.aws.amazon.com/apigateway/api-reference/resource/method-response/#statusCode), [responseParameters](https://docs.aws.amazon.com/apigateway/api-reference/resource/method-response/#responseParameters), and [responseModels](https://docs.aws.amazon.com/apigateway/api-reference/resource/method-response/#responseModels)\. 
+Programmatically, the method response setup amounts to creating a [MethodResponse](https://docs.aws.amazon.com/apigateway/latest/api/API_MethodResponse.html) resource of API Gateway and setting the properties of [statusCode](https://docs.aws.amazon.com/apigateway/latest/api/API_MethodResponse.html#statusCode), [responseParameters](https://docs.aws.amazon.com/apigateway/latest/api/API_MethodResponse.html#responseParameters), and [responseModels](https://docs.aws.amazon.com/apigateway/latest/api/API_MethodResponse.html#responseModels)\. 
 
 When setting status codes for an API method, you should choose one as the default to handle any integration response of an unanticipated status code\. It is reasonable to set `500` as the default because this amounts to casting otherwise unmapped responses as a server\-side error\. For instructional reasons, the API Gateway console sets the `200` response as the default\. But you can reset it to the `500` response\. 
 
@@ -16,7 +16,7 @@ To set up a method response, you must have created the method request\.
 
 The status code of a method response defines a type of response\. For example, responses of 200, 400, and 500 indicate successful, client\-side error and server\-side error responses, respectively\. 
 
-To set up a method response status code, set the [https://docs.aws.amazon.com/apigateway/api-reference/resource/method-response/#statusCode](https://docs.aws.amazon.com/apigateway/api-reference/resource/method-response/#statusCode) property to an HTTP status code\. The following AWS CLI command creates a method response of `200`\.
+To set up a method response status code, set the [https://docs.aws.amazon.com/apigateway/latest/api/API_MethodResponse.html#statusCode](https://docs.aws.amazon.com/apigateway/latest/api/API_MethodResponse.html#statusCode) property to an HTTP status code\. The following AWS CLI command creates a method response of `200`\.
 
 ```
 aws apigateway put-method-response \
@@ -31,7 +31,7 @@ aws apigateway put-method-response \
 
 Method response parameters define which headers the client receives in response to the associated method request\. Response parameters also specify a target to which API Gateway maps an integration response parameter, according to mappings prescribed in the API method's integration response\. 
 
-To set up the method response parameters, add to the [https://docs.aws.amazon.com/apigateway/api-reference/resource/method-response/#responseParameters](https://docs.aws.amazon.com/apigateway/api-reference/resource/method-response/#responseParameters) map of `MethodResponse` key\-value pairs of the `"{parameter-name}":"{boolean}"` format\. The following CLI command shows an example of setting the `my-header` header, the `petId` path variable, and the `query` query parameter as the mapping targets:
+To set up the method response parameters, add to the [https://docs.aws.amazon.com/apigateway/latest/api/API_MethodResponse.html#responseParameters](https://docs.aws.amazon.com/apigateway/latest/api/API_MethodResponse.html#responseParameters) map of `MethodResponse` key\-value pairs of the `"{parameter-name}":"{boolean}"` format\. The following CLI command shows an example of setting the `my-header` header, the `petId` path variable, and the `query` query parameter as the mapping targets:
 
 ```
 aws apigateway put-method-response \
@@ -67,9 +67,9 @@ aws apigateway create-model \
               }'
 ```
 
-The result is created as an API Gateway [https://docs.aws.amazon.com/apigateway/api-reference/resource/model/](https://docs.aws.amazon.com/apigateway/api-reference/resource/model/) resource\.
+The result is created as an API Gateway [https://docs.aws.amazon.com/apigateway/latest/api/API_Model.html](https://docs.aws.amazon.com/apigateway/latest/api/API_Model.html) resource\.
 
-To set up the method response models to define the payload format, add the "application/json":"PetStorePet" key\-value pair to the [https://docs.aws.amazon.com/apigateway/api-reference/resource/method-response/#responseModels](https://docs.aws.amazon.com/apigateway/api-reference/resource/method-response/#responseModels) map of [https://docs.aws.amazon.com/apigateway/api-reference/resource/method-response/](https://docs.aws.amazon.com/apigateway/api-reference/resource/method-response/) resource\. The following AWS CLI command of `put-method-response` shows how this is done: 
+To set up the method response models to define the payload format, add the "application/json":"PetStorePet" key\-value pair to the [https://docs.aws.amazon.com/apigateway/latest/api/API_MethodResponse.html#responseModels](https://docs.aws.amazon.com/apigateway/latest/api/API_MethodResponse.html#responseModels) map of [https://docs.aws.amazon.com/apigateway/latest/api/API_MethodResponse.html](https://docs.aws.amazon.com/apigateway/latest/api/API_MethodResponse.html) resource\. The following AWS CLI command of `put-method-response` shows how this is done: 
 
 ```
 aws apigateway put-method-response \

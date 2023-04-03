@@ -20,7 +20,7 @@
 
     If you choose to let the API Gateway console set the resource\-based policy, the **Add Permission to Lambda Function** dialog is displayed\. Choose **OK**\. After the Lambda authorization is created, you can test it with appropriate authorization token values to verify that it works as expected\. 
 
-1.  For **Lambda Event Payload**, choose either **Token** for a `TOKEN` authorizer or **Request** for a `REQUEST` authorizer\. \(This is the same as setting the [type](https://docs.aws.amazon.com/apigateway/api-reference/resource/authorizer/#type) property to `TOKEN` or `REQUEST`\.\) 
+1.  For **Lambda Event Payload**, choose either **Token** for a `TOKEN` authorizer or **Request** for a `REQUEST` authorizer\. \(This is the same as setting the [type](https://docs.aws.amazon.com/apigateway/latest/api/API_Authorizer.html#type) property to `TOKEN` or `REQUEST`\.\) 
 
 1. Depending on the choice of the previous step, do one of the following:
 

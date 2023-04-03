@@ -18,14 +18,14 @@
 
 ## Amazon API Gateway important notes for REST APIs<a name="api-gateway-known-issues-rest-apis"></a>
 + The plain text pipe character \(`|`\) is not supported for any request URL query string and must be URL\-encoded\.
-+ The semicolon character \(`;`\) is not supported for any request URL query string and results in the data being split\.
++ The semicolon character \(`;`\) is not supported for any request URL query string and results in the data being split\. In general, REST APIs decode URL\-encoded request parameters before passing them to backend integrations\.
 + When using the API Gateway console to test an API, you may get an "unknown endpoint errors" response if a self\-signed certificate is presented to the backend, the intermediate certificate is missing from the certificate chain, or any other unrecognizable certificate\-related exceptions thrown by the backend\.
-+ For an API [https://docs.aws.amazon.com/apigateway/api-reference/resource/resource/](https://docs.aws.amazon.com/apigateway/api-reference/resource/resource/) or [https://docs.aws.amazon.com/apigateway/api-reference/resource/method/](https://docs.aws.amazon.com/apigateway/api-reference/resource/method/) entity with a private integration, you should delete it after removing any hard\-coded reference of a [https://docs.aws.amazon.com/apigateway/api-reference/resource/vpc-link/](https://docs.aws.amazon.com/apigateway/api-reference/resource/vpc-link/)\. Otherwise, you have a dangling integration and receive an error stating that the VPC link is still in use even when the `Resource` or `Method` entity is deleted\. This behavior does not apply when the private integration references `VpcLink` through a stage variable\.
++ For an API [https://docs.aws.amazon.com/apigateway/latest/api/API_Resource.html](https://docs.aws.amazon.com/apigateway/latest/api/API_Resource.html) or [https://docs.aws.amazon.com/apigateway/latest/api/API_Method.html](https://docs.aws.amazon.com/apigateway/latest/api/API_Method.html) entity with a private integration, you should delete it after removing any hard\-coded reference of a [https://docs.aws.amazon.com/apigateway/latest/api/API_VpcLink.html](https://docs.aws.amazon.com/apigateway/latest/api/API_VpcLink.html)\. Otherwise, you have a dangling integration and receive an error stating that the VPC link is still in use even when the `Resource` or `Method` entity is deleted\. This behavior does not apply when the private integration references `VpcLink` through a stage variable\.
 + The following backends may not support SSL client authentication in a way that's compatible with API Gateway:
   + [NGINX](https://nginx.org/en/)
   +  [Heroku](https://www.heroku.com/)
 + API Gateway supports most of the [OpenAPI 2\.0 specification](https://github.com/OAI/OpenAPI-Specification/blob/master/versions/2.0.md) and the [OpenAPI 3\.0 specification](https://github.com/OAI/OpenAPI-Specification/blob/master/versions/3.0.1.md), with the following exceptions:
-  + Path segments can only contain alphanumeric characters, hyphens, periods, commas, colons, and curly braces\. Path parameters must be separate path segments\. For example, "resource/\{path\_parameter\_name\}" is valid; "resource\{path\_parameter\_name\}" is not\.
+  + Path segments can only contain alphanumeric characters, underscores, hyphens, periods, commas, colons, and curly braces\. Path parameters must be separate path segments\. For example, "resource/\{path\_parameter\_name\}" is valid; "resource\{path\_parameter\_name\}" is not\.
   + Model names can only contain alphanumeric characters\.
   + For input parameters, only the following attributes are supported: `name`, `in`, `required`, `type`, `description`\. Other attributes are ignored\.
   + The `securitySchemes` type, if used, must be `apiKey`\. However, OAuth 2 and HTTP Basic authentication are supported via [Lambda authorizers](apigateway-use-lambda-authorizer.md); the OpenAPI configuration is achieved via [vendor extensions](api-gateway-swagger-extensions-authorizer.md)\. 
@@ -35,7 +35,7 @@
   + The `example` tag is not supported\.
   + `exclusiveMinimum` is not supported by API Gateway\.
   + The `maxItems` and `minItems` tags are not included in simple request validation\. To work around this, update the model after import before doing validation\.
-  + `oneOf`, `anyOf`, and `allOf` are not supported by API Gateway\.
+  + `oneOf` is not supported for OpenAPI 2\.0 or SDK generation\.
   + The `readOnly` field is not supported\.
   + Response definitions of the `"500": {"$ref": "#/responses/UnexpectedError"}` form is not supported in the OpenAPI document root\. To work around this, replace the reference by the inline schema\.
   + Numbers of the `Int32` or `Int64` type are not supported\. An example is shown as follows:
@@ -78,3 +78,4 @@
 + When sending requests to an API by passing the `X-HTTP-Method-Override` header, API Gateway overrides the method\. So in order to pass the header to the backend, the header needs to be added to the integration request\.
 +  When a request contains multiple media types in its `Accept` header, API Gateway only honors the first `Accept` media type\. In the situation where you cannot control the order of the `Accept` media types and the media type of your binary content is not the first in the list, you can add the first `Accept` media type in the `binaryMediaTypes` list of your API, API Gateway will return your content as binary\. For example, to send a JPEG file using an `<img>` element in a browser, the browser might send `Accept:image/webp,image/*,*/*;q=0.8` in a request\. By adding `image/webp` to the `binaryMediaTypes` list, the endpoint will receive the JPEG file as binary\. 
 + Customizing the default gateway response for `413 REQUEST_TOO_LARGE` isn't currently supported\.
++ API Gateway includes a `Content-Type` header for all integration responses\. By default, the content type is `application/json`\.

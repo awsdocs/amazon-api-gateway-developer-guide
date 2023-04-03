@@ -69,7 +69,6 @@ As you're developing your API Gateway API, you decide on a number of characteris
 |  [Caching](api-gateway-caching.md)  |  ✓  |    | 
 |  [User\-controlled deployments](how-to-deploy-api.md)  |  [✓](how-to-deploy-api.md)  |  [✓](http-api-stages.md)  | 
 |  [Automatic deployments](http-api-stages.md)  |    |  ✓  | 
-|  [Merge API Definition](api-gateway-import-api-update.html)  |  [✓](api-gateway-import-api-update.html)  |    |
 |  [Custom gateway responses](api-gateway-gatewayResponse-definition.md)  |  ✓  |    | 
 |  [Canary release deployments](canary-release.md)  |  ✓  |    | 
 |  [Request validation](api-gateway-method-request-validation.md)  |  ✓  |    | 

@@ -93,7 +93,7 @@ To create a token\-based Lambda authorizer function, enter the following Node\.j
    // the authorizer returns an HTTP 500 status code. 
    // Note that token values are case-sensitive.
    
-   exports.handler =  function(event, context, callback) {
+   export const handler =  function(event, context, callback) {
        var token = event.authorizationToken;
        switch (token) {
            case 'allow':
@@ -168,7 +168,7 @@ To create a token\-based Lambda authorizer function, enter the following Node\.j
 1. Choose **Test**\.
 
 In this example, when the API receives a method request, API Gateway passes the source token to this Lambda authorizer function in the `event.authorizationToken` attribute\. The Lambda authorizer function reads the token and acts as follows:
-+ If the token value is `'allow'`, the authorizer function returns a `200 OK` HTTP response and an IAM policy that looks like the following, and the method request succeeds:
++ If the token value is `'allow'`, the test of the authorizer function returns a `200 OK` HTTP response and an IAM policy that looks like the following, and the method request succeeds:
 
   ```
   {
@@ -182,7 +182,7 @@ In this example, when the API receives a method request, API Gateway passes the 
     ]
   }
   ```
-+ If the token value is `'deny'`, the authorizer function returns a `403 Forbidden` HTTP response and a `Deny` IAM policy that looks like the following, and the method request fails:
++ If the token value is `'deny'`, the test of the authorizer function returns a `200 OK` HTTP response and a `Deny` IAM policy that looks like the following, and the method request fails:
 
   ```
   {
@@ -196,7 +196,9 @@ In this example, when the API receives a method request, API Gateway passes the 
     ]
   }
   ```
-+ If the token value is `'unauthorized'` or an empty string, the authorizer function returns a `401 Unauthorized` HTTP response, and the method call fails\.
+**Note**  
+Outside of the test environment, the authorizer function returns a `403 Forbidden` HTTP response and the method request fails\.
++ If the token value is `'unauthorized'` or an empty string, the test of the authorizer function returns a `401 Unauthorized` HTTP response, and the method call fails\.
 + If the token is anything else, the client receives a `500 Invalid token` response, and the method call fails\.
 
 **Note**  
@@ -219,7 +221,7 @@ To create a request\-based Lambda authorizer function, enter the following Node\
 1. Copy/paste the following code into the code editor\.
 
    ```
-   exports.handler = function(event, context, callback) {        
+   export const handler = function(event, context, callback) {
        console.log('Received event:', JSON.stringify(event, null, 2));
    
        // A simple request-based authorizer example to demonstrate how to use request 

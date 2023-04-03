@@ -5,3 +5,5 @@ The AWS global infrastructure is built around AWS Regions and Availability Zones
 For more information about AWS Regions and Availability Zones, see [AWS Global Infrastructure](http://aws.amazon.com/about-aws/global-infrastructure/)\.
 
 To prevent your APIs from being overwhelmed by too many requests, API Gateway throttles requests to your APIs\. Specifically, API Gateway sets a limit on a steady\-state rate and a burst of request submissions against all APIs in your account\. You can configure custom throttling for your APIs\. To learn more, see [Throttle API requests for better throughput](api-gateway-request-throttling.md)\.
+
+You can use Route 53 health checks to control DNS failover from an API Gateway API in a primary region to an API Gateway API in a secondary region\. For an example, see [Configure custom health checks for DNS failover](dns-failover.md)\.

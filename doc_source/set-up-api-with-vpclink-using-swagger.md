@@ -45,7 +45,7 @@ The following JSON\-formatted OpenAPI file shows an example of an API with a VPC
               "statusCode": "200"
             }
           },
-          "uri": "http://myApi.example.com",
+          "uri": "http://my-vpclink-test-nlb-1234567890abcdef.us-east-2.amazonaws.com",
           "passthroughBehavior": "when_no_match",
           "connectionType": "VPC_LINK",
           "connectionId": "${stageVariables.vpcLinkId}",

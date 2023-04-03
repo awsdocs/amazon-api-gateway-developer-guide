@@ -5,14 +5,14 @@ This page presents a few examples of typical use cases for API Gateway resource 
 The following example policies use a simplified syntax to specify the API resource\. This simplified syntax is an abbreviated way that you can refer to an API resource, instead of specifying the full Amazon Resource Name \(ARN\)\. API Gateway converts the abbreviated syntax to the full ARN when you save the policy\. For example, you can specify the resource `execute-api:/stage-name/GET/pets` in a resource policy\. API Gateway converts the resource to `arn:aws:execute-api:us-east-2:123456789012:aabbccddee/stage-name/GET/pets` when you save the resource policy\. API Gateway builds the full ARN by using the current Region, your AWS account ID, and the ID of the REST API that the resource policy is associated with\. You can use `execute-api:/*` to represent all stages, methods, and paths in the current API\. For information about access policy language, see [Access policy language overview for Amazon API Gateway](apigateway-control-access-policy-language-overview.md)\.
 
 **Topics**
-+ [Example: Allow users in another AWS account to use an API](#apigateway-resource-policies-cross-account-example)
++ [Example: Allow roles in another AWS account to use an API](#apigateway-resource-policies-cross-account-example)
 + [Example: Deny API traffic based on source IP address or range](#apigateway-resource-policies-source-ip-address-example)
 + [Example: Deny API traffic based on source IP address or range when using a private API](#apigateway-resource-policies-source-ip-address-vpc-example)
 + [Example: Allow private API traffic based on source VPC or VPC endpoint](#apigateway-resource-policies-source-vpc-example)
 
-## Example: Allow users in another AWS account to use an API<a name="apigateway-resource-policies-cross-account-example"></a>
+## Example: Allow roles in another AWS account to use an API<a name="apigateway-resource-policies-cross-account-example"></a>
 
-The following example resource policy grants API access in one AWS account to two users in a different AWS account via [Signature Version 4](https://docs.aws.amazon.com/general/latest/gr/sigv4_signing.html) \(SigV4\) protocols\. Specifically, Alice and the root user for the AWS account identified by `account-id-2` are granted the `execute-api:Invoke` action to execute the `GET` action on the `pets` resource \(API\) in your AWS account\.
+The following example resource policy grants API access in one AWS account to two roles in a different AWS account via [Signature Version 4](https://docs.aws.amazon.com/general/latest/gr/sigv4_signing.html) \(SigV4\) protocols\. Specifically, the developer and the administrator role for the AWS account identified by `account-id-2` are granted the `execute-api:Invoke` action to execute the `GET` action on the `pets` resource \(API\) in your AWS account\.
 
 ```
 {
@@ -22,8 +22,8 @@ The following example resource policy grants API access in one AWS account to tw
             "Effect": "Allow",
             "Principal": {
                 "AWS": [
-                    "arn:aws:iam::account-id-2:user/Alice",
-                    "account-id-2"
+                    "arn:aws:iam::account-id-2:role/developer",
+                    "arn:aws:iam::account-id-2:role/Admin"
                 ]
             },
             "Action": "execute-api:Invoke",

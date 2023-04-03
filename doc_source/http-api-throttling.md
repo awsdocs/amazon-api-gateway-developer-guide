@@ -2,7 +2,7 @@
 
 ## <a name="http-api-protect-throttling"></a>
 
-You can configure throttling and quotas for your APIs to help protect them from being overwhelmed by too many requests\. Both throttles and quotas are applied on a best\-effort basis and should be thought of as targets rather than guaranteed request ceilings\.
+You can configure throttling for your APIs to help protect them from being overwhelmed by too many requests\. Throttles are applied on a best\-effort basis and should be thought of as targets rather than guaranteed request ceilings\.
 
 API Gateway throttles requests to your API using the token bucket algorithm, where a token counts for a request\. Specifically, API Gateway examines the rate and a burst of request submissions against all APIs in your account, per Region\. In the token bucket algorithm, a burst can allow pre\-defined overrun of those limits, but other factors can also cause limits to be overrun in some cases\.
 

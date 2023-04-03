@@ -22,9 +22,9 @@ Log in to the Amazon API Gateway console in your first account \(the one that ha
 **Note**  
 In the Lambda console, you can find the ARN for your function in the upper right corner of the console window\.
 
-1.  Leave **Lambda Invoke Role** blank to let the API Gateway console set a resource\-based policy\. The policy grants API Gateway permissions to invoke the authorizer Lambda function\. You can also choose to type the name of an IAM role to allow API Gateway to invoke the authorizer Lambda function\. For an example of such a role, see [Create an assumable IAM role](integrating-api-with-aws-services-lambda.md#api-as-lambda-proxy-setup-iam-role-policies)\. 
+1.  Leave **Lambda Invoke Role** blank to let the API Gateway console set a resource\-based policy\. This policy will appear as a AWS CLI command in a pop\-up after you create your authorizer\. The policy grants API Gateway permissions to invoke the authorizer Lambda function\. You can also choose to type the name of an IAM role to allow API Gateway to invoke the authorizer Lambda function\. For an example of such a role, see [Create an assumable IAM role](integrating-api-with-aws-services-lambda.md#api-as-lambda-proxy-setup-iam-role-policies)\. 
 
-    If you choose to let the API Gateway console set the resource\-based policy, the **Add Permission to Lambda Function** dialog is displayed\. Choose **OK**\. After the Lambda authorization is created, you can test it with appropriate authorization token values to verify that it works as expected\. 
+    If you choose to let the API Gateway console set the resource\-based policy, the **Add Permission to Lambda Function** dialog is displayed\. Choose **OK**\. 
 
 1. For **Lambda Event Payload**, choose either **Token** for a `TOKEN` authorizer or **Request** for a `REQUEST` authorizer\.
 
@@ -50,9 +50,7 @@ In the Lambda console, you can find the ARN for your function in the upper right
 
 1. Choose **Create** to create the new Lambda authorizer for the chosen API\.
 
-1. You'll see a popup that says **Add Permission to Lambda Function: You have selected a Lambda function from another account\. Please ensure that you have the appropriate Function Policy on this function\. You can do this by running the following AWS CLI command from account *123456789012*:**, followed by an `aws lambda add-permission` command string\.
-
-   Copy the command and save it for later\. You run the command after you create the authorizer\.
+1. You'll see a pop\-up that contains an `aws lambda add-permission` command string\. This policy grants API Gateway permissions to invoke the authorizer Lambda function\. Copy the command and save it for later\. You run the command after you create the authorizer\.
 
 1. Choose **Create Anyway**\.
 

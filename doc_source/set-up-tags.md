@@ -39,15 +39,15 @@ The following procedure describes how to set up tags for an API stage\.
 ## Set up tags for an API stage using the API Gateway REST API<a name="set-up-tags-using-api"></a>
 
 You can set up tags for an API stage using the API Gateway REST API by doing one of the following:
-+ Call [https://docs.aws.amazon.com/apigateway/api-reference/link-relation/tags-tag/](https://docs.aws.amazon.com/apigateway/api-reference/link-relation/tags-tag/) to tag an API stage\.
-+  Call [https://docs.aws.amazon.com/apigateway/api-reference/link-relation/tags-untag/](https://docs.aws.amazon.com/apigateway/api-reference/link-relation/tags-untag/) to delete one or more tags from an API stage\.
-+ Call [https://docs.aws.amazon.com/apigateway/api-reference/link-relation/stage-create/](https://docs.aws.amazon.com/apigateway/api-reference/link-relation/stage-create/) to add one or more tags to an API stage that you're creating\.
++ Call [https://docs.aws.amazon.com/apigateway/latest/api/API_TagResource.html](https://docs.aws.amazon.com/apigateway/latest/api/API_TagResource.html) to tag an API stage\.
++  Call [https://docs.aws.amazon.com/apigateway/latest/api/API_UntagResource.html](https://docs.aws.amazon.com/apigateway/latest/api/API_UntagResource.html) to delete one or more tags from an API stage\.
++ Call [https://docs.aws.amazon.com/apigateway/latest/api/API_CreateStage.html](https://docs.aws.amazon.com/apigateway/latest/api/API_CreateStage.html) to add one or more tags to an API stage that you're creating\.
 
-You can also call [https://docs.aws.amazon.com/apigateway/api-reference/link-relation/tags-get/](https://docs.aws.amazon.com/apigateway/api-reference/link-relation/tags-get/) to describe tags in an API stage\.
+You can also call [https://docs.aws.amazon.com/apigateway/latest/api/API_GetTags.html](https://docs.aws.amazon.com/apigateway/latest/api/API_GetTags.html) to describe tags in an API stage\.
 
 ### Tag an API stage<a name="tag-a-stage-using-api"></a>
 
-After you deploy an API \(`m5zr3vnks7`\) to a stage \(`test`\), tag the stage by calling [https://docs.aws.amazon.com/apigateway/api-reference/link-relation/tags-tag/](https://docs.aws.amazon.com/apigateway/api-reference/link-relation/tags-tag/)\. The required stage Amazon Resource Name \(ARN\) \(`arn:aws:apigateway:us-east-1::/restapis/m5zr3vnks7/stages/test`\) must be URL encoded \(`arn%3Aaws%3Aapigateway%3Aus-east-1%3A%3A%2Frestapis%2Fm5zr3vnks7%2Fstages%2Ftest`\)\. 
+After you deploy an API \(`m5zr3vnks7`\) to a stage \(`test`\), tag the stage by calling [https://docs.aws.amazon.com/apigateway/latest/api/API_TagResource.html](https://docs.aws.amazon.com/apigateway/latest/api/API_TagResource.html)\. The required stage Amazon Resource Name \(ARN\) \(`arn:aws:apigateway:us-east-1::/restapis/m5zr3vnks7/stages/test`\) must be URL encoded \(`arn%3Aaws%3Aapigateway%3Aus-east-1%3A%3A%2Frestapis%2Fm5zr3vnks7%2Fstages%2Ftest`\)\. 
 
 ```
 PUT /tags/arn%3Aaws%3Aapigateway%3Aus-east-1%3A%3A%2Frestapis%2Fm5zr3vnks7%2Fstages%2Ftest
@@ -61,7 +61,7 @@ PUT /tags/arn%3Aaws%3Aapigateway%3Aus-east-1%3A%3A%2Frestapis%2Fm5zr3vnks7%2Fsta
 
  You can also use the previous request to update an existing tag to a new value\. 
 
-You can add tags to a stage when calling [https://docs.aws.amazon.com/apigateway/api-reference/link-relation/stage-create/](https://docs.aws.amazon.com/apigateway/api-reference/link-relation/stage-create/) to create the stage:
+You can add tags to a stage when calling [https://docs.aws.amazon.com/apigateway/latest/api/API_CreateStage.html](https://docs.aws.amazon.com/apigateway/latest/api/API_CreateStage.html) to create the stage:
 
 ```
 POST /restapis/<restapi_id>/stages
@@ -86,7 +86,7 @@ POST /restapis/<restapi_id>/stages
 
 ### Untag an API stage<a name="untag-a-stage-using-api"></a>
 
- To remove the `Department` tag from the stage, call [https://docs.aws.amazon.com/apigateway/api-reference/link-relation/tags-untag/](https://docs.aws.amazon.com/apigateway/api-reference/link-relation/tags-untag/): 
+ To remove the `Department` tag from the stage, call [https://docs.aws.amazon.com/apigateway/latest/api/API_UntagResource.html](https://docs.aws.amazon.com/apigateway/latest/api/API_UntagResource.html): 
 
 ```
 DELETE /tags/arn%3Aaws%3Aapigateway%3Aus-east-1%3A%3A%2Frestapis%2Fm5zr3vnks7%2Fstages%2Ftest?tagKeys=Department
@@ -98,7 +98,7 @@ Authorization: ...
 
 ### Describe tags for an API stage<a name="get-tags-using-api"></a>
 
-To describe existing tags on a given stage, call [https://docs.aws.amazon.com/apigateway/api-reference/link-relation/tags-get/](https://docs.aws.amazon.com/apigateway/api-reference/link-relation/tags-get/):
+To describe existing tags on a given stage, call [https://docs.aws.amazon.com/apigateway/latest/api/API_GetTags.html](https://docs.aws.amazon.com/apigateway/latest/api/API_GetTags.html):
 
 ```
 GET /tags/arn%3Aaws%3Aapigateway%3Aus-east-1%3A%3A%2Frestapis%2Fm5zr3vnks7%2Fstages%2Ftags

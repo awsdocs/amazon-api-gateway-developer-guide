@@ -12,7 +12,7 @@ To get the DNS names for your private API, do the following:
 
 1. In the **Details** pane, you'll see 5 values in the **DNS names** field\. The first 3 are the public DNS names for your API\. The other 2 are the private DNS names for it\.
 
-## Invoking your private API using private DNS names<a name="w124aac15b9c32c26c11"></a>
+## Invoking your private API using private DNS names<a name="w151aac15b9c32c26c11"></a>
 
 **Warning**  
 When you select the Enable Private DNS Name option while creating an interface VPC endpoint for API Gateway, the VPC where the VPC Endpoint is present won't be able to access public \(edge\-optimized and regional\) APIs\. For more information, see [Why can't I connect to my public API from an API Gateway VPC endpoint?](https://aws.amazon.com/premiumsupport/knowledge-center/api-gateway-vpc-connections/)\.
@@ -53,7 +53,7 @@ and
 curl -X GET https://01234567ab.execute-api.us-west-2.amazonaws.com/test/pets/2
 ```
 
-## Accessing your private API using AWS Direct Connect<a name="w124aac15b9c32c26c13"></a>
+## Accessing your private API using AWS Direct Connect<a name="w151aac15b9c32c26c13"></a>
 
 You can also use AWS Direct Connect to establish a dedicated private connection from an on\-premises network to Amazon VPC and access your private API endpoint over that connection by using public DNS names\.
 
@@ -90,7 +90,7 @@ https://{public-dns-hostname}.execute-api.{region}.vpce.amazonaws.com/{stage}
 For example, assuming you set up the `GET /pets` and `GET /pets/{petId}` methods in this example, and assuming that your API's API ID was `01234567ab`, its public DNS hostname was `vpce-01234567abcdef012-01234567`, and your region was `us-west-2`, you could test your API via its VPCE ID by using the `Host` header in a cURL command, as in the following example:
 
 ```
-curl -v https://vpce-01234567abcdef012-01234567.execute-api.us-east-1.vpce.amazonaws.com/test/pets -H 'Host: 01234567ab.execute-api.us-west-2.amazonaws.com'
+curl -v https://vpce-01234567abcdef012-01234567.execute-api.us-west-2.vpce.amazonaws.com/test/pets -H 'Host: 01234567ab.execute-api.us-west-2.amazonaws.com'
 ```
 
 Alternatively, you can access your private API via its API ID by using the `x-apigw-api-id` header in a cURL command in the following format:

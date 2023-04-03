@@ -39,8 +39,6 @@ Note the region where you create the Lambda function\. You'll need it when you c
 
    1. In **Function name**, enter **GetStartedLambdaProxyIntegration**\.
 
-   1. From the **Runtime** dropdown list, choose a supported Node\.js runtime\.
-
    1. Under **Permissions**, expand **Choose or create an execution role**\. From the **Execution role** dropdown list, choose **Create new role from AWS policy templates**\.
 
    1. In **Role name**, enter **GetStartedLambdaBasicExecutionRole**\.
@@ -55,7 +53,7 @@ Note the region where you create the Lambda function\. You'll need it when you c
    'use strict';
    console.log('Loading hello world function');
     
-   exports.handler = async (event) => {
+   export const handler = async (event) => {
        let name = "you";
        let city = 'World';
        let time = 'day';

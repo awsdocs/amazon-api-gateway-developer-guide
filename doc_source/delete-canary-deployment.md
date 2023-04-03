@@ -1,6 +1,6 @@
 # Disable a canary release<a name="delete-canary-deployment"></a>
 
-To disable a canary release deployment is to set the [https://docs.aws.amazon.com/apigateway/api-reference/resource/stage/#canarySettings](https://docs.aws.amazon.com/apigateway/api-reference/resource/stage/#canarySettings) to null to remove it from the stage\. 
+To disable a canary release deployment is to set the [https://docs.aws.amazon.com/apigateway/latest/api/API_Stage.html#canarySettings](https://docs.aws.amazon.com/apigateway/latest/api/API_Stage.html#canarySettings) to null to remove it from the stage\. 
 
 You can disable a canary release deployment using the API Gateway console, the AWS CLI, or an AWS SDK\.
 
@@ -22,7 +22,7 @@ To use the API Gateway console to disable a canary release deployment, use the f
 
 1.  Confirm you want to delete the canary by choosing **Delete**\.
 
-As a result, the [https://docs.aws.amazon.com/apigateway/api-reference/resource/stage/#canarySettings](https://docs.aws.amazon.com/apigateway/api-reference/resource/stage/#canarySettings) property becomes `null` and is removed from the deployment [stage](https://docs.aws.amazon.com/apigateway/api-reference/resource/stage/)\. You can verify this using the AWS CLI\. For example, see [Disable a canary release using the AWS CLI](#delete-canary-release-cli)\.
+As a result, the [https://docs.aws.amazon.com/apigateway/latest/api/API_Stage.html#canarySettings](https://docs.aws.amazon.com/apigateway/latest/api/API_Stage.html#canarySettings) property becomes `null` and is removed from the deployment [stage](https://docs.aws.amazon.com/apigateway/latest/api/API_Stage.html)\. You can verify this using the AWS CLI\. For example, see [Disable a canary release using the AWS CLI](#delete-canary-release-cli)\.
 
 ## Disable a canary release using the AWS CLI<a name="delete-canary-release-cli"></a>
 
@@ -54,4 +54,4 @@ A successful response returns a payload similar to the following:
 }
 ```
 
- As shown in the output, the [https://docs.aws.amazon.com/apigateway/api-reference/resource/stage/#canarySettings](https://docs.aws.amazon.com/apigateway/api-reference/resource/stage/#canarySettings) property is no longer present in the [stage](https://docs.aws.amazon.com/apigateway/api-reference/resource/stage/) of a canary\-disabled deployment\.
+ As shown in the output, the [https://docs.aws.amazon.com/apigateway/latest/api/API_Stage.html#canarySettings](https://docs.aws.amazon.com/apigateway/latest/api/API_Stage.html#canarySettings) property is no longer present in the [stage](https://docs.aws.amazon.com/apigateway/latest/api/API_Stage.html) of a canary\-disabled deployment\.

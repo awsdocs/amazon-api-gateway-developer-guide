@@ -8,7 +8,7 @@ A *usage plan* specifies who can access one or more deployed API stages and meth
 
 *API keys* are alphanumeric string values that you distribute to application developer customers to grant access to your API\. You can use API keys together with [Lambda authorizers](apigateway-use-lambda-authorizer.md), [IAM roles](permissions.md), or [Amazon Cognito](apigateway-integrate-with-cognito.md) to control access to your APIs\. API Gateway can generate API keys on your behalf, or you can import them from a [CSV file](api-key-file-format.md)\. You can generate an API key in API Gateway, or import it into API Gateway from an external source\. For more information, see [Set up API keys using the API Gateway console](api-gateway-setup-api-key-with-console.md)\. 
 
-An API key has a name and a value\. \(The terms "API key" and "API key value" are often used interchangeably\.\) The value is an alphanumeric string between 30 and 128 characters, for example, `apikey1234abcdefghij0123456789`\.
+An API key has a name and a value\. \(The terms "API key" and "API key value" are often used interchangeably\.\) The name cannot exceed 1024 characters\. The value is an alphanumeric string between 20 and 128 characters, for example, `apikey1234abcdefghij0123456789`\.
 
 **Important**  
 API key values must be unique\. If you try to create two API keys with different names and the same value, API Gateway considers them to be the same API key\.  
@@ -26,6 +26,9 @@ Usage plan throttling and quotas are not hard limits, and are applied on a best\
 ## Best practices for API keys and usage plans<a name="apigateway-usage-plans-best-practices"></a>
 
 The following are suggested best practices to follow when using API keys and usage plans\.
-+ Don't rely on API keys as your only means of authentication and authorization for your APIs\. If you have multiple APIs in a usage plan, a user with a valid API key for one API in that usage plan can access *all* APIs in that usage plan\. Instead, use an IAM role, [a Lambda authorizer](apigateway-use-lambda-authorizer.md), or an [Amazon Cognito user pool](apigateway-integrate-with-cognito.md)\.
-+ If you're using a [developer portal](apigateway-developer-portal.md) to publish your APIs, note that all APIs in a given usage plan are subscribable, even if you haven't made them visible to your customers\.
+
+**Important**  
+Don't use API keys for authentication or authorization for your APIs\. If you have multiple APIs in a usage plan, a user with a valid API key for one API in that usage plan can access *all* APIs in that usage plan\. Instead, use an IAM role, [a Lambda authorizer](apigateway-use-lambda-authorizer.md), or an [Amazon Cognito user pool](apigateway-integrate-with-cognito.md)\.
+Use API keys that API Gateway generates\. API keys shouldn't include confidential information; clients typically transmit them in headers that can be logged\.
++ If you're using a developer portal to publish your APIs, note that all APIs in a given usage plan are subscribable, even if you haven't made them visible to your customers\.
 + In some cases, clients can exceed the quotas that you set\. Don’t rely on usage plans to control costs\. Consider using [AWS Budgets](https://docs.aws.amazon.com/cost-management/latest/userguide/budgets-managing-costs.html) to monitor costs and [AWS WAF](https://docs.aws.amazon.com/waf/latest/developerguide/waf-chapter.html) to manage API requests\.

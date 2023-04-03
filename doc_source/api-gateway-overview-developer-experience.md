@@ -54,7 +54,7 @@ API Gateway provides WebSocket API management functionality such as the followin
 
 There are two kinds of developers who use API Gateway: API developers and app developers\.
 
-An API developer creates and deploys an API to enable the required functionality in API Gateway\. The API developer must be an IAM user in the AWS account that owns the API\.
+An API developer creates and deploys an API to enable the required functionality in API Gateway\. The API developer must be a user in the AWS account that owns the API\.
 
 An app developer builds a functioning application to call AWS services by invoking a WebSocket or REST API created by an API developer in API Gateway\.
 

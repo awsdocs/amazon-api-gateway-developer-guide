@@ -10,7 +10,7 @@ The resource policy can be attached to the API when the API is being created, or
 **Important**  
 If you update the resource policy after the API is created, you'll need to deploy the API to propagate the changes after you've attached the updated policy\. Updating or saving the policy alone won't change the runtime behavior of the API\. For more information about deploying your API, see [Deploying a REST API in Amazon API Gateway](how-to-deploy-api.md)\.
 
-Access can be controlled by IAM condition elements, including conditions on AWS account, source VPC, source VPC endpoint, or IP range\. If the `Principal` in the policy is set to `"*"`, other authorization types can be used alongside the resource policy\. If the `Principal` is set to `"AWS"`, authorization will fail for all resources not secured with `AWS_IAM` authorization, including unsecured resources\.
+You can control access by IAM condition elements, including conditions on AWS accounts, source VPCs, source VPC endpoints, or IP ranges\. If you set the `Principal` in the policy to `"*"`, you can use other authorization types alongside the resource policy\. However, if you set the `Principal` to `"AWS"`, authorization fails for all resources not secured with `AWS_IAM` authorization, including unsecured resources\.
 
 The following sections describe how to create your own API Gateway resource policy and attach it to your API\. Attaching a policy applies the permissions in the policy to the methods in the API\.
 

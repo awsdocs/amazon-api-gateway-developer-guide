@@ -25,20 +25,8 @@ To use a stage variable to customize the HTTP integration endpoint, you must fir
 
 You can reference stage variables in a similar way to specify a Lambda function name, an AWS Service Proxy path, or an AWS role ARN in the credentials field\.
 
-When specifying a Lambda function name as a stage variable value, you must configure the permissions on the Lambda function manually\. You can use the AWS Command Line Interface \(AWS CLI\) to do this\.
+When specifying a Lambda function name as a stage variable value, you must configure the permissions on the Lambda function manually\. When you specify a Lambda function in the API Gateway console, a AWS CLI command will pop\-up to configure the proper permissions\. You can also use the AWS Command Line Interface \(AWS CLI\) to do this\.
 
 ```
-aws lambda add-permission --function-name arn:aws:lambda:XXXXXX:your-lambda-function-name --source-arn arn:aws:execute-api:us-east-1:YOUR_ACCOUNT_ID:api_id/*/HTTP_METHOD/resource --principal apigateway.amazonaws.com --statement-id apigateway-access --action lambda:InvokeFunction
-```
-
-The following example assigns API Gateway permission to invoke a Lambda function named `helloWorld` hosted in the US West \(Oregon\) Region of an AWS account on behalf of the API method\.
-
-```
-arn arn:aws:execute-api:us-west-2:123123123123:bmmuvptwze/*/GET/hello
-```
-
-Here is the same command using the AWS CLI\.
-
-```
-aws lambda add-permission --function-name arn:aws:lambda:us-east-1:123123123123:function:helloWorld --source-arn  arn:aws:execute-api:us-west-2:123123123123:bmmuvptwze/*/GET/hello --principal apigateway.amazonaws.com --statement-id apigateway-access --action lambda:InvokeFunction
+aws lambda add-permission --function-name "arn:aws:lambda:us-east-2:123456789012:function:my-function" --source-arn "arn:aws:execute-api:us-east-2:123456789012:api_id/*/HTTP_METHOD/resource" --principal apigateway.amazonaws.com --statement-id apigateway-access --action lambda:InvokeFunction
 ```

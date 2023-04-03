@@ -35,16 +35,6 @@ This page describes how to create and configure a REST API with an integration o
 
  Instead of using the API Gateway console to create the sample API, you can import the sample API into API Gateway using the API Gateway [Import API](https://docs.aws.amazon.com/apigateway/api-reference/link-relation/restapi-import/)\. For information on how to use the Import API, see [Configuring a REST API using OpenAPI](api-gateway-import-api.md)\. 
 
-If you do not have an AWS account, complete the following steps to create one\.
-
-**To sign up for an AWS account**
-
-1. Open [https://portal\.aws\.amazon\.com/billing/signup](https://portal.aws.amazon.com/billing/signup)\.
-
-1. Follow the online instructions\.
-
-   Part of the sign\-up procedure involves receiving a phone call and entering a verification code on the phone keypad\.
-
 ## Create an IAM role and policy for the API to access Kinesis<a name="integrate-with-kinesis-create-iam-role-and-policy"></a>
 
  To allow the API to invoke Kinesis actions, you must have appropriate IAM policies attached to an IAM role\. This section explains how to verify and to create, if necessary, the required IAM role and policies\. 

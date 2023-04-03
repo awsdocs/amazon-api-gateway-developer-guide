@@ -1,20 +1,20 @@
-# Create and attach a policy to an IAM user<a name="api-gateway-create-and-attach-iam-policy"></a>
+# Create and attach a policy to a user<a name="api-gateway-create-and-attach-iam-policy"></a>
 
+To enable a user to call the API managing service or the API execution service, you must create an IAM policy which controls access to the API Gateway entities\. 
 
-
-To enable a user to call the API managing service or the API execution service, you must create an IAM policy for an IAM user, which controls access to the API Gateway entities, and then attach the policy to the IAM user\. The following steps describe how to create your IAM policy\.
-
-**To create your own IAM policy**
+**To use the JSON policy editor to create a policy**
 
 1. Sign in to the AWS Management Console and open the IAM console at [https://console\.aws\.amazon\.com/iam/](https://console.aws.amazon.com/iam/)\.
 
-1. Choose **Policies**, and then choose **Create Policy**\. If a **Get Started** button appears, choose it, and then choose **Create Policy**\.
+1. In the navigation column on the left, choose **Policies**\. 
 
-1. Next to **Create Your Own Policy**, choose **Select**\.
+   If this is your first time choosing **Policies**, the **Welcome to Managed Policies** page appears\. Choose **Get Started**\.
 
-1. For **Policy Name**, type any value that is easy for you to refer to later\. Optionally, type descriptive text in **Description**\. 
+1. At the top of the page, choose **Create policy**\.
 
-1. For **Policy Document**, type a policy statement with the following format, and then choose **Create Policy**:
+1. Choose the **JSON** tab\.
+
+1. Enter the following JSON policy document:
 
    ```
    {
@@ -42,25 +42,15 @@ To enable a user to call the API managing service or the API execution service, 
    }
    ```
 
-   In this statement, substitute *action\-statement* and *resource\-statement* as needed, and add other statements to specify the API Gateway entities you want to allow the IAM user to manage, the API methods the IAM user can call, or both\. By default, the IAM user does not have permissions unless there is an explicit corresponding `Allow` statement\. 
+1. Choose **Review policy**\.
+**Note**  
+You can switch between the **Visual editor** and **JSON** tabs any time\. However, if you make changes or choose **Review policy** in the **Visual editor** tab, IAM might restructure your policy to optimize it for the visual editor\. For more information, see [Policy restructuring](https://docs.aws.amazon.com/IAM/latest/UserGuide/troubleshoot_policies.html#troubleshoot_viseditor-restructure) in the *IAM User Guide*\.
 
-1. To enable the policy for a user, choose **Users**\.
+1. On the **Review policy** page, enter a **Name** and an optional **Description** for the policy that you are creating\. Review the policy **Summary** to see the permissions that are granted by your policy\. Then choose **Create policy** to save your work\.
 
-1. Choose the IAM user to whom you want to attach the policy\.
+In this statement, substitute *action\-statement* and *resource\-statement* as needed, and add other statements to specify the API Gateway entities you want to allow the user to manage, the API methods the user can call, or both\. By default, the user does not have permissions unless there is an explicit corresponding `Allow` statement\. 
 
- You have just created an IAM policy\. It won't have any effect until you attach it to an IAM user, to an IAM group containing the user, or to an IAM role assumed by the user\. 
-
-**To attach an IAM policy to an IAM user**
-
-1. For the chosen user, choose the **Permissions** tab, and then choose **Attach Policy**\.
-
-1. Under **Grant permissions**, choose **Attach existing policies directly**\.
-
-1.  Choose the policy document just created from the displayed list and then choose **Next: Review**\.
-
-1. Under **Permissions summary**, choose **Add permissions**\.
-
- Alternatively, you can add the user to an IAM group, if the user is not already a member, and attach the policy document to the group so that the attached policies are applicable to all group members\. It is helpful to manage and update policy configurations on a group of IAM users\. In the following, we highlight how to attach the policy to an IAM group, assuming that you have already created the group and added the user to the group\. 
+ You have just created an IAM policy\. It won't have any effect until you attach it\. 
 
 **To attach an IAM policy document to an IAM group**
 

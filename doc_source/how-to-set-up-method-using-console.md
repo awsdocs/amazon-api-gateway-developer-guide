@@ -94,7 +94,7 @@ To change the name of the header parameter, remove it and then create a new one\
 
    1. Open the **Model name** drop\-down menu to choose an available model for the payload and choose the check\-mark icon to save the settings\.
 
-      The currently available models for the API include the default `Empty` and `Error` models as well as any models you have created and added to the [Models](https://docs.aws.amazon.com/apigateway/api-reference/resource/models/) collection of the API\. For more information about creating a model, see [Create a model in API Gateway](how-to-create-model.md)\. 
+      The currently available models for the API include the default `Empty` and `Error` models as well as any models you have created and added to the [Models](https://docs.aws.amazon.com/apigateway/latest/api/API_Model.html) collection of the API\. For more information about creating a model, see [Create a model in API Gateway](how-to-create-model.md)\. 
 **Note**  
  The model is useful to inform the client of the expected data format of a payload\. It is helpful to generate a skeletal mapping template\. It is important to generate a strongly typed SDK of the API in such languages as Java, C\#, Objective\-C, and Swift\. It is only required if request validation is enabled against the payload\. 
 

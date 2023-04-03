@@ -23,7 +23,7 @@ The following sections describe how to create a custom domain name, including sp
 + [Setting up a regional custom domain name in API Gateway](apigateway-regional-api-custom-domain-create.md)
 
 You can change the security policy by updating the domain name settings\. To change the minimum TLS version, use one of the following commands, specifying the new TLS version \(`TLS_1_0` or `TLS_1_2`\) in the `securityPolicy` parameter\. Allow up to 60 minutes for the update to be completed\.
-+ [https://docs.aws.amazon.com/apigateway/api-reference/link-relation/domainname-update/](https://docs.aws.amazon.com/apigateway/api-reference/link-relation/domainname-update/)
++ [https://docs.aws.amazon.com/apigateway/latest/api/API_UpdateDomainName.html](https://docs.aws.amazon.com/apigateway/latest/api/API_UpdateDomainName.html)
 + [https://docs.aws.amazon.com/cli/latest/reference/apigateway/update-domain-name.html](https://docs.aws.amazon.com/cli/latest/reference/apigateway/update-domain-name.html)
 + [https://docs.aws.amazon.com/apigatewayv2/latest/api-reference/domainnames-domainname.html#domainnames-domainnamepatch](https://docs.aws.amazon.com/apigatewayv2/latest/api-reference/domainnames-domainname.html#domainnames-domainnamepatch)
 

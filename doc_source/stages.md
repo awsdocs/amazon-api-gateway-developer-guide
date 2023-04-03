@@ -67,7 +67,7 @@ Setting logs to **ERROR** and then choosing **Log full requests/responses data**
 
    1. Choose **Save Changes**\. The new settings take effect after a new deployment\.
 **Important**  
-To enable CloudWatch Logs for all or only some of the methods, you must also specify the ARN of an IAM role that enables API Gateway to write information to CloudWatch Logs on behalf of your IAM user\. To do so, choose **Settings** from the **APIs** main navigation pane\. Then enter the ARN of an IAM role in the **CloudWatch log role ARN** text field\.   
+To enable CloudWatch Logs for all or only some of the methods, you must also specify the ARN of an IAM role that enables API Gateway to write information to CloudWatch Logs on behalf of your user\. To do so, choose **Settings** from the **APIs** main navigation pane\. Then enter the ARN of an IAM role in the **CloudWatch log role ARN** text field\.   
 For common application scenarios, the IAM role could attach the managed policy of `AmazonAPIGatewayPushToCloudWatchLogs`, which contains the following access policy statement:  
 
       ```

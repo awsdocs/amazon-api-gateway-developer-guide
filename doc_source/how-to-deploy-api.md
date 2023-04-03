@@ -29,7 +29,7 @@ https://{api.example.com}/{basePath}
 
 Stages enable robust version control of your API\. For example, you can deploy an API to a `test` stage and a `prod` stage, and use the `test` stage as a test build and use the `prod` stage as a stable build\. After the updates pass the test, you can promote the `test` stage to the `prod` stage\. The promotion can be done by redeploying the API to the `prod` stage or updating a [stage variable](how-to-deploy-api-with-console.md#how-to-deploy-api-set-stage-variables) value from the stage name of `test` to that of `prod`\.
 
- In this section, we discuss how to deploy an API by using the [API Gateway console](https://console.aws.amazon.com/apigateway) or calling the [API Gateway REST API](https://docs.aws.amazon.com/apigateway/api-reference/)\. To use other tools, see the documentation of the [AWS CLI](https://docs.aws.amazon.com/cli/latest/reference/apigateway) or an [AWS SDK](https://aws.amazon.com/tools/#sdk)\. 
+ In this section, we discuss how to deploy an API by using the [API Gateway console](https://console.aws.amazon.com/apigateway) or calling the [API Gateway REST API](https://docs.aws.amazon.com/apigateway/latest/api/)\. To use other tools, see the documentation of the [AWS CLI](https://docs.aws.amazon.com/cli/latest/reference/apigateway) or an [AWS SDK](https://aws.amazon.com/tools/#sdk)\. 
 
 **Topics**
 + [Deploy a REST API in API Gateway](set-up-deployments.md)

@@ -57,7 +57,7 @@ The following example Lambda functions return the required CORS headers:
 #### [ Node\.js ]
 
 ```
-exports.handler = async (event) => {
+export const handler = async (event) => {
     const response = {
         statusCode: 200,
         headers: {

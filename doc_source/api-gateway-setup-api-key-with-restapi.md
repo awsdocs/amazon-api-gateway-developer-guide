@@ -4,9 +4,12 @@ To set up API keys, do the following:
 + Configure API methods to require an API key\.
 + Create or import an API key for the API in a region\.
 
-Before setting up API keys, you must have created an API and deployed it to a stage\. 
+Before setting up API keys, you must have created an API and deployed it to a stage\. After you create an API key value, it cannot be changed\.
 
 For the REST API calls to create and deploy an API, see [https://docs.aws.amazon.com/apigateway/api-reference/link-relation/restapi-create/](https://docs.aws.amazon.com/apigateway/api-reference/link-relation/restapi-create/) and [https://docs.aws.amazon.com/apigateway/api-reference/link-relation/deployment-create/](https://docs.aws.amazon.com/apigateway/api-reference/link-relation/deployment-create/), respectively\.
+
+**Note**  
+For best practices to consider, see [Best practices for API keys and usage plans](api-gateway-api-usage-plans.md#apigateway-usage-plans-best-practices)\.
 
 **Topics**
 + [Require an API key on a method](#api-gateway-usage-plan-require-apikey-on-method-with-restapi)
@@ -24,4 +27,4 @@ To create or import an API key, do one of the following:
 + Call [https://docs.aws.amazon.com/apigateway/api-reference/link-relation/apikey-create/](https://docs.aws.amazon.com/apigateway/api-reference/link-relation/apikey-create/) to create an API key\.
 + Call [https://docs.aws.amazon.com/apigateway/api-reference/link-relation/apikey-import/](https://docs.aws.amazon.com/apigateway/api-reference/link-relation/apikey-import/) to import an API key from a file\. For the file format, see [API Gateway API key file format](api-key-file-format.md)\.
 
-With the API key created, you can now proceed to [Create, configure, and test usage plans using the API Gateway CLI and REST API](api-gateway-create-usage-plans-with-rest-api.md)\.
+You cannot change the value of the new API key\. To learn how to configure a usage plan, see [Create, configure, and test usage plans using the API Gateway CLI and REST API](api-gateway-create-usage-plans-with-rest-api.md)\.

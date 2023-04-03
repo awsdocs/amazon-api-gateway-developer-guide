@@ -27,10 +27,10 @@ For private APIs, you should use a combination of an API Gateway resource policy
 }
 ```
 
- Here, `Permission` is to be replaced by `Allow` or `Deny` depending on whether you want to grant or revoke the included permissions\. `Execution-operation` is to be replaced by the operations supported by the API execution service\. `METHOD_HTTP_VERB` stands for a HTTP verb supported by the specified resources\. `Resource-path` is the placeholder for the URL path of a deployed API `[Resource](https://docs.aws.amazon.com/apigateway/api-reference/resource/resource/)` instance supporting the said `METHOD_HTTP_VERB`\. For more information, see [Statement reference of IAM policies for executing API in API Gateway](#api-gateway-calling-api-permissions)\. 
+ Here, `Permission` is to be replaced by `Allow` or `Deny` depending on whether you want to grant or revoke the included permissions\. `Execution-operation` is to be replaced by the operations supported by the API execution service\. `METHOD_HTTP_VERB` stands for a HTTP verb supported by the specified resources\. `Resource-path` is the placeholder for the URL path of a deployed API `[Resource](https://docs.aws.amazon.com/apigateway/latest/api/API_Resource.html)` instance supporting the said `METHOD_HTTP_VERB`\. For more information, see [Statement reference of IAM policies for executing API in API Gateway](#api-gateway-calling-api-permissions)\. 
 
 **Note**  
-For IAM policies to be effective, you must have enabled IAM authentication on API methods by setting `AWS_IAM` for the methods' `[authorizationType](https://docs.aws.amazon.com/apigateway/api-reference/resource/method/#authorizationType)` property\. Failing to do so will make these API methods publicly accessible\.
+For IAM policies to be effective, you must have enabled IAM authentication on API methods by setting `AWS_IAM` for the methods' `[authorizationType](https://docs.aws.amazon.com/apigateway/latest/api/API_Method.html#authorizationType)` property\. Failing to do so will make these API methods publicly accessible\.
 
  For example, to grant a user permission to view a list of pets exposed by a specified API, but to deny the user permission to add a pet to the list, you could include the following statement in the IAM policy: 
 

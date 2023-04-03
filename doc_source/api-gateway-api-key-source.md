@@ -10,6 +10,9 @@ You distribute API keys to your customers and require them to pass the API key a
 **`AUTHORIZER`**  
 You have a Lambda authorizer return the API key as part of the authorization response\. For more information on the authorization response, see [Output from an Amazon API Gateway Lambda authorizer](api-gateway-lambda-authorizer-output.md)\.
 
+**Note**  
+For best practices to consider, see [Best practices for API keys and usage plans](api-gateway-api-usage-plans.md#apigateway-usage-plans-best-practices)\.
+
 **To choose an API key source for an API by using the API Gateway console:**
 
 1. Sign in to the API Gateway console\.
@@ -30,7 +33,7 @@ aws apigateway update-rest-api --rest-api-id 1234123412 --patch-operations op=re
 
 To have the client submit an API key, set the `value` to `HEADER` in the preceding CLI command\.
 
-To choose an API key source for an API by using the API Gateway REST API, call [https://docs.aws.amazon.com/apigateway/api-reference/link-relation/restapi-update/](https://docs.aws.amazon.com/apigateway/api-reference/link-relation/restapi-update/) as follows:
+To choose an API key source for an API by using the API Gateway REST API, call [https://docs.aws.amazon.com/apigateway/latest/api/API_UpdateRestApi.html/](https://docs.aws.amazon.com/apigateway/latest/api/API_UpdateRestApi.html/) as follows:
 
 ```
 PATCH /restapis/fugvjdxtri/ HTTP/1.1

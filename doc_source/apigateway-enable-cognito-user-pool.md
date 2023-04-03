@@ -29,9 +29,9 @@ After performing any of the procedures below, you'll need to deploy or redeploy 
 
    1. To finish integrating the user pool with the API, choose **Create**\. 
 
-1. After creating the `COGNITO_USER_POOLS` authorizer, you can optionally test invoke it by supplying an identity token that's provisioned from the user pool\. You can obtain this identity token by calling the [Amazon Cognito Identity SDK](https://docs.aws.amazon.com/cognito/latest/developerguide/setting-up-the-javascript-sdk.html) to perform user sign\-in\. Make sure to use the returned identity token, not the access token\. 
+1. After creating the `COGNITO_USER_POOLS` authorizer, you can optionally test invoke it by supplying an identity token that's provisioned from the user pool\. You can obtain this identity token by calling the [Amazon Cognito Identity SDK](https://docs.aws.amazon.com/cognito/latest/developerguide/setting-up-the-javascript-sdk.html) to perform user sign\-in\. You can also use the [https://docs.aws.amazon.com/cognito-user-identity-pools/latest/APIReference/API_InitiateAuth.html](https://docs.aws.amazon.com/cognito-user-identity-pools/latest/APIReference/API_InitiateAuth.html) action\. Use the returned identity token, not the access token\. 
 
-The preceding procedure creates a `COGNITO_USER_POOLS` authorizer that uses the newly created Amazon Cognito user pool\. Depending on how you enable the authorizer on an API method, you can use either an identity token or an access token that's provisioned from the integrated user pool\. The next procedure walks you through the steps to configure the authorizer on an API method\.
+The preceding procedure creates a `COGNITO_USER_POOLS` authorizer that uses the newly created Amazon Cognito user pool\. Depending on how you enable the authorizer on an API method, you can use either an identity token or an access token that's provisioned from the integrated user pool\.
 
 **To configure a `COGNITO_USER_POOLS` authorizer on methods**
 
@@ -84,7 +84,7 @@ The preceding procedure creates a `COGNITO_USER_POOLS` authorizer that uses the 
 
    1. Choose the pencil icon next to **OAuth Scopes**\. 
 
-   1. Type one or more full names of a scope that has been configured when the Amazon Cognito user pool was created\. For example, following the example given in [Create an Amazon Cognito user pool for a REST API](apigateway-create-cognito-user-pool.md), one of the scopes is `com.hamuta.movies/drama.view`\. Use a single space to separate multiple scopes\. 
+   1. Type one or more full names of a scope that has been configured when the Amazon Cognito user pool was created\. For example, following the example given in [Create an Amazon Cognito user pool for a REST API](apigateway-create-cognito-user-pool.md), one of the scopes is `https://my-petstore-api.example.com/cats.read`\. Use a single space to separate multiple scopes\. 
 
       At runtime, the method call succeeds if any scope that's specified on the method in this step matches a scope that's claimed in the incoming token\. Otherwise, the call fails with a `401 Unauthorized` response\.
 
@@ -213,7 +213,7 @@ Instead of using the API Gateway console, you can also enable an Amazon Cognito 
            },
            "security": [
              {
-               "MyUserPool": ["com.hamuta.movies/drama.view", "http://my.resource.com/file.read"]
+               "MyUserPool": ["https://my-petstore-api.example.com/cats.read", "http://my.resource.com/file.read"]
              }
            ],        
            "x-amazon-apigateway-integration": {

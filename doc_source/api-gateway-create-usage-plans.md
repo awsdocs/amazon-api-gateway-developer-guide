@@ -15,4 +15,4 @@ The following steps outline how you, as the API owner, create and configure a us
 Callers of the API must supply an assigned API key in the `x-api-key` header in requests to the API\.
 
 **Note**  
-To include API methods in a usage plan, you must configure individual API methods to [require an API key](api-gateway-setup-api-key-with-console.md)\. For user authentication and authorization, don't use API keys\. Use an IAM role, [a Lambda authorizer](apigateway-use-lambda-authorizer.md), or an [Amazon Cognito user pool](apigateway-integrate-with-cognito.md)\.
+To include API methods in a usage plan, you must configure individual API methods to [require an API key](api-gateway-setup-api-key-with-console.md)\. For best practices to consider, see [Best practices for API keys and usage plans](api-gateway-api-usage-plans.md#apigateway-usage-plans-best-practices)\.

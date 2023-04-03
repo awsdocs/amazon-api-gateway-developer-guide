@@ -43,7 +43,7 @@ You can modify your Lambda function, as long as the function's response aligns w
 The default Lambda function code should look similar to the following:
 
 ```
-exports.handler = async (event) => {
+export const handler = async (event) => {
     const response = {
         statusCode: 200,
         body: JSON.stringify('Hello from Lambda!'),

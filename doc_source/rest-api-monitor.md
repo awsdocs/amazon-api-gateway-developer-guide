@@ -8,6 +8,7 @@ API Gateway might not generate logs and metrics in the following cases:
 Excessive 429 Too Many Requests errors
 400 series errors from requests sent to a custom domain that has no API mapping
 500 series errors caused by internal failures
+API Gateway will not generate logs and metrics when testing a REST API method\. The CloudWatch entries are simulated\. For more information, see [Use the API Gateway console to test a REST API method](how-to-test-method.md)\.
 
 **Topics**
 + [Monitoring REST API execution with Amazon CloudWatch metrics](monitoring-cloudwatch.md)

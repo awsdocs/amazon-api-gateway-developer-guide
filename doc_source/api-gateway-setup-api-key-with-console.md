@@ -4,9 +4,12 @@ To set up API keys, do the following:
 + Configure API methods to require an API key\.
 + Create or import an API key for the API in a region\.
 
-Before setting up API keys, you must have created an API and deployed it to a stage\. 
+Before setting up API keys, you must have created an API and deployed it to a stage\. After you create an API key value, it cannot be changed\.
 
 For instructions on how to create and deploy an API by using the API Gateway console, see [Creating a REST API in Amazon API Gateway](how-to-create-api.md) and [Deploying a REST API in Amazon API Gateway](how-to-deploy-api.md), respectively\.
+
+**Note**  
+For best practices to consider, see [Best practices for API keys and usage plans](api-gateway-api-usage-plans.md#apigateway-usage-plans-best-practices)\.
 
 **Topics**
 + [Require API key on a method](#api-gateway-usage-plan-configure-apikey-on-method)

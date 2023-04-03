@@ -16,21 +16,19 @@ After the Network Load Balancer is created, note its ARN\. You need it to create
 
 1. Create a `VpcLink` targeting the specified Network Load Balancer\. 
 
-   For this discussion, we assume the ARN of the Network Load Balancer is `arn:aws:elasticloadbalancing:us-east-1:123456789012:loadbalancer/net/my-vpclink-test-nlb/1f8df693cd094a72`\. 
-
    ```
    aws apigateway create-vpc-link \
        --name my-test-vpc-link \
-       --target-arns arn:aws:elasticloadbalancing:us-east-1:123456789012:loadbalancer/net/my-vpclink-test-nlb/1f8df693cd094a72
+       --target-arns arn:aws:elasticloadbalancing:us-east-2:123456789012:loadbalancer/net/my-vpclink-test-nlb/1234567890abcdef
    ```
 
-   The preceding command immediately returns the following response, acknowledging the receipt of the request, and showing the `PENDING` status for the `VpcLink` being created\.
+   The output of this command acknowledges the receipt of the request and shows the `PENDING` status for the `VpcLink` being created\.
 
    ```
    {
        "status": "PENDING", 
        "targetArns": [
-           "arn:aws:elasticloadbalancing:us-east-1:123456789012:loadbalancer/net/my-vpclink-test-nlb/1f8df693cd094a72"
+           "arn:aws:elasticloadbalancing:us-east-2:123456789012:loadbalancer/net/my-vpclink-test-nlb/1234567890abcdef"
        ], 
        "id": "gim7c3", 
        "name": "my-test-vpc-link"
@@ -49,26 +47,24 @@ After the Network Load Balancer is created, note its ARN\. You need it to create
    "NLB is already associated with another VPC Endpoint Service"
    ```
 
-   Only after the `VpcLink` is created successfully are we ready to create the API and integrate it with the VPC resource through the `VpcLink`\. 
+   After the `VpcLink` is created successfully, you can create an API and integrate it with the VPC resource through the `VpcLink`\. 
 
    Note the `id` value of the newly created `VpcLink` \(`gim7c3` in the preceding output\)\. You need it to set up the private integration\.
 
-1.  Set up an API by creating an API Gateway [https://docs.aws.amazon.com/apigateway/api-reference/resource/rest-api/](https://docs.aws.amazon.com/apigateway/api-reference/resource/rest-api/) resource:
+1.  Set up an API by creating an API Gateway [https://docs.aws.amazon.com/apigateway/latest/api/API_RestApi.html](https://docs.aws.amazon.com/apigateway/latest/api/API_RestApi.html) resource:
 
    ```
    aws apigateway create-rest-api --name 'My VPC Link Test'
    ```
 
-   We have dropped the input parameters of `endpoint-url` and `region` to use the default region as specified in the AWS configuration\.
-
-   Note the `RestApi`'s `id` value in the returned result\. In this example, we assume it is `abcdef123`\. You need this value to perform further operations on the API, including setting up methods and integrations\. 
+   Note the `RestApi`'s `id` value in the returned result\. You need this value to perform further operations on the API\. 
 
    For illustration purposes, we will create an API with only a `GET` method on the root resource \(`/`\) and integrate the method with the `VpcLink`\.
 
 1.  Set up the `GET /` method\. First get the identifier of the root resource \(`/`\):
 
    ```
-   aws apigateway get-resources --rest-api-id abcdef123
+   aws apigateway get-resources --rest-api-id  abcdef123
    ```
 
    In the output, note the `id` value of the `/` path\. In this example, we assume it to be `skpp60rab7`\.
@@ -77,13 +73,11 @@ After the Network Load Balancer is created, note its ARN\. You need it to create
 
    ```
    aws apigateway put-method \
-          --rest-api-id abcdef123 \
+          --rest-api-id  abcdef123 \
           --resource-id skpp60rab7 \
           --http-method GET \
           --authorization-type "NONE"
    ```
-
-    To use the IAM permissions, a Lambda authorizer, or an Amazon Cognito user pool to authenticate the caller, set the `authorization-type` to `AWS_IAM`, `CUSTOM`, or `COGNITO_USER_POOLS`, respectively\.
 
    If you do not use the proxy integration with the `VpcLink`, you must also set up at least a method response of the `200` status code\. We will use the proxy integration here\.
 
@@ -93,7 +87,7 @@ After the Network Load Balancer is created, note its ARN\. You need it to create
    aws apigateway put-integration \
        --rest-api-id abcdef123 \
        --resource-id skpp60rab7 \
-       --uri 'http://myApi.example.com' \
+       --uri 'http://my-vpclink-test-nlb-1234567890abcdef.us-east-2.amazonaws.com' \
        --http-method GET \
        --type HTTP_PROXY \
        --integration-http-method GET \
@@ -101,16 +95,16 @@ After the Network Load Balancer is created, note its ARN\. You need it to create
        --connection-id gim7c3
    ```
 
-   For a private integration, you must set `connection-type` to `VPC_LINK` and set `connection-id` to either your `VpcLink`'s identifier or a stage variable referencing your `VpcLink` ID\. The `uri` parameter is not used for routing requests to your endpoint, but is used for setting the `Host` header and for certificate validation\.
+   For a private integration, set `connection-type` to `VPC_LINK` and set `connection-id` to either your `VpcLink`'s identifier or a stage variable referencing your `VpcLink` ID\. The `uri` parameter is not used for routing requests to your endpoint, but is used for setting the `Host` header and for certificate validation\.
 
-   If successful, the command returns the following output:
+   The command returns the following output:
 
    ```
    {
        "passthroughBehavior": "WHEN_NO_MATCH", 
        "timeoutInMillis": 29000, 
        "connectionId": "gim7c3", 
-       "uri": "http://myApi.example.com", 
+       "uri": "http://my-vpclink-test-nlb-1234567890abcdef.us-east-2.amazonaws.com", 
        "connectionType": "VPC_LINK", 
        "httpMethod": "GET", 
        "cacheNamespace": "skpp60rab7", 
@@ -125,7 +119,7 @@ After the Network Load Balancer is created, note its ARN\. You need it to create
    aws apigateway put-integration \
        --rest-api-id abcdef123 \
        --resource-id skpp60rab7 \
-       --uri 'http://myApi.example.com' \
+       --uri 'http://my-vpclink-test-nlb-1234567890abcdef.us-east-2.amazonaws.com' \
        --http-method GET \
        --type HTTP_PROXY \
        --integration-http-method GET \
@@ -147,7 +141,7 @@ After the Network Load Balancer is created, note its ARN\. You need it to create
 
    Make sure to use a stringified JSON list as the `patch-operations` parameter value\.
 
-    Using a stage variable to set the `connectionId` value has the advantage of having the same API integrated with different `VpcLink`s by resetting the stage variable value\. This is useful for switching your API to a different VPC link to migrate to a different Network Load Balancer or a different VPC\.
+    You can use a stage variable to integrate your API with a different VPC or Network Load Balancer by resetting the `VpcLink`s stage variable value\.
 
    Because we used the private proxy integration, the API is now ready for deployment and for test runs\. With the non\-proxy integration, you must also set up the method response and integration response, just as you would when setting up an [API with HTTP custom integrations](api-gateway-create-api-step-by-step.md#api-gateway-create-resource-and-methods)\.
 
@@ -169,10 +163,10 @@ After the Network Load Balancer is created, note its ARN\. You need it to create
        --patch-operations op=replace,path='/variables/vpcLinkId',value='asf9d7'
    ```
 
-   To test the API, invoke it using the following cURL command:
+   Use the following command to invoke your API:
 
    ```
-   curl -X GET https://abcdef123.execute-api.us-east-1.amazonaws.com/test
+   curl -X GET https://abcdef123.execute-api.us-east-2.amazonaws.com/test
    ```
 
    Alternatively, you can type the API's invoke\-URL in a web browser to view the result\.

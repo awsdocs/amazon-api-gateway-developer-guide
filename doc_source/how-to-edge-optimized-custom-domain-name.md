@@ -47,7 +47,7 @@ To use an ACM certificate with an API Gateway edge\-optimized custom domain name
 
 **To set up a custom domain name using the API Gateway REST API**
 
-1. Call [domainname:create](https://docs.aws.amazon.com/apigateway/api-reference/link-relation/domainname-create/), specifying the custom domain name and the ARN of a certificate stored in AWS Certificate Manager\.
+1. Call [domainname:create](https://docs.aws.amazon.com/apigateway/latest/api/API_CreateDomainName.html), specifying the custom domain name and the ARN of a certificate stored in AWS Certificate Manager\.
 
     The successful API call returns a `201 Created` response containing the certificate ARN as well as the associated CloudFront distribution name in its payload\.
 
@@ -55,7 +55,7 @@ To use an ACM certificate with an API Gateway edge\-optimized custom domain name
 
 1. Follow the previous procedure to set up an A\-record alias to map the custom domain name to its CloudFront distribution name\.
 
-For code examples of this REST API call, see [domainname:create](https://docs.aws.amazon.com/apigateway/api-reference/link-relation/domainname-create/)\.
+For code examples of this REST API call, see [domainname:create](https://docs.aws.amazon.com/apigateway/latest/api/API_CreateDomainName.html)\.
 
 ## Log custom domain name creation in CloudTrail<a name="how-to-custom-domain-log-cloudfront-distribution-update-in-cloudtrail"></a>
 
@@ -110,11 +110,11 @@ The following procedure sets up API mappings to map paths from your custom domai
 In addition, you can call the API Gateway REST API, AWS CLI, or one of the AWS SDKs to set up the base path mapping of an API with a custom domain name as its hostname\. As an illustration, the following procedure outlines the steps to do so using the REST API calls\.
 
 **To set up the base path mapping of an API using the API Gateway REST API**
-+  Call [basepathmapping:create](https://docs.aws.amazon.com/apigateway/api-reference/link-relation/basepathmapping-create/) on a specific custom domain name, specifying the `basePath`, `restApiId`, and a deployment `stage` property in the request payload\.
++  Call [basepathmapping:create](https://docs.aws.amazon.com/apigateway/latest/api/API_CreateBasePathMapping.html) on a specific custom domain name, specifying the `basePath`, `restApiId`, and a deployment `stage` property in the request payload\.
 
    The successful API call returns a `201 Created` response\.
 
-For code examples of the REST API call, see [basepathmapping:create](https://docs.aws.amazon.com/apigateway/api-reference/link-relation/basepathmapping-create/)\.
+For code examples of the REST API call, see [basepathmapping:create](https://docs.aws.amazon.com/apigateway/latest/api/API_CreateBasePathMapping.html)\.
 
 ## Rotate a certificate imported into ACM<a name="how-to-rotate-custom-domain-certificate"></a>
 
@@ -147,7 +147,7 @@ To illustrate how to programmatically rotate an imported certificate for a custo
 **Rotate an imported certificate using the API Gateway REST API**
 
 
-+  Call [domainname:update](https://docs.aws.amazon.com/apigateway/api-reference/link-relation/domainname-update/) action, specifying the ARN of the new ACM certificate for the specified domain name\. 
++  Call [domainname:update](https://docs.aws.amazon.com/apigateway/latest/api/API_UpdateDomainName.html) action, specifying the ARN of the new ACM certificate for the specified domain name\. 
 
 ## Call your API with custom domain names<a name="how-to-custom-domains-call-api-with-sni"></a>
 

@@ -2,9 +2,9 @@
 
  You can create an API Gateway API with private integration to provide your customers access to HTTP/HTTPS resources within your Amazon Virtual Private Cloud \(Amazon VPC\)\. Such VPC resources are HTTP/HTTPS endpoints on an EC2 instance behind a Network Load Balancer in the VPC\. The Network Load Balancer encapsulates the VPC resource and routes incoming requests to the targeted resource\. 
 
-When a client calls the API, API Gateway connects to the Network Load Balancer through the pre\-configured VPC link\. A VPC link is encapsulated by an API Gateway resource of [VpcLink](https://docs.aws.amazon.com/apigateway/api-reference/resource/vpc-link/)\. It is responsible for forwarding API method requests to the VPC resources and returns backend responses to the caller\. For an API developer, a `VpcLink` is functionally equivalent to an integration endpoint\. 
+When a client calls the API, API Gateway connects to the Network Load Balancer through the pre\-configured VPC link\. A VPC link is encapsulated by an API Gateway resource of [VpcLink](https://docs.aws.amazon.com/apigateway/latest/api/API_VpcLink.html)\. It is responsible for forwarding API method requests to the VPC resources and returns backend responses to the caller\. For an API developer, a `VpcLink` is functionally equivalent to an integration endpoint\. 
 
- To create an API with private integration, you must create a new `VpcLink`, or choose an existing one, that is connected to a Network Load Balancer that targets the desired VPC resources\. You must have [appropriate permissions](grant-permissions-to-create-vpclink.md) to create and manage a `VpcLink`\. You then set up an API [method](https://docs.aws.amazon.com/apigateway/api-reference/resource/method/) and integrate it with the `VpcLink` by setting either `HTTP` or `HTTP_PROXY` as the [integration type](https://docs.aws.amazon.com/apigateway/api-reference/resource/integration/#type), setting `VPC_LINK` as the integration [connection type](https://docs.aws.amazon.com/apigateway/api-reference/resource/integration/#connectionType), and setting the `VpcLink` identifier on the integration [https://docs.aws.amazon.com/apigateway/api-reference/resource/integration/#connectionId](https://docs.aws.amazon.com/apigateway/api-reference/resource/integration/#connectionId)\. 
+ To create an API with private integration, you must create a new `VpcLink`, or choose an existing one, that is connected to a Network Load Balancer that targets the desired VPC resources\. You must have [appropriate permissions](grant-permissions-to-create-vpclink.md) to create and manage a `VpcLink`\. You then set up an API [method](https://docs.aws.amazon.com/apigateway/latest/api/API_Method.html) and integrate it with the `VpcLink` by setting either `HTTP` or `HTTP_PROXY` as the [integration type](https://docs.aws.amazon.com/apigateway/latest/api/API_Integration.html#type), setting `VPC_LINK` as the integration [connection type](https://docs.aws.amazon.com/apigateway/latest/api/API_Integration.html#connectionType), and setting the `VpcLink` identifier on the integration [https://docs.aws.amazon.com/apigateway/latest/api/API_Integration.html#connectionId](https://docs.aws.amazon.com/apigateway/latest/api/API_Integration.html#connectionId)\. 
 
 **Note**  
 The Network Load Balancer and API must be owned by the same AWS account\.
@@ -53,9 +53,9 @@ After creating your VPC resource and your Network Load Balancer with your VPC re
 
       We will define the `vpcLinkId` stage variable after deploying the API to a stage and set its value to the ID of the `VpcLink` created in **Step 2**\.
 
-   1.  Type a URL, for example, `http://myApi.example.com`, for **Endpoint URL**\. 
+   1.  Enter a URL, for example, `http://my-vpclink-test-nlb-1234567890abcdef.us-east-2.amazonaws.com`, for **Endpoint URL**\. 
 
-      Here, the host name \(for example, `myApi.example.com`\) is used to set the `Host` header of the integration request\. 
+      Here, the host name \(for example, `my-vpclink-test-nlb-1234567890abcdef.us-east-2.amazonaws.com`\) is used to set the `Host` header of the integration request\. 
 **Note**  
 For the Network Load Balancer \(NLB\), be sure to use the NLB DNS name as described in [Getting Started with Network Load Balancers](https://docs.aws.amazon.com/elasticloadbalancing/latest/network/network-load-balancer-getting-started.html)\. 
 

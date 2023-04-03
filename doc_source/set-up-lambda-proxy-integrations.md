@@ -172,7 +172,7 @@ For detailed instructions for using the API Gateway console to configure a proxy
 As an example, we use the following sample Lambda function as the backend of the API:
 
 ```
-exports.handler = function(event, context, callback) {
+export const handler = function(event, context, callback) {
     console.log('Received event:', JSON.stringify(event, null, 2));
     var res ={
         "statusCode": 200,
@@ -244,7 +244,7 @@ Comparing this to [the Lambda custom integration setup](set-up-lambda-custom-int
 
    Note the root resource `id` value \(`krznpq9xpg`\)\. You need it in the next step and later\.
 
-1.  Call `create-resource` to create an API Gateway [Resource](https://docs.aws.amazon.com/apigateway/api-reference/resource/resource/) of `/greeting`:
+1.  Call `create-resource` to create an API Gateway [Resource](https://docs.aws.amazon.com/apigateway/latest/api/API_Resource.html) of `/greeting`:
 
    ```
    aws apigateway create-resource --rest-api-id te6si5ach7 \

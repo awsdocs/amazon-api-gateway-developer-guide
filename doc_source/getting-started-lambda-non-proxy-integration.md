@@ -30,7 +30,7 @@ var times = ['morning', 'afternoon', 'evening', 'night', 'day'];
 
 console.log('Loading function');
 
-exports.handler = function(event, context, callback) {
+export const handler = function(event, context, callback) {
   // Parse the input for the name, city, time and day property values
   let name = event.name === undefined ? 'you' : event.name;
   let city = event.city === undefined ? 'World' : event.city;
@@ -87,8 +87,6 @@ Now, create the `GetStartedLambdaIntegration` Lambda function\.
 1. In the **Author from scratch** pane, do the following:
 
    1. For **Name**, enter **GetStartedLambdaIntegration** as the Lambda function name\.
-
-   1. For **Runtime**, choose a supported Node\.js runtime\.
 
    1. For **Execution role**, choose **Create a new role from AWS policy templates**\.
 
@@ -238,9 +236,9 @@ If you did not use the AWS Management Console to create the Lambda function, you
 
    1. In the **Method Execution** pane, choose **Method Request**\.
 
-   1. Expand the **URL Query String Parameters** section\. Choose **Add query string**\. Type `time` for **Name**\.  Press the check\-mark icon to save the parameter\. Select the **Required** option and leave **Caching** cleared to avoid an unnecessary charge for this exercise\.
+   1. Expand the **URL Query String Parameters** section\. Choose **Add query string**\. Type `time` for **Name**\. Select the **Required** option and choose the check\-mark icon to save the setting\. You can ignore the warning message to have a request validator\. Leave **Caching** cleared to avoid an unnecessary charge for this exercise\.
 
-   1. Expand the **HTTP Request Headers** section\. Choose **Add header**\. Type `day` for **Name**\. Press the check\-mark icon to save the header\. Select the **Required** option and leave **Caching** cleared to avoid an unnecessary charge for this exercise\. 
+   1. Expand the **HTTP Request Headers** section\. Choose **Add header**\. Type `day` for **Name**\. Select the **Required** option and choose the check\-mark icon to save the setting\. You can ignore the warning message to have a request validator\. Leave **Caching** cleared to avoid an unnecessary charge for this exercise\. 
 
    1. To define the method request payload, do the following: 
 
@@ -257,7 +255,7 @@ If you did not use the AWS Management Console to create the Lambda function, you
          ```
          {
            "$schema": "http://json-schema.org/draft-04/schema#",
-           "title": "GetStartedLambdaIntegrationInputModel",
+           "title": "GetStartedLambdaIntegrationUserInput",
            "type": "object",
            "properties": {
              "callerName": { "type": "string" }
@@ -267,17 +265,17 @@ If you did not use the AWS Management Console to create the Lambda function, you
 
       1. Choose **Create model** to finish defining the input model\.
 
-      1. Choose **Resources**, choose the `/{city} ANY` method, choose **Method Request**, and expand **Request body**\. Choose **Add model**\. Type `application/json` for **Content type**\. Choose `GetStartedLambdaIntegrationInput` for **Model name**\. Choose the check\-mark icon to save the setting\. 
+      1. Choose **Resources**, choose the `/{city} ANY` method, choose **Method Request**, and expand **Request body**\. Choose **Add model**\. Type `application/json` for **Content type**\. Choose `GetStartedLambdaIntegrationUserInput` for **Model name**\. Choose the check\-mark icon to save the setting\. 
 
 1. Choose the `/{city} ANY` method and choose **Integration Request** to set up a body\-mapping template\. In this step you'll map the previously configured method request parameter of `nameQuery` or `nameHeader` to the JSON payload, as required by the backend Lambda function:
 
    1. Expand the **Mapping Templates** section\. Choose **Add mapping template**\. Type `application/json` for **Content\-Type**\. Choose the check\-mark icon to save the setting\.
 
-   1. In the popup that appears, choose **Yes, secure this integration**\.
+   1. In the pop\-up that appears, choose **Yes, secure this integration**\.
 
    1. Check the recommended `When there are no templates defined` for **Request body passthrough**\.
 
-   1. Choose `GetStartedLambaIntegrationUserInput` from **Generate template** to generate an initial mapping template\. This option is available because you defined a model schema, without which you would need to write the mapping template from scratch\.
+   1. Choose `GetStartedLambdaIntegrationUserInput` from **Generate template** to generate an initial mapping template\. This option is available because you defined a model schema, without which you would need to write the mapping template from scratch\.
 
    1. Replace the generated mapping script in the mapping template editor with the following:
 
@@ -443,5 +441,3 @@ If you delete an IAM resource that a Lambda function relies on, that Lambda func
 1. From **Details**, choose **Policies**\.
 
 1. From the list of policies, choose **APIGatewayLambdaExecPolicy**, choose **Policy Actions**, and then choose **Delete**\. When prompted, choose **Delete**\.
-
-You have now reached the end of this walkthrough\.

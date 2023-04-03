@@ -131,7 +131,7 @@ The payload format version also determines the structure of the response that yo
 
 ### Lambda function response for format 1\.0<a name="http-api-lambda-authorizer.v1"></a>
 
-If you choose the `1.0` format version, Lambda authorizers must return an IAM policy that allows or denies access to your API route\. You can use standard IAM policy syntax in the policy\. For examples of IAM policies, see [ Control access for invoking an API](api-gateway-control-access-using-iam-policies-to-invoke-api.md)\. The `context` object is optional\. You can pass context properties to Lambda integrations or access logs by using `$context.authorizer.property`\. To learn more, see [Customizing HTTP API access logs](http-api-logging-variables.md)\.
+If you choose the `1.0` format version, Lambda authorizers must return an IAM policy that allows or denies access to your API route\. You can use standard IAM policy syntax in the policy\. For examples of IAM policies, see [ Control access for invoking an API](api-gateway-control-access-using-iam-policies-to-invoke-api.md)\. You can pass context properties to Lambda integrations or access logs by using `$context.authorizer.property`\. The `context` object is optional and `claims` is a reserved placeholder and cannot be used as the context object\. To learn more, see [Customizing HTTP API access logs](http-api-logging-variables.md)\.
 
 **Example**  
 
@@ -202,7 +202,7 @@ The following example Node\.js Lambda functions demonstrate the required respons
 #### [ Simple response ]
 
 ```
-exports.handler = async(event) => {
+export const handler = async(event) => {
     let response = {
         "isAuthorized": false,
         "context": {
@@ -236,7 +236,7 @@ exports.handler = async(event) => {
 #### [ IAM policy ]
 
 ```
-exports.handler = async(event) => {
+export const handler = async(event) => {
   if (event.headers.authorization == "secretToken") {
     console.log("allowed");
     return {
@@ -353,5 +353,3 @@ To troubleshoot errors, [enable access logging](http-api-logging.md) for your AP
 If the logs indicate that API Gateway doesn't have permission to invoke your function, update your function's resource policy or provide an IAM role to grant API Gateway permission to invoke your authorizer\.
 
 If the logs indicate that your Lambda function returns an invalid response, verify that your Lambda function returns a response in the [required format](#http-api-lambda-authorizer.payload-format-response)\.
-
-Ensure that the request being made to API Gateway includes the identity source header, otherwise API Gateway will directly return a 401. In this case there is no authorizer error logged, because the authorizer was not invoked. 

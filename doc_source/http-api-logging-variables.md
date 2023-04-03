@@ -18,7 +18,7 @@ You can use the following variables to customize HTTP API access logs\. To learn
 | $context\.customDomain\.basePathMatched |  The path for an API mapping that an incoming request matched\. Applicable when a client uses a custom domain name to access an API\. For example if a client sends a request to `https://api.example.com/v1/orders/1234`, and the request matches the API mapping with the path `v1/orders`, the value is `v1/orders`\. To learn more, see [Working with API mappings for HTTP APIs](http-api-mappings.md)\.  | 
 | $context\.dataProcessed | The amount of data processed in bytes\. | 
 | $context\.domainName |  The full domain name used to invoke the API\. This should be the same as the incoming `Host` header\.  | 
-| $context\.domainPrefix |  The first label of the `$context.domainName`\. This is often used as a caller/customer identifier\.  | 
+| $context\.domainPrefix |  The first label of the `$context.domainName`\.  | 
 | $context\.error\.message |  A string that contains an API Gateway error message\.  | 
 | $context\.error\.messageString | The quoted value of $context\.error\.message, namely "$context\.error\.message"\. | 
 | $context\.error\.responseType |  A type of `GatewayResponse`\. For more information, see [Monitoring WebSocket API execution with CloudWatch metrics](apigateway-websocket-api-logging.md) and [Setting up gateway responses to customize error responses](api-gateway-gatewayResponse-definition.md#customize-gateway-responses)\.  | 
@@ -50,12 +50,12 @@ You can use the following variables to customize HTTP API access logs\. To learn
 | $context\.integrationLatency | The integration latency in ms\. | 
 | $context\.integrationStatus | For Lambda proxy integration, this parameter represents the status code returned from AWS Lambda, not from the backend Lambda function\. | 
 | $context\.path | The request path\. For example, /\{stage\}/root/child\.  | 
-| $context\.protocol | The request protocol, for example, HTTP/1\.1\. | 
+| $context\.protocol | The request protocol, for example, HTTP/1\.1\.  API Gateway APIs can accept HTTP/2 requests, but API Gateway sends requests to backend integrations using HTTP/1\.1\. As a result, the request protocol is logged as HTTP/1\.1 even if a client sends a request that uses HTTP/2\.   | 
 | $context\.requestId |  The ID that API Gateway assigns to the API request\.  | 
 | $context\.requestTime | The [CLF](https://httpd.apache.org/docs/current/logs.html#common)\-formatted request time \(dd/MMM/yyyy:HH:mm:ss \+\-hhmm\)\. | 
 | $context\.requestTimeEpoch | The [Epoch](https://en.wikipedia.org/wiki/Unix_time)\-formatted request time\. | 
 | $context\.responseLatency | The response latency in ms\. | 
-| $context\.responseLength | The response payload length\. | 
+| $context\.responseLength | The response payload length in bytes\. | 
 | $context\.routeKey |  The route key of the API request, for example `/pets`\.  | 
 | $context\.stage |  The deployment stage of the API request \(for example, `beta` or `prod`\)\.  | 
 | $context\.status | The method response status\. | 

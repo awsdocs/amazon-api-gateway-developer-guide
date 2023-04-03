@@ -1,6 +1,6 @@
 # Change a public or private API endpoint type in API Gateway<a name="apigateway-api-migration"></a>
 
-Changing an API endpoint type requires you to update the API's configuration\. You can change an existing API type using the API Gateway console, the AWS CLI, or an AWS SDK for API Gateway\. The update operation may take up to 60 seconds to complete\. During this time, your API will be available, but its endpoint type cannot be changed again until the current change is completed\.
+Changing an API endpoint type requires you to update the API's configuration\. You can change an existing API type using the API Gateway console, the AWS CLI, or an AWS SDK for API Gateway\. The endpoint type cannot be changed again until the current change is completed, but your API will be available\. 
 
 The following endpoint type changes are supported:
 + From edge\-optimized to regional or private

@@ -96,19 +96,7 @@ Other options for an API method include:
 
     Once deployed, you can obtain the invocation URLs \(**Invoke URL**\) of the API's endpoints\. 
 
-    If the GET method supported open access, \(i\.e\., if the method's authorization type were set to `NONE`\) you could double\-click the **Invoke URL** link to invoke the method in your default browser\. If needed, you could also append necessary query string parameters to the invocation URL\. With the `AWS_IAM` authorization type described here, you must sign the request with an [access key ID and the corresponding secret key](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_access-keys.html) of an IAM user of your AWS account\. To do this, you must use a client that supports the [Signature Version 4](https://docs.aws.amazon.com/general/latest/gr/sigv4_signing.html) \(SigV4\) protocols\. An example of such a client is an app that uses one of the AWS SDKs or the [Postman](https://www.postman.com/) application or cURL commands\. To call a POST, PUT, or PATCH method that take a payload, you also need to use such a client to handle the payload\. 
-
-    To invoke this API method in the Postman, append the query string parameters to the stage\-specific method invocation URL \(as shown in the previous image\) to create the complete method request URL: 
-
-   ```
-   https://api-id.execute-api.region.amazonaws.com/test/pets?type=Dog&page=2
-   ```
-
-    Specify this URL in the address bar of the browser\. Choose **GET** as the HTTP verb\. Select **AWS Signature** for the **Type** option under the **Authorization** tab, and then specify the following required properties before sending the request: 
-   + For **AccessKey**, type the caller's AWS access key, as provisioned from [AWS IAM](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_access-keys.html)\.
-   + For **SecretKey**, type the caller's AWS secret key, as provisioned from AWS IAM when the access key was first created\.
-   + For **AWS Region**, type the API\-hosting AWS Region, as specified in the invocation URL\.
-   + For **Service Name**, type `execute-api`, for the API Gateway execution service\. 
+    If the GET method supported open access, \(i\.e\., if the method's authorization type were set to `NONE`\) you could double\-click the **Invoke URL** link to invoke the method in your default browser\. If needed, you could also append necessary query string parameters to the invocation URL\. With the `AWS_IAM` authorization type described here, you must sign the request with AWS credentials\. To do this, you must use a client that supports the [Signature Version 4](https://docs.aws.amazon.com/general/latest/gr/sigv4_signing.html) \(SigV4\) protocols\. An example of such a client is an app that uses one of the AWS SDKs or the [Postman](https://www.postman.com/) application or cURL commands\. 
 
     If you use an SDK to create a client, you can call the methods exposed by the SDK to sign the request\. For implementation details, see the [AWS SDK](https://aws.amazon.com/tools/) of your choosing\. 
 **Note**  
@@ -235,7 +223,7 @@ You receive the following JSON object in the response body:
 
 Before you begin this walkthrough, you should do the following:
 
-1. Complete the steps in [Prerequisites for getting started with API Gateway](setting-up.md), including assigning API Gateway access permission to the IAM user\.
+1. Complete the steps in [Prerequisites for getting started with API Gateway](setting-up.md)\.
 
 1.  At a minimum, follow the steps in [Tutorial: Build a REST API with HTTP non\-proxy integration](#api-gateway-create-api-step-by-step) to create a new API named `MyDemoAPI` in the API Gateway console\. 
 
@@ -649,18 +637,49 @@ The third model and mapping template is used to combine `id`, `type`, and `price
 ```
 
 **Topics**
-+ [Step 1: Create models](#getting-started-models-add-models)
-+ [Step 2: Create resources](#getting-started-models-add-resources)
-+ [Step 3: Create GET methods](#getting-started-models-add-methods)
-+ [Step 4: Create a Lambda function](#getting-started-models-lambda)
++ [Step 1: Create a Lambda function](#getting-started-models-lambda)
++ [Step 2: Create models](#getting-started-models-add-models)
++ [Step 3: Create resources](#getting-started-models-add-resources)
++ [Step 4: Create GET methods](#getting-started-models-add-methods)
 + [Step 5: Set up and test the methods](#getting-started-models-set-methods)
 + [Step 6: Deploy the API](#getting-started-models-deploy)
 + [Step 7: Test the API](#getting-started-models-test)
 + [Step 8: Clean up](#getting-started-models-clean-up)
 
-### Step 1: Create models<a name="getting-started-models-add-models"></a>
+### Step 1: Create a Lambda function<a name="getting-started-models-lambda"></a>
 
-In this step, you create four models\. The first three models represent the data output formats for use with the HTTP endpoint and the Lambda function\. The last model represents the data input schema for use with the Lambda function\.
+You first need to create a Lambda function that returns the sample data for the Lambda custom integration\.
+
+**To create the Lambda function\.**
+
+1. Open the AWS Lambda console at [https://console\.aws\.amazon\.com/lambda/](https://console.aws.amazon.com/lambda/)\.
+
+1. Choose **Create function\.**
+
+1. Choose **Author from scratch\.**
+
+1. For **Function Name**, type **GetPetsInfo**\.
+
+1.  Choose **Create function\.**
+
+1. Copy the following Lambda function and paste it into the code editor in the Lambda\. Choose **Deploy** to update your function\.
+
+   ```
+   console.log('Loading event');
+   
+   export const handler = function(event, context, callback) {
+     callback(null, 
+       [{"id": 1, "type": "dog", "price": 249.99},
+       {"id": 2, "type": "cat", "price": 124.99},
+       {"id": 3, "type": "fish", "price": 0.99}]); // SUCCESS with message
+   };
+   ```
+**Tip**  
+In the preceding code, written in Node\.js, `console.log` writes information to an Amazon CloudWatch log\. `event` contains the input to the Lambda function\. `context` contains calling context\. `callback` returns the result\. For more information about how to write Lambda function code, see the "Programming Model" section in [AWS Lambda: How it Works](https://docs.aws.amazon.com/lambda/latest/dg/lambda-introduction.html) and the sample walkthroughs in the *AWS Lambda Developer Guide*\.
+
+### Step 2: Create models<a name="getting-started-models-add-models"></a>
+
+In this step, you create four models\. The first three models represent the data output formats for use with the HTTP endpoint\. The last model represents the data input schema for use with the Lambda function\.
 
 **To create the first output model**
 
@@ -785,9 +804,9 @@ In this step, you create four models\. The first three models represent the data
 
 1. Choose **Create model**\.
 
-### Step 2: Create resources<a name="getting-started-models-add-resources"></a>
+### Step 3: Create resources<a name="getting-started-models-add-resources"></a>
 
-In this step, you create four resources\. The first three resources enable you to get the example data from the HTTP endpoint in the three output formats\. The last resource enables you to get the example data from the Lambda function in the output schema that combines `id` and `type` into `description` and renames `price` to `askingPrice`\.
+In this step, you create four resources\. The first three resources enable you to get the example data from the HTTP endpoint in the three output formats\. The last resource enables you to get the example data from the Lambda function in the same output schema of **/flattensome**\. 
 
 **To create the first resource**
 
@@ -823,7 +842,7 @@ In this step, you create four resources\. The first three resources enable you t
 
 1. For **Resource Path**, accept the default of **/petstorewalkthrough/lambdaflattensome**, and then choose **Create Resource**\.
 
-### Step 3: Create GET methods<a name="getting-started-models-add-methods"></a>
+### Step 4: Create GET methods<a name="getting-started-models-add-methods"></a>
 
 In this step, you create a GET method for each of the resources you created in the previous step\.
 
@@ -841,7 +860,13 @@ In this step, you create a GET method for each of the resources you created in t
 
 1. From the drop\-down list, choose **GET**, and then choose the check mark to save your choice\.
 
-1. In the Setup pane, choose **Lambda Function** for the **Integration type**, choose the region where you have created the [`GetPetsInfo` Lambda function](#getting-started-models-lambda) from the **Lambda Region** drop\-down list, choose **GetPetsInfo** for **Lambda Function**, and choose **Save**\. Choose **OK** when prompted to add permission to the Lambda function\.
+1. In the Setup pane, choose **Lambda Function** for the **Integration type**\.
+
+1. Leave the **Use Lambda Proxy Integration** box unchecked\. 
+
+1.  Enter **GetPetsInfo** for the Lambda function\. 
+
+1.  Choose **OK** when prompted to add permission to the Lambda function\.
 
 **To create the third GET method**
 
@@ -858,65 +883,6 @@ In this step, you create a GET method for each of the resources you created in t
 1. From the drop\-down list, choose **GET**, and then choose the check mark icon to save your choice\.
 
 1. In the Setup pane, choose **HTTP** for the **Integration type** and **GET** for **HTTP method**, type **http://petstore\-demo\-endpoint\.execute\-api\.com/petstore/pets** in **Endpoint URL**, and then choose **Save**\.
-
-### Step 4: Create a Lambda function<a name="getting-started-models-lambda"></a>
-
-In this step, you create a Lambda function that returns the sample data\.
-
-**To create the Lambda function**
-
-1. Open the AWS Lambda console at [https://console\.aws\.amazon\.com/lambda/](https://console.aws.amazon.com/lambda/)\.
-
-1. Do one of the following:
-   + If a welcome page appears, choose **Get Started Now**\.
-   + If the **Lambda: Function list** page appears, choose **Create a Lambda function**\.
-
-1. For **Name**, type **GetPetsInfo**\.
-
-1. For **Description**, type **Gets information about pets**\.
-
-1. For **Code template**, choose **None**\.
-
-1. Type the following code:
-
-   ```
-   console.log('Loading event');
-   
-   exports.handler = function(event, context, callback) {
-     callback(null, 
-       [{"id": 1, "type": "dog", "price": 249.99},
-       {"id": 2, "type": "cat", "price": 124.99},
-       {"id": 3, "type": "fish", "price": 0.99}]); // SUCCESS with message
-   };
-   ```
-**Tip**  
-In the preceding code, written in Node\.js, `console.log` writes information to an Amazon CloudWatch log\. `event` contains the input to the Lambda function\. `context` contains calling context\. `callback` returns the result\. For more information about how to write Lambda function code, see the "Programming Model" section in [AWS Lambda: How it Works](https://docs.aws.amazon.com/lambda/latest/dg/lambda-introduction.html) and the sample walkthroughs in the *AWS Lambda Developer Guide*\.
-
-1. For **Handler name**, leave the default of `index.handler`\.
-
-1. For **Role**, choose the Lambda execution role, **APIGatewayLambdaExecRole**, you created in the [Build an API Gateway REST API with Lambda integration](getting-started-with-lambda-integration.md)\.
-
-1. Choose **Create Lambda function**\.
-
-1. In the list of functions, choose **GetPetsInfo** to show the function's details\.
-
-1. Make a note of the AWS region where you created this function\. You need it later\.
-
-1. In the pop\-up list, choose **Edit or test function**\.
-
-1. For **Sample event**, replace any code that appears with the following:
-
-   ```
-   {
-                      
-   }
-   ```
-**Tip**  
-The empty curly braces mean that there are no input values for this Lambda function\. This function simply returns the JSON object containing the pets information, so those key\-value pairs are not required here\.
-
-1. Choose **Invoke**\. **Execution result** shows `[{"id":1,"type":"dog","price":249.99},{"id":2,"type":"cat","price":124.99},{"id":3,"type":"fish","price":0.99}]`, which is also written to the CloudWatch Logs log files\.
-
-1. Choose **Go to function list**\.
 
 ### Step 5: Set up and test the methods<a name="getting-started-models-set-methods"></a>
 

@@ -24,8 +24,6 @@ When the `$default` route receives a request, API Gateway sends the full request
 
 To learn more about HTTP integrations, see [Working with HTTP proxy integrations for HTTP APIs](http-api-develop-integrations-http.md)\.
 
-Note: The `$default` route is not to be confused with the `/` route. While the `/` route is configured by default for a new API gateway, the `$default` route needs to be added manually\. 
-
 ## Routing API requests<a name="http-api-develop-routes.evaluation"></a>
 
 When a client sends an API request, API Gateway first determines which [stage](https://docs.aws.amazon.com/apigateway/latest/developerguide/http-api-stages.html) to route the request to\. If the request explicitly matches a stage, API Gateway sends the request to that stage\. If no stage fully matches the request, API Gateway sends the request to the `$default` stage\. If there's no `$default` stage, then the API returns `{"message":"Not Found"}`\.

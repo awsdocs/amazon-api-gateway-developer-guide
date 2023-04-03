@@ -55,7 +55,7 @@ arn:aws:apigateway:api-region:s3:action/GetBucket
 
 With the action\-based integration request URI, the bucket name \(`{bucket}`\) must be specified in the integration request body \(`{ Bucket: "{bucket}" }`\), following the input format of `GetBucket` action\. 
 
-For AWS integrations, you must also configure [credentials](https://docs.aws.amazon.com/apigateway/api-reference/resource/integration/#credentials) to allow API Gateway to call the integrated actions\. You can create a new or choose an existing IAM role for API Gateway to call the action and then specify the role using its ARN\. The following shows an example of this ARN: 
+For AWS integrations, you must also configure [credentials](https://docs.aws.amazon.com/apigateway/latest/api/API_Integration.html#credentials) to allow API Gateway to call the integrated actions\. You can create a new or choose an existing IAM role for API Gateway to call the action and then specify the role using its ARN\. The following shows an example of this ARN: 
 
 ```
 arn:aws:iam::account-id:role/iam-role-name

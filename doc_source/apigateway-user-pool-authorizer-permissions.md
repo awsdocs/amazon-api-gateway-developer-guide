@@ -40,7 +40,7 @@ To create an authorizer with an Amazon Cognito user pool, you must have `Allow` 
 }
 ```
 
-Make sure that the policy is attached to your IAM user, an IAM group that you belong to, or an IAM role that you're assigned to\. 
+Make sure that the policy is attached to an IAM group that you belong to or an IAM role that you're assigned to\. 
 
 In the preceding policy document, the `apigateway:POST` action is for creating a new authorizer, and the `apigateway:PATCH` action is for updating an existing authorizer\. You can restrict the policy to a specific region or a particular API by overriding the first two wildcard \(\*\) characters of the `Resource` values, respectively\. 
 

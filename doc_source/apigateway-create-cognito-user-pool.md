@@ -11,4 +11,4 @@ If you're using access tokens to authorize API method calls, be sure to configur
 
 Note the configured resource server identifiers and custom scope names\. You need them to construct the access scope full names for **OAuth Scopes**, which is used by the `COGNITO_USER_POOLS` authorizer\. 
 
-![\[Amazon Cognito user pool resource servers and scopes\]](http://docs.aws.amazon.com/apigateway/latest/developerguide/images/cognito-user-pool-custom-scopes.png)
+![\[Amazon Cognito user pool resource servers and scopes\]](http://docs.aws.amazon.com/apigateway/latest/developerguide/images/cognito-user-pool-custom-scopes-new-console.png)

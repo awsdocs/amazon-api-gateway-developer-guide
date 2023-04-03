@@ -61,7 +61,7 @@ When prompted with **Add Permission to Lambda Function**, make a note of the AWS
 Your `HelloWorld` Lambda function implements the following code\.   
 
    ```
-   exports.handler = function(event, context, callback) {
+   export const handler = function(event, context, callback) {
        if (event.version)
            callback(null, 'Hello, World! (' + event.version + ')' );
        else

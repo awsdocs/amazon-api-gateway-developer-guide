@@ -41,7 +41,7 @@ A standard AWS Lambda error has the following format:
  For example, consider the following JavaScript \(Node\.js\) Lambda function\. 
 
 ```
-exports.handler = function(event, context, callback) {
+export const handler = function(event, context, callback) {
     callback(new Error("Malformed input ..."));
 };
 ```
@@ -53,7 +53,7 @@ This function returns the following standard Lambda error, containing `Malformed
   "errorMessage": "Malformed input ...",
   "errorType": "Error",
   "stackTrace": [
-    "exports.handler (/var/task/index.js:3:14)"
+    "export const handler (/var/task/index.js:3:14)"
   ]
 }
 ```
@@ -84,7 +84,7 @@ def lambda_handler(event, context):
 
  Note that the `errorType` and `stackTrace` property values are language\-dependent\. The standard error also applies to any error object that is an extension of the `Error` object or a subclass of the `Exception` class\. 
 
- To map the standard Lambda error to a method response, you must first decide on an HTTP status code for a given Lambda error\. You then set a regular expression pattern on the `[selectionPattern](https://docs.aws.amazon.com/apigateway/api-reference/resource/integration-response/#selectionPattern)` property of the [IntegrationResponse](https://docs.aws.amazon.com/apigateway/api-reference/resource/integration-response/) associated with the given HTTP status code\. In the API Gateway console, this `selectionPattern` is denoted as **Lambda Error Regex** in the **Integration Response** configuration editor\.
+ To map the standard Lambda error to a method response, you must first decide on an HTTP status code for a given Lambda error\. You then set a regular expression pattern on the `[selectionPattern](https://docs.aws.amazon.com/apigateway/latest/api/API_IntegrationResponse.html#selectionPattern)` property of the [IntegrationResponse](https://docs.aws.amazon.com/apigateway/latest/api/API_IntegrationResponse.html) associated with the given HTTP status code\. In the API Gateway console, this `selectionPattern` is denoted as **Lambda Error Regex** in the **Integration Response** configuration editor\.
 
 **Note**  
 API Gateway uses Java pattern\-style regexes for response mapping\. For more information, see [Pattern](https://docs.oracle.com/javase/8/docs/api/java/util/regex/Pattern.html) in the Oracle documentation\.
@@ -110,7 +110,7 @@ To set the `selectionPattern` expression using the API Gateway console, type the
  Instead of the standard error described in the preceding section, AWS Lambda allows you to return a custom error object as JSON string\. The error can be any valid JSON object\. For example, the following JavaScript \(Node\.js\) Lambda function returns a custom error: 
 
 ```
-exports.handler = (event, context, callback) => {        
+export const handler = (event, context, callback) => {
     ...
     // Error caught here:
     var myErrorObj = {

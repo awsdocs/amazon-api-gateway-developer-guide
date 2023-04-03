@@ -2,7 +2,7 @@
 
  The combination of your API's `binaryMediaTypes`, the headers in client requests, and the integration `contentHandling` property determine how API Gateway encodes payloads\.
 
-The following table shows how API Gateway converts the request payload for specific configurations of a request's `Content-Type` header, the `binaryMediaTypes` list of a [RestApi](https://docs.aws.amazon.com/apigateway/api-reference/resource/rest-api/) resource, and the `contentHandling` property value of the [Integration](https://docs.aws.amazon.com/apigateway/api-reference/resource/integration/) resource\.
+The following table shows how API Gateway converts the request payload for specific configurations of a request's `Content-Type` header, the `binaryMediaTypes` list of a [RestApi](https://docs.aws.amazon.com/apigateway/latest/api/API_RestApi.html) resource, and the `contentHandling` property value of the [Integration](https://docs.aws.amazon.com/apigateway/latest/api/API_Integration.html) resource\.
 
 
 **API request content type conversions in API Gateway**  
@@ -19,7 +19,7 @@ The following table shows how API Gateway converts the request payload for speci
 | Binary data | A binary data type | Set with matching media types | CONVERT\_TO\_BINARY | Binary data | 
 | Binary data | A binary data type | Set with matching media types | CONVERT\_TO\_TEXT | Base64\-encoded string | 
 
-The following table shows how API Gateway converts the response payload for specific configurations of a request's `Accept` header, the `binaryMediaTypes` list of a [RestApi](https://docs.aws.amazon.com/apigateway/api-reference/resource/rest-api/) resource, and the `contentHandling` property value of the [IntegrationResponse](https://docs.aws.amazon.com/apigateway/api-reference/resource/integration-response/) resource\.
+The following table shows how API Gateway converts the response payload for specific configurations of a request's `Accept` header, the `binaryMediaTypes` list of a [RestApi](https://docs.aws.amazon.com/apigateway/latest/api/API_RestApi.html) resource, and the `contentHandling` property value of the [IntegrationResponse](https://docs.aws.amazon.com/apigateway/latest/api/API_IntegrationResponse.html) resource\.
 
 **Important**  
  When a request contains multiple media types in its `Accept` header, API Gateway honors only the first `Accept` media type\. If you can't control the order of the `Accept` media types and the media type of your binary content isn't the first in the list, add the first `Accept` media type in the `binaryMediaTypes` list of your API\. API Gateway handles all content types in this list as binary\.   

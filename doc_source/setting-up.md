@@ -1,5 +1,3 @@
 # Prerequisites for getting started with API Gateway<a name="setting-up"></a>
 
-To use API Gateway and other AWS services, you need an AWS account\. If you don't have an account, visit [aws\.amazon\.com](https://aws.amazon.com/) and choose **Create an AWS Account**\. For detailed instructions, see [Create and activate an AWS account](https://aws.amazon.com/premiumsupport/knowledge-center/create-and-activate-aws-account/)\.
-
-As a best practice, you should also create an AWS Identity and Access Management \(IAM\) user with administrator permissions and use that for all work that does not require root credentials\. Create a password for console access, and access keys to use command line tools\. See [Creating your first IAM admin user and group](https://docs.aws.amazon.com/IAM/latest/UserGuide/getting-started_create-admin-group.html) in the *IAM User Guide* for instructions\.
+Before you use Amazon API Gateway for the first time, complete the following tasks\.

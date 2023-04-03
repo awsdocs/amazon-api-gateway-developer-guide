@@ -63,7 +63,7 @@ The following table shows supported values that you can map to parameters\.
 
 | Type | Syntax | Notes | 
 | --- | --- | --- | 
-| Header value | $request\.header\.name or $\{request\.header\.name\} | Header names are case\-insensitive\. API Gateway combines multiple header values with commas, for example "header1": "value1,value2"\. Some headers are reserved\. To learn more, see [Reserved headers](#http-api-mapping-reserved-headers)\. | 
+| Header value | $response\.header\.name or $\{response\.header\.name\} | Header names are case\-insensitive\. API Gateway combines multiple header values with commas, for example "header1": "value1,value2"\. Some headers are reserved\. To learn more, see [Reserved headers](#http-api-mapping-reserved-headers)\. | 
 | Response body | $response\.body\.name or $\{response\.body\.name\} | A JSON path expression\. Recursive descent \($response\.body\.\.name\) and filter expressions \(?\(expression\)\) aren't supported\.  When you specify a JSON path, API Gateway truncates the response body at 100 KB and then applies the selection expression\. To send payloads larger than 100 KB, specify `$response.body`\.   | 
 | Context variable | $context\.variableName or $\{context\.variableName\} | The value of a supported [context variable](http-api-logging-variables.md)\. | 
 | Stage variable | $stageVariables\.variableName or $\{stageVariables\.variableName\} | The value of a [stage variable](http-api-stages.md#http-api-stages.stage-variables)\. | 
@@ -132,7 +132,7 @@ aws apigatewayv2 create-integration \
 
 ### Change the response from an integration<a name="http-api-parameter-mapping-examples-response"></a>
 
-The following example configures response parameters for an integration\. When the integration returns a 500 status code, API Gateway changes the status code to 403, and adds `header1` to the response\. When the integration returns a 404 status code, API Gateway adds an `error` header to the response\.
+The following example configures response parameters for an integration\. When the integrations returns a 500 status code, API Gateway changes the status code to 403, and adds `header1`1 to the response\. When the integration returns a 404 status code, API Gateway adds an `error` header to the response\.
 
 ```
 aws apigatewayv2 create-integration \

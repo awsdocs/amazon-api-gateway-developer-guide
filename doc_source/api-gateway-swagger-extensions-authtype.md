@@ -102,4 +102,4 @@ The following OpenAPI 3 example defines a Lambda authorizer with a custom scheme
 
 ## See also<a name="api-gateway-swagger-extensions-authtype-see-also"></a>
 
-[authorizer\.authType](https://docs.aws.amazon.com/apigateway/api-reference/resource/authorizer/#authType)
+[authorizer\.authType](https://docs.aws.amazon.com/apigateway/latest/api/API_Authorizer.html#apigw-Type-Authorizer-authType)

@@ -37,14 +37,36 @@ To disconnect the client, use:
 DELETE https://{api-id}.execute-api.us-east-1.amazonaws.com/{stage}/@connections/{connection_id}
 ```
 
-You can dynamically build a callback URL by using the `$context` variables in your integration\. For example, if you use Lambda proxy integration with a `Node.js` Lambda function, you can build the URL as follows:
+You can dynamically build a callback URL by using the `$context` variables in your integration\. For example, if you use Lambda proxy integration with a `Node.js` Lambda function, you can build the URL and send a message to a connected client as follows:
 
 ```
-exports.handler = function(event, context, callback) {
-var domain = event.requestContext.domainName;
-var stage = event.requestContext.stage;
-var connectionId = event.requestContext.connectionId;
-var callbackUrl = util.format(util.format('https://%s/%s/@connections/%s', domain, stage, connectionId));
-// Do a SigV4 and then make the call
-}
+import {
+  ApiGatewayManagementApiClient,
+  PostToConnectionCommand,
+} from "@aws-sdk/client-apigatewaymanagementapi";
+
+export const handler = async (event) => {
+  const domain = event.requestContext.domainName;
+  const stage = event.requestContext.stage;
+  const connectionId = event.requestContext.connectionId;
+  const callbackUrl = `https://${domain}/${stage}`;
+  const client = new ApiGatewayManagementApiClient({ endpoint: callbackUrl });
+
+  const requestParams = {
+    ConnectionId: connectionId,
+    Data: "Hello!",
+  };
+
+  const command = new PostToConnectionCommand(requestParams);
+
+  try {
+    await client.send(command);
+  } catch (error) {
+    console.log(error);
+  }
+
+  return {
+    statusCode: 200,
+  };
+};
 ```

@@ -165,7 +165,7 @@ API Gateway supports service\-linked roles\. For information about creating or m
 
 ### Service roles<a name="security_iam_service-with-iam-roles-service"></a>
 
-A service can assume a [service role](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_terms-and-concepts.html#iam-term-service-role) on your behalf\. A service role allows the service to access resources in other services to complete an action on your behalf\. Service roles appear in your IAM account and are owned by the account, so an IAM administrator can change the permissions for this role\. However, doing so might break the functionality of the service\.
+A service can assume a [service role](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_terms-and-concepts.html#iam-term-service-role) on your behalf\. A service role allows the service to access resources in other services to complete an action on your behalf\. Service roles appear in your IAM account and are owned by the account, so an administrator can change the permissions for this role\. However, doing so might break the functionality of the service\.
 
 API Gateway supports service roles\. 
 

@@ -10,12 +10,12 @@ The logged data includes errors or execution traces \(such as request or respons
 
 When you deploy an API, API Gateway creates a log group and log streams under the log group\. The log group is named following the `API-Gateway-Execution-Logs_{rest-api-id}/{stage_name}` format\. Within each log group, the logs are further divided into log streams, which are ordered by **Last Event Time** as logged data is reported\. 
 
-In access logging, you, as an API developer, want to log who has accessed your API and how the caller accessed the API\. You can create your own log group or choose an existing log group that could be managed by API Gateway\. To specify the access details, you select [`$context`](api-gateway-mapping-template-reference.md#context-variable-reference) variables \(expressed in a format of your choosing\) and choose a log group as the destination\. The access log format must include at least `$context.requestId`\. As a best practice, include `$context.requestId` and `$context.extendedRequestId` in your log format\. `$context.requestId` logs the value in the `x-amzn-RequestId` header\. Clients can override the value in the `x-amzn-RequestId` header\. API Gateway returns this request ID in the `x-amzn-RequestId` response header\. `$context.extendedRequestId` is a unique ID that API Gateway generates\. API Gateway returns this request ID in the `x-amz-apigw-id` response header\. An API caller can't provide or override this request ID\. For more information, see [`$context` Variables for data models, authorizers, mapping templates, and CloudWatch access logging](api-gateway-mapping-template-reference.md#context-variable-reference)\.
+In access logging, you, as an API developer, want to log who has accessed your API and how the caller accessed the API\. You can create your own log group or choose an existing log group that could be managed by API Gateway\. To specify the access details, you select [`$context`](api-gateway-mapping-template-reference.md#context-variable-reference) variables \(expressed in a format of your choosing\) and choose a log group as the destination\. The access log format must include at least `$context.requestId` or `$context.extendedRequestId`\. As a best practice, include `$context.requestId` and `$context.extendedRequestId` in your log format\. `$context.requestId` logs the value in the `x-amzn-RequestId` header\. Clients can override the value in the `x-amzn-RequestId` header with a value in the format of a universally unique identifier \(UUID\)\. API Gateway returns this request ID in the `x-amzn-RequestId` response header\. API Gateway replaces overridden request IDs that aren't in the format of a UUID with `UUID_REPLACED_INVALID_REQUEST_ID` in your access logs\. `$context.extendedRequestId` is a unique ID that API Gateway generates\. API Gateway returns this request ID in the `x-amz-apigw-id` response header\. An API caller can't provide or override this request ID\. For more information, see [`$context` Variables for data models, authorizers, mapping templates, and CloudWatch access logging](api-gateway-mapping-template-reference.md#context-variable-reference)\.
 
 **Note**  
 Only `$context` variables are supported \(not `$input`, and so on\)\.
 
-Choose a log format that is also adopted by your analytic backend, such as [Common Log Format](https://httpd.apache.org/docs/current/logs.html#common) \(CLF\), JSON, XML, or CSV\. You can then feed the access logs to it directly to have your metrics computed and rendered\. To define the log format, set the log group ARN on the [accessLogSettings/destinationArn](https://docs.aws.amazon.com/apigateway/api-reference/resource/stage/#destinationArn) property on the [stage](https://docs.aws.amazon.com/apigateway/api-reference/resource/stage/)\. You can obtain a log group ARN in the CloudWatch console, provided that the **ARN** column is selected for display\. To define the access log format, set a chosen format on the [accessLogSetting/format](https://docs.aws.amazon.com/apigateway/api-reference/resource/stage/#format) property on the [stage](https://docs.aws.amazon.com/apigateway/api-reference/resource/stage/)\. 
+Choose a log format that is also adopted by your analytic backend, such as [Common Log Format](https://httpd.apache.org/docs/current/logs.html#common) \(CLF\), JSON, XML, or CSV\. You can then feed the access logs to it directly to have your metrics computed and rendered\. To define the log format, set the log group ARN on the [accessLogSettings/destinationArn](https://docs.aws.amazon.com/apigateway/latest/api/API_Stage.html#destinationArn) property on the [stage](https://docs.aws.amazon.com/apigateway/latest/api/API_Stage.html)\. You can obtain a log group ARN in the CloudWatch console, provided that the **ARN** column is selected for display\. To define the access log format, set a chosen format on the [accessLogSetting/format](https://docs.aws.amazon.com/apigateway/latest/api/API_Stage.html#format) property on the [stage](https://docs.aws.amazon.com/apigateway/latest/api/API_Stage.html)\. 
 
 Examples of some commonly used access log formats are shown in the API Gateway console and are listed as follows\.
 + `CLF` \([Common Log Format](https://httpd.apache.org/docs/current/logs.html#common)\):
@@ -103,7 +103,7 @@ To enable CloudWatch Logs, you must grant API Gateway permission to read and wri
 **Note**  
 API Gateway calls AWS Security Token Service in order to assume the IAM role, so make sure that AWS STS is enabled for the Region\. For more information, see [Managing AWS STS in an AWS Region](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_temp_enable-regions.html)\.
 
-To grant these permissions to your account, create an IAM role with `apigateway.amazonaws.com` as its trusted entity, attach the preceding policy to the IAM role, and set the IAM role ARN on the [cloudWatchRoleArn](https://docs.aws.amazon.com/apigateway/api-reference/resource/account/#cloudWatchRoleArn) property on your [Account](https://docs.aws.amazon.com/apigateway/api-reference/resource/account/)\. You must set the [cloudWatchRoleArn](https://docs.aws.amazon.com/apigateway/api-reference/resource/account/#cloudWatchRoleArn) property separately for each AWS Region in which you want to enable CloudWatch Logs\.
+To grant these permissions to your account, create an IAM role with `apigateway.amazonaws.com` as its trusted entity, attach the preceding policy to the IAM role, and set the IAM role ARN on the [cloudWatchRoleArn](https://docs.aws.amazon.com/apigateway/latest/api/API_GetAccount.html#cloudWatchRoleArn) property on your [Account](https://docs.aws.amazon.com/apigateway/latest/api/API_GetAccount.html)\. You must set the [cloudWatchRoleArn](https://docs.aws.amazon.com/apigateway/latest/api/API_GetAccount.html#cloudWatchRoleArn) property separately for each AWS Region in which you want to enable CloudWatch Logs\.
 
 If you receive an error when setting the IAM role ARN, check your AWS Security Token Service account settings to make sure that AWS STS is enabled in the Region that you're using\. For more information about enabling AWS STS, see [Managing AWS STS in an AWS Region](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_temp_enable-regions.html#sts-regions-activate-deactivate) in the *IAM User Guide*\.
 
@@ -127,13 +127,9 @@ To set up CloudWatch API logging, you must have deployed the API to a stage\. Yo
 
 1. To enable execution logging:
 
-   1. Choose **Enable CloudWatch Logs** under **CloudWatch Settings**\.
-
-   1. Choose **Error** or **Info** from the dropdown menu\.
-
-   1. If desired, choose **Log full requests/responses data** to log the full API requests and responses\.
+   1. Choose a logging level from the **CloudWatch Logs** dropdown menu\.
 **Warning**  
-This can be useful to troubleshoot APIs, but can result in logging sensitive data\. We recommend that you don't enable `Log full requests/responses data` for production APIs\.
+**Full Request and Response Logs** can be useful to troubleshoot APIs, but can result in logging sensitive data\. We recommend that you don't use **Full Request and Response Logs** for production APIs\.
 
    1. If desired, choose **Enable Detailed CloudWatch Metrics**\.
 
@@ -153,3 +149,31 @@ This can be useful to troubleshoot APIs, but can result in logging sensitive dat
 You can enable execution logging and access logging independent of each other\.
 
 API Gateway is now ready to log requests to your API\. You don't need to redeploy the API when you update the stage settings, logs, or stage variables\. 
+
+## Set up CloudWatch API logging using AWS CloudFormation<a name="set-up-access-logging-using-cloudformation"></a>
+
+Use the following example AWS CloudFormation template to create an Amazon CloudWatch Logs log group and configure execution and access logging for a stage\.
+
+```
+  TestStage:
+    Type: AWS::ApiGateway::Stage
+    Properties:
+      StageName: test
+      RestApiId: !Ref MyAPI
+      DeploymentId: !Ref Deployment
+      Description: "test stage description"
+      MethodSettings:
+        - ResourcePath: "/*"
+          HttpMethod: "*"
+          LoggingLevel: INFO
+      AccessLogSetting:
+        DestinationArn: !GetAtt MyLogGroup.Arn
+        Format: $context.extendedRequestId $context.identity.sourceIp $context.identity.caller $context.identity.user [$context.requestTime] "$context.httpMethod $context.resourcePath $context.protocol" $context.status $context.responseLength $context.requestId
+  MyLogGroup:
+    Type: AWS::Logs::LogGroup
+    Properties:
+      LogGroupName: !Join
+        - '-'
+        - - !Ref MyAPI
+          - access-logs
+```

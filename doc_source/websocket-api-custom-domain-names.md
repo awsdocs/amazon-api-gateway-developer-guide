@@ -18,8 +18,6 @@ With custom domain names, you can set up your API's hostname, and choose a base 
 https://api.example.com/myservice
 ```
 
- If you don't set any base mapping under a custom domain name, the resulting API's base URL is the same as the custom domain \(for example, `https://api.example.com`\)\. In this case, the custom domain name can't support more than one API\. 
-
 **Note**  
 A custom domain name for a WebSocket API can't be mapped to REST APIs or HTTP APIs\.  
 For WebSocket APIs, TLS 1\.2 is the only supported TLS version\.
@@ -59,5 +57,7 @@ To provide a certificate for a custom domain name in a Region where ACM is suppo
 To import an SSL/TLS certificate, you must provide the PEM\-formatted SSL/TLS certificate body, its private key, and the certificate chain for the custom domain name\. Each certificate stored in ACM is identified by its ARN\. To use an AWS managed certificate for a domain name, you simply reference its ARN\. 
 
  ACM makes it straightforward to set up and use a custom domain name for an API\. You create a certificate for the given domain name \(or import a certificate\), set up the domain name in API Gateway with the ARN of the certificate provided by ACM, and map a base path under the custom domain name to a deployed stage of the API\. With certificates issued by ACM, you do not have to worry about exposing any sensitive certificate details, such as the private key\.
+
+## Set up a custom domain name<a name="websocket-api-custom-domain-names-next-steps"></a>
 
 For details on setting up a custom domain name, see [Getting certificates ready in AWS Certificate Manager](how-to-custom-domains-prerequisites.md) and [Setting up a regional custom domain name in API Gateway](apigateway-regional-api-custom-domain-create.md)\.
