@@ -32,10 +32,10 @@ The section explains how to enable binary support using the API Gateway console\
 
       Choose **Passthrough** if you don't want to convert the body when the client and backend accepts the same binary format\. Choose **Convert to text \(if needed\)** to convert the binary body to a base64\-encoded string when, for example, the backend requires that a binary request payload is passed in as a JSON property\. And choose **Convert to binary \(if needed\)** when the client submits a base64\-encoded string and the backend requires the original binary format, or when the endpoint returns a base64\-encoded string and the client accepts only the binary output\.
 
-   1. Preserve the incoming request's `Accept` header in the integration request\. You should do this if you've set `contentHandling` to `passthrough` and want to override that setting at runtime\.
+   1. Preserve the incoming request's `Accept` header in the integration request and **make sure there value inside comma 'LIKE.THIS**'\. You should do this if you've set `contentHandling` to `passthrough` and want to override that setting at runtime\.
 
-         
-![\[Keep the Accept header in the integration request.\]](http://docs.aws.amazon.com/apigateway/latest/developerguide/images/binary-support-preserve-incoming-accept-header.png)
+        
+<img width="1012" alt="binary-support-preserve-incoming-accept-header" src="https://user-images.githubusercontent.com/59918633/232295179-2c996a85-e161-4297-bfe1-04d3b5bfc889.png">
 
    1. Enable the passthrough behavior on the request body\.
 
